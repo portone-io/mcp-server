@@ -1,6 +1,6 @@
 # PortOne MCP Server
 
-포트원을 사용하는 개발자를 위한 MCP(Machine Context Provider) 서버입니다. 이 서버는 PortOne 개발자센터 문서 내용을 LLM(Large Language Model)에 제공하여 관련 정보를 쉽고 정확하게 조회할 수 있도록 합니다.
+포트원을 사용하는 개발자를 위한 MCP(Model Context Protocol) 서버입니다. 이 서버는 PortOne 개발자센터 문서 내용을 LLM(Large Language Model)에 제공하여 관련 정보를 쉽고 정확하게 조회할 수 있도록 합니다.
 
 ## MCP 서버 등록하기
 
