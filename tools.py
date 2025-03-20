@@ -25,10 +25,6 @@ def initialize_tools(mcp: FastMCP, documents: Documents):
             먼저 list_all_portone_docs를 통해 포트원 문서 목록을 확인하고, 그 중 원하는 문서의 path를 read_portone_doc에 전달하여 내용을 확인할 수 있습니다.
             포트원 관련 내용에 대해서는 이미 알고 있는 내용이더라도 본 도구를 통해 포트원 문서를 읽고 더블체크하는 것을 권장합니다.
         """
-        # Check if it's the README
-        if documents.readme and documents.readme.path == path:
-            return documents.readme.content
-
         # Check in markdown documents - direct dictionary access
         if path in documents.markdown_docs:
             return documents.markdown_docs[path].content
@@ -48,10 +44,6 @@ def initialize_tools(mcp: FastMCP, documents: Documents):
         """
         formatted_result = ""
         docs_list = []
-
-        # Add README document if it exists
-        if documents.readme:
-            docs_list.append(documents.readme)
 
         # Add all markdown documents
         for doc in documents.markdown_docs.values():

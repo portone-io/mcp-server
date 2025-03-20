@@ -1,9 +1,8 @@
-import os
 import re
 import yaml
+import importlib.resources
 from dataclasses import dataclass, field
 from datetime import datetime
-from pathlib import Path
 from typing import Dict, List, Optional, Any
 
 
@@ -64,52 +63,76 @@ class MarkdownDocument:
 
 
 def load_markdown_docs(
-    docs_dir: str = "docs", exclude_files: List[str] = []
-) -> List[MarkdownDocument]:
+    package_name: str = "docs",
+    exclude_files: List[str] = ["v1-docs-full.md", "v2-docs-full.md"],
+) -> Dict[str, MarkdownDocument]:
     """
-    Load all markdown content from the docs directory, excluding specified files.
+    Load all markdown content from the package, excluding specified files.
     If a markdown file has frontmatter, it will be parsed as metadata.
 
     Args:
-        docs_dir: Path to the docs directory
+        package_name: Name of the package to load documents from
         exclude_files: List of filenames to exclude (e.g., ["v1-docs-full.md", "v2-docs-full.md"])
 
     Returns:
-        List of MarkdownDocument containing the markdown content and metadata
+        Dictionary with relative path as key and MarkdownDocument as value
     """
-    exclude_files.extend(["v1-docs-full.md", "v2-docs-full.md", "README.md"])
+    result_dict = {}
+    root = importlib.resources.files(package_name)
 
-    docs_path = Path(docs_dir)
-    if not docs_path.exists() or not docs_path.is_dir():
-        raise ValueError(f"Directory '{docs_dir}' does not exist or is not a directory")
+    # Find all markdown files recursively - returns (resource, rel_path) tuples
+    for path, rel_path in walk_resources(root):
+        # Skip files that are in the exclude list or not markdown
+        if path.name in exclude_files or not path.name.lower().endswith(".md"):
+            continue
 
-    markdown_files = []
+        # Read content and parse markdown
+        content = path.read_text(encoding="utf-8")
+        parsed_doc = parse_markdown_content(content)
 
-    # Find all markdown files recursively
-    for root, _, files in os.walk(docs_path):
-        for file in files:
-            if file.lower().endswith(".md") and file not in exclude_files:
-                file_path = Path(root) / file
-                markdown_files.append(file_path)
-
-    result = []
-
-    for file_path in markdown_files:
-        parsed_doc = parse_markdown_file(file_path)
-
-        # Create relative path from docs directory
-        relative_path = file_path.relative_to(docs_path)
-
-        # Create a MarkdownDocument with the parsed content
+        # Create MarkdownDocument and add to result
         doc = MarkdownDocument(
-            path=str(relative_path),
+            path=rel_path,
             content=parsed_doc.content,
             frontmatter=parsed_doc.frontmatter,
         )
+        result_dict[rel_path] = doc
 
-        result.append(doc)
+    return result_dict
 
-    return result
+
+def walk_resources(resource_path):
+    """
+    Walk through resource path recursively, yielding tuples of (resource, relative_path).
+
+    Args:
+        resource_path: The resource path to walk
+
+    Yields:
+        Tuples of (resource, relative_path)
+    """
+
+    # Nested function to handle recursion with relative paths
+    def _walk_with_rel_path(current_path, rel_path=""):
+        if not current_path.is_dir():
+            # For files, yield the resource and its relative path
+            yield (current_path, rel_path or current_path.name)
+            return
+
+        # Process directory contents
+        for item in current_path.iterdir():
+            # Calculate the new relative path
+            item_rel_path = f"{rel_path}/{item.name}" if rel_path else item.name
+
+            if item.is_dir():
+                # Recursively process directories
+                yield from _walk_with_rel_path(item, item_rel_path)
+            else:
+                # Yield files with their relative paths
+                yield (item, item_rel_path)
+
+    # Start traversal from the root
+    yield from _walk_with_rel_path(resource_path)
 
 
 @dataclass
@@ -120,19 +143,16 @@ class ParsedMarkdown:
     frontmatter: Optional[Frontmatter] = None
 
 
-def parse_markdown_file(file_path: Path) -> ParsedMarkdown:
+def parse_markdown_content(content: str) -> ParsedMarkdown:
     """
-    Parse a markdown file and extract its content and frontmatter metadata if present.
+    Parse markdown content and extract its frontmatter metadata if present.
 
     Args:
-        file_path: Path to the markdown file
+        content: Markdown content as string
 
     Returns:
         ParsedMarkdown object containing the content and optional metadata
     """
-    with open(file_path, "r", encoding="utf-8") as f:
-        content = f.read()
-
     # Check for frontmatter (delimited by --- at the start of the file)
     frontmatter_match = re.match(r"^---\n(.+?)\n---\n(.*)$", content, re.DOTALL)
 
@@ -147,7 +167,7 @@ def parse_markdown_file(file_path: Path) -> ParsedMarkdown:
             frontmatter = Frontmatter.from_dict(frontmatter_dict)
             return ParsedMarkdown(content=content_text.strip(), frontmatter=frontmatter)
         except yaml.YAMLError as e:
-            print(f"Error parsing frontmatter in {file_path}: {e}")
+            print(f"Error parsing frontmatter: {e}")
             return ParsedMarkdown(content=content)
 
     # No frontmatter found
@@ -181,206 +201,99 @@ class Documents:
     """Class representing all documents and schema files."""
 
     readme: MarkdownDocument
-    markdown_docs: Dict[str, MarkdownDocument] = field(default_factory=dict)
-    schema: Schema = field(
-        default_factory=lambda: Schema(
-            openapi_v1_json=SchemaFile(path="", content="", file_type=""),
-            openapi_v1_yml=SchemaFile(path="", content="", file_type=""),
-            openapi_v2_json=SchemaFile(path="", content="", file_type=""),
-            openapi_v2_yml=SchemaFile(path="", content="", file_type=""),
-            graphql_v2=SchemaFile(path="", content="", file_type=""),
-        )
-    )
+    markdown_docs: Dict[str, MarkdownDocument]
+    schema: Schema
 
 
 def load_all(
-    docs_dir: str = "docs", schema_dir: str = "docs/schema", root_dir: str = "."
+    docs_package: str = "docs",
+    schema_package: str = "docs.schema",
 ) -> Documents:
     """
     Load all documents and schema files.
 
     Args:
-        docs_dir: Path to the docs directory
-        schema_dir: Path to the schema directory
-        root_dir: Path to the root directory (for README.md)
+        docs_package: Package name for the docs
+        schema_package: Package name for the schema
 
     Returns:
         Documents object containing README.md, all markdown files, and schema files
     """
-    # Load README.md
-    readme_path = Path(root_dir) / "README.md"
-    if readme_path.exists() and readme_path.is_file():
-        parsed_readme = parse_markdown_file(readme_path)
-        readme_doc = MarkdownDocument(
-            path="README.md",
-            content=parsed_readme.content,
-            frontmatter=parsed_readme.frontmatter,
-        )
-    else:
-        # Create an empty README document if it doesn't exist
-        readme_doc = MarkdownDocument(path="README.md", content="", frontmatter=None)
+    # Load all markdown docs including README.md
+    markdown_docs = load_markdown_docs(docs_package)
 
-    # Initialize Documents with the readme
-    documents = Documents(readme=readme_doc)
+    # Find README.md in the docs directory
+    readme = markdown_docs.get("README.md")
 
-    # Load markdown docs (excluding README.md) into a dictionary
-    markdown_docs_list = load_markdown_docs(docs_dir)
-    for doc in markdown_docs_list:
-        documents.markdown_docs[doc.path] = doc
+    # If README.md wasn't found, create an empty one
+    if readme is None:
+        readme = MarkdownDocument(path="README.md", content="", frontmatter=None)
 
     # Load schema files
-    documents.schema = load_schema(schema_dir)
+    schema = load_schema(schema_package)
+
+    # Initialize Documents with the readme
+    documents = Documents(readme=readme, markdown_docs=markdown_docs, schema=schema)
 
     return documents
 
 
-def load_schema(schema_dir: str = "docs/schema") -> Schema:
+def load_schema(package_name: str = "docs.schema") -> Schema:
     """
-    Load all schema files from the schema directory.
+    Load all schema files from the schema package.
 
     Args:
-        schema_dir: Path to the schema directory
+        package_name: Name of the package containing schema files
 
     Returns:
         Schema object containing all schema files
     """
-    schema_path = Path(schema_dir)
-    if not schema_path.exists() or not schema_path.is_dir():
-        raise ValueError(
-            f"Directory '{schema_dir}' does not exist or is not a directory"
-        )
-
-    # Create empty SchemaFile instances for required fields
-    empty_schema_file = SchemaFile(path="", content="", file_type="")
-
+    # Create empty Schema
+    empty_file = SchemaFile(path="", content="", file_type="")
     schema = Schema(
-        openapi_v1_json=empty_schema_file,
-        openapi_v1_yml=empty_schema_file,
-        openapi_v2_json=empty_schema_file,
-        openapi_v2_yml=empty_schema_file,
-        graphql_v2=empty_schema_file,
+        openapi_v1_json=empty_file,
+        openapi_v1_yml=empty_file,
+        openapi_v2_json=empty_file,
+        openapi_v2_yml=empty_file,
+        graphql_v2=empty_file,
     )
 
-    # Find all schema files in the directory (recursive)
-    for file_path in schema_path.glob("**/*"):
-        if file_path.is_file():
-            relative_path = file_path.relative_to(schema_path)
-            file_type = file_path.suffix.lstrip(".")
+    try:
+        # Get schema directory files
+        root = importlib.resources.files(package_name)
+        if not root.is_dir():
+            return schema
 
-            # Handle files with no extension (like graphql)
-            if file_type == "":
-                file_type = file_path.name
+        # Map to correct attribute based on filename
+        file_map = {
+            "v1.openapi.json": "openapi_v1_json",
+            "v1.openapi.yml": "openapi_v1_yml",
+            "v2.openapi.json": "openapi_v2_json",
+            "v2.openapi.yml": "openapi_v2_yml",
+            "v2.graphql": "graphql_v2",
+        }
 
-            # Read file content
-            with open(file_path, "r", encoding="utf-8") as f:
-                content = f.read()
+        # Process each file directly (no subdirectories in schema)
+        for resource in root.iterdir():
+            if not resource.is_file():
+                continue
 
+            # Get file details
+            rel_path = resource.name
+            file_type = rel_path.split(".")[-1] if "." in rel_path else "unknown"
+            content = resource.read_text(encoding="utf-8")
+
+            # Create schema file
             schema_file = SchemaFile(
-                path=str(relative_path), content=content, file_type=file_type
+                path=rel_path, content=content, file_type=file_type
             )
 
-            # Map to specific schema attributes based on filename
-            if file_path.name == "v1.openapi.json":
-                schema.openapi_v1_json = schema_file
-            elif file_path.name == "v1.openapi.yml":
-                schema.openapi_v1_yml = schema_file
-            elif file_path.name == "v2.openapi.json":
-                schema.openapi_v2_json = schema_file
-            elif file_path.name == "v2.openapi.yml":
-                schema.openapi_v2_yml = schema_file
-            elif file_path.name == "v2.graphql":
-                schema.graphql_v2 = schema_file
+            if rel_path in file_map:
+                setattr(schema, file_map[rel_path], schema_file)
             else:
-                # Store any additional schema files
-                schema.additional_schemas[file_path.name] = schema_file
+                schema.additional_schemas[rel_path] = schema_file
+
+    except Exception as e:
+        print(f"Error loading schema package '{package_name}': {e}")
 
     return schema
-
-
-if __name__ == "__main__":
-    # Example usage of load_all
-    all_docs = load_all()
-    print(f"Loaded {len(all_docs.markdown_docs)} markdown documents as a dictionary")
-
-    # Display README.md info
-    print("\nREADME.md:")
-    if all_docs.readme.frontmatter:
-        print(
-            f"  Title: {all_docs.readme.frontmatter.title if all_docs.readme.frontmatter.title else 'Not specified'}"
-        )
-    # Only show content preview if there is content
-    if all_docs.readme.content:
-        print(f"  Content preview: {all_docs.readme.content[:200]}...")
-    else:
-        print("  No content available")
-
-    # Try to find a blog post with rich frontmatter
-    blog_post = None
-    for path, doc in all_docs.markdown_docs.items():
-        if (
-            doc.frontmatter is not None
-            and path.startswith("blog/")
-            and doc.frontmatter.author is not None
-        ):
-            blog_post = doc
-            break
-
-    # If no blog post found, find any document with frontmatter
-    frontmatter_doc = blog_post
-    if frontmatter_doc is None:
-        for path, doc in all_docs.markdown_docs.items():
-            if doc.frontmatter is not None:
-                frontmatter_doc = doc
-                break
-
-    if frontmatter_doc:
-        print(f"\nExample document with frontmatter: {frontmatter_doc.path}")
-        print("Frontmatter:")
-        if frontmatter_doc.frontmatter:
-            print(
-                f"  Title: {frontmatter_doc.frontmatter.title if frontmatter_doc.frontmatter.title else 'Not specified'}"
-            )
-            print(
-                f"  Description: {frontmatter_doc.frontmatter.description if frontmatter_doc.frontmatter.description else 'Not specified'}"
-            )
-            if frontmatter_doc.frontmatter.targetVersions:
-                print(
-                    f"  Target Versions: {frontmatter_doc.frontmatter.targetVersions}"
-                )
-            if frontmatter_doc.frontmatter.author:
-                print(f"  Author: {frontmatter_doc.frontmatter.author}")
-            if frontmatter_doc.frontmatter.date:
-                print(f"  Date: {frontmatter_doc.frontmatter.date}")
-            if frontmatter_doc.frontmatter.tags:
-                print(f"  Tags: {frontmatter_doc.frontmatter.tags}")
-            if frontmatter_doc.frontmatter.additional_fields:
-                print(
-                    f"  Additional Fields: {frontmatter_doc.frontmatter.additional_fields}"
-                )
-        print(f"Content preview: {frontmatter_doc.content[:200]}...")
-    else:
-        # Print the first document as a fallback
-        if all_docs.markdown_docs:
-            first_path = next(iter(all_docs.markdown_docs))
-            first_doc = all_docs.markdown_docs[first_path]
-            print(f"\nExample document: {first_path}")
-            if first_doc.frontmatter is not None:
-                print(f"Frontmatter: {first_doc.frontmatter}")
-            print(f"Content preview: {first_doc.content[:200]}...")
-
-    # Display schema info
-    schema = all_docs.schema
-    print("\nLoaded schema files:")
-    # Check if schema files have content (non-empty path means they were found)
-    if schema.openapi_v1_json.path:
-        print(f"  OpenAPI v1 (JSON): {schema.openapi_v1_json.path}")
-    if schema.openapi_v1_yml.path:
-        print(f"  OpenAPI v1 (YAML): {schema.openapi_v1_yml.path}")
-    if schema.openapi_v2_json.path:
-        print(f"  OpenAPI v2 (JSON): {schema.openapi_v2_json.path}")
-    if schema.openapi_v2_yml.path:
-        print(f"  OpenAPI v2 (YAML): {schema.openapi_v2_yml.path}")
-    if schema.graphql_v2.path:
-        print(f"  GraphQL v2: {schema.graphql_v2.path}")
-    if schema.additional_schemas:
-        print(f"  Additional schemas: {list(schema.additional_schemas.keys())}")

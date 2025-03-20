@@ -1,35 +1,21 @@
-import os
-import tempfile
-from pathlib import Path
 from datetime import datetime
 
-from loader import parse_markdown_file, ParsedMarkdown
+from loader import parse_markdown_content, ParsedMarkdown
 
 
-class TestParseMarkdownFile:
+class TestParseMarkdownContent:
     def test_parse_markdown_without_frontmatter(self):
-        """Test parsing a markdown file without frontmatter."""
-        with tempfile.NamedTemporaryFile(suffix=".md", delete=False) as temp_file:
-            temp_file.write(
-                b"# Test Markdown\n\nThis is a test markdown file without frontmatter."
-            )
-            temp_path = Path(temp_file.name)
+        """Test parsing markdown content without frontmatter."""
+        content = "# Test Markdown\n\nThis is a test markdown file without frontmatter."
 
-        try:
-            result = parse_markdown_file(temp_path)
+        result = parse_markdown_content(content)
 
-            assert isinstance(result, ParsedMarkdown)
-            assert (
-                result.content
-                == "# Test Markdown\n\nThis is a test markdown file without frontmatter."
-            )
-            assert result.frontmatter is None
-        finally:
-            # Clean up the temporary file
-            os.unlink(temp_path)
+        assert isinstance(result, ParsedMarkdown)
+        assert result.content == content
+        assert result.frontmatter is None
 
     def test_parse_markdown_with_valid_frontmatter(self):
-        """Test parsing a markdown file with valid frontmatter."""
+        """Test parsing markdown content with valid frontmatter."""
 
         markdown_content = """---
 title: Test Document
@@ -46,32 +32,22 @@ custom_field: custom value
 This is a test markdown file with frontmatter.
 """
 
-        with tempfile.NamedTemporaryFile(suffix=".md", delete=False) as temp_file:
-            temp_file.write(markdown_content.encode("utf-8"))
-            temp_path = Path(temp_file.name)
+        result = parse_markdown_content(markdown_content)
 
-        try:
-            result = parse_markdown_file(temp_path)
-
-            assert isinstance(result, ParsedMarkdown)
-            assert (
-                result.content
-                == "# Test Markdown\n\nThis is a test markdown file with frontmatter."
-            )
-            assert result.frontmatter is not None
-            assert result.frontmatter.title == "Test Document"
-            assert result.frontmatter.description == "A test document with frontmatter"
-            assert result.frontmatter.tags == ["test", "markdown", "frontmatter"]
-            assert result.frontmatter.date == datetime(2025, 3, 18)
-            assert (
-                result.frontmatter.additional_fields["custom_field"] == "custom value"
-            )
-        finally:
-            # Clean up the temporary file
-            os.unlink(temp_path)
+        assert isinstance(result, ParsedMarkdown)
+        assert (
+            result.content
+            == "# Test Markdown\n\nThis is a test markdown file with frontmatter."
+        )
+        assert result.frontmatter is not None
+        assert result.frontmatter.title == "Test Document"
+        assert result.frontmatter.description == "A test document with frontmatter"
+        assert result.frontmatter.tags == ["test", "markdown", "frontmatter"]
+        assert result.frontmatter.date == datetime(2025, 3, 18)
+        assert result.frontmatter.additional_fields["custom_field"] == "custom value"
 
     def test_parse_markdown_with_invalid_frontmatter(self):
-        """Test parsing a markdown file with invalid frontmatter."""
+        """Test parsing markdown content with invalid frontmatter."""
         invalid_frontmatter = """---
 title: "Unclosed quote
 invalid: yaml: syntax
@@ -81,23 +57,15 @@ invalid: yaml: syntax
 This is a test markdown file with invalid frontmatter.
 """
 
-        with tempfile.NamedTemporaryFile(suffix=".md", delete=False) as temp_file:
-            temp_file.write(invalid_frontmatter.encode("utf-8"))
-            temp_path = Path(temp_file.name)
+        result = parse_markdown_content(invalid_frontmatter)
 
-        try:
-            result = parse_markdown_file(temp_path)
-
-            assert isinstance(result, ParsedMarkdown)
-            assert result.frontmatter is None
-            # The content should be the entire file since frontmatter parsing failed
-            assert result.content == invalid_frontmatter
-        finally:
-            # Clean up the temporary file
-            os.unlink(temp_path)
+        assert isinstance(result, ParsedMarkdown)
+        assert result.frontmatter is None
+        # The content should be the entire string since frontmatter parsing failed
+        assert result.content == invalid_frontmatter
 
     def test_parse_markdown_with_empty_frontmatter(self):
-        """Test parsing a markdown file with empty frontmatter."""
+        """Test parsing markdown content with empty frontmatter."""
         empty_frontmatter = """---
 ---
 # Test Markdown
@@ -105,18 +73,10 @@ This is a test markdown file with invalid frontmatter.
 This is a test markdown file with empty frontmatter.
 """
 
-        with tempfile.NamedTemporaryFile(suffix=".md", delete=False) as temp_file:
-            temp_file.write(empty_frontmatter.encode("utf-8"))
-            temp_path = Path(temp_file.name)
+        result = parse_markdown_content(empty_frontmatter)
 
-        try:
-            result = parse_markdown_file(temp_path)
-
-            assert isinstance(result, ParsedMarkdown)
-            # The current implementation doesn't handle empty frontmatter correctly
-            # It treats the entire content as regular markdown without frontmatter
-            assert result.frontmatter is None
-            assert result.content == empty_frontmatter
-        finally:
-            # Clean up the temporary file
-            os.unlink(temp_path)
+        assert isinstance(result, ParsedMarkdown)
+        # The current implementation doesn't handle empty frontmatter correctly
+        # It treats the entire content as regular markdown without frontmatter
+        assert result.frontmatter is None
+        assert result.content == empty_frontmatter
