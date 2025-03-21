@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from loader import parse_markdown_content, ParsedMarkdown
+from portone_mcp_server.loader import parse_markdown_content, ParsedMarkdown
 
 
 class TestParseMarkdownContent:
@@ -35,10 +35,7 @@ This is a test markdown file with frontmatter.
         result = parse_markdown_content(markdown_content)
 
         assert isinstance(result, ParsedMarkdown)
-        assert (
-            result.content
-            == "# Test Markdown\n\nThis is a test markdown file with frontmatter."
-        )
+        assert result.content == "# Test Markdown\n\nThis is a test markdown file with frontmatter."
         assert result.frontmatter is not None
         assert result.frontmatter.title == "Test Document"
         assert result.frontmatter.description == "A test document with frontmatter"

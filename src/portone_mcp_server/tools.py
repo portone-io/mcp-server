@@ -1,5 +1,5 @@
 from mcp.server.fastmcp import FastMCP
-from loader import Documents
+from .loader import Documents
 
 
 def initialize_tools(mcp: FastMCP, documents: Documents):
@@ -66,21 +66,15 @@ def initialize_tools(mcp: FastMCP, documents: Documents):
 
                 # Handle targetVersions
                 if doc.frontmatter.targetVersions is not None:
-                    formatted_result += (
-                        f"targetVersions: {doc.frontmatter.targetVersions}\n"
-                    )
+                    formatted_result += f"targetVersions: {doc.frontmatter.targetVersions}\n"
 
                 # Handle releasedAt
                 if doc.frontmatter.releasedAt is not None:
-                    formatted_result += (
-                        f"releasedAt: {doc.frontmatter.releasedAt.isoformat()}\n"
-                    )
+                    formatted_result += f"releasedAt: {doc.frontmatter.releasedAt.isoformat()}\n"
 
                 # Handle writtenAt
                 if doc.frontmatter.writtenAt is not None:
-                    formatted_result += (
-                        f"writtenAt: {doc.frontmatter.writtenAt.isoformat()}\n"
-                    )
+                    formatted_result += f"writtenAt: {doc.frontmatter.writtenAt.isoformat()}\n"
 
                 # Handle author
                 if doc.frontmatter.author is not None:

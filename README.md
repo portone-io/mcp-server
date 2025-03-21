@@ -22,7 +22,7 @@
          "--directory",
          "/your/absolute/path/to/portone-mcp-server",
          "run",
-         "main.py"
+         "portone-mcp-server"
        ]
      }
    }
@@ -43,13 +43,13 @@
 
    ```bash
    uv venv
-   uv sync
+   uv sync --extra dev
    ```
 
 1. MCP 서버 실행
 
    ```bash
-   uv run main.py
+   uv run portone-mcp-server
    ```
 
 1. 테스트

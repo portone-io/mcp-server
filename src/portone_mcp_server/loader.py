@@ -63,7 +63,7 @@ class MarkdownDocument:
 
 
 def load_markdown_docs(
-    package_name: str = "docs",
+    package_name: str = "portone_mcp_server.resources",
     exclude_files: List[str] = ["v1-docs-full.md", "v2-docs-full.md"],
 ) -> Dict[str, MarkdownDocument]:
     """
@@ -206,8 +206,8 @@ class Documents:
 
 
 def load_all(
-    docs_package: str = "docs",
-    schema_package: str = "docs.schema",
+    docs_package: str = "portone_mcp_server.resources",
+    schema_package: str = "portone_mcp_server.resources.schema",
 ) -> Documents:
     """
     Load all documents and schema files.
@@ -238,7 +238,7 @@ def load_all(
     return documents
 
 
-def load_schema(package_name: str = "docs.schema") -> Schema:
+def load_schema(package_name: str = "portone_mcp_server.resources.schema") -> Schema:
     """
     Load all schema files from the schema package.
 
@@ -284,9 +284,7 @@ def load_schema(package_name: str = "docs.schema") -> Schema:
             content = resource.read_text(encoding="utf-8")
 
             # Create schema file
-            schema_file = SchemaFile(
-                path=rel_path, content=content, file_type=file_type
-            )
+            schema_file = SchemaFile(path=rel_path, content=content, file_type=file_type)
 
             if rel_path in file_map:
                 setattr(schema, file_map[rel_path], schema_file)

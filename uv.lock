@@ -195,12 +195,16 @@ wheels = [
 [[package]]
 name = "portone-mcp-server"
 version = "0.1.0"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "markdown" },
     { name = "mcp", extra = ["cli"] },
-    { name = "pytest" },
     { name = "pyyaml" },
+]
+
+[package.optional-dependencies]
+dev = [
+    { name = "pytest" },
     { name = "ruff" },
 ]
 
@@ -208,10 +212,11 @@ dependencies = [
 requires-dist = [
     { name = "markdown", specifier = ">=3.7" },
     { name = "mcp", extras = ["cli"], specifier = ">=1.4.1" },
-    { name = "pytest", specifier = ">=8.3.5" },
+    { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.3.5" },
     { name = "pyyaml", specifier = ">=6.0.2" },
-    { name = "ruff", specifier = ">=0.11.0" },
+    { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.11.0" },
 ]
+provides-extras = ["dev"]
 
 [[package]]
 name = "pydantic"
