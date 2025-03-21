@@ -5,23 +5,16 @@
 ## MCP 서버 등록하기
 
 1. [uv](https://docs.astral.sh/uv/getting-started/installation/) 및 Python 3.12 이상이 설치되어 있어야 합니다.
-1. 이 저장소를 로컬 환경에 클론합니다.
-   ```bash
-   git clone https://github.com/portone-io/mcp-server.git portone-mcp-server
-   ```
 1. Claude Desktop -> Settings -> Developer -> Edit Config를 통해 아래 내용을 추가합니다.
 
    ```json
    "mcpServers": {
 
-     // ...
+     // 기존 설정
 
      "portone-mcp-server": {
-       "command": "uv",
+       "command": "uvx",
        "args": [
-         "--directory",
-         "/your/absolute/path/to/portone-mcp-server",
-         "run",
          "portone-mcp-server"
        ]
      }
