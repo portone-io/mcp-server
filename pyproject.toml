@@ -5,7 +5,6 @@ description = "PortOne 개발자 문서를 위한 MCP(Model Context Protocol) �
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "markdown>=3.7",
     "mcp[cli]>=1.4.1",
     "pyyaml>=6.0.2",
 ]
