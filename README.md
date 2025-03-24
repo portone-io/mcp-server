@@ -58,6 +58,15 @@
    uv run ruff format .
    ```
 
+1. 퍼블리싱
+
+   ```bash
+   rm -rf dist
+   uv sync
+   uv build
+   uv publish
+   ```
+
 ## 라이선스
 
 [Apache License 2.0](LICENSE)
