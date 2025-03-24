@@ -20,6 +20,7 @@ class Schema:
     openapi_v1_yml: SchemaFile
     openapi_v2_json: SchemaFile
     openapi_v2_yml: SchemaFile
+    browser_sdk_v2_yml: SchemaFile
     graphql_v2: SchemaFile
     # Additional schema files can be stored here
     additional_schemas: Dict[str, SchemaFile] = field(default_factory=dict)
@@ -42,6 +43,7 @@ def load_schema(package_name: str = "portone_mcp_server.resources.schema") -> Sc
         openapi_v1_yml=empty_file,
         openapi_v2_json=empty_file,
         openapi_v2_yml=empty_file,
+        browser_sdk_v2_yml=empty_file,
         graphql_v2=empty_file,
     )
 
@@ -57,6 +59,7 @@ def load_schema(package_name: str = "portone_mcp_server.resources.schema") -> Sc
             "v1.openapi.yml": "openapi_v1_yml",
             "v2.openapi.json": "openapi_v2_json",
             "v2.openapi.yml": "openapi_v2_yml",
+            "browser-sdk.yml": "browser_sdk_v2_yml",
             "v2.graphql": "graphql_v2",
         }
 

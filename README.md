@@ -67,6 +67,22 @@
    uv publish
    ```
 
+1. 로컬 환경의 MCP 서버 등록하기
+
+   ```json
+   "mcpServers": {
+      "portone-mcp-server": {
+      "command": "uv",
+      "args": [
+         "--directory",
+         "/your/absolute/path/to/portone-mcp-server",
+         "run",
+         "portone-mcp-server"
+      ]
+      }
+   }
+   ```
+
 ## 라이선스
 
 [Apache License 2.0](LICENSE)
