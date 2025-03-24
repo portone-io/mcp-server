@@ -61,6 +61,7 @@
 1. 퍼블리싱
 
    ```bash
+   # 먼저 pyproject.toml의 version을 변경합니다.
    rm -rf dist
    uv sync
    uv build
