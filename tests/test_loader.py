@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from portone_mcp_server.loader import ParsedMarkdown, parse_markdown_content
+from portone_mcp_server.loader.markdown import ParsedMarkdown, parse_markdown_content
 
 
 class TestParseMarkdownContent:
