@@ -15,7 +15,6 @@
 5. 사용자에게 문서 레퍼런스를 URL로 제공할 때는 마크다운 파일 링크가 아닌, 개발자센터 웹사이트 URL을 사용하세요.
 
    - `.md`로 끝나는 URL은 마크다운 파일 링크입니다. 마크다운 파일 링크에서 마지막 `.md`를 제거하면 웹사이트 URL로 사용할 수 있습니다.
-   - 단, `_components` 가 URL에 포함된 경우 웹사이트 URL로 사용할 수 없음에 주의하세요.
    - 사용자가 원하는 버전(V1, V2)이 특정되었다면 `?v=v2`, `?v=v1` 쿼리 파라미터를 추가하여 URL로 제공하세요.
    - hostname이 누락된 URL의 경우 `https://developers.portone.io`를 추가하세요.
 
@@ -50,7 +49,6 @@
 - [JavaScript SDK 레퍼런스](https://developers.portone.io/sdk/ko/v2-sdk/readme): 결제창 연동시 사용되는 SDK에 대한 설명 문서입니다.
 - [updateLoadIssueBillingKeyUIRequest 요청 형식](https://developers.portone.io/sdk/ko/v2-sdk/update-load-issue-billing-key-ui-request): updateLoadIssueBillingKeyUIRequest 호출 시 사용되는 파라미터의 형식을 확인할 수 있습니다.
 - [updateLoadPaymentUIRequest 요청 형식](https://developers.portone.io/sdk/ko/v2-sdk/update-load-payment-ui-request): updateLoadPaymentUIRequest 호출 시 사용되는 파라미터의 형식을 확인할 수 있습니다.
-- [V2 JavaScript SDK 설치하기](https://developers.portone.io/sdk/ko/v2-sdk/_components/sdk-installation): 웹 브라우저에서 결제창 연동 시 사용되는 SDK 설치 방법을 안내합니다.
 - [포트원 SDK 소개](https://developers.portone.io/sdk/ko/readme): 포트원에서 제공하는 SDK 가이드입니다.
 
 ### V2 API 레퍼런스
@@ -79,18 +77,15 @@
 - [스마트로](https://developers.portone.io/opi/ko/integration/pg/v2/smartro-v2): 스마트로 결제 연동 방법을 안내합니다.
 - [토스페이](https://developers.portone.io/opi/ko/integration/pg/v2/tosspay-v2): 토스페이 간편결제 연동 방법을 안내합니다.
 - [토스페이먼츠](https://developers.portone.io/opi/ko/integration/pg/v2/tosspayments): 토스페이먼츠 결제 연동 방법을 안내합니다.
-- [V2 JavaScript SDK 설치하기](https://developers.portone.io/opi/ko/integration/start/_components/sdk-installation): 웹 브라우저에서 결제창 연동 시 사용되는 SDK 설치 방법을 안내합니다.
 - [인증 결제 연동하기](https://developers.portone.io/opi/ko/integration/start/v2/checkout): PG 결제창을 이용하는 인증 결제를 연동합니다.
 - [수기(키인) 결제 연동하기](https://developers.portone.io/opi/ko/integration/start/v2/keyin): 구매자 인증 없이 결제 수단 정보만으로 결제를 요청합니다.
 - [결제 연동 시작하기](https://developers.portone.io/opi/ko/integration/start/v2/readme): 새롭게 출시된 V2 결제 서비스를 소개합니다.
-- [결제대행사별 연동 정보 확인하기 - 하이픈](https://developers.portone.io/opi/ko/integration/ready/_components/integration-guide/hyphen)
-- [결제대행사별 연동 정보 확인하기 - NHN KCP (V2)](https://developers.portone.io/opi/ko/integration/ready/_components/integration-guide/kcp-v2)
-- [결제대행사별 연동 정보 확인하기 - 페이팔 (V2)](https://developers.portone.io/opi/ko/integration/ready/_components/integration-guide/paypal-v2)
 - [1. 빌링키 발급하기](https://developers.portone.io/opi/ko/integration/start/v2/billing/issue): 결제창 또는 API를 이용하여 빌링키를 발급할 수 있습니다.
 - [2. 결제 요청하기](https://developers.portone.io/opi/ko/integration/start/v2/billing/payment): 포트원 빌링키 결제 API를 사용해 바로 결제를 요청합니다.
 - [빌링키 결제 연동하기](https://developers.portone.io/opi/ko/integration/start/v2/billing/readme): 카드 혹은 휴대 전화 정보를 이용하여 빌링키를 발급하고, 빌링키를 이용해 결제를 요청하는 방법을 안내합니다.
 - [3. 예약/반복결제 구현하기](https://developers.portone.io/opi/ko/integration/start/v2/billing/schedule): 발급한 빌링키로 예약/반복결제를 구현하는 방법을 안내합니다.
 - [PG 거래대사 가이드](https://developers.portone.io/opi/ko/etc/recon): PG 거래대사는 PG사와 간편결제사로부터 정산 받는 금액 및 상세내역을 포트원 콘솔에서 PG가 여러 개여도 한 번에 자동 대사된 데이터를 확인할 수 있는 통합 조회 서비스입니다.
+- [AI 도구 활용하기](https://developers.portone.io/opi/ko/integration/using-ai-tools): AI 도구를 활용하여 쉽고 빠르게 포트원을 연동하세요. 연동 코드 작성은 물론, 24시간 언제나 관련 질의에 대한 답변을 받을 수 있습니다.
 - [포트원 결제 연동 Doc](https://developers.portone.io/opi/ko/readme): 포트원 결제 연동 가이드입니다. 빠른 시간 안에 결제를 연동할 수 있게 도와드립니다.
 - [직접 문의하기](https://developers.portone.io/opi/ko/support/contact): 기술지원 문의를 위한 연락처 정보입니다.
 - [TLS 지원 범위](https://developers.portone.io/opi/ko/support/tls-support): 포트원 v1 API의 TLS 지원 범위 및 설정 가이드를 확인할 수 있습니다.
@@ -113,11 +108,10 @@
 - [결제 연동 준비하기](https://developers.portone.io/opi/ko/integration/ready/readme): 포트원을 이용한 연동 개발이 처음이시라면 아래 안내 사항에 따라 진행하세요.
 - [가상계좌 입금통보 설정](https://developers.portone.io/opi/ko/integration/virtual-account/readme): 결제대행사별 입금통보 URL을 안내합니다.
 - [퀵 가이드](https://developers.portone.io/opi/ko/quick-guide/payment): 결제연동 퀵 가이드
-- [결제대행사별 연동 정보 확인하기 - KG이니시스](https://developers.portone.io/opi/ko/integration/ready/_components/integration-guide/inicis)
-- [결제대행사별 연동 정보 확인하기 - 토스페이먼츠 (신모듈)](https://developers.portone.io/opi/ko/integration/ready/_components/integration-guide/tosspayments)
 
 ### 파트너정산
 
+- [AI 도구 활용하기](https://developers.portone.io/platform/ko/using-ai-tools): AI 도구를 활용하여 쉽고 빠르게 포트원을 연동하세요. 연동 코드 작성은 물론, 24시간 언제나 관련 질의에 대한 답변을 받을 수 있습니다.
 - [용어 사전](https://developers.portone.io/platform/ko/guides/dictionary)
 - [서비스 프로세스](https://developers.portone.io/platform/ko/guides/process)
 - [파트너 정산 자동화 서비스 가이드](https://developers.portone.io/platform/ko/readme)
@@ -130,6 +124,16 @@
 
 ### 릴리스 노트
 
+- [관리자콘솔 2023-04-24](https://developers.portone.io/release-notes/console/2023-04-24)
+- [관리자콘솔 2023-05-08](https://developers.portone.io/release-notes/console/2023-05-08)
+- [관리자콘솔 2023-05-22](https://developers.portone.io/release-notes/console/2023-05-22)
+- [관리자콘솔 2023-07-05](https://developers.portone.io/release-notes/console/2023-07-05)
+- [관리자콘솔 2023-07-07](https://developers.portone.io/release-notes/console/2023-07-07)
+- [관리자콘솔 2023-07-17](https://developers.portone.io/release-notes/console/2023-07-17)
+- [관리자콘솔 2023-08-23](https://developers.portone.io/release-notes/console/2023-08-23)
+- [관리자콘솔 2023-09-12](https://developers.portone.io/release-notes/console/2023-09-12)
+- [관리자콘솔 2023-12-27](https://developers.portone.io/release-notes/console/2023-12-27)
+- [관리자콘솔 2024-09-05](https://developers.portone.io/release-notes/console/2024-09-05)
 - [API / SDK 2023-04-24](https://developers.portone.io/release-notes/api-sdk/2023-04-24)
 - [API / SDK 2023-05-08](https://developers.portone.io/release-notes/api-sdk/2023-05-08)
 - [API / SDK 2023-05-12](https://developers.portone.io/release-notes/api-sdk/2023-05-12)
@@ -165,16 +169,6 @@
 - [API / SDK 2024-09-27](https://developers.portone.io/release-notes/api-sdk/2024-09-27)
 - [API / SDK 2024-12-19](https://developers.portone.io/release-notes/api-sdk/2024-12-19)
 - [API / SDK 2025-01-15](https://developers.portone.io/release-notes/api-sdk/2025-01-15)
-- [관리자콘솔 2023-04-24](https://developers.portone.io/release-notes/console/2023-04-24)
-- [관리자콘솔 2023-05-08](https://developers.portone.io/release-notes/console/2023-05-08)
-- [관리자콘솔 2023-05-22](https://developers.portone.io/release-notes/console/2023-05-22)
-- [관리자콘솔 2023-07-05](https://developers.portone.io/release-notes/console/2023-07-05)
-- [관리자콘솔 2023-07-07](https://developers.portone.io/release-notes/console/2023-07-07)
-- [관리자콘솔 2023-07-17](https://developers.portone.io/release-notes/console/2023-07-17)
-- [관리자콘솔 2023-08-23](https://developers.portone.io/release-notes/console/2023-08-23)
-- [관리자콘솔 2023-09-12](https://developers.portone.io/release-notes/console/2023-09-12)
-- [관리자콘솔 2023-12-27](https://developers.portone.io/release-notes/console/2023-12-27)
-- [관리자콘솔 2024-09-05](https://developers.portone.io/release-notes/console/2024-09-05)
 - [파트너 정산 자동화 2023-08-31](https://developers.portone.io/release-notes/platform/2023-08-31)
 - [파트너 정산 자동화 2023-11-08](https://developers.portone.io/release-notes/platform/2023-11-08)
 - [파트너 정산 자동화 2023-11-14](https://developers.portone.io/release-notes/platform/2023-11-14)
@@ -199,10 +193,10 @@
 
 ### 블로그
 
+- [포트원이 여러 PG사의 인터페이스를 연동하는 방법](https://developers.portone.io/blog/posts/2024-03/tgs): 여러 PG사의 인터페이스를 효율적으로 연동하기 위한 결정사항들을 소개합니다.
 - [포트원 V2 이야기 - OOM 이슈 탐방기](https://developers.portone.io/blog/posts/2024-02/v2-oom): ZIO를 사용하면서 발생했던 OOM 이슈에 대해 원인을 분석합니다.
 - [포트원 V2 이야기 - 웹훅 재시도, 어디까지 고도화해 보셨나요?](https://developers.portone.io/blog/posts/2024-02/v2-webhook): 웹훅의 중요성과 한계점을 살펴보고 포트원 V2에서 웹훅 시스템을 고도화한 이야기를 소개합니다.
 - [포트원 V2 이야기 - Scala와 ZIO로 안정적인 결제 시스템 만들기](https://developers.portone.io/blog/posts/2024-02/v2-zio): 안정적인 결제 시스템을 만들기 위해 기술적으로 의사결정한 내용에 대해 소개합니다.
-- [포트원이 여러 PG사의 인터페이스를 연동하는 방법](https://developers.portone.io/blog/posts/2024-03/tgs): 여러 PG사의 인터페이스를 효율적으로 연동하기 위한 결정사항들을 소개합니다.
 - [Data Evolution: The Shift from AWS DMS to GCP Datastream](https://developers.portone.io/blog/posts/2024-04/gcp-datastream): Gives an overview of the PortOne Data Infrastructure and the migration story from AWS DMS to GCP Datastream.
 - [Solid로 간결하게 고성능 웹앱 만들기](https://developers.portone.io/blog/posts/2024-04/solid): 포트원에서 사용하는 프론트엔드 웹 프레임워크 중 하나인 Solid에 대해 소개하고, 포트원 내에서의 활용 사례를 다룹니다.
 - [포트원 V2 이야기 - Event Sourcing으로 결제 시스템 만들기 (기본편)](https://developers.portone.io/blog/posts/2024-07/v2-event-sourcing-basic): 포트원 V2 시스템의 근간을 이루고 있는 기술 중 하나인 Event Sourcing에 대해 소개합니다.
@@ -1969,81 +1963,6 @@ Connection Timeout 및 Read Timeout 모두 30초 입니다.
 네트워크 문제나 고객사 오류 등으로 웹훅이 실패할 경우 최대 5회까지 웹훅을 재전송합니다.
 
 재전송 시간은 exponential backoff를 적용하여 0 → 1 → 4 → 16 → 64 → 256분을 기다립니다. 이에 더하여 무작위로 지연 시간을 변형하는 jittering이 적용됩니다.
-
-</div>
-
-
-# https://developers.portone.io/sdk/ko/v2-sdk/_components/sdk-installation
-
----
-title: V2 JavaScript SDK 설치하기
-description: 웹 브라우저에서 결제창 연동 시 사용되는 SDK 설치 방법을 안내합니다.
-targetVersions:
-  - v2
----
-
-포트원 V2 SDK는 npm 레지스트리와 CDN을 통해 배포되고 있습니다.
-
-- npm, yarn 등 패키지 매니저를 사용한다면 의존
-  대상으로 [@portone/browser-sdk](https://www.npmjs.com/package/@portone/browser-sdk)를 추가하세요.
-
-- 패키지 매니저를 사용하지 않는다면 `<script>` 요소를 이용하여 CDN에서 SDK를 직접 불러오세요.
-
-- CDN에서 ESM 모듈 형태로도 SDK를 제공하고 있습니다.
-
-<div class="tabs-container">
-
-<div class="tabs-content" data-title="패키지 의존 대상으로 추가">
-
-사용하는 패키지 매니저에 알맞은 명령어를 실행하세요.
-
-```shell
-npm i @portone/browser-sdk
-```
-
-```shell
-yarn add @portone/browser-sdk
-```
-
-```shell
-pnpm add @portone/browser-sdk
-```
-
-패키지 매니저로 SDK를 불러온 경우 `PortOne` 객체를 import해서 사용합니다.
-
-```javascript
-import * as PortOne from "@portone/browser-sdk/v2";
-```
-
-</div>
-
-<div class="tabs-content" data-title="<script> 요소로 추가">
-
-```html
-<script src="https://cdn.portone.io/v2/browser-sdk.js"></script>
-```
-
-`<script>` 요소로 SDK를 불러온 경우 전역 객체 `window`에 `PortOne` 객체가 추가됩니다.
-
-</div>
-
-<div class="tabs-content" data-title="ESM 모듈로 추가">
-
-ESM 모듈을 사용하는 경우 URL에서 `PortOne` 객체를 직접 import할 수 있습니다.
-
-```javascript
-import * as PortOne from "https://cdn.portone.io/v2/browser-sdk.esm.js";
-```
-
-</div>
-
-</div>
-
-<div class="hint" data-style="info">
-
-**타입스크립트 지원**
-
-포트원 V2 SDK는 타입스크립트 선언 파일(`.d.ts`)의 형식으로 타입 정보를 제공하고 있습니다. npm 레지스트리를 이용하는 경우 각종 개발 환경에서 별도 설정 없이 사용 가능합니다.
 
 </div>
 
@@ -12142,81 +12061,6 @@ async function schedulePayment() {
   발생하는 이슈로 포트원과 무관합니다.
 
 
-# https://developers.portone.io/opi/ko/integration/start/_components/sdk-installation
-
----
-title: V2 JavaScript SDK 설치하기
-description: 웹 브라우저에서 결제창 연동 시 사용되는 SDK 설치 방법을 안내합니다.
-targetVersions:
-  - v2
----
-
-포트원 V2 SDK는 npm 레지스트리와 CDN을 통해 배포되고 있습니다.
-
-- npm, yarn 등 패키지 매니저를 사용한다면 의존
-  대상으로 [@portone/browser-sdk](http://www.npmjs.com/package/@portone/browser-sdk)를 추가하세요.
-
-- 패키지 매니저를 사용하지 않는다면 `<script>` 요소를 이용하여 CDN에서 SDK를 직접 불러오세요.
-
-- CDN에서 ESM 모듈 형태로도 SDK를 제공하고 있습니다.
-
-<div class="tabs-container">
-
-<div class="tabs-content" data-title="패키지 의존 대상으로 추가">
-
-사용하는 패키지 매니저에 알맞은 명령어를 실행하세요.
-
-```shell
-npm i @portone/browser-sdk
-```
-
-```shell
-yarn add @portone/browser-sdk
-```
-
-```shell
-pnpm add @portone/browser-sdk
-```
-
-패키지 매니저로 SDK를 불러온 경우 `PortOne` 객체를 import해서 사용합니다.
-
-```javascript
-import * as PortOne from "@portone/browser-sdk/v2";
-```
-
-</div>
-
-<div class="tabs-content" data-title="<script> 요소로 추가">
-
-```html
-<script src="https://cdn.portone.io/v2/browser-sdk.js"></script>
-```
-
-`<script>` 요소로 SDK를 불러온 경우 전역 객체 `window`에 `PortOne` 객체가 추가됩니다.
-
-</div>
-
-<div class="tabs-content" data-title="ESM 모듈로 추가">
-
-ESM 모듈을 사용하는 경우 URL에서 `PortOne` 객체를 직접 import할 수 있습니다.
-
-```javascript
-import * as PortOne from "https://cdn.portone.io/v2/browser-sdk.esm.js";
-```
-
-</div>
-
-</div>
-
-<div class="hint" data-style="info">
-
-**타입스크립트 지원**
-
-포트원 V2 SDK는 타입스크립트 선언 파일(`.d.ts`)의 형식으로 타입 정보를 제공하고 있습니다. npm 레지스트리를 이용하는 경우 각종 개발 환경에서 별도 설정 없이 사용 가능합니다.
-
-</div>
-
-
 # https://developers.portone.io/opi/ko/integration/start/v2/checkout
 
 ---
@@ -12659,140 +12503,6 @@ V2는 최신 결제 기능을 가장 빠르게 제공합니다. 곧 출시될 �
 - V2 기술지원 이메일: <tech.support@portone.io>
 
 </div>
-
-
-# https://developers.portone.io/opi/ko/integration/ready/_components/integration-guide/hyphen
-
----
-title: 결제대행사별 연동 정보 확인하기 - 하이픈
-targetVersions:
-  - v2
----
-
-1. [HYPHEN PAY & 바로계좌결제 운영 백오피스](http://payadmin.hyphen.im/) 접속 후 **바로계좌결제** 선택 후
-   로그인을 합니다.
-
-   (이미지 첨부: HYPHEN 백오피스 로그인 화면)
-
-2. \[상점관리]→\[바로계좌결제 상점정보관리]를 클릭합니다.
-
-3. 상점명을 클릭합니다.
-
-   (이미지 첨부: HYPHEN \[상점관리] - \[상점정보관리] 예시 화면)
-
-4. \[상점 기본정보]에서 \[상점번호]를 확인합니다.
-
-   (이미지 첨부: HYPHEN \[상점 기본정보] 예시 화면)
-
-5. \[암호화 키, 토큰]에서 \[암호화 키]와 \[암호화 토큰]을 확인합니다.
-
-   (이미지 첨부: HYPHEN \[암호화 키, 토큰] 예시 화면)
-
-6. 포트원 콘솔에서 채널 추가 시 \[PG상점아이디(상점 번호)], \[암호화 키], \[암호화 토큰]을
-   입력한 후 \[저장]을 클릭합니다.
-
-
-# https://developers.portone.io/opi/ko/integration/ready/_components/integration-guide/kcp-v2
-
----
-title: 결제대행사별 연동 정보 확인하기 - NHN KCP (V2)
-targetVersions:
-  - v2
----
-
-<div class="hint" data-style="danger">
-
-포트원 V2에서 제공하는 KCP의 경우 **KCP의 PG-API방식**만 지원합니다. 따라서 아래와 같이 인증서 발급 후
-사용할 수 있습니다.
-
-해당 인증서의 경우 유효기간은 **5년**이며, 유효기간 만료 30일전부터 갱신이 가능합니다.
-
-**서비스 인증서의 유효기간이 만료되거나 폐기된 경우** 즉시 결제 승인/취소 등 관련
-**서비스 이용이 불가능**하오니
-서비스 사용을 위해서 인증서를 재발급이 필요한 후 **포트원에 저장된 채널 정보를 업데이트** 해야 합니다.
-
-</div>
-
-1. [KCP 파트너관리자](http://partner.kcp.co.kr/) 접속 후 로그인을 합니다.
-
-2. \[고객센터]→\[인증센터]→\[KCP PG-API]를 클릭합니다.
-
-   (이미지 첨부: NHN KCP 파트너관리자 내 \[고객센터] - \[PG-API 인증서] 예시 화면)
-
-3. KCP PG-API 발급 버튼을 클릭합니다.
-
-4. 파트너 관리자 비밀번호(로그인시 입력한 비밀번호)를 입력한 후 다음을 클릭합니다.
-
-   (이미지 첨부: \[PG-API 인증서] 발급시 \[파트너 관리자 비밀번호 입력] 화면)
-
-5. 사용할 개인키 비밀번호를 입력한 후 다음을 클릭합니다.
-
-   - 개인키 비밀번호를 분실하신 경우 확인이 불가함으로 폐기 후 재발급해야 합니다.
-
-   - 개인키를 폐기하는 즉시 기존에 사용하던 개인키와 서비스 인증서 사용이 불가능하며,
-     결제 승인/취소/조회가 불가능하오니 잘 보관하시길 바랍니다.
-
-   (이미지 첨부: \[PG-API 인증서] 발급시 \[개인키 비밀번호 등록] 화면)
-
-6. KCP PG-API 개인키 및 서비스 인증서 발급이 완료되면 로컬에 .zip 파일이 다운로드 됩니다.
-
-   - 서비스 인증서의 유효기간은 발급일로부터 5년으로, 유효기간 만료 30일전부터 갱신이 가능합니다.
-   - 서비스 인증서의 유효기간이 만료되었거나 폐기한 경우 원활한 서비스 사용을 위해 인증서를 재발급해주세요.
-
-   (이미지 첨부: \[PG-API 인증서] 발급 완료 화면)
-
-7. 로컬내에서 압축 풀면 `KCP_AUTH_{$사이트코드}_CERT.pem` 파일과 `KCP_AUTH_{$사이트코드}_PRIKEY.pem` 파일을 확인할 수 있습니다.
-
-8. 포트원 콘솔에서 채널 추가 시 \[MID(사이트코드)], \[PG-API 인증서키], \[PG-API 개인키], \[개인키 비밀번호]를
-   입력한 후 저장을 클릭합니다.
-
-9. 정기결제를 이용하시는 경우, 아래 절차를 진행해주세요.
-
-   1. [KCP 파트너관리자](http://partner.kcp.co.kr/) 접속 후 로그인을 합니다.
-   2. \[결제관리]→\[정기자동결제 그룹관리]→\[그룹등록]을 클릭합니다.
-   3. \[상점정보]→\[사이트코드]에서 그룹등록할 사이트코드를 선택합니다.
-   4. \[그룹정보]에서 \[유형3]을 선택한 후 원하는 그룹명을 입력합니다.
-   5. \[결제입력 정보]에서 \[결제유형] 및 \[납부유형]을 확인하시고 고객사 유형에 맞게 선택합니다.
-   6. \[고지방법]에서 원하시는 고지 방법을 선택한 후 \[등록하기]를 클릭합니다.
-
-   (이미지 첨부: KCP 파트너관리자 내 관리용 그룹등록 화면)
-
-   7. \[결제관리]→\[정기자동결제 그룹관리]→\[그룹조회]를 클릭합니다.
-   8. \[사이트코드]에서 사용한 사이트코드를 선택한 후 \[검색]을 클릭합니다.
-
-   (이미지 첨부: KCP 파트너관리자 내 관리용 그룹조회 화면)
-
-   9. 포트원 콘솔에서 채널 추가 시 앞서 발급한  \[MID(사이트코드)], \[PG-API 인증서키], \[PG-API 개인키],
-      \[개인키 비밀번호], \[정기자동결제 그룹아이디]를 입력한 후 \[저장]을 클릭합니다.
-
-
-# https://developers.portone.io/opi/ko/integration/ready/_components/integration-guide/paypal-v2
-
----
-title: 결제대행사별 연동 정보 확인하기 - 페이팔 (V2)
-targetVersions:
-  - v2
----
-
-1. [페이팔](http://www.paypal.com/) 접속 후 로그인을 합니다.
-
-2. \[Account settings]-\[Business information]을 클릭합니다.
-
-   (이미지 첨부: 페이팔 페이지 내 PayPal Merchant ID 조회 화면)
-
-3. 포트원 콘솔에서 채널 추가 시 \[PayPal Merchant ID]를 입력한 후 `저장`을 클릭합니다.
-
-   <div class="hint" data-style="info">
-
-   - 포트원에서 제공하는 페이팔 테스트용 계정으로 채널을 추가하신 경우, 테스트 결제 시 테스트용 구매자 계정을 이용하여 결제를 진행해야합니다.
-     [→ 테스트용 계정생성 바로가기](http://developer.paypal.com/dashboard/accounts)
-
-   - 판매자와 구매자 계정 국가가 모두 한국인 경우 페이팔 정책상 결제가 불가능합니다.
-     따라서 테스트용 구매자 계정 생성 시 Sandbox Accounts의 Country가 US인 Personal(구매자) 계정으로 생성하여 테스트를 해야합니다.
-
-   - 테스트 계정으로 결제 시 테스트용 카드정보를 참고하여 결제를 진행해야 합니다. [→ 테스트용 카드정보 바로가기](http://developer.paypal.com/api/rest/sandbox/card-testing/#link-creditcardgeneratorfortesting)
-
-   </div>
 
 
 # https://developers.portone.io/opi/ko/integration/start/v2/billing/issue
@@ -13384,6 +13094,98 @@ description: >-
 - 누락 시 대응 계획은 무엇인가요?
   - 데이터 수집시 PG사에 데이터가 없거나, 타임 아웃 등으로 누락이 일어나면 포트원에서 자동으로 파악이
     가능하여 개발팀이 확인하고 다시 수집합니다.
+
+
+# https://developers.portone.io/opi/ko/integration/using-ai-tools
+
+---
+title: AI 도구 활용하기
+description: AI 도구를 활용하여 쉽고 빠르게 포트원을 연동하세요. 연동 코드 작성은 물론, 24시간 언제나 관련 질의에 대한 답변을 받을 수 있습니다.
+targetVersions:
+  - v1
+  - v2
+---
+
+## llms.txt 표준 지원
+
+포트원 개발자센터 웹사이트는 [llms.txt 표준](https://llmstxt.org)을 준수하며, LLM이 문서 정보를 쉽게 조회할 수 있도록 지원하고 있습니다.
+
+- [llms.txt](https://developers.portone.io/llms.txt): LLM을 위한 가이드 및 문서 목차를 포함합니다.
+- [llms-full.txt](https://developers.portone.io/llms-full.txt): llms.txt에 더해 모든 문서 내용을 추가로 포함합니다.
+- [llms-small.txt](https://developers.portone.io/llms-small.txt): llms.txt에 더해 모든 문서의 메타 정보만 추가로 포함합니다.
+
+llms.txt, llms-small.txt를 사용하는 AI 어시스턴트의 프롬프트에 포함하거나, llms-full.txt를 파일로 업로드해 질의하는 방식으로도 활용이 가능합니다.
+
+## 포트원 MCP (Model Context Protocol) 서버
+
+포트원은 쉬운 연동과 빠른 개발을 위해 MCP 서버를 제공합니다. [(GitHub 저장소 바로가기)](https://github.com/portone-io/mcp-server)
+
+포트원 MCP 서버는 개발자센터 문서 내용을 AI에게 제공하여,
+AI가 보다 정확하고 구체적인 정보를 바탕으로 사용자의 연동 및 질의를 돕도록 합니다.
+
+### 1. MCP 서버 등록하기
+
+포트원 MCP 서버를 사용하기 위해서는 먼저 사용하는 AI 도구에 서버를 등록해야 합니다.
+
+Cursor, Windsurf, Claude Code, Claude for Desktop 등 다양한 AI 도구의 설정 파일에서 아래 내용을 추가하여 MCP 서버를 등록할 수 있습니다.
+
+```json
+{
+  // ...
+
+  "mcpServers": {
+    // ...
+
+    "portone-mcp-server": {
+      "command": "uvx",
+      "args": ["portone-mcp-server"]
+    }
+  }
+}
+```
+
+<div class="hint" data-style="info">
+
+사용 환경에 [uv](https://docs.astral.sh/uv/getting-started/installation/)가 설치되어 있어야 합니다.
+
+</div>
+
+설정 파일 수정이 완료된 후 AI 도구를 재시작하면 MCP 서버가 적용됩니다.
+
+### 2. MCP 서버 활용하기
+
+사용 중인 AI 도구에 포트원 MCP 서버가 적용되었다면, 아래 예시들과 같이 질의하여 사용할 수 있습니다.
+
+#### 개발 관련 프롬프트 예시
+
+- _"포트원 V2 Python 서버 SDK를 사용해서 서버 연동 코드를 작성해줘"_
+- _"포트원 V2 Kotlin 서버 SDK를 사용해 웹훅 검증을 구현해줘"_
+- _"포트원 V1 브라우저 SDK를 사용한 페이팔 결제창 호출을 구현해줘"_
+- _"파트너정산 자동화 서비스에 파트너 등록하는 코드를 타입스크립트로 구현해줘"_
+- _"포트원 V2 본인인증 기능 연동해줘"_
+
+#### 전반적인 질의 예시
+
+- _"포트원 V2와 V1의 차이점을 설명해줘"_
+- _"포트원 V2가 지원하는 PG사 목록 보여줘"_
+- _"포트원 API의 하위호환성 정책 설명해줘"_
+- _"포트원 파트너정산 자동화 서비스가 제공하는 기능들을 요약해줘"_
+
+## LLM 전용 개발자센터 문서 디렉터리
+
+Cursor, Windsurf, Claude Code와 같이 코드베이스 맥락을 자동으로 분석하는 AI 도구를 사용하는 경우,
+LLM을 위한 포트원 문서 디렉터리를 다운받아 작업 중인 코드베이스 내에 위치시키는 방식으로도 활용할 수 있습니다.
+
+이 경우, 위 AI 도구들이 제공하는 임베딩 기반 색인과 RAG (Retrieval Augmented Generation) 검색이 자동적으로 적용되어
+보다 원활히 원하는 결과를 얻으실 수 있습니다.
+
+(파일: LLM 전용 포트원 문서 디렉터리 다운로드)
+
+### 사용 방법
+
+1. 위 링크를 눌러 LLM 전용 포트원 문서 압축 파일을 다운로드합니다.
+2. 압축을 해제하고, 해당 디렉터리를 작업 중인 코드베이스 내에 위치시킵니다.
+3. 포트원 관련 질의 시 AI에게 해당 디렉터리를 태그하여 질의합니다.
 
 
 # https://developers.portone.io/opi/ko/readme
@@ -21984,91 +21786,96 @@ ISP/페이북을 통한 결제 시 토스페이먼츠가 실제 카드 번호와
 검증된 웹훅 결과를 바탕으로 결제 상태를 업데이트합니다.
 
 
-# https://developers.portone.io/opi/ko/integration/ready/_components/integration-guide/inicis
+# https://developers.portone.io/platform/ko/using-ai-tools
 
 ---
-title: 결제대행사별 연동 정보 확인하기 - KG이니시스
+title: AI 도구 활용하기
+description: AI 도구를 활용하여 쉽고 빠르게 포트원을 연동하세요. 연동 코드 작성은 물론, 24시간 언제나 관련 질의에 대한 답변을 받을 수 있습니다.
 targetVersions:
   - v1
   - v2
 ---
 
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+## llms.txt 표준 지원
+
+포트원 개발자센터 웹사이트는 [llms.txt 표준](https://llmstxt.org)을 준수하며, LLM이 문서 정보를 쉽게 조회할 수 있도록 지원하고 있습니다.
+
+- [llms.txt](https://developers.portone.io/llms.txt): LLM을 위한 가이드 및 문서 목차를 포함합니다.
+- [llms-full.txt](https://developers.portone.io/llms-full.txt): llms.txt에 더해 모든 문서 내용을 추가로 포함합니다.
+- [llms-small.txt](https://developers.portone.io/llms-small.txt): llms.txt에 더해 모든 문서의 메타 정보만 추가로 포함합니다.
+
+llms.txt, llms-small.txt를 사용하는 AI 어시스턴트의 프롬프트에 포함하거나, llms-full.txt를 파일로 업로드해 질의하는 방식으로도 활용이 가능합니다.
+
+## 포트원 MCP (Model Context Protocol) 서버
+
+포트원은 쉬운 연동과 빠른 개발을 위해 MCP 서버를 제공합니다. [(GitHub 저장소 바로가기)](https://github.com/portone-io/mcp-server)
+
+포트원 MCP 서버는 개발자센터 문서 내용을 AI에게 제공하여,
+AI가 보다 정확하고 구체적인 정보를 바탕으로 사용자의 연동 및 질의를 돕도록 합니다.
+
+### 1. MCP 서버 등록하기
+
+포트원 MCP 서버를 사용하기 위해서는 먼저 사용하는 AI 도구에 서버를 등록해야 합니다.
+
+Cursor, Windsurf, Claude Code, Claude for Desktop 등 다양한 AI 도구의 설정 파일에서 아래 내용을 추가하여 MCP 서버를 등록할 수 있습니다.
+
+```json
+{
+  // ...
+
+  "mcpServers": {
+    // ...
+
+    "portone-mcp-server": {
+      "command": "uvx",
+      "args": ["portone-mcp-server"]
+    }
+  }
+}
+```
 
 <div class="hint" data-style="info">
 
-- **INILite Key**는 정기결제 시 필수로 입력해야 합니다.
-- **INIAPI Key**, **INIAPI IV** 하위 상점 관련 API 사용시 필수로 입력해야 합니다. [영수증 내 하위 상점 거래 등록 API 바로가기](https://developers.portone.io/api/rest-v1/partner#post%20%2Fpartners%2Freceipts%2F%7Bimp_uid%7D)
+사용 환경에 [uv](https://docs.astral.sh/uv/getting-started/installation/)가 설치되어 있어야 합니다.
 
 </div>
 
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
+설정 파일 수정이 완료된 후 AI 도구를 재시작하면 MCP 서버가 적용됩니다.
 
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+### 2. MCP 서버 활용하기
 
-<div class="hint" data-style="info">
+사용 중인 AI 도구에 포트원 MCP 서버가 적용되었다면, 아래 예시들과 같이 질의하여 사용할 수 있습니다.
 
-크레덴셜 중 **hashKey** 는 선택사항으로, KG이니시스에서 제공하는 모바일 금액위변조 방지 기능 사용을 원하실 경우 입력하시면 됩니다.
+#### 개발 관련 프롬프트 예시
 
-</div>
+- _"포트원 V2 Python 서버 SDK를 사용해서 서버 연동 코드를 작성해줘"_
+- _"포트원 V2 Kotlin 서버 SDK를 사용해 웹훅 검증을 구현해줘"_
+- _"포트원 V1 브라우저 SDK를 사용한 페이팔 결제창 호출을 구현해줘"_
+- _"파트너정산 자동화 서비스에 파트너 등록하는 코드를 타입스크립트로 구현해줘"_
+- _"포트원 V2 본인인증 기능 연동해줘"_
 
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+#### 전반적인 질의 예시
 
-1. [KG이니시스 가맹점관리자](http://iniweb.inicis.com/security/login.do) 접속 후 로그인을 합니다.
+- _"포트원 V2와 V1의 차이점을 설명해줘"_
+- _"포트원 V2가 지원하는 PG사 목록 보여줘"_
+- _"포트원 API의 하위호환성 정책 설명해줘"_
+- _"포트원 파트너정산 자동화 서비스가 제공하는 기능들을 요약해줘"_
 
-2. \[상점정보]→\[계약정보]→\[부가정보]를 클릭합니다.
+## LLM 전용 개발자센터 문서 디렉터리
 
-3. 아래의 크레덴셜 값들을 확인합니다. 값이 표시되지 않는 경우 생성/갱신 버튼을 클릭해 주세요.
+Cursor, Windsurf, Claude Code와 같이 코드베이스 맥락을 자동으로 분석하는 AI 도구를 사용하는 경우,
+LLM을 위한 포트원 문서 디렉터리를 다운받아 작업 중인 코드베이스 내에 위치시키는 방식으로도 활용할 수 있습니다.
 
-   <ul>
+이 경우, 위 AI 도구들이 제공하는 임베딩 기반 색인과 RAG (Retrieval Augmented Generation) 검색이 자동적으로 적용되어
+보다 원활히 원하는 결과를 얻으실 수 있습니다.
 
-   <li>**웹결제 signkey 생성 조회**의 조회 버튼을 클릭하여 값을 확인할 수 있습니다.</li>
-   <li>**INIAPI key 생성 갱신**의 조회 버튼을 클릭하여 \[INIAPI KEY], \[INIAPI IV] 값을 확인할 수 있습니다.</li>
+(파일: LLM 전용 포트원 문서 디렉터리 다운로드)
 
-   <!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+### 사용 방법
 
-   <li>**모바일 금액위변조 HashKey**의 조회 버튼을 클릭하여 값을 확인할 수 있습니다.</li>
-
-   <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
-
-   </ul>
-
-(이미지 첨부: KG이니시스 가맹점관리자 내 크레덴셜 정보 조회 화면 1)
-
-4. INILite Key의 조회 버튼을 클릭하여 값을 확인할 수 있습니다.
-
-(이미지 첨부: KG이니시스 가맹점관리자 내 크레덴셜 정보 조회 화면 2)
-
-5. 포트원 콘솔에서 채널 추가 시 \[상점아이디]와 위 과정에서 발급받은 크레덴셜 값들을 입력한 후 `저장`을 클릭합니다.
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
-
-<div class="hint" data-style="warning">
-
-포트원 V1 결제모듈을 사용하시는 경우 KG이니시스로부터 전달받은 키파일을 별도로 등록해야 합니다. 키파일 등록과 관련하여 문의사항이 있는 경우 채널톡으로 문의해주세요.
-
-</div>
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
-
-
-# https://developers.portone.io/opi/ko/integration/ready/_components/integration-guide/tosspayments
-
----
-title: 결제대행사별 연동 정보 확인하기 - 토스페이먼츠 (신모듈)
-targetVersions:
-  - v1
-  - v2
----
-
-1. [토스페이먼츠 개발자센터](http://developers.tosspayments.com/) 접속 후 로그인을 합니다.
-2. \[내 개발정보]를 클릭합니다.
-3. \[API키] 메뉴에서 \[상점아이디(MID)]와 \[클라이언트키], \[시크릿키]를 확인합니다.
-4. API 버전은 `2022-07-27`로 설정해야합니다.
-
-(이미지 첨부: 토스페이먼츠 개발자센터 내 API 키 조회 화면)
-
-5. 포트원 콘솔에서 채널 추가 시 \[상점아이디(MID)]와 \[클라이언트키], \[시크릿키]를 입력한 후 `저장`을 클릭합니다.
+1. 위 링크를 눌러 LLM 전용 포트원 문서 압축 파일을 다운로드합니다.
+2. 압축을 해제하고, 해당 디렉터리를 작업 중인 코드베이스 내에 위치시킵니다.
+3. 포트원 관련 질의 시 AI에게 해당 디렉터리를 태그하여 질의합니다.
 
 
 # https://developers.portone.io/platform/ko/guides/dictionary
@@ -24334,6 +24141,258 @@ axios
 </div>
 
 
+# https://developers.portone.io/release-notes/console/2023-04-24
+
+---
+releasedAt: 2023-04-24T00:00:00.000Z
+writtenAt: 2023-04-27T00:00:00.000Z
+---
+
+## 주요 업데이트 사항
+
+### ✔️ 결제내역 조회 시 상태 승인 시각을 기준으로 확인할 수 있습니다
+
+관리자콘솔 `[결제 상세 내역 조회]` 메뉴 - `[기준 시각]`을 `'상태 승인 시각'`으로 선택해 보세요.\
+다섯 가지 결제 상태에 따라 가장 최근에 업데이트된 시각을 확인할 수 있습니다.
+
+앞으로는 결제건의 결제 상태와 더불어 마지막 결제 상태가 업데이트된 시각도 함께 볼 수 있습니다.
+
+<div class="hint" data-style="info">
+
+**Tip**: 포트원 관리자콘솔은 결제 상태를 결제완료, 결제예정, 결제실패, 결제취소, 승인대기로 분류하고 있습니다.
+
+</div>
+
+(관련 이미지 첨부)
+
+## 기타 수정사항
+
+### ✔️ 매니저 권한을 부여받은 계정으로 정산 서비스를 이용할 수 있습니다
+
+포트원 관리자콘솔은 계정 권한을 총 다섯 가지로 분류하고 있습니다.
+
+1. **Admin(Owner)**: 모든 기능 접근 가능, 계정 삭제 시 상점 삭제
+2. **Admin**: 모든 기능 접근 가능
+3. **Dev**: 결제 연동 설정, 결제 내역 조회
+4. **Manager**: 결제 내역 조회 및 수정, 리포트 조회, 계정 관리
+5. **Read Only**: 결제 내역 조회, 리포트 조회
+
+### ✔️ 결제연동 설정 시, 결제대행사로 다날 또는 KG이니시스를 선택하는 경우에만 본인인증을 선택할 수 있습니다
+
+관리자콘솔 `[결제연동]` 메뉴 - `[테스트/실 연동 관리]` 탭에서 결제대행사 설정 및 추가를 진행할 때
+본인인증 서비스를 제공하는 다날과 KG이니시스를 선택하는 경우에만 채널 속성에서 `'본인인증'` 선택이
+활성화 됩니다. 이 외 결제대행사 선택 시 `'본인인증'` 선택은 비활성화 됩니다.
+
+(관련 이미지 첨부)
+
+
+# https://developers.portone.io/release-notes/console/2023-05-08
+
+---
+releasedAt: 2023-05-08T00:00:00.000Z
+writtenAt: 2023-05-11T00:00:00.000Z
+---
+
+(관련 이미지 첨부)
+
+
+# https://developers.portone.io/release-notes/console/2023-05-22
+
+---
+releasedAt: 2023-05-22T00:00:00.000Z
+writtenAt: 2023-05-25T00:00:00.000Z
+---
+
+(관련 이미지 첨부)
+
+<br />
+
+## 주요 업데이트 사항
+
+### ✔️ 페이코 직연동을 이용 중인 경우, 판매자용 매출전표가 표시됩니다
+
+이번 업데이트를 통해 판매자용 매출전표가 표시되도록 수정했습니다.
+관리자콘솔 \[결제 상세 내역 조회] - 결제 건 선택 - ‘승인 영수증’을 선택해 확인해보세요.
+
+
+# https://developers.portone.io/release-notes/console/2023-07-05
+
+---
+releasedAt: 2023-07-05T00:00:00.000Z
+writtenAt: 2023-07-05T00:00:00.000Z
+---
+
+## 주요 업데이트 사항
+
+### ✔️ 전자결제 신청시 포트원 추천 패키지를 선택할 수 있습니다.
+
+수많은 결제수단과 결제대행사 중 어떤 것이 우리 서비스에 알맞을지 고민됐다면, 포트원이 추천하는 결제수단과 결제대행사를 선택해서 전자결제를 신청하세요.
+
+결제 데이터를 기반으로 증명된, 온라인 서비스를 운영 중인 기업이 가장 많이 이용하는 결제수단 네
+가지를 제안합니다. 결제수단 선택시 포트원이 추천하는 결제대행사를 즉시 확인할 수 있습니다.
+
+포트원 추천 패키지는 결제수단, 결제대행사 이용 비용, 결제형태와 연동방식을 종합적으로 고려하여
+선별했습니다. 특정 결제수단과 결제대행사를 이용을 원한다면 \[전자결제 직접 선택하기]를 통해 자유롭게
+골라보세요.
+
+(관련 이미지 첨부)
+
+### ✔️ 전자결제 신청시 결제서비스의 모든 구성을 커스텀할 수 있습니다.
+
+기존에는 결제수단을 선택한 후 다음 페이지에서 결제대행사와 결제형태를 확인할 수 있었기에 전자결제 신청 과정이 번거로웠습니다.
+
+앞으로는 한 페이지에서 결제수단별로 이용 가능한 결제대행사를 확인하고, 결제형태까지 선택해보세요. 선택한 결제서비스는 장바구니에 담겨 즉시 확인하고 수정할 수 있습니다.
+
+결제대행사별로 제공하는 결제수단이 궁금하다면, 우측 상단의 \[모든 결제대행사 보기]를 통해 포트원에서 지원하는 모든 결제대행사와 결제수단, 수수료까지 한 눈에 살펴보세요.
+
+(관련 이미지 첨부)
+
+
+# https://developers.portone.io/release-notes/console/2023-07-07
+
+---
+releasedAt: 2023-07-07T00:00:00.000Z
+writtenAt: 2023-07-10T00:00:00.000Z
+---
+
+## 주요 업데이트 사항
+
+### **PG 거래대사**✔️ 엑심베이의 정산내역을 확인할 수 있습니다
+
+이번 업데이트를 통해 처음으로 해외결제건의 정산내역을 조회할 수 있습니다.
+관리자콘솔 \[정산]메뉴 - \[통합 내역 조회]에서 정산내역을 조회할 수 있으며, 엑심베이를 통한 7월 5일 결제건부터 확인할 수 있습니다.\
+엑심베이는 결제일로부터 2일 후에 결제일의 정산내역을 수신합니다.
+이용에 참고바랍니다.
+
+📍정산통합조회 서비스의 기능이 궁금하다면 [→ 서비스소개 보기](https://guide.portone.io/a89f61e5-4545-41ae-9b72-14f506adcac6)\
+📍이용 중인 PG사도 정산내역 조회가 가능한지 궁금하다면
+[→ 지원 PG사 확인하기](https://guide.portone.io/a89f61e5-4545-41ae-9b72-14f506adcac6)\
+📍정산통합조회 서비스의 이용방법이 궁금하다면 [→ 이용방법 보기](https://guide.portone.io/92af7604-5813-48fa-a186-82e8e7356a3e)
+
+### **PG 거래대사**✔️ 정산 통화별로 정산내역을 조회할 수 있습니다
+
+기존에는 원화로만 정산내역을 조회할 수 있엇지만, 이번 업데이트를 통해 결제통화 및 정산통화별로 정산내역을 조회할 수 있습니다.
+또한 \[통합 내역 조회] 메뉴의 조회 기준일이 정산예정일에 맞추어 자동으로 설정됩니다.
+
+(관련 이미지 첨부)
+
+
+# https://developers.portone.io/release-notes/console/2023-07-17
+
+---
+releasedAt: 2023-07-17T00:00:00.000Z
+writtenAt: 2023-07-19T00:00:00.000Z
+---
+
+## 주요 업데이트 사항
+
+### ✔️ KG이니시스 승인 영수증에서 신규 매출전표가 표시됩니다
+
+이번 업데이트를 통해 관리자콘솔의 \[결제 내역 상세 조회] 메뉴에서 KG이니시스 결제건 선택시 승인 영수증에서 신규 매출전표가 표시됩니다.
+
+<br />
+
+## 기타 수정사항
+
+- 클래식 콘솔에서 결제내역 조회시 모든 PG사를 필터로 추가하여 검색할 수 있습니다
+
+
+# https://developers.portone.io/release-notes/console/2023-08-23
+
+---
+releasedAt: 2023-08-23T00:00:00.000Z
+writtenAt: 2023-08-23T00:00:00.000Z
+---
+
+## 주요 업데이트 사항
+
+### **PG 거래대사**✔️ KG이니시스의 정산내역을 확인할 수 있습니다.
+
+이번 업데이트를 통해 KG이니시스를 포함한 주요 10개 결제대행사(PG)/간편결제사의 정산 내역을 조회할 수 있습니다.
+관리자콘솔 메뉴 \[결제사 정산] - \[통합 내역 조회]에서 정산 내역을 조회할 수 있으며, KG이니시스의 경우 8월 1일 결제건부터 조회가 가능하오니 이용에 참고하시기 바랍니다.
+
+📍 정산 통합 조회 서비스의 기능이 궁금하다면
+[→ 서비스 소개 보기](https://guide.portone.io/a89f61e5-4545-41ae-9b72-14f506adcac6)\
+📍 이용 중인 결제대행사(PG사)도 정산 내역 조회가 가능한지 궁금하다면
+[→ 지원 결제대행사(PG)사 확인하기](https://guide.portone.io/a89f61e5-4545-41ae-9b72-14f506adcac6)\
+📍 정산 통합 조회 서비스의 이용 방법이 궁금하다면 [→ 이용 방법 보기](https://guide.portone.io/92af7604-5813-48fa-a186-82e8e7356a3e)
+
+
+# https://developers.portone.io/release-notes/console/2023-09-12
+
+---
+releasedAt: 2023-09-15T00:00:00.000Z
+writtenAt: 2023-09-15T00:00:00.000Z
+---
+
+## 주요 업데이트 사항
+
+### ✔️ 전자결제 신청하기 페이지 리뉴얼
+
+이번 업데이트를 통해 전자결제 신청 후 계약 진행 상황을 실시간을 볼 수 있는 상태값 조회 페이지가 개선되었습니다.
+이외에 자세한 리뉴얼 상황은 아래와 같습니다.
+
+📍 결제대행사별로, 계약 건별로 상황을 확인할 수 있습니다.\
+📍 계약 과정에서 필요한 서류 등 체크리스트를 확인할 수 있습니다.\
+📍 워드프레스/ 우커머스 사이트를 지원하는 결제대행사 정보를 확인하실 수 있습니다.\
+📍 포트원 추천패키지 상세 가이드가 추가되었습니다.
+
+
+# https://developers.portone.io/release-notes/console/2023-12-27
+
+---
+releasedAt: 2023-12-27T00:00:00.000Z
+writtenAt: 2024-01-02T00:00:00.000Z
+---
+
+## 주요 업데이트 사항
+
+### **PG 거래대사**✔️ 헥토파이낸셜의 정산내역을 확인할 수 있습니다.
+
+이번 업데이트를 통해 헥토파이낸셜을 포함한 11개 PG사와 간편결제사의 정산 내역을 조회할 수 있습니다.
+관리자콘솔 메뉴 \[결제사 정산] - \[통합 내역 조회]에서 정산 내역을 조회할 수 있으며,
+헥토파이낸셜의 경우 8월 1일 결제건부터 조회가 가능하오니 이용에 참고하시기 바랍니다.
+
+📍 정산 통합 조회 서비스의 기능이 궁금하다면
+[→ 서비스 소개 보기](https://guide.portone.io/a89f61e5-4545-41ae-9b72-14f506adcac6)\
+📍 이용 중인 결제대행사(PG사)도 정산 내역 조회가 가능한지 궁금하다면
+[→ 지원 결제대행사(PG)사 확인하기](https://guide.portone.io/a89f61e5-4545-41ae-9b72-14f506adcac6)\
+📍 정산 통합 조회 서비스의 이용 방법이 궁금하다면 [→ 이용 방법 보기](https://guide.portone.io/92af7604-5813-48fa-a186-82e8e7356a3e)
+
+## 기타 수정사항
+
+### **결제 모듈 V1**✔️ KG이니시스 결제 시 결제 통화 위/변조 검사가 추가되었습니다.
+
+PC 환경에서 KG이니시스의 승인 요청시 결제 통화 및 결제 금액 위/변조 검사를 진행합니다.
+
+
+# https://developers.portone.io/release-notes/console/2024-09-05
+
+---
+releasedAt: 2024-09-05T00:00:00.000Z
+writtenAt: 2024-09-05T00:00:00.000Z
+---
+
+## 주요 업데이트 사항
+
+### ✔️ 좌측 메뉴 영역이 새롭게 변경되었습니다.
+
+(관련 이미지 첨부)
+
+기존 \[파트너 정산] 메뉴는 \[파트너 정산 자동화], \[애널리틱스] 메뉴는 \[결제 데이터 분석]으로 변경됩니다.
+
+- **\[메뉴 접기]**
+
+  - 메뉴 접기 아이콘을 클릭하여 좌측 메뉴 영역을 접을 수 있습니다.
+  - 메뉴가 접힌 상태에서 한번 더 클릭하는 경우 다시 메뉴를 펼칠 수 있습니다.
+
+- **\[전자결제 신청]**
+  - 전자결제 신청을 원하시는 경우 좌측 메뉴 영역 하단의 \[전자결제 신청]을 클릭해 주세요.
+
+- **\[로그아웃]**
+  - 좌측 메뉴 영역 상단의 \[계정 정보]를 클릭한 후 \[로그아웃]을 클릭해 주세요.
+
+
 # https://developers.portone.io/release-notes/api-sdk/2023-04-24
 
 ---
@@ -25475,258 +25534,6 @@ PG 거래대사 메뉴를 통해 아래 2가지의 업무에 쉽게 활용하실
   - 여러 서비스 중 원하는 목적에 맞는 제품을 바로 확인하고 메뉴로 이동할 수 있도록 제품별 온보딩 가이드를 추가하였습니다.
 
 (관련 이미지 첨부)
-
-
-# https://developers.portone.io/release-notes/console/2023-04-24
-
----
-releasedAt: 2023-04-24T00:00:00.000Z
-writtenAt: 2023-04-27T00:00:00.000Z
----
-
-## 주요 업데이트 사항
-
-### ✔️ 결제내역 조회 시 상태 승인 시각을 기준으로 확인할 수 있습니다
-
-관리자콘솔 `[결제 상세 내역 조회]` 메뉴 - `[기준 시각]`을 `'상태 승인 시각'`으로 선택해 보세요.\
-다섯 가지 결제 상태에 따라 가장 최근에 업데이트된 시각을 확인할 수 있습니다.
-
-앞으로는 결제건의 결제 상태와 더불어 마지막 결제 상태가 업데이트된 시각도 함께 볼 수 있습니다.
-
-<div class="hint" data-style="info">
-
-**Tip**: 포트원 관리자콘솔은 결제 상태를 결제완료, 결제예정, 결제실패, 결제취소, 승인대기로 분류하고 있습니다.
-
-</div>
-
-(관련 이미지 첨부)
-
-## 기타 수정사항
-
-### ✔️ 매니저 권한을 부여받은 계정으로 정산 서비스를 이용할 수 있습니다
-
-포트원 관리자콘솔은 계정 권한을 총 다섯 가지로 분류하고 있습니다.
-
-1. **Admin(Owner)**: 모든 기능 접근 가능, 계정 삭제 시 상점 삭제
-2. **Admin**: 모든 기능 접근 가능
-3. **Dev**: 결제 연동 설정, 결제 내역 조회
-4. **Manager**: 결제 내역 조회 및 수정, 리포트 조회, 계정 관리
-5. **Read Only**: 결제 내역 조회, 리포트 조회
-
-### ✔️ 결제연동 설정 시, 결제대행사로 다날 또는 KG이니시스를 선택하는 경우에만 본인인증을 선택할 수 있습니다
-
-관리자콘솔 `[결제연동]` 메뉴 - `[테스트/실 연동 관리]` 탭에서 결제대행사 설정 및 추가를 진행할 때
-본인인증 서비스를 제공하는 다날과 KG이니시스를 선택하는 경우에만 채널 속성에서 `'본인인증'` 선택이
-활성화 됩니다. 이 외 결제대행사 선택 시 `'본인인증'` 선택은 비활성화 됩니다.
-
-(관련 이미지 첨부)
-
-
-# https://developers.portone.io/release-notes/console/2023-05-08
-
----
-releasedAt: 2023-05-08T00:00:00.000Z
-writtenAt: 2023-05-11T00:00:00.000Z
----
-
-(관련 이미지 첨부)
-
-
-# https://developers.portone.io/release-notes/console/2023-05-22
-
----
-releasedAt: 2023-05-22T00:00:00.000Z
-writtenAt: 2023-05-25T00:00:00.000Z
----
-
-(관련 이미지 첨부)
-
-<br />
-
-## 주요 업데이트 사항
-
-### ✔️ 페이코 직연동을 이용 중인 경우, 판매자용 매출전표가 표시됩니다
-
-이번 업데이트를 통해 판매자용 매출전표가 표시되도록 수정했습니다.
-관리자콘솔 \[결제 상세 내역 조회] - 결제 건 선택 - ‘승인 영수증’을 선택해 확인해보세요.
-
-
-# https://developers.portone.io/release-notes/console/2023-07-05
-
----
-releasedAt: 2023-07-05T00:00:00.000Z
-writtenAt: 2023-07-05T00:00:00.000Z
----
-
-## 주요 업데이트 사항
-
-### ✔️ 전자결제 신청시 포트원 추천 패키지를 선택할 수 있습니다.
-
-수많은 결제수단과 결제대행사 중 어떤 것이 우리 서비스에 알맞을지 고민됐다면, 포트원이 추천하는 결제수단과 결제대행사를 선택해서 전자결제를 신청하세요.
-
-결제 데이터를 기반으로 증명된, 온라인 서비스를 운영 중인 기업이 가장 많이 이용하는 결제수단 네
-가지를 제안합니다. 결제수단 선택시 포트원이 추천하는 결제대행사를 즉시 확인할 수 있습니다.
-
-포트원 추천 패키지는 결제수단, 결제대행사 이용 비용, 결제형태와 연동방식을 종합적으로 고려하여
-선별했습니다. 특정 결제수단과 결제대행사를 이용을 원한다면 \[전자결제 직접 선택하기]를 통해 자유롭게
-골라보세요.
-
-(관련 이미지 첨부)
-
-### ✔️ 전자결제 신청시 결제서비스의 모든 구성을 커스텀할 수 있습니다.
-
-기존에는 결제수단을 선택한 후 다음 페이지에서 결제대행사와 결제형태를 확인할 수 있었기에 전자결제 신청 과정이 번거로웠습니다.
-
-앞으로는 한 페이지에서 결제수단별로 이용 가능한 결제대행사를 확인하고, 결제형태까지 선택해보세요. 선택한 결제서비스는 장바구니에 담겨 즉시 확인하고 수정할 수 있습니다.
-
-결제대행사별로 제공하는 결제수단이 궁금하다면, 우측 상단의 \[모든 결제대행사 보기]를 통해 포트원에서 지원하는 모든 결제대행사와 결제수단, 수수료까지 한 눈에 살펴보세요.
-
-(관련 이미지 첨부)
-
-
-# https://developers.portone.io/release-notes/console/2023-07-07
-
----
-releasedAt: 2023-07-07T00:00:00.000Z
-writtenAt: 2023-07-10T00:00:00.000Z
----
-
-## 주요 업데이트 사항
-
-### **PG 거래대사**✔️ 엑심베이의 정산내역을 확인할 수 있습니다
-
-이번 업데이트를 통해 처음으로 해외결제건의 정산내역을 조회할 수 있습니다.
-관리자콘솔 \[정산]메뉴 - \[통합 내역 조회]에서 정산내역을 조회할 수 있으며, 엑심베이를 통한 7월 5일 결제건부터 확인할 수 있습니다.\
-엑심베이는 결제일로부터 2일 후에 결제일의 정산내역을 수신합니다.
-이용에 참고바랍니다.
-
-📍정산통합조회 서비스의 기능이 궁금하다면 [→ 서비스소개 보기](https://guide.portone.io/a89f61e5-4545-41ae-9b72-14f506adcac6)\
-📍이용 중인 PG사도 정산내역 조회가 가능한지 궁금하다면
-[→ 지원 PG사 확인하기](https://guide.portone.io/a89f61e5-4545-41ae-9b72-14f506adcac6)\
-📍정산통합조회 서비스의 이용방법이 궁금하다면 [→ 이용방법 보기](https://guide.portone.io/92af7604-5813-48fa-a186-82e8e7356a3e)
-
-### **PG 거래대사**✔️ 정산 통화별로 정산내역을 조회할 수 있습니다
-
-기존에는 원화로만 정산내역을 조회할 수 있엇지만, 이번 업데이트를 통해 결제통화 및 정산통화별로 정산내역을 조회할 수 있습니다.
-또한 \[통합 내역 조회] 메뉴의 조회 기준일이 정산예정일에 맞추어 자동으로 설정됩니다.
-
-(관련 이미지 첨부)
-
-
-# https://developers.portone.io/release-notes/console/2023-07-17
-
----
-releasedAt: 2023-07-17T00:00:00.000Z
-writtenAt: 2023-07-19T00:00:00.000Z
----
-
-## 주요 업데이트 사항
-
-### ✔️ KG이니시스 승인 영수증에서 신규 매출전표가 표시됩니다
-
-이번 업데이트를 통해 관리자콘솔의 \[결제 내역 상세 조회] 메뉴에서 KG이니시스 결제건 선택시 승인 영수증에서 신규 매출전표가 표시됩니다.
-
-<br />
-
-## 기타 수정사항
-
-- 클래식 콘솔에서 결제내역 조회시 모든 PG사를 필터로 추가하여 검색할 수 있습니다
-
-
-# https://developers.portone.io/release-notes/console/2023-08-23
-
----
-releasedAt: 2023-08-23T00:00:00.000Z
-writtenAt: 2023-08-23T00:00:00.000Z
----
-
-## 주요 업데이트 사항
-
-### **PG 거래대사**✔️ KG이니시스의 정산내역을 확인할 수 있습니다.
-
-이번 업데이트를 통해 KG이니시스를 포함한 주요 10개 결제대행사(PG)/간편결제사의 정산 내역을 조회할 수 있습니다.
-관리자콘솔 메뉴 \[결제사 정산] - \[통합 내역 조회]에서 정산 내역을 조회할 수 있으며, KG이니시스의 경우 8월 1일 결제건부터 조회가 가능하오니 이용에 참고하시기 바랍니다.
-
-📍 정산 통합 조회 서비스의 기능이 궁금하다면
-[→ 서비스 소개 보기](https://guide.portone.io/a89f61e5-4545-41ae-9b72-14f506adcac6)\
-📍 이용 중인 결제대행사(PG사)도 정산 내역 조회가 가능한지 궁금하다면
-[→ 지원 결제대행사(PG)사 확인하기](https://guide.portone.io/a89f61e5-4545-41ae-9b72-14f506adcac6)\
-📍 정산 통합 조회 서비스의 이용 방법이 궁금하다면 [→ 이용 방법 보기](https://guide.portone.io/92af7604-5813-48fa-a186-82e8e7356a3e)
-
-
-# https://developers.portone.io/release-notes/console/2023-09-12
-
----
-releasedAt: 2023-09-15T00:00:00.000Z
-writtenAt: 2023-09-15T00:00:00.000Z
----
-
-## 주요 업데이트 사항
-
-### ✔️ 전자결제 신청하기 페이지 리뉴얼
-
-이번 업데이트를 통해 전자결제 신청 후 계약 진행 상황을 실시간을 볼 수 있는 상태값 조회 페이지가 개선되었습니다.
-이외에 자세한 리뉴얼 상황은 아래와 같습니다.
-
-📍 결제대행사별로, 계약 건별로 상황을 확인할 수 있습니다.\
-📍 계약 과정에서 필요한 서류 등 체크리스트를 확인할 수 있습니다.\
-📍 워드프레스/ 우커머스 사이트를 지원하는 결제대행사 정보를 확인하실 수 있습니다.\
-📍 포트원 추천패키지 상세 가이드가 추가되었습니다.
-
-
-# https://developers.portone.io/release-notes/console/2023-12-27
-
----
-releasedAt: 2023-12-27T00:00:00.000Z
-writtenAt: 2024-01-02T00:00:00.000Z
----
-
-## 주요 업데이트 사항
-
-### **PG 거래대사**✔️ 헥토파이낸셜의 정산내역을 확인할 수 있습니다.
-
-이번 업데이트를 통해 헥토파이낸셜을 포함한 11개 PG사와 간편결제사의 정산 내역을 조회할 수 있습니다.
-관리자콘솔 메뉴 \[결제사 정산] - \[통합 내역 조회]에서 정산 내역을 조회할 수 있으며,
-헥토파이낸셜의 경우 8월 1일 결제건부터 조회가 가능하오니 이용에 참고하시기 바랍니다.
-
-📍 정산 통합 조회 서비스의 기능이 궁금하다면
-[→ 서비스 소개 보기](https://guide.portone.io/a89f61e5-4545-41ae-9b72-14f506adcac6)\
-📍 이용 중인 결제대행사(PG사)도 정산 내역 조회가 가능한지 궁금하다면
-[→ 지원 결제대행사(PG)사 확인하기](https://guide.portone.io/a89f61e5-4545-41ae-9b72-14f506adcac6)\
-📍 정산 통합 조회 서비스의 이용 방법이 궁금하다면 [→ 이용 방법 보기](https://guide.portone.io/92af7604-5813-48fa-a186-82e8e7356a3e)
-
-## 기타 수정사항
-
-### **결제 모듈 V1**✔️ KG이니시스 결제 시 결제 통화 위/변조 검사가 추가되었습니다.
-
-PC 환경에서 KG이니시스의 승인 요청시 결제 통화 및 결제 금액 위/변조 검사를 진행합니다.
-
-
-# https://developers.portone.io/release-notes/console/2024-09-05
-
----
-releasedAt: 2024-09-05T00:00:00.000Z
-writtenAt: 2024-09-05T00:00:00.000Z
----
-
-## 주요 업데이트 사항
-
-### ✔️ 좌측 메뉴 영역이 새롭게 변경되었습니다.
-
-(관련 이미지 첨부)
-
-기존 \[파트너 정산] 메뉴는 \[파트너 정산 자동화], \[애널리틱스] 메뉴는 \[결제 데이터 분석]으로 변경됩니다.
-
-- **\[메뉴 접기]**
-
-  - 메뉴 접기 아이콘을 클릭하여 좌측 메뉴 영역을 접을 수 있습니다.
-  - 메뉴가 접힌 상태에서 한번 더 클릭하는 경우 다시 메뉴를 펼칠 수 있습니다.
-
-- **\[전자결제 신청]**
-  - 전자결제 신청을 원하시는 경우 좌측 메뉴 영역 하단의 \[전자결제 신청]을 클릭해 주세요.
-
-- **\[로그아웃]**
-  - 좌측 메뉴 영역 상단의 \[계정 정보]를 클릭한 후 \[로그아웃]을 클릭해 주세요.
 
 
 # https://developers.portone.io/release-notes/platform/2023-08-31
@@ -26950,6 +26757,248 @@ writtenAt: 2025-03-17T00:00:00.000Z
 파트너정산 자동화 팀 드림
 
 
+# https://developers.portone.io/blog/posts/2024-03/tgs
+
+---
+title: 포트원이 여러 PG사의 인터페이스를 연동하는 방법
+description: 여러 PG사의 인터페이스를 효율적으로 연동하기 위한 결정사항들을 소개합니다.
+author: ChanceKim
+date: 2024-03-11T15:00:00.000Z
+tags:
+  - Backend
+  - MSA
+  - gRPC
+  - DDD
+  - Typed Error
+---
+
+소프트웨어 엔지니어로서 새로운 서비스를 개발하다 보면 결제 기능을 구현해야 하는 경우가 생깁니다.
+일반적으로 엔지니어들은 결제 기능을 구현하기 위해 특정 PG사가 제공하는 연동 가이드를 따라가며 개발을 진행하고, 서비스를 런칭합니다.
+그러나 포트원은 여러 PG사의 인터페이스를 추상화하여 어떤 PG사를 사용하는지와 관계없이 통일된 인터페이스를 제공하는 것을 핵심 가치로 삼고 있습니다.
+따라서 포트원의 엔지니어들은 일반적인 PG 연동 작업과는 다른 차원의 문제들을 해결해 나가야 합니다.
+
+다른 한편으로 포트원은 현재 모놀리식 아키텍처(V1)에서 MSA(V2)로의 전환을 진행중입니다.
+V1을 완전히 버리고 V2로 넘어가는 것이 아니기 때문에 하나의 PG사를 새로 연동할 때, V1과 V2 모두에 연동해주어야 하죠.
+흔히 잘 운영되는 시스템의 특정 모듈을 변경하는 작업을 달리는 자동차의 바퀴를 갈아 끼우는 일에 빗대어 이야기하곤 하는데,
+포트원의 현재 상황은 나란히 달리고 있는 구형 자동차와 신형 자동차의 바퀴를 한꺼번에 갈아 끼워야 하는 상황입니다.
+
+이 글에서는 이와 같은 어려움 속에서 최적의 업무 효율을 달성하기 위해 선택한 아키텍처 레벨 및 단일 서비스 레벨의 결정사항에 대해 설명드리려 합니다.
+
+## PG사 간의 인터페이스 차이
+
+먼저, PG사 간의 인터페이스가 얼마나 다른지를 살펴보기 위해 예시를 들어 보겠습니다.
+아래는 대표적인 간편결제사 두 곳에서 결제창을 생성하기 위해 필요한 파라미터 목록입니다.
+
+- 카카오페이 결제 파라미터
+
+|       Name       |   타입   |필수여부|                                                         설명                                                         |
+|:----------------:|:--------:|:------:|:--------------------------------------------------------------------------------------------------------------------:|
+|        cid       |  String  |    O   |                                                   가맹점 코드, 10자                                                  |
+|    cid\_secret   |  String  |    X   |                                   가맹점 코드 인증키, 24자, 숫자와 영문 소문자 조합                                  |
+|partner\_order\_id|  String  |    O   |                                              가맹점 주문번호, 최대 100자                                             |
+| partner\_user\_id|  String  |    O   |                                              가맹점 회원 id, 최대 100자                                              |
+|    item\_name    |  String  |    O   |                                                  상품명, 최대 100자                                                  |
+|    item\_code    |  String  |    X   |                                                 상품코드, 최대 100자                                                 |
+|     quantity     |  Integer |    O   |                                                       상품 수량                                                      |
+|   total\_amount  |  Integer |    O   |                                                       상품 총액                                                      |
+| tax\_free\_amount|  Integer |    O   |                                                   상품 비과세 금액                                                   |
+|    vat\_amount   |  Integer |    X   |상품 부가세 금액 값을 보내지 않을 경우 다음과 같이 VAT 자동 계산 (상품총액 - 상품 비과세 금액)/11 : 소숫점 이하 반올림|
+|  green\_deposit  |  Integer |    X   |                                                       컵 보증금                                                      |
+|   approval\_url  |  String  |    O   |                                         결제 성공 시 redirect url, 최대 255자                                        |
+|    cancel\_url   |  String  |    O   |                                         결제 취소 시 redirect url, 최대 255자                                        |
+|     fail\_url    |  String  |    O   |                                         결제 실패 시 redirect url, 최대 255자                                        |
+| available\_cards |JSON Array|    X   |                             결제 수단으로써 사용 허가할 카드사를 지정해야 하는 경우 사용                             |
+
+- 네이버페이 결제 파라미터
+
+|           Name          |  타입 |필수여부|                                                                                                                                                                                                                                                         설명                                                                                                                                                                                                                                                         |
+|:-----------------------:|:-----:|:------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|      merchantPayKey     | String|    O   |                                                                                                                                                                                                                      가맹점 주문내역 확인 가능한 가맹점 결제번호 또는 주문번호를 전달해야 합니다                                                                                                                                                                                                                     |
+|merchantPayTransactionKey| String|        |                                                                                                                                                                                                      가맹점 주문내역 히스토리 확인이 가능한 가맹점 결제 트랜잭션 번호 또는 주문 트랜잭션 번호를 전달해야 합니다.                                                                                                                                                                                                     |
+|     merchantUserKey     | String|        |                                                                                                                                                                                                                   가맹점의 사용자 키(개인 아이디와 같은 개인정보 데이터는 제외하여 전달해야 합니다)                                                                                                                                                                                                                  |
+|       productName       | String|    O   |                                                                                                                                                                                                                                대표 상품명. 예: 장미의 이름 외 1건(X), 장미의 이름(O)                                                                                                                                                                                                                                |
+|       productCount      | Number|    O   |                                                                                                                                                                                                                         상품 수량 예: A 상품 2개 + B 상품 1개의 경우 productCount 3으로 전달                                                                                                                                                                                                                         |
+|      totalPayAmount     | Number|    O   |                                                                                                                                                                                                                                          총 결제 금액. 최소 결제금액은 10원                                                                                                                                                                                                                                          |
+|      taxScopeAmount     | Number|    O   |                                                                                                                                                                                                                과세 대상 금액. 과세 대상 금액 + 면세 대상 금액 + 컵 보증금 금액 (옵션) = 총 결제 금액                                                                                                                                                                                                                |
+|     taxExScopeAmount    | Number|    O   |                                                                                                                                                                                                                면세 대상 금액. 과세 대상 금액 + 면세 대상 금액 + 컵 보증금 금액 (옵션) = 총 결제 금액                                                                                                                                                                                                                |
+| environmentDepositAmount| Number|        |                                                                                                                                                                    1회용 컵에 담은 상품의 결제건인 경우에만 필수값이며, 그 외에는 전달할 필요가 없습니다.  컵 보증금 금액. 과세 대상 금액 + 면세 대상 금액 + 컵 보증금 금액 (옵션) = 총 결제 금액                                                                                                                                                                    |
+|        returnUrl        | String|    O   |                                                                                                                    결제 인증 결과 전달 URL, 결제 완료 후 이동할 URL(returnUrl + 가맹점 파라미터 전달이 가능합니다) 네이버페이는 결제 작업 완료 후, 가맹점이 등록한 returnUrl로 리디렉션을 수행합니다 가맹점은 이를 활용하여 내부 처리를 수행하거나 구매자에게 결제 결과 화면을 노출할 수 있습니다                                                                                                                    |
+|      purchaserName      | String|        |                                                                                                                                                                                                       구매자 성명. 결제 상품이 보험 및 위험 업종 등인 경우에만 필수 값입니다. 그 외에는 전달할 필요가 없습니다                                                                                                                                                                                                       |
+|    purchaserBirthday    | String|        |                                                                                                                                                                                                구매자 생년월일(yyyymmdd). 결제 상품이 보험 및 위험 업종 등인 경우에만 필수 값입니다. 그 외에는 전달할 필요가 없습니다                                                                                                                                                                                                |
+|      extraDeduction     |Boolean|        |                                                                                                                                              도서 / 공연 / 영화 소득공제 대상 여부. 문화체육관광부에서 인증한 소득공제 제공 사업자가 대상 상품을 판매하는 경우 필수 값입니다. 해당 파라미터를 사용하기 위해서는 별도 요청을 주셔야 합니다. true : 대상, false : 비 대상                                                                                                                                              |
+|        useCfmYmdt       | String|        |이용완료일(yyyymmdd) 가맹점 타입이 이용완료일 정산 또는 이용완료일 포인트 적립인 경우 필수 해당 값을 기준으로 이용완료일 정산의 경우 '정산기준일' 또는 이용완료일 포인트 적립인 경우 '포인트적립 기준일'이 지정됩니다. 이용완료일은 반드시 결제일과 같거나 결제일 이후여야 하며, 이용완료일이 결제일자 이전으로 적용될 경우 에러(InvalidUseCfmYmdt)가 발생됩니다. 이용완료일이 결제일자 기준으로 1년을 초과할 경우 별도 에러가 발생되지는 않으나 전달한 이용완료일(useCfmYmdt) 값이 결제일자 +365일로 조정 처리됩니다.|
+|  merchantExtraParameter | String|        |                                                                                                                                                                                            가맹점 자체적으로 추가 구분값으로 활용 가능한 별도의 예비 필드 (개인 아이디와 같은 개인정보 데이터는 제외하여 전달해야 합니다)                                                                                                                                                                                            |
+|       productItems      | Array |    O   |                                                                                                                                                                                                                                                   productItem 배열                                                                                                                                                                                                                                                   |
+|     subMerchantInfo     | Object|        |                                                                                                                                                                                                                                하부가맹점 정보. PG 업종 가맹점인 경우에만 필수값입니다                                                                                                                                                                                                                               |
+
+위처럼 같은 기능을 하는 인터페이스임에도 PG사에 따라 파라미터 명과 파라미터 타입, 필수 파라미터 목록 모두 상이한 것을 볼 수 있습니다.
+심지어 사용하는 통신 프로토콜마저 PG사마다 상이하죠.
+2개의 PG사만을 비교해도 이러한 차이가 뚜렷한데, 포트원은 30개가 넘는 PG사 모듈을 제공하고 있기 때문에 인터페이스를 효과적으로 추상화하는 것이 매우 중요한 과제입니다.
+
+## 아키텍처 레벨 결정사항
+
+### 추상화만을 담당하는 마이크로서비스
+
+앞서 설명드린 것처럼 현재 포트원은 모놀리식 아키텍처(V1)에서 MSA(V2)로의 전환 작업을 진행 중입니다.
+이러한 전환 과정에서 V1과 V2를 모두 운영하며 새로운 PG를 연동하려면 V1과 V2 양쪽에 모두 연동 작업을 수행해야 합니다.
+이는 개발 리소스를 두 배로 소모하는 일이며 매우 비효율적인 작업입니다.
+
+이러한 비효율을 최소화하기 위해 저희는 V1과 V2에서 모두 사용 가능한 PG 인터페이스 추상화용 마이크로서비스인
+TGS(Transaction Gateway Service)를 도입했습니다.
+이 서비스 도입을 통해 V1과 V2에서 고객사의 요청을 처리하는 서비스들은 어떤 PG사로 결제가 이루어지든 통일된 인터페이스를 이용해 결제를 발생시킬 수 있습니다.
+포트원이 고객사에게 주는 편리함을 포트원 내부에서는 TGS가 다른 서비스들에게 제공하는 것이죠.
+
+다만 TGS의 도입에 앞서 선행돼야 하는 작업이 있었습니다.
+모놀리식 서비스인 V1의 코드를 일부 수정하여 PG사의 인터페이스를 직접 호출하는 것이 아니라 TGS의 인터페이스를 호출하도록 변경해주어야 했습니다.
+이 작업 역시 작지 않은 작업이었지만 V1과 V2가 언제까지 함께 운영될지 모르는 상황에서
+서비스를 계속해서 발전시켜 나가려면 어느 정도 시간이 들더라도 반드시 해야만 하는 일이라는 결론에 도달했습니다.
+
+TGS가 PG의 인터페이스를 추상화하는 역할을 담당하게 되면서 외부로부터 결제 요청을 처리하는 서비스는 결제 데이터를 저장하고 서빙하는 본연의 역할에 충실할 수 있게 됐습니다.
+
+### gRPC를 통한 API 제공
+
+(이미지 첨부: 효율적인 PG사 연동을 위한 아키텍처)
+
+TGS가 API를 제공하는 방식 역시 아키텍처를 설계할 때의 주요 결정사항 중 하나였습니다.
+가장 흔히 사용되는 방식으로는 REST API가 있지만 저희는 gRPC를 이용하여 API를 제공하기로 결정했습니다.
+저희는 gRPC가 가지는 여러 장점 중 아래 두 가지에 집중했습니다.
+
+#### 1. 인터페이스 우선 개발
+
+TGS는 포트원의 내부 서비스와 PG사의 중간 다리 역할을 하는 만큼 신규로 연동할 PG사가 기존에 연동된 PG사에서 요구하던 파라미터 이외의 파라미터를 요구하거나,
+기존에 연동된 PG사가 새로운 파라미터를 제공하는 경우에는 인터페이스의 수정이 불가피합니다.
+만약 이런 수정 작업 중 TGS의 작업자가 변경된 인터페이스의 공유를 깜빡하는 경우에는 외부로 API를 제공하는 서비스들에서 해당 기능을 제공하기 어려워지기 때문에,
+TGS 작업자는 다른 서비스로 인터페이스를 공유하는 것이 매우 중요합니다.
+
+gRPC를 사용하는 경우 proto file로 인터페이스를 우선 정의하고 해당 파일을 기반으로 생성된 서버/클라이언트 코드를 사용하여 통신하게 됩니다.
+인터페이스가 먼저 정의가 돼야지만 서버 기능 추가가 가능하기 때문에, proto file에 수정이 있는 경우 클라이언트가 되는 서비스의 개발자들로부터
+반드시 리뷰를 받도록 PR 정책을 수립하면 인터페이스가 공유되지 않는 상황을 프로세스적으로 방지할 수 있습니다.
+
+#### 2. 언어별로 자동 생성되는 클라이언트
+
+위에서 언급했듯이 gRPC는 proto file로 작성된 인터페이스를 기반으로 클라이언트 코드를 생성할 수 있습니다.
+현재 V1, V2는 각각 PHP와 Scala를 사용하여 개발 돼 있기 때문에 proto file을 기반으로 클라이언트 코드를 생성할 수 있다면,
+TGS의 인터페이스가 변경되더라도 각기 다른 언어로 작성된 클라이언트 코드를 수정해주어야 한다는 부담이 사라지게 됩니다.
+
+물론 REST API의 경우 이미 널리 사용되고 있어 학습을 위한 기간이 거의 필요하지 않고, 다양한 라이브러리들이 지원된다는 장점이 있지만,
+포트원 내부 서비스와 PG사들 사이에서 인터페이스를 추상화해 주어야 한다는 목적에 맞춰 보았을 때
+위 2가지의 장점이 REST API가 가지는 장점보다 더 많은 이득을 준다고 판단되어 최종적으로 gRPC를 사용하고 있습니다.
+
+## 서비스 레벨의 결정사항
+
+### Domain Driven Design(DDD)
+
+TGS는 PG사마다 다른 용어와 개념을 공통화하여 도메인 영역을 최대한 간결하게 만들어야 합니다.
+만약 PG사에서 사용되는 용어가 도메인 영역에 침범하도록 개발을 진행한다면
+도메인 영역은 너무 많은 개념을 담게 되어 처음부터 개발을 해온 사람이 아니라면 도저히 이해할 수 없는 서비스가 돼버릴 것입니다.
+
+실제로 TGS의 초기 구현은 이와 같은 문제를 가진 채로 개발이 진행됐습니다.
+TGS는 프레젠테이션, 어플리케이션, 도메인, 인프라 레이어로 이루어진
+[레이어드 아키텍처](https://www.baeldung.com/cs/layered-architecture)를 따릅니다.
+아래 사진은 이런 구조에서 토스페이먼츠를 위한 클래스들이 도메인 레이어를 침범하여 포트원 도메인 클래스와 혼재되어 있는 모습을 보여주는 사진입니다.
+
+(이미지 첨부: 개발초기 TGS의 도메인 레이어)
+
+이대로 계속 개발을 진행했다면 TGS에 연동하는 PG사가 늘어남에 따라 도메인 레이어가 계속해서 비대해질 수밖에 없었을 것입니다.
+어플리케이션 레이어의 경우에는 상황이 더 심각합니다.
+비즈니스 로직은 포트원 도메인 엔티티에 정의돼 있기 때문에 어플리케이션 로직에서는 PG사별 객체를 포트원 엔티티로 전환한 후 비즈니스 로직을 실행하고,
+이를 다시 프레젠테이션 레이어로 올려보내주어야 하죠.
+이렇게 프레젠테이션 레이어를 제외한 모든 레이어에 구석구석 침투해 있는 PG사별 클래스로 인해 프로젝트 전체 구조를 파악하지 못한 경우에
+신규 기능 연동이 매우 어려운 상황이었습니다.
+
+이와 같은 문제를 해결하기 위해서 TGS에는 DDD 방법론을 도입하여,
+도메인 영역에서 사용되는 용어들을 정리하고 이를 기반으로 어플리케이션 및 프레젠테이션 영역을 보다 깔끔하게 만들어 주기로 결정했습니다.
+TGS에 DDD를 도입하는 과정은 크게 3단계로 나누어 진행됐습니다.
+
+#### 1. 보편 언어(Ubiquitous Language) 정리
+
+보편 언어를 정리하는 일은 DDD의 시작이라고 할 수 있습니다.
+명확하게 정리된 보편 언어는 도메인을 이해하기 쉽게 만들어주고, 구성원들간의 미스 커뮤니케이션이 일어나지 않도록 도움을 줍니다.
+TGS는 여러 PG사와의 통신을 담당하는 서비스인 만큼, 여러 PG 연동을 경험한 분들에게 도움의 받아 보편 언어를 정리했습니다.
+정리된 보편 언어는 항상 접근이 간편한 곳에 위치해 있어야 하기 때문에 저희는 이를 위한 레포지토리를 생성하고 용어들을 마크다운 파일로 정리했습니다.
+
+(이미지 첨부: 보편 언어를 위한 레파지토리)
+
+#### 2. 보편 언어를 이용해 도메인 엔티티와 값 객체(VO) 정의
+
+정리된 보편 언어는 코드에도 그대로 녹아들어야 합니다. 그래야만 엔지니어와 관련자 사이에 통일된 언어로 커뮤니케이션이 가능하기 때문이죠.
+리팩토링 전 KSNET의 API를 통해 발생한 거래를 저장하기 위한 클래스와 리팩토링 후의 클래스 모습입니다.
+변경 전에는 `aid`, `tid`, `tradeDate` 처럼 PG사에서 사용하는 언어를 이용해 데이터를 저장했다면,
+변경 후에는 포트원의 보편 언어로 모두 대체된 모습을 볼 수 있습니다.
+
+<div class="hint" data-style="info">
+
+클래스명에 PG사의 명칭이 들어가있어서 도메인 엔티티가 아니라고 느껴질 수 있지만,
+각 PG사와의 거래는 분명하게 TGS의 [bounded context](https://martinfowler.com/bliki/BoundedContext.html) 안에 존재하는 개념이기에 PG사의 명칭을 클래스명에 포함시켰습니다.
+
+</div>
+
+(이미지 첨부: 보편 언어를 사용하는 클래스)
+
+#### 3. 각 PG사를 위한 데이터 클래스는 인프라 레이어로 이동
+
+도메인 레이어를 보편 언어를 이용한 엔티티와 값 객체로 채우게 되면서 PG사를 위한 클래스들은 자연스럽게 인프라 레이어로 이동시켰습니다.
+그리고 인프라 레이어에서 PG사의 클래스를 도메인 엔티티와 값 객체로 변환하여 반환하게 만들었습니다.
+이제 PG사의 클래스들은 인프라 레이어에서 DTO로써만 존재하게 됐습니다.
+그리고 자연스럽게 PG사와 통신하는 Client 구현체는 부패 방지 계층의 역할을 띄게 됩니다.
+부패 방지 계층이란 연동하고자 하는 시스템과 기존 시스템 사이에 존재하는 도메인 모델의 차이를 기존 시스템에 맞게 변환하기 위한 계층으로,
+도메인 레이어를 외부의 용어와 완벽하게 분리할 수 있게 도와줍니다.
+
+(이미지 첨부: 인프라 레이어에 존재하는 PG사별 Client 구현체)
+
+도메인 레이어와 어플리케이션 레이어를 수정하는 개발자는 더 이상 인프라 레이어의 구현에 대해서 알 필요가 없습니다.
+그저 Client가 반환한 도메인 엔티티와 값 객체를 이용해 로직을 구성하기만 하면 되는 것이죠.
+
+3단계로 진행된 리팩토링 과정에서 사실 대단한 DDD 기법을 사용하지는 않았습니다.
+Aggregate, CQRS, 이벤트 소싱 등의 기법은 전혀 등장하지 않았죠.
+그렇지만 보편 언어를 정의하여 커뮤니케이션의 효율을 높이고,
+기술 의존도가 없는 도메인 레이어에 비즈니스 로직을 응축해 놓음으로써 이식성이 높아졌기에 DDD가 추구하던 본질적인 장점은 취할 수 있게 되었습니다.
+덤으로 간단해진 어플리케이션 레이어 로직 덕분에 PG 연동 속도도 빨라지게 되어 생산성도 비약적으로 증가했습니다.
+
+### Typed Error 활용
+
+결제 도메인에서 에러 처리는 다른 도메인보다 특히나 중요합니다. 잘못된 에러 처리로 인해 결제 내역이 사라진다거나 결제가 여러 번 처리된다면 매우 큰 혼란이 생길 것입니다.
+명확한 에러 처리를 위해서는 특정 함수에서 어떤 에러가 발생할 수 있는지 문서화하는 것이 중요하나,
+문서와 주석은 outdated 되기 쉽다는 단점이 있습니다.
+저희는 이런 문제를 해결하기 위한 방법으로 함수형 프로그래밍을 위한 Kotlin 라이브러리인
+[Arrow](https://arrow-kt.io/)의 typed error를 적극적으로 활용하고 있습니다.
+
+Typed error를 사용하면 특정 함수에서 발생할 수 있는 에러를 코드를 통해 문서화할 수 있기 때문에 outdated 될 염려가 없고,
+에러 처리가 강제되기 때문에 특정 에러 케이스를 놓친다거나 하는 문제가 발생할 염려가 적습니다.
+예를 들어, Arrow를 사용해 함수 시그니처에 typed error를 적용하면 아래와 같은 코드를 작성하게 됩니다.
+Typed error를 적용함으로써 예시 코드의 `pay()` 함수에선 `AmountTooBig`, `InvalidCardInfo`, `TransactionAlreadyExists`
+에러가 발생할 수 있다는 것을 코드 레벨에서 확인할 수 있습니다.
+
+```kotlin
+interface Example {
+    fun pay(): Effect<PayError, Unit>
+
+    sealed interface PayError {
+      data object AmountTooBig: PayError
+      data object InvalidCardInfo: PayError
+      data object TransactionAlreadyExists: PayError
+    }
+}
+```
+
+반면 typed error를 사용하는 코드는 이런 의문을 가지게 합니다. ‘Kotlin에서 의도적으로 삭제한 checked exception를 다시 되살리는 것 아닌가?’.
+네, typed error는 checked exception과 거의 동일한 의도로 사용됩니다.
+Kotlin에서 checked exception을 삭제한 주요 이유는 대부분의 exception은 처리할 수 없는 exception이기 때문입니다.
+하지만 저희는 꼭 처리해 주어야 하는 예외 케이스가 있다면 checked exception을 사용하는 것이 그렇지 않은 경우보다 코드 퀄리티를 높여줄 수 있다고 생각했으며,
+결제가 예외 처리에 매우 민감한 도메인이라는 점을 감안하여 checked exception을 대신할 수 있는 typed error를 사용하고 있습니다.
+
+물론 typed error를 잘못 사용할 경우에는 checked exception이 가지던 문제점들이 그대로 발생할 수 있습니다.
+때문에 올바른 방법으로 사용하는 것이 매우 중요하며, 이에 대한 내용은 추후 별도의 글에서 다뤄보도록 하겠습니다.
+
+## 마치며
+
+지금까지 포트원이 여러 PG사의 인터페이스를 효율적으로 연동하기 위해 논의했던 기술적 결정사항들에 대해 알아보았습니다.
+부디 이 글이 비슷한 문제를 해결하고자 하는 분들에게 작게나마 도움이 된다면 좋겠습니다.
+
+포트원은 지금도 고객사에게 더 좋은 결제 경험을 제공하기 위해 노력하고 있습니다.
+저희와 함께 간편한 결제 연동이라는 문제를 함께 풀어나가고 싶으신 분이 계시다면 포트원의 문을 두드려 주시면 감사하겠습니다!
+
+
 # https://developers.portone.io/blog/posts/2024-02/v2-oom
 
 ---
@@ -28144,248 +28193,6 @@ ZIO는 그러한 조건에 잘 부합하는 Effect System이었고 현재까지�
 [ast]: https://en.wikipedia.org/wiki/Abstract_syntax_tree
 
 [zio]: https://zio.dev/
-
-
-# https://developers.portone.io/blog/posts/2024-03/tgs
-
----
-title: 포트원이 여러 PG사의 인터페이스를 연동하는 방법
-description: 여러 PG사의 인터페이스를 효율적으로 연동하기 위한 결정사항들을 소개합니다.
-author: ChanceKim
-date: 2024-03-11T15:00:00.000Z
-tags:
-  - Backend
-  - MSA
-  - gRPC
-  - DDD
-  - Typed Error
----
-
-소프트웨어 엔지니어로서 새로운 서비스를 개발하다 보면 결제 기능을 구현해야 하는 경우가 생깁니다.
-일반적으로 엔지니어들은 결제 기능을 구현하기 위해 특정 PG사가 제공하는 연동 가이드를 따라가며 개발을 진행하고, 서비스를 런칭합니다.
-그러나 포트원은 여러 PG사의 인터페이스를 추상화하여 어떤 PG사를 사용하는지와 관계없이 통일된 인터페이스를 제공하는 것을 핵심 가치로 삼고 있습니다.
-따라서 포트원의 엔지니어들은 일반적인 PG 연동 작업과는 다른 차원의 문제들을 해결해 나가야 합니다.
-
-다른 한편으로 포트원은 현재 모놀리식 아키텍처(V1)에서 MSA(V2)로의 전환을 진행중입니다.
-V1을 완전히 버리고 V2로 넘어가는 것이 아니기 때문에 하나의 PG사를 새로 연동할 때, V1과 V2 모두에 연동해주어야 하죠.
-흔히 잘 운영되는 시스템의 특정 모듈을 변경하는 작업을 달리는 자동차의 바퀴를 갈아 끼우는 일에 빗대어 이야기하곤 하는데,
-포트원의 현재 상황은 나란히 달리고 있는 구형 자동차와 신형 자동차의 바퀴를 한꺼번에 갈아 끼워야 하는 상황입니다.
-
-이 글에서는 이와 같은 어려움 속에서 최적의 업무 효율을 달성하기 위해 선택한 아키텍처 레벨 및 단일 서비스 레벨의 결정사항에 대해 설명드리려 합니다.
-
-## PG사 간의 인터페이스 차이
-
-먼저, PG사 간의 인터페이스가 얼마나 다른지를 살펴보기 위해 예시를 들어 보겠습니다.
-아래는 대표적인 간편결제사 두 곳에서 결제창을 생성하기 위해 필요한 파라미터 목록입니다.
-
-- 카카오페이 결제 파라미터
-
-|       Name       |   타입   |필수여부|                                                         설명                                                         |
-|:----------------:|:--------:|:------:|:--------------------------------------------------------------------------------------------------------------------:|
-|        cid       |  String  |    O   |                                                   가맹점 코드, 10자                                                  |
-|    cid\_secret   |  String  |    X   |                                   가맹점 코드 인증키, 24자, 숫자와 영문 소문자 조합                                  |
-|partner\_order\_id|  String  |    O   |                                              가맹점 주문번호, 최대 100자                                             |
-| partner\_user\_id|  String  |    O   |                                              가맹점 회원 id, 최대 100자                                              |
-|    item\_name    |  String  |    O   |                                                  상품명, 최대 100자                                                  |
-|    item\_code    |  String  |    X   |                                                 상품코드, 최대 100자                                                 |
-|     quantity     |  Integer |    O   |                                                       상품 수량                                                      |
-|   total\_amount  |  Integer |    O   |                                                       상품 총액                                                      |
-| tax\_free\_amount|  Integer |    O   |                                                   상품 비과세 금액                                                   |
-|    vat\_amount   |  Integer |    X   |상품 부가세 금액 값을 보내지 않을 경우 다음과 같이 VAT 자동 계산 (상품총액 - 상품 비과세 금액)/11 : 소숫점 이하 반올림|
-|  green\_deposit  |  Integer |    X   |                                                       컵 보증금                                                      |
-|   approval\_url  |  String  |    O   |                                         결제 성공 시 redirect url, 최대 255자                                        |
-|    cancel\_url   |  String  |    O   |                                         결제 취소 시 redirect url, 최대 255자                                        |
-|     fail\_url    |  String  |    O   |                                         결제 실패 시 redirect url, 최대 255자                                        |
-| available\_cards |JSON Array|    X   |                             결제 수단으로써 사용 허가할 카드사를 지정해야 하는 경우 사용                             |
-
-- 네이버페이 결제 파라미터
-
-|           Name          |  타입 |필수여부|                                                                                                                                                                                                                                                         설명                                                                                                                                                                                                                                                         |
-|:-----------------------:|:-----:|:------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|      merchantPayKey     | String|    O   |                                                                                                                                                                                                                      가맹점 주문내역 확인 가능한 가맹점 결제번호 또는 주문번호를 전달해야 합니다                                                                                                                                                                                                                     |
-|merchantPayTransactionKey| String|        |                                                                                                                                                                                                      가맹점 주문내역 히스토리 확인이 가능한 가맹점 결제 트랜잭션 번호 또는 주문 트랜잭션 번호를 전달해야 합니다.                                                                                                                                                                                                     |
-|     merchantUserKey     | String|        |                                                                                                                                                                                                                   가맹점의 사용자 키(개인 아이디와 같은 개인정보 데이터는 제외하여 전달해야 합니다)                                                                                                                                                                                                                  |
-|       productName       | String|    O   |                                                                                                                                                                                                                                대표 상품명. 예: 장미의 이름 외 1건(X), 장미의 이름(O)                                                                                                                                                                                                                                |
-|       productCount      | Number|    O   |                                                                                                                                                                                                                         상품 수량 예: A 상품 2개 + B 상품 1개의 경우 productCount 3으로 전달                                                                                                                                                                                                                         |
-|      totalPayAmount     | Number|    O   |                                                                                                                                                                                                                                          총 결제 금액. 최소 결제금액은 10원                                                                                                                                                                                                                                          |
-|      taxScopeAmount     | Number|    O   |                                                                                                                                                                                                                과세 대상 금액. 과세 대상 금액 + 면세 대상 금액 + 컵 보증금 금액 (옵션) = 총 결제 금액                                                                                                                                                                                                                |
-|     taxExScopeAmount    | Number|    O   |                                                                                                                                                                                                                면세 대상 금액. 과세 대상 금액 + 면세 대상 금액 + 컵 보증금 금액 (옵션) = 총 결제 금액                                                                                                                                                                                                                |
-| environmentDepositAmount| Number|        |                                                                                                                                                                    1회용 컵에 담은 상품의 결제건인 경우에만 필수값이며, 그 외에는 전달할 필요가 없습니다.  컵 보증금 금액. 과세 대상 금액 + 면세 대상 금액 + 컵 보증금 금액 (옵션) = 총 결제 금액                                                                                                                                                                    |
-|        returnUrl        | String|    O   |                                                                                                                    결제 인증 결과 전달 URL, 결제 완료 후 이동할 URL(returnUrl + 가맹점 파라미터 전달이 가능합니다) 네이버페이는 결제 작업 완료 후, 가맹점이 등록한 returnUrl로 리디렉션을 수행합니다 가맹점은 이를 활용하여 내부 처리를 수행하거나 구매자에게 결제 결과 화면을 노출할 수 있습니다                                                                                                                    |
-|      purchaserName      | String|        |                                                                                                                                                                                                       구매자 성명. 결제 상품이 보험 및 위험 업종 등인 경우에만 필수 값입니다. 그 외에는 전달할 필요가 없습니다                                                                                                                                                                                                       |
-|    purchaserBirthday    | String|        |                                                                                                                                                                                                구매자 생년월일(yyyymmdd). 결제 상품이 보험 및 위험 업종 등인 경우에만 필수 값입니다. 그 외에는 전달할 필요가 없습니다                                                                                                                                                                                                |
-|      extraDeduction     |Boolean|        |                                                                                                                                              도서 / 공연 / 영화 소득공제 대상 여부. 문화체육관광부에서 인증한 소득공제 제공 사업자가 대상 상품을 판매하는 경우 필수 값입니다. 해당 파라미터를 사용하기 위해서는 별도 요청을 주셔야 합니다. true : 대상, false : 비 대상                                                                                                                                              |
-|        useCfmYmdt       | String|        |이용완료일(yyyymmdd) 가맹점 타입이 이용완료일 정산 또는 이용완료일 포인트 적립인 경우 필수 해당 값을 기준으로 이용완료일 정산의 경우 '정산기준일' 또는 이용완료일 포인트 적립인 경우 '포인트적립 기준일'이 지정됩니다. 이용완료일은 반드시 결제일과 같거나 결제일 이후여야 하며, 이용완료일이 결제일자 이전으로 적용될 경우 에러(InvalidUseCfmYmdt)가 발생됩니다. 이용완료일이 결제일자 기준으로 1년을 초과할 경우 별도 에러가 발생되지는 않으나 전달한 이용완료일(useCfmYmdt) 값이 결제일자 +365일로 조정 처리됩니다.|
-|  merchantExtraParameter | String|        |                                                                                                                                                                                            가맹점 자체적으로 추가 구분값으로 활용 가능한 별도의 예비 필드 (개인 아이디와 같은 개인정보 데이터는 제외하여 전달해야 합니다)                                                                                                                                                                                            |
-|       productItems      | Array |    O   |                                                                                                                                                                                                                                                   productItem 배열                                                                                                                                                                                                                                                   |
-|     subMerchantInfo     | Object|        |                                                                                                                                                                                                                                하부가맹점 정보. PG 업종 가맹점인 경우에만 필수값입니다                                                                                                                                                                                                                               |
-
-위처럼 같은 기능을 하는 인터페이스임에도 PG사에 따라 파라미터 명과 파라미터 타입, 필수 파라미터 목록 모두 상이한 것을 볼 수 있습니다.
-심지어 사용하는 통신 프로토콜마저 PG사마다 상이하죠.
-2개의 PG사만을 비교해도 이러한 차이가 뚜렷한데, 포트원은 30개가 넘는 PG사 모듈을 제공하고 있기 때문에 인터페이스를 효과적으로 추상화하는 것이 매우 중요한 과제입니다.
-
-## 아키텍처 레벨 결정사항
-
-### 추상화만을 담당하는 마이크로서비스
-
-앞서 설명드린 것처럼 현재 포트원은 모놀리식 아키텍처(V1)에서 MSA(V2)로의 전환 작업을 진행 중입니다.
-이러한 전환 과정에서 V1과 V2를 모두 운영하며 새로운 PG를 연동하려면 V1과 V2 양쪽에 모두 연동 작업을 수행해야 합니다.
-이는 개발 리소스를 두 배로 소모하는 일이며 매우 비효율적인 작업입니다.
-
-이러한 비효율을 최소화하기 위해 저희는 V1과 V2에서 모두 사용 가능한 PG 인터페이스 추상화용 마이크로서비스인
-TGS(Transaction Gateway Service)를 도입했습니다.
-이 서비스 도입을 통해 V1과 V2에서 고객사의 요청을 처리하는 서비스들은 어떤 PG사로 결제가 이루어지든 통일된 인터페이스를 이용해 결제를 발생시킬 수 있습니다.
-포트원이 고객사에게 주는 편리함을 포트원 내부에서는 TGS가 다른 서비스들에게 제공하는 것이죠.
-
-다만 TGS의 도입에 앞서 선행돼야 하는 작업이 있었습니다.
-모놀리식 서비스인 V1의 코드를 일부 수정하여 PG사의 인터페이스를 직접 호출하는 것이 아니라 TGS의 인터페이스를 호출하도록 변경해주어야 했습니다.
-이 작업 역시 작지 않은 작업이었지만 V1과 V2가 언제까지 함께 운영될지 모르는 상황에서
-서비스를 계속해서 발전시켜 나가려면 어느 정도 시간이 들더라도 반드시 해야만 하는 일이라는 결론에 도달했습니다.
-
-TGS가 PG의 인터페이스를 추상화하는 역할을 담당하게 되면서 외부로부터 결제 요청을 처리하는 서비스는 결제 데이터를 저장하고 서빙하는 본연의 역할에 충실할 수 있게 됐습니다.
-
-### gRPC를 통한 API 제공
-
-(이미지 첨부: 효율적인 PG사 연동을 위한 아키텍처)
-
-TGS가 API를 제공하는 방식 역시 아키텍처를 설계할 때의 주요 결정사항 중 하나였습니다.
-가장 흔히 사용되는 방식으로는 REST API가 있지만 저희는 gRPC를 이용하여 API를 제공하기로 결정했습니다.
-저희는 gRPC가 가지는 여러 장점 중 아래 두 가지에 집중했습니다.
-
-#### 1. 인터페이스 우선 개발
-
-TGS는 포트원의 내부 서비스와 PG사의 중간 다리 역할을 하는 만큼 신규로 연동할 PG사가 기존에 연동된 PG사에서 요구하던 파라미터 이외의 파라미터를 요구하거나,
-기존에 연동된 PG사가 새로운 파라미터를 제공하는 경우에는 인터페이스의 수정이 불가피합니다.
-만약 이런 수정 작업 중 TGS의 작업자가 변경된 인터페이스의 공유를 깜빡하는 경우에는 외부로 API를 제공하는 서비스들에서 해당 기능을 제공하기 어려워지기 때문에,
-TGS 작업자는 다른 서비스로 인터페이스를 공유하는 것이 매우 중요합니다.
-
-gRPC를 사용하는 경우 proto file로 인터페이스를 우선 정의하고 해당 파일을 기반으로 생성된 서버/클라이언트 코드를 사용하여 통신하게 됩니다.
-인터페이스가 먼저 정의가 돼야지만 서버 기능 추가가 가능하기 때문에, proto file에 수정이 있는 경우 클라이언트가 되는 서비스의 개발자들로부터
-반드시 리뷰를 받도록 PR 정책을 수립하면 인터페이스가 공유되지 않는 상황을 프로세스적으로 방지할 수 있습니다.
-
-#### 2. 언어별로 자동 생성되는 클라이언트
-
-위에서 언급했듯이 gRPC는 proto file로 작성된 인터페이스를 기반으로 클라이언트 코드를 생성할 수 있습니다.
-현재 V1, V2는 각각 PHP와 Scala를 사용하여 개발 돼 있기 때문에 proto file을 기반으로 클라이언트 코드를 생성할 수 있다면,
-TGS의 인터페이스가 변경되더라도 각기 다른 언어로 작성된 클라이언트 코드를 수정해주어야 한다는 부담이 사라지게 됩니다.
-
-물론 REST API의 경우 이미 널리 사용되고 있어 학습을 위한 기간이 거의 필요하지 않고, 다양한 라이브러리들이 지원된다는 장점이 있지만,
-포트원 내부 서비스와 PG사들 사이에서 인터페이스를 추상화해 주어야 한다는 목적에 맞춰 보았을 때
-위 2가지의 장점이 REST API가 가지는 장점보다 더 많은 이득을 준다고 판단되어 최종적으로 gRPC를 사용하고 있습니다.
-
-## 서비스 레벨의 결정사항
-
-### Domain Driven Design(DDD)
-
-TGS는 PG사마다 다른 용어와 개념을 공통화하여 도메인 영역을 최대한 간결하게 만들어야 합니다.
-만약 PG사에서 사용되는 용어가 도메인 영역에 침범하도록 개발을 진행한다면
-도메인 영역은 너무 많은 개념을 담게 되어 처음부터 개발을 해온 사람이 아니라면 도저히 이해할 수 없는 서비스가 돼버릴 것입니다.
-
-실제로 TGS의 초기 구현은 이와 같은 문제를 가진 채로 개발이 진행됐습니다.
-TGS는 프레젠테이션, 어플리케이션, 도메인, 인프라 레이어로 이루어진
-[레이어드 아키텍처](https://www.baeldung.com/cs/layered-architecture)를 따릅니다.
-아래 사진은 이런 구조에서 토스페이먼츠를 위한 클래스들이 도메인 레이어를 침범하여 포트원 도메인 클래스와 혼재되어 있는 모습을 보여주는 사진입니다.
-
-(이미지 첨부: 개발초기 TGS의 도메인 레이어)
-
-이대로 계속 개발을 진행했다면 TGS에 연동하는 PG사가 늘어남에 따라 도메인 레이어가 계속해서 비대해질 수밖에 없었을 것입니다.
-어플리케이션 레이어의 경우에는 상황이 더 심각합니다.
-비즈니스 로직은 포트원 도메인 엔티티에 정의돼 있기 때문에 어플리케이션 로직에서는 PG사별 객체를 포트원 엔티티로 전환한 후 비즈니스 로직을 실행하고,
-이를 다시 프레젠테이션 레이어로 올려보내주어야 하죠.
-이렇게 프레젠테이션 레이어를 제외한 모든 레이어에 구석구석 침투해 있는 PG사별 클래스로 인해 프로젝트 전체 구조를 파악하지 못한 경우에
-신규 기능 연동이 매우 어려운 상황이었습니다.
-
-이와 같은 문제를 해결하기 위해서 TGS에는 DDD 방법론을 도입하여,
-도메인 영역에서 사용되는 용어들을 정리하고 이를 기반으로 어플리케이션 및 프레젠테이션 영역을 보다 깔끔하게 만들어 주기로 결정했습니다.
-TGS에 DDD를 도입하는 과정은 크게 3단계로 나누어 진행됐습니다.
-
-#### 1. 보편 언어(Ubiquitous Language) 정리
-
-보편 언어를 정리하는 일은 DDD의 시작이라고 할 수 있습니다.
-명확하게 정리된 보편 언어는 도메인을 이해하기 쉽게 만들어주고, 구성원들간의 미스 커뮤니케이션이 일어나지 않도록 도움을 줍니다.
-TGS는 여러 PG사와의 통신을 담당하는 서비스인 만큼, 여러 PG 연동을 경험한 분들에게 도움의 받아 보편 언어를 정리했습니다.
-정리된 보편 언어는 항상 접근이 간편한 곳에 위치해 있어야 하기 때문에 저희는 이를 위한 레포지토리를 생성하고 용어들을 마크다운 파일로 정리했습니다.
-
-(이미지 첨부: 보편 언어를 위한 레파지토리)
-
-#### 2. 보편 언어를 이용해 도메인 엔티티와 값 객체(VO) 정의
-
-정리된 보편 언어는 코드에도 그대로 녹아들어야 합니다. 그래야만 엔지니어와 관련자 사이에 통일된 언어로 커뮤니케이션이 가능하기 때문이죠.
-리팩토링 전 KSNET의 API를 통해 발생한 거래를 저장하기 위한 클래스와 리팩토링 후의 클래스 모습입니다.
-변경 전에는 `aid`, `tid`, `tradeDate` 처럼 PG사에서 사용하는 언어를 이용해 데이터를 저장했다면,
-변경 후에는 포트원의 보편 언어로 모두 대체된 모습을 볼 수 있습니다.
-
-<div class="hint" data-style="info">
-
-클래스명에 PG사의 명칭이 들어가있어서 도메인 엔티티가 아니라고 느껴질 수 있지만,
-각 PG사와의 거래는 분명하게 TGS의 [bounded context](https://martinfowler.com/bliki/BoundedContext.html) 안에 존재하는 개념이기에 PG사의 명칭을 클래스명에 포함시켰습니다.
-
-</div>
-
-(이미지 첨부: 보편 언어를 사용하는 클래스)
-
-#### 3. 각 PG사를 위한 데이터 클래스는 인프라 레이어로 이동
-
-도메인 레이어를 보편 언어를 이용한 엔티티와 값 객체로 채우게 되면서 PG사를 위한 클래스들은 자연스럽게 인프라 레이어로 이동시켰습니다.
-그리고 인프라 레이어에서 PG사의 클래스를 도메인 엔티티와 값 객체로 변환하여 반환하게 만들었습니다.
-이제 PG사의 클래스들은 인프라 레이어에서 DTO로써만 존재하게 됐습니다.
-그리고 자연스럽게 PG사와 통신하는 Client 구현체는 부패 방지 계층의 역할을 띄게 됩니다.
-부패 방지 계층이란 연동하고자 하는 시스템과 기존 시스템 사이에 존재하는 도메인 모델의 차이를 기존 시스템에 맞게 변환하기 위한 계층으로,
-도메인 레이어를 외부의 용어와 완벽하게 분리할 수 있게 도와줍니다.
-
-(이미지 첨부: 인프라 레이어에 존재하는 PG사별 Client 구현체)
-
-도메인 레이어와 어플리케이션 레이어를 수정하는 개발자는 더 이상 인프라 레이어의 구현에 대해서 알 필요가 없습니다.
-그저 Client가 반환한 도메인 엔티티와 값 객체를 이용해 로직을 구성하기만 하면 되는 것이죠.
-
-3단계로 진행된 리팩토링 과정에서 사실 대단한 DDD 기법을 사용하지는 않았습니다.
-Aggregate, CQRS, 이벤트 소싱 등의 기법은 전혀 등장하지 않았죠.
-그렇지만 보편 언어를 정의하여 커뮤니케이션의 효율을 높이고,
-기술 의존도가 없는 도메인 레이어에 비즈니스 로직을 응축해 놓음으로써 이식성이 높아졌기에 DDD가 추구하던 본질적인 장점은 취할 수 있게 되었습니다.
-덤으로 간단해진 어플리케이션 레이어 로직 덕분에 PG 연동 속도도 빨라지게 되어 생산성도 비약적으로 증가했습니다.
-
-### Typed Error 활용
-
-결제 도메인에서 에러 처리는 다른 도메인보다 특히나 중요합니다. 잘못된 에러 처리로 인해 결제 내역이 사라진다거나 결제가 여러 번 처리된다면 매우 큰 혼란이 생길 것입니다.
-명확한 에러 처리를 위해서는 특정 함수에서 어떤 에러가 발생할 수 있는지 문서화하는 것이 중요하나,
-문서와 주석은 outdated 되기 쉽다는 단점이 있습니다.
-저희는 이런 문제를 해결하기 위한 방법으로 함수형 프로그래밍을 위한 Kotlin 라이브러리인
-[Arrow](https://arrow-kt.io/)의 typed error를 적극적으로 활용하고 있습니다.
-
-Typed error를 사용하면 특정 함수에서 발생할 수 있는 에러를 코드를 통해 문서화할 수 있기 때문에 outdated 될 염려가 없고,
-에러 처리가 강제되기 때문에 특정 에러 케이스를 놓친다거나 하는 문제가 발생할 염려가 적습니다.
-예를 들어, Arrow를 사용해 함수 시그니처에 typed error를 적용하면 아래와 같은 코드를 작성하게 됩니다.
-Typed error를 적용함으로써 예시 코드의 `pay()` 함수에선 `AmountTooBig`, `InvalidCardInfo`, `TransactionAlreadyExists`
-에러가 발생할 수 있다는 것을 코드 레벨에서 확인할 수 있습니다.
-
-```kotlin
-interface Example {
-    fun pay(): Effect<PayError, Unit>
-
-    sealed interface PayError {
-      data object AmountTooBig: PayError
-      data object InvalidCardInfo: PayError
-      data object TransactionAlreadyExists: PayError
-    }
-}
-```
-
-반면 typed error를 사용하는 코드는 이런 의문을 가지게 합니다. ‘Kotlin에서 의도적으로 삭제한 checked exception를 다시 되살리는 것 아닌가?’.
-네, typed error는 checked exception과 거의 동일한 의도로 사용됩니다.
-Kotlin에서 checked exception을 삭제한 주요 이유는 대부분의 exception은 처리할 수 없는 exception이기 때문입니다.
-하지만 저희는 꼭 처리해 주어야 하는 예외 케이스가 있다면 checked exception을 사용하는 것이 그렇지 않은 경우보다 코드 퀄리티를 높여줄 수 있다고 생각했으며,
-결제가 예외 처리에 매우 민감한 도메인이라는 점을 감안하여 checked exception을 대신할 수 있는 typed error를 사용하고 있습니다.
-
-물론 typed error를 잘못 사용할 경우에는 checked exception이 가지던 문제점들이 그대로 발생할 수 있습니다.
-때문에 올바른 방법으로 사용하는 것이 매우 중요하며, 이에 대한 내용은 추후 별도의 글에서 다뤄보도록 하겠습니다.
-
-## 마치며
-
-지금까지 포트원이 여러 PG사의 인터페이스를 효율적으로 연동하기 위해 논의했던 기술적 결정사항들에 대해 알아보았습니다.
-부디 이 글이 비슷한 문제를 해결하고자 하는 분들에게 작게나마 도움이 된다면 좋겠습니다.
-
-포트원은 지금도 고객사에게 더 좋은 결제 경험을 제공하기 위해 노력하고 있습니다.
-저희와 함께 간편한 결제 연동이라는 문제를 함께 풀어나가고 싶으신 분이 계시다면 포트원의 문을 두드려 주시면 감사하겠습니다!
 
 
 # https://developers.portone.io/blog/posts/2024-04/gcp-datastream

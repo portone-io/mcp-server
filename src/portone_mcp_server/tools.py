@@ -1,4 +1,5 @@
 from mcp.server.fastmcp import FastMCP
+
 from .loader import Documents
 
 
