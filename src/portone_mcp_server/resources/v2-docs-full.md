@@ -1,12 +1,31 @@
-# PortOne 개발자 문서 (V2 전체 문서)
+# 포트원 개발자센터
 
-> PortOne은 온라인 결제, 본인인증, 파트너 정산 자동화 및 재무/회계 업무를 위한 API와 SDK를 제공합니다.
+> 포트원(PortOne)은 온라인 결제, 본인인증, 파트너 정산 자동화 및 재무/회계 업무를 위한 API와 SDK를 제공하는 서비스입니다.
+
+1. 이 문서는 포트원 개발자센터 문서의 포괄적인 목록을 담고 있으며, 스키마 파일, 공통 문서, V2 문서, V1 문서, 릴리스 노트, 블로그 게시물 등의 섹션으로 구성되어 있습니다.
+
+2. 각 링크는 제목과 URL, 설명을 포함하는 형식으로 구성되어 있습니다
+
+3. 온라인 결제 및 본인인증에 관련해서는 버전(V1, V2)을 올바르게 파악하는 것이 아주 중요합니다. 사용자 질의에 관련된 섹션(V1, V2, 공통 등)을 확실하게 파악한 후 해당 버전의 문서와 공통 문서 내용을 제공 및 활용하세요.
+
+   - 버전이 파악되지 않은 경우 사용자에게 질의하여 버전을 먼저 확인하고, 그럴 수 없는 불가피한 경우 공통 문서 또는 최신 버전인 V2 문서를 우선적으로 활용하세요.
+
+4. API 및 SDK 스키마를 조회하고 싶은 경우 해당 버전의 스키마 파일에서 YAML, JSON, GraphQL SDL 형식으로 정확하게 확인할 수 있습니다.
+
+5. 사용자에게 문서 레퍼런스를 URL로 제공할 때는 마크다운 파일 링크가 아닌, 개발자센터 웹사이트 URL을 사용하세요.
+
+   - `.md`로 끝나는 URL은 마크다운 파일 링크입니다. 마크다운 파일 링크에서 마지막 `.md`를 제거하면 웹사이트 URL로 사용할 수 있습니다.
+   - 단, `_components` 가 URL에 포함된 경우 웹사이트 URL로 사용할 수 없음에 주의하세요.
+   - 사용자가 원하는 버전(V1, V2)이 특정되었다면 `?v=v2`, `?v=v1` 쿼리 파라미터를 추가하여 URL로 제공하세요.
+   - hostname이 누락된 URL의 경우 `https://developers.portone.io`를 추가하세요.
+
+6. 이미지, 파일 다운로드 링크 등이 마크다운 문서에는 누락될 수 있습니다. 해당 내용을 조회해야 하는 경우 개발자센터 웹사이트에서 확인해야 합니다.
 
 ## 목차
 
-
 ### V2 스키마 파일
 
+- [V2 브라우저 SDK 스키마](https://developers.portone.io/schema/browser-sdk.yml)
 - [V2 GraphQL 스키마](https://developers.portone.io/schema/v2.graphql)
 - [V2 OpenAPI YAML](https://developers.portone.io/schema/v2.openapi.yml)
 - [V2 OpenAPI JSON](https://developers.portone.io/schema/v2.openapi.json)
@@ -40,8 +59,8 @@
 
 ### V2 통합 가이드
 
-- [컨펌 프로세스](https://developers.portone.io/opi/ko/extra/confirm-process/readme-v2): 결제승인의 주체를 고객사 서버로 가져갈수 있는 서비스 입니다.
 - [스마트 라우팅](https://developers.portone.io/opi/ko/console/guide/smartrouting): 포트원 스마트 라우팅을 사용하기 위한 그룹 설정을 관리할 수 있습니다. 관리자콘솔 내 스마트 라우팅 그룹 설정 방법을 안내합니다.
+- [컨펌 프로세스](https://developers.portone.io/opi/ko/extra/confirm-process/readme-v2): 결제승인의 주체를 고객사 서버로 가져갈수 있는 서비스 입니다.
 - [본인인증 연동하기](https://developers.portone.io/opi/ko/extra/identity-verification/readme-v2): 포트원을 이용하여 간편하게 본인인증을 연동하는 방법을 확인합니다.
 - [웹훅 연동하기](https://developers.portone.io/opi/ko/integration/webhook/readme-v2): 웹훅 알림을 받아 결제 정보를 동기화할 수 있습니다.
 - [다날 본인인증](https://developers.portone.io/opi/ko/integration/pg/v2/danal-identity-verification): 다날 본인인증 연동 방법을 안내합니다.
@@ -71,8 +90,8 @@
 - [2. 결제 요청하기](https://developers.portone.io/opi/ko/integration/start/v2/billing/payment): 포트원 빌링키 결제 API를 사용해 바로 결제를 요청합니다.
 - [빌링키 결제 연동하기](https://developers.portone.io/opi/ko/integration/start/v2/billing/readme): 카드 혹은 휴대 전화 정보를 이용하여 빌링키를 발급하고, 빌링키를 이용해 결제를 요청하는 방법을 안내합니다.
 - [3. 예약/반복결제 구현하기](https://developers.portone.io/opi/ko/integration/start/v2/billing/schedule): 발급한 빌링키로 예약/반복결제를 구현하는 방법을 안내합니다.
-- [포트원 결제 연동 Doc](https://developers.portone.io/opi/ko/readme): 포트원 결제 연동 가이드입니다. 빠른 시간 안에 결제를 연동할 수 있게 도와드립니다.
 - [PG 거래대사 가이드](https://developers.portone.io/opi/ko/etc/recon): PG 거래대사는 PG사와 간편결제사로부터 정산 받는 금액 및 상세내역을 포트원 콘솔에서 PG가 여러 개여도 한 번에 자동 대사된 데이터를 확인할 수 있는 통합 조회 서비스입니다.
+- [포트원 결제 연동 Doc](https://developers.portone.io/opi/ko/readme): 포트원 결제 연동 가이드입니다. 빠른 시간 안에 결제를 연동할 수 있게 도와드립니다.
 - [직접 문의하기](https://developers.portone.io/opi/ko/support/contact): 기술지원 문의를 위한 연락처 정보입니다.
 - [TLS 지원 범위](https://developers.portone.io/opi/ko/support/tls-support): 포트원 v1 API의 TLS 지원 범위 및 설정 가이드를 확인할 수 있습니다.
 - [상점 계정 관리](https://developers.portone.io/opi/ko/console/guide/account): 포트원 콘솔에서 하위 상점을 생성하여 상점별로 결제 거래 건을 분리하여 관리할 수 있으며, 해당 상점을 관리할 수 있는 계정을 별도로 생성하여 권한을 나눌 수 있습니다. 이에 대해 안내합니다.
@@ -85,15 +104,15 @@
 - [프로모션](https://developers.portone.io/opi/ko/console/guide/promotion): 카드사 할인을 사용하기 위한 프로모션 설정을 관리할 수 있습니다. 관리자콘솔 내 프로모션 설정 방법을 안내합니다.
 - [관리자 콘솔 소개](https://developers.portone.io/opi/ko/console/guide/readme): 포트원 관리자 콘솔 사용법을 안내합니다.
 - [전자결제 신청](https://developers.portone.io/opi/ko/console/guide/reg): 결제대행사 및 결제수단을 선택하고 전자결제를 신청하는 과정을 안내합니다.
-- [스마트 라우팅 - 콘솔 가이드](https://developers.portone.io/opi/ko/extra/smart-routing/console-guide): 멀티PG 환경을 클릭 한 번으로 쉽게 만들 수 있는 결제 트래픽 분산 자동화 서비스 입니다.
-- [스마트 라우팅 - 연동하기](https://developers.portone.io/opi/ko/extra/smart-routing/integration): 멀티PG 환경을 클릭 한 번으로 쉽게 만들 수 있는 결제 트래픽 분산 자동화 서비스 입니다.
-- [스마트 라우팅](https://developers.portone.io/opi/ko/extra/smart-routing/intro): 멀티PG 환경을 클릭 한 번으로 쉽게 만들 수 있는 결제 트래픽 분산 자동화 서비스 입니다.
 - [프로모션 생성하기](https://developers.portone.io/opi/ko/extra/promotion/console-guide): 프로모션 기간, 예산, 할인 조건 등 설정 방법을 안내합니다.
 - [프로모션 결제 연동하기](https://developers.portone.io/opi/ko/extra/promotion/integration): 프로모션 할인금액을 적용하는 방법을 안내합니다.
 - [프로모션](https://developers.portone.io/opi/ko/extra/promotion/intro): 카드 즉시 할인을 쉽게 운영 및 관리할 수 있는 서비스입니다.
-- [퀵 가이드](https://developers.portone.io/opi/ko/quick-guide/payment): 결제연동 퀵 가이드
+- [스마트 라우팅 - 콘솔 가이드](https://developers.portone.io/opi/ko/extra/smart-routing/console-guide): 멀티PG 환경을 클릭 한 번으로 쉽게 만들 수 있는 결제 트래픽 분산 자동화 서비스 입니다.
+- [스마트 라우팅 - 연동하기](https://developers.portone.io/opi/ko/extra/smart-routing/integration): 멀티PG 환경을 클릭 한 번으로 쉽게 만들 수 있는 결제 트래픽 분산 자동화 서비스 입니다.
+- [스마트 라우팅](https://developers.portone.io/opi/ko/extra/smart-routing/intro): 멀티PG 환경을 클릭 한 번으로 쉽게 만들 수 있는 결제 트래픽 분산 자동화 서비스 입니다.
 - [결제 연동 준비하기](https://developers.portone.io/opi/ko/integration/ready/readme): 포트원을 이용한 연동 개발이 처음이시라면 아래 안내 사항에 따라 진행하세요.
 - [가상계좌 입금통보 설정](https://developers.portone.io/opi/ko/integration/virtual-account/readme): 결제대행사별 입금통보 URL을 안내합니다.
+- [퀵 가이드](https://developers.portone.io/opi/ko/quick-guide/payment): 결제연동 퀵 가이드
 - [결제대행사별 연동 정보 확인하기 - KG이니시스](https://developers.portone.io/opi/ko/integration/ready/_components/integration-guide/inicis)
 - [결제대행사별 연동 정보 확인하기 - 토스페이먼츠 (신모듈)](https://developers.portone.io/opi/ko/integration/ready/_components/integration-guide/tosspayments)
 
@@ -101,13 +120,13 @@
 
 - [용어 사전](https://developers.portone.io/platform/ko/guides/dictionary)
 - [서비스 프로세스](https://developers.portone.io/platform/ko/guides/process)
+- [파트너 정산 자동화 서비스 가이드](https://developers.portone.io/platform/ko/readme)
 - [고객사 예시](https://developers.portone.io/platform/ko/usages/client)
 - [계약 예시](https://developers.portone.io/platform/ko/usages/contract)
 - [할인 예시](https://developers.portone.io/platform/ko/usages/discount)
 - [추가 수수료 예시](https://developers.portone.io/platform/ko/usages/fee)
 - [주문정산 예시](https://developers.portone.io/platform/ko/usages/order)
 - [파트너 예시](https://developers.portone.io/platform/ko/usages/partner)
-- [파트너 정산 자동화 서비스 가이드](https://developers.portone.io/platform/ko/readme)
 
 ### 릴리스 노트
 
@@ -146,6 +165,16 @@
 - [API / SDK 2024-09-27](https://developers.portone.io/release-notes/api-sdk/2024-09-27)
 - [API / SDK 2024-12-19](https://developers.portone.io/release-notes/api-sdk/2024-12-19)
 - [API / SDK 2025-01-15](https://developers.portone.io/release-notes/api-sdk/2025-01-15)
+- [관리자콘솔 2023-04-24](https://developers.portone.io/release-notes/console/2023-04-24)
+- [관리자콘솔 2023-05-08](https://developers.portone.io/release-notes/console/2023-05-08)
+- [관리자콘솔 2023-05-22](https://developers.portone.io/release-notes/console/2023-05-22)
+- [관리자콘솔 2023-07-05](https://developers.portone.io/release-notes/console/2023-07-05)
+- [관리자콘솔 2023-07-07](https://developers.portone.io/release-notes/console/2023-07-07)
+- [관리자콘솔 2023-07-17](https://developers.portone.io/release-notes/console/2023-07-17)
+- [관리자콘솔 2023-08-23](https://developers.portone.io/release-notes/console/2023-08-23)
+- [관리자콘솔 2023-09-12](https://developers.portone.io/release-notes/console/2023-09-12)
+- [관리자콘솔 2023-12-27](https://developers.portone.io/release-notes/console/2023-12-27)
+- [관리자콘솔 2024-09-05](https://developers.portone.io/release-notes/console/2024-09-05)
 - [파트너 정산 자동화 2023-08-31](https://developers.portone.io/release-notes/platform/2023-08-31)
 - [파트너 정산 자동화 2023-11-08](https://developers.portone.io/release-notes/platform/2023-11-08)
 - [파트너 정산 자동화 2023-11-14](https://developers.portone.io/release-notes/platform/2023-11-14)
@@ -166,526 +195,17 @@
 - [파트너 정산 자동화 2025-02-10](https://developers.portone.io/release-notes/platform/2025-02-10)
 - [파트너 정산 자동화 2025-02-13](https://developers.portone.io/release-notes/platform/2025-02-13)
 - [파트너 정산 자동화 2025-03-04](https://developers.portone.io/release-notes/platform/2025-03-04)
-- [관리자콘솔 2023-04-24](https://developers.portone.io/release-notes/console/2023-04-24)
-- [관리자콘솔 2023-05-08](https://developers.portone.io/release-notes/console/2023-05-08)
-- [관리자콘솔 2023-05-22](https://developers.portone.io/release-notes/console/2023-05-22)
-- [관리자콘솔 2023-07-05](https://developers.portone.io/release-notes/console/2023-07-05)
-- [관리자콘솔 2023-07-07](https://developers.portone.io/release-notes/console/2023-07-07)
-- [관리자콘솔 2023-07-17](https://developers.portone.io/release-notes/console/2023-07-17)
-- [관리자콘솔 2023-08-23](https://developers.portone.io/release-notes/console/2023-08-23)
-- [관리자콘솔 2023-09-12](https://developers.portone.io/release-notes/console/2023-09-12)
-- [관리자콘솔 2023-12-27](https://developers.portone.io/release-notes/console/2023-12-27)
-- [관리자콘솔 2024-09-05](https://developers.portone.io/release-notes/console/2024-09-05)
+- [파트너 정산 자동화 2025-03-17](https://developers.portone.io/release-notes/platform/2025-03-17)
 
 ### 블로그
 
 - [포트원 V2 이야기 - OOM 이슈 탐방기](https://developers.portone.io/blog/posts/2024-02/v2-oom): ZIO를 사용하면서 발생했던 OOM 이슈에 대해 원인을 분석합니다.
 - [포트원 V2 이야기 - 웹훅 재시도, 어디까지 고도화해 보셨나요?](https://developers.portone.io/blog/posts/2024-02/v2-webhook): 웹훅의 중요성과 한계점을 살펴보고 포트원 V2에서 웹훅 시스템을 고도화한 이야기를 소개합니다.
 - [포트원 V2 이야기 - Scala와 ZIO로 안정적인 결제 시스템 만들기](https://developers.portone.io/blog/posts/2024-02/v2-zio): 안정적인 결제 시스템을 만들기 위해 기술적으로 의사결정한 내용에 대해 소개합니다.
-- [포트원 V2 이야기 - Event Sourcing으로 결제 시스템 만들기 (기본편)](https://developers.portone.io/blog/posts/2024-07/v2-event-sourcing-basic): 포트원 V2 시스템의 근간을 이루고 있는 기술 중 하나인 Event Sourcing에 대해 소개합니다.
+- [포트원이 여러 PG사의 인터페이스를 연동하는 방법](https://developers.portone.io/blog/posts/2024-03/tgs): 여러 PG사의 인터페이스를 효율적으로 연동하기 위한 결정사항들을 소개합니다.
 - [Data Evolution: The Shift from AWS DMS to GCP Datastream](https://developers.portone.io/blog/posts/2024-04/gcp-datastream): Gives an overview of the PortOne Data Infrastructure and the migration story from AWS DMS to GCP Datastream.
 - [Solid로 간결하게 고성능 웹앱 만들기](https://developers.portone.io/blog/posts/2024-04/solid): 포트원에서 사용하는 프론트엔드 웹 프레임워크 중 하나인 Solid에 대해 소개하고, 포트원 내에서의 활용 사례를 다룹니다.
-- [포트원이 여러 PG사의 인터페이스를 연동하는 방법](https://developers.portone.io/blog/posts/2024-03/tgs): 여러 PG사의 인터페이스를 효율적으로 연동하기 위한 결정사항들을 소개합니다.
-
-
-# https://developers.portone.io/opi/ko/extra/confirm-process/readme-v2
-
----
-title: 컨펌 프로세스
-description: 결제승인의 주체를 고객사 서버로 가져갈수 있는 서비스 입니다.
-targetVersions:
-  - v2
-versionVariants:
-  v1: /opi/ko/extra/confirm-process/readme-v1
----
-
-**해당 서비스는 결제 승인 직전에 고객사에서 결제 의사를 최종적으로 확인하는 서비스입니다.**
-
-(관련 이미지 첨부)
-
-## 컨펌 프로세스란?
-
-- 결제 승인 직전 고객사에 결제 승인 요청 의사를 마지막으로 확인하는 서비스 입니다.
-
-- 기본적인 결제 플로우상 고객사에서 결제 요청 후 별도의 확인 없이 결제 승인되는 구조입니다.
-  하지만 해당 서비스 이용 시 고객사가 최종적으로 결제 승인 요청의 주체가 될 수 있습니다.
-
-(이미지 첨부: 컨펌 프로세스 플로우)
-
-<div class="hint" data-style="info">
-
-**해당 서비스가 반드시 필요한 고객사는 아래와 같은 경우입니다.**
-
-(관련 이미지 첨부)
-
-- 판매 제품의 재고가 소량으로 재고파악이 필요한 경우 (한정된 상품 또는 고가 제품 판매시)
-- 선착순 방식으로 결제가 진행되어야 하는 경우
-- 결제 승인 전 마지막으로 고객사에서 처리하고 싶은 로직이 존재하는 경우
-
-</div>
-
-## 컨펌 프로세스 사용 케이스
-
-### 판매 제품의 재고가 소량으로 재고파악이 필요한 경우
-
-고객사의 판매 제품이 재고가 충분하지 않을 경우 구매자가 동시에 구매를 요청할 수 있기 때문에
-결제 직전 고객사 서버에서 재고 수량을 한 번 더 확인하고 수량이 있는 경우에만 결제가 승인되도록
-처리할 수 있습니다.\
-만약 컨펌 프로세스를 설정하지 않는 경우 실제 결제 승인 후 재고가 부족하여 제품 발송이 늦어지거나
-주문을 취소 처리가 발생하여 고객의 결제 경험 만족도를 저하시키는 상황이 반복될 수 있습니다.
-
-![](</gitbook-assets/ko/image (217).png>)
-
-### 선착순 방식으로 결제가 진행되어야 하는 경우
-
-마라톤 참가 신청, 인기 콘서트 티켓팅 또는 OO Day 같은 특별 할인 행사처럼 특정 시간에 매우 많은 고객이
-동시에 결제 요청을 하는 경우 한정된 수량을 초과하지 않도록 고객사에서 최종적으로 수량을 확인한 후
-결제가 승인되도록 처리할 수 있습니다.
-
-![](</gitbook-assets/ko/image (164).png>)
-
-### 결제 승인 전 마지막으로 고객사에서 처리하고 싶은 로직이 존재하는 경우
-
-이밖에 다른 사유로 고객사에서 결제 승인 완료 직전 자체 업무 처리가 필요한 경우(결제 직전 고객사 서버 헬스체크 등) 해당 서비스를 이용할 수 있습니다.
-
-![](</gitbook-assets/ko/image (262).png>)
-
-<div class="hint" data-style="info">
-
-**컨펌 프로세스 신청 방법**
-
-기술지원 메일(<support@portone.io>)로 **상점 아이디**를 기재하여 메일 발송
-
-포트원 콘솔 로그인 후 \[결제연동] 페이지 상단에서 상점 아이디를 확인 하실 수 있습니다.
-
-</div>
-
-<div class="hint" data-style="warning">
-
-엑심베이의 경우 컨펌 프로세스 사용이 불가능합니다.
-
-</div>
-
-## 컨펌 프로세스 이용 방법
-
-컨펌 프로세스 이용시 고객사는 `PortOne.requestPayment()`, `PortOne.loadPaymentUI()` 함수 호출 시
-
-`confirmUrl` 파라미터를 정의하고 해당 파라미터에 고객사 EndPoint URL을 설정합니다.
-
-```json title="JavaScript SDK"
-{
-  //...중략
-  "confirmUrl": "고객사 EndPoint URL 기재"
-  //...중략
-}
-```
-
-## Payload Schema
-
-콘솔에서 설정하신 웹훅 버전에 따라 상이한 형식의 payload가 송신됩니다.
-
-### `2024-01-01` 사용 시
-
-- `payment_id`: 고객사에서 채번한 결제건의 고유 주문 번호입니다.
-- `tx_id`: 포트원에서 채번한 결제건의 고유 거래 번호입니다.
-- `total_amount`: 결제건의 결제 요청 금액입니다.
-
-**컨펌 웹훅 payload 예시:**
-
-```json
-{
-  "payment_id": "example-payment-id",
-  "tx_id": "55451513-9763-4a7a-bb43-78a4c65be843",
-  "total_amount": 1000
-}
-```
-
-### `2024-04-25` 사용 시
-
-- `type`: 웹훅을 트리거한 이벤트의 타입입니다. 컨펌 웹훅의 경우 `type`의 값은 `Transaction.Confirm`으로 고정됩니다.
-
-- `timestamp`: 해당 웹훅을 트리거한 이벤트의 발생 시각(RFC 3339 형식)입니다.
-
-- `data`: 웹훅을 트리거한 이벤트의 실제 세부 내용입니다. 컨펌 웹훅의 경우 해당 필드의 상세 스키마는 아래와 같습니다.
-  - `paymentId`: 고객사에서 채번한 결제건의 고유 주문 번호입니다.
-  - `transactionId`: 포트원에서 채번한 결제건의 고유 거래 번호입니다.
-  - `totalAmount`: 결제건의 결제 요청 금액입니다.
-
-**컨펌 웹훅 payload 예시:**
-
-```json
-{
-  "type": "Transaction.Confirm",
-  "timestamp": "2024-04-25T10:00:00.000Z",
-  "data": {
-    "paymentId": "example-payment-id",
-    "transactionId": "55451513-9763-4a7a-bb43-78a4c65be843",
-    "totalAmount": 1000
-  }
-}
-```
-
-## SDK 실패 응답에 특정 에러 메세지 포함시키기
-
-고객사는 재고 부족 등의 이유로 포트원이 보낸 컨펌 프로세스 요청에 실패 응답을 보낼 수 있고, 이러한 실패 사유를 서비스를 이용하는 고객들에게 보여주고 싶을 수 있습니다.
-이러한 경우 Response Body에 `errorMessage` 라는 필드를 포함하여 에러 응답을 보내주시면 해당 메세지를 포함해 SDK 응답으로 리턴해드리고 있습니다.
-
-**Error Response Body 예시:**
-
-```json
-{
-  "errorMessage": "재고가 모두 소진되었습니다. 관리자에게 문의하세요."
-}
-```
-
-## 컨펌 웹훅 요청 검증하기
-
-컨펌 프로세스 웹훅 또한 다른 일반적인 웹훅과 동일한 방식으로 검사하시는 것을 권장합니다.
-[웹훅 연동하기 - 웹훅 요청 검증하기](https://developers.portone.io/opi/ko/integration/webhook/readme-v2#웹훅-메시지-검증하기)를 참고하셔서 컨펌 웹훅을 신뢰할 수 있는지를 검사하세요.
-
-
-# https://developers.portone.io/opi/ko/console/guide/smartrouting
-
----
-title: 스마트 라우팅
-description: 포트원 스마트 라우팅을 사용하기 위한 그룹 설정을 관리할 수 있습니다. 관리자콘솔 내 스마트 라우팅 그룹 설정 방법을 안내합니다.
-targetVersions:
-  - v2
----
-
-<div class="hint" data-style="info">
-
-스마트 라우팅 기능이 궁금하다면 [스마트 라우팅 기능 소개](https://developers.portone.io/opi/ko/extra/smart-routing/intro)를 확인해 보세요!
-
-스마트 라우팅은 **V2 결제 서비스 이용시**에만 사용이 가능합니다.
-
-</div>
-
-## 스마트 라우팅 그룹 생성하기
-
-스마트 라우팅을 사용하기 위해서는 포트원 관리자콘솔 내 \[연동 관리] - \[스마트 라우팅]에서 그룹 설정이 필요합니다.
-
-1. (관련 이미지 첨부)
-
-   포트원 콘솔 내에서 \[연동 관리] - \[스마트 라우팅]을 클릭하세요.
-
-2. \[스마트 라우팅 그룹 생성하기]를 클릭하세요.
-
-3. (관련 이미지 첨부)
-
-   연동할 환경을 선택하세요. \[실연동], \[테스트] 선택 시 해당 환경으로 등록된 채널만 표시됩니다.
-   스마트 라우팅 그룹 내에 동일한 환경의 채널끼리만 설정이 가능합니다.
-
-4. \[그룹 이름]은 필수로 입력해야 합니다. 그룹 이름은 별칭과 같이 사용되므로 그룹의 특징을
-   잘 나타내는 이름으로 작성하시길 권장드립니다.
-
-5. \[그룹 아이디]의 경우 그룹 생성 후 자동으로 채번되며, 결제 요청 시 사용됩니다.
-
-6. \[+채널 추가]를 클릭하세요.
-
-7. (관련 이미지 첨부)
-
-   그룹에 사용할 채널을 선택하세요. [지원 PG사 확인 바로가기](https://developers.portone.io/opi/ko/extra/smart-routing/intro?v=v2)
-
-8. 채널은 최소 1개부터 최대 10개까지 설정이 가능합니다.
-
-9. 채널 추가 후 **비활성화** 하는 경우 해당 채널은 입력된 비율과 상관없이 라우팅 시 배제됩니다.
-
-10. 비율의 합은 100% 미만이거나 초과될 수 없습니다. 총 합이 100%여야만 합니다.
-
-11. 채널 설정을 완료하였으면 \[저장] 버튼을 클릭하여 그룹을 생성합니다.
-
-## 스마트 라우팅 그룹 수정하기
-
-1. (관련 이미지 첨부)
-
-   생성된 그룹은 위와 같이 표시됩니다.
-
-2. 그룹 설정을 변경하고 싶으신 경우 해당 그룹을 클릭하세요.
-
-3. (관련 이미지 첨부)
-
-   이미 생성된 그룹 내에서 결제대행사를 추가 혹은 삭제할 수 있습니다.
-
-4. 결제대행사별 비율을 변경할 수 있습니다.
-
-5. \[예약 시간 설정]을 체크한 후 시간을 설정하면 변경 시점을 예약할 수 있습니다. 예약 시간은 시간 단위로
-   선택 가능하며, 미래 시점으로만 예약할 수 있습니다.
-
-6. 즉시 적용을 원하시는 경우 \[예약 시간 설정]을 체크하지 않은 채 \[저장]을 클릭하세요.
-
-## 스마트 라우팅 그룹 삭제하기
-
-1. 수정 모드에서 \[그룹 삭제]를 클릭하세요.
-
-2. 삭제된 그룹은 복원되지 않으며, 결제 요청 파라미터 변경 없이 그룹을 삭제하는 경우 결제가
-   원활하지 않을 수 있습니다. 삭제 시 신중히 진행하시길 권장드립니다.
-
-
-# https://developers.portone.io/opi/ko/extra/identity-verification/readme-v2
-
----
-title: 본인인증 연동하기
-description: 포트원을 이용하여 간편하게 본인인증을 연동하는 방법을 확인합니다.
-targetVersions:
-  - v2
-versionVariants:
-  v1: /opi/ko/extra/identity-verification/v1/readme
----
-
-**본인인증 서비스**란 인증 절차를 거쳐 본인 여부와 입력한 정보의 정확성을 확인하여 주는 서비스입니다. 현재 존재하는 대표적인 본인인증 서비스는 아래와 같습니다.
-
-- 다날 휴대폰 본인인증
-- KG이니시스 통합인증
-
-## 휴대폰 본인인증
-
-휴대폰 본인인증 서비스란 본인 명의로 개통한 휴대폰을 이용하여 최소한의 개인정보를 입력하는 인증 절차를 거쳐 본인 여부와 입력한 정보의 정확성을 확인하여 주는 서비스입니다.
-
-고객은 웹사이트에 가입, 결제, 또는 성인 인증 등을 위해 본인인증을 시행합니다. 본인인증은 모바일
-기기에 설치된 본인인증 전용 앱을 이용하거나 사용자 본인 정보(이름, 생년월일, 휴대폰번호)를 인증요청
-페이지에 입력한 후 문자로 온 인증번호를 기입하는 방식으로 이루어집니다.
-
-(이미지 첨부: 휴대폰 본인인증 화면 예시)
-
-포트원을 이용한 휴대폰 본인인증의 Flow는 JavaScript SDK를 이용하여 휴대폰 본인인증을 완료하고 고객사 서버에서 포트원 REST API를 이용하여 **인증완료정보를 획득**하는 방법으로 진행됩니다.
-
-<div class="hint" data-style="info">
-
-**API를 이용한 본인인증**
-
-수기결제처럼 API 호출만으로 진행하는 본인인증도 지원하고 있습니다. REST API 문서의 해당 부분 설명을 참고해 주세요.
-
-</div>
-
-## 통합인증
-
-통합인증 서비스란 카카오톡 인증서, 네이버 인증서 등의 민간 인증서를 통한 인증 절차를 거쳐 본인 여부와 입력한 정보의
-정확성을 확인하여 주는 서비스입니다. 통합인증은 **KG이니시스**를 통해 제공되며 민간 인증서를
-이용하거나 사용자 본인이 가입된 간편인증을 통해 인증요청을 보내고 간편인증 페이지에서 인증처리를
-하는 방식으로 이루어집니다.
-
-> **이용가능 수단 : 네이버 / PASS / 페이코 / TOSS / 금융인증서 / 카카오 / 신한 / KB모바일 / 삼성패스**
-
-(이미지 첨부: 휴대폰 본인인증 화면 예시)
-
-## SDK를 사용한 본인인증
-
-포트원을 이용한 본인인증의 Flow는 휴대폰 본인인증, 통합인증 모두 JavaScript SDK를 이용하여 본인인증을 완료하고 고객사 서버에서 포트원 REST API를 이용하여 **인증완료정보를 획득**하는 방법으로 진행됩니다.
-
-### 1. 포트원 SDK 설치
-
-포트원 SDK를 설치하는 방법은 [인증 결제 연동하기](https://developers.portone.io/opi/ko/integration/start/v2/checkout) 문서를 참고하세요.
-
-### 2. 본인인증 요청하기
-
-SDK의 `PortOne.requestIdentityVerification()` 함수를 호출하여 본인인증창을 열 수 있습니다.
-
-먼저, 관리자 콘솔의 결제 연동 페이지에서 **Store ID**와 사용할 채널의 **채널 키**를 확인해 주세요.
-
-그리고 아래와 같이 파라미터들을 설정하여 호출합니다.
-
-```ts
-PortOne.requestIdentityVerification({
-  // 고객사 storeId로 변경해주세요.
-  storeId: "store-4ff4af41-85e3-4559-8eb8-0d08a2c6ceec",
-  identityVerificationId: `identity-verification-${crypto.randomUUID()}`,
-  // 연동 정보 메뉴의 채널 관리 탭에서 확인 가능합니다.
-  channelKey: "channel-key-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-});
-```
-
-**identityVerificationId**는 본인인증 건을 구분하는 문자열로, 본인인증 요청 및 조회에 필요합니다.
-같은 identityVerificationId에 대해 여러 번의 본인인증 시도가 가능하나, 최종적으로 인증에 성공하는
-것은 단 한 번만 가능합니다.
-
-### 3. 본인인증 완료 처리 (브라우저)
-
-`PortOne.requestIdentityVerification()` 함수의 반환값을 통해 본인인증 요청의 결과를 확인합니다.
-
-`code`가 있으면 본인인증 과정에서 오류가 발생한 것이므로 적절히 처리하여야 합니다.
-
-본인인증이 성공한 경우 identityVerificationId를 서버에 전달하여 서버측 본인인증 완료 처리를 하도록 합니다.
-
-```ts
-const response = await PortOne.requestIdentityVerification({
-  /* 객체 생략 */
-});
-// 프로세스가 제대로 완료되지 않은 경우 에러 코드가 존재합니다
-if (response.code !== undefined) {
-  return alert(response.message);
-}
-
-const verificationResult = await fetch("{서버의 인증 정보를 받는 endpoint}", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    identityVerificationId,
-  }),
-});
-```
-
-결과값에 들어 있는 필드는 다음과 같습니다.
-
-| 필드명                    | 설명        | 비고   |
-| ---------------------- | --------- | ---- |
-| identityVerificationId | 본인인증 건 ID | 공통   |
-| code                   | 오류 코드     | 실패 시 |
-| message                | 오류 문구     | 실패 시 |
-
-#### 3-1. redirect 방식의 경우
-
-모바일 환경에서의 본인인증은 대부분 redirect 방식으로 이루어집니다. redirect 방식에서는 브라우저가
-본인인증창으로 리다이렉트되었다가, 인증창에서의 작업이 끝나면 지정한 `redirectUrl`로 다시
-리다이렉트됩니다. 이 경우에는 함수 호출 결과를 이용할 수 없고, 인증 성공 여부 등은
-[쿼리 문자열](http://en.wikipedia.org/wiki/Query_string)로 전달받게 됩니다.
-
-```ts
-PortOne.requestIdentityVerification({
-  /* 파라미터 생략 */
-  redirectUrl: `${BASE_URL}/identity-verification-redirect`,
-});
-```
-
-쿼리 문자열로 전달되는 내용은 다음과 같습니다.
-
-| 키                      | 설명      | 비고   |
-| ---------------------- | ------- | ---- |
-| identityVerificationId | 결제 건 ID | 공통   |
-| code                   | 오류 코드   | 실패 시 |
-| message                | 오류 문구   | 실패 시 |
-
-예를 들어 identityVerificationId가 `identity-verification-39ecfa97`, redirectUrl이
-`https://example.com/identity-verification-redirect`인 경우, 결제 성공 시에
-`https://example.com/identity-verification-redirect?identityVerificationId=identity-verification-39ecfa97`로
-리다이렉트됩니다.
-
-### 4. 인증 완료 처리 (서버)
-
-본인인증 완료 이후 획득한 `identityVerificationId`를 이용하여 고객 인증정보를 조회할 수 있습니다.
-
-```ts title="server-side"
-app.use(bodyParser.json());
-
-// "/identity-verifications"에 대한 POST 요청을 처리하는 controller
-app.post("/identity-verifications", async (req, res) => {
-  // request의 body에서 identityVerificationId 추출
-  const { identityVerificationId } = req.body;
-  try {
-    // 포트원 본인인증 내역 단건조회 API 호출
-    const verificationResponse = await fetch({
-      url: `https://api.portone.io/identity-verifications/${encodeURIComponent(identityVerificationId)}`,
-      headers: { Authorization: `PortOne ${PORTONE_API_SECRET}` },
-    });
-    if (!verificationResponse.ok)
-      throw new Error(
-        `verificationResponse: ${await verificationResponse.json()}`,
-      );
-    const identityVerification = await verificationResponse.json();
-    if (identityVerification.status !== "VERIFIED") {
-      // 인증 실패
-    }
-  } catch (e) {
-    console.error(e);
-  }
-});
-```
-
-#### 인증 정보 활용하기
-
-조회한 인증 정보에서 다음의 고객 정보를 추출하는 서비스 코드 예제입니다.
-아래 파라미터들은 모두 본인인증 단건 조회의 결과가 인증 완료 상태일 때 (status = `VERIFIED`) 제공되는 `verifiedCustomer` 필드 내에 존재합니다.
-
-- `ci`: 연계 정보(Connecting Information).
-  - 사람마다 고유하고 서비스별로 달라지지 않기 때문에, 서비스 간 연계에 사용할 수 있음.
-  - 다날의 경우 항상 제공.
-  - KG이니시스의 경우 카카오를 제외한 인증 업체에서 항상 제공. 카카오의 경우 별도 서류 작성이 필요합니다.
-
-- `di`: 중복 가입 확인 정보(Duplication Information).
-  - 해당 서비스 안에서만 사람마다 고유함.
-  - 이용자의 중복 가입을 확인하는 데 사용할 수 있음.
-  - 다날의 경우 항상 제공.
-  - KG이니시스의 경우 제공되지 않음.
-
-- `name`: 이름
-
-- `gender`: 성별
-
-- `birthDate`: 생년월일 (YYYY-MM-DD)
-
-- `operator`: 통신사
-  - 다날의 경우 하기 안내를 따라 추가 계약 후 제공.
-  - KG이니시스의 경우 미제공.
-
-- `phoneNumber`: 숫자로만 구성된 전화번호
-  - 다날의 경우 하기 안내를 따라 추가 계약 후 제공.
-  - KG이니시스의 경우 항상 제공.
-
-- `isForeigner`: 외국인 여부.
-  - 다날의 경우 하기 안내를 따라 추가 계약 후 제공.
-  - KG이니시스의 경우 항상 제공.
-
-<div class="hint" data-style="info">
-
-다날의 외국인(**`isForeigner`**) 여부는 **API 방식** 본인인증에 한하여 **개인정보 제공동의 약관을 사이트에 게재**한 후 **<cs@portone.io>로 신청**하여 취득할 수 있습니다. 해당 부분은 당사 계약 이후 다날PG사로 요청 후 승인이 완료되면 이용 가능한 점 참고해 주시기 바랍니다.
-
-**메일 요청 신청 양식**
-
-- 상호명 :
-- 사업자번호 :
-- 본인인증용 다날 상점ID(CPID) :
-- 업종 :
-- 필요사유 :
-- 개인정보취급방침 url : 앱서비스로 URL형태로 전달이 어려우신 경우 '개인정보취급방침' 경로를 캡쳐하여 전달주시기 바랍니다.
-
-**참고 - 포트원 이용 고객사의 개인정보처리방침 적용 예시**
-
-- `(주)마플 : https://marpple.shop/kr/@/privacy`
-- `(주)브레이브모바일 / 숨고 : https://soomgo.com/terms/privacy`
-- `(주)마켓잇 : https://static.marketit.asia/static/privacy-terms.pdf`
-
-</div>
-
-<div class="hint" data-style="info">
-
-KG이니시스의 성별, 외국인 여부는 인증 업체에 따라 사용자가 직접 입력할 수 있고, 정보를 검증하지 않습니다.
-
-</div>
-
-```ts title="Express"
-// "/identity-verifications"에 대한 POST 요청을 처리하는 controller
-app.post("/identity-verifications", async (req, res) => {
-  // request의 body에서 identity_verification_id 추출
-  const { identityVerificationId } = req.body;
-  try {
-    // 인증 토큰 발급 받기
-    // identityVerificationId로 인증 정보 조회
-
-    const { ci, di, name, gender, birthDate } =
-      identityVerification.verifiedCustomer;
-    // 연령 제한 로직 예시
-    if (new Date(birthDate).getFullYear() <= 1999) {
-      // 연령 만족
-    } else {
-      // 연령 미달
-    }
-    // 1인 1계정 허용 로직 예시
-    if (di == null) {
-      // PG사에서 di를 미제공
-    } else {
-      // DB에서 di 조회 후 가입여부 검사
-      const user = await Users.find({ di });
-      if (user == null) {
-        // 신규 고객
-      } else {
-        // 이미 가입된 고객
-      }
-    }
-  } catch (e) {
-    console.error(e);
-  }
-});
-```
+- [포트원 V2 이야기 - Event Sourcing으로 결제 시스템 만들기 (기본편)](https://developers.portone.io/blog/posts/2024-07/v2-event-sourcing-basic): 포트원 V2 시스템의 근간을 이루고 있는 기술 중 하나인 Event Sourcing에 대해 소개합니다.
 
 
 # https://developers.portone.io/sdk/ko/v2-mobile-sdk/readme
@@ -990,8 +510,22 @@ versionVariants:
   v1: /sdk/ko/v1-sdk/javascript-sdk/payrq
 ---
 
+<div class="hint" data-style="info">
+
+아래의 경우 정책상 빌링키 발급과 초회 결제가 함께 일어나야 하므로 이용하는 함수입니다.
+
+- KG이니시스 휴대폰 결제
+- 웰컴페이먼츠 휴대폰 결제
+
+위에 해당하지 않는 경우에는 `requestIssueBillingKey` 함수로 빌링키를 발급한 뒤, 별도로 결제를 호출해 주시기 바랍니다.
+
+</div>
+
 ## `requestIssueBillingKeyAndPay` 요청 데이터 정의
 
+- request: IssueBillingKeyAndPayRequest
+
+  [definition link](https://developers.portone.io/schema/browser-sdk.yml#/resources/request/IssueBillingKeyAndPayRequest)
 
 
 # https://developers.portone.io/sdk/ko/v2-sdk/billing-key-and-pay-response
@@ -1007,6 +541,9 @@ versionVariants:
 
 ## `requestIssueBillingKeyAndPay` 응답 데이터 정의
 
+- response: IssueBillingKeyAndPayResponse
+
+  [definition link](https://developers.portone.io/schema/browser-sdk.yml#/resources/response/IssueBillingKeyAndPayResponse)
 
 
 # https://developers.portone.io/sdk/ko/v2-sdk/billing-key-request
@@ -1020,8 +557,20 @@ versionVariants:
   v1: /sdk/ko/v1-sdk/javascript-sdk/payrq
 ---
 
+<div class="hint" data-style="info">
+
+아래의 경우에는 정책상 빌링키 발급과 초회 결제가 함께 일어나야 하므로 `requestIssueBillingKeyAndPay` 함수를 이용해 주세요.
+
+- KG이니시스 휴대폰 결제
+- 웰컴페이먼츠 휴대폰 결제
+
+</div>
+
 ## `requestIssueBillingKey` 요청 데이터 정의
 
+- request: IssueBillingKeyRequest
+
+  [definition link](https://developers.portone.io/schema/browser-sdk.yml#/resources/request/IssueBillingKeyRequest)
 
 
 # https://developers.portone.io/sdk/ko/v2-sdk/billing-key-response
@@ -1037,6 +586,9 @@ versionVariants:
 
 ## `requestIssueBillingKey` 응답 데이터 정의
 
+- response: IssueBillingKeyResponse
+
+  [definition link](https://developers.portone.io/schema/browser-sdk.yml#/resources/response/IssueBillingKeyResponse)
 
 
 # https://developers.portone.io/sdk/ko/v2-sdk/changelog
@@ -1048,6 +600,7 @@ targetVersions:
   - v2
 ---
 
+[SDK Changelog](https://developers.portone.io/sdk/ko/v2-sdk/changelog)
 
 
 # https://developers.portone.io/sdk/ko/v2-sdk/identity-verification-request
@@ -1063,6 +616,9 @@ versionVariants:
 
 ## `requestIdentityVerification` 요청 데이터 정의
 
+- request: IdentityVerificationRequest
+
+  [definition link](https://developers.portone.io/schema/browser-sdk.yml#/resources/request/IdentityVerificationRequest)
 
 
 # https://developers.portone.io/sdk/ko/v2-sdk/identity-verification-response
@@ -1078,6 +634,9 @@ versionVariants:
 
 ## `requestIdentityVerification` 응답 데이터 정의
 
+- response: IdentityVerificationResponse
+
+  [definition link](https://developers.portone.io/schema/browser-sdk.yml#/resources/response/IdentityVerificationResponse)
 
 
 # https://developers.portone.io/sdk/ko/v2-sdk/load-issue-billing-key-ui-request
@@ -1093,6 +652,9 @@ versionVariants:
 
 ## `loadIssueBillingKeyUI` 요청 데이터 정의
 
+- request: LoadIssueBillingKeyUIRequest
+
+  [definition link](https://developers.portone.io/schema/browser-sdk.yml#/resources/request/LoadIssueBillingKeyUIRequest)
 
 
 # https://developers.portone.io/sdk/ko/v2-sdk/load-issue-billing-key-ui-response
@@ -1110,10 +672,15 @@ versionVariants:
 
 ### onIssueBillingKeySuccess
 
+- response: IssueBillingKeyResponse
 
+  [definition link](https://developers.portone.io/schema/browser-sdk.yml#/resources/response/IssueBillingKeyResponse)
 
 ### onIssueBillingKeyFail
 
+- response: IssueBillingKeyError
+
+  [definition link](https://developers.portone.io/schema/browser-sdk.yml#/resources/exception/IssueBillingKeyError)
 
 
 # https://developers.portone.io/sdk/ko/v2-sdk/load-payment-ui-request
@@ -1129,6 +696,9 @@ versionVariants:
 
 ## `loadPaymentUI` 요청 데이터 정의
 
+- request: LoadPaymentUIRequest
+
+  [definition link](https://developers.portone.io/schema/browser-sdk.yml#/resources/request/LoadPaymentUIRequest)
 
 
 # https://developers.portone.io/sdk/ko/v2-sdk/load-payment-ui-response
@@ -1146,10 +716,15 @@ versionVariants:
 
 ### onPaymentSuccess
 
+- response: PaymentResponse
 
+  [definition link](https://developers.portone.io/schema/browser-sdk.yml#/resources/response/PaymentResponse)
 
 ### onPaymentFail
 
+- response: PaymentError
+
+  [definition link](https://developers.portone.io/schema/browser-sdk.yml#/resources/exception/PaymentError)
 
 
 # https://developers.portone.io/sdk/ko/v2-sdk/payment-request
@@ -1165,6 +740,9 @@ versionVariants:
 
 ## `requestPayment` 요청 데이터 정의
 
+- request: PaymentRequest
+
+  [definition link](https://developers.portone.io/schema/browser-sdk.yml#/resources/request/PaymentRequest)
 
 
 # https://developers.portone.io/sdk/ko/v2-sdk/payment-response
@@ -1180,6 +758,9 @@ versionVariants:
 
 ## `requestPayment` 응답 데이터 정의
 
+- response: PaymentResponse
+
+  [definition link](https://developers.portone.io/schema/browser-sdk.yml#/resources/response/PaymentResponse)
 
 
 # https://developers.portone.io/sdk/ko/v2-sdk/readme
@@ -1193,6 +774,70 @@ versionVariants:
   v1: /sdk/ko/v1-sdk/javascript-sdk/readme
 ---
 
+포트원 V2 SDK는 npm 레지스트리와 CDN을 통해 배포되고 있습니다.
+
+- npm, yarn 등 패키지 매니저를 사용한다면 의존
+  대상으로 [@portone/browser-sdk](https://www.npmjs.com/package/@portone/browser-sdk)를 추가하세요.
+
+- 패키지 매니저를 사용하지 않는다면 `<script>` 요소를 이용하여 CDN에서 SDK를 직접 불러오세요.
+
+- CDN에서 ESM 모듈 형태로도 SDK를 제공하고 있습니다.
+
+<div class="tabs-container">
+
+<div class="tabs-content" data-title="패키지 의존 대상으로 추가">
+
+사용하는 패키지 매니저에 알맞은 명령어를 실행하세요.
+
+```shell
+npm i @portone/browser-sdk
+```
+
+```shell
+yarn add @portone/browser-sdk
+```
+
+```shell
+pnpm add @portone/browser-sdk
+```
+
+패키지 매니저로 SDK를 불러온 경우 `PortOne` 객체를 import해서 사용합니다.
+
+```javascript
+import * as PortOne from "@portone/browser-sdk/v2";
+```
+
+</div>
+
+<div class="tabs-content" data-title="<script> 요소로 추가">
+
+```html
+<script src="https://cdn.portone.io/v2/browser-sdk.js"></script>
+```
+
+`<script>` 요소로 SDK를 불러온 경우 전역 객체 `window`에 `PortOne` 객체가 추가됩니다.
+
+</div>
+
+<div class="tabs-content" data-title="ESM 모듈로 추가">
+
+ESM 모듈을 사용하는 경우 URL에서 `PortOne` 객체를 직접 import할 수 있습니다.
+
+```javascript
+import * as PortOne from "https://cdn.portone.io/v2/browser-sdk.esm.js";
+```
+
+</div>
+
+</div>
+
+<div class="hint" data-style="info">
+
+**타입스크립트 지원**
+
+포트원 V2 SDK는 타입스크립트 선언 파일(`.d.ts`)의 형식으로 타입 정보를 제공하고 있습니다. npm 레지스트리를 이용하는 경우 각종 개발 환경에서 별도 설정 없이 사용 가능합니다.
+
+</div>
 
 
 # https://developers.portone.io/sdk/ko/v2-sdk/update-load-issue-billing-key-ui-request
@@ -1208,6 +853,9 @@ versionVariants:
 
 ## `updateLoadIssueBillingKeyUIRequest` 요청 데이터 정의
 
+- request: LoadIssueBillingKeyUIRequest
+
+  [definition link](https://developers.portone.io/schema/browser-sdk.yml#/resources/request/LoadIssueBillingKeyUIRequest)
 
 
 # https://developers.portone.io/sdk/ko/v2-sdk/update-load-payment-ui-request
@@ -1223,6 +871,509 @@ versionVariants:
 
 ## `updateLoadPaymentUIRequest` 요청 데이터 정의
 
+- request: LoadPaymentUIRequest
+
+  [definition link](https://developers.portone.io/schema/browser-sdk.yml#/resources/request/LoadPaymentUIRequest)
+
+
+# https://developers.portone.io/opi/ko/console/guide/smartrouting
+
+---
+title: 스마트 라우팅
+description: 포트원 스마트 라우팅을 사용하기 위한 그룹 설정을 관리할 수 있습니다. 관리자콘솔 내 스마트 라우팅 그룹 설정 방법을 안내합니다.
+targetVersions:
+  - v2
+---
+
+<div class="hint" data-style="info">
+
+스마트 라우팅 기능이 궁금하다면 [스마트 라우팅 기능 소개](https://developers.portone.io/opi/ko/extra/smart-routing/intro)를 확인해 보세요!
+
+스마트 라우팅은 **V2 결제 서비스 이용시**에만 사용이 가능합니다.
+
+</div>
+
+## 스마트 라우팅 그룹 생성하기
+
+스마트 라우팅을 사용하기 위해서는 포트원 관리자콘솔 내 \[연동 관리] - \[스마트 라우팅]에서 그룹 설정이 필요합니다.
+
+1. (관련 이미지 첨부)
+
+   포트원 콘솔 내에서 \[연동 관리] - \[스마트 라우팅]을 클릭하세요.
+
+2. \[스마트 라우팅 그룹 생성하기]를 클릭하세요.
+
+3. (관련 이미지 첨부)
+
+   연동할 환경을 선택하세요. \[실연동], \[테스트] 선택 시 해당 환경으로 등록된 채널만 표시됩니다.
+   스마트 라우팅 그룹 내에 동일한 환경의 채널끼리만 설정이 가능합니다.
+
+4. \[그룹 이름]은 필수로 입력해야 합니다. 그룹 이름은 별칭과 같이 사용되므로 그룹의 특징을
+   잘 나타내는 이름으로 작성하시길 권장드립니다.
+
+5. \[그룹 아이디]의 경우 그룹 생성 후 자동으로 채번되며, 결제 요청 시 사용됩니다.
+
+6. \[+채널 추가]를 클릭하세요.
+
+7. (관련 이미지 첨부)
+
+   그룹에 사용할 채널을 선택하세요. [지원 PG사 확인 바로가기](https://developers.portone.io/opi/ko/extra/smart-routing/intro?v=v2)
+
+8. 채널은 최소 1개부터 최대 10개까지 설정이 가능합니다.
+
+9. 채널 추가 후 **비활성화** 하는 경우 해당 채널은 입력된 비율과 상관없이 라우팅 시 배제됩니다.
+
+10. 비율의 합은 100% 미만이거나 초과될 수 없습니다. 총 합이 100%여야만 합니다.
+
+11. 채널 설정을 완료하였으면 \[저장] 버튼을 클릭하여 그룹을 생성합니다.
+
+## 스마트 라우팅 그룹 수정하기
+
+1. (관련 이미지 첨부)
+
+   생성된 그룹은 위와 같이 표시됩니다.
+
+2. 그룹 설정을 변경하고 싶으신 경우 해당 그룹을 클릭하세요.
+
+3. (관련 이미지 첨부)
+
+   이미 생성된 그룹 내에서 결제대행사를 추가 혹은 삭제할 수 있습니다.
+
+4. 결제대행사별 비율을 변경할 수 있습니다.
+
+5. \[예약 시간 설정]을 체크한 후 시간을 설정하면 변경 시점을 예약할 수 있습니다. 예약 시간은 시간 단위로
+   선택 가능하며, 미래 시점으로만 예약할 수 있습니다.
+
+6. 즉시 적용을 원하시는 경우 \[예약 시간 설정]을 체크하지 않은 채 \[저장]을 클릭하세요.
+
+## 스마트 라우팅 그룹 삭제하기
+
+1. 수정 모드에서 \[그룹 삭제]를 클릭하세요.
+
+2. 삭제된 그룹은 복원되지 않으며, 결제 요청 파라미터 변경 없이 그룹을 삭제하는 경우 결제가
+   원활하지 않을 수 있습니다. 삭제 시 신중히 진행하시길 권장드립니다.
+
+
+# https://developers.portone.io/opi/ko/extra/confirm-process/readme-v2
+
+---
+title: 컨펌 프로세스
+description: 결제승인의 주체를 고객사 서버로 가져갈수 있는 서비스 입니다.
+targetVersions:
+  - v2
+versionVariants:
+  v1: /opi/ko/extra/confirm-process/readme-v1
+---
+
+**해당 서비스는 결제 승인 직전에 고객사에서 결제 의사를 최종적으로 확인하는 서비스입니다.**
+
+(관련 이미지 첨부)
+
+## 컨펌 프로세스란?
+
+- 결제 승인 직전 고객사에 결제 승인 요청 의사를 마지막으로 확인하는 서비스 입니다.
+
+- 기본적인 결제 플로우상 고객사에서 결제 요청 후 별도의 확인 없이 결제 승인되는 구조입니다.
+  하지만 해당 서비스 이용 시 고객사가 최종적으로 결제 승인 요청의 주체가 될 수 있습니다.
+
+(이미지 첨부: 컨펌 프로세스 플로우)
+
+<div class="hint" data-style="info">
+
+**해당 서비스가 반드시 필요한 고객사는 아래와 같은 경우입니다.**
+
+(관련 이미지 첨부)
+
+- 판매 제품의 재고가 소량으로 재고파악이 필요한 경우 (한정된 상품 또는 고가 제품 판매시)
+- 선착순 방식으로 결제가 진행되어야 하는 경우
+- 결제 승인 전 마지막으로 고객사에서 처리하고 싶은 로직이 존재하는 경우
+
+</div>
+
+## 컨펌 프로세스 사용 케이스
+
+### 판매 제품의 재고가 소량으로 재고파악이 필요한 경우
+
+고객사의 판매 제품이 재고가 충분하지 않을 경우 구매자가 동시에 구매를 요청할 수 있기 때문에
+결제 직전 고객사 서버에서 재고 수량을 한 번 더 확인하고 수량이 있는 경우에만 결제가 승인되도록
+처리할 수 있습니다.\
+만약 컨펌 프로세스를 설정하지 않는 경우 실제 결제 승인 후 재고가 부족하여 제품 발송이 늦어지거나
+주문을 취소 처리가 발생하여 고객의 결제 경험 만족도를 저하시키는 상황이 반복될 수 있습니다.
+
+![](</gitbook-assets/ko/image (217).png>)
+
+### 선착순 방식으로 결제가 진행되어야 하는 경우
+
+마라톤 참가 신청, 인기 콘서트 티켓팅 또는 OO Day 같은 특별 할인 행사처럼 특정 시간에 매우 많은 고객이
+동시에 결제 요청을 하는 경우 한정된 수량을 초과하지 않도록 고객사에서 최종적으로 수량을 확인한 후
+결제가 승인되도록 처리할 수 있습니다.
+
+![](</gitbook-assets/ko/image (164).png>)
+
+### 결제 승인 전 마지막으로 고객사에서 처리하고 싶은 로직이 존재하는 경우
+
+이밖에 다른 사유로 고객사에서 결제 승인 완료 직전 자체 업무 처리가 필요한 경우(결제 직전 고객사 서버 헬스체크 등) 해당 서비스를 이용할 수 있습니다.
+
+![](</gitbook-assets/ko/image (262).png>)
+
+<div class="hint" data-style="info">
+
+**컨펌 프로세스 신청 방법**
+
+기술지원 메일(<support@portone.io>)로 **상점 아이디**를 기재하여 메일 발송
+
+포트원 콘솔 로그인 후 \[결제연동] 페이지 상단에서 상점 아이디를 확인 하실 수 있습니다.
+
+</div>
+
+<div class="hint" data-style="warning">
+
+엑심베이의 경우 컨펌 프로세스 사용이 불가능합니다.
+
+</div>
+
+## 컨펌 프로세스 이용 방법
+
+컨펌 프로세스 이용시 고객사는 `PortOne.requestPayment()`, `PortOne.loadPaymentUI()` 함수 호출 시
+
+`confirmUrl` 파라미터를 정의하고 해당 파라미터에 고객사 EndPoint URL을 설정합니다.
+
+```json title="JavaScript SDK"
+{
+  //...중략
+  "confirmUrl": "고객사 EndPoint URL 기재"
+  //...중략
+}
+```
+
+## Payload Schema
+
+콘솔에서 설정하신 웹훅 버전에 따라 상이한 형식의 payload가 송신됩니다.
+
+### `2024-01-01` 사용 시
+
+- `payment_id`: 고객사에서 채번한 결제건의 고유 주문 번호입니다.
+- `tx_id`: 포트원에서 채번한 결제건의 고유 거래 번호입니다.
+- `total_amount`: 결제건의 결제 요청 금액입니다.
+
+**컨펌 웹훅 payload 예시:**
+
+```json
+{
+  "payment_id": "example-payment-id",
+  "tx_id": "55451513-9763-4a7a-bb43-78a4c65be843",
+  "total_amount": 1000
+}
+```
+
+### `2024-04-25` 사용 시
+
+- `type`: 웹훅을 트리거한 이벤트의 타입입니다. 컨펌 웹훅의 경우 `type`의 값은 `Transaction.Confirm`으로 고정됩니다.
+
+- `timestamp`: 해당 웹훅을 트리거한 이벤트의 발생 시각(RFC 3339 형식)입니다.
+
+- `data`: 웹훅을 트리거한 이벤트의 실제 세부 내용입니다. 컨펌 웹훅의 경우 해당 필드의 상세 스키마는 아래와 같습니다.
+  - `paymentId`: 고객사에서 채번한 결제건의 고유 주문 번호입니다.
+  - `transactionId`: 포트원에서 채번한 결제건의 고유 거래 번호입니다.
+  - `totalAmount`: 결제건의 결제 요청 금액입니다.
+
+**컨펌 웹훅 payload 예시:**
+
+```json
+{
+  "type": "Transaction.Confirm",
+  "timestamp": "2024-04-25T10:00:00.000Z",
+  "data": {
+    "paymentId": "example-payment-id",
+    "transactionId": "55451513-9763-4a7a-bb43-78a4c65be843",
+    "totalAmount": 1000
+  }
+}
+```
+
+## SDK 실패 응답에 특정 에러 메세지 포함시키기
+
+고객사는 재고 부족 등의 이유로 포트원이 보낸 컨펌 프로세스 요청에 실패 응답을 보낼 수 있고, 이러한 실패 사유를 서비스를 이용하는 고객들에게 보여주고 싶을 수 있습니다.
+이러한 경우 Response Body에 `errorMessage` 라는 필드를 포함하여 에러 응답을 보내주시면 해당 메세지를 포함해 SDK 응답으로 리턴해드리고 있습니다.
+
+**Error Response Body 예시:**
+
+```json
+{
+  "errorMessage": "재고가 모두 소진되었습니다. 관리자에게 문의하세요."
+}
+```
+
+## 컨펌 웹훅 요청 검증하기
+
+컨펌 프로세스 웹훅 또한 다른 일반적인 웹훅과 동일한 방식으로 검사하시는 것을 권장합니다.
+[웹훅 연동하기 - 웹훅 요청 검증하기](https://developers.portone.io/opi/ko/integration/webhook/readme-v2#웹훅-메시지-검증하기)를 참고하셔서 컨펌 웹훅을 신뢰할 수 있는지를 검사하세요.
+
+
+# https://developers.portone.io/opi/ko/extra/identity-verification/readme-v2
+
+---
+title: 본인인증 연동하기
+description: 포트원을 이용하여 간편하게 본인인증을 연동하는 방법을 확인합니다.
+targetVersions:
+  - v2
+versionVariants:
+  v1: /opi/ko/extra/identity-verification/v1/readme
+---
+
+**본인인증 서비스**란 인증 절차를 거쳐 본인 여부와 입력한 정보의 정확성을 확인하여 주는 서비스입니다. 현재 존재하는 대표적인 본인인증 서비스는 아래와 같습니다.
+
+- 다날 휴대폰 본인인증
+- KG이니시스 통합인증
+
+## 휴대폰 본인인증
+
+휴대폰 본인인증 서비스란 본인 명의로 개통한 휴대폰을 이용하여 최소한의 개인정보를 입력하는 인증 절차를 거쳐 본인 여부와 입력한 정보의 정확성을 확인하여 주는 서비스입니다.
+
+고객은 웹사이트에 가입, 결제, 또는 성인 인증 등을 위해 본인인증을 시행합니다. 본인인증은 모바일
+기기에 설치된 본인인증 전용 앱을 이용하거나 사용자 본인 정보(이름, 생년월일, 휴대폰번호)를 인증요청
+페이지에 입력한 후 문자로 온 인증번호를 기입하는 방식으로 이루어집니다.
+
+(이미지 첨부: 휴대폰 본인인증 화면 예시)
+
+포트원을 이용한 휴대폰 본인인증의 Flow는 JavaScript SDK를 이용하여 휴대폰 본인인증을 완료하고 고객사 서버에서 포트원 REST API를 이용하여 **인증완료정보를 획득**하는 방법으로 진행됩니다.
+
+<div class="hint" data-style="info">
+
+**API를 이용한 본인인증**
+
+수기결제처럼 API 호출만으로 진행하는 본인인증도 지원하고 있습니다. REST API 문서의 해당 부분 설명을 참고해 주세요.
+
+</div>
+
+## 통합인증
+
+통합인증 서비스란 카카오톡 인증서, 네이버 인증서 등의 민간 인증서를 통한 인증 절차를 거쳐 본인 여부와 입력한 정보의
+정확성을 확인하여 주는 서비스입니다. 통합인증은 **KG이니시스**를 통해 제공되며 민간 인증서를
+이용하거나 사용자 본인이 가입된 간편인증을 통해 인증요청을 보내고 간편인증 페이지에서 인증처리를
+하는 방식으로 이루어집니다.
+
+> **이용가능 수단 : 네이버 / PASS / 페이코 / TOSS / 금융인증서 / 카카오 / 신한 / KB모바일 / 삼성패스**
+
+(이미지 첨부: 휴대폰 본인인증 화면 예시)
+
+## SDK를 사용한 본인인증
+
+포트원을 이용한 본인인증의 Flow는 휴대폰 본인인증, 통합인증 모두 JavaScript SDK를 이용하여 본인인증을 완료하고 고객사 서버에서 포트원 REST API를 이용하여 **인증완료정보를 획득**하는 방법으로 진행됩니다.
+
+### 1. 포트원 SDK 설치
+
+포트원 SDK를 설치하는 방법은 [인증 결제 연동하기](https://developers.portone.io/opi/ko/integration/start/v2/checkout) 문서를 참고하세요.
+
+### 2. 본인인증 요청하기
+
+SDK의 `PortOne.requestIdentityVerification()` 함수를 호출하여 본인인증창을 열 수 있습니다.
+
+먼저, 관리자 콘솔의 결제 연동 페이지에서 **Store ID**와 사용할 채널의 **채널 키**를 확인해 주세요.
+
+그리고 아래와 같이 파라미터들을 설정하여 호출합니다.
+
+```ts
+PortOne.requestIdentityVerification({
+  // 고객사 storeId로 변경해주세요.
+  storeId: "store-4ff4af41-85e3-4559-8eb8-0d08a2c6ceec",
+  identityVerificationId: `identity-verification-${crypto.randomUUID()}`,
+  // 연동 정보 메뉴의 채널 관리 탭에서 확인 가능합니다.
+  channelKey: "channel-key-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+});
+```
+
+**identityVerificationId**는 본인인증 건을 구분하는 문자열로, 본인인증 요청 및 조회에 필요합니다.
+같은 identityVerificationId에 대해 여러 번의 본인인증 시도가 가능하나, 최종적으로 인증에 성공하는
+것은 단 한 번만 가능합니다.
+
+### 3. 본인인증 완료 처리 (브라우저)
+
+`PortOne.requestIdentityVerification()` 함수의 반환값을 통해 본인인증 요청의 결과를 확인합니다.
+
+`code`가 있으면 본인인증 과정에서 오류가 발생한 것이므로 적절히 처리하여야 합니다.
+
+본인인증이 성공한 경우 identityVerificationId를 서버에 전달하여 서버측 본인인증 완료 처리를 하도록 합니다.
+
+```ts
+const response = await PortOne.requestIdentityVerification({
+  /* 객체 생략 */
+});
+// 프로세스가 제대로 완료되지 않은 경우 에러 코드가 존재합니다
+if (response.code !== undefined) {
+  return alert(response.message);
+}
+
+const verificationResult = await fetch("{서버의 인증 정보를 받는 endpoint}", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    identityVerificationId,
+  }),
+});
+```
+
+결과값에 들어 있는 필드는 다음과 같습니다.
+
+|필드명                |설명          |비고   |
+|----------------------|--------------|-------|
+|identityVerificationId|본인인증 건 ID|공통   |
+|code                  |오류 코드     |실패 시|
+|message               |오류 문구     |실패 시|
+
+#### 3-1. redirect 방식의 경우
+
+모바일 환경에서의 본인인증은 대부분 redirect 방식으로 이루어집니다. redirect 방식에서는 브라우저가
+본인인증창으로 리다이렉트되었다가, 인증창에서의 작업이 끝나면 지정한 `redirectUrl`로 다시
+리다이렉트됩니다. 이 경우에는 함수 호출 결과를 이용할 수 없고, 인증 성공 여부 등은
+[쿼리 문자열](http://en.wikipedia.org/wiki/Query_string)로 전달받게 됩니다.
+
+```ts
+PortOne.requestIdentityVerification({
+  /* 파라미터 생략 */
+  redirectUrl: `${BASE_URL}/identity-verification-redirect`,
+});
+```
+
+쿼리 문자열로 전달되는 내용은 다음과 같습니다.
+
+|키                    |설명      |비고   |
+|----------------------|----------|-------|
+|identityVerificationId|결제 건 ID|공통   |
+|code                  |오류 코드 |실패 시|
+|message               |오류 문구 |실패 시|
+
+예를 들어 identityVerificationId가 `identity-verification-39ecfa97`, redirectUrl이
+`https://example.com/identity-verification-redirect`인 경우, 결제 성공 시에
+`https://example.com/identity-verification-redirect?identityVerificationId=identity-verification-39ecfa97`로
+리다이렉트됩니다.
+
+### 4. 인증 완료 처리 (서버)
+
+본인인증 완료 이후 획득한 `identityVerificationId`를 이용하여 고객 인증정보를 조회할 수 있습니다.
+
+```ts title="server-side"
+app.use(bodyParser.json());
+
+// "/identity-verifications"에 대한 POST 요청을 처리하는 controller
+app.post("/identity-verifications", async (req, res) => {
+  // request의 body에서 identityVerificationId 추출
+  const { identityVerificationId } = req.body;
+  try {
+    // 포트원 본인인증 내역 단건조회 API 호출
+    const verificationResponse = await fetch({
+      url: `https://api.portone.io/identity-verifications/${encodeURIComponent(identityVerificationId)}`,
+      headers: { Authorization: `PortOne ${PORTONE_API_SECRET}` },
+    });
+    if (!verificationResponse.ok)
+      throw new Error(
+        `verificationResponse: ${await verificationResponse.json()}`,
+      );
+    const identityVerification = await verificationResponse.json();
+    if (identityVerification.status !== "VERIFIED") {
+      // 인증 실패
+    }
+  } catch (e) {
+    console.error(e);
+  }
+});
+```
+
+#### 인증 정보 활용하기
+
+조회한 인증 정보에서 다음의 고객 정보를 추출하는 서비스 코드 예제입니다.
+아래 파라미터들은 모두 본인인증 단건 조회의 결과가 인증 완료 상태일 때 (status = `VERIFIED`) 제공되는 `verifiedCustomer` 필드 내에 존재합니다.
+
+- `ci`: 연계 정보(Connecting Information).
+  - 사람마다 고유하고 서비스별로 달라지지 않기 때문에, 서비스 간 연계에 사용할 수 있음.
+  - 다날의 경우 항상 제공.
+  - KG이니시스의 경우 카카오를 제외한 인증 업체에서 항상 제공. 카카오의 경우 별도 서류 작성이 필요합니다.
+
+- `di`: 중복 가입 확인 정보(Duplication Information).
+  - 해당 서비스 안에서만 사람마다 고유함.
+  - 이용자의 중복 가입을 확인하는 데 사용할 수 있음.
+  - 다날의 경우 항상 제공.
+  - KG이니시스의 경우 제공되지 않음.
+
+- `name`: 이름
+
+- `gender`: 성별
+
+- `birthDate`: 생년월일 (YYYY-MM-DD)
+
+- `operator`: 통신사
+  - 다날의 경우 하기 안내를 따라 추가 계약 후 제공.
+  - KG이니시스의 경우 미제공.
+
+- `phoneNumber`: 숫자로만 구성된 전화번호
+  - 다날의 경우 하기 안내를 따라 추가 계약 후 제공.
+  - KG이니시스의 경우 항상 제공.
+
+- `isForeigner`: 외국인 여부.
+  - 다날의 경우 하기 안내를 따라 추가 계약 후 제공.
+  - KG이니시스의 경우 항상 제공.
+
+<div class="hint" data-style="info">
+
+다날의 외국인(**`isForeigner`**) 여부는 **API 방식** 본인인증에 한하여 **개인정보 제공동의 약관을 사이트에 게재**한 후 **<cs@portone.io>로 신청**하여 취득할 수 있습니다. 해당 부분은 당사 계약 이후 다날PG사로 요청 후 승인이 완료되면 이용 가능한 점 참고해 주시기 바랍니다.
+
+**메일 요청 신청 양식**
+
+- 상호명 :
+- 사업자번호 :
+- 본인인증용 다날 상점ID(CPID) :
+- 업종 :
+- 필요사유 :
+- 개인정보취급방침 url : 앱서비스로 URL형태로 전달이 어려우신 경우 '개인정보취급방침' 경로를 캡쳐하여 전달주시기 바랍니다.
+
+**참고 - 포트원 이용 고객사의 개인정보처리방침 적용 예시**
+
+- `(주)마플 : https://marpple.shop/kr/@/privacy`
+- `(주)브레이브모바일 / 숨고 : https://soomgo.com/terms/privacy`
+- `(주)마켓잇 : https://static.marketit.asia/static/privacy-terms.pdf`
+
+</div>
+
+<div class="hint" data-style="info">
+
+KG이니시스의 성별, 외국인 여부는 인증 업체에 따라 사용자가 직접 입력할 수 있고, 정보를 검증하지 않습니다.
+
+</div>
+
+```ts title="Express"
+// "/identity-verifications"에 대한 POST 요청을 처리하는 controller
+app.post("/identity-verifications", async (req, res) => {
+  // request의 body에서 identity_verification_id 추출
+  const { identityVerificationId } = req.body;
+  try {
+    // 인증 토큰 발급 받기
+    // identityVerificationId로 인증 정보 조회
+
+    const { ci, di, name, gender, birthDate } =
+      identityVerification.verifiedCustomer;
+    // 연령 제한 로직 예시
+    if (new Date(birthDate).getFullYear() <= 1999) {
+      // 연령 만족
+    } else {
+      // 연령 미달
+    }
+    // 1인 1계정 허용 로직 예시
+    if (di == null) {
+      // PG사에서 di를 미제공
+    } else {
+      // DB에서 di 조회 후 가입여부 검사
+      const user = await Users.find({ di });
+      if (user == null) {
+        // 신규 고객
+      } else {
+        // 이미 가입된 고객
+      }
+    }
+  } catch (e) {
+    console.error(e);
+  }
+});
+```
 
 
 # https://developers.portone.io/opi/ko/integration/webhook/readme-v2
@@ -2411,10 +2562,12 @@ versionVariants:
   - 간편결제 : `EASY_PAY`
 
 - **결제창 빌링키 발급**
+  카드 결제는 `requestIssueBillingKey` 함수, 휴대폰 결제는 `requestIssueBillingKeyAndPay` 함수를 이용합니다. `requestIssueBillingKeyAndPay` 함수를 이용할 때에는 빌링키 발급과 동시에 결제가 일어납니다.
 
   `billingKeyMethod` 파라미터를 결제 수단에 따라 아래와 같이 설정해야 합니다.
 
   - 카드: `CARD`
+  - 휴대폰: `MOBILE`
 
 - **API 수기(키인) 결제**
 
@@ -2582,117 +2735,121 @@ function requestPayment() {
       }
       ```
 
-    **PC용 파라미터**
+    - InicisV2BypassOnPc
 
-    - logo\_url?: string
+      **PC용 파라미터**
 
-      결제창에 삽입할 메인 로고 url
+      - logo\_url?: string
 
-      결제창 중앙 상단에 표시됩니다.
-      이미지 권장 사이즈는 89\*18 입니다.
+        결제창에 삽입할 메인 로고 url
 
-    - logo\_2nd?: string
+        결제창 중앙 상단에 표시됩니다.
+        이미지 권장 사이즈는 89\*18 입니다.
 
-      결제창에 삽입할 서브 로고 url
+      - logo\_2nd?: string
 
-      결제창 우측 상단에 표시됩니다.
-      이미지 권장 사이즈는 64\*13 입니다.
+        결제창에 삽입할 서브 로고 url
 
-    - parentemail?: string
+        결제창 우측 상단에 표시됩니다.
+        이미지 권장 사이즈는 64\*13 입니다.
 
-      보호자 이메일 주소
+      - parentemail?: string
 
-      14세 미만 고객의 경우 필수 입력입니다.
-      "@", "." 외의 특수문자는 입력 불가합니다.
+        보호자 이메일 주소
 
-    - Ini\_SSGPAY\_MDN?: string
+        14세 미만 고객의 경우 필수 입력입니다.
+        "@", "." 외의 특수문자는 입력 불가합니다.
 
-      SSGPAY 결제요청 시 PUSH 전송 휴대폰번호
+      - Ini\_SSGPAY\_MDN?: string
 
-      `-` 없이 숫자만 허용합니다.
+        SSGPAY 결제요청 시 PUSH 전송 휴대폰번호
 
-    - acceptmethod?: string\[]
+        `-` 없이 숫자만 허용합니다.
 
-      추가 옵션
+      - acceptmethod?: string\[]
 
-      아래 string 중 원하는 옵션들을 골라 array 형태로 입력합니다.
+        추가 옵션
 
-      - SKIN(${string})?: string
+        아래 string 중 원하는 옵션들을 골라 array 형태로 입력합니다.
 
-        결제창 색상
+        - SKIN(${string})?: string
 
-        `string` 부분에는 `#`으로 시작하는 여섯자리 Hex 값을 입력합니다. (ex. `SKIN(#C1272C)`)
+          결제창 색상
 
-      - below1000?: string
+          `string` 부분에는 `#`으로 시작하는 여섯자리 Hex 값을 입력합니다. (ex. `SKIN(#C1272C)`)
 
-        (카드결제 & 간편결제 시) 1000원 미만 결제 허용 옵션
+        - below1000?: string
 
-      - ocb?: string
+          (카드결제 & 간편결제 시) 1000원 미만 결제 허용 옵션
 
-        (카드결제 시) 카드 메인화면에 OCB 적립을 위한 카드번호 창 표시옵션 (별도 계약시 이용 가능)
+        - ocb?: string
 
-      - paypopup?: string
+          (카드결제 시) 카드 메인화면에 OCB 적립을 위한 카드번호 창 표시옵션 (별도 계약시 이용 가능)
 
-        (카드결제 시) 안심클릭계열 신용카드 POPUP 형태 표시옵션
+        - paypopup?: string
 
-      - hidebar?: string
+          (카드결제 시) 안심클릭계열 신용카드 POPUP 형태 표시옵션
 
-        (카드결제 시) 프로그레스바 미노출 옵션
+        - hidebar?: string
 
-      - noeasypay?: string
+          (카드결제 시) 프로그레스바 미노출 옵션
 
-        (카드결제 시) 간편결제 미노출 옵션
+        - noeasypay?: string
 
-      - slimquota(${string})?: string
+          (카드결제 시) 간편결제 미노출 옵션
 
-        부분 무이자 설정 (별도 계약시 이용 가능)
+        - slimquota(${string})?: string
 
-        `string` 부분에는 `코드-개월:개월^코드-개월:개월` 와 같은 형식으로 입력합니다. (ex. `slimquota(11-2:3^34-2:3)`)
-        카드사 코드는 [KG이니시스 통합 코드](https://manual.inicis.com/pay/code.html) 페이지에서
-        "결제요청 시 카드코드" 섹션을 참고하시기 바랍니다.
+          부분 무이자 설정 (별도 계약시 이용 가능)
 
-      - mallpoint(${string})?: string
+          `string` 부분에는 `코드-개월:개월^코드-개월:개월` 와 같은 형식으로 입력합니다. (ex. `slimquota(11-2:3^34-2:3)`)
+          카드사 코드는 [KG이니시스 통합 코드](https://manual.inicis.com/pay/code.html) 페이지에서
+          "결제요청 시 카드코드" 섹션을 참고하시기 바랍니다.
 
-        몰포인트 (별도 계약시 이용 가능)
+        - mallpoint(${string})?: string
 
-        `string` 부분에는 `카드코드:카드코드` 와 같은 형식으로 입력합니다. (ex. `mallpoint(11:34)`)
-        카드사 코드는 [KG이니시스 통합 코드](https://manual.inicis.com/pay/code.html) 페이지에서
-        "결제요청 시 카드코드" 섹션을 참고하시기 바랍니다.
+          몰포인트 (별도 계약시 이용 가능)
 
-    **모바일용 파라미터**
+          `string` 부분에는 `카드코드:카드코드` 와 같은 형식으로 입력합니다. (ex. `mallpoint(11:34)`)
+          카드사 코드는 [KG이니시스 통합 코드](https://manual.inicis.com/pay/code.html) 페이지에서
+          "결제요청 시 카드코드" 섹션을 참고하시기 바랍니다.
 
-    - P\_CARD\_OPTION?: string
+    - InicisV2BypassOnMobile
 
-      신용카드 우선선택 옵션
+      **모바일용 파라미터**
 
-      설정한 카드코드에 해당하는 카드가 선택된 채로 Display 됩니다.
-      `selcode=카드코드` 형식으로 입력합니다. (ex. `selcode=14`)
+      - P\_CARD\_OPTION?: string
 
-    - P\_MNAME?: string
+        신용카드 우선선택 옵션
 
-      가맹점 이름
+        설정한 카드코드에 해당하는 카드가 선택된 채로 Display 됩니다.
+        `selcode=카드코드` 형식으로 입력합니다. (ex. `selcode=14`)
 
-    - P\_RESERVED?: string\[]
+      - P\_MNAME?: string
 
-      추가 옵션
+        가맹점 이름
 
-      아래 string 중 원하는 옵션들을 골라 array 형태로 입력합니다.
+      - P\_RESERVED?: string\[]
 
-      - below1000=Y?: string
+        추가 옵션
 
-        (카드결제 & 간편결제 시) 1000원 미만 결제 허용 옵션
+        아래 string 중 원하는 옵션들을 골라 array 형태로 입력합니다.
 
-      - noeasypay=Y?: string
+        - below1000=Y?: string
 
-        (카드결제 시) 간편결제 미노출 옵션
+          (카드결제 & 간편결제 시) 1000원 미만 결제 허용 옵션
 
-      - global\_visa3d=Y?: string
+        - noeasypay=Y?: string
 
-        해외카드 노출 옵션
+          (카드결제 시) 간편결제 미노출 옵션
 
-      - apprun\_check=Y?: string
+        - global\_visa3d=Y?: string
 
-        (android의 경우) custom url scheme 대신 intent schema(intent://) 호출
+          해외카드 노출 옵션
+
+        - apprun\_check=Y?: string
+
+          (android의 경우) custom url scheme 대신 intent schema(intent://) 호출
 
 ### 유의사항
 
@@ -2898,9 +3055,9 @@ KG이니시스의 경우 아래 파라미터들을 지원하지 않으며, 해�
 
 </details>
 
-## SDK 빌링키 발급 요청하기
+## SDK 카드 빌링키 발급 요청하기
 
-빌링키 발급 요청 시에는 `requestIssueBillingKey` 함수를 호출해야 합니다.
+카드 빌링키 발급 요청 시에는 `requestIssueBillingKey` 함수를 호출해야 합니다.
 `channelKey` 파라미터에 결제 채널 연동 후 생성된 채널 키값을 지정하여 KG이니시스 채널 사용을 명시해주세요.
 
 KG이니시스 기준으로 작성한 예시 코드는 아래와 같습니다.
@@ -2932,6 +3089,8 @@ function requestIssueBillingKey() {
 </div>
 
 ### 주요 파라미터
+
+<br />
 
 - storeId: string
 
@@ -3012,11 +3171,13 @@ function requestIssueBillingKey() {
 
     **이니시스에서 제공하는 파라미터 모음**
 
-    **개인/법인카드 사용 선택 옵션**
+    - carduse?: 'percard' | 'cocard'
 
-    - 모바일에서만 동작하는 파라미터입니다.
-    - 'percard' 혹은 'cocard'를 입력할 수 있습니다.
-    - 'percard' 입력 시 개인 카드로만 결제를 진행할 수 있으며, 'cocard' 입력 시 법인 카드로만 결제를 진행 할 수 있습니다.
+      **개인/법인카드 사용 선택 옵션**
+
+      - 모바일에서만 동작하는 파라미터입니다.
+      - 'percard' 혹은 'cocard'를 입력할 수 있습니다.
+      - 'percard' 입력 시 개인 카드로만 결제를 진행할 수 있으며, 'cocard' 입력 시 법인 카드로만 결제를 진행 할 수 있습니다.
 
 ### 유의사항
 
@@ -3089,9 +3250,9 @@ KG이니시스 경우 카드사 다이렉트 호출을 통한 빌링키 발급�
 
 </details>
 
-## SDK 빌링키 발급 및 결제 요청하기
+## SDK 휴대폰 빌링키 발급 및 결제 요청하기
 
-빌링키 발급 및 결제 요청 시에는 `requestIssueBillingKeyAndPay` 함수를 호출해야 합니다.
+휴대폰 빌링키 발급 및 결제 요청 시에는 `requestIssueBillingKeyAndPay` 함수를 호출해야 합니다.
 `channelKey` 파라미터에 결제 채널 연동 후 생성된 채널 키값을 지정하여 KG이니시스 채널 사용을 명시해주세요.
 
 KG이니시스 기준으로 작성한 예시 코드는 아래와 같습니다.
@@ -3125,6 +3286,8 @@ function requestIssueBillingKeyAndPay() {
 </div>
 
 ### 주요 파라미터
+
+<br />
 
 - storeId: string
 
@@ -4013,7 +4176,11 @@ versionVariants:
   - `custom_message`: 결제 화면에 보여줄 사용자 정의 문구입니다.(카카오페이와 사전 협의 필요)
   - 해당 필드를 채워서 요청할 시 아래와 같이 카카오페이 결제창 내에서 문구가 띄워집니다.
 
-* `easyPay`
+[이미지 링크](https://developers.portone.io/gitbook-assets/ko/KakaoTalk_Photo_2023-04-10-17-39-36.jpeg)
+
+
+
+- `easyPay`
   - `easyPayProvider`
     - 카카오페이의 경우 PG사 자체가 간편결제사이므로 `easyPayProvider` 는 비워두어도 무방하며 다른 값을 채울 경우 무시됩니다.
 
@@ -4597,6 +4764,8 @@ function requestIssueBillingKey() {
 
 ### 주요 파라미터
 
+<br />
+
 - storeId: string
 
   **스토어 아이디**
@@ -4664,10 +4833,12 @@ function requestIssueBillingKey() {
 
     **KCP에서 제공하는 파라미터 모음**
 
-    **결제창에서 주민번호/사업자 번호 고정여부 설정**
+    - batch\_soc\_choice?: 'percard' | 'cocard'
 
-    - S: 주민번호만 표시
-    - C: 사업자번호만 표시
+      **결제창에서 주민번호/사업자 번호 고정여부 설정**
+
+      - S: 주민번호만 표시
+      - C: 사업자번호만 표시
 
 ### SDK 빌링키 발급 - 유의사항
 
@@ -7666,14 +7837,14 @@ const response = await axios({
 
 ### 카드 일반결제 유의사항
 
-| 기능                     | 사용 가능 여부                            |
-| ---------------------- | ----------------------------------- |
-| 상점 부담 무이자 할부           | 가능                                  |
-| 다이렉트 호출                | `단독 사용 불가능(고정 할부 개월수가 함께 전달 되어야 함)` |
-| 다이렉트 호출 + 고정 할부 개월수    | 가능                                  |
-| 다이렉트 호출 + 리스트 할부 개월수   | `불가능`                               |
-| 비 다이렉트 호출 + 고정 할부 개월수  | `PC만 가능`                            |
-| 비 다이렉트 호출 + 리스트 할부 개월수 | `PC만 가능`                            |
+|기능                                 |사용 가능 여부                                            |
+|-------------------------------------|----------------------------------------------------------|
+|상점 부담 무이자 할부                |가능                                                      |
+|다이렉트 호출                        |`단독 사용 불가능(고정 할부 개월수가 함께 전달 되어야 함)`|
+|다이렉트 호출 + 고정 할부 개월수     |가능                                                      |
+|다이렉트 호출 + 리스트 할부 개월수   |`불가능`                                                  |
+|비 다이렉트 호출 + 고정 할부 개월수  |`PC만 가능`                                               |
+|비 다이렉트 호출 + 리스트 할부 개월수|`PC만 가능`                                               |
 
 - 토스뱅크 카드의 경우 카드사 다이렉트 호출 불가능합니다.
   - 나이스페이먼츠의 경우 토스뱅크 카드 다이렉트 호출이 지원되지 않습니다.
@@ -7716,25 +7887,25 @@ const response = await axios({
 
 ### 카카오페이 일반결제 유의사항
 
-| 기능                          | 사용 가능 여부                                       |
-| --------------------------- | ---------------------------------------------- |
-| 상점 부담 무이자 할부                | `불가능`                                          |
-| 카드사 지정 다이렉트 호출              | BC, 국민, 삼성, 신한, 현대, 롯데, 씨티, NH농협 그리고 하나 카드만 가능 |
-| 카드사 지정 다이렉트 호출 + 고정 할부 개월수  | BC, 국민, 삼성, 신한, 현대, 롯데, 씨티, NH농협 그리고 하나 카드만 가능 |
-| 카드사 지정 다이렉트 호출 + 리스트 할부 개월수 | `불가능`                                          |
-| 비 다이렉트 호출 + 고정 할부 개월수       | `불가능`                                          |
-| 비 다이렉트 호출 + 리스트 할부 개월수      | `불가능`                                          |
+|기능                                          |사용 가능 여부                                                        |
+|----------------------------------------------|----------------------------------------------------------------------|
+|상점 부담 무이자 할부                         |`불가능`                                                              |
+|카드사 지정 다이렉트 호출                     |BC, 국민, 삼성, 신한, 현대, 롯데, 씨티, NH농협 그리고 하나 카드만 가능|
+|카드사 지정 다이렉트 호출 + 고정 할부 개월수  |BC, 국민, 삼성, 신한, 현대, 롯데, 씨티, NH농협 그리고 하나 카드만 가능|
+|카드사 지정 다이렉트 호출 + 리스트 할부 개월수|`불가능`                                                              |
+|비 다이렉트 호출 + 고정 할부 개월수           |`불가능`                                                              |
+|비 다이렉트 호출 + 리스트 할부 개월수         |`불가능`                                                              |
 
 ### 네이버페이 일반결제 유의사항
 
-| 기능                          | 사용 가능 여부                                       |
-| --------------------------- | ---------------------------------------------- |
-| 상점 부담 무이자 할부                | `불가능`                                          |
-| 카드사 지정 다이렉트 호출              | BC, 국민, 삼성, 신한, 현대, 롯데, 씨티, NH농협 그리고 하나 카드만 가능 |
-| 카드사 지정 다이렉트 호출 + 고정 할부 개월수  | BC, 국민, 삼성, 신한, 현대, 롯데, 씨티, NH농협 그리고 하나 카드만 가능 |
-| 카드사 지정 다이렉트 호출 + 리스트 할부 개월수 | 가능(단, `일시불이 항상 포함` 됨)                          |
-| 비 다이렉트 호출 + 고정 할부 개월수       | `불가능`                                          |
-| 비 다이렉트 호출 + 리스트 할부 개월수      | 가능(단, `일시불이 항상 포함` 됨)                          |
+|기능                                          |사용 가능 여부                                                        |
+|----------------------------------------------|----------------------------------------------------------------------|
+|상점 부담 무이자 할부                         |`불가능`                                                              |
+|카드사 지정 다이렉트 호출                     |BC, 국민, 삼성, 신한, 현대, 롯데, 씨티, NH농협 그리고 하나 카드만 가능|
+|카드사 지정 다이렉트 호출 + 고정 할부 개월수  |BC, 국민, 삼성, 신한, 현대, 롯데, 씨티, NH농협 그리고 하나 카드만 가능|
+|카드사 지정 다이렉트 호출 + 리스트 할부 개월수|가능(단, `일시불이 항상 포함` 됨)                                     |
+|비 다이렉트 호출 + 고정 할부 개월수           |`불가능`                                                              |
+|비 다이렉트 호출 + 리스트 할부 개월수         |가능(단, `일시불이 항상 포함` 됨)                                     |
 
 - 네이버페이 머니와 포인트 복합 결제 시, 포인트가 먼저 사용 됩니다.
   - 네이버페이 포인트 결제 시 네이버페이 머니, 포인트 또는 복합(머니와 포인트 함께 사용) 방식으로
@@ -7750,36 +7921,36 @@ const response = await axios({
 
 ### 페이코 일반결제 유의사항
 
-| 기능                          | 사용 가능 여부 |
-| --------------------------- | -------- |
-| 상점 부담 무이자 할부                | 가능       |
-| 카드사 지정 다이렉트 호출              | 가능       |
-| 카드사 지정 다이렉트 호출 + 고정 할부 개월수  | 가능       |
-| 카드사 지정 다이렉트 호출 + 리스트 할부 개월수 | 가능       |
-| 비 다이렉트 호출 + 고정 할부 개월수       | `불가능`    |
-| 비 다이렉트 호출 + 리스트 할부 개월수      | 가능       |
+|기능                                          |사용 가능 여부|
+|----------------------------------------------|--------------|
+|상점 부담 무이자 할부                         |가능          |
+|카드사 지정 다이렉트 호출                     |가능          |
+|카드사 지정 다이렉트 호출 + 고정 할부 개월수  |가능          |
+|카드사 지정 다이렉트 호출 + 리스트 할부 개월수|가능          |
+|비 다이렉트 호출 + 고정 할부 개월수           |`불가능`      |
+|비 다이렉트 호출 + 리스트 할부 개월수         |가능          |
 
 ### 삼성페이/11Pay(구.SKPay)/SSGPAY 일반결제 유의사항
 
-| 기능                          | 사용 가능 여부 |
-| --------------------------- | -------- |
-| 상점 부담 무이자 할부                | 가능       |
-| 카드사 지정 다이렉트 호출              | `불가능`    |
-| 카드사 지정 다이렉트 호출 + 고정 할부 개월수  | `불가능`    |
-| 카드사 지정 다이렉트 호출 + 리스트 할부 개월수 | `불가능`    |
-| 비 다이렉트 호출 + 고정 할부 개월수       | `불가능`    |
-| 비 다이렉트 호출 + 리스트 할부 개월수      | `불가능`    |
+|기능                                          |사용 가능 여부|
+|----------------------------------------------|--------------|
+|상점 부담 무이자 할부                         |가능          |
+|카드사 지정 다이렉트 호출                     |`불가능`      |
+|카드사 지정 다이렉트 호출 + 고정 할부 개월수  |`불가능`      |
+|카드사 지정 다이렉트 호출 + 리스트 할부 개월수|`불가능`      |
+|비 다이렉트 호출 + 고정 할부 개월수           |`불가능`      |
+|비 다이렉트 호출 + 리스트 할부 개월수         |`불가능`      |
 
 ### 애플페이/LPAY 일반결제 유의사항
 
-| 기능                          | 사용 가능 여부 |
-| --------------------------- | -------- |
-| 상점 부담 무이자 할부                | `불가능`    |
-| 카드사 지정 다이렉트 호출              | `불가능`    |
-| 카드사 지정 다이렉트 호출 + 고정 할부 개월수  | `불가능`    |
-| 카드사 지정 다이렉트 호출 + 리스트 할부 개월수 | `불가능`    |
-| 비 다이렉트 호출 + 고정 할부 개월수       | `불가능`    |
-| 비 다이렉트 호출 + 리스트 할부 개월수      | `불가능`    |
+|기능                                          |사용 가능 여부|
+|----------------------------------------------|--------------|
+|상점 부담 무이자 할부                         |`불가능`      |
+|카드사 지정 다이렉트 호출                     |`불가능`      |
+|카드사 지정 다이렉트 호출 + 고정 할부 개월수  |`불가능`      |
+|카드사 지정 다이렉트 호출 + 리스트 할부 개월수|`불가능`      |
+|비 다이렉트 호출 + 고정 할부 개월수           |`불가능`      |
+|비 다이렉트 호출 + 리스트 할부 개월수         |`불가능`      |
 
 ### SSG페이 계좌 결제 유의사항
 
@@ -7897,7 +8068,7 @@ versionVariants:
 
 <div class="hint" data-style="info">
 
-포트원 V2에서는 페이팔 일반결제의 경우 SPB(Smart Payment Button), 정기결제의 경우 RT(Reference Transaction) 방식만 지원합니다.&#x20;
+포트원 V2에서는 페이팔 일반결제의 경우 SPB(Smart Payment Button), 정기결제의 경우 RT(Reference Transaction) 방식만 지원합니다. <br />
 페이팔은 카드나 계좌 등의 결제수단을 지정하여 결제를 호출할 수 없습니다. (단, 페이팔 계정내에서 사용자가 등록한 결제수단에 따라 카드 혹은 계좌 등을 선택할 수 있습니다.)
 
 </div>
@@ -8117,7 +8288,11 @@ function updateLoadIssueBillingKeyUIRequest() {
 
 판매자 보호 정책에 관한 자세한 내용 및 협의가 필요한 경우 페이팔에 직접 문의해 주세요.
 
+<br />
+
 ---
+
+<br />
 
 고위험 산업에 해당하는 산업군들은 다음과 같습니다.
 
@@ -8214,19 +8389,19 @@ _({
 
 <summary>이벤트/티켓 판매 산업</summary>
 
-| Field Name            | Description                        | Format                                                          |
-| --------------------- | ---------------------------------- | --------------------------------------------------------------- |
-| sender\_account\_id   | 구매자 계정의 id                         |                                                                 |
-| sender\_first\_name   | 구매자의 이름                            |                                                                 |
-| sender\_last\_name    | 구매자의 성                             |                                                                 |
-| sender\_email         | 구매자의 이메일                           | E.123 - Email Address                                           |
-| sender\_phone         | 구매자의 휴대전화 번호                       | E.123 - Telephone Number (national notation)                    |
-| sender\_country\_code | 구매자의 국가 코드                         | ISO Alpha-2 Country Code                                        |
-| sender\_create\_date  | 구매자의 계정 생성일                        | ISO 8601 date format                                            |
-| dg\_delivery\_method  | 발신 방법                              | (`email`, `phone`, `venue_pickup`, `kiosk_pickup`) 중의 하나로 전송해야함 |
-| cd\_string\_one       | 여분 필드 1(행사일 등의 정보 입력, 중요도 낮음)      |                                                                 |
-| cd\_string\_two       | 여분 필드 2 (행사 카테고리 등의 정보 입력, 중요도 낮음) |                                                                 |
-| cd\_int\_one          | 티켓의 수(중요도 낮음)                      |                                                                 |
+|Field Name           |Description                                            |Format                                                                   |
+|---------------------|-------------------------------------------------------|-------------------------------------------------------------------------|
+|sender\_account\_id  |구매자 계정의 id                                       |                                                                         |
+|sender\_first\_name  |구매자의 이름                                          |                                                                         |
+|sender\_last\_name   |구매자의 성                                            |                                                                         |
+|sender\_email        |구매자의 이메일                                        |E.123 - Email Address                                                    |
+|sender\_phone        |구매자의 휴대전화 번호                                 |E.123 - Telephone Number (national notation)                             |
+|sender\_country\_code|구매자의 국가 코드                                     |ISO Alpha-2 Country Code                                                 |
+|sender\_create\_date |구매자의 계정 생성일                                   |ISO 8601 date format                                                     |
+|dg\_delivery\_method |발신 방법                                              |(`email`, `phone`, `venue_pickup`, `kiosk_pickup`) 중의 하나로 전송해야함|
+|cd\_string\_one      |여분 필드 1(행사일 등의 정보 입력, 중요도 낮음)        |                                                                         |
+|cd\_string\_two      |여분 필드 2 (행사 카테고리 등의 정보 입력, 중요도 낮음)|                                                                         |
+|cd\_int\_one         |티켓의 수(중요도 낮음)                                 |                                                                         |
 
 </details>
 
@@ -8234,15 +8409,15 @@ _({
 
 <summary>연료 산업</summary>
 
-| Field Name            | Description  | Format                                       |
-| --------------------- | ------------ | -------------------------------------------- |
-| sender\_account\_id   | 구매자 계정의 id   |                                              |
-| sender\_first\_name   | 구매자의 이름      |                                              |
-| sender\_last\_name    | 구매자의 성       |                                              |
-| sender\_email         | 구매자의 이메일     | E.123 - Email Address                        |
-| sender\_phone         | 구매자의 휴대전화 번호 | E.123 - Telephone Number (national notation) |
-| sender\_country\_code | 구매자의 국가 코드   | ISO Alpha-2 Country Code                     |
-| sender\_create\_date  | 구매자의 계정 생성일  | ISO 8601 date format                         |
+|Field Name           |Description           |Format                                      |
+|---------------------|----------------------|--------------------------------------------|
+|sender\_account\_id  |구매자 계정의 id      |                                            |
+|sender\_first\_name  |구매자의 이름         |                                            |
+|sender\_last\_name   |구매자의 성           |                                            |
+|sender\_email        |구매자의 이메일       |E.123 - Email Address                       |
+|sender\_phone        |구매자의 휴대전화 번호|E.123 - Telephone Number (national notation)|
+|sender\_country\_code|구매자의 국가 코드    |ISO Alpha-2 Country Code                    |
+|sender\_create\_date |구매자의 계정 생성일  |ISO 8601 date format                        |
 
 </details>
 
@@ -8250,15 +8425,15 @@ _({
 
 <summary>게임/디지털 상품 산업</summary>
 
-| Field Name            | Description  | Format                                       |
-| --------------------- | ------------ | -------------------------------------------- |
-| sender\_account\_id   | 구매자 계정의 id   |                                              |
-| sender\_first\_name   | 구매자의 이름      |                                              |
-| sender\_last\_name    | 구매자의 성       |                                              |
-| sender\_email         | 구매자의 이메일     | E.123 - Email Address                        |
-| sender\_phone         | 구매자의 휴대전화 번호 | E.123 - Telephone Number (national notation) |
-| sender\_country\_code | 구매자의 국가 코드   | ISO Alpha-2 Country Code                     |
-| sender\_create\_date  | 구매자의 계정 생성일  | ISO 8601 date format                         |
+|Field Name           |Description           |Format                                      |
+|---------------------|----------------------|--------------------------------------------|
+|sender\_account\_id  |구매자 계정의 id      |                                            |
+|sender\_first\_name  |구매자의 이름         |                                            |
+|sender\_last\_name   |구매자의 성           |                                            |
+|sender\_email        |구매자의 이메일       |E.123 - Email Address                       |
+|sender\_phone        |구매자의 휴대전화 번호|E.123 - Telephone Number (national notation)|
+|sender\_country\_code|구매자의 국가 코드    |ISO Alpha-2 Country Code                    |
+|sender\_create\_date |구매자의 계정 생성일  |ISO 8601 date format                        |
 
 </details>
 
@@ -8266,27 +8441,27 @@ _({
 
 <summary>마켓플레이스 산업</summary>
 
-| Field Name                       | Description                                                                                       | Format                                       |
-| -------------------------------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------- |
-| sender\_account\_id              | 구매자/발신자 계정의 id                                                                                    |                                              |
-| sender\_first\_name              | 구매자/발신자의 이름                                                                                       |                                              |
-| sender\_last\_name               | 구매자/발신자의 성                                                                                        |                                              |
-| sender\_email                    | 구매자/발신자의 이메일                                                                                      | E.123 - Email Address                        |
-| sender\_phone                    | 구매자/발신자의 휴대전화 번호                                                                                  | E.123 - Telephone Number (national notation) |
-| sender\_address\_zip             | (미국 머천트 한정) 구매자/발신자가 고객사 계정에 등록한 우편번호                                                             |                                              |
-| sender\_country\_code            | 구매자/발신자의 국가 코드                                                                                    | ISO Alpha-2 Country Code                     |
-| sender\_create\_date             | 구매자/발신자의 계정 생성일                                                                                   | ISO 8601 date format                         |
-| sender\_signup\_ip               | 구매자/발신자의 회원 가입 시점의 IP 주소                                                                          | IP(IPv4 / IPv6)                              |
-| sender\_popularity\_score        | 구매자/발신자의 신용도 점수                                                                                   | (high, medium, low) 중의 하나                    |
-| receiver\_account\_id            | 판매자/수신자 계정의 id                                                                                    |                                              |
-| receiver\_create\_date           | 판매자/수신자의 계정 생성일                                                                                   | ISO 8601 date format                         |
-| receiver\_email                  | 판매자/수신자의 이메일                                                                                      | E.123 - Email Address                        |
-| receiver\_address\_country\_code | 판매자/수신자의 국가 코드                                                                                    | ISO Alpha-2 Country Code                     |
-| business\_name                   | 판매자/수신자가 계정에 등록한 사업용 이름                                                                           |                                              |
-| recipient\_popularity\_score     | 판매자/수신자의 신용도 점수                                                                                   | (high, medium, low) 중의 하나                    |
-| first\_interaction\_date         | 발신자/수신자의 첫 번째 상호작용 날짜. '상호작용'의 정의는 고객사에서 정의합니다. ex)발신자와 수신자 간의 첫 번째 거래 시도, 발신자와 수신자 간의 친구 추가 날짜 등 | ISO 8601 date format                         |
-| txn\_count\_total                | 발신자/구매자가 현재까지 고객사에서 진행한 총 거래 횟수(PayPal 또는 기타 결제수단을 통해)                                            | Number                                       |
-| transaction\_is\_tangible        | 판매자/수신자의 거래가 유형 거래인지, 무형 거래인지를 나타내는 필드                                                            | 유형 거래인 경우 1, 무형 거래인 경우 0                     |
+|Field Name                      |Description                                                                                                                                                        |Format                                      |
+|--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------|
+|sender\_account\_id             |구매자/발신자 계정의 id                                                                                                                                            |                                            |
+|sender\_first\_name             |구매자/발신자의 이름                                                                                                                                               |                                            |
+|sender\_last\_name              |구매자/발신자의 성                                                                                                                                                 |                                            |
+|sender\_email                   |구매자/발신자의 이메일                                                                                                                                             |E.123 - Email Address                       |
+|sender\_phone                   |구매자/발신자의 휴대전화 번호                                                                                                                                      |E.123 - Telephone Number (national notation)|
+|sender\_address\_zip            |(미국 머천트 한정) 구매자/발신자가 고객사 계정에 등록한 우편번호                                                                                                   |                                            |
+|sender\_country\_code           |구매자/발신자의 국가 코드                                                                                                                                          |ISO Alpha-2 Country Code                    |
+|sender\_create\_date            |구매자/발신자의 계정 생성일                                                                                                                                        |ISO 8601 date format                        |
+|sender\_signup\_ip              |구매자/발신자의 회원 가입 시점의 IP 주소                                                                                                                           |IP(IPv4 / IPv6)                             |
+|sender\_popularity\_score       |구매자/발신자의 신용도 점수                                                                                                                                        |(high, medium, low) 중의 하나               |
+|receiver\_account\_id           |판매자/수신자 계정의 id                                                                                                                                            |                                            |
+|receiver\_create\_date          |판매자/수신자의 계정 생성일                                                                                                                                        |ISO 8601 date format                        |
+|receiver\_email                 |판매자/수신자의 이메일                                                                                                                                             |E.123 - Email Address                       |
+|receiver\_address\_country\_code|판매자/수신자의 국가 코드                                                                                                                                          |ISO Alpha-2 Country Code                    |
+|business\_name                  |판매자/수신자가 계정에 등록한 사업용 이름                                                                                                                          |                                            |
+|recipient\_popularity\_score    |판매자/수신자의 신용도 점수                                                                                                                                        |(high, medium, low) 중의 하나               |
+|first\_interaction\_date        |발신자/수신자의 첫 번째 상호작용 날짜. '상호작용'의 정의는 고객사에서 정의합니다. ex)발신자와 수신자 간의 첫 번째 거래 시도, 발신자와 수신자 간의 친구 추가 날짜 등|ISO 8601 date format                        |
+|txn\_count\_total               |발신자/구매자가 현재까지 고객사에서 진행한 총 거래 횟수(PayPal 또는 기타 결제수단을 통해)                                                                          |Number                                      |
+|transaction\_is\_tangible       |판매자/수신자의 거래가 유형 거래인지, 무형 거래인지를 나타내는 필드                                                                                                |유형 거래인 경우 1, 무형 거래인 경우 0      |
 
 </details>
 
@@ -8294,23 +8469,23 @@ _({
 
 <summary>온라인 여행 산업(렌터카, 숙박, 여행 패키지, 교통)</summary>
 
-| Field Name                | Description                                                   | Format                                       |
-| ------------------------- | ------------------------------------------------------------- | -------------------------------------------- |
-| sender\_account\_id       | 구매자 계정의 id                                                    |                                              |
-| sender\_first\_name       | 구매자의 이름                                                       |                                              |
-| sender\_last\_name        | 구매자의 성                                                        |                                              |
-| sender\_email             | 구매자의 이메일                                                      | E.123 - Email Address                        |
-| sender\_phone             | 구매자의 휴대전화 번호                                                  | E.123 - Telephone Number (national notation) |
-| sender\_country\_code     | 구매자의 국가 코드                                                    | ISO Alpha-2 Country Code                     |
-| sender\_create\_date      | 구매자의 계정 생성일                                                   | ISO 8601 date format                         |
-| ota\_type                 | 여행 산업 종류(숙박인 경우 hotel 등, 교통인 경우 train 등의 종류 입력)               |                                              |
-| ota\_service\_start\_date | 서비스 제공 시작일                                                    | ISO 8601 date format                         |
-| ota\_service\_end\_date   | 서비스 제공 종료일                                                    | ISO 8601 date format                         |
-| ota\_service\_guest\_t\_f | 게스트(서비스를 받는 사람) 변경 가능 여부, 사기범들이 변경 가능 서비스에 비용을 지불하는 경향이 있습니다. | 변경 가능시 1, 아닐시 0                              |
-| ota\_start\_country       | 서비스를 시작한 국가 (ex: 차 렌트, 숙박이 예약된 국가)                            | ISO Alpha-2 Country Code                     |
-| ota\_start\_city          | 서비스를 시작한 도시                                                   |                                              |
-| ota\_start\_zip\_code     | 서비스 시작 장소의 우편 번호                                              |                                              |
-| cd\_string\_one           | 여분 필드 1, 여행 산업 - 교통에 해당하는 머천트만 사용, 티켓 종류 입력                   | ISO 8601 date format                         |
+|Field Name               |Description                                                                                              |Format                                      |
+|-------------------------|---------------------------------------------------------------------------------------------------------|--------------------------------------------|
+|sender\_account\_id      |구매자 계정의 id                                                                                         |                                            |
+|sender\_first\_name      |구매자의 이름                                                                                            |                                            |
+|sender\_last\_name       |구매자의 성                                                                                              |                                            |
+|sender\_email            |구매자의 이메일                                                                                          |E.123 - Email Address                       |
+|sender\_phone            |구매자의 휴대전화 번호                                                                                   |E.123 - Telephone Number (national notation)|
+|sender\_country\_code    |구매자의 국가 코드                                                                                       |ISO Alpha-2 Country Code                    |
+|sender\_create\_date     |구매자의 계정 생성일                                                                                     |ISO 8601 date format                        |
+|ota\_type                |여행 산업 종류(숙박인 경우 hotel 등, 교통인 경우 train 등의 종류 입력)                                   |                                            |
+|ota\_service\_start\_date|서비스 제공 시작일                                                                                       |ISO 8601 date format                        |
+|ota\_service\_end\_date  |서비스 제공 종료일                                                                                       |ISO 8601 date format                        |
+|ota\_service\_guest\_t\_f|게스트(서비스를 받는 사람) 변경 가능 여부, 사기범들이 변경 가능 서비스에 비용을 지불하는 경향이 있습니다.|변경 가능시 1, 아닐시 0                     |
+|ota\_start\_country      |서비스를 시작한 국가 (ex: 차 렌트, 숙박이 예약된 국가)                                                   |ISO Alpha-2 Country Code                    |
+|ota\_start\_city         |서비스를 시작한 도시                                                                                     |                                            |
+|ota\_start\_zip\_code    |서비스 시작 장소의 우편 번호                                                                             |                                            |
+|cd\_string\_one          |여분 필드 1, 여행 산업 - 교통에 해당하는 머천트만 사용, 티켓 종류 입력                                   |ISO 8601 date format                        |
 
 </details>
 
@@ -8318,19 +8493,19 @@ _({
 
 <summary>P2P 산업</summary>
 
-| Field Name                       | Description  | Format                                       |
-| -------------------------------- | ------------ | -------------------------------------------- |
-| sender\_account\_id              | 구매자 계정의 id   |                                              |
-| sender\_first\_name              | 구매자의 이름      |                                              |
-| sender\_last\_name               | 구매자의 성       |                                              |
-| sender\_email                    | 구매자의 이메일     | E.123 - Email Address                        |
-| sender\_phone                    | 구매자의 휴대전화 번호 | E.123 - Telephone Number (national notation) |
-| sender\_country\_code            | 구매자의 국가 코드   | ISO Alpha-2 Country Code                     |
-| sender\_create\_date             | 구매자의 계정 생성일  | ISO 8601 date format                         |
-| receiver\_account\_id            | 수신자 계정의 id   |                                              |
-| receiver\_create\_date           | 수신자의 계정 생성일  | ISO 8601 date format                         |
-| receiver\_email                  | 수신자의 이메일     | E.123 - Email Address                        |
-| receiver\_address\_country\_code | 수신자의 국가 코드   | ISO Alpha-2 Country Code                     |
+|Field Name                      |Description           |Format                                      |
+|--------------------------------|----------------------|--------------------------------------------|
+|sender\_account\_id             |구매자 계정의 id      |                                            |
+|sender\_first\_name             |구매자의 이름         |                                            |
+|sender\_last\_name              |구매자의 성           |                                            |
+|sender\_email                   |구매자의 이메일       |E.123 - Email Address                       |
+|sender\_phone                   |구매자의 휴대전화 번호|E.123 - Telephone Number (national notation)|
+|sender\_country\_code           |구매자의 국가 코드    |ISO Alpha-2 Country Code                    |
+|sender\_create\_date            |구매자의 계정 생성일  |ISO 8601 date format                        |
+|receiver\_account\_id           |수신자 계정의 id      |                                            |
+|receiver\_create\_date          |수신자의 계정 생성일  |ISO 8601 date format                        |
+|receiver\_email                 |수신자의 이메일       |E.123 - Email Address                       |
+|receiver\_address\_country\_code|수신자의 국가 코드    |ISO Alpha-2 Country Code                    |
 
 </details>
 
@@ -8338,17 +8513,17 @@ _({
 
 <summary>소매, 식품 산업</summary>
 
-| Field Name            | Description           | Format                                       |
-| --------------------- | --------------------- | -------------------------------------------- |
-| sender\_account\_id   | 구매자 계정의 id            |                                              |
-| sender\_first\_name   | 구매자의 이름               |                                              |
-| sender\_last\_name    | 구매자의 성                |                                              |
-| sender\_email         | 구매자의 이메일              | E.123 - Email Address                        |
-| sender\_phone         | 구매자의 휴대전화 번호          | E.123 - Telephone Number (national notation) |
-| sender\_country\_code | 구매자의 국가 코드            | ISO Alpha-2 Country Code                     |
-| sender\_create\_date  | 구매자의 계정 생성일           | ISO 8601 date format                         |
-| dg\_delivery\_method  | 발신 방법                 | (`email`, `phone`) 중의 하나로 전송해야함              |
-| highrisk\_txn\_flag   | 고객사에서 고위험으로 분류한 상품 여부 | 위험 상품인 경우 1, 아닐 시 0                          |
+|Field Name           |Description                           |Format                                      |
+|---------------------|--------------------------------------|--------------------------------------------|
+|sender\_account\_id  |구매자 계정의 id                      |                                            |
+|sender\_first\_name  |구매자의 이름                         |                                            |
+|sender\_last\_name   |구매자의 성                           |                                            |
+|sender\_email        |구매자의 이메일                       |E.123 - Email Address                       |
+|sender\_phone        |구매자의 휴대전화 번호                |E.123 - Telephone Number (national notation)|
+|sender\_country\_code|구매자의 국가 코드                    |ISO Alpha-2 Country Code                    |
+|sender\_create\_date |구매자의 계정 생성일                  |ISO 8601 date format                        |
+|dg\_delivery\_method |발신 방법                             |(`email`, `phone`) 중의 하나로 전송해야함   |
+|highrisk\_txn\_flag  |고객사에서 고위험으로 분류한 상품 여부|위험 상품인 경우 1, 아닐 시 0               |
 
 </details>
 
@@ -8356,18 +8531,18 @@ _({
 
 <summary>택시, 공유 이동수단 산업</summary>
 
-| Field Name            | Description                           | Format                                       |
-| --------------------- | ------------------------------------- | -------------------------------------------- |
-| sender\_account\_id   | 구매자 계정의 id                            |                                              |
-| sender\_first\_name   | 구매자의 이름                               |                                              |
-| sender\_last\_name    | 구매자의 성                                |                                              |
-| sender\_email         | 구매자의 이메일                              | E.123 - Email Address                        |
-| sender\_phone         | 구매자의 휴대전화 번호                          | E.123 - Telephone Number (national notation) |
-| sender\_address\_zip  | (미국 머천트 한정) 구매자/발신자가 고객사 계정에 등록한 우편번호 |                                              |
-| sender\_country\_code | 구매자의 국가 코드                            | ISO Alpha-2 Country Code                     |
-| sender\_create\_date  | 구매자의 계정 생성일                           | ISO 8601 date format                         |
-| highrisk\_txn\_flag   | 차량 예약과 같은 고객사에서 고위험으로 분류한 결제 건 여부     | 위험 거래인 경우 1, 아닐 시 0                          |
-| cd\_string\_one       | 여분 필드 1                               |                                              |
+|Field Name           |Description                                                     |Format                                      |
+|---------------------|----------------------------------------------------------------|--------------------------------------------|
+|sender\_account\_id  |구매자 계정의 id                                                |                                            |
+|sender\_first\_name  |구매자의 이름                                                   |                                            |
+|sender\_last\_name   |구매자의 성                                                     |                                            |
+|sender\_email        |구매자의 이메일                                                 |E.123 - Email Address                       |
+|sender\_phone        |구매자의 휴대전화 번호                                          |E.123 - Telephone Number (national notation)|
+|sender\_address\_zip |(미국 머천트 한정) 구매자/발신자가 고객사 계정에 등록한 우편번호|                                            |
+|sender\_country\_code|구매자의 국가 코드                                              |ISO Alpha-2 Country Code                    |
+|sender\_create\_date |구매자의 계정 생성일                                            |ISO 8601 date format                        |
+|highrisk\_txn\_flag  |차량 예약과 같은 고객사에서 고위험으로 분류한 결제 건 여부      |위험 거래인 경우 1, 아닐 시 0               |
+|cd\_string\_one      |여분 필드 1                                                     |                                            |
 
 </details>
 
@@ -8375,15 +8550,15 @@ _({
 
 <summary>통신사</summary>
 
-| Field Name            | Description  | Format                                       |
-| --------------------- | ------------ | -------------------------------------------- |
-| sender\_account\_id   | 구매자 계정의 id   |                                              |
-| sender\_first\_name   | 구매자의 이름      |                                              |
-| sender\_last\_name    | 구매자의 성       |                                              |
-| sender\_email         | 구매자의 이메일     | E.123 - Email Address                        |
-| sender\_phone         | 구매자의 휴대전화 번호 | E.123 - Telephone Number (national notation) |
-| sender\_country\_code | 구매자의 국가 코드   | ISO Alpha-2 Country Code                     |
-| sender\_create\_date  | 구매자의 계정 생성일  | ISO 8601 date format                         |
+|Field Name           |Description           |Format                                      |
+|---------------------|----------------------|--------------------------------------------|
+|sender\_account\_id  |구매자 계정의 id      |                                            |
+|sender\_first\_name  |구매자의 이름         |                                            |
+|sender\_last\_name   |구매자의 성           |                                            |
+|sender\_email        |구매자의 이메일       |E.123 - Email Address                       |
+|sender\_phone        |구매자의 휴대전화 번호|E.123 - Telephone Number (national notation)|
+|sender\_country\_code|구매자의 국가 코드    |ISO Alpha-2 Country Code                    |
+|sender\_create\_date |구매자의 계정 생성일  |ISO 8601 date format                        |
 
 </details>
 
@@ -8391,15 +8566,15 @@ _({
 
 <summary>결제 시스템 보안 서비스 산업</summary>
 
-| Field Name            | Description  | Format                                       |
-| --------------------- | ------------ | -------------------------------------------- |
-| sender\_account\_id   | 구매자 계정의 id   |                                              |
-| sender\_first\_name   | 구매자의 이름      |                                              |
-| sender\_last\_name    | 구매자의 성       |                                              |
-| sender\_email         | 구매자의 이메일     | E.123 - Email Address                        |
-| sender\_phone         | 구매자의 휴대전화 번호 | E.123 - Telephone Number (national notation) |
-| sender\_country\_code | 구매자의 국가 코드   | ISO Alpha-2 Country Code                     |
-| sender\_create\_date  | 구매자의 계정 생성일  | ISO 8601 date format                         |
+|Field Name           |Description           |Format                                      |
+|---------------------|----------------------|--------------------------------------------|
+|sender\_account\_id  |구매자 계정의 id      |                                            |
+|sender\_first\_name  |구매자의 이름         |                                            |
+|sender\_last\_name   |구매자의 성           |                                            |
+|sender\_email        |구매자의 이메일       |E.123 - Email Address                       |
+|sender\_phone        |구매자의 휴대전화 번호|E.123 - Telephone Number (national notation)|
+|sender\_country\_code|구매자의 국가 코드    |ISO Alpha-2 Country Code                    |
+|sender\_create\_date |구매자의 계정 생성일  |ISO 8601 date format                        |
 
 </details>
 
@@ -8407,18 +8582,18 @@ _({
 
 <summary>기타 산업</summary>
 
-| Field Name            | Description  | Format                                       |
-| --------------------- | ------------ | -------------------------------------------- |
-| sender\_account\_id   | 구매자 계정의 id   |                                              |
-| sender\_first\_name   | 구매자의 이름      |                                              |
-| sender\_last\_name    | 구매자의 성       |                                              |
-| sender\_email         | 구매자의 이메일     | E.123 - Email Address                        |
-| sender\_phone         | 구매자의 휴대전화 번호 | E.123 - Telephone Number (national notation) |
-| sender\_country\_code | 구매자의 국가 코드   | ISO Alpha-2 Country Code                     |
-| sender\_create\_date  | 구매자의 계정 생성일  | ISO 8601 date format                         |
-| cd\_string\_one       | 여분 필드 1      |                                              |
-| cd\_string\_two       | 여분 필드 2      |                                              |
-| cd\_int\_one          | 여분 숫자필드 1    | Number                                       |
+|Field Name           |Description           |Format                                      |
+|---------------------|----------------------|--------------------------------------------|
+|sender\_account\_id  |구매자 계정의 id      |                                            |
+|sender\_first\_name  |구매자의 이름         |                                            |
+|sender\_last\_name   |구매자의 성           |                                            |
+|sender\_email        |구매자의 이메일       |E.123 - Email Address                       |
+|sender\_phone        |구매자의 휴대전화 번호|E.123 - Telephone Number (national notation)|
+|sender\_country\_code|구매자의 국가 코드    |ISO Alpha-2 Country Code                    |
+|sender\_create\_date |구매자의 계정 생성일  |ISO 8601 date format                        |
+|cd\_string\_one      |여분 필드 1           |                                            |
+|cd\_string\_two      |여분 필드 2           |                                            |
+|cd\_int\_one         |여분 숫자필드 1       |Number                                      |
 
 </details>
 
@@ -9268,12 +9443,16 @@ Pay Later 버튼은 **구매자가 접속한 국가에 따라 다른 버튼이 �
 
 Pay Later 기능을 지원하는 국가에서 접속하더라도 구매자 계정에 설정된 국가가 Pay Later를 제공하지 않는 국가인 경우, 일반 카드 결제 화면이 렌더링됩니다.
 
+<br />
+
 #### 2. Pay Later 사용 국가별 페이팔 계정 생성하기
 
 Pay Later(할부) 기능을 여러 국가에 제공하기 위해서는 **페이팔 머천트 계정을 국가별로 각각 따로 만들어야** 합니다.
 예를 들어 고객사이 \[독일], \[스페인], \[이탈리아] 3개 국가에 대해 Pay Later 서비스를 제공하고자 하는 경우 고객사는 \[독일], \[스페인], \[이탈리아]의 **페이팔 머천트 계정을 각각 따로 만들어야** 합니다.
 
 국가별로 생성한 페이팔 Account ID를 \[결제 연동] > \[채널 관리] 페이지에서 채널 등록 후 결제창 호출 시 지정해야 합니다. **고객사는 구매자가 접속한 국가에 따라 올바른 채널의 채널키를 전달해야** 합니다.
+
+<br />
 
 #### 3. Pay Later 국가별 정책 알아보기
 
@@ -9674,12 +9853,12 @@ Pay Later(할부) 기능을 여러 국가에 제공하기 위해서는 **페이�
 
 - 파라미터 설명
 
-  | 파라미터      | 설명                                                        | 예시                                              |
-  | --------- | --------------------------------------------------------- | ----------------------------------------------- |
-  | `fncls`   | `fnparams-dede7cc5-15fd-4c75-a9f4-36c430ee3a99`로 항상 고정    | `fnparams-dede7cc5-15fd-4c75-a9f4-36c430ee3a99` |
-  | `f`       | 주문번호(`paymentId`) 전달                                      | `paymentId_230980198`                           |
-  | `s`       | string (`{페이팔 Account ID}_{페이지 유형}` 형식. 페이지 유형은 아래 목록 참고) | `7WBB3CKT63FRG_checkout-page`                   |
-  | `sandbox` | 페이팔 Account ID가 테스트 용인지 운영 용인지 여부                         | `true`                                          |
+  |파라미터 |설명                                                                           |예시                                           |
+  |---------|-------------------------------------------------------------------------------|-----------------------------------------------|
+  |`fncls`  |`fnparams-dede7cc5-15fd-4c75-a9f4-36c430ee3a99`로 항상 고정                    |`fnparams-dede7cc5-15fd-4c75-a9f4-36c430ee3a99`|
+  |`f`      |주문번호(`paymentId`) 전달                                                     |`paymentId_230980198`                          |
+  |`s`      |string (`{페이팔 Account ID}_{페이지 유형}` 형식. 페이지 유형은 아래 목록 참고)|`7WBB3CKT63FRG_checkout-page`                  |
+  |`sandbox`|페이팔 Account ID가 테스트 용인지 운영 용인지 여부                             |`true`                                         |
 
 - 페이지 유형
 
@@ -12055,7 +12234,7 @@ versionVariants:
 
 <summary>
 
-영상으로 보기
+<strong>영상으로 보기</strong>
 
 </summary>
 
@@ -12072,7 +12251,70 @@ SDK를 지원하지 않는 플랫폼을 포함하여 다양한 플랫폼에서 �
 
 포트원은 다양한 PG의 결제창을 통일된 방법으로 호출할 수 있도록 자바스크립트 SDK를 제공합니다. 브라우저에서 포트원 SDK를 호출하여 결제를 진행하게 됩니다.
 
+포트원 V2 SDK는 npm 레지스트리와 CDN을 통해 배포되고 있습니다.
 
+- npm, yarn 등 패키지 매니저를 사용한다면 의존
+  대상으로 [@portone/browser-sdk](https://www.npmjs.com/package/@portone/browser-sdk)를 추가하세요.
+
+- 패키지 매니저를 사용하지 않는다면 `<script>` 요소를 이용하여 CDN에서 SDK를 직접 불러오세요.
+
+- CDN에서 ESM 모듈 형태로도 SDK를 제공하고 있습니다.
+
+<div class="tabs-container">
+
+<div class="tabs-content" data-title="패키지 의존 대상으로 추가">
+
+사용하는 패키지 매니저에 알맞은 명령어를 실행하세요.
+
+```shell
+npm i @portone/browser-sdk
+```
+
+```shell
+yarn add @portone/browser-sdk
+```
+
+```shell
+pnpm add @portone/browser-sdk
+```
+
+패키지 매니저로 SDK를 불러온 경우 `PortOne` 객체를 import해서 사용합니다.
+
+```javascript
+import * as PortOne from "@portone/browser-sdk/v2";
+```
+
+</div>
+
+<div class="tabs-content" data-title="<script> 요소로 추가">
+
+```html
+<script src="https://cdn.portone.io/v2/browser-sdk.js"></script>
+```
+
+`<script>` 요소로 SDK를 불러온 경우 전역 객체 `window`에 `PortOne` 객체가 추가됩니다.
+
+</div>
+
+<div class="tabs-content" data-title="ESM 모듈로 추가">
+
+ESM 모듈을 사용하는 경우 URL에서 `PortOne` 객체를 직접 import할 수 있습니다.
+
+```javascript
+import * as PortOne from "https://cdn.portone.io/v2/browser-sdk.esm.js";
+```
+
+</div>
+
+</div>
+
+<div class="hint" data-style="info">
+
+**타입스크립트 지원**
+
+포트원 V2 SDK는 타입스크립트 선언 파일(`.d.ts`)의 형식으로 타입 정보를 제공하고 있습니다. npm 레지스트리를 이용하는 경우 각종 개발 환경에서 별도 설정 없이 사용 가능합니다.
+
+</div>
 
 ## 2. 결제 요청
 
@@ -12139,13 +12381,13 @@ async function requestPayment() {
 
 결과값에 들어 있는 필드는 다음과 같습니다.
 
-| 필드명       | 설명           | 비고                 |
-| --------- | ------------ | ------------------ |
-| paymentId | 결제 건 ID      | 공통                 |
-| code      | 오류 코드        | 실패 시               |
-| message   | 오류 문구        | 실패 시               |
-| pgCode    | PG 오류 코드 그대로 | 실패 및 PG 오류 코드 존재 시 |
-| pgMessage | PG 오류 문구 그대로 | 실패 및 PG 오류 문구 존재 시 |
+|필드명   |설명               |비고                        |
+|---------|-------------------|----------------------------|
+|paymentId|결제 건 ID         |공통                        |
+|code     |오류 코드          |실패 시                     |
+|message  |오류 문구          |실패 시                     |
+|pgCode   |PG 오류 코드 그대로|실패 및 PG 오류 코드 존재 시|
+|pgMessage|PG 오류 문구 그대로|실패 및 PG 오류 문구 존재 시|
 
 ### 3-1. redirect 방식의 경우
 
@@ -12162,13 +12404,13 @@ PortOne.requestPayment({
 
 쿼리 문자열로 전달되는 내용은 다음과 같습니다.
 
-| 키         | 설명           | 비고                 |
-| --------- | ------------ | ------------------ |
-| paymentId | 결제 건 ID      | 공통                 |
-| code      | 오류 코드        | 실패 시               |
-| message   | 오류 문구        | 실패 시               |
-| pgCode    | PG 오류 코드 그대로 | 실패 및 PG 오류 코드 존재 시 |
-| pgMessage | PG 오류 문구 그대로 | 실패 및 PG 오류 문구 존재 시 |
+|키       |설명               |비고                        |
+|---------|-------------------|----------------------------|
+|paymentId|결제 건 ID         |공통                        |
+|code     |오류 코드          |실패 시                     |
+|message  |오류 문구          |실패 시                     |
+|pgCode   |PG 오류 코드 그대로|실패 및 PG 오류 코드 존재 시|
+|pgMessage|PG 오류 문구 그대로|실패 및 PG 오류 문구 존재 시|
 
 예를 들어 paymentId가 `payment-39ecfa97`, redirectUrl이 `https://example.com/payment-redirect`인 경우,
 결제 성공 시에 `https://example.com/payment-redirect?paymentId=payment-39ecfa97`로 리다이렉트됩니다.
@@ -12326,6 +12568,8 @@ versionVariants:
 
     (이미지 첨부: \<Postman 에서 Open API Spec 파일 Import 하기>)
 
+    <br />
+
     (이미지 첨부: \<Postman Import 후 API Structure 예시>)
 
   - **직관성 있는 스키마 설계**
@@ -12401,7 +12645,11 @@ V2는 최신 결제 기능을 가장 빠르게 제공합니다. 곧 출시될 �
 
 - **다날 본인인증**
 
+<br />
+
 ## 새로워진 V2 시스템과 함께 비즈니스를 한 단계 업그레이드할 준비가 되셨나요?
+
+<br />
 
 <div class="hint" data-style="info">
 
@@ -12848,191 +13096,6 @@ targetVersions:
 `UNSTABLE`이 표기된 일부 API의 경우, 위 하위호환성 정책과 무관하게 변경 및 지원 종료될 수 있으니 이용에 유의하세요.
 
 
-# https://developers.portone.io/opi/ko/readme
-
----
-title: 포트원 결제 연동 Doc
-description: 포트원 결제 연동 가이드입니다. 빠른 시간 안에 결제를 연동할 수 있게 도와드립니다.
-targetVersions:
-  - v1
-  - v2
----
-
-
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
-
-<div class="hint" data-style="danger">
-
-2024년 9월 1일부로 포트원 V1 API에 대해 일부 보안 규격이 지원 종료됩니다.
-
-자세한 사항은 [TLS 지원 범위](https://developers.portone.io/opi/ko/support/tls-support?v=v1)를 참고해주세요.
-
-</div>
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
-
-## 연동 준비하기
-
-결제 연동 전 회원 가입부터 채널 연동 방법까지 확인할 수 있습니다.
-
-[결제 연동 준비하기](https://developers.portone.io/opi/ko/integration/ready/readme)
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
-
-## 결제 연동하기
-
-해당 가이드를 통해 결제창을 손쉽게 연동할 수 있습니다.
-
-[인증 결제 연동하기](https://developers.portone.io/opi/ko/integration/start/v1/auth)
-
-[비인증결제 연동하기](https://developers.portone.io/opi/ko/integration/start/v1/non-auth)
-
-[결제취소(환불) 연동하기](https://developers.portone.io/opi/ko/integration/cancel/v1/basic)
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
-
-## 인증결제 연동하기
-
-해당 가이드를 통해 결제창(SDK) 결제를 손쉽게 연동할 수 있습니다.
-
-[인증 결제 연동하기](https://developers.portone.io/opi/ko/integration/start/v2/checkout)
-
-## 수기(키인)결제 연동하기
-
-해당 가이드를 통해 API 결제를 손쉽게 연동할 수 있습니다.
-
-[수기(키인) 결제 연동하기](https://developers.portone.io/opi/ko/integration/start/v2/keyin)
-
-## 빌링키 결제 연동하기
-
-해당 가이드를 통해 빌링키 결제를 손쉽게 연동할 수 있습니다.
-
-[빌링키 결제 연동하기](https://developers.portone.io/opi/ko/integration/start/v2/billing/readme)
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
-
-## 결제 결과 누락 없이 수신받기
-
-해당 가이드를 통해 안정적으로 결제 결과를 수신받을 수 있습니다.
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
-
-[웹훅 연동하기](https://developers.portone.io/opi/ko/integration/webhook/readme-v1)
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
-
-[웹훅 연동하기](https://developers.portone.io/opi/ko/integration/webhook/readme-v2)
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
-
-## 본인인증 연동하기
-
-해당 가이드를 통해 본인인증을 손쉽게 연동할 수 있습니다.
-
-[본인인증 연동하기](https://developers.portone.io/opi/ko/extra/identity-verification/readme-v2)
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
-
-## 기타 서비스 연동하기
-
-해당 가이드를 통해 부가적인 서비스 연동을 손쉽게 처리할 수 있습니다.
-
-[본인인증 연동하기](https://developers.portone.io/opi/ko/extra/identity-verification/v1/readme)
-
-[결제 URL 생성하기](https://developers.portone.io/opi/ko/extra/link-pay/readme-v1)
-
-## TIP
-
-결제창 연동 시 꼭 확인해 보세요.
-
-[면세금액 결제방법](https://developers.portone.io/opi/ko/support/tax)
-
-[오픈 전 체크리스트](https://developers.portone.io/opi/ko/integration/checklist/readme-v1)
-
-[컨펌 프로세스](https://developers.portone.io/opi/ko/extra/confirm-process/readme-v1)
-
-[포트원 결제 플로우](https://developers.portone.io/opi/ko/support/flow)
-
-[대표상점과 하위상점](https://developers.portone.io/opi/ko/support/agency-and-tier)
-
-[결제대행사별 빌링키 획득 규칙](https://developers.portone.io/opi/ko/support/code-info/pg)
-
-[PG사별 은행코드](https://developers.portone.io/opi/ko/support/code-info/pg-1)
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
-
-## 관리자 콘솔 사용하기
-
-관리자 콘솔 사용 방법을 안내합니다.
-
-[관리자 콘솔 소개](https://developers.portone.io/opi/ko/console/guide/readme)
-
-## API
-
-포트원에서 제공하는 API 명세를 확인할 수 있습니다.
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
-
-API 문서 바로가기
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
-
-API 문서 바로가기
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
-
-## SDK
-
-결제 연동 JS SDK 명세를 확인할 수 있습니다.
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
-
-[JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/readme)
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
-
-[JavaScript SDK 레퍼런스](https://developers.portone.io/sdk/ko/v2-sdk/readme)
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
-
-## FAQ
-
-[자주 묻는 질문](https://developers.portone.io/opi/ko/support/faq/undefined)
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
-
-## PG사별 결제 연동 가이드
-
-각 PG사별 결제 연동 가이드를 안내합니다.
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
-
-[결제대행사 선택하여 연동하기](https://developers.portone.io/opi/ko/integration/pg/v1/readme)
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
-
-[결제대행사 선택하여 연동하기](https://developers.portone.io/opi/ko/integration/pg/v2/readme)
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
-
-
 # https://developers.portone.io/opi/ko/etc/recon
 
 ---
@@ -13231,14 +13294,14 @@ description: >-
 - 필터 초기화 선택 시 조회기간과 필터가 모두 초기화됩니다.
 - 대사 상태 - “대사 불일치” 상태값의 종류
 
-| 사유          | 설명                                                           | 비고                                                                                          |
-| ----------- | ------------------------------------------------------------ | ------------------------------------------------------------------------------------------- |
-| 결제 금액 불일치   | 두 원장의 결제 금액이 불일치합니다.                                         | 금액 차이가 있으면 무조건 불일치로 표시                                                                      |
-| 면세 금액 불일치   | 두 원장의 면세금액이 불일치합니다.                                          | 금액 차이가 있으면 무조건 불일치로 표시                                                                      |
-| 부가세 금액 불일치  | 두 원장의 부가세 금액이 불일치합니다.                                        | 금액 차이가 있으면 무조건 불일치로 표시                                                                      |
-| 에스크로 여부 불일치 | 두 원장에서 에스크로(안전결제)여부가 불일치합니다.                                 | Y/N 다르면 불일치 표시                                                                              |
-| 할부 개월 수 불일치 | 두 원장의 카드 할부개월 수가 불일치합니다.                                     | 할부개월수 다르면 불일치 표시                                                                            |
-| 결제일자 불일치    | 두 원장의 결제일시가 불일치합니다. 시스템으로 인해 차이날 수 있는 근소한 차이의 경우는 일치로 처리합니다. | 두 원장의 결제일시가 다른 일자에 일어나면 불일치 표시 (자정 기점으로 PG와 포트원간의 전송시간에 의해 거래일자가 변경되는 경우도 다른 일자일 경우 불일치 표시) |
+|사유                |설명                                                                                                     |비고                                                                                                                                                         |
+|--------------------|---------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|결제 금액 불일치    |두 원장의 결제 금액이 불일치합니다.                                                                      |금액 차이가 있으면 무조건 불일치로 표시                                                                                                                      |
+|면세 금액 불일치    |두 원장의 면세금액이 불일치합니다.                                                                       |금액 차이가 있으면 무조건 불일치로 표시                                                                                                                      |
+|부가세 금액 불일치  |두 원장의 부가세 금액이 불일치합니다.                                                                    |금액 차이가 있으면 무조건 불일치로 표시                                                                                                                      |
+|에스크로 여부 불일치|두 원장에서 에스크로(안전결제)여부가 불일치합니다.                                                       |Y/N 다르면 불일치 표시                                                                                                                                       |
+|할부 개월 수 불일치 |두 원장의 카드 할부개월 수가 불일치합니다.                                                               |할부개월수 다르면 불일치 표시                                                                                                                                |
+|결제일자 불일치     |두 원장의 결제일시가 불일치합니다. 시스템으로 인해 차이날 수 있는 근소한 차이의 경우는 일치로 처리합니다.|두 원장의 결제일시가 다른 일자에 일어나면 불일치 표시 (자정 기점으로 PG와 포트원간의 전송시간에 의해 거래일자가 변경되는 경우도 다른 일자일 경우 불일치 표시)|
 
 **(5) 표 설정** 표시되는 항목을 선택하여 항목을 **커스터마이징** 할 수 있습니다.
 
@@ -13266,32 +13329,32 @@ description: >-
 
 - 거래 유형에 마우스오버시 카드 형태로 상세 정보가 보여집니다.
 
-| 거래유형   | 상세내용                        |
-| ------ | --------------------------- |
-| 카드     | 발급사, 매입사, 카드 승인번호, 카드 할부개월수 |
-| 상품권    | 타입, 승인번호                    |
-| 계좌이체   | 은행이름, 승인번호                  |
-| 가상계좌   | 은행이름, 승인번호                  |
-| 간편결제   | 간편결제사 이름                    |
-| 모바일 결제 | 통신사                         |
-| 기타     | 기타                          |
+|거래유형   |상세내용                                      |
+|-----------|----------------------------------------------|
+|카드       |발급사, 매입사, 카드 승인번호, 카드 할부개월수|
+|상품권     |타입, 승인번호                                |
+|계좌이체   |은행이름, 승인번호                            |
+|가상계좌   |은행이름, 승인번호                            |
+|간편결제   |간편결제사 이름                               |
+|모바일 결제|통신사                                        |
+|기타       |기타                                          |
 
 ## 수식 설명
 
-| 금액           | 공식                                                                             |
-| ------------ | ------------------------------------------------------------------------------ |
-| 정산건수         | 조회기간내 (승인 건수 - (취소) - (부분 취소)) + 기타정산건(수집이전거래건수; 승인과 취소, 부분 취소 데이터가 없는 정산 데이터) |
-| 정산금액         | 조회기간 내 (승인금액 - (취소 금액) - (부분 취소 금액) - (수수료) - 수수료 VAT)                         |
-| 거래 건수        | 조회기간 내 (승인) 건수                                                                 |
-| 거래 금액        | 조회기간 내 승인 금액                                                                   |
-| 취소 건수        | 조회기간내 (취소) + (부분취소) + (기타취소) 건수                                                |
-| 취소 금액        | 조회기간 내 (취소 금액) + (부분취소) + (기타취소) 금액                                            |
-| 공급가액         | 거래금액-(할인금액)-(면세가액)-(부가세)                                                       |
-| 과세사업자 면세가액=0 |                                                                                |
-| 부가세          | (거래금액-면세가액)/11 후 반올림                                                           |
-| 과세사업자 면세가액=0 |                                                                                |
-| 거래 이상금액      | 거래불일치 금액 절대값 + 거래대사 불능금액                                                       |
-| PG 수수료 부가세   | PG사에서 값을 주지 않을 경우 PG수수료/10 후 반올림                                               |
+|금액                 |공식                                                                                                                          |
+|---------------------|------------------------------------------------------------------------------------------------------------------------------|
+|정산건수             |조회기간내 (승인 건수 - (취소) - (부분 취소)) + 기타정산건(수집이전거래건수; 승인과 취소, 부분 취소 데이터가 없는 정산 데이터)|
+|정산금액             |조회기간 내 (승인금액 - (취소 금액) - (부분 취소 금액) - (수수료) - 수수료 VAT)                                               |
+|거래 건수            |조회기간 내 (승인) 건수                                                                                                       |
+|거래 금액            |조회기간 내 승인 금액                                                                                                         |
+|취소 건수            |조회기간내 (취소) + (부분취소) + (기타취소) 건수                                                                              |
+|취소 금액            |조회기간 내 (취소 금액) + (부분취소) + (기타취소) 금액                                                                        |
+|공급가액             |거래금액-(할인금액)-(면세가액)-(부가세)                                                                                       |
+|과세사업자 면세가액=0|                                                                                                                              |
+|부가세               |(거래금액-면세가액)/11 후 반올림                                                                                              |
+|과세사업자 면세가액=0|                                                                                                                              |
+|거래 이상금액        |거래불일치 금액 절대값 + 거래대사 불능금액                                                                                    |
+|PG 수수료 부가세     |PG사에서 값을 주지 않을 경우 PG수수료/10 후 반올림                                                                            |
 
 ## FAQ
 
@@ -13321,6 +13384,203 @@ description: >-
 - 누락 시 대응 계획은 무엇인가요?
   - 데이터 수집시 PG사에 데이터가 없거나, 타임 아웃 등으로 누락이 일어나면 포트원에서 자동으로 파악이
     가능하여 개발팀이 확인하고 다시 수집합니다.
+
+
+# https://developers.portone.io/opi/ko/readme
+
+---
+title: 포트원 결제 연동 Doc
+description: 포트원 결제 연동 가이드입니다. 빠른 시간 안에 결제를 연동할 수 있게 도와드립니다.
+targetVersions:
+  - v1
+  - v2
+---
+
+
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+
+<div class="hint" data-style="danger">
+
+2024년 9월 1일부로 포트원 V1 API에 대해 일부 보안 규격이 지원 종료됩니다.
+
+자세한 사항은 [TLS 지원 범위](https://developers.portone.io/opi/ko/support/tls-support?v=v1)를 참고해주세요.
+
+</div>
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
+
+## 연동 준비하기
+
+결제 연동 전 회원 가입부터 채널 연동 방법까지 확인할 수 있습니다.
+
+[결제 연동 준비하기](https://developers.portone.io/opi/ko/integration/ready/readme)
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+
+## 결제 연동하기
+
+해당 가이드를 통해 결제창을 손쉽게 연동할 수 있습니다.
+
+[인증 결제 연동하기](https://developers.portone.io/opi/ko/integration/start/v1/auth)
+
+[비인증결제 연동하기](https://developers.portone.io/opi/ko/integration/start/v1/non-auth)
+
+[결제취소(환불) 연동하기](https://developers.portone.io/opi/ko/integration/cancel/v1/basic)
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+
+## 인증결제 연동하기
+
+해당 가이드를 통해 결제창(SDK) 결제를 손쉽게 연동할 수 있습니다.
+
+[인증 결제 연동하기](https://developers.portone.io/opi/ko/integration/start/v2/checkout)
+
+## 수기(키인)결제 연동하기
+
+해당 가이드를 통해 API 결제를 손쉽게 연동할 수 있습니다.
+
+[수기(키인) 결제 연동하기](https://developers.portone.io/opi/ko/integration/start/v2/keyin)
+
+## 빌링키 결제 연동하기
+
+해당 가이드를 통해 빌링키 결제를 손쉽게 연동할 수 있습니다.
+
+[빌링키 결제 연동하기](https://developers.portone.io/opi/ko/integration/start/v2/billing/readme)
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
+## 결제 결과 누락 없이 수신받기
+
+해당 가이드를 통해 안정적으로 결제 결과를 수신받을 수 있습니다.
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+
+[웹훅 연동하기](https://developers.portone.io/opi/ko/integration/webhook/readme-v1)
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+
+[웹훅 연동하기](https://developers.portone.io/opi/ko/integration/webhook/readme-v2)
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+
+## 본인인증 연동하기
+
+해당 가이드를 통해 본인인증을 손쉽게 연동할 수 있습니다.
+
+[본인인증 연동하기](https://developers.portone.io/opi/ko/extra/identity-verification/readme-v2)
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+
+## 기타 서비스 연동하기
+
+해당 가이드를 통해 부가적인 서비스 연동을 손쉽게 처리할 수 있습니다.
+
+[본인인증 연동하기](https://developers.portone.io/opi/ko/extra/identity-verification/v1/readme)
+
+[결제 URL 생성하기](https://developers.portone.io/opi/ko/extra/link-pay/readme-v1)
+
+## TIP
+
+결제창 연동 시 꼭 확인해 보세요.
+
+[면세금액 결제방법](https://developers.portone.io/opi/ko/support/tax)
+
+[오픈 전 체크리스트](https://developers.portone.io/opi/ko/integration/checklist/readme-v1)
+
+[컨펌 프로세스](https://developers.portone.io/opi/ko/extra/confirm-process/readme-v1)
+
+[포트원 결제 플로우](https://developers.portone.io/opi/ko/support/flow)
+
+[대표상점과 하위상점](https://developers.portone.io/opi/ko/support/agency-and-tier)
+
+[결제대행사별 빌링키 획득 규칙](https://developers.portone.io/opi/ko/support/code-info/pg)
+
+[PG사별 은행코드](https://developers.portone.io/opi/ko/support/code-info/pg-1)
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
+
+## 관리자 콘솔 사용하기
+
+관리자 콘솔 사용 방법을 안내합니다.
+
+[관리자 콘솔 소개](https://developers.portone.io/opi/ko/console/guide/readme)
+
+## API
+
+포트원에서 제공하는 API 명세를 확인할 수 있습니다.
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+
+<a class="m-4" href="https://developers.portone.io/api/rest-v1">
+
+<span>API 문서 바로가기</span>
+
+<i class="i-ic-baseline-chevron-right inline-block text-2xl" />
+
+</a>
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+
+<a class="m-4" href="https://developers.portone.io/api/rest-v2">
+
+<span>API 문서 바로가기</span>
+
+<i class="i-ic-baseline-chevron-right inline-block text-2xl" />
+
+</a>
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
+## SDK
+
+결제 연동 JS SDK 명세를 확인할 수 있습니다.
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+
+[JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/readme)
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+
+[JavaScript SDK 레퍼런스](https://developers.portone.io/sdk/ko/v2-sdk/readme)
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+
+## FAQ
+
+[자주 묻는 질문](https://developers.portone.io/opi/ko/support/faq/undefined)
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
+
+## PG사별 결제 연동 가이드
+
+각 PG사별 결제 연동 가이드를 안내합니다.
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+
+[결제대행사 선택하여 연동하기](https://developers.portone.io/opi/ko/integration/pg/v1/readme)
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+
+[결제대행사 선택하여 연동하기](https://developers.portone.io/opi/ko/integration/pg/v2/readme)
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
 
 
 # https://developers.portone.io/opi/ko/support/contact
@@ -13366,62 +13626,190 @@ v1 API 서버(api.iamport.kr)의 TLS 버전 및 Cipher Suite 지원 범위가 �
 - TLS 1.0, 1.1 버전에 대한 지원이 중단됩니다.
 - 보안성이 떨어지는 일부 Legacy Cipher Suite 들에 대한 지원이 중단됩니다.
 
-Protocol
-Cipher Suite
-2024-09-01 전
-2024-09-01 이후
+<table class="table-tls-support">
 
-HTTP
-N/A
-O
-X
+<thead>
 
-TLSv1.0
-(omitted)
+<tr>
 
-TLSv1.1
-(omitted)
+<th>Protocol</th>
+<th>Cipher Suite</th>
+<th>2024-09-01 전</th>
+<th>2024-09-01 이후</th>
 
-TLSv1.2
-AES256-SHA
-O
-X
+</tr>
 
-AES128-SHA
-AES128-GCM-SHA256
-AES128-SHA256
-AES256-GCM-SHA384
-AES256-SHA256
-ECDHE-ECDSA-AES128-SHA
-ECDHE-RSA-AES128-SHA
-ECDHE-RSA-AES256-SHA
-ECDHE-ECDSA-AES256-SHA
+</thead>
 
-ECDHE-ECDSA-AES128-SHA256
-O
-O
+<tbody>
 
-ECDHE-RSA-AES128-SHA256
-ECDHE-ECDSA-AES256-SHA384
-ECDHE-RSA-AES256-SHA384
-ECDHE-ECDSA-AES128-GCM-SHA256
-ECDHE-RSA-AES128-GCM-SHA256
-ECDHE-ECDSA-AES256-GCM-SHA384
-ECDHE-RSA-AES256-GCM-SHA384
+<tr>
 
-TLSv1.3
-TLS-AES-128-GCM-SHA256
-O
-O
+<td>HTTP</td>
+<td>
 
-TLS-AES-256-GCM-SHA384
-TLS-CHACHA20-POLY1305-SHA256
+<i>N/A</i>
+
+</td>
+<td rowspan="3" class="supported">O</td>
+<td rowspan="3" class="unsupported">X</td>
+
+</tr>
+
+<tr>
+
+<td>TLSv1.0</td>
+<td>
+
+<i>(omitted)</i>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>TLSv1.1</td>
+<td>
+
+<i>(omitted)</i>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td rowspan="18">TLSv1.2</td>
+<td>AES256-SHA</td>
+<td rowspan="10" class="supported">O</td>
+<td rowspan="10" class="unsupported">X</td>
+
+</tr>
+
+<tr>
+
+<td>AES128-SHA</td>
+
+</tr>
+<tr>
+
+<td>AES128-GCM-SHA256</td>
+
+</tr>
+<tr>
+
+<td>AES128-SHA256</td>
+
+</tr>
+<tr>
+
+<td>AES256-GCM-SHA384</td>
+
+</tr>
+<tr>
+
+<td>AES256-SHA256</td>
+
+</tr>
+<tr>
+
+<td>ECDHE-ECDSA-AES128-SHA</td>
+
+</tr>
+<tr>
+
+<td>ECDHE-RSA-AES128-SHA</td>
+
+</tr>
+<tr>
+
+<td>ECDHE-RSA-AES256-SHA</td>
+
+</tr>
+<tr>
+
+<td>ECDHE-ECDSA-AES256-SHA</td>
+
+</tr>
+
+<tr>
+
+<td style="display:none" />
+
+<td>ECDHE-ECDSA-AES128-SHA256</td>
+<td rowspan="8" class="supported">O</td>
+<td rowspan="8" class="supported">O</td>
+
+</tr>
+
+<tr>
+
+<td>ECDHE-RSA-AES128-SHA256</td>
+
+</tr>
+<tr>
+
+<td>ECDHE-ECDSA-AES256-SHA384</td>
+
+</tr>
+<tr>
+
+<td>ECDHE-RSA-AES256-SHA384</td>
+
+</tr>
+<tr>
+
+<td>ECDHE-ECDSA-AES128-GCM-SHA256</td>
+
+</tr>
+<tr>
+
+<td>ECDHE-RSA-AES128-GCM-SHA256</td>
+
+</tr>
+<tr>
+
+<td>ECDHE-ECDSA-AES256-GCM-SHA384</td>
+
+</tr>
+<tr>
+
+<td>ECDHE-RSA-AES256-GCM-SHA384</td>
+
+</tr>
+
+<tr>
+
+<td rowspan="3">TLSv1.3</td>
+<td>TLS-AES-128-GCM-SHA256</td>
+<td rowspan="3" class="supported">O</td>
+<td rowspan="3" class="supported">O</td>
+
+</tr>
+
+<tr>
+
+<td>TLS-AES-256-GCM-SHA384</td>
+
+</tr>
+<tr>
+
+<td>TLS-CHACHA20-POLY1305-SHA256</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<br />
 
 <details>
 
 <summary>
 
-HTTP 평문 통신 지원을 중단하는 이유
+<strong>HTTP 평문 통신 지원을 중단하는 이유</strong>
 
 </summary>
 
@@ -13452,7 +13840,7 @@ API를 평문 HTTP 통신으로 호출하고 계시는 고객님께선 즉시 AP
 
 <summary>
 
-TLS 1.0, 1.1 지원을 중단하는 이유
+<strong>TLS 1.0, 1.1 지원을 중단하는 이유</strong>
 
 </summary>
 
@@ -13532,7 +13920,7 @@ TLS 1.0과 1.1을 deprecate 시켰으며, AWS, Google[^tls-1.0-chrome], Apple, M
 
 <summary>
 
-일부 Legacy Cipher Suite 들에 대한 지원을 중단하는 이유
+<strong>일부 Legacy Cipher Suite 들에 대한 지원을 중단하는 이유</strong>
 
 </summary>
 
@@ -13579,7 +13967,7 @@ Cryptography Extension) Provider가 타원곡선 암호화 알고리즘을 지�
 
 <summary>
 
-JDK 8u261 이상으로 버전 업그레이드
+<strong>JDK 8u261 이상으로 버전 업그레이드</strong>
 
 </summary>
 
@@ -13596,7 +13984,7 @@ Java 7의 경우, Java 6과 마찬가지로 보안 업데이트가 중단된 상
 
 <summary>
 
-서드파티 라이브러리를 통한 TLS 버전 업데이트
+<strong>서드파티 라이브러리를 통한 TLS 버전 업데이트</strong>
 
 </summary>
 
@@ -13645,7 +14033,7 @@ Cipher Suite를 지원하지 않기도 합니다.
 
 <summary>
 
-JDK 8u261 이상으로 버전 업그레이드
+<strong>JDK 8u261 이상으로 버전 업그레이드</strong>
 
 </summary>
 
@@ -13659,7 +14047,7 @@ JDK 8u261 이상으로 버전 업그레이드
 
 <summary>
 
-JDK 7u321 이상으로 버전 업그레이드, 1.2 사용 설정
+<strong>JDK 7u321 이상으로 버전 업그레이드, 1.2 사용 설정</strong>
 
 </summary>
 
@@ -13704,13 +14092,15 @@ JDK 버전업이 완료되었다면, 아래 두 방법 중 하나를 골라 기�
 
 <summary>
 
-서드파티 라이브러리를 통한 TLS 버전 업데이트
+<strong>서드파티 라이브러리를 통한 TLS 버전 업데이트</strong>
 
 </summary>
 
 Java 6 가이드와 마찬가지 방법으로 서드파티 라이브러리를 통해 TLS 버전을 업데이트할 수 있습니다.
 
 </details>
+
+<p style="height:5rem" />
 
 ---
 
@@ -13719,6 +14109,66 @@ Java 6 가이드와 마찬가지 방법으로 서드파티 라이브러리를 �
 [^tls-1.0-browsers]: Bright, Peter (2018-10-17). ["Apple, Google, Microsoft, and Mozilla come together to end TLS 1.0"](https://arstechnica.com/gadgets/2018/10/browser-vendors-unite-to-end-support-for-20-year-old-tls-1-0/). Retrieved 2024-03-25.
 
 [^sha-1-collision]: Gaëtan Leurent; Thomas Peyrin (2020-01-05). ["SHA-1 is a Shambles - First Chosen-Prefix Collision on SHA-1 and Application to the PGP Web of Trust"](https://eprint.iacr.org/2020/014.pdf) (PDF).
+
+
+# https://developers.portone.io/sdk/ko/readme
+
+---
+title: 포트원 SDK 소개
+description: 포트원에서 제공하는 SDK 가이드입니다.
+targetVersions:
+  - v1
+  - v2
+---
+
+포트원은 고객사에서 보다 쉽게 서비스를 이용하실 수 있도록 프로그래밍 언어 / 플랫폼 별 SDK를 제공하고 있습니다.
+
+## 브라우저 SDK
+
+브라우저 환경에서 포트원 서비스를 연동할 때 사용하는 자바스크립트 SDK입니다. 브라우저에서 포트원 SDK를 호출하여 결제, 본인인증 등을 진행하게 됩니다.
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+
+[JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/readme)
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+
+[JavaScript SDK 레퍼런스](https://developers.portone.io/sdk/ko/v2-sdk/readme)
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
+## 모바일 SDK
+
+JS SDK를 모바일 환경에서 모바일 플랫폼 네이티브 코드(Kotlin, Swift 등) 으로 쉽게 사용할 수 있도록 만들어진 SDK입니다.
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+
+[모바일 SDK 레퍼런스](https://developers.portone.io/sdk/ko/v1-mobile-sdk/readme)
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+
+[모바일 SDK 레퍼런스](https://developers.portone.io/sdk/ko/v2-mobile-sdk/readme)
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+
+## 서버 SDK
+
+웹훅을 포함한 포트원 V2 REST API를 여러 언어에서 쉽게 사용할 수 있도록 만들어진 SDK입니다.
+
+[서버 SDK 레퍼런스](https://developers.portone.io/sdk/ko/v2-server-sdk/readme)
+
+## 샘플 프로젝트
+
+SDK를 지원하지 않는 플랫폼을 포함하여 다양한 플랫폼에서 결제 연동 예시를 확인하실 수 있도록 [portone-sample GitHub 저장소](https://github.com/portone-io/portone-sample)에서 샘플 프로젝트를 제공하고 있습니다.
+일부 플랫폼의 경우 devcontainers 환경에서 바로 실행해보실 수 있습니다.
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
 
 
 # https://developers.portone.io/opi/ko/console/guide/account
@@ -13818,7 +14268,7 @@ _파란색 부분은 사용 가능한 버튼 표기입니다_
 
 (이미지 첨부: 매니저 계정 외 하위 상점 계정 시점)
 
-## 하위상점별 웹훅 설정&#x20;
+## 하위상점별 웹훅 설정 <a href="#agency-webhook" id="agency-webhook" />
 
 하위상점 수정에서 결제알림 동일 설정 옵션을 해제하면 하위상점별 웹훅 설정을 할 수 있습니다.
 
@@ -13911,27 +14361,31 @@ targetVersions:
 
 빌링 결제 정보를 검색하여 거래건을 특정할 수 있습니다.
 
-**빌링결제 아이디** : 빌링결제 아이디(`schedule_id`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
+<ul>
+
+<li>**빌링결제 아이디** : 빌링결제 아이디(`schedule_id`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
 
-**고객사 거래번호** : 고객사 거래번호(`merchant_uid`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
-**포트원 빌링키** : 포트원 빌링키(`customer_uid`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
-**고객 식별 정보** : 고객식별정보 (`customer_id`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
-**고객 이름** : 고객 이름 (`buyer_name`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
-**상품 이름** : 상품 이름 (`name`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
+<li>**고객사 거래번호** : 고객사 거래번호(`merchant_uid`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
+<li>**포트원 빌링키** : 포트원 빌링키(`customer_uid`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
+<li>**고객 식별 정보** : 고객식별정보 (`customer_id`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
+<li>**고객 이름** : 고객 이름 (`buyer_name`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
+<li>**상품 이름** : 상품 이름 (`name`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
 
-**고객사 거래번호** : 고객사 거래번호(`paymentId`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
-**포트원 빌링키** : 포트원 빌링키(`billingKey`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
-**고객 식별 정보** : 고객식별정보 (`customer.id`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
-**고객 이름**: 고객 이름 (`customer.name`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
-**상품 이름** : 상품 이름 (`orderName`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
+<li>**고객사 거래번호** : 고객사 거래번호(`paymentId`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
+<li>**포트원 빌링키** : 포트원 빌링키(`billingKey`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
+<li>**고객 식별 정보** : 고객식별정보 (`customer.id`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
+<li>**고객 이름**: 고객 이름 (`customer.name`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
+<li>**상품 이름** : 상품 이름 (`orderName`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
+</ul>
 
 ### 리커버리
 
@@ -13967,19 +14421,23 @@ targetVersions:
 
 #### 예약
 
+<ul>
+
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
 
-결제예약 API(Schedule API)를 이용한 결제 예약 건 중 결제 예약 상태인 거래 건입니다.
+<li>결제예약 API(Schedule API)를 이용한 결제 예약 건 중 결제 예약 상태인 거래 건입니다.</li>
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
 
-결제 예약 API를 이용한 결제 예약 건 중 결제 예약 상태인 거래 건입니다.
+<li>결제 예약 API를 이용한 결제 예약 건 중 결제 예약 상태인 거래 건입니다.</li>
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
 
-예약 상태의 빌링 결제 건을 클릭하면 오른쪽에 모달이 표시됩니다.
+<li>예약 상태의 빌링 결제 건을 클릭하면 오른쪽에 모달이 표시됩니다.</li>
+
+<li>
 
 해당 모달에서 결제 건의 상세정보, 예약해지 및 변경, 예약 결제 히스토리를 확인할 수 있습니다.
 
@@ -13997,23 +14455,31 @@ targetVersions:
 
 - 예약 결제 히스토리 카테고리에서는 해당 거래 건의 상태 변경 히스토리를 확인할 수 있습니다.
 
+</li>
+
+</ul>
+
 #### 성공
+
+<ul>
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
 
-결제예약 API(Schedule API)를 이용한 결제 예약 건 중 정상적으로 예약 결제가 진행되어 결제 성공 상태인 거래 건입니다.
-비 인증 결제(빌링키) API(Again API)를 이용한 결제 건 중 정상적으로 결제가 진행되어 결제 성공 상태인 겨래 건입니다.
+<li>결제예약 API(Schedule API)를 이용한 결제 예약 건 중 정상적으로 예약 결제가 진행되어 결제 성공 상태인 거래 건입니다.</li>
+<li>비 인증 결제(빌링키) API(Again API)를 이용한 결제 건 중 정상적으로 결제가 진행되어 결제 성공 상태인 겨래 건입니다.</li>
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
 
-결제 예약 API를 이용한 결제 예약 건 중 정상적으로 예약 결제가 진행되어 결제 성공 상태인 거래 건입니다.
-빌링키 결제 API를 이용한 결제 건 중 정상적으로 결제가 진행되어 결제 성공 상태인 거래 건입니다.
+<li>결제 예약 API를 이용한 결제 예약 건 중 정상적으로 예약 결제가 진행되어 결제 성공 상태인 거래 건입니다.</li>
+<li>빌링키 결제 API를 이용한 결제 건 중 정상적으로 결제가 진행되어 결제 성공 상태인 거래 건입니다.</li>
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
 
-성공 상태의 빌링 결제 건을 클릭하면 오른쪽에 모달이 표시됩니다.
+<li>성공 상태의 빌링 결제 건을 클릭하면 오른쪽에 모달이 표시됩니다.</li>
+
+<li>
 
 해당 모달에서 결제 건의 상세정보, 예약 결제 히스토리를 확인할 수 있습니다.
 
@@ -14022,26 +14488,38 @@ targetVersions:
 
 - 예약 결제 히스토리 카테고리에서는 해당 거래 건의 상태 변경 히스토리를 확인할 수 있습니다.
 
+</li>
+
+</ul>
+
 #### 실패
+
+<ul>
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
 
-결제예약 API(Schedule API)를 이용한 결제 예약 건 중 정상적으로 예약 결제가 진행되지 못해 결제 실패 상태인 거래 건입니다.
-비 인증 결제(빌링키) API(Again API)를 이용한 결제 건 중 정상적으로 결제가 진행되지 못해 결제 실패 상태인 겨래 건입니다.
+<li>결제예약 API(Schedule API)를 이용한 결제 예약 건 중 정상적으로 예약 결제가 진행되지 못해 결제 실패 상태인 거래 건입니다.</li>
+<li>비 인증 결제(빌링키) API(Again API)를 이용한 결제 건 중 정상적으로 결제가 진행되지 못해 결제 실패 상태인 겨래 건입니다.</li>
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
 
-결제 예약 API를 이용한 결제 예약 건 중 정상적으로 예약 결제가 진행되지 못해 결제 실패 상태인 거래 건입니다.
-빌링키 결제 API를 이용한 결제 건 중 정상적으로 결제가 진행되지 못해 결제 실패 상태인 거래 건입니다.
+<li>결제 예약 API를 이용한 결제 예약 건 중 정상적으로 예약 결제가 진행되지 못해 결제 실패 상태인 거래 건입니다.</li>
+<li>빌링키 결제 API를 이용한 결제 건 중 정상적으로 결제가 진행되지 못해 결제 실패 상태인 거래 건입니다.</li>
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
+<li>
 
 빌링 결제 실패는 한도초과, 잔액부족, 정지된 카드, 유효기간 만료 등 사용자 이유
 혹은 사용 불가한 빌링키, 올바르지 않은 결제 요청 등의 이유로 발생할 수 있습니다.
 
-실패 상태의 빌링 결제 건을 클릭하면 오른쪽에 모달이 표시됩니다.
+</li>
+
+<li>실패 상태의 빌링 결제 건을 클릭하면 오른쪽에 모달이 표시됩니다.</li>
+
+<li>
 
 해당 모달에서 결제 건의 상세정보, 재시도 재예약, 예약 결제 히스토리를 확인할 수 있습니다.
 
@@ -14059,21 +14537,29 @@ targetVersions:
 
 - 예약 결제 히스토리 카테고리에서는 해당 거래 건의 상태 변경 히스토리를 확인할 수 있습니다.
 
+</li>
+
+</ul>
+
 #### 해지
+
+<ul>
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
 
-결제예약 API(Schedule API)를 이용한 결제 예약 건 중 예약 해지 상태인 거래 건입니다.
+<li>결제예약 API(Schedule API)를 이용한 결제 예약 건 중 예약 해지 상태인 거래 건입니다.</li>
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
 
-결제 예약 API를 이용한 결제 예약 건 중 예약 해지 상태인 거래 건입니다.
+<li>결제 예약 API를 이용한 결제 예약 건 중 예약 해지 상태인 거래 건입니다.</li>
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
 
-해지 상태의 빌링 결제 건을 클릭하면 오른쪽에 모달이 표시됩니다.
+<li>해지 상태의 빌링 결제 건을 클릭하면 오른쪽에 모달이 표시됩니다.</li>
+
+<li>
 
 해당 모달에서 결제 건의 상세정보, 재예약, 예약 결제 히스토리를 확인할 수 있습니다.
 
@@ -14090,6 +14576,10 @@ targetVersions:
   </details>
 
 - 예약 결제 히스토리 카테고리에서는 해당 거래 건의 상태 변경 히스토리를 확인할 수 있습니다.
+
+</li>
+
+</ul>
 
 ## 빌링결제 캘린더
 
@@ -14534,61 +15024,85 @@ targetVersions:
 
 결제 정보를 검색하여 거래건을 특정할 수 있습니다.
 
+<ul>
+
+<li>
+
 **전체** : 입력한 단어와 여러 결제 정보 필드 중 매칭되는 거래 건을 표시합니다.
 여러 필드에서 일부 혹은 전부 일치하는 경우 검색 결과에 표시됩니다.
 또한, 검색의 경우 단어의 앞에서부터 일치하는 경우에만 표시되며 중간만 일치하는 경우 원하는 검색 결과를 얻지 못할 수 있습니다.
 
-**포트원 거래번호** : 포트원 거래번호 (`imp_uid`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
+</li>
+
+<li>**포트원 거래번호** : 포트원 거래번호 (`imp_uid`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
 
-**가맹점 거래번호** : 가맹점 거래번호 (`merchant_uid`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
-**주문명** : 주문명 (`name`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
-**카드사 승인번호** : 카드사 승인번호 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
-**고객 이름** : 고객 이름 (`buyer_name`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
-**고객 휴대폰 번호** : 고객 휴대폰 번호 (`buyer_tel`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
-**고객 이메일** : 고객 이메일 (`buyer_email`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
-**고객 주소** : 고객 주소 (`buyer_addr`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
-**고객 우편번호** : 고객 우편번호(`buyer_postcode`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
+<li>**가맹점 거래번호** : 가맹점 거래번호 (`merchant_uid`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
+<li>**주문명** : 주문명 (`name`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
+<li>**카드사 승인번호** : 카드사 승인번호 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
+<li>**고객 이름** : 고객 이름 (`buyer_name`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
+<li>**고객 휴대폰 번호** : 고객 휴대폰 번호 (`buyer_tel`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
+<li>**고객 이메일** : 고객 이메일 (`buyer_email`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
+<li>**고객 주소** : 고객 주소 (`buyer_addr`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
+<li>**고객 우편번호** : 고객 우편번호(`buyer_postcode`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
 
-**가맹점 거래번호** : 가맹점 거래번호 (`paymentId`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
-**주문명** : 주문명 (`orderName`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
-**카드사 승인번호** : 카드사 승인번호 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
-**고객 이름** : 고객 이름 (`customer.fullname`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
-**고객 휴대폰 번호** : 고객 휴대폰 번호 (`customer.phoneNumber`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
-**고객 이메일** : 고객 이메일 (`customer.email`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
-**고객 주소** : 고객 주소 (`customer.address`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
-**고객 우편번호** : 고객 우편번호(`customer.zipcode`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
+<li>**가맹점 거래번호** : 가맹점 거래번호 (`paymentId`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
+<li>**주문명** : 주문명 (`orderName`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
+<li>**카드사 승인번호** : 카드사 승인번호 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
+<li>**고객 이름** : 고객 이름 (`customer.fullname`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
+<li>**고객 휴대폰 번호** : 고객 휴대폰 번호 (`customer.phoneNumber`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
+<li>**고객 이메일** : 고객 이메일 (`customer.email`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
+<li>**고객 주소** : 고객 주소 (`customer.address`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
+<li>**고객 우편번호** : 고객 우편번호(`customer.zipcode`) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
 
-**결제대행사 승인번호** : 결제대행사(PG사) 승인번호 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
+<li>**결제대행사 승인번호** : 결제대행사(PG사) 승인번호 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
+
+<li>
 
 **카드번호** : 카드번호 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
 카드 번호의 경우 결제대행사에 따라 마스킹되는 부분이 다르므로, 앞에 6\~8자리(BIN)번호 혹은 뒷 4자리로 검색하시길 권장드립니다.
 
-**상점아이디** : 결제대행사 상점아이디 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
-**결제환경** : 결제환경(PC/MOBILE/API) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다. 검색하는 경우 대문자로 검색해야 합니다.
+</li>
+
+<li>**상점아이디** : 결제대행사 상점아이디 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
+<li>**결제환경** : 결제환경(PC/MOBILE/API) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다. 검색하는 경우 대문자로 검색해야 합니다.</li>
+
+<li>
 
 **실시간 계좌 은행** : 실시간 계좌이체 거래 건에 한하여 실시간 계좌 은행 데이터 중 입력한 택스트와 일치하는 데이터가 표시됩니다.
 (ex. 실시간 계좌이체 거래 건의 계좌은행이 토스뱅크인 경우 )
 
-**가상계좌 은행** : 가상계좌 거래 건에 한하여 가상계좌 은행 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
-**계좌번호** : 가상계좌 거래 건에 한하여 계좌번호 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
-**입금자명** : 가상계좌 거래 건에 한하여 입금자명 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
+</li>
+
+<li>**가상계좌 은행** : 가상계좌 거래 건에 한하여 가상계좌 은행 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
+<li>**계좌번호** : 가상계좌 거래 건에 한하여 계좌번호 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
+<li>**입금자명** : 가상계좌 거래 건에 한하여 입금자명 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
+
+<li>
 
 **현금영수증 발급번호** : 실시간 계좌이체 또는 가상계좌 거래 시 현금영수증을 발급한 거래 건에 한하여
 현금영수증 발급번호(국세청 승인번호) 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
 
+</li>
+
+<li>
+
 **취소 사유** : 결제 취소 건에 한하여 취소 사유 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
 포트원 어드민콘솔에서 취소한 경우 취소 사유는 **관리자페이지취소**로 일괄 입력됩니다.
 
-**카드사명** : 카드사명 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
-**할부개월수** : 카드 결제 시 할부가 적용된 거래 건에 한하여 할부개월수 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.
+</li>
+
+<li>**카드사명** : 카드사명 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
+<li>**할부개월수** : 카드 결제 시 할부가 적용된 거래 건에 한하여 할부개월수 데이터 중 입력한 텍스트와 일치하는 데이터가 표시됩니다.</li>
+
+</ul>
 
 ## 필터
 
@@ -14615,71 +15129,139 @@ targetVersions:
 
 ### 결제수단
 
-**전체** : 모든 결제 수단의 거래를 조회합니다.
+<ul>
+
+<li>**전체** : 모든 결제 수단의 거래를 조회합니다.</li>
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+
+<li>
 
 **카드결제** : 결제 요청 시 결제 수단을 카드(`pay_method : card`)로 지정하여 호출한 뒤
 신용카드, 체크카드, 법인카드, 기프트카드 등 카드로 진행된 거래 건만 표시됩니다.
 
+</li>
+
+<li>
+
 **실시간 계좌이체** :  결제 요청 시 결제 수단을 실시간 계좌이체(`pay_method : trans`)로
 지정하여 호출한 뒤 계좌이체로 진행된 거래 건만 표시됩니다.
+
+</li>
+
+<li>
 
 **가상계좌** : 결제 요청 시 결제 수단을 가상계좌 (`pay_method : vbank`)로
 지정하여 호출한 뒤 가상계좌로 진행된 거래 건만 표시됩니다.
 
+</li>
+
+<li>
+
 **휴대폰 소액결제** : 결제 요청 시 결제 수단을 휴대폰 소액결제 (`pay_method : phome`)로
 지정하여 호출한 뒤 휴대폰 소액결제로 진행된 거래 건만 표시됩니다.
+
+</li>
+
+<li>
 
 **문화상품권** : 결제 요청 시 결제 수단을 문화상품권 (`pay_method : culturegift`)로 지정하여 호출한 뒤
 문화상품권으로 진행된 거래 건만 표시됩니다. 문화상품권의 경우 웰컴페이먼츠만 지원합니다.
 
+</li>
+
+<li>
+
 **컬쳐랜드** : 결제 요청 시 결제 수단을 컬쳐랜드 문화상품권 (`pay_method : cultureland`)로 지정하여 호출한 뒤
 컬쳐랜드 문화상품권으로 진행된 거래 건만 표시됩니다.
+
+</li>
+
+<li>
 
 **스마트문상** : 결제 요청 시 결제 수단을 스마트문상(`pay_method : smartculture`)로 지정하여 호출한 뒤
 스마트문상 ((구)게임문화상품권)으로 진행된 거래 건만 표시됩니다.
 
+</li>
+
+<li>
+
 **북앤라이프** : 결제 요청 시 결제 수단을 북앤라이프(`pay_method : booknlife`)로 지정하여 호출한 뒤
 도서문화상품권으로 진행된 거래 건만 표시됩니다.
+
+</li>
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
 
+<li>
+
 **카드결제** : 결제 요청 시 결제 수단을 카드(`payMethod : CARD`)로 지정하여 호출한 뒤
 신용카드, 체크카드, 법인카드, 기프트카드 등 카드로 진행된 거래 건만 표시됩니다.
+
+</li>
+
+<li>
 
 **실시간 계좌이체** :  결제 요청 시 결제 수단을 실시간 계좌이체(`payMethod : TRANSFER`)로
 지정하여 호출한 뒤 계좌이체로 진행된 거래 건만 표시됩니다.
 
+</li>
+
+<li>
+
 **가상계좌** : 결제 요청 시 결제 수단을 가상계좌 (`payMethod : VIRTUAL_ACCOUNT`)로
 지정하여 호출한 뒤 가상계좌로 진행된 거래 건만 표시됩니다.
+
+</li>
+
+<li>
 
 **휴대폰 소액결제** : 결제 요청 시 결제 수단을 휴대폰 소액결제 (`payMethod : MOBILE`)로
 지정하여 호출한 뒤 휴대폰 소액결제로 진행된 거래 건만 표시됩니다.
 
-**문화상품권** : 문화상품권의 경우 V1 결제모듈의 웰컴페이먼츠만 지원합니다.
+</li>
+
+<li>**문화상품권** : 문화상품권의 경우 V1 결제모듈의 웰컴페이먼츠만 지원합니다.</li>
+
+<li>
 
 **컬쳐랜드** : 결제 요청 시 결제 수단을 컬쳐랜드 문화상품권
 (`payMethod : GIFT_CERTIFICATE`, `giftCertificate.giftCertificateType : CULTURELAND`)로 지정하여 호출한 뒤
 컬쳐랜드 문화상품권으로 진행된 거래 건만 표시됩니다.
 
+</li>
+
+<li>
+
 **스마트문상** : 결제 요청 시 결제 수단을 스마트문상
 (`payMethod : GIFT_CERTIFICATE`, `giftCertificate.giftCertificateType : SMART_MUNSANG`)로 지정하여 호출한 뒤
 스마트문상 ((구)게임문화상품권)으로 진행된 거래 건만 표시됩니다.
+
+</li>
+
+<li>
 
 **북앤라이프** : 결제 요청 시 결제 수단을 북앤라이프
 (`payMethod : GIFT_CERTIFICATE`, `giftCertificate.giftCertificateType : BOOKNLIFE`)로 지정하여 호출한 뒤
 도서문화상품권으로 진행된 거래 건만 표시됩니다.
 
+</li>
+
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
+<li>
 
 **포인트결제** : 실제 승인된 결제가 포인트로 진행된 거래 건만 표시됩니다.
 
 - 예를 들어 네이버페이 포인트 사용 결제 건 등이 해당됩니다.
 
-**기타** : 결제 수단을 알 수 없거나 해외 현지 결제 수단으로 진행된 거래 건만 표시됩니다.
+</li>
+
+<li>**기타** : 결제 수단을 알 수 없거나 해외 현지 결제 수단으로 진행된 거래 건만 표시됩니다.</li>
+
+</ul>
 
 ### 결제대행사
 
@@ -15041,6 +15623,964 @@ description: 결제대행사 및 결제수단을 선택하고 전자결제를 �
 
 - 연동과 관련하여 궁금하신 사항은 **포트원 기술지원 이메일 <support@portone.io>**
   또는 채널톡으로 문의 주시기 바랍니다.
+
+
+# https://developers.portone.io/opi/ko/extra/promotion/console-guide
+
+---
+title: 프로모션 생성하기
+description: 프로모션 기간, 예산, 할인 조건 등 설정 방법을 안내합니다.
+targetVersions:
+  - v1
+  - v2
+---
+
+## 프로모션 생성하기
+
+프로모션 결제를 사용하기 위해서는 포트원 관리자콘솔 내 \[프로모션]에서 프로모션 설정이 필요합니다.
+프로모션은 상점별로 생성하여 사용할 수 있으며, 하위상점을 사용하시는 고객사의 경우 프로모션을 각각 생성하여 사용하시길 권장드립니다.
+
+1. 포트원 콘솔 내에서 \[프로모션]을 클릭하세요.
+2. \[+ 프로모션 추가]를 클릭하세요.
+
+(이미지 첨부: 콘솔 내 프로모션 화면 예시 1)
+
+3. **프로모션 추가** 화면에서 다음 정보를 입력하세요.
+
+(이미지 첨부: 콘솔 내 프로모션 화면 예시 2)
+
+- \[프로모션 이름] : 생성된 프로모션을 고객사에서 구분할 수 있는 이름을 입력하시길 권장드립니다.
+
+- \[프로모션 일정] : 프로모션 시작일과 종료일을 선택하세요. 시작일이 미래인 경우 생성 후 **예정** 상태이며,
+  설정된 시작일이 경과되면 **진행중** 상태로 변경되며 프로모션 할인이 적용됩니다.
+
+- \[카드사] : 프로모션 할인을 제공할 카드사를 선택하세요. 카드사는 한 프로모션 당 한 곳만 설정할 수 있습니다.
+
+- \[프로모션 예산] : 프로모션을 진행할 전체 예산으로 할인 금액으로 사용할 예산을 입력하세요.
+  예산이 100% 소진된 이후 결제 건에 대해서는 프로모션이 적용되지 않습니다.
+
+- \[프로모션 예산 미복구] : 프로모션 할인이 적용된 거래 건이 부분취소 혹은 전체취소 되었을 때,
+  적용되었던 프로모션 금액을 예산에 다시 포함시킬지 여부를 설정할 수 있습니다.
+  기본적으로 취소된 프로모션 금액이 예산에 복구되며, 프로모션 예산 미복구를 활성화하는 경우 복구되지 않습니다.
+  프로모션 예산 미복구를 활성화하는 경우, 환불 예상 비율 혹은 환불 예상 금액을 입력하여 여유 예산을 설정할 수 있습니다.
+
+- \[할인방식] : 할인율 또는 할인금액을 선택할 수 있으며, 입력된 수치에 따라 정률 또는 정액으로 할인 금액이 적용됩니다.
+  할인율 방식을 선택한 경우, \[최대 할인 금액]을 설정할 수 있으며 최대 할인 금액 설정시 프로모션 할인 금액이
+  최대 할인 금액을 초과할 수 없습니다. 최대 할인 금액을 설정하지 않는 경우 주문 금액에 정률로 계산되어 프로모션 할인이 적용됩니다.
+
+- \[할인 조건 설정] : 할인 조건을 최대 5개까지 설정할 수 있습니다. 최소 결제 금액을 기준으로 구간별
+  할인금액 / 할인율을 설정할 수 있습니다.
+
+  - \[최소 결제 금액] : 최소 결제 금액 설정시 주문 금액이 최소 결제 금액 이상인 경우에만 프로모션 할인이 적용됩니다.
+    만약 최소 결제 금액을 0으로 입력하는 경우 해당 카드로 결제되는 모든 건에 프로모션 할인이 적용됩니다.
+
+  - \[할인율] : 입력된 할인율만큼 주문 금액을 기준으로 정률로 계산되어 할인이 적용됩니다.
+
+  - \[할인금액] : 입력된 할인 금액만큼 할인이 적용됩니다.
+
+  - 예를 들어, `10000원 이상 결제 시 10% 할인, 50000원 이상 결제 시 20% 할인` 과 같은 정책을 생성하고 싶다면
+    조건 1을 **최소 결제 금액 10000원, 할인율 10%**, 조건 2를 **최소 결제 금액 50000원, 할인율 20%** 와 같이 설정하시기 바랍니다.
+
+<div class="hint" data-style="info">
+
+1. 할인 조건의 경우 생성 후 수정이 불가능하므로 변경을 원하시면 삭제 후 다시 추가해야 합니다.
+
+2. 추가 할인 조건의 경우 앞서 생성된 조건의 할인비율보다 크게 설정해야합니다.
+   할인 금액 방식으로 입력하는 경우에도 (할인 금액 / 최소 결제 금액) \* 100으로 할인율을 계산하며,
+   만약 할인율이 낮아지는 경우 금액 입력이 불가능 합니다.
+
+</div>
+
+4. \[저장]을 클릭하세요.
+
+## 프로모션 수정하기
+
+1. 생성된 프로모션 우측에 \[...]을 클릭하세요.
+2. \[수정]을 클릭하세요.
+
+(이미지 첨부: 콘솔 내 프로모션 화면 예시 3)
+
+3. **프로모션 수정** 화면에서 원하는 정보를 수정하세요.
+
+(이미지 첨부: 콘솔 내 프로모션 화면 예시 4)
+
+- **예정** 상태인 경우, 프로모션 아이디를 제외한 모든 정보를 수정할 수 있습니다.
+- **일시중지**, **진행중**, **예산소진** 상태인 경우 프로모션 이름 및 프로모션 일정만 수정할 수 있습니다.
+- **종료** 상태인 경우 모든 정보를 수정할 수 없습니다.
+
+## 프로모션 상태 안내
+
+생성된 프로모션은 총 5개의 상태로 구분할 수 있으며, 상태에 따라 프로모션 아이디를 지정하여 결제 요청했더라도
+프로모션 할인 금액이 적용되지 않을 수 있습니다.
+
+### 예정
+
+프로모션 생성 후 프로모션 시작일이 경과되지 않은 경우 **예정**상태로 표시됩니다.
+예정 상태인 경우 프로모션 아이디를 제외한 모든 정보를 수정할 수 있습니다.
+
+예정 상태인 프로모션을 일시중지하는 경우 프로모션 시작일이 경과되어도 프로모션이 진행중 상태로 변경되지 않으며,
+프로모션 아이디를 지정하여 결제를 요청하더라도 프로모션 할인이 적용되지 않습니다.
+
+예정 상태인 프로모션을 종료하는 경우 종료 상태로 변경되며 상태 변경이 불가능합니다.
+
+### 진행중
+
+프로모션 생성 후 프로모션 시작일이 경과된 경우 **진행중**상태로 표시됩니다.
+진행중 상태인 경우 프로모션 이름 및 프로모션 일정만 수정할 수 있습니다.
+
+진행중 상태인 경우 결제 요청 시 프로모션 아이디를 지정하면 프로모션 할인이 적용됩니다.
+
+진행중 상태인 프로모션을 일시중지하는 경우 직후 결제 요청 건부터 프로모션 아이디를 지정했더라도 프로모션 할인이 적용되지 않습니다.
+다만, 일시중지 직전 결제 요청되었으나 결제 승인이 완료되지 않은 건의 경우 프로모션 할인 금액이 적용될 수 있습니다.
+
+진행중 상태인 프로모션을 종료하는 경우 종료 상태로 변경되며 상태 변경이 불가능합니다.
+
+### 일시중지
+
+사용자가 직접 생성된 프로모션을 일시중지할 수 있으며 예정, 진행중, 예산소진 상태인 경우 일시중지가 가능합니다.
+
+예정이거나 진행중 혹은 예산소진 상태에서 일시중지 상태로 변경된 경우 프로모션 이름 및
+프로모션 일정 중 종료일만 변경할 수 있으며, 시작일은 변경이 불가능합니다.
+
+일시중지하는 경우 프로모션 시작일이 경과되거나 예산이 남아있어도 프로모션 할인은 적용되지 않습니다.
+재시작하여 프로모션이 원 상태로 변경되며, 다시 사용이 가능합니다.
+
+### 예산소진
+
+프로모션 할인금액이 설정된 예산만큼 모두 소진된 경우 **예산소진**상태로 표시됩니다.
+예산소진 상태인 경우 프로모션 아이디를 지정하여 결제 요청하더라도 프로모션 할인이 적용되지 않습니다.
+
+만약 프로모션 할인이 적용된 거래건이 취소되는 경우 해당 거래 건에 적용되었던 할인 금액만큼 예산에 귀속되며,
+이후 거래 요청 시 할인 금액이 적용됩니다.
+
+### 종료
+
+프로모션 종료일이 경과되거나 사용자가 종료한 경우 **종료**상태로 표시됩니다.
+종료된 프로모션은 재시작할 수 없습니다.
+
+프르모션이 종료되는 경우 즉시 프로모션 할인이 적용되지 않습니다. 다만, 종료 직전 결제 요청한 경우 프로모션 종료 이후
+결제 승인이 완료되면 프로모션 할인금액이 적용됩니다.
+
+## 프로모션 엑셀 다운로드
+
+엑셀 다운로드 클릭 시 **프로모션 내역**, **거래 내역** 두 가지 유형으로 데이터를 다운로드 받을 수 있습니다.
+
+- 프로모션 내역 : 조회 기간 내 전체 프로모션 내역에 대해 다운로드할 수 있습니다.
+
+- 프로모션 아이디, 프로모션 이름, 상태, 카드사, 예산, 소진금액, 할인조건, 최대 할인 금액, 프로모션 생성날짜,
+  프로모션 수정 날짜, 프로모션 시작 날짜, 프로모션 종료 예정 날짜, 프로모션 실제 종료 날짜가 포함됩니다.
+
+- 거래 내역 : 조회 기간 내 전체 프로모션이 적용된 건별 거래 내역에 대해 다운로드 할 수 있습니다.
+
+- 고객사 주문번호, 포트원 거래번호, 프로모션 아이디, PG사 승인번호, 카드사 승인번호 등 거래 데이터가 포함됩니다.
+
+- 만약 특정 프로모션이 적용된 거래 내역 확인을 원하시는 경우 해당 프로모션의 `...` 버튼 클릭 후 `거래내역 다운로드`를 클릭하세요.
+
+
+# https://developers.portone.io/opi/ko/extra/promotion/integration
+
+---
+title: 프로모션 결제 연동하기
+description: 프로모션 할인금액을 적용하는 방법을 안내합니다.
+targetVersions:
+  - v1
+  - v2
+---
+
+## 프로모션 결제 연동하기
+
+고객사에서 카드사 즉시할인을 쉽게 적용하고 운영 관리하실 수 있도록 프로모션 기능을 제공하고 있습니다.
+포트원 콘솔 내 **프로모션** 메뉴에서 카드사 별 프로모션을 생성 후 결제 요청 시 적용할 수 있으며,
+프로모션에 설정된 예산, 할인방식, 할인금액/할인률에 따라 자동으로 계산되어 결제가 승인됩니다.
+
+<div class="hint" data-style="info">
+
+프로모션 메뉴의 경우 도입 고객사에 한하여 포트원 콘솔 내에서 확인하실 수 있습니다.
+
+프로모션 결제를 연동하시려면 관리자콘솔에서 프로모션을 먼서 생성해야합니다.
+프로모션 생성 방법이 궁금하다면 [프로모션 설정 가이드](https://developers.portone.io/opi/ko/extra/promotion/console-guide)를 확인해 보세요.
+
+</div>
+
+### 프로모션 할인 금액 표시하기
+
+포트원에서 제공하는 프로모션을 이용하시는 경우 결제 요청 전 고객사에서 주문 페이지를 구현하여 사용하시길 권장드립니다.
+
+고객사의 주문 페이지에 프로모션 할인 금액을 표시하시려면 [프로모션 단건 조회 API](https://developers.portone.io/api/rest-v2/promotion?v=v2)를 참고하여
+사용할 프로모션 아이디로 API를 조회한 후 응답 필드의 `discountPolicy.partitions[]` 내의 `scheme`과 `amountFrom` 데이터를 갖고 직접 계산해서 사용하시길 권장드립니다.
+
+**프로모션 할인 정책 조회 예시**
+
+예를 들어 조회할 프로모션의 할인 정책이 `10000원 이상 결제 시 10% 할인, 50000원 이상 결제 시 20% 할인` 이라면 `discountPolicy` 필드는 아래와 같이 조회가 될 것입니다.
+
+```javascript
+const promotion = {
+  // ... other fields
+  discountPolicy: {
+    partitions: [
+      {
+        amountFrom: 10000,
+        scheme: {
+          type: "PERCENT",
+          percent: 10,
+        },
+      },
+      {
+        amountFrom: 50000,
+        scheme: {
+          type: "PERCENT",
+          percent: 20,
+        },
+      },
+    ],
+  },
+};
+```
+
+아래와 같은 로직으로 프로모션이 적용된 이후의 금액을 계산하실 수 있습니다.
+
+```ts
+const selectDiscountScheme = (partitions, amount) => {
+  const select = (partitions) => {
+    const [head, ...tail] = partitions;
+    if (tail.length === 0) {
+      return head.scheme;
+    }
+
+    const from = head.amountFrom;
+    const to = tail[0].amountFrom;
+
+    if (from <= amount && amount < to) return head.scheme;
+    else return select(tail);
+  };
+
+  if (partitions[0].amountFrom > amount) return null;
+  else return select(partitions);
+};
+
+const getPaymentAmount = (discountScheme, amount) => {
+  if (discountScheme.type == "PERCENT") {
+    // 정률 할인
+    return amount - (amount * discountScheme.percent) / 100;
+  } else {
+    // 정액 할인
+    return amount - discountScheme.amount;
+  }
+};
+
+const orderAmount = getOrderAmount();
+const response = await fetch(
+  `https://api.portone.io/promotions/${promotionId}`,
+  {
+    method: "GET",
+    headers: {
+      Authorization: `PortOne ${PORTONE_API_SECRET}`,
+      "Content-Type": "application/json",
+    },
+  },
+);
+const promotion = await response.json();
+
+// 금액 구간에 맞는 할인 정책을 구합니다.
+const discountScheme = selectDiscountScheme(
+  promotion.discountPolicy.partitions,
+  orderAmount,
+);
+// 프로모션이 적용된 실결제 금액을 구합니다.
+const paymentAmount = getPaymentAmount(discountScheme, orderAmount);
+```
+
+## SDK(결제창) 인증결제 연동하기
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+
+SDK를 이용하는 경우 결제 호출 시 생성한 프로모션의 ID를 전용 파라미터인 `promotion_id`에 지정하여 사용이 가능합니다.
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+
+SDK를 이용하는 경우 결제 호출 시 생성한 프로모션의 ID를 전용 파라미터인 `promotionId`에 지정하여 사용이 가능합니다.
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
+프로모션 결제의 경우 특정 카드사 결제 시 적용되므로 결제 호출 시 **카드 다이렉트**호출 방식만 지원되며,
+해당 프로모션의 카드사와 다이렉트 호출 카드사가 일치하는 경우에만 프로모션 조건이 적용됩니다.
+
+만약, 카드사가 일치하지 않는 경우 에러가 리턴되며 결제 진행이 불가하오니 유의하시길 바랍니다.
+
+이 외에 다른 결제 기능들은 기존과 동일하게 사용이 가능합니다.
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+
+인증결제와 관련된 자세한 내용은 [인증 결제 연동하기](https://developers.portone.io/opi/ko/integration/start/v1/auth) 및 [결제요청 파라미터](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/payrq) 문서를 참고하시기 바랍니다.
+
+### 예제 코드
+
+```ts
+IMP.request_pay(
+  {
+    isPromotion: true, //프로모션 사용 여부
+    promotion_id: "promotion-id-86e1ff2a-2c3a-451c-bdd3-e5cd1664bc3e", //적용할 프로모션 아이디 입력 (Ex. 현대카드 프로모션)
+    channelKey: "{콘솔 내 연동 정보의 채널키}",
+    pay_method: "card", //결제수단 선택
+    card: {
+      direct: {
+        code: "367", //현대카드 다이렉트 호출
+      },
+    },
+    merchant_uid: "ORD20180131-0000011", //고객사 주문번호
+    name: "Norway swivel chair", //주문명
+    amount: 1000, // 결제 금액
+    //고객 정보
+    buyer_email: "gildong@gmail.com",
+    buyer_name: "Hong Gildong",
+    buyer_tel: "010-4242-4242",
+    buyer_addr: "Shinsa-dong, Gangnam-gu, Seoul",
+    buyer_postcode: "01181",
+  },
+  function (rsp) {
+    // callback
+    if (rsp.success) {
+      // Payment is successful
+    } else {
+      // Payment failed
+    }
+  },
+);
+```
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+
+인증결제와 관련된 자세한 내용은 [인증결제 연동하기](https://developers.portone.io/opi/ko/integration/start/v2/checkout) 및 [결제요청 파라미터](https://developers.portone.io/sdk/ko/v2-sdk/payment-request) 문서를 참고하시기 바랍니다.
+
+### 예제 코드
+
+```tsx
+//포트원 인증결제 SDK 호출
+PortOne.requestPayment({
+  storeId: "store-4ff4af41-85e3-4559-8eb8-0d08a2c6ceec",
+  promotionId: "promotion-id-86e1ff2a-2c3a-451c-bdd3-e5cd1664bc3e", //적용할 프로모션 아이디 입력 (Ex. 현대카드 프로모션)
+  //카드 다이렉트 호출
+  card: {
+    cardCompany: "HYUNDAI_CARD",
+  },
+  //기타 인증결제 파라미터 설정
+  channelKey: "channel-key-f042e8e2-92f1-4f68-ad61-cec6ede41529",
+  paymentId: `payment-${crypto.randomUUID()}`,
+  orderName: "나이키 와플 트레이너 2 SD",
+  totalAmount: 1000,
+  currency: "CURRENCY_KRW",
+  payMethod: "CARD",
+  customer: {
+    fullName: "홍길동",
+    phoneNumber: "010-1234-5678",
+    email: "test@test.com",
+  },
+});
+```
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
+### 주요 파라미터
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+
+- promotion\_id?: string
+
+  **프로모션 ID**
+
+  관리자 콘솔의 \[프로모션] 메뉴에서 확인할 수 있습니다.
+
+  프로모션 ID 지정 및 카드 다이렉트 방식으로 결제창을 호출하면, 프로모션 내 설정된 할인 조건 및 금액에 따라
+  할인 금액이 적용되어 결제가 진행됩니다.
+
+- card?: object
+
+  **카드 결제 옵션 설정**
+
+  - direct?: object
+
+    **카드 다이렉트 호출**
+
+  - code?: string
+
+    **카드사 코드**
+
+    카드 다이렉트 호출 시 [카드사 코드](https://developers.portone.io/opi/ko/support/code-info/card-code) 문서를 참조하여 프로모션과 동일한 카드사로 지정해야 합니다.
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+
+- promotionId?: string
+
+  **프로모션 ID**
+
+  관리자 콘솔의 \[프로모션] 메뉴에서 확인할 수 있습니다.
+
+  프로모션 ID 지정 및 카드 다이렉트 방식으로 결제창을 호출하면, 프로모션 내 설정된 할인 조건 및 금액에 따라
+  할인 금액이 적용되어 결제가 진행됩니다.
+
+- card?: object
+
+  **카드 정보**
+
+  - cardCompany?: string
+
+    **카드사 다이렉트 호출 시 필요한 카드사 식별 값**
+
+    카드 다이렉트 호출 시 [카드사 식별 값](https://developers.portone.io/sdk/ko/v2-sdk/payment-request?v=v2#card-object) 문서를 참조하여 프로모션과 동일한 카드사로 지정해야 합니다.
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
+### 유의사항
+
+<details>
+
+<summary> 프로모션 결제를 이용하는 경우 카드 다이렉트 호출 방식으로 결제를 요청해야합니다. </summary>
+
+결제 요청 시 프로모션 아이디를 지정했더라도 카드 다이렉트 방식으로 호출하지 않는 경우 에러가 리턴됩니다.
+
+</details>
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+
+<details>
+
+<summary> 프로모션 생성시 카드사와 결제 호출시 카드사가 일치해야 합니다. </summary>
+
+프로모션 생성시 지정한 카드사와 결제 호출시 `card.direct.code`에 지정한 카드사가 일치하지 않는 경우 에러가 리턴됩니다.
+결제 요청시 동일한 카드사로 매칭하여 호출해야 합니다.
+
+</details>
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+
+<details>
+
+<summary> 프로모션 생성시 카드사와 결제 호출시 카드사가 일치해야 합니다. </summary>
+
+프로모션 생성시 지정한 카드사와 결제 호출시 `card.cardCompany`에 지정한 카드사가 일치하지 않는 경우 에러가 리턴됩니다.
+결제 요청시 동일한 카드사로 매칭하여 호출해야 합니다.
+
+</details>
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
+## API 수기(키인)결제 연동하기
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+
+API를 이용하는 경우 결제 호출 시 생성한 프로모션의 ID를 전용 파라미터인 `promotion_id`에 지정하여 사용이 가능합니다.
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+
+API를 이용하는 경우 결제 호출 시 생성한 프로모션의 ID를 전용 파라미터인 `promotionId`에 지정하여 사용이 가능합니다.
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
+해당 프로모션의 카드사와 수기(키인) 결제 요청 시 입력한 카드의 카드사가 일치하는 경우에만 프로모션 조건이 적용됩니다.
+(입력한 카드의 카드사 정보는 카드 BIN번호를 기준으로 체크됩니다.)
+만약, 카드사가 일치하지 않는 경우 에러가 리턴되며 결제 진행이 불가하오니 유의하시길 바랍니다.
+
+이 외에 다른 결제 기능들은 기존과 동일하게 사용이 가능합니다.
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+
+수기(키인)결제와 관련된 자세한 내용은 [비인증결제 연동하기](https://developers.portone.io/opi/ko/integration/start/v1/non-auth) 문서를 참고하시기 바랍니다.
+
+### 예제 코드
+
+```ts
+// card_number, expiry, birth, pwd_2digit 등 정보를 전달받습니다.
+// 포트원 비인증 결제(일회성) API 호출
+const onetimeResponse = await fetch(
+  "https://api.iamport.kr/subscribe/payments/onetime",
+  {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${ACCESS_TOKEN}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      pg: `${pg_provider}.${pg_mid}`,
+      card_number: "YYYY-YYYY-YYYY-YYYY", // 카드 번호 16자리
+      expiry: "YYYY-MM", // 카드 유효기간
+      birth: "YYMMDD", // 생년 월일. 무기명 법인카드의 경우 사업자 번호 10자리 입력
+      pwd_2digit: "NN", //카드 비밀번호 앞 2자리
+      promotionId: "promotion-id-86e1ff2a-2c3a-451c-bdd3-e5cd1664bc3e", //적용할 프로모션 아이디 입력
+      // 중략...
+    }),
+  },
+);
+```
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+
+수기(키인)결제와 관련된 자세한 내용은 [수기(키인)결제 연동하기](https://developers.portone.io/opi/ko/integration/start/v2/keyin) 문서를 참고하시기 바랍니다.
+
+### 예제 코드
+
+```ts
+// 포트원 수기(키인)결제 API 호출
+const paymentResponse = await fetch(
+  `https://api.portone.io/payments/${encodeURIComponent(UNIQUE_PAYMENT_ID)}/instant`,
+  {
+    method: "POST",
+    headers: {
+      Authorization: `PortOne ${PORTONE_API_SECRET}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      channelKey: "channel-key-f042e8e2-92f1-4f68-ad61-cec6ede41529",
+      //적용할 프로모션 아이디 입력
+      promotionId: "promotion-id-86e1ff2a-2c3a-451c-bdd3-e5cd1664bc3e",
+      orderName: "1개월 이용권",
+      // 수기 결제 API를 참고해 고객 정보를 채워주세요.
+      customer: {
+        name: {
+          full: "김포트", // 고객 이름을 입력해야 합니다.
+        },
+      },
+      amount: {
+        total: 8900,
+      },
+      currency: "KRW",
+
+      // 수기(키인)결제 API를 참고해 카드 정보를 채워주세요.
+      method: {
+        card: {
+          cardCredintial: {
+            number: "0000123400001234", // 16자리 숫자만 입력해야 합니다.
+            expiryYear: "26", // 연도의 뒤 2자리를 입력해야 합니다.
+            expiryMonth: "12",
+            birthOrBusinessRegistrationNumber: "900101", // 생년월일 6자리 또는 사업자 등록번호 10자리를 입력해야 합니다.
+            passwordTwoDigits: "00", // 카드 비밀번호 앞 2자리 입력해야 합니다.
+          },
+        },
+      },
+    }),
+  },
+);
+if (!paymentResponse.ok)
+  throw new Error(`paymentResponse: ${await paymentResponse.json()}`);
+```
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
+### 주요 파라미터
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+
+- promotion\_id: string
+
+  **프로모션 ID**
+
+  관리자 콘솔의 \[프로모션] 메뉴에서 확인할 수 있습니다.
+
+  프로모션 ID 지정 및 카드 다이렉트 방식으로 결제창을 호출하면, 프로모션 내 설정된 할인 조건 및 금액에 따라
+  할인 금액이 적용되어 결제가 진행됩니다.
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+
+- promotionId: string
+
+  **프로모션 ID**
+
+  관리자 콘솔의 \[프로모션] 메뉴에서 확인할 수 있습니다.
+
+  프로모션 ID 지정 및 카드 다이렉트 방식으로 결제창을 호출하면, 프로모션 내 설정된 할인 조건 및 금액에 따라
+  할인 금액이 적용되어 결제가 진행됩니다.
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
+### 유의사항
+
+<details>
+
+<summary> 프로모션 생성시 카드사와 결제 요청시 입력된 카드의 카드사가 일치해야 합니다. </summary>
+
+프로모션 생성시 지정한 카드사와 결제 요청시 입력한 카드 정보의 카드사가 일치하지 않는 경우 에러가 리턴되며 결제 실패 처리됩니다.
+
+</details>
+
+## API 정기결제 연동하기
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+
+발급된 빌링키를 이용하여 단건 결제 API 또는 예약 결제 API를 이용하는 경우
+API 요청시 생성한 프로모션의 ID를 전용 파라미터인 `promotion_id`에 지정하여 사용이 가능합니다.
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+
+발급된 빌링키를 이용하여 단건 결제 API 또는 예약 결제 API를 이용하는 경우
+API 요청시 생성한 프로모션의 ID를 전용 파라미터인 `promotionId`에 지정하여 사용이 가능합니다.
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
+해당 프로모션의 카드사와 발급된 빌링키의 카드사가 일치하는 경우에만 프로모션 조건이 적용됩니다.
+만약, 카드사가 일치하지 않는 경우 에러가 리턴되며 결제 진행이 불가하오니 유의하시길 바랍니다.
+
+예약 결제를 사용하시는 경우 결제가 실행되는 시점에 예약 시 입력한 프로모션 아이디를 기반으로 예산 및 조건을 확인한 후
+적용됩니다. 만약 결제가 실행되는 시점에 예산 소진 상태이거나 프로모션이 종료된 상태인 경우 할인이 적용되지 않습니다.
+
+이 외에 다른 결제 기능들은 기존과 동일하게 사용이 가능합니다.
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+
+예약 결제와 관련된 자세한 내용은 [결제 예약 API](https://developers.portone.io/api/rest-v1/nonAuthPayment.subscribe#post%20%2Fsubscribe%2Fpayments%2Fschedule) 문서를 참고하시기 바랍니다.
+
+### 예제 코드
+
+<div class="tabs-container">
+
+<div class="tabs-content" data-title="빌링키 결제">
+
+```ts
+// 포트원 빌링키 결제 API 호출
+const paymentResponse = await fetch(
+  "https://api.iamport.kr/subscribe/payments/again",
+  {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${ACCESS_TOKEN}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      customer_uid,
+      merchant_uid,
+      name: "월간 이용권 정기결제",
+      // 빌링키 결제 API를 참고해 고객 정보를 채워주세요.
+      amount: {
+        total: 8900,
+      },
+      currency: "KRW",
+      //적용할 프로모션 아이디 입력
+      promotion_id: "promotion-id-86e1ff2a-2c3a-451c-bdd3-e5cd1664bc3e",
+    }),
+  },
+);
+if (!paymentResponse.ok)
+  throw new Error(`paymentResponse: ${await paymentResponse.json()}`);
+```
+
+</div>
+
+<div class="tabs-content" data-title="빌링키 예약 결제">
+
+```ts
+// 결제 예약
+axios({
+  url: `https://api.iamport.kr/subscribe/payments/schedule`,
+  method: "post",
+  headers: { Authorization: access_token },
+  data: {
+    customer_uid: "gildong_0001_1234", // 카드(빌링키)와 1:1로 대응하는 값
+    promotion_id: "promotion-id-86e1ff2a-2c3a-451c-bdd3-e5cd1664bc3e", //적용할 프로모션 아이디 값
+    schedules: [
+      {
+        merchant_uid: "order_monthly_0001", // 주문 번호
+        schedule_at: 1519862400, // 결제 시도 시각 in Unix Time Stamp. 예: 다음 달 1일
+        amount: 8900,
+        name: "월간 이용권 정기결제",
+        buyer_name: "홍길동",
+        buyer_tel: "01012345678",
+        buyer_email: "gildong@gmail.com",
+      },
+    ],
+  },
+});
+```
+
+</div>
+
+</div>
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+
+빌링키 결제와 관련된 자세한 내용은 [빌링결제 연동하기](https://developers.portone.io/opi/ko/integration/start/v2/billing/readme) 문서를 참고하시기 바랍니다.
+
+### 예제 코드
+
+<div class="tabs-container">
+
+<div class="tabs-content" data-title="빌링키 결제">
+
+```ts
+const issueResponse = await fetch(
+  `https://api.portone.io/payments/${encodeURIComponent(UNIQUE_PAYMENT_ID)}/billing-key`,
+  {
+    method: "POST",
+    headers: {
+      Authorization: `PortOne ${PORTONE_API_SECRET}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      billingKey: "billing-key-018fa367-cdd9-d8fd-2256-c43ce0e475d6", // 발급된 빌링키 값을 입력해야 합니다.
+      promotionId: "promotion-id-86e1ff2a-2c3a-451c-bdd3-e5cd1664bc3e", //적용할 프로모션 아이디 입력
+      orderName: "후불 결제",
+      customer: {
+        id: "customerId_2333", // 고객사가 지정한 고객 식별정보를 입력해야 합니다.
+        name: {
+          full: "김포트", // 고객 이름을 입력해야 합니다.
+        },
+        phoneNumber: "01000001234", // 고객 전화번호를 입력해야 합니다.
+        email: "port@portone.io", // 고객 이메일을 입력해야 합니다.
+      },
+      amount: {
+        total: 8900,
+      },
+      currency: "KRW",
+    }),
+  },
+);
+if (!issueResponse.ok)
+  throw new Error(`issueResponse: ${await issueResponse.json()}`);
+```
+
+</div>
+
+<div class="tabs-content" data-title="빌링키 예약 결제">
+
+```ts
+const issueResponse = await fetch(
+  `https://api.portone.io/payments/${encodeURIComponent(UNIQUE_PAYMENT_ID)}/schedule`,
+  {
+    method: "POST",
+    headers: {
+      Authorization: `PortOne ${PORTONE_API_SECRET}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      payment: {
+        billingKey: "billing-key-018fa367-cdd9-d8fd-2256-c43ce0e475d6", // 발급된 빌링키 값을 입력해야 합니다.
+        promotionId: "promotion-id-86e1ff2a-2c3a-451c-bdd3-e5cd1664bc3e", //적용할 프로모션 아이디 입력
+        orderName: "월간 이용권 정기 결제",
+        customer: {
+          id: "customerId_2333", // 고객사가 지정한 고객 식별정보를 입력해야 합니다.
+          name: {
+            full: "김포트", // 고객 이름을 입력해야 합니다.
+          },
+          phoneNumber: "01000001234", // 고객 전화번호를 입력해야 합니다.
+          email: "port@portone.io", // 고객 이메일을 입력해야 합니다.
+        },
+        amount: {
+          total: 8900,
+        },
+        currency: "KRW",
+      },
+      timeToPay: "2024-05-01T00:00:00+09:00", // ISO8601 형식으로 입력해야 합니다.
+    }),
+  },
+);
+if (!issueResponse.ok)
+  throw new Error(`issueResponse: ${await issueResponse.json()}`);
+```
+
+</div>
+
+</div>
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
+### 주요 파라미터
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+
+- promotion\_id: string
+
+  **프로모션 ID**
+
+  관리자 콘솔의 \[프로모션] 메뉴에서 확인할 수 있습니다.
+
+  프로모션 ID 지정 및 카드 다이렉트 방식으로 결제창을 호출하면, 프로모션 내 설정된 할인 조건 및 금액에 따라
+  할인 금액이 적용되어 결제가 진행됩니다.
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+
+- promotionId: string
+
+  **프로모션 ID**
+
+  관리자 콘솔의 \[프로모션] 메뉴에서 확인할 수 있습니다.
+
+  프로모션 ID 지정 및 카드 다이렉트 방식으로 결제창을 호출하면, 프로모션 내 설정된 할인 조건 및 금액에 따라
+  할인 금액이 적용되어 결제가 진행됩니다.
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
+### 유의사항
+
+<details>
+
+<summary> 프로모션 생성시 카드사와 발급된 빌링키의 카드사가 일치해야 합니다. </summary>
+
+프로모션 생성시 지정한 카드사와 발급된 빌링키의 카드사가 일치하지 않는 경우 에러가 리턴되며 결제 실패 처리됩니다.
+
+</details>
+
+## 공통 유의사항
+
+<div class="hint" data-style="info">
+
+프로모션 서비스에서 제공하는 로직은 내부 사정에 의해 변동될 수 있으며, 변동 시 고객사에 사전 고지될 예정입니다.
+
+</div>
+
+<details>
+
+<summary> 프로모션이 진행중이 아닌 경우 할인 적용이 되지 않습니다. </summary>
+
+결제 요청 시 프로모션 아이디를 지정했더라도 프로모션이 **진행중** 상태가 아닌 경우 프로모션 할인 적용 없이
+일반 결제와 동일한 프로세스로 결제가 진행됩니다.
+
+</details>
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+
+<details>
+
+<summary> 프로모션 결제 완료 건 취소시 예산이 복구됩니다. </summary>
+
+프로모션 할인이 적용된 결제 완료(`status:paid`)건을 취소하는 경우 기본적으로 적용되었던 할인 금액이 프로모션 예산에 복구됩니다.
+만약 예산 복구 기능 사용을 원하지 않는 경우 프로모션 추가/수정시 **프로모션 예산 미복구**를 활성화해 주세요.
+
+</details>
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
+<details>
+
+<summary> 프로모션 할인 적용 시점 안내 </summary>
+
+결제창을 호출하는 시점에 프로모션 예산에서 할인 금액에 대해 선점하고 있기 때문에, 실제 예산이 모두 소진되지 않더라도 선점된 프로모션 금액을 포함하여
+예산을 초과하는 경우 할인 금액이 적용되지 않습니다.
+
+만약 결제 시도 중 결제 실패 혹은 사용자가 결제 승인 전 취소하는 경우 선점되었던 할인 금액은 즉시 예산으로 귀속됩니다.
+이후 결제 요청 고객에게 다시 할인 금액이 적용됩니다.
+
+</details>
+
+<details>
+
+<summary> 프로모션 할인 미적용 케이스 안내 </summary>
+
+생성한 프로모션의 최소 결제 금액 조건에 따라 프로모션 할인이 적용되지 않을 수 있습니다.
+또한 할인 조건에 따라 적용되어야 하는 할인 금액보다 예산이 적은 경우 프로모션 할인이 적용되지 않습니다.
+
+예시) 프로모션 A의 상태가 남은 예산 금액 : 1,000원, 할인율 : 10%일 때,
+주문 금액이 200,000원인 경우 적용되어야 하는 할인 금액이 2,000원이므로 고객이 결제 요청 시 프로모션 할인이 적용되지 않습니다.
+
+</details>
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+
+<details>
+
+<summary> 프로모션이 할인 적용 건 부분 취소 안내 </summary>
+
+프로모션 할인이 적용된 거래 건을 부분 취소하는 경우 상품의 주문금액(프로모션 할인이 적용되지 않은 원래 금액)
+을 입력해야 합니다.
+
+결제 취소 시 콘솔 내 결제취소 상세 모달에서 \[프로모션 예산 설정] 옵션을 선택할 수 있으며, 결제 취소 API 이용시
+`promotionDiscountRetainOption` 파라미터로 옵션을 선택할 수 있습니다.
+
+- 프로모션 혜택 조정 (기본설정) : 결제 부분 취소시 잔여 결제 금액이 할인 적용 기준 금액보다 적은 경우
+  잔여 결제 금액에 맞추어 프로모션 할인 금액이 차감되어 적용됩니다.
+
+  - 예시 1 :
+    프로모션 할인 조건이 `5천원 이상 결제시 10% 할인`일 때, 6000원 결제 요청시 프로모션 할인이 적용되어 5400원이 실제 결제됩니다.
+    이 때, 2000원 부분 취소시 **프로모션 혜택 조정** 옵션을 선택한 경우 프로모션 조건에 부합하지 않아 실제 1400원이 결제 취소 요청되며,
+    결제 완료 금액은 4000원이 됩니다.
+
+  - 예시 2 :
+    프로모션 할인 조건이 `5천원 이상 결제시 1000원 할인`일 때, 6000원 결제 요청시 프로모션 할인이 적용되어 5000원이 실제 결제됩니다.
+    이 때, 2000원 부분 취소시 **프로모션 혜택 조정** 옵션을 선택한 경우 프로모션 조건에 부합하지 않아 실제 1000원이 결제 취소 요청되며,
+    결제 완료 금액은 4000원이 됩니다.
+
+- 프로모션 혜택 유지 : 결제 부분 취소시 잔여 결제 금액이 할인 적용 기준 금액보다 적더라도 프로모션 할인 혜택이
+  그대로 유지됩니다. 할인 혜택을 동일한 수준으로 유지하기 위해 기존에 적용된 할인 조건을 할인율로 환산하여 적용하게 됩니다.
+
+  - 예시 1 :
+    프로모션 할인 조건이 `5천원 이상 결제시 10% 할인`일 때, 6000원 결제 요청시 프로모션 할인이 적용되어 5400원이 실제 결제됩니다.
+    이 때, 2000원 부분 취소시 **프로모션 혜택 유지** 옵션을 선택한 경우 실제 1800원이 결제 취소 요청되며,
+    결제 완료 금액은 3600원이 됩니다.
+    (주문금액 6000원에서 2000원 부분 취소시 주문금액은 4000원이며 기존 할인 조건인 10% 할인이 유지되어 실 결제 금액은 3600원이 됩니다.)
+
+  - 예시 2 :
+    프로모션 할인 조건이 `5천원 이상 결제시 1000원 할인`일 때 6000원 결제 요청시 프로모션 할인이 적용되어 5000원이 실제 결제됩니다.
+    이 때, 2000원 부분 취소시 **프로모션 혜택 유지** 옵션을 선택한 경우 실제 1800원이 결제 취소 요청되며,
+    결제 완료 금액은 3200원이 됩니다.
+    (본 예시에서 기존에 적용된 할인 조건인 `5천원 이상 결제시 1000원 할인`은 20% 할인으로 환산됩니다. 주문금액 6000원에서 2000원 부분 취소시
+    남은 주문금액은 4000원이므로, 취소 이후 결제 완료 금액은 3200원이 되고 실제 취소 금액은 1800원이 됩니다.)
+
+</details>
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+
+<details>
+
+<summary> 프로모션 할인이 적용된 건에 여러번 부분 취소 요청하는 경우 안내 </summary>
+
+프로모션 할인이 적용된 거래 건을 여러번 부분 취소하는 경우 처음 선택한 취소 옵션으로만 가능합니다.
+예를 들어 \[프로모션 혜택 유지]로 처음 부분 취소한 경우 동일 거래 건에 대해 부분 취소를 진행하는 경우
+\[프로모션 혜택 유지] 옵션으로만 취소가 가능합니다.
+
+</details>
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
+
+# https://developers.portone.io/opi/ko/extra/promotion/intro
+
+---
+title: 프로모션
+description: 카드 즉시 할인을 쉽게 운영 및 관리할 수 있는 서비스입니다.
+targetVersions:
+  - v1
+  - v2
+---
+
+## 프로모션이란?
+
+고객사가 카드사와 계약하여 사용자에게 즉시 할인을 제공하는 **카드 즉시 할인 서비스**를 운영하고 관리할
+수 있는 서비스 입니다.
+
+카드 즉시 할인 서비스를 이용시 필요한 **프로모션 관리 시스템**과 **프로모션 정산 대사 시스템** 을 제공합니다.
+포트원 콘솔에서 기간, 할인 조건, 예산 등 다양한 옵션의 프로모션을 설정할 수 있으며,
+생성된 프로모션 아이디를 포함하여 결제 요청시 즉시 할인을 적용할 수 있습니다.
+또한, 프로모션이 종료된 후 할인이 적용된 거래 건들만 모아 엑셀로 다운로드하여 한 번에 결제 내역 정리 및 정산 금액 대사를 할 수 있습니다.
+
+프로모션은 일부 고객사에 한하여 제공하고 있으며, 프로모션 도입을 원하시는 고객사의 경우 포트원으로 문의 주시기 바랍니다.
+
+<div class="hint" data-style="info">
+
+프로모션 메뉴의 경우 도입 고객사에 한하여 포트원 콘솔 내에서 확인하실 수 있습니다.
+
+</div>
+
+[프로모션 생성하기](https://developers.portone.io/opi/ko/extra/promotion/console-guide)
+
+[프로모션 결제 연동하기](https://developers.portone.io/opi/ko/extra/promotion/integration)
 
 
 # https://developers.portone.io/opi/ko/extra/smart-routing/console-guide
@@ -16474,7 +18014,7 @@ API 빌링키 발급 요청 시 스마트 라우팅 그룹 아이디를 지정�
 맵핑되며 이를 **슈퍼 빌링키**라고 부릅니다. 슈퍼 빌링키를 이용하여 빌링키 결제 또는 예약 결제 시
 그룹 내 결제대행사 비율에 따라 확률에 기반하여 그 중 하나의 결제대행사 빌링키로 결제를 요청합니다.
 
-## 사용 가능한 PG사 및 결제수단&#x20;
+## 사용 가능한 PG사 및 결제수단 <span id="available-pg" />
 
 스마트 라우팅 기능은 아래 PG사에 한하여 제공하고 있습니다.
 (추후 지원 PG사 확대 예정)
@@ -16484,15 +18024,43 @@ API 빌링키 발급 요청 시 스마트 라우팅 그룹 아이디를 지정�
 ### 결제창(SDK) 인증결제
 
 - **나이스페이먼츠(신모듈)** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
+- **(구) 나이스페이먼츠** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
+- **NHN KCP** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
+- **KG 이니시스** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
 - **토스페이먼츠(신모듈)** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
-- **KSNET** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
+- **토스페이먼츠(구모듈)** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
 - **스마트로(신모듈)** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
+- **스마트로(구모듈)** : 카드 / 실시간 계좌이체 / 가상계좌
+- **다날** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
+- **키움페이** : 카드 / 실시간 계좌이체 / 가상계좌
+- **헥토파이낸셜** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
+- **KG모빌리언스** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
+- **KSNET** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
+- **이지페이(KICC)** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
+- **웰컴페이먼츠** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
+- **엑심베이** : 카드
+- **하이픈** : 실시간 계좌이체
 
 ### API 수기(키인)결제
 
 - **나이스페이먼츠(신모듈)** : 카드
+- **NHN KCP** : 카드
+- **KG 이니시스** : 카드
 - **토스페이먼츠(신모듈)** : 카드
+- **키움페이** : 카드
 - **KSNET** : 카드
+
+### API 빌링키 발급 및 정기결제
+
+- **나이스페이먼츠 (신모듈)** : 카드
+- **(구) 나이스페이먼츠** : 카드
+- **NHN KCP** : 카드
+- **KG이니시스** : 카드
+- **토스페이먼츠(신모듈)** : 카드
+- **키움페이** : 카드
+- **헥토파이낸셜** : 카드
+- **KSNET** : 카드
+- **웰컴페이먼츠** : 카드
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
 
@@ -16579,3013 +18147,6 @@ SDK(결제창) 빌링키 발급의 경우 해당 기능을 지원하지 않습�
 </details>
 
 
-# https://developers.portone.io/opi/ko/extra/promotion/console-guide
-
----
-title: 프로모션 생성하기
-description: 프로모션 기간, 예산, 할인 조건 등 설정 방법을 안내합니다.
-targetVersions:
-  - v1
-  - v2
----
-
-## 프로모션 생성하기
-
-프로모션 결제를 사용하기 위해서는 포트원 관리자콘솔 내 \[프로모션]에서 프로모션 설정이 필요합니다.
-프로모션은 상점별로 생성하여 사용할 수 있으며, 하위상점을 사용하시는 고객사의 경우 프로모션을 각각 생성하여 사용하시길 권장드립니다.
-
-1. 포트원 콘솔 내에서 \[프로모션]을 클릭하세요.
-2. \[+ 프로모션 추가]를 클릭하세요.
-
-(이미지 첨부: 콘솔 내 프로모션 화면 예시 1)
-
-3. **프로모션 추가** 화면에서 다음 정보를 입력하세요.
-
-(이미지 첨부: 콘솔 내 프로모션 화면 예시 2)
-
-- \[프로모션 이름] : 생성된 프로모션을 고객사에서 구분할 수 있는 이름을 입력하시길 권장드립니다.
-
-- \[프로모션 일정] : 프로모션 시작일과 종료일을 선택하세요. 시작일이 미래인 경우 생성 후 **예정** 상태이며,
-  설정된 시작일이 경과되면 **진행중** 상태로 변경되며 프로모션 할인이 적용됩니다.
-
-- \[카드사] : 프로모션 할인을 제공할 카드사를 선택하세요. 카드사는 한 프로모션 당 한 곳만 설정할 수 있습니다.
-
-- \[프로모션 예산] : 프로모션을 진행할 전체 예산으로 할인 금액으로 사용할 예산을 입력하세요.
-  예산이 100% 소진된 이후 결제 건에 대해서는 프로모션이 적용되지 않습니다.
-
-- \[프로모션 예산 미복구] : 프로모션 할인이 적용된 거래 건이 부분취소 혹은 전체취소 되었을 때,
-  적용되었던 프로모션 금액을 예산에 다시 포함시킬지 여부를 설정할 수 있습니다.
-  기본적으로 취소된 프로모션 금액이 예산에 복구되며, 프로모션 예산 미복구를 활성화하는 경우 복구되지 않습니다.
-  프로모션 예산 미복구를 활성화하는 경우, 환불 예상 비율 혹은 환불 예상 금액을 입력하여 여유 예산을 설정할 수 있습니다.
-
-- \[할인방식] : 할인율 또는 할인금액을 선택할 수 있으며, 입력된 수치에 따라 정률 또는 정액으로 할인 금액이 적용됩니다.
-  할인율 방식을 선택한 경우, \[최대 할인 금액]을 설정할 수 있으며 최대 할인 금액 설정시 프로모션 할인 금액이
-  최대 할인 금액을 초과할 수 없습니다. 최대 할인 금액을 설정하지 않는 경우 주문 금액에 정률로 계산되어 프로모션 할인이 적용됩니다.
-
-- \[할인 조건 설정] : 할인 조건을 최대 5개까지 설정할 수 있습니다. 최소 결제 금액을 기준으로 구간별
-  할인금액 / 할인율을 설정할 수 있습니다.
-
-  - \[최소 결제 금액] : 최소 결제 금액 설정시 주문 금액이 최소 결제 금액 이상인 경우에만 프로모션 할인이 적용됩니다.
-    만약 최소 결제 금액을 0으로 입력하는 경우 해당 카드로 결제되는 모든 건에 프로모션 할인이 적용됩니다.
-
-  - \[할인율] : 입력된 할인율만큼 주문 금액을 기준으로 정률로 계산되어 할인이 적용됩니다.
-
-  - \[할인금액] : 입력된 할인 금액만큼 할인이 적용됩니다.
-
-  - 예를 들어, `10000원 이상 결제 시 10% 할인, 50000원 이상 결제 시 20% 할인` 과 같은 정책을 생성하고 싶다면
-    조건 1을 **최소 결제 금액 10000원, 할인율 10%**, 조건 2를 **최소 결제 금액 50000원, 할인율 20%** 와 같이 설정하시기 바랍니다.
-
-<div class="hint" data-style="info">
-
-1. 할인 조건의 경우 생성 후 수정이 불가능하므로 변경을 원하시면 삭제 후 다시 추가해야 합니다.
-
-2. 추가 할인 조건의 경우 앞서 생성된 조건의 할인비율보다 크게 설정해야합니다.
-   할인 금액 방식으로 입력하는 경우에도 (할인 금액 / 최소 결제 금액) \* 100으로 할인율을 계산하며,
-   만약 할인율이 낮아지는 경우 금액 입력이 불가능 합니다.
-
-</div>
-
-4. \[저장]을 클릭하세요.
-
-## 프로모션 수정하기
-
-1. 생성된 프로모션 우측에 \[...]을 클릭하세요.
-2. \[수정]을 클릭하세요.
-
-(이미지 첨부: 콘솔 내 프로모션 화면 예시 3)
-
-3. **프로모션 수정** 화면에서 원하는 정보를 수정하세요.
-
-(이미지 첨부: 콘솔 내 프로모션 화면 예시 4)
-
-- **예정** 상태인 경우, 프로모션 아이디를 제외한 모든 정보를 수정할 수 있습니다.
-- **일시중지**, **진행중**, **예산소진** 상태인 경우 프로모션 이름 및 프로모션 일정만 수정할 수 있습니다.
-- **종료** 상태인 경우 모든 정보를 수정할 수 없습니다.
-
-## 프로모션 상태 안내
-
-생성된 프로모션은 총 5개의 상태로 구분할 수 있으며, 상태에 따라 프로모션 아이디를 지정하여 결제 요청했더라도
-프로모션 할인 금액이 적용되지 않을 수 있습니다.
-
-### 예정
-
-프로모션 생성 후 프로모션 시작일이 경과되지 않은 경우 **예정**상태로 표시됩니다.
-예정 상태인 경우 프로모션 아이디를 제외한 모든 정보를 수정할 수 있습니다.
-
-예정 상태인 프로모션을 일시중지하는 경우 프로모션 시작일이 경과되어도 프로모션이 진행중 상태로 변경되지 않으며,
-프로모션 아이디를 지정하여 결제를 요청하더라도 프로모션 할인이 적용되지 않습니다.
-
-예정 상태인 프로모션을 종료하는 경우 종료 상태로 변경되며 상태 변경이 불가능합니다.
-
-### 진행중
-
-프로모션 생성 후 프로모션 시작일이 경과된 경우 **진행중**상태로 표시됩니다.
-진행중 상태인 경우 프로모션 이름 및 프로모션 일정만 수정할 수 있습니다.
-
-진행중 상태인 경우 결제 요청 시 프로모션 아이디를 지정하면 프로모션 할인이 적용됩니다.
-
-진행중 상태인 프로모션을 일시중지하는 경우 직후 결제 요청 건부터 프로모션 아이디를 지정했더라도 프로모션 할인이 적용되지 않습니다.
-다만, 일시중지 직전 결제 요청되었으나 결제 승인이 완료되지 않은 건의 경우 프로모션 할인 금액이 적용될 수 있습니다.
-
-진행중 상태인 프로모션을 종료하는 경우 종료 상태로 변경되며 상태 변경이 불가능합니다.
-
-### 일시중지
-
-사용자가 직접 생성된 프로모션을 일시중지할 수 있으며 예정, 진행중, 예산소진 상태인 경우 일시중지가 가능합니다.
-
-예정이거나 진행중 혹은 예산소진 상태에서 일시중지 상태로 변경된 경우 프로모션 이름 및
-프로모션 일정 중 종료일만 변경할 수 있으며, 시작일은 변경이 불가능합니다.
-
-일시중지하는 경우 프로모션 시작일이 경과되거나 예산이 남아있어도 프로모션 할인은 적용되지 않습니다.
-재시작하여 프로모션이 원 상태로 변경되며, 다시 사용이 가능합니다.
-
-### 예산소진
-
-프로모션 할인금액이 설정된 예산만큼 모두 소진된 경우 **예산소진**상태로 표시됩니다.
-예산소진 상태인 경우 프로모션 아이디를 지정하여 결제 요청하더라도 프로모션 할인이 적용되지 않습니다.
-
-만약 프로모션 할인이 적용된 거래건이 취소되는 경우 해당 거래 건에 적용되었던 할인 금액만큼 예산에 귀속되며,
-이후 거래 요청 시 할인 금액이 적용됩니다.
-
-### 종료
-
-프로모션 종료일이 경과되거나 사용자가 종료한 경우 **종료**상태로 표시됩니다.
-종료된 프로모션은 재시작할 수 없습니다.
-
-프르모션이 종료되는 경우 즉시 프로모션 할인이 적용되지 않습니다. 다만, 종료 직전 결제 요청한 경우 프로모션 종료 이후
-결제 승인이 완료되면 프로모션 할인금액이 적용됩니다.
-
-## 프로모션 엑셀 다운로드
-
-엑셀 다운로드 클릭 시 **프로모션 내역**, **거래 내역** 두 가지 유형으로 데이터를 다운로드 받을 수 있습니다.
-
-- 프로모션 내역 : 조회 기간 내 전체 프로모션 내역에 대해 다운로드할 수 있습니다.
-
-- 프로모션 아이디, 프로모션 이름, 상태, 카드사, 예산, 소진금액, 할인조건, 최대 할인 금액, 프로모션 생성날짜,
-  프로모션 수정 날짜, 프로모션 시작 날짜, 프로모션 종료 예정 날짜, 프로모션 실제 종료 날짜가 포함됩니다.
-
-- 거래 내역 : 조회 기간 내 전체 프로모션이 적용된 건별 거래 내역에 대해 다운로드 할 수 있습니다.
-
-- 고객사 주문번호, 포트원 거래번호, 프로모션 아이디, PG사 승인번호, 카드사 승인번호 등 거래 데이터가 포함됩니다.
-
-- 만약 특정 프로모션이 적용된 거래 내역 확인을 원하시는 경우 해당 프로모션의 `...` 버튼 클릭 후 `거래내역 다운로드`를 클릭하세요.
-
-
-# https://developers.portone.io/opi/ko/extra/promotion/integration
-
----
-title: 프로모션 결제 연동하기
-description: 프로모션 할인금액을 적용하는 방법을 안내합니다.
-targetVersions:
-  - v1
-  - v2
----
-
-## 프로모션 결제 연동하기
-
-고객사에서 카드사 즉시할인을 쉽게 적용하고 운영 관리하실 수 있도록 프로모션 기능을 제공하고 있습니다.
-포트원 콘솔 내 **프로모션** 메뉴에서 카드사 별 프로모션을 생성 후 결제 요청 시 적용할 수 있으며,
-프로모션에 설정된 예산, 할인방식, 할인금액/할인률에 따라 자동으로 계산되어 결제가 승인됩니다.
-
-<div class="hint" data-style="info">
-
-프로모션 메뉴의 경우 도입 고객사에 한하여 포트원 콘솔 내에서 확인하실 수 있습니다.
-
-프로모션 결제를 연동하시려면 관리자콘솔에서 프로모션을 먼서 생성해야합니다.
-프로모션 생성 방법이 궁금하다면 [프로모션 설정 가이드](https://developers.portone.io/opi/ko/extra/promotion/console-guide)를 확인해 보세요.
-
-</div>
-
-### 프로모션 할인 금액 표시하기
-
-포트원에서 제공하는 프로모션을 이용하시는 경우 결제 요청 전 고객사에서 주문 페이지를 구현하여 사용하시길 권장드립니다.
-
-고객사의 주문 페이지에 프로모션 할인 금액을 표시하시려면 [프로모션 단건 조회 API](https://developers.portone.io/api/rest-v2/promotion?v=v2)를 참고하여
-사용할 프로모션 아이디로 API를 조회한 후 응답 필드의 `discountPolicy.partitions[]` 내의 `scheme`과 `amountFrom` 데이터를 갖고 직접 계산해서 사용하시길 권장드립니다.
-
-**프로모션 할인 정책 조회 예시**
-
-예를 들어 조회할 프로모션의 할인 정책이 `10000원 이상 결제 시 10% 할인, 50000원 이상 결제 시 20% 할인` 이라면 `discountPolicy` 필드는 아래와 같이 조회가 될 것입니다.
-
-```javascript
-const promotion = {
-  // ... other fields
-  discountPolicy: {
-    partitions: [
-      {
-        amountFrom: 10000,
-        scheme: {
-          type: "PERCENT",
-          percent: 10,
-        },
-      },
-      {
-        amountFrom: 50000,
-        scheme: {
-          type: "PERCENT",
-          percent: 20,
-        },
-      },
-    ],
-  },
-};
-```
-
-아래와 같은 로직으로 프로모션이 적용된 이후의 금액을 계산하실 수 있습니다.
-
-```ts
-const selectDiscountScheme = (partitions, amount) => {
-  const select = (partitions) => {
-    const [head, ...tail] = partitions;
-    if (tail.length === 0) {
-      return head.scheme;
-    }
-
-    const from = head.amountFrom;
-    const to = tail[0].amountFrom;
-
-    if (from <= amount && amount < to) return head.scheme;
-    else return select(tail);
-  };
-
-  if (partitions[0].amountFrom > amount) return null;
-  else return select(partitions);
-};
-
-const getPaymentAmount = (discountScheme, amount) => {
-  if (discountScheme.type == "PERCENT") {
-    // 정률 할인
-    return amount - (amount * discountScheme.percent) / 100;
-  } else {
-    // 정액 할인
-    return amount - discountScheme.amount;
-  }
-};
-
-const orderAmount = getOrderAmount();
-const response = await fetch(
-  `https://api.portone.io/promotions/${promotionId}`,
-  {
-    method: "GET",
-    headers: {
-      Authorization: `PortOne ${PORTONE_API_SECRET}`,
-      "Content-Type": "application/json",
-    },
-  },
-);
-const promotion = await response.json();
-
-// 금액 구간에 맞는 할인 정책을 구합니다.
-const discountScheme = selectDiscountScheme(
-  promotion.discountPolicy.partitions,
-  orderAmount,
-);
-// 프로모션이 적용된 실결제 금액을 구합니다.
-const paymentAmount = getPaymentAmount(discountScheme, orderAmount);
-```
-
-## SDK(결제창) 인증결제 연동하기
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
-
-SDK를 이용하는 경우 결제 호출 시 생성한 프로모션의 ID를 전용 파라미터인 `promotion_id`에 지정하여 사용이 가능합니다.
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
-
-SDK를 이용하는 경우 결제 호출 시 생성한 프로모션의 ID를 전용 파라미터인 `promotionId`에 지정하여 사용이 가능합니다.
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
-
-프로모션 결제의 경우 특정 카드사 결제 시 적용되므로 결제 호출 시 **카드 다이렉트**호출 방식만 지원되며,
-해당 프로모션의 카드사와 다이렉트 호출 카드사가 일치하는 경우에만 프로모션 조건이 적용됩니다.
-
-만약, 카드사가 일치하지 않는 경우 에러가 리턴되며 결제 진행이 불가하오니 유의하시길 바랍니다.
-
-이 외에 다른 결제 기능들은 기존과 동일하게 사용이 가능합니다.
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
-
-인증결제와 관련된 자세한 내용은 [인증 결제 연동하기](https://developers.portone.io/opi/ko/integration/start/v1/auth) 및 [결제요청 파라미터](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/payrq) 문서를 참고하시기 바랍니다.
-
-### 예제 코드
-
-```ts
-IMP.request_pay(
-  {
-    isPromotion: true, //프로모션 사용 여부
-    promotion_id: "promotion-id-86e1ff2a-2c3a-451c-bdd3-e5cd1664bc3e", //적용할 프로모션 아이디 입력 (Ex. 현대카드 프로모션)
-    channelKey: "{콘솔 내 연동 정보의 채널키}",
-    pay_method: "card", //결제수단 선택
-    card: {
-      direct: {
-        code: "367", //현대카드 다이렉트 호출
-      },
-    },
-    merchant_uid: "ORD20180131-0000011", //고객사 주문번호
-    name: "Norway swivel chair", //주문명
-    amount: 1000, // 결제 금액
-    //고객 정보
-    buyer_email: "gildong@gmail.com",
-    buyer_name: "Hong Gildong",
-    buyer_tel: "010-4242-4242",
-    buyer_addr: "Shinsa-dong, Gangnam-gu, Seoul",
-    buyer_postcode: "01181",
-  },
-  function (rsp) {
-    // callback
-    if (rsp.success) {
-      // Payment is successful
-    } else {
-      // Payment failed
-    }
-  },
-);
-```
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
-
-인증결제와 관련된 자세한 내용은 [인증결제 연동하기](https://developers.portone.io/opi/ko/integration/start/v2/checkout) 및 [결제요청 파라미터](https://developers.portone.io/sdk/ko/v2-sdk/payment-request) 문서를 참고하시기 바랍니다.
-
-### 예제 코드
-
-```tsx
-//포트원 인증결제 SDK 호출
-PortOne.requestPayment({
-  storeId: "store-4ff4af41-85e3-4559-8eb8-0d08a2c6ceec",
-  promotionId: "promotion-id-86e1ff2a-2c3a-451c-bdd3-e5cd1664bc3e", //적용할 프로모션 아이디 입력 (Ex. 현대카드 프로모션)
-  //카드 다이렉트 호출
-  card: {
-    cardCompany: "HYUNDAI_CARD",
-  },
-  //기타 인증결제 파라미터 설정
-  channelKey: "channel-key-f042e8e2-92f1-4f68-ad61-cec6ede41529",
-  paymentId: `payment-${crypto.randomUUID()}`,
-  orderName: "나이키 와플 트레이너 2 SD",
-  totalAmount: 1000,
-  currency: "CURRENCY_KRW",
-  payMethod: "CARD",
-  customer: {
-    fullName: "홍길동",
-    phoneNumber: "010-1234-5678",
-    email: "test@test.com",
-  },
-});
-```
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
-
-### 주요 파라미터
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
-
-- promotion\_id?: string
-
-  **프로모션 ID**
-
-  관리자 콘솔의 \[프로모션] 메뉴에서 확인할 수 있습니다.
-
-  프로모션 ID 지정 및 카드 다이렉트 방식으로 결제창을 호출하면, 프로모션 내 설정된 할인 조건 및 금액에 따라
-  할인 금액이 적용되어 결제가 진행됩니다.
-
-- card?: object
-
-  **카드 결제 옵션 설정**
-
-  - direct?: object
-
-    **카드 다이렉트 호출**
-
-  - code?: string
-
-    **카드사 코드**
-
-    카드 다이렉트 호출 시 [카드사 코드](https://developers.portone.io/opi/ko/support/code-info/card-code) 문서를 참조하여 프로모션과 동일한 카드사로 지정해야 합니다.
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
-
-- promotionId?: string
-
-  **프로모션 ID**
-
-  관리자 콘솔의 \[프로모션] 메뉴에서 확인할 수 있습니다.
-
-  프로모션 ID 지정 및 카드 다이렉트 방식으로 결제창을 호출하면, 프로모션 내 설정된 할인 조건 및 금액에 따라
-  할인 금액이 적용되어 결제가 진행됩니다.
-
-- card?: object
-
-  **카드 정보**
-
-  - cardCompany?: string
-
-    **카드사 다이렉트 호출 시 필요한 카드사 식별 값**
-
-    카드 다이렉트 호출 시 [카드사 식별 값](https://developers.portone.io/sdk/ko/v2-sdk/payment-request?v=v2#card-object) 문서를 참조하여 프로모션과 동일한 카드사로 지정해야 합니다.
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
-
-### 유의사항
-
-<details>
-
-<summary> 프로모션 결제를 이용하는 경우 카드 다이렉트 호출 방식으로 결제를 요청해야합니다. </summary>
-
-결제 요청 시 프로모션 아이디를 지정했더라도 카드 다이렉트 방식으로 호출하지 않는 경우 에러가 리턴됩니다.
-
-</details>
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
-
-<details>
-
-<summary> 프로모션 생성시 카드사와 결제 호출시 카드사가 일치해야 합니다. </summary>
-
-프로모션 생성시 지정한 카드사와 결제 호출시 `card.direct.code`에 지정한 카드사가 일치하지 않는 경우 에러가 리턴됩니다.
-결제 요청시 동일한 카드사로 매칭하여 호출해야 합니다.
-
-</details>
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
-
-<details>
-
-<summary> 프로모션 생성시 카드사와 결제 호출시 카드사가 일치해야 합니다. </summary>
-
-프로모션 생성시 지정한 카드사와 결제 호출시 `card.cardCompany`에 지정한 카드사가 일치하지 않는 경우 에러가 리턴됩니다.
-결제 요청시 동일한 카드사로 매칭하여 호출해야 합니다.
-
-</details>
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
-
-## API 수기(키인)결제 연동하기
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
-
-API를 이용하는 경우 결제 호출 시 생성한 프로모션의 ID를 전용 파라미터인 `promotion_id`에 지정하여 사용이 가능합니다.
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
-
-API를 이용하는 경우 결제 호출 시 생성한 프로모션의 ID를 전용 파라미터인 `promotionId`에 지정하여 사용이 가능합니다.
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
-
-해당 프로모션의 카드사와 수기(키인) 결제 요청 시 입력한 카드의 카드사가 일치하는 경우에만 프로모션 조건이 적용됩니다.
-(입력한 카드의 카드사 정보는 카드 BIN번호를 기준으로 체크됩니다.)
-만약, 카드사가 일치하지 않는 경우 에러가 리턴되며 결제 진행이 불가하오니 유의하시길 바랍니다.
-
-이 외에 다른 결제 기능들은 기존과 동일하게 사용이 가능합니다.
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
-
-수기(키인)결제와 관련된 자세한 내용은 [비인증결제 연동하기](https://developers.portone.io/opi/ko/integration/start/v1/non-auth) 문서를 참고하시기 바랍니다.
-
-### 예제 코드
-
-```ts
-// card_number, expiry, birth, pwd_2digit 등 정보를 전달받습니다.
-// 포트원 비인증 결제(일회성) API 호출
-const onetimeResponse = await fetch(
-  "https://api.iamport.kr/subscribe/payments/onetime",
-  {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${ACCESS_TOKEN}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      pg: `${pg_provider}.${pg_mid}`,
-      card_number: "YYYY-YYYY-YYYY-YYYY", // 카드 번호 16자리
-      expiry: "YYYY-MM", // 카드 유효기간
-      birth: "YYMMDD", // 생년 월일. 무기명 법인카드의 경우 사업자 번호 10자리 입력
-      pwd_2digit: "NN", //카드 비밀번호 앞 2자리
-      promotionId: "promotion-id-86e1ff2a-2c3a-451c-bdd3-e5cd1664bc3e", //적용할 프로모션 아이디 입력
-      // 중략...
-    }),
-  },
-);
-```
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
-
-수기(키인)결제와 관련된 자세한 내용은 [수기(키인)결제 연동하기](https://developers.portone.io/opi/ko/integration/start/v2/keyin) 문서를 참고하시기 바랍니다.
-
-### 예제 코드
-
-```ts
-// 포트원 수기(키인)결제 API 호출
-const paymentResponse = await fetch(
-  `https://api.portone.io/payments/${encodeURIComponent(UNIQUE_PAYMENT_ID)}/instant`,
-  {
-    method: "POST",
-    headers: {
-      Authorization: `PortOne ${PORTONE_API_SECRET}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      channelKey: "channel-key-f042e8e2-92f1-4f68-ad61-cec6ede41529",
-      //적용할 프로모션 아이디 입력
-      promotionId: "promotion-id-86e1ff2a-2c3a-451c-bdd3-e5cd1664bc3e",
-      orderName: "1개월 이용권",
-      // 수기 결제 API를 참고해 고객 정보를 채워주세요.
-      customer: {
-        name: {
-          full: "김포트", // 고객 이름을 입력해야 합니다.
-        },
-      },
-      amount: {
-        total: 8900,
-      },
-      currency: "KRW",
-
-      // 수기(키인)결제 API를 참고해 카드 정보를 채워주세요.
-      method: {
-        card: {
-          cardCredintial: {
-            number: "0000123400001234", // 16자리 숫자만 입력해야 합니다.
-            expiryYear: "26", // 연도의 뒤 2자리를 입력해야 합니다.
-            expiryMonth: "12",
-            birthOrBusinessRegistrationNumber: "900101", // 생년월일 6자리 또는 사업자 등록번호 10자리를 입력해야 합니다.
-            passwordTwoDigits: "00", // 카드 비밀번호 앞 2자리 입력해야 합니다.
-          },
-        },
-      },
-    }),
-  },
-);
-if (!paymentResponse.ok)
-  throw new Error(`paymentResponse: ${await paymentResponse.json()}`);
-```
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
-
-### 주요 파라미터
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
-
-- promotion\_id: string
-
-  **프로모션 ID**
-
-  관리자 콘솔의 \[프로모션] 메뉴에서 확인할 수 있습니다.
-
-  프로모션 ID 지정 및 카드 다이렉트 방식으로 결제창을 호출하면, 프로모션 내 설정된 할인 조건 및 금액에 따라
-  할인 금액이 적용되어 결제가 진행됩니다.
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
-
-- promotionId: string
-
-  **프로모션 ID**
-
-  관리자 콘솔의 \[프로모션] 메뉴에서 확인할 수 있습니다.
-
-  프로모션 ID 지정 및 카드 다이렉트 방식으로 결제창을 호출하면, 프로모션 내 설정된 할인 조건 및 금액에 따라
-  할인 금액이 적용되어 결제가 진행됩니다.
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
-
-### 유의사항
-
-<details>
-
-<summary> 프로모션 생성시 카드사와 결제 요청시 입력된 카드의 카드사가 일치해야 합니다. </summary>
-
-프로모션 생성시 지정한 카드사와 결제 요청시 입력한 카드 정보의 카드사가 일치하지 않는 경우 에러가 리턴되며 결제 실패 처리됩니다.
-
-</details>
-
-## API 정기결제 연동하기
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
-
-발급된 빌링키를 이용하여 단건 결제 API 또는 예약 결제 API를 이용하는 경우
-API 요청시 생성한 프로모션의 ID를 전용 파라미터인 `promotion_id`에 지정하여 사용이 가능합니다.
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
-
-발급된 빌링키를 이용하여 단건 결제 API 또는 예약 결제 API를 이용하는 경우
-API 요청시 생성한 프로모션의 ID를 전용 파라미터인 `promotionId`에 지정하여 사용이 가능합니다.
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
-
-해당 프로모션의 카드사와 발급된 빌링키의 카드사가 일치하는 경우에만 프로모션 조건이 적용됩니다.
-만약, 카드사가 일치하지 않는 경우 에러가 리턴되며 결제 진행이 불가하오니 유의하시길 바랍니다.
-
-예약 결제를 사용하시는 경우 결제가 실행되는 시점에 예약 시 입력한 프로모션 아이디를 기반으로 예산 및 조건을 확인한 후
-적용됩니다. 만약 결제가 실행되는 시점에 예산 소진 상태이거나 프로모션이 종료된 상태인 경우 할인이 적용되지 않습니다.
-
-이 외에 다른 결제 기능들은 기존과 동일하게 사용이 가능합니다.
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
-
-예약 결제와 관련된 자세한 내용은 [결제 예약 API](https://developers.portone.io/api/rest-v1/nonAuthPayment.subscribe#post%20%2Fsubscribe%2Fpayments%2Fschedule) 문서를 참고하시기 바랍니다.
-
-### 예제 코드
-
-<div class="tabs-container">
-
-<div class="tabs-content" data-title="빌링키 결제">
-
-```ts
-// 포트원 빌링키 결제 API 호출
-const paymentResponse = await fetch(
-  "https://api.iamport.kr/subscribe/payments/again",
-  {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${ACCESS_TOKEN}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      customer_uid,
-      merchant_uid,
-      name: "월간 이용권 정기결제",
-      // 빌링키 결제 API를 참고해 고객 정보를 채워주세요.
-      amount: {
-        total: 8900,
-      },
-      currency: "KRW",
-      //적용할 프로모션 아이디 입력
-      promotion_id: "promotion-id-86e1ff2a-2c3a-451c-bdd3-e5cd1664bc3e",
-    }),
-  },
-);
-if (!paymentResponse.ok)
-  throw new Error(`paymentResponse: ${await paymentResponse.json()}`);
-```
-
-</div>
-
-<div class="tabs-content" data-title="빌링키 예약 결제">
-
-```ts
-// 결제 예약
-axios({
-  url: `https://api.iamport.kr/subscribe/payments/schedule`,
-  method: "post",
-  headers: { Authorization: access_token },
-  data: {
-    customer_uid: "gildong_0001_1234", // 카드(빌링키)와 1:1로 대응하는 값
-    promotion_id: "promotion-id-86e1ff2a-2c3a-451c-bdd3-e5cd1664bc3e", //적용할 프로모션 아이디 값
-    schedules: [
-      {
-        merchant_uid: "order_monthly_0001", // 주문 번호
-        schedule_at: 1519862400, // 결제 시도 시각 in Unix Time Stamp. 예: 다음 달 1일
-        amount: 8900,
-        name: "월간 이용권 정기결제",
-        buyer_name: "홍길동",
-        buyer_tel: "01012345678",
-        buyer_email: "gildong@gmail.com",
-      },
-    ],
-  },
-});
-```
-
-</div>
-
-</div>
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
-
-빌링키 결제와 관련된 자세한 내용은 [빌링결제 연동하기](https://developers.portone.io/opi/ko/integration/start/v2/billing/readme) 문서를 참고하시기 바랍니다.
-
-### 예제 코드
-
-<div class="tabs-container">
-
-<div class="tabs-content" data-title="빌링키 결제">
-
-```ts
-const issueResponse = await fetch(
-  `https://api.portone.io/payments/${encodeURIComponent(UNIQUE_PAYMENT_ID)}/billing-key`,
-  {
-    method: "POST",
-    headers: {
-      Authorization: `PortOne ${PORTONE_API_SECRET}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      billingKey: "billing-key-018fa367-cdd9-d8fd-2256-c43ce0e475d6", // 발급된 빌링키 값을 입력해야 합니다.
-      promotionId: "promotion-id-86e1ff2a-2c3a-451c-bdd3-e5cd1664bc3e", //적용할 프로모션 아이디 입력
-      orderName: "후불 결제",
-      customer: {
-        id: "customerId_2333", // 고객사가 지정한 고객 식별정보를 입력해야 합니다.
-        name: {
-          full: "김포트", // 고객 이름을 입력해야 합니다.
-        },
-        phoneNumber: "01000001234", // 고객 전화번호를 입력해야 합니다.
-        email: "port@portone.io", // 고객 이메일을 입력해야 합니다.
-      },
-      amount: {
-        total: 8900,
-      },
-      currency: "KRW",
-    }),
-  },
-);
-if (!issueResponse.ok)
-  throw new Error(`issueResponse: ${await issueResponse.json()}`);
-```
-
-</div>
-
-<div class="tabs-content" data-title="빌링키 예약 결제">
-
-```ts
-const issueResponse = await fetch(
-  `https://api.portone.io/payments/${encodeURIComponent(UNIQUE_PAYMENT_ID)}/schedule`,
-  {
-    method: "POST",
-    headers: {
-      Authorization: `PortOne ${PORTONE_API_SECRET}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      payment: {
-        billingKey: "billing-key-018fa367-cdd9-d8fd-2256-c43ce0e475d6", // 발급된 빌링키 값을 입력해야 합니다.
-        promotionId: "promotion-id-86e1ff2a-2c3a-451c-bdd3-e5cd1664bc3e", //적용할 프로모션 아이디 입력
-        orderName: "월간 이용권 정기 결제",
-        customer: {
-          id: "customerId_2333", // 고객사가 지정한 고객 식별정보를 입력해야 합니다.
-          name: {
-            full: "김포트", // 고객 이름을 입력해야 합니다.
-          },
-          phoneNumber: "01000001234", // 고객 전화번호를 입력해야 합니다.
-          email: "port@portone.io", // 고객 이메일을 입력해야 합니다.
-        },
-        amount: {
-          total: 8900,
-        },
-        currency: "KRW",
-      },
-      timeToPay: "2024-05-01T00:00:00+09:00", // ISO8601 형식으로 입력해야 합니다.
-    }),
-  },
-);
-if (!issueResponse.ok)
-  throw new Error(`issueResponse: ${await issueResponse.json()}`);
-```
-
-</div>
-
-</div>
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
-
-### 주요 파라미터
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
-
-- promotion\_id: string
-
-  **프로모션 ID**
-
-  관리자 콘솔의 \[프로모션] 메뉴에서 확인할 수 있습니다.
-
-  프로모션 ID 지정 및 카드 다이렉트 방식으로 결제창을 호출하면, 프로모션 내 설정된 할인 조건 및 금액에 따라
-  할인 금액이 적용되어 결제가 진행됩니다.
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
-
-- promotionId: string
-
-  **프로모션 ID**
-
-  관리자 콘솔의 \[프로모션] 메뉴에서 확인할 수 있습니다.
-
-  프로모션 ID 지정 및 카드 다이렉트 방식으로 결제창을 호출하면, 프로모션 내 설정된 할인 조건 및 금액에 따라
-  할인 금액이 적용되어 결제가 진행됩니다.
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
-
-### 유의사항
-
-<details>
-
-<summary> 프로모션 생성시 카드사와 발급된 빌링키의 카드사가 일치해야 합니다. </summary>
-
-프로모션 생성시 지정한 카드사와 발급된 빌링키의 카드사가 일치하지 않는 경우 에러가 리턴되며 결제 실패 처리됩니다.
-
-</details>
-
-## 공통 유의사항
-
-<div class="hint" data-style="info">
-
-프로모션 서비스에서 제공하는 로직은 내부 사정에 의해 변동될 수 있으며, 변동 시 고객사에 사전 고지될 예정입니다.
-
-</div>
-
-<details>
-
-<summary> 프로모션이 진행중이 아닌 경우 할인 적용이 되지 않습니다. </summary>
-
-결제 요청 시 프로모션 아이디를 지정했더라도 프로모션이 **진행중** 상태가 아닌 경우 프로모션 할인 적용 없이
-일반 결제와 동일한 프로세스로 결제가 진행됩니다.
-
-</details>
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
-
-<details>
-
-<summary> 프로모션 결제 완료 건 취소시 예산이 복구됩니다. </summary>
-
-프로모션 할인이 적용된 결제 완료(`status:paid`)건을 취소하는 경우 기본적으로 적용되었던 할인 금액이 프로모션 예산에 복구됩니다.
-만약 예산 복구 기능 사용을 원하지 않는 경우 프로모션 추가/수정시 **프로모션 예산 미복구**를 활성화해 주세요.
-
-</details>
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
-
-<details>
-
-<summary> 프로모션 할인 적용 시점 안내 </summary>
-
-결제창을 호출하는 시점에 프로모션 예산에서 할인 금액에 대해 선점하고 있기 때문에, 실제 예산이 모두 소진되지 않더라도 선점된 프로모션 금액을 포함하여
-예산을 초과하는 경우 할인 금액이 적용되지 않습니다.
-
-만약 결제 시도 중 결제 실패 혹은 사용자가 결제 승인 전 취소하는 경우 선점되었던 할인 금액은 즉시 예산으로 귀속됩니다.
-이후 결제 요청 고객에게 다시 할인 금액이 적용됩니다.
-
-</details>
-
-<details>
-
-<summary> 프로모션 할인 미적용 케이스 안내 </summary>
-
-생성한 프로모션의 최소 결제 금액 조건에 따라 프로모션 할인이 적용되지 않을 수 있습니다.
-또한 할인 조건에 따라 적용되어야 하는 할인 금액보다 예산이 적은 경우 프로모션 할인이 적용되지 않습니다.
-
-예시) 프로모션 A의 상태가 남은 예산 금액 : 1,000원, 할인율 : 10%일 때,
-주문 금액이 200,000원인 경우 적용되어야 하는 할인 금액이 2,000원이므로 고객이 결제 요청 시 프로모션 할인이 적용되지 않습니다.
-
-</details>
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
-
-<details>
-
-<summary> 프로모션이 할인 적용 건 부분 취소 안내 </summary>
-
-프로모션 할인이 적용된 거래 건을 부분 취소하는 경우 상품의 주문금액(프로모션 할인이 적용되지 않은 원래 금액)
-을 입력해야 합니다.
-
-결제 취소 시 콘솔 내 결제취소 상세 모달에서 \[프로모션 예산 설정] 옵션을 선택할 수 있으며, 결제 취소 API 이용시
-`promotionDiscountRetainOption` 파라미터로 옵션을 선택할 수 있습니다.
-
-- 프로모션 혜택 조정 (기본설정) : 결제 부분 취소시 잔여 결제 금액이 할인 적용 기준 금액보다 적은 경우
-  잔여 결제 금액에 맞추어 프로모션 할인 금액이 차감되어 적용됩니다.
-
-  - 예시 1 :
-    프로모션 할인 조건이 `5천원 이상 결제시 10% 할인`일 때, 6000원 결제 요청시 프로모션 할인이 적용되어 5400원이 실제 결제됩니다.
-    이 때, 2000원 부분 취소시 **프로모션 혜택 조정** 옵션을 선택한 경우 프로모션 조건에 부합하지 않아 실제 1400원이 결제 취소 요청되며,
-    결제 완료 금액은 4000원이 됩니다.
-
-  - 예시 2 :
-    프로모션 할인 조건이 `5천원 이상 결제시 1000원 할인`일 때, 6000원 결제 요청시 프로모션 할인이 적용되어 5000원이 실제 결제됩니다.
-    이 때, 2000원 부분 취소시 **프로모션 혜택 조정** 옵션을 선택한 경우 프로모션 조건에 부합하지 않아 실제 1000원이 결제 취소 요청되며,
-    결제 완료 금액은 4000원이 됩니다.
-
-- 프로모션 혜택 유지 : 결제 부분 취소시 잔여 결제 금액이 할인 적용 기준 금액보다 적더라도 프로모션 할인 혜택이
-  그대로 유지됩니다. 할인 혜택을 동일한 수준으로 유지하기 위해 기존에 적용된 할인 조건을 할인율로 환산하여 적용하게 됩니다.
-
-  - 예시 1 :
-    프로모션 할인 조건이 `5천원 이상 결제시 10% 할인`일 때, 6000원 결제 요청시 프로모션 할인이 적용되어 5400원이 실제 결제됩니다.
-    이 때, 2000원 부분 취소시 **프로모션 혜택 유지** 옵션을 선택한 경우 실제 1800원이 결제 취소 요청되며,
-    결제 완료 금액은 3600원이 됩니다.
-    (주문금액 6000원에서 2000원 부분 취소시 주문금액은 4000원이며 기존 할인 조건인 10% 할인이 유지되어 실 결제 금액은 3600원이 됩니다.)
-
-  - 예시 2 :
-    프로모션 할인 조건이 `5천원 이상 결제시 1000원 할인`일 때 6000원 결제 요청시 프로모션 할인이 적용되어 5000원이 실제 결제됩니다.
-    이 때, 2000원 부분 취소시 **프로모션 혜택 유지** 옵션을 선택한 경우 실제 1800원이 결제 취소 요청되며,
-    결제 완료 금액은 3200원이 됩니다.
-    (본 예시에서 기존에 적용된 할인 조건인 `5천원 이상 결제시 1000원 할인`은 20% 할인으로 환산됩니다. 주문금액 6000원에서 2000원 부분 취소시
-    남은 주문금액은 4000원이므로, 취소 이후 결제 완료 금액은 3200원이 되고 실제 취소 금액은 1800원이 됩니다.)
-
-</details>
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
-
-<details>
-
-<summary> 프로모션 할인이 적용된 건에 여러번 부분 취소 요청하는 경우 안내 </summary>
-
-프로모션 할인이 적용된 거래 건을 여러번 부분 취소하는 경우 처음 선택한 취소 옵션으로만 가능합니다.
-예를 들어 \[프로모션 혜택 유지]로 처음 부분 취소한 경우 동일 거래 건에 대해 부분 취소를 진행하는 경우
-\[프로모션 혜택 유지] 옵션으로만 취소가 가능합니다.
-
-</details>
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
-
-
-# https://developers.portone.io/opi/ko/extra/promotion/intro
-
----
-title: 프로모션
-description: 카드 즉시 할인을 쉽게 운영 및 관리할 수 있는 서비스입니다.
-targetVersions:
-  - v1
-  - v2
----
-
-## 프로모션이란?
-
-고객사가 카드사와 계약하여 사용자에게 즉시 할인을 제공하는 **카드 즉시 할인 서비스**를 운영하고 관리할
-수 있는 서비스 입니다.
-
-카드 즉시 할인 서비스를 이용시 필요한 **프로모션 관리 시스템**과 **프로모션 정산 대사 시스템** 을 제공합니다.
-포트원 콘솔에서 기간, 할인 조건, 예산 등 다양한 옵션의 프로모션을 설정할 수 있으며,
-생성된 프로모션 아이디를 포함하여 결제 요청시 즉시 할인을 적용할 수 있습니다.
-또한, 프로모션이 종료된 후 할인이 적용된 거래 건들만 모아 엑셀로 다운로드하여 한 번에 결제 내역 정리 및 정산 금액 대사를 할 수 있습니다.
-
-프로모션은 일부 고객사에 한하여 제공하고 있으며, 프로모션 도입을 원하시는 고객사의 경우 포트원으로 문의 주시기 바랍니다.
-
-<div class="hint" data-style="info">
-
-프로모션 메뉴의 경우 도입 고객사에 한하여 포트원 콘솔 내에서 확인하실 수 있습니다.
-
-</div>
-
-[프로모션 생성하기](https://developers.portone.io/opi/ko/extra/promotion/console-guide)
-
-[프로모션 결제 연동하기](https://developers.portone.io/opi/ko/extra/promotion/integration)
-
-
-# https://developers.portone.io/sdk/ko/readme
-
----
-title: 포트원 SDK 소개
-description: 포트원에서 제공하는 SDK 가이드입니다.
-targetVersions:
-  - v1
-  - v2
----
-
-포트원은 고객사에서 보다 쉽게 서비스를 이용하실 수 있도록 프로그래밍 언어 / 플랫폼 별 SDK를 제공하고 있습니다.
-
-## 브라우저 SDK
-
-브라우저 환경에서 포트원 서비스를 연동할 때 사용하는 자바스크립트 SDK입니다. 브라우저에서 포트원 SDK를 호출하여 결제, 본인인증 등을 진행하게 됩니다.
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
-
-[JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/readme)
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
-
-[JavaScript SDK 레퍼런스](https://developers.portone.io/sdk/ko/v2-sdk/readme)
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
-
-## 모바일 SDK
-
-JS SDK를 모바일 환경에서 모바일 플랫폼 네이티브 코드(Kotlin, Swift 등) 으로 쉽게 사용할 수 있도록 만들어진 SDK입니다.
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
-
-[모바일 SDK 레퍼런스](https://developers.portone.io/sdk/ko/v1-mobile-sdk/readme)
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
-
-[모바일 SDK 레퍼런스](https://developers.portone.io/sdk/ko/v2-mobile-sdk/readme)
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
-
-## 서버 SDK
-
-웹훅을 포함한 포트원 V2 REST API를 여러 언어에서 쉽게 사용할 수 있도록 만들어진 SDK입니다.
-
-[서버 SDK 레퍼런스](https://developers.portone.io/sdk/ko/v2-server-sdk/readme)
-
-## 샘플 프로젝트
-
-SDK를 지원하지 않는 플랫폼을 포함하여 다양한 플랫폼에서 결제 연동 예시를 확인하실 수 있도록 [portone-sample GitHub 저장소](https://github.com/portone-io/portone-sample)에서 샘플 프로젝트를 제공하고 있습니다.
-일부 플랫폼의 경우 devcontainers 환경에서 바로 실행해보실 수 있습니다.
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
-
-
-# https://developers.portone.io/opi/ko/quick-guide/payment
-
----
-title: 퀵 가이드
-description: 결제연동 퀵 가이드
-customLayout: InteractiveDocs
-targetVersion:
-  - v2
-versionVariants:
-  v1: /opi/ko/integration/ready/readme?v=v1
----
-
-퀵 가이드 내용을 포함한 포트원 결제 연동 샘플 프로젝트를 [GitHub 저장소](https://github.com/portone-io/portone-sample)에서 추가로 확인하실 수 있습니다.
-
-## 브라우저 측
-
-### 포트원 브라우저 SDK 불러오기
-
-포트원 브라우저 SDK를 불러옵니다.
-
-아래 명령어로 브라우저 SDK를 설치합니다.
-
-![NPM Version](https://img.shields.io/npm/v/%40portone%2Fbrowser-sdk)
-
-<div class="tabs-container">
-
-<div class="tabs-content" data-title="npm">
-
-```shell
-npm install --save @portone/browser-sdk
-```
-
-</div>
-
-<div class="tabs-content" data-title="yarn">
-
-```shell
-yarn add @portone/browser-sdk
-```
-
-</div>
-
-<div class="tabs-content" data-title="pnpm">
-
-```shell
-pnpm add @portone/browser-sdk
-```
-
-</div>
-
-<div class="tabs-content" data-title="bun">
-
-```shell
-bun add @portone/browser-sdk
-```
-
-</div>
-
-<div class="tabs-content" data-title="deno">
-
-```shell
-deno add npm:@portone/browser-sdk
-```
-
-</div>
-
-<div class="tabs-content" data-title="ni">
-
-```shell
-ni @portone/browser-sdk
-```
-
-</div>
-
-</div>
-
-### 상품 정보 불러오기
-
-서버로부터 결제할 상품의 정보를 불러옵니다.
-
-### 결제 요청
-
-포트원 브라우저 SDK를 사용하여 결제를 요청합니다.
-
-- storeId: string
-
-  **상점 아이디**
-
-  포트원 계정에 생성된 상점을 식별하는 고유한 값으로 [관리자 콘솔 > 연동 정보](https://admin.portone.io/integration-v2/manage/channel) 우측 상단에서 확인할 수 있습니다.
-
-- channelKey: string
-
-  **채널키**
-
-  [관리자 콘솔 > 연동 정보](https://admin.portone.io/integration-v2/manage/channel)에서 채널 연동 시 생성된 채널키입니다.
-
-- paymentId: string
-
-  **고객사 주문 고유 번호**
-
-  주문을 식별하는 고유 번호로, 포트원에서 제공하지 않고 직접 입력합니다.
-
-  이미 승인이 완료된 `paymentId`로 결제나 가상계좌 발급을 시도하는 경우 에러가 발생합니다.
-
-  <div class="hint" data-style="warning">
-
-  토스페이먼츠의 경우 영문 대소문자, 숫자, `-`, `_`만 허용되며, 6자 이상 64자 이하로 입력합니다.
-
-  </div>
-
-  <div class="hint" data-style="warning">
-
-  KCP의 경우 영문 대소문자, 숫자만 허용되며, 40자 이하로 입력합니다.
-
-  </div>
-
-  <div class="hint" data-style="warning">
-
-  스마트로의 경우 영문 대소문자, 숫자만 허용되며, 40자 이하로 입력합니다.
-
-  </div>
-
-  <div class="hint" data-style="warning">
-
-  한국결제네트웍스의 경우 영문 대소문자, 숫자만 허용되며, 32자 이하로 입력합니다.
-
-  </div>
-
-  <div class="hint" data-style="warning">
-
-  KG이니시스의 경우 ASCII 문자만 허용되며, 40자 이하로 입력합니다.
-
-  </div>
-
-- orderName: string
-
-  **주문명**
-
-  주문명으로 자유롭게 입력합니다.
-
-  <div class="hint" data-style="warning">
-
-  나이스페이먼츠의 경우 최대 40바이트까지 입력할 수 있으며, 사용 가능한 특수문자는 아래와 같습니다.
-
-  - 사용 가능: `_`
-  - 사용 불가: `% & | $ - + = [ ]`
-  - 사용 가능하나 권장하지 않음: `( )`
-
-  </div>
-
-  <div class="hint" data-style="warning">
-
-  KCP의 경우 최대 100바이트까지 입력할 수 있습니다.
-
-  </div>
-
-  <div class="hint" data-style="warning">
-
-  스마트로의 경우 최대 40바이트까지 입력할 수 있습니다.
-
-  </div>
-
-  <div class="hint" data-style="warning">
-
-  한국결제네트웍스의 경우 최대 256바이트까지 입력할 수 있습니다.
-
-  </div>
-
-  <div class="hint" data-style="warning">
-
-  KG이니시스의 경우 최대 40바이트까지 입력할 수 있으며, 40바이트 초과시 37바이트에서 잘리고 "..."가 추가됩니다.
-
-  </div>
-
-- totalAmount: number
-
-  **결제 금액**
-
-  결제 금액을 정수로 입력합니다.
-
-  - 해외 통화의 경우 통화의 최소 단위를 기준으로 합니다. 예를 들어, USD의 최소 단위는 센트(0.01 USD)이므로, 6 USD의 경우 100배하여 600으로 입력합니다.
-
-  - 통화의 최소 단위는 [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html)에 의해 표준화된 minor unit입니다.
-    - KRW: 1배
-    - USD: 100배
-    - JPY: 1배
-
-- currency: string
-
-  **결제 통화**
-
-  [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html)에 의해 표준화된 알파벳 통화 코드를 입력합니다.
-
-  <div class="hint" data-style="warning">
-
-  토스페이먼츠는 `KRW`만을 지원합니다.
-
-  </div>
-
-  <div class="hint" data-style="warning">
-
-  나이스페이먼츠는 `KRW`만을 지원합니다.
-
-  </div>
-
-  <div class="hint" data-style="warning">
-
-  스마트로는 `KRW`와 `USD`만을 지원합니다. 상점 아이디의 설정에 따라 결제 통화가 고정되어 `currency`와 일치하지 않을 수 있습니다.
-
-  </div>
-
-  <div class="hint" data-style="warning">
-
-  한국결제네트웍스는 `KRW`와 `USD`만을 지원합니다.
-
-  </div>
-
-  <div class="hint" data-style="warning">
-
-  KSNET은 `KRW`와 `USD`만을 지원합니다.
-
-  </div>
-
-  <div class="hint" data-style="warning">
-
-  KCP는 `KRW`와 `USD`만을 지원합니다. `USD`의 경우 별도 계약이 필요합니다.
-
-  </div>
-
-  <div class="hint" data-style="warning">
-
-  KG이니시스 카드 결제는 `KRW`와 `USD`만을 지원합니다.
-
-  </div>
-
-  <div class="hint" data-style="warning">
-
-  카드 결제를 제외한 KG이니시스는 `KRW`만을 지원합니다.
-
-  </div>
-
-- payMethod: string
-
-  **결제 수단**
-
-  사용할 결제 수단에 맞는 값을 입력합니다.
-
-  <details>
-
-  <summary>지원 결제 수단 코드</summary>
-
-  - 카드: `CARD`
-  - 실시간 계좌이체: `TRANSFER`
-  - 가상계좌: `VIRTUAL_ACCOUNT`
-  - 휴대폰 소액결제: `MOBILE`
-  - 간편결제: `EASY_PAY`
-  - 상품권: `GIFT_CERTIFICATE`
-
-  <div class="hint" data-style="warning">
-
-  휴대폰 소액결제, 간편결제, 상품권 결제는 별도 계약이 필요합니다.
-
-  </div>
-
-  - 카드: `CARD`
-  - 실시간 계좌이체: `TRANSFER`
-  - 가상계좌: `VIRTUAL_ACCOUNT`
-  - 휴대폰 소액결제: `MOBILE`
-  - 간편결제: `EASY_PAY`
-  - 상품권: `GIFT_CERTIFICATE`
-
-  - 카드: `CARD`
-  - 실시간 계좌이체: `TRANSFER`
-  - 가상계좌: `VIRTUAL_ACCOUNT`
-  - 휴대폰 소액결제: `MOBILE`
-  - 간편결제: `EASY_PAY`
-
-  - 카드: `CARD`
-  - 실시간 계좌이체: `TRANSFER`
-  - 가상계좌: `VIRTUAL_ACCOUNT`
-  - 휴대폰 소액결제: `MOBILE`
-  - 간편결제: `EASY_PAY`
-
-  - 카드: `CARD`
-  - 실시간 계좌이체: `TRANSFER`
-  - 가상계좌: `VIRTUAL_ACCOUNT`
-  - 휴대폰 소액결제: `MOBILE`
-  - 간편결제: `EASY_PAY`
-  - 상품권: `GIFT_CERTIFICATE`
-
-  - 카드: `CARD`
-  - 실시간 계좌이체: `TRANSFER`
-  - 가상계좌: `VIRTUAL_ACCOUNT`
-  - 휴대폰 소액결제: `MOBILE`
-  - 간편결제: `EASY_PAY`
-
-  - 카드: `CARD`
-  - 실시간 계좌이체: `TRANSFER`
-  - 가상계좌: `VIRTUAL_ACCOUNT`
-  - 휴대폰 소액결제: `MOBILE`
-  - 간편결제: `EASY_PAY`
-  - 상품권: `GIFT_CERTIFICATE`
-
-  </details>
-
-* card?: object
-
-  **카드 결제 추가 정보**
-
-  `payMethod`가 `CARD`인 경우 카드 결제와 관련한 추가 정보를 입력할 수 있습니다.
-
-  - cardCompany?: string
-
-    **단독 노출 카드사**
-
-    구매자가 카드사를 선택하지 않고 입력한 카드사 화면으로 바로 이동하도록 합니다.
-
-    <div class="hint" data-style="warning">
-
-    토스페이먼츠의 경우 카드사 단독 노출과 동시에 할부를 설정하려면 `card.installment.monthOption.fixedMonth`를 반드시 전달해야 하며, 그렇지 않을 경우 일시불로 결제됩니다.
-
-    </div>
-
-    <div class="hint" data-style="warning">
-
-    나이스페이먼츠의 경우 카드사 단독 노출 시 `card.installment.monthOption.fixedMonth`를 필수로 지정해야 합니다.
-    결제 금액이 할부 지원 금액 미만인 경우 할부 개월 수를 `0`으로 전달해야 합니다.
-
-    </div>
-
-    <div class="hint" data-style="warning">
-
-    스마트로의 경우 전북카드, 카카오뱅크 카드는 Windows에서만 단독 노출이 가능합니다.
-
-    </div>
-
-    <div class="hint" data-style="warning">
-
-    KCP의 경우 카드사 단독 노출 시 `bypass.kcp_v2.site_name`을 필수로 지정해야 할 수 있습니다.
-    자세한 사항은 해당 파라미터 설명을 참조해 주세요.
-
-    </div>
-
-    <div class="hint" data-style="warning">
-
-    한국결제네트웍스의 경우 카드사 단독 노출 시에 아래 3가지 약관 동의 절차가 고객사 페이지 내에 있어야 합니다.
-
-    - `https://www.firstpay.co.kr/jsp/common/agreementPopup.jsp?type=1` (전자금융거래 이용약관)
-    - `https://www.firstpay.co.kr/jsp/common/agreementPopup.jsp?type=3` (개인정보 수집 및 이용처리 동의)
-    - `https://www.firstpay.co.kr/jsp/common/agreementPopup.jsp?type=4` (개인정보 제3자 제공 동의)
-
-    영어 약관이 필요한 경우 URL 뒤에 `&langType=ENG`을 추가하여 사용할 수 있습니다.
-
-    </div>
-
-    <div class="hint" data-style="warning">
-
-    KG이니시스의 경우 카드사 단독 노출 시 별도 계약이 필요합니다.
-
-    </div>
-
-    <details>
-
-    <summary>지원 카드사 코드 목록</summary>
-
-    - `KOREA_DEVELOPMENT_BANK` (KDB산업은행 카드)
-    - `KFCC` (새마을금고 카드)
-    - `SHINHYUP` (신협 카드)
-    - `EPOST`(우체국 카드)
-    - `SAVINGS_BANK_KOREA` (저축은행 카드)
-    - `KAKAO_BANK` (카카오뱅크 카드)
-    - `WOORI_CARD` (우리카드)
-    - `BC_CARD` (BC카드)
-    - `GWANGJU_CARD` (광주카드)
-    - `SAMSUNG_CARD` (삼성카드)
-    - `SHINHAN_CARD` (신한카드)
-    - `HYUNDAI_CARD` (현대카드)
-    - `LOTTE_CARD` (롯데카드)
-    - `SUHYUP_CARD` (수협카드)
-    - `CITI_CARD` (씨티카드)
-    - `NH_CARD` (NH농협카드)
-    - `JEONBUK_CARD` (전북카드)
-    - `JEJU_CARD` (제주카드)
-    - `HANA_CARD` (하나카드)
-    - `KOOKMIN_CARD` (국민카드)
-    - `K_BANK` (케이뱅크 카드)
-    - `TOSS_BANK` (토스뱅크 카드)
-
-    - `KOREA_DEVELOPMENT_BANK` (KDB산업은행 카드)
-    - `KFCC` (새마을금고 카드)
-    - `SHINHYUP` (신협 카드)
-    - `EPOST` (우체국 카드)
-    - `SAVINGS_BANK_KOREA` (저축은행 카드)
-    - `KAKAO_BANK` (카카오뱅크 카드)
-    - `WOORI_CARD` (우리카드)
-    - `BC_CARD` (BC카드)
-    - `GWANGJU_CARD` (광주카드)
-    - `SAMSUNG_CARD` (삼성카드)
-    - `SHINHAN_CARD` (신한카드)
-    - `HYUNDAI_CARD` (현대카드)
-    - `LOTTE_CARD` (롯데카드)
-    - `SUHYUP_CARD` (수협카드)
-    - `CITI_CARD` (씨티카드)
-    - `NH_CARD` (NH농협카드)
-    - `JEONBUK_CARD` (전북카드)
-    - `JEJU_CARD` (제주카드)
-    - `HANA_CARD` (하나카드)
-    - `KOOKMIN_CARD` (국민카드)
-    - `K_BANK` (케이뱅크 카드)
-    - `TOSS_BANK` (토스뱅크 카드)
-
-    </details>
-
-  - availableCards?: string\[]
-
-    **카드사 일부 노출**
-
-    지정한 일부 카드사만을 목록에 노출할 수 있습니다. 상단의 카드사 식별 값 항목을 참고해주세요.
-
-  * useFreeInterestFromMall?: boolean
-
-    **상점 분담 무이자 활성화 여부**
-
-    <div class="hint" data-style="warning">
-
-    토스페이먼츠의 경우 상점 분담 무이자 할부 이용 시 별도 계약이 필요합니다.
-
-    </div>
-
-  - useInstallment?: boolean
-
-    **할부 사용 여부**
-
-  - installment?: object
-
-    **할부 설정**
-
-    <div class="hint" data-style="warning">
-
-    토스페이먼츠의 경우 신용카드 할부 이용 시 별도 계약이 필요합니다.
-
-    </div>
-
-    <div class="hint" data-style="warning">
-
-    스마트로의 경우 신용카드 할부 이용 시 별도 계약이 필요합니다.
-
-    </div>
-
-    - freeInstallmentPlans?: object\[]
-
-      **무이자 할부 설정**
-
-      고객사가 부담하는 무이자 할부 설정입니다.
-
-      <div class="hint" data-style="warning">
-
-      스마트로의 경우 상점 부담 무이자 할부 이용 시 별도 계약이 필요합니다.
-
-      </div>
-
-      <div class="hint" data-style="warning">
-
-      한국결제네트웍스의 경우 상점 부담 무이자 할부 이용 시 별도 계약이 필요합니다.
-
-      </div>
-
-      <div class="hint" data-style="warning">
-
-      KG이니시스의 경우 상점 부담 무이자 할부 이용 시 별도 계약이 필요합니다.
-
-      </div>
-
-      - cardCompany: string
-
-        **무이자 할부를 제공하는 카드사 식별 값**
-
-        상단의 카드사 식별 값 항목을 참고해주세요.
-
-      - months: number\[]
-
-        **무이자 할부를 제공하는 개월 수**
-
-    - monthOption?: object
-
-      **할부 개월 수 설정**
-
-      할부 결제 시 할부 개월 수를 설정할 수 있습니다.
-
-      `fixedMonth`와 `availableMonthList` 중 하나만 제공해주세요.
-
-      - fixedMonth: number
-
-        **구매자가 선택할 수 없도록 고정된 할부 개월 수**
-
-        구매자가 할부 개월 수를 선택할 수 있도록 하려면 `availableMonthList`를 사용해주세요.
-
-      * availableMonthList: number\[]
-
-        **구매자가 선택할 수 있는 할부 개월 수 목록**
-
-  * useCardPoint?: boolean
-
-    **카드사 포인트 사용 여부**
-
-    <div class="hint" data-style="warning">
-
-    토스페이먼츠의 경우 카드사 포인트 사용 시 별도 계약이 필요합니다.
-
-    </div>
-
-    <div class="hint" data-style="warning">
-
-    나이스페이먼츠의 경우 카드사 포인트 사용 시 별도 계약이 필요합니다.
-
-    </div>
-
-    <div class="hint" data-style="warning">
-
-    KG이니시스의 경우 카드사 포인트 사용 시 별도 계약이 필요합니다.
-
-    </div>
-
-  - useAppCardOnly?: boolean
-
-    **앱 카드만 허용할지 여부**
-
-    <div class="hint" data-style="warning">
-
-    토스페이먼츠의 경우 씨티카드는 적용이 불가능합니다.
-
-    </div>
-
-- virtualAccount?: object
-
-  **가상계좌 발급 추가 정보**
-
-  `payMethod`가 `VIRTUAL_ACCOUNT`인 경우 가상계좌와 관련한 추가 정보를 입력할 수 있습니다.
-
-  - cashReceiptType?: string
-
-    **결제창에서 발급 가능한 현금영수증 발급 유형**
-
-    - `PERSONAL` (소득공제용)
-    - `CORPORATE` (지출증빙용)
-    - `ANONYMOUS` (미발행(국세청번호 자동발급))
-
-    <div class="hint" data-style="warning">
-
-    스마트로의 경우 `cashReceiptType`과 `bankCode`를 같이 사용해야 합니다.
-
-    </div>
-
-  - customerIdentifier?: string
-
-    **현금영수증 발행 대상 식별 정보**
-
-    소득공제용(`PERSONAL`)의 경우 전화번호를, 지출증빙용(`CORPORATE`)의 경우 사업자번호를 입력하며, 미발행(`ANONYMOUS`)의 경우 무시됩니다.
-
-    <div class="hint" data-style="warning">
-
-    스마트로의 경우 `cashReceiptType`에 `ANONYMOUS` 외의 값이 설정되면 올바른 `customerIdentifier`를 반드시 입력해야 합니다.
-
-    </div>
-
-  - fixedOption?: oneof object
-
-    **고정식 가상계좌 설정**
-
-    - `pgAccountId`와 `accountNumber` 중 하나만 입력해주세요.
-
-    * pgAccountId?: string
-
-      결제대행사로부터 사전에 가상계좌를 발급받은 경우, 그 번호를 입력해주세요.
-
-    * accountNumber?: string
-
-      고정하여 사용할 가상계좌 번호를 입력해주세요.
-
-  - bankCode?: string
-
-    **단독 노출 은행**
-
-    구매자가 은행을 선택하지 않고 입력한 은행이 자동 선택되도록 합니다.
-
-    <details>
-
-    <summary>지원 은행 코드</summary>
-
-    - `KYONGNAM_BANK` (경남은행)
-    - `GWANGJU_BANK` (광주은행)
-    - `KOOKMIN_BANK` (국민은행)
-    - `INDUSTRIAL_BANK_OF_KOREA` (기업은행)
-    - `NH_NONGHYUP_BANK` (NH농협은행)
-    - `DAEGU_BANK` (대구은행)
-    - `BUSAN_BANK` (부산은행)
-    - `KFCC` (새마을금고)
-    - `SUHYUP_BANK` (수협은행)
-    - `SHINHAN_BANK` (신한은행)
-    - `WOORI_BANK` (우리은행)
-    - `EPOST` (우체국)
-    - `HANA_BANK` (하나은행)
-
-    - `INDUSTRIAL_BANK_OF_KOREA` (기업은행)
-    - `KOOKMIN_BANK` (국민은행)
-    - `NH_NONGHYUP_BANK` (NH농협은행)
-    - `WOORI_BANK` (우리은행)
-    - `SC_BANK_KOREA` (SC제일은행)
-    - `DAEGU_BANK` (대구은행)
-    - `BUSAN_BANK` (부산은행)
-    - `GWANGJU_BANK` (광주은행)
-    - `EPOST` (우체국)
-    - `HANA_BANK` (하나은행)
-    - `SHINHAN_BANK` (신한은행)
-    - `K_BANK` (케이뱅크)
-
-    - `INDUSTRIAL_BANK_OF_KOREA` (기업은행)
-    - `KOOKMIN_BANK` (국민은행)
-    - `NH_NONGHYUP_BANK` (NH농협은행)
-    - `WOORI_BANK` (우리은행)
-    - `SC_BANK_KOREA` (SC제일은행)
-    - `DAEGU_BANK` (대구은행)
-    - `BUSAN_BANK` (부산은행)
-    - `GWANGJU_BANK` (광주은행)
-    - `EPOST` (우체국)
-    - `HANA_BANK` (하나은행)
-    - `SHINHAN_BANK` (신한은행)
-    - `K_BANK` (케이뱅크)
-    - `SUHYUP_BANK` (수협은행)
-    - `JEONBUK_BANK` (전북은행)
-    - `KYONGNAM_BANK` (경남은행)
-
-    - `INDUSTRIAL_BANK_OF_KOREA` (기업은행)
-    - `KOOKMIN_BANK` (국민은행)
-    - `NH_NONGHYUP_BANK` (NH농협은행)
-    - `WOORI_BANK` (우리은행)
-    - `SC_BANK_KOREA` (SC제일은행)
-    - `CITI_BANK_KOREA` (한국씨티은행)
-    - `DAEGU_BANK` (대구은행)
-    - `BUSAN_BANK` (부산은행)
-    - `GWANGJU_BANK` (광주은행)
-    - `EPOST` (우체국)
-    - `HANA_BANK` (하나은행)
-    - `SHINHAN_BANK` (신한은행)
-    - `KYONGNAM_BANK` (경남은행)
-
-    - `INDUSTRIAL_BANK_OF_KOREA` (기업은행)
-    - `KOOKMIN_BANK` (국민은행)
-    - `NH_NONGHYUP_BANK` (NH농협은행)
-    - `WOORI_BANK` (우리은행)
-    - `SC_BANK_KOREA` (SC제일은행)
-    - `DAEGU_BANK` (대구은행)
-    - `BUSAN_BANK` (부산은행)
-    - `GWANGJU_BANK` (광주은행)
-    - `EPOST` (우체국)
-    - `HANA_BANK` (하나은행)
-    - `SHINHAN_BANK` (신한은행)
-    - `JEONBUK_BANK` (전북은행)
-    - `KYONGNAM_BANK` (경남은행)
-
-    </details>
-
-  - accountExpiry?: object
-
-    **가상계좌 입금 만료기한**
-
-    `validHours`와 `dueDate` 중 하나만 입력해주세요.
-
-    <div class="hint" data-style="warning">
-
-    나이스페이먼츠의 경우 입금 만료기한을 필수로 입력해야 합니다.
-
-    </div>
-
-    - validHours?: number
-
-      **가상계좌 입금 유효 시간**
-
-      가상계좌 입금 유효기간을 시간 단위로 입력해주세요.
-
-      - `3`을 전달하면 지금으로부터 3시간 후에 만료됩니다.
-
-    - dueDate?: string
-
-      **가상계좌 입금 만료 시각**
-
-      - 아래 형식 중 하나로 입력해주세요.
-        - `YYYYMMDD`
-        - `YYYYMMDDHHmmss`
-        - `YYYY-MM-DD`
-        - `YYYY-MM-DD HH:mm:ss`
-
-- transfer?: object
-
-  **계좌이체 추가 정보**
-
-  `payMethod`가 `TRANSFER`인 경우 계좌이체와 관련한 추가 정보를 입력할 수 있습니다.
-
-  - cashReceiptType?: string
-
-    **결제창에서 발급 가능한 현금영수증 발급 유형**
-
-    - `PERSONAL` (소득공제용)
-    - `CORPORATE` (지출증빙용)
-    - `ANONYMOUS` (미발행(국세청번호 자동발급))
-
-  - customerIdentifier?: string
-
-    **현금영수증 발행 대상 식별 정보**
-
-  - bankCode?: string
-
-    **단독 노출 은행**
-
-    구매자가 은행을 선택하지 않고 입력한 은행이 자동 선택되도록 합니다.
-
-    <details>
-
-    <summary>지원 은행 코드</summary>
-
-    - `KYONGNAM_BANK` (경남은행)
-    - `GWANGJU_BANK` (광주은행)
-    - `KOOKMIN_BANK` (국민은행)
-    - `INDUSTRIAL_BANK_OF_KOREA` (기업은행)
-    - `NH_NONGHYUP_BANK` (NH농협은행)
-    - `DAEGU_BANK` (대구은행)
-    - `BUSAN_BANK` (부산은행)
-    - `KFCC` (새마을금고)
-    - `SUHYUP_BANK` (수협은행)
-    - `SHINHAN_BANK` (신한은행)
-    - `WOORI_BANK` (우리은행)
-    - `EPOST` (우체국)
-    - `HANA_BANK` (하나은행)
-
-    </details>
-
-- mobile?: object
-
-  **휴대폰 소액결제 추가 정보**
-
-  `payMethod`가 `MOBILE`인 경우 휴대폰 소액결제와 관련한 추가 정보를 입력할 수 있습니다.
-
-  - carrier?: string
-
-    **단독 호출 통신사**
-
-    구매자가 통신사를 선택하지 않고 입력한 통신사가 자동 선택되도록 합니다.
-
-    - `SKT` (SKT)
-    - `KT` (KT)
-    - `LGU` (LGU)
-    - `HELLO` (LG 헬로모바일)
-    - `KCT` (티플러스)
-    - `SK7` (SK 세븐모바일)
-
-  - availableCarriers?: string\[]
-
-    **통신사 일부 노출**
-
-    지정한 일부 통신사만을 목록에 노출할 수 있습니다. 상단의 통신사 식별 값 항목을 참고해주세요.
-
-- giftCertificate?: object
-
-  **상품권 추가 정보**
-
-  `payMethod`가 `GIFT_CERTIFICATE`인 경우 상품권과 관련한 추가 정보를 입력할 수 있습니다.
-
-  - giftCertificateType?: string
-
-    **상품권 유형**
-
-    <details>
-
-    <summary>지원 상품권 유형 코드</summary>
-
-    - `BOOKNLIFE` (도서문화상품권)
-    - `SMART_MUNSANG` (스마트문상, (구)게임문화상품권)
-    - `CULTURELAND` (문화상품권)
-
-    - `CULTURELAND` (문화상품권)
-
-    </details>
-
-- easyPay?: object
-
-  **간편결제 추가 정보**
-
-  `payMethod`가 `EASY_PAY`인 경우 간편결제와 관련한 추가 정보를 입력할 수 있습니다.
-
-  - easyPayProvider?: string
-
-    **간편결제 수단**
-
-    <div class="hint" data-style="warning">
-
-    한국결제네트웍스의 경우 간편결제 수단을 직접 지정하려면 별도 계약이 필요합니다.
-
-    </div>
-
-    <div class="hint" data-style="warning">
-
-    KG이니시스의 경우 간편결제 수단 설정 시 별도 계약이 필요합니다.
-
-    </div>
-
-    <details>
-
-    <summary>지원 간편결제 코드</summary>
-
-    - `PAYCO` (페이코)
-    - `SAMSUNGPAY` (삼성페이)
-    - `APPLEPAY` (애플페이)
-    - `SSGPAY` (SSG페이)
-    - `KAKAOPAY` (카카오페이)
-    - `NAVERPAY` (네이버페이)
-    - `LPAY` (L페이)
-    - `TOSSPAY` (토스페이)
-
-    - `KAKAOPAY` (카카오페이)
-    - `SAMSUNGPAY` (삼성페이)
-    - `TOSSPAY` (토스페이)
-    - `PAYCO` (페이코)
-
-    - `KAKAOPAY` (카카오페이)
-    - `NAVERPAY` (네이버페이)
-    - `SAMSUNGPAY` (삼성페이)
-    - `SSGPAY` (SSG페이)
-    - `APPLEPAY` (애플페이)
-    - `LPAY` (L페이)
-    - `TOSSPAY` (토스페이)
-    - `PAYCO` (페이코)
-
-    </details>
-
-  * useFreeInterestFromMall?: boolean
-
-    **상점분담 무이자 활성화 여부**
-
-  - useCardPoint?: boolean
-
-    **카드사 포인트 사용 여부**
-
-  - availableCards?: string\[]
-
-    **카드사 일부 노출**
-
-    지정한 일부 카드사만을 목록에 노출할 수 있습니다.
-
-    <details>
-
-    - `KOREA_DEVELOPMENT_BANK` (KDB산업은행 카드)
-    - `KFCC` (새마을금고 카드)
-    - `SHINHYUP` (신협 카드)
-    - `EPOST`(우체국 카드)
-    - `SAVINGS_BANK_KOREA` (저축은행 카드)
-    - `KAKAO_BANK` (카카오뱅크 카드)
-    - `WOORI_CARD` (우리카드)
-    - `BC_CARD` (BC카드)
-    - `GWANGJU_CARD` (광주카드)
-    - `SAMSUNG_CARD` (삼성카드)
-    - `SHINHAN_CARD` (신한카드)
-    - `HYUNDAI_CARD` (현대카드)
-    - `LOTTE_CARD` (롯데카드)
-    - `SUHYUP_CARD` (수협카드)
-    - `CITI_CARD` (씨티카드)
-    - `NH_CARD` (NH농협카드)
-    - `JEONBUK_CARD` (전북카드)
-    - `JEJU_CARD` (제주카드)
-    - `HANA_CARD` (하나카드)
-    - `KOOKMIN_CARD` (국민카드)
-    - `K_BANK` (케이뱅크 카드)
-    - `TOSS_BANK` (토스뱅크 카드)
-
-    - `KOREA_DEVELOPMENT_BANK` (KDB산업은행 카드)
-    - `KFCC` (새마을금고 카드)
-    - `SHINHYUP` (신협 카드)
-    - `EPOST` (우체국 카드)
-    - `SAVINGS_BANK_KOREA` (저축은행 카드)
-    - `KAKAO_BANK` (카카오뱅크 카드)
-    - `WOORI_CARD` (우리카드)
-    - `BC_CARD` (BC카드)
-    - `GWANGJU_CARD` (광주카드)
-    - `SAMSUNG_CARD` (삼성카드)
-    - `SHINHAN_CARD` (신한카드)
-    - `HYUNDAI_CARD` (현대카드)
-    - `LOTTE_CARD` (롯데카드)
-    - `SUHYUP_CARD` (수협카드)
-    - `CITI_CARD` (씨티카드)
-    - `NH_CARD` (NH농협카드)
-    - `JEONBUK_CARD` (전북카드)
-    - `JEJU_CARD` (제주카드)
-    - `HANA_CARD` (하나카드)
-    - `KOOKMIN_CARD` (국민카드)
-    - `K_BANK` (케이뱅크 카드)
-    - `TOSS_BANK` (토스뱅크 카드)
-
-    - `KOREA_DEVELOPMENT_BANK` (KDB산업은행 카드)
-    - `KFCC` (새마을금고 카드)
-    - `SHINHYUP` (신협 카드)
-    - `EPOST` (우체국 카드)
-    - `SAVINGS_BANK_KOREA` (저축은행 카드)
-    - `KAKAO_BANK` (카카오뱅크 카드)
-    - `WOORI_CARD` (우리카드)
-    - `BC_CARD` (BC카드)
-    - `GWANGJU_CARD` (광주카드)
-    - `SAMSUNG_CARD` (삼성카드)
-    - `SHINHAN_CARD` (신한카드)
-    - `HYUNDAI_CARD` (현대카드)
-    - `LOTTE_CARD` (롯데카드)
-    - `SUHYUP_CARD` (수협카드)
-    - `CITI_CARD` (씨티카드)
-    - `NH_CARD` (NH농협카드)
-    - `JEJU_CARD` (제주카드)
-    - `HANA_CARD` (하나카드)
-    - `KOOKMIN_CARD` (국민카드)
-    - `K_BANK` (케이뱅크 카드)
-    - `TOSS_BANK` (토스뱅크 카드)
-
-    </details>
-
-  - installment?: object
-
-    **할부 설정**
-
-    <div class="hint" data-style="warning">
-
-    나이스페이먼츠의 경우 할부 사용 시 별도 계약이 필요합니다.
-
-    </div>
-
-    - freeInstallmentPlans?: object\[]
-
-      **무이자 할부 설정**
-
-      고객사가 부담하는 무이자 할부 설정입니다.
-
-      - cardCompany: string
-
-        **무이자 할부를 제공하는 카드사 식별 값**
-
-        상단의 카드사 식별 값 항목을 참고해주세요.
-
-      - months: number\[]
-
-        **무이자 할부를 제공하는 개월 수**
-
-    - monthOption?: object
-
-      **할부 개월 수 설정**
-
-      할부 결제 시 할부 개월 수를 설정할 수 있습니다.
-
-      `fixedMonth`와 `availableMonthList` 중 하나만 제공해주세요.
-
-      - fixedMonth: number
-
-        **구매자가 선택할 수 없도록 고정된 할부 개월 수**
-
-        구매자가 할부 개월 수를 선택할 수 있도록 하려면 `availableMonthList`를 사용해주세요.
-
-      - availableMonthList: number\[]
-
-        **구매자가 선택할 수 있는 할부 개월 수 목록**
-
-        <div class="hint" data-style="warning">
-
-        토스페이먼츠의 경우 자체 정책에 따라 **일시불부터 전달한 값 중 최댓값까지 모두 표시**됩니다.
-
-        </div>
-
-  - cashReceiptType?: string
-
-    **결제창에서 발급 가능한 현금영수증 발급 유형**
-
-    - `PERSONAL` (소득공제용)
-    - `CORPORATE` (지출증빙용)
-    - `ANONYMOUS` (미발행(국세청번호 자동발급))
-
-  - customerIdentifier?: string
-
-    **현금영수증 발행 대상 식별 정보**
-
-  - availablePayMethods?: string\[]
-
-    **노출할 간편결제 방식**
-
-    - `CARD` (카드 결제)
-    - `CHARGE` (포인트 충전 및 적립 결제)
-    - `MONEY` (토스페이 머니 결제)
-    - `TRANSFER` (계좌 결제)
-
-    <div class="hint" data-style="warning">
-
-    나이스페이먼츠의 경우 일부 간편결제 수단에 대해 `availablePayMethods`가 필수입니다.
-
-    - 네이버페이: 카드 결제인 경우 `CARD`, 포인트 혹은 머니 결제인 경우 `CHARGE`를 입력합니다.
-    - SSG페이: 계좌 결제를 노출하는 `TRANSFER`만 유효하며, 카드 혹은 머니 결제인 경우 `availablePayMethods`를 생략해야 합니다.
-
-    </div>
-
-- taxFreeAmount?: number
-
-  **면세 금액**
-
-  결제 금액 중 면세금액에 해당하는 금액을 입력합니다.
-
-  - 미입력 시 0으로 취급됩니다.
-  - 결제 금액과 동일하게 통화별 scale factor가 적용된 금액으로 전달해주세요.
-
-  <div class="hint" data-style="warning">
-
-  토스페이먼츠의 경우 면세 및 복합과세 이용 시 별도 계약이 필요합니다.
-
-  </div>
-
-  <div class="hint" data-style="warning">
-
-  나이스페이먼츠와 계약 시 지정된 면세금액을 반드시 입력해야 합니다.
-
-  </div>
-
-  <div class="hint" data-style="warning">
-
-  KCP의 경우 면세 금액을 직접 지정하기 위해서는 별도 계약이 필요합니다.
-  계약을 진행하지 않고 값을 지정하는 경우 요청한 내용과 다른 금액으로 결제가 발생할 수 있습니다.
-
-  </div>
-
-  <div class="hint" data-style="warning">
-
-  한국결제네트웍스의 경우 면세 금액을 직접 지정하기 위해서는 별도 계약이 필요합니다.
-  계약을 진행하지 않고 값을 지정하는 경우 요청한 내용과 다른 금액으로 결제가 발생할 수 있습니다.
-  면세 금액이 지정된 경우, MID에 지정된 면세 및 과세 여부보다 지정된 금액을 우선합니다.
-
-  </div>
-
-  <div class="hint" data-style="warning">
-
-  KG이니시스의 경우 면세 금액을 직접 지정하기 위해서는 별도 계약이 필요합니다.
-
-  </div>
-
-- vatAmount?: number
-
-  **부가세**
-
-  부가세 금액을 입력합니다.
-
-  - 미입력 시 과세 금액의 1/11 로 자동 계산됩니다.
-  - 결제 금액과 동일하게 통화별 scale factor가 적용된 금액으로 전달해주세요.
-
-  <div class="hint" data-style="warning">
-
-  KCP의 경우 부가세 금액을 직접 지정하기 위해서는 별도 계약이 필요합니다.
-  계약을 진행하지 않고 값을 지정하는 경우 요청한 내용과 다른 금액으로 결제가 발생할 수 있습니다.
-
-  </div>
-
-  <div class="hint" data-style="warning">
-
-  KG이니시스의 경우 부가세 금액을 직접 지정하기 위해서는 별도 계약이 필요합니다.
-
-  </div>
-
-- customer?: object
-
-  **구매자 정보**
-
-  <div class="hint" data-style="warning">
-
-  KSNET 결제 시 구매자 이름을 필수로 입력해야 합니다.
-
-  </div>
-
-  <div class="hint" data-style="warning">
-
-  KG이니시스 결제 시 PC 환경에서는 구매자 이름, 연락처, 이메일을 필수로 입력해야 합니다.
-
-  </div>
-
-  <div class="hint" data-style="warning">
-
-  스마트로 결제 시 구매자 연락처를 필수로 입력해야 합니다.
-
-  </div>
-
-  - customerId?: string
-
-    **구매자 고유 아이디**
-
-    구매자를 식별하는 고유 번호로, 자유롭게 입력합니다.
-
-  - fullName?: string
-
-    **구매자 전체 이름**
-
-    - `fullName`과 (`firstName`, `lastName`) 쌍 중 하나만 입력해 주세요.
-
-  - firstName?: string
-
-    **구매자의 성을 제외한 이름**
-
-    - `firstName`과 `lastName`은 함께 입력해야 합니다. 전체 이름은 `{firstName} {lastName}`으로 기록됩니다.
-
-  - lastName?: string
-
-    **구매자의 성**
-
-    - `firstName`과 `lastName`은 함께 입력해야 합니다. 전체 이름은 `{firstName} {lastName}`으로 기록됩니다.
-
-  - phoneNumber?: string
-
-    **구매자 연락처**
-
-  - email?: string
-
-    **구매자 이메일 주소**
-
-    <div class="hint" data-style="warning">
-
-    KG이니시스의 경우 특수문자는 `@`와 `.`만 허용됩니다.
-
-    </div>
-
-  - address?: object
-
-    **구매자 주소**
-
-    - country?: string
-
-      **국가**
-
-      [ISO 3166-1 alpha-2](https://www.iso.org/iso-3166-country-codes.html)에 의해 표준화된 2글자 국가 코드입니다.
-
-    - addressLine1: string
-
-      **일반 주소**
-
-    - addressLine2: string
-
-      **상세 주소**
-
-    - city?: string
-
-      **도시**
-
-    - province?: string
-
-      **주, 도, 시**
-
-  - zipcode?: string
-
-    **구매자 우편번호**
-
-  - gender?: string
-
-    **구매자 성별**
-
-    - `MALE`, `FEMALE`, `OTHER` 중 하나를 입력해주세요.
-
-  - birthYear?: string
-
-    **구매자 출생년도**
-
-    - `1990`과 같이 숫자 4자리로 입력해 주세요.
-
-  - birthMonth?: string
-
-    **구매자 출생월**
-
-    - `07`과 같이 숫자 2자리로 입력해 주세요.
-
-  - birthDay?: string
-
-    **구매자 출생일**
-
-    - `08`과 같이 숫자 2자리로 입력해 주세요.
-
-- customData?: object
-
-  `customData`에는 임의의 데이터를 저장할 수 있습니다.
-  서버에서 결제건 조회 시에 확인할 수 있으며, 상품 정보를 전달하여 서버가 인식한 상품 정보와 일치하는지 확인할 수 있습니다.
-
-- bypass?: object
-
-  **결제대행사 고유 기능**
-
-  - tosspayments?: object
-
-    - discountCode?: string
-
-      - 결제수단에 프로모션을 적용할 경우 토스페이먼츠로부터 제공받은 코드를 입력합니다.
-
-    - useInternationalCardOnly?: boolean
-
-      - `true`로 설정하면 해외 카드로만 결제를 허용합니다.
-
-  - nice\_v2?: object
-
-    - LogoImage?: string
-
-      **결제창 로고 이미지 URL**
-
-    - NPDisableScroll?: string
-
-      **PC환경 결제창 스크롤 미사용 여부**
-
-      기본값은 `N`입니다.
-
-      - `Y`: 미사용
-      - `N`: 사용
-
-    - SkinType?: string
-
-      **결제창 스킨 색상**
-
-      `red`, `green`, `purple`, `gray`, `dark` 중 하나를 입력해주세요.
-
-    - UserCI?: string
-
-      **문화상품권 결제 시 구매자 CI 정보**
-
-      아이디/비밀번호 외 추가로 CI 인증이 필요한 경우 사용합니다.
-
-      <div class="hint" data-style="warning">
-
-      나이스페이먼츠와 별도 계약이 필요합니다.
-
-      </div>
-
-    - MallUserID?: string
-
-      **구매자 식별 번호**
-
-      <div class="hint" data-style="warning">
-
-      문화 상품권 결제 시 필수 입력입니다.
-
-      </div>
-
-    - DirectCouponYN?: string
-
-      **신용카드 쿠폰 자동 적용 여부**
-
-      기본값은 `N`입니다.
-
-      - `Y`: 사전 등록된 선 할인 쿠폰을 자동 적용
-      - `N`: 쿠폰 미적용
-
-      <div class="hint" data-style="warning">
-
-      나이스페이먼츠와 별도 계약이 필요합니다.
-
-      </div>
-
-    - DirectShowOpt?: string
-
-      **단독 호출 결제 수단**
-
-      - `BANK`: 계좌이체
-      - `CELLPHONE`: 휴대폰 소액결제
-
-    - CardShowOpt?: string
-
-      **카드사별 호출 방식**
-
-      `카드 코드:노출 유형` 값의 목록을 `|`로 구분하여 입력해주세요.
-
-      - 카드 코드
-        - `02` (국민)
-        - `04` (삼성)
-        - `06` (신한)
-        - `07` (현대)
-        - `08` (롯데)
-        - `12` (NH)
-        - `15` (우리)
-
-      - 노출 유형
-        - `1` (안심클릭)
-        - `2` (간편결제)
-        - `3` (앱카드 직접 호출)
-
-      - `08:3|02:3`의 경우 롯데카드와 국민카드 선택시 앱카드를 직접 호출합니다.
-
-    - PaycoClientId?: string
-
-      **페이코에서 고객사에 발급한 Client Id**
-
-      페이코 계정 자동 로그인 기능을 사용하는 경우 입력합니다.
-
-      <div class="hint" data-style="warning">
-
-      나이스페이먼츠와 별도 계약이 필요합니다.
-
-      </div>
-
-    - PaycoAccessToken?: string
-
-      **페이코 접속 토큰**
-
-      페이코 계정 자동 로그인 기능을 사용하는 경우 입력합니다.
-
-      <div class="hint" data-style="warning">
-
-      나이스페이먼츠와 별도 계약이 필요합니다.
-
-      </div>
-
-    - SamsungPayType?: string
-
-      **삼성페이 고객사 유형**
-
-      기본값은 `99`입니다.
-
-      - `01`: 삼성페이 내 쇼핑
-      - `99`: 기타
-
-      <div class="hint" data-style="warning">
-
-      나이스페이먼츠와 별도 계약이 필요합니다.
-
-      </div>
-
-  - smartro\_v2?: object
-
-    - GoodsCnt?: number
-
-      **결제 상품 품목 개수**
-
-    - SkinColor?: string
-
-      **결제창 색상**
-
-      `RED`, `GREEN`, `BLUE`, `PURPLE`을 선택할 수 있으며, 기본값은 `RED`입니다.
-
-    - OpenType?: string
-
-      **허용 카드 국가 설정**
-
-      - `KR`: 국내 카드만 허용 (기본값)
-      - `EN`: 해외 카드만 허용
-
-  - kpn: object
-
-    - CardSelect?: string\[]
-
-      **카드결제 특수 결제방식 노출**
-
-      카드결제 시에 특정 카드사에 해당하지 않는 특수 결제방식을 노출할 수 있습니다.
-
-      - `GLOBAL`: 해외 카드(Visa, Mastercard, JCB)를 노출합니다.
-      - `LEGACY_AUTH`: 구 인증결제 방식을 노출합니다.
-      - `KEY_IN`: 키인 결제를 노출합니다.
-
-  - kcp\_v2?: object
-
-  * site\_logo?: string
-
-    **결제창 로고 URL**
-
-    - 결제창 좌측 상단에 표시됩니다.
-    - 이미지 사이즈는 가로 150px, 세로 50px 미만으로 설정해야 하며, GIF, JPG 파일만 지원됩니다.
-
-  * skin\_indx?: number
-
-    **결제창 색상**
-
-    PC로 결제창 호출 시 결제창 색상을 변경합니다.
-
-    - 1: 청색 (#207bba, 기본값)
-    - 2: 자주색 (#b52ecb)
-    - 3: 갈색 (#9a6d3f)
-    - 4: 분홍색 (#e41f7d)
-    - 5: 남색 (#284c8c)
-    - 6: 청록색 (#319cb9)
-    - 7: 황토색 (#a77f1d)
-    - 8: 주황색 (#b2b2b2)
-    - 9: 초록색 (#3cc871)
-    - 10: 다홍색 (#ee3b34)
-    - 11: 검은색 (#000000)
-    - 12: 은색 (#f4f4f4)
-
-  * kcp\_pay\_title?: string
-
-    **결제창 상단 문구**
-
-    결제창의 상단에 `NHN KCP - 결제의 중심!` 대신 표시될 문구입니다.
-
-  * shop\_user\_id?: string
-
-    **기관에 따라 리스크 관리 조치를 위한 쇼핑몰 관리 ID**
-
-    - 상품권, 휴대폰 결제 시 필수로 입력해야 합니다.
-
-  * site\_name?: string
-
-    **카드사 단독 노출 시 결제창에 표기될 상호명**
-
-    - PC의 경우 신한, 현대, 삼성, 농협, 하나, 외환, 롯데, 씨티, 우리카드 단독 노출 시 필수로 입력해야 합니다.
-    - 모바일의 경우 필수로 입력해야 합니다.
-
-  * disp\_tax\_yn?: string
-
-    **현금영수증 노출 여부**
-
-    결제창에서 현금영수증 노출 여부를 설정합니다. 실시간 계좌이체 또는 가상계좌 결제 시 사용할 수 있습니다.
-
-    - `Y`: 노출
-    - `N`: 노출하지 않음
-    - `R`: 소득공제로 노출
-    - `E`: 지출증빙으로 노출
-
-  * deli\_term?: string
-
-    **에스크로 결제 예상 배송 소요일**
-
-    에스크로 결제 시, 결제 상품의 예상 배송 소요일입니다. 에스크로 결제 사용 시 입력을 권장하고 있습니다.
-
-    - 기본값은 `00`입니다.
-    - 항상 두 자리 수로 입력되어야 합니다. 예상 배송 소요기간이 3일인 경우, `03`으로 입력합니다.
-
-- redirectUrl?: string
-
-  **리디렉션 방식에서 결제 프로세스 완료 후 이동될 고객사 URL**
-
-  - 대부분의 모바일 결제환경에서 반드시 입력해야 합니다.
-
-- noticeUrls?: string\[]
-
-  **결제 웹훅 수신 URL**
-
-  관리자 콘솔에서 설정한 웹훅 주소 대신 사용할 주소입니다.
-
-  - 해당 값 설정시 관리자 콘솔에 설정한 주소로는 웹훅이 발송되지 않습니다.
-
-- appScheme?: string
-
-  **모바일 결제 후 고객사 앱으로 복귀하기 위한 URL scheme**
-
-  ISP/앱카드에서 결제 완료 후 고객사 앱으로 복귀할 때 사용합니다.
-
-  <div class="hint" data-style="warning">
-
-  토스페이먼츠의 경우 `myappscheme://` 형식으로 입력해 주세요.
-
-  </div>
-
-- productType?: string
-
-  **상품 유형**
-
-  - 실물 상품: `PRODUCT_TYPE_REAL`
-  - 디지털 상품: `PRODUCT_TYPE_DIGITAL`
-
-  <div class="hint" data-style="warning">
-
-  나이스페이먼츠 휴대폰 소액결제 시 `productType`는 필수 입력이며, 상점에 설정된 상품 유형과 입력된 상품 유형이 다른 경우 결제가 실패합니다.
-
-  </div>
-
-  <div class="hint" data-style="warning">
-
-  스마트로 휴대폰 소액결제 시 `productType`는 필수 입력이며, 상점에 설정된 상품 유형과 입력된 상품 유형이 다른 경우 결제가 실패합니다.
-
-  </div>
-
-  <div class="hint" data-style="warning">
-
-  한국결제네트웍스 휴대폰 소액결제 시 `productType`는 필수 입력입니다.
-
-  </div>
-
-- offerPeriod?: oneof object
-
-  **서비스 제공 기간**
-
-  `range`와 `interval` 중 하나만 입력해주세요.
-
-  - range?: object
-
-    **서비스 제공 기간 범위**
-
-    - from?: string
-
-      **시작 시점**
-
-    - to?: string
-
-      **종료 시점**
-
-    <div class="hint" data-style="warning">
-
-    스마트로의 경우 `from`과 `to`를 동시에 입력해야 합니다.
-
-    </div>
-
-  - interval?: string
-
-    **제공 기간**
-
-    - `{number}d` (`{number}`일)
-    - `{number}m` (`{number}`분)
-    - `{number}y` (`{number}`년)
-
-- products?: object\[]
-
-  **구매 상품 상세 정보**
-
-  - id: string
-
-    **상품 아이디**
-
-  - name: string
-
-    **상품명**
-
-  - code?: string
-
-    **상품 코드**
-
-    <div class="hint" data-style="warning">
-
-    토스페이먼츠의 경우 반드시 입력해주세요.
-
-    </div>
-
-  - amount: number
-
-    **상품 단위 가격**
-
-    - 결제 금액과 동일하게 통화별 scale factor가 적용된 금액으로 전달해주세요.
-
-  - quantity: number
-
-    **상품 수량**
-
-  - tag?: string
-
-    **상품 태그**
-
-- storeDetails?: object
-
-  **상점 정보**
-
-  - ceoFullName?: string
-
-    **상점 대표자 이름**
-
-  - phoneNumber?: string
-
-    **상점 연락처**
-
-  - address?: string
-
-    **상점 주소**
-
-  - zipcode?: string
-
-    **상점 우편번호**
-
-- isCulturalExpense?: boolean
-
-  **문화비 지출 여부**
-
-  도서, 공연, 박물관 등 문화비 지출 여부
-
-- isEscrow?: boolean
-
-  **에스크로 결제 여부**
-
-  `true`로 설정하면 에스크로를 사용합니다.
-
-  <div class="hint" data-style="warning">
-
-  토스페이먼츠의 경우 에스크로 사용 시 별도 계약이 필요합니다.
-
-  </div>
-
-  <div class="hint" data-style="warning">
-
-  나이스페이먼츠의 경우 에스크로 사용 시 별도 계약이 필요합니다.
-
-  </div>
-
-  <div class="hint" data-style="warning">
-
-  한국결제네트웍스의 경우 에스크로 사용 시 별도 계약이 필요합니다.
-
-  </div>
-
-  <div class="hint" data-style="warning">
-
-  KG이니시스의 경우 에스크로 사용 시 별도 계약이 필요합니다.
-
-  </div>
-
-  #### locale?: string
-
-  **결제창 언어**
-
-  - 한국어: `KO_KR`
-  - 영어: `EN_US`
-
-  - 한국어: `KO_KR`
-  - 영어: `EN_US`
-  - 중국어(간체): `ZH_CN`
-
-  <div class="hint" data-style="warning">
-
-  KG이니시스의 경우 중국어(간체)는 PC 결제 시에만 지원됩니다.
-
-  </div>
-
-- country?: string
-
-  **결제 국가**
-
-  [ISO 3166-1 alpha-2](https://www.iso.org/iso-3166-country-codes.html)에 의해 표준화된 2글자 국가 코드입니다.
-
-- popup?: object
-
-  **결제창이 팝업 방식일 경우 결제창에 적용할 속성**
-
-  - center?: boolean
-
-    `true`로 설정하면 결제창이 브라우저 화면의 정중앙에 표시됩니다.
-
-### 결제 오류 처리
-
-결제 중 오류가 발생하여 결제가 완료되지 않은 경우를 처리합니다.
-
-`SDK`의 반환 값에 `code`가 있는 경우 오류 상태로 `message` 필드에 오류 메시지가 존재합니다.
-결제대행사로부터 오류를 전달받은 경우 `code`는 `FAILURE_TYPE_PG`이고, 결제대행사의 오류 코드인 `pgCode`를 기반으로 결제 오류를 처리할 수 있습니다.
-
-### 서버 측으로 결제 완료 요청
-
-완료된 결제의 `paymentId`를 서버로 전송하여 결제 상태를 반영합니다.
-
-### 결제 완료 상태 처리
-
-서버로부터 검증 후 결제가 완료된 경우를 처리합니다.
-
-### 가상계좌 발급 상태 처리
-
-서버로부터 검증 후 가상계좌가 발급된 경우를 처리합니다.
-
-### 결제 실패 상태 처리
-
-서버로부터 검증 결과를 획득하여, 결제가 최종적으로 실패한 경우를 처리합니다.
-
-## 서버 측
-
-### 포트원 서버 SDK 불러오기
-
-포트원 서버 SDK를 불러옵니다.
-
-아래 명령어로 서버 SDK를 설치합니다.
-
-![NPM Version](https://img.shields.io/npm/v/%40portone%2Fserver-sdk)
-
-![JSR Version](https://img.shields.io/jsr/v/%40portone/server-sdk)
-
-<div class="tabs-container">
-
-<div class="tabs-content" data-title="npm">
-
-```shell
-npm install --save @portone/server-sdk
-```
-
-</div>
-
-<div class="tabs-content" data-title="yarn">
-
-```shell
-yarn add @portone/server-sdk
-```
-
-</div>
-
-<div class="tabs-content" data-title="pnpm">
-
-```shell
-pnpm add @portone/server-sdk
-```
-
-</div>
-
-<div class="tabs-content" data-title="bun">
-
-```shell
-bun add @portone/server-sdk
-```
-
-</div>
-
-<div class="tabs-content" data-title="deno">
-
-```shell
-deno add jsr:@portone/server-sdk
-```
-
-</div>
-
-<div class="tabs-content" data-title="ni">
-
-```shell
-ni @portone/server-sdk
-```
-
-</div>
-
-</div>
-
-Node.js의 경우 v20 이상에서 정상 동작하며, v20 미만 버전은 폴리필이 필요합니다.
-
-<details>
-
-<summary>폴리필 방법</summary>
-
-<div class="tabs-container">
-
-<div class="tabs-content" data-title="Node.js v18 이상 v20 미만">
-
-애플리케이션 코드 시작 부분에 아래 코드를 삽입해 주세요.
-
-```javascript title="CommonJS"
-globalThis.crypto = require("node:crypto").webcrypto;
-```
-
-```javascript title="ESM"
-import { webcrypto } from "node:crypto";
-globalThis.crypto = webcrypto;
-```
-
-</div>
-
-<div class="tabs-content" data-title="Node.js v18 미만">
-
-[@whatwg-node/fetch](https://www.npmjs.com/package/@whatwg-node/fetch) 패키지를 의존성에 추가해 주세요.
-
-애플리케이션 코드 시작 부분에 아래 코드를 삽입해 주세요.
-
-```javascript title="CommonJS"
-const { fetch, crypto } = require("@whatwg-node/fetch");
-globalThis.fetch = fetch;
-globalThis.crypto = crypto;
-```
-
-```javascript title="ESM"
-import { crypto, fetch } from "@whatwg-node/fetch";
-globalThis.fetch = fetch;
-globalThis.crypto = crypto;
-```
-
-</div>
-
-</div>
-
-</details>
-
-아래 명령어로 서버 SDK를 설치합니다.
-
-![PyPI - Version](https://img.shields.io/pypi/v/portone-server-sdk)
-
-<div class="tabs-container">
-
-<div class="tabs-content" data-title="uv">
-
-```shell
-uv add portone-server-sdk
-```
-
-</div>
-
-<div class="tabs-content" data-title="poetry">
-
-```shell
-poetry add portone-server-sdk
-```
-
-</div>
-
-<div class="tabs-content" data-title="rye">
-
-```shell
-rye add portone-server-sdk
-```
-
-</div>
-
-<div class="tabs-content" data-title="pipenv">
-
-```shell
-pipenv install portone-server-sdk
-```
-
-</div>
-
-<div class="tabs-content" data-title="Conda">
-
-```shell
-conda install portone-server-sdk
-```
-
-</div>
-
-<div class="tabs-content" data-title="Hatch">
-
-```toml title="pyproject.toml"
-[project]
-dependencies = [
-  "portone-server-sdk~=x.x.x"
-]
-```
-
-</div>
-
-<div class="tabs-content" data-title="PDM">
-
-```shell
-pdm add portone-server-sdk
-```
-
-</div>
-
-<div class="tabs-content" data-title="pip requirements">
-
-```shell title="requirements.txt"
-portone-server-sdk ~= x.x.x
-```
-
-</div>
-
-</div>
-
-아래 명령어로 서버 SDK를 설치합니다.
-
-![PyPI - Version](https://img.shields.io/pypi/v/portone-server-sdk)
-
-<div class="tabs-container">
-
-<div class="tabs-content" data-title="uv">
-
-```shell
-uv add portone-server-sdk
-```
-
-</div>
-
-<div class="tabs-content" data-title="poetry">
-
-```shell
-poetry add portone-server-sdk
-```
-
-</div>
-
-<div class="tabs-content" data-title="rye">
-
-```shell
-rye add portone-server-sdk
-```
-
-</div>
-
-<div class="tabs-content" data-title="pipenv">
-
-```shell
-pipenv install portone-server-sdk
-```
-
-</div>
-
-<div class="tabs-content" data-title="Conda">
-
-```shell
-conda install portone-server-sdk
-```
-
-</div>
-
-<div class="tabs-content" data-title="Hatch">
-
-```toml title="pyproject.toml"
-[project]
-dependencies = [
-  "portone-server-sdk~=x.x.x"
-]
-```
-
-</div>
-
-<div class="tabs-content" data-title="PDM">
-
-```shell
-pdm add portone-server-sdk
-```
-
-</div>
-
-<div class="tabs-content" data-title="pip requirements">
-
-```shell title="requirements.txt"
-portone-server-sdk ~= x.x.x
-```
-
-</div>
-
-</div>
-
-Maven Central을 통해 서버 SDK를 설치합니다.
-
-[![Maven Central Version](https://img.shields.io/maven-central/v/io.portone/server-sdk)](https://central.sonatype.com/artifact/io.portone/server-sdk)
-
-[![javadoc](https://javadoc.io/badge2/io.portone/server-sdk/javadoc.svg)](https://javadoc.io/doc/io.portone/server-sdk)
-
-<div class="tabs-container">
-
-<div class="tabs-content" data-title="Apache Maven">
-
-```xml
-<dependency>
-  <groupId>io.portone</groupId>
-  <artifactId>server-sdk</artifactId>
-  <version>x.x.x</version>
-</dependency>
-```
-
-</div>
-
-<div class="tabs-content" data-title="Gradle (Kotlin)">
-
-```kotlin
-implementation("io.portone:server-sdk:x.x.x")
-```
-
-</div>
-
-<div class="tabs-content" data-title="Gradle (Groovy)">
-
-```groovy
-implementation 'io.portone:server-sdk:x.x.x'
-```
-
-</div>
-
-</div>
-
-### 포트원 API Secret 설정
-
-서버 SDK를 사용하기 위해 포트원 V2 API Secret을 설정합니다.
-API Secret은 포트원 관리자콘솔의 [결제 연동 > 연동 정보 > 식별코드 ・ API Keys > V2 API](https://admin.portone.io/integration-v2/manage/api-keys?version=v2)에서 발급받으실 수 있습니다.
-
-### 결제 완료 요청
-
-완료된 결제의 실제 상태를 조회해 시스템에 반영합니다. 브라우저 SDK를 통해 결제하는 경우 모든 결제 과정이 브라우저에서 진행되므로 결제가 조작되는 것을 막기 위해 서버에서 검증이 필요합니다.
-
-### 결제 정보 조회
-
-브라우저에서 전송한 `paymentId`를 통해 실제 결제 상태를 조회합니다.
-
-<div class="hint" data-style="warning">
-
-ISP/페이북을 통한 결제 시 토스페이먼츠가 실제 카드 번호와 다른 카드 번호를 전달하고 있어 결제 내역 단건 조회시 응답되는 `payment_method_detail.card.detail.bin` 정보가 정확하지 않을 수 있습니다.
-
-</div>
-
-### 결제 정보 일치 검증
-
-포트원에 전달한 `customData`로 조회한 상품 정보와 결제 정보가 일치하는지 검증합니다.
-
-### 웹훅 수신
-
-결제 상태의 변화를 실시간으로 확인해야 한다면 웹훅을 사용할 수 있습니다.
-
-### HTTP Body 수신 설정
-
-웹훅 내용을 검증하기 위해서는 HTTP Body를 문자열 형태로 수신해야 합니다.
-
-### 웹훅 검증
-
-수신한 웹훅이 위조되지 않았는지 포트원 서버 SDK를 사용하여 검증합니다.
-
-### 결제 상태 업데이트
-
-검증된 웹훅 결과를 바탕으로 결제 상태를 업데이트합니다.
-
-
 # https://developers.portone.io/opi/ko/integration/ready/readme
 
 ---
@@ -19596,7 +18157,7 @@ targetVersions:
   - v2
 ---
 
-## 1. 포트원 회원가입 하기
+## <span id="registration">1. 포트원 회원가입 하기</span>
 
 포트원 관리자 콘솔은 **별도 계약 없이 무료로** 회원가입이 가능합니다.
 
@@ -19613,6 +18174,8 @@ targetVersions:
 (이미지 첨부: 인증 메일 내용 예시)
 
 <div class="hint" data-style="info">메일을 받지 못하신 경우 스팸메일함을 확인해주세요.</div>
+
+<br />
 
 ## 2. 전자결제 신청하기
 
@@ -19635,7 +18198,7 @@ targetVersions:
 
 </div>
 
-## 3. 결제대행사 채널 설정하기
+## <span id="channel-config">3. 결제대행사 채널 설정하기</span>
 
 결제 연동 시 사용할 결제대행사 채널을 추가합니다.
 
@@ -19714,7 +18277,7 @@ targetVersions:
 
 </div>
 
-### 3-2. 결제대행사별 연동 정보 확인하기
+### <span id="integration-info">3-2. 결제대행사별 연동 정보 확인하기</span>
 
 #### 결제대행사
 
@@ -19912,7 +18475,14 @@ targetVersions:
 
 <div class="tabs-content" data-title="신모듈">
 
+1. [토스페이먼츠 개발자센터](http://developers.tosspayments.com/) 접속 후 로그인을 합니다.
+2. \[내 개발정보]를 클릭합니다.
+3. \[API키] 메뉴에서 \[상점아이디(MID)]와 \[클라이언트키], \[시크릿키]를 확인합니다.
+4. API 버전은 `2022-07-27`로 설정해야합니다.
 
+(이미지 첨부: 토스페이먼츠 개발자센터 내 API 키 조회 화면)
+
+5. 포트원 콘솔에서 채널 추가 시 \[상점아이디(MID)]와 \[클라이언트키], \[시크릿키]를 입력한 후 `저장`을 클릭합니다.
 
 </div>
 
@@ -19934,7 +18504,14 @@ targetVersions:
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
 
+1. [토스페이먼츠 개발자센터](http://developers.tosspayments.com/) 접속 후 로그인을 합니다.
+2. \[내 개발정보]를 클릭합니다.
+3. \[API키] 메뉴에서 \[상점아이디(MID)]와 \[클라이언트키], \[시크릿키]를 확인합니다.
+4. API 버전은 `2022-07-27`로 설정해야합니다.
 
+(이미지 첨부: 토스페이먼츠 개발자센터 내 API 키 조회 화면)
+
+5. 포트원 콘솔에서 채널 추가 시 \[상점아이디(MID)]와 \[클라이언트키], \[시크릿키]를 입력한 후 `저장`을 클릭합니다.
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
 
@@ -19968,7 +18545,63 @@ targetVersions:
 
 <div class="tabs-content" data-title="결제창 일반/정기 결제">
 
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
 
+<div class="hint" data-style="info">
+
+- **INILite Key**는 정기결제 시 필수로 입력해야 합니다.
+- **INIAPI Key**, **INIAPI IV** 하위 상점 관련 API 사용시 필수로 입력해야 합니다. [영수증 내 하위 상점 거래 등록 API 바로가기](/api/rest-v1/partner#post%20%2Fpartners%2Freceipts%2F%7Bimp_uid%7D)
+
+</div>
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+
+<div class="hint" data-style="info">
+
+크레덴셜 중 **hashKey** 는 선택사항으로, KG이니시스에서 제공하는 모바일 금액위변조 방지 기능 사용을 원하실 경우 입력하시면 됩니다.
+
+</div>
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
+1. [KG이니시스 가맹점관리자](http://iniweb.inicis.com/security/login.do) 접속 후 로그인을 합니다.
+
+2. \[상점정보]→\[계약정보]→\[부가정보]를 클릭합니다.
+
+3. 아래의 크레덴셜 값들을 확인합니다. 값이 표시되지 않는 경우 생성/갱신 버튼을 클릭해 주세요.
+
+   <ul>
+
+   <li>**웹결제 signkey 생성 조회**의 조회 버튼을 클릭하여 값을 확인할 수 있습니다.</li>
+   <li>**INIAPI key 생성 갱신**의 조회 버튼을 클릭하여 \[INIAPI KEY], \[INIAPI IV] 값을 확인할 수 있습니다.</li>
+
+   <!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+
+   <li>**모바일 금액위변조 HashKey**의 조회 버튼을 클릭하여 값을 확인할 수 있습니다.</li>
+
+   <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
+   </ul>
+
+(이미지 첨부: KG이니시스 가맹점관리자 내 크레덴셜 정보 조회 화면 1)
+
+4. INILite Key의 조회 버튼을 클릭하여 값을 확인할 수 있습니다.
+
+(이미지 첨부: KG이니시스 가맹점관리자 내 크레덴셜 정보 조회 화면 2)
+
+5. 포트원 콘솔에서 채널 추가 시 \[상점아이디]와 위 과정에서 발급받은 크레덴셜 값들을 입력한 후 `저장`을 클릭합니다.
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+
+<div class="hint" data-style="warning">
+
+포트원 V1 결제모듈을 사용하시는 경우 KG이니시스로부터 전달받은 키파일을 별도로 등록해야 합니다. 키파일 등록과 관련하여 문의사항이 있는 경우 채널톡으로 문의해주세요.
+
+</div>
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
 
 </div>
 
@@ -20020,7 +18653,63 @@ DI\_CODE는 12자리로 고객사에서 자체적으로 사이트(서비스)를 
 
 <div class="tabs-content" data-title="결제창 일반/정기 결제">
 
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
 
+<div class="hint" data-style="info">
+
+- **INILite Key**는 정기결제 시 필수로 입력해야 합니다.
+- **INIAPI Key**, **INIAPI IV** 하위 상점 관련 API 사용시 필수로 입력해야 합니다. [영수증 내 하위 상점 거래 등록 API 바로가기](/api/rest-v1/partner#post%20%2Fpartners%2Freceipts%2F%7Bimp_uid%7D)
+
+</div>
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+
+<div class="hint" data-style="info">
+
+크레덴셜 중 **hashKey** 는 선택사항으로, KG이니시스에서 제공하는 모바일 금액위변조 방지 기능 사용을 원하실 경우 입력하시면 됩니다.
+
+</div>
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
+1. [KG이니시스 가맹점관리자](http://iniweb.inicis.com/security/login.do) 접속 후 로그인을 합니다.
+
+2. \[상점정보]→\[계약정보]→\[부가정보]를 클릭합니다.
+
+3. 아래의 크레덴셜 값들을 확인합니다. 값이 표시되지 않는 경우 생성/갱신 버튼을 클릭해 주세요.
+
+   <ul>
+
+   <li>**웹결제 signkey 생성 조회**의 조회 버튼을 클릭하여 값을 확인할 수 있습니다.</li>
+   <li>**INIAPI key 생성 갱신**의 조회 버튼을 클릭하여 \[INIAPI KEY], \[INIAPI IV] 값을 확인할 수 있습니다.</li>
+
+   <!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+
+   <li>**모바일 금액위변조 HashKey**의 조회 버튼을 클릭하여 값을 확인할 수 있습니다.</li>
+
+   <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
+   </ul>
+
+(이미지 첨부: KG이니시스 가맹점관리자 내 크레덴셜 정보 조회 화면 1)
+
+4. INILite Key의 조회 버튼을 클릭하여 값을 확인할 수 있습니다.
+
+(이미지 첨부: KG이니시스 가맹점관리자 내 크레덴셜 정보 조회 화면 2)
+
+5. 포트원 콘솔에서 채널 추가 시 \[상점아이디]와 위 과정에서 발급받은 크레덴셜 값들을 입력한 후 `저장`을 클릭합니다.
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+
+<div class="hint" data-style="warning">
+
+포트원 V1 결제모듈을 사용하시는 경우 KG이니시스로부터 전달받은 키파일을 별도로 등록해야 합니다. 키파일 등록과 관련하여 문의사항이 있는 경우 채널톡으로 문의해주세요.
+
+</div>
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
 
 </div>
 
@@ -20148,7 +18837,70 @@ DI\_CODE는 12자리로 고객사에서 자체적으로 사이트(서비스)를 
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
 
+<div class="hint" data-style="danger">
 
+포트원 V2에서 제공하는 KCP의 경우 **KCP의 PG-API방식**만 지원합니다. 따라서 아래와 같이 인증서 발급 후
+사용할 수 있습니다.
+
+해당 인증서의 경우 유효기간은 **5년**이며, 유효기간 만료 30일전부터 갱신이 가능합니다.
+
+**서비스 인증서의 유효기간이 만료되거나 폐기된 경우** 즉시 결제 승인/취소 등 관련
+**서비스 이용이 불가능**하오니
+서비스 사용을 위해서 인증서를 재발급이 필요한 후 **포트원에 저장된 채널 정보를 업데이트** 해야 합니다.
+
+</div>
+
+1. [KCP 파트너관리자](http://partner.kcp.co.kr/) 접속 후 로그인을 합니다.
+
+2. \[고객센터]→\[인증센터]→\[KCP PG-API]를 클릭합니다.
+
+   (이미지 첨부: NHN KCP 파트너관리자 내 \[고객센터] - \[PG-API 인증서] 예시 화면)
+
+3. KCP PG-API 발급 버튼을 클릭합니다.
+
+4. 파트너 관리자 비밀번호(로그인시 입력한 비밀번호)를 입력한 후 다음을 클릭합니다.
+
+   (이미지 첨부: \[PG-API 인증서] 발급시 \[파트너 관리자 비밀번호 입력] 화면)
+
+5. 사용할 개인키 비밀번호를 입력한 후 다음을 클릭합니다.
+
+   - 개인키 비밀번호를 분실하신 경우 확인이 불가함으로 폐기 후 재발급해야 합니다.
+
+   - 개인키를 폐기하는 즉시 기존에 사용하던 개인키와 서비스 인증서 사용이 불가능하며,
+     결제 승인/취소/조회가 불가능하오니 잘 보관하시길 바랍니다.
+
+   (이미지 첨부: \[PG-API 인증서] 발급시 \[개인키 비밀번호 등록] 화면)
+
+6. KCP PG-API 개인키 및 서비스 인증서 발급이 완료되면 로컬에 .zip 파일이 다운로드 됩니다.
+
+   - 서비스 인증서의 유효기간은 발급일로부터 5년으로, 유효기간 만료 30일전부터 갱신이 가능합니다.
+   - 서비스 인증서의 유효기간이 만료되었거나 폐기한 경우 원활한 서비스 사용을 위해 인증서를 재발급해주세요.
+
+   (이미지 첨부: \[PG-API 인증서] 발급 완료 화면)
+
+7. 로컬내에서 압축 풀면 `KCP_AUTH_{$사이트코드}_CERT.pem` 파일과 `KCP_AUTH_{$사이트코드}_PRIKEY.pem` 파일을 확인할 수 있습니다.
+
+8. 포트원 콘솔에서 채널 추가 시 \[MID(사이트코드)], \[PG-API 인증서키], \[PG-API 개인키], \[개인키 비밀번호]를
+   입력한 후 저장을 클릭합니다.
+
+9. 정기결제를 이용하시는 경우, 아래 절차를 진행해주세요.
+
+   1. [KCP 파트너관리자](http://partner.kcp.co.kr/) 접속 후 로그인을 합니다.
+   2. \[결제관리]→\[정기자동결제 그룹관리]→\[그룹등록]을 클릭합니다.
+   3. \[상점정보]→\[사이트코드]에서 그룹등록할 사이트코드를 선택합니다.
+   4. \[그룹정보]에서 \[유형3]을 선택한 후 원하는 그룹명을 입력합니다.
+   5. \[결제입력 정보]에서 \[결제유형] 및 \[납부유형]을 확인하시고 고객사 유형에 맞게 선택합니다.
+   6. \[고지방법]에서 원하시는 고지 방법을 선택한 후 \[등록하기]를 클릭합니다.
+
+   (이미지 첨부: KCP 파트너관리자 내 관리용 그룹등록 화면)
+
+   7. \[결제관리]→\[정기자동결제 그룹관리]→\[그룹조회]를 클릭합니다.
+   8. \[사이트코드]에서 사용한 사이트코드를 선택한 후 \[검색]을 클릭합니다.
+
+   (이미지 첨부: KCP 파트너관리자 내 관리용 그룹조회 화면)
+
+   9. 포트원 콘솔에서 채널 추가 시 앞서 발급한  \[MID(사이트코드)], \[PG-API 인증서키], \[PG-API 개인키],
+      \[개인키 비밀번호], \[정기자동결제 그룹아이디]를 입력한 후 \[저장]을 클릭합니다.
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
 
@@ -20247,7 +18999,27 @@ DI\_CODE는 12자리로 고객사에서 자체적으로 사이트(서비스)를 
 
 <summary>하이픈</summary>
 
+1. [HYPHEN PAY & 바로계좌결제 운영 백오피스](http://payadmin.hyphen.im/) 접속 후 **바로계좌결제** 선택 후
+   로그인을 합니다.
 
+   (이미지 첨부: HYPHEN 백오피스 로그인 화면)
+
+2. \[상점관리]→\[바로계좌결제 상점정보관리]를 클릭합니다.
+
+3. 상점명을 클릭합니다.
+
+   (이미지 첨부: HYPHEN \[상점관리] - \[상점정보관리] 예시 화면)
+
+4. \[상점 기본정보]에서 \[상점번호]를 확인합니다.
+
+   (이미지 첨부: HYPHEN \[상점 기본정보] 예시 화면)
+
+5. \[암호화 키, 토큰]에서 \[암호화 키]와 \[암호화 토큰]을 확인합니다.
+
+   (이미지 첨부: HYPHEN \[암호화 키, 토큰] 예시 화면)
+
+6. 포트원 콘솔에서 채널 추가 시 \[PG상점아이디(상점 번호)], \[암호화 키], \[암호화 토큰]을
+   입력한 후 \[저장]을 클릭합니다.
 
 </details>
 
@@ -20290,7 +19062,25 @@ DI\_CODE는 12자리로 고객사에서 자체적으로 사이트(서비스)를 
 
 <div class="tabs-content" data-title="페이팔 일반결제(SPB) / 정기결제(RT)">
 
+1. [페이팔](http://www.paypal.com/) 접속 후 로그인을 합니다.
 
+2. \[Account settings]-\[Business information]을 클릭합니다.
+
+   (이미지 첨부: 페이팔 페이지 내 PayPal Merchant ID 조회 화면)
+
+3. 포트원 콘솔에서 채널 추가 시 \[PayPal Merchant ID]를 입력한 후 `저장`을 클릭합니다.
+
+   <div class="hint" data-style="info">
+
+   - 포트원에서 제공하는 페이팔 테스트용 계정으로 채널을 추가하신 경우, 테스트 결제 시 테스트용 구매자 계정을 이용하여 결제를 진행해야합니다.
+     [→ 테스트용 계정생성 바로가기](http://developer.paypal.com/dashboard/accounts)
+
+   - 판매자와 구매자 계정 국가가 모두 한국인 경우 페이팔 정책상 결제가 불가능합니다.
+     따라서 테스트용 구매자 계정 생성 시 Sandbox Accounts의 Country가 US인 Personal(구매자) 계정으로 생성하여 테스트를 해야합니다.
+
+   - 테스트 계정으로 결제 시 테스트용 카드정보를 참고하여 결제를 진행해야 합니다. [→ 테스트용 카드정보 바로가기](http://developer.paypal.com/api/rest/sandbox/card-testing/#link-creditcardgeneratorfortesting)
+
+   </div>
 
 </div>
 
@@ -20339,13 +19129,31 @@ DI\_CODE는 12자리로 고객사에서 자체적으로 사이트(서비스)를 
 
 </div>
 
+1. [페이팔](http://www.paypal.com/) 접속 후 로그인을 합니다.
 
+2. \[Account settings]-\[Business information]을 클릭합니다.
+
+   (이미지 첨부: 페이팔 페이지 내 PayPal Merchant ID 조회 화면)
+
+3. 포트원 콘솔에서 채널 추가 시 \[PayPal Merchant ID]를 입력한 후 `저장`을 클릭합니다.
+
+   <div class="hint" data-style="info">
+
+   - 포트원에서 제공하는 페이팔 테스트용 계정으로 채널을 추가하신 경우, 테스트 결제 시 테스트용 구매자 계정을 이용하여 결제를 진행해야합니다.
+     [→ 테스트용 계정생성 바로가기](http://developer.paypal.com/dashboard/accounts)
+
+   - 판매자와 구매자 계정 국가가 모두 한국인 경우 페이팔 정책상 결제가 불가능합니다.
+     따라서 테스트용 구매자 계정 생성 시 Sandbox Accounts의 Country가 US인 Personal(구매자) 계정으로 생성하여 테스트를 해야합니다.
+
+   - 테스트 계정으로 결제 시 테스트용 카드정보를 참고하여 결제를 진행해야 합니다. [→ 테스트용 카드정보 바로가기](http://developer.paypal.com/api/rest/sandbox/card-testing/#link-creditcardgeneratorfortesting)
+
+   </div>
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
 
 </details>
 
-## 4. 포트원 연동정보 확인하기
+## <span id="integration-identifiers">4. 포트원 연동정보 확인하기</span>
 
 포트원을 이용한 결제 연동 시 필요한 연동정보를 확인합니다.
 
@@ -20423,31 +19231,31 @@ targetVersions:
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
 
-| 결제대행사        | 코드값 (pg provider) | 입금통보 주소                                                                                                                                                                                                                                  |
-| ------------ | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| KG이니시스       | html5\_inicis     | [https://service.iamport.kr/inicis\_payments/notice\_vbank](http://service.iamport.kr/inicis_payments/notice_vbank)                                                                                                                      |
-| NHN KCP      | kcp               | [https://service.iamport.kr/kcp\_payments/notice\_vbank](http://service.iamport.kr/kcp_payments/notice_vbank)                                                                                                                            |
-| 이지페이(KICC)   | kicc              | [https://service.iamport.kr/kicc\_payments/notice\_vbank](http://service.iamport.kr/kicc_payments/notice_vbank)                                                                                                                          |
-| 헥토파이낸셜       | settle            | [https://service.iamport.kr/settle\_payments/notice\_vbank](http://service.iamport.kr/settle_payments/notice_vbank)                                                                                                                      |
-| 키움페이         | daou              | 발행 통지 URL: [https://service.iamport.kr/daou\_payments/result](http://service.iamport.kr/daou_payments/result) 결과 통지 URL: [https://service.iamport.kr/daou\_payments/notice\_vbank](http://service.iamport.kr/daou_payments/notice_vbank) |
-| 토스페이먼츠(신모듈)  | tosspayments      | [https://tx-gateway-service.prod.iamport.co/virtual-account/webhook-event/tosspayments](http://tx-gateway-service.prod.iamport.co/virtual-account/webhook-event/tosspayments)                                                            |
-| 스마트로(신모듈)    | smartro\_v2       | 입금 통보, 환불이체 URL 동일: [https://tx-gateway-service.prod.iamport.co/smartro-v2](http://tx-gateway-service.prod.iamport.co/smartro-v2)                                                                                                        |
-| 나이스페이먼츠(구모듈) | nice              | [https://service.iamport.kr/nice\_payments/notice\_vbank](http://service.iamport.kr/nice_payments/notice_vbank)                                                                                                                          |
-| 나이스페이먼츠(신모듈) | nice\_v2          | [https://tx-gateway-service.prod.iamport.co/nicepay-v2](http://tx-gateway-service.prod.iamport.co/nicepay-v2)                                                                                                                            |
-| 웰컴페이먼츠       | welcome           | [https://tx-gateway-service.prod.iamport.co/welcome](http://tx-gateway-service.prod.iamport.co/welcome)                                                                                                                                  |
+|결제대행사            |코드값 (pg provider)|입금통보 주소                                                                                                                                                                                                                                                              |
+|----------------------|--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|KG이니시스            |html5\_inicis       |[https://service.iamport.kr/inicis\_payments/notice\_vbank](http://service.iamport.kr/inicis_payments/notice_vbank)                                                                                                                                                        |
+|NHN KCP               |kcp                 |[https://service.iamport.kr/kcp\_payments/notice\_vbank](http://service.iamport.kr/kcp_payments/notice_vbank)                                                                                                                                                              |
+|이지페이(KICC)        |kicc                |[https://service.iamport.kr/kicc\_payments/notice\_vbank](http://service.iamport.kr/kicc_payments/notice_vbank)                                                                                                                                                            |
+|헥토파이낸셜          |settle              |[https://service.iamport.kr/settle\_payments/notice\_vbank](http://service.iamport.kr/settle_payments/notice_vbank)                                                                                                                                                        |
+|키움페이              |daou                |<ul><li>발행 통지 URL: [https://service.iamport.kr/daou\_payments/result](http://service.iamport.kr/daou_payments/result)</li> <li>결과 통지 URL: [https://service.iamport.kr/daou\_payments/notice\_vbank](http://service.iamport.kr/daou_payments/notice_vbank)</li></ul>|
+|토스페이먼츠(신모듈)  |tosspayments        |[https://tx-gateway-service.prod.iamport.co/virtual-account/webhook-event/tosspayments](http://tx-gateway-service.prod.iamport.co/virtual-account/webhook-event/tosspayments)                                                                                              |
+|스마트로(신모듈)      |smartro\_v2         |입금 통보, 환불이체 URL 동일: [https://tx-gateway-service.prod.iamport.co/smartro-v2](http://tx-gateway-service.prod.iamport.co/smartro-v2)                                                                                                                                |
+|나이스페이먼츠(구모듈)|nice                |[https://service.iamport.kr/nice\_payments/notice\_vbank](http://service.iamport.kr/nice_payments/notice_vbank)                                                                                                                                                            |
+|나이스페이먼츠(신모듈)|nice\_v2            |[https://tx-gateway-service.prod.iamport.co/nicepay-v2](http://tx-gateway-service.prod.iamport.co/nicepay-v2)                                                                                                                                                              |
+|웰컴페이먼츠          |welcome             |[https://tx-gateway-service.prod.iamport.co/welcome](http://tx-gateway-service.prod.iamport.co/welcome)                                                                                                                                                                    |
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
 
-| PG       | 코드값 (pg provider) | 입금통보 주소                                                                                                                                                                       |   |
-| -------- | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | - |
-| 토스페이먼츠   | tosspaysments     | [https://tx-gateway-service.prod.iamport.co/virtual-account/webhook-event/tosspayments](http://tx-gateway-service.prod.iamport.co/virtual-account/webhook-event/tosspayments) |   |
-| 스마트로     | smartro\_v2       | 입금 통보, 환불이체 URL 동일: [https://tx-gateway-service.prod.iamport.co/smartro-v2](http://tx-gateway-service.prod.iamport.co/smartro-v2)                                             |   |
-| 나이스페이먼츠  | nice\_v2          | [https://tx-gateway-service.prod.iamport.co/nicepay-v2](http://tx-gateway-service.prod.iamport.co/nicepay-v2)                                                                 |   |
-| KG이니시스   | inicis\_v2        | [https://tx-gateway-service.prod.iamport.co/inicis-v2](http://tx-gateway-service.prod.iamport.co/inicis-v2)                                                                   |   |
-| 한국결제네트웍스 | kpn               | [https://tx-gateway-service.prod.iamport.co/kpn/virtual-account](http://tx-gateway-service.prod.iamport.co/kpn/virtual-account)                                               |   |
-| NHN KCP  | kcp\_v2           | [https://tx-gateway-service.prod.iamport.co/kcp-v2](http://tx-gateway-service.prod.iamport.co/kcp-v2)                                                                         |   |
+|PG              |코드값 (pg provider)|입금통보 주소                                                                                                                                                                | |
+|----------------|--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-|
+|토스페이먼츠    |tosspaysments       |[https://tx-gateway-service.prod.iamport.co/virtual-account/webhook-event/tosspayments](http://tx-gateway-service.prod.iamport.co/virtual-account/webhook-event/tosspayments)| |
+|스마트로        |smartro\_v2         |입금 통보, 환불이체 URL 동일: [https://tx-gateway-service.prod.iamport.co/smartro-v2](http://tx-gateway-service.prod.iamport.co/smartro-v2)                                  | |
+|나이스페이먼츠  |nice\_v2            |[https://tx-gateway-service.prod.iamport.co/nicepay-v2](http://tx-gateway-service.prod.iamport.co/nicepay-v2)                                                                | |
+|KG이니시스      |inicis\_v2          |[https://tx-gateway-service.prod.iamport.co/inicis-v2](http://tx-gateway-service.prod.iamport.co/inicis-v2)                                                                  | |
+|한국결제네트웍스|kpn                 |[https://tx-gateway-service.prod.iamport.co/kpn/virtual-account](http://tx-gateway-service.prod.iamport.co/kpn/virtual-account)                                              | |
+|NHN KCP         |kcp\_v2             |[https://tx-gateway-service.prod.iamport.co/kcp-v2](http://tx-gateway-service.prod.iamport.co/kcp-v2)                                                                        | |
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
 
@@ -20679,6 +19487,2503 @@ KSNET은 포트원을 통해 발급된 MID에 대해 자동으로 입금통보 U
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
 
 
+# https://developers.portone.io/opi/ko/quick-guide/payment
+
+---
+title: 퀵 가이드
+description: 결제연동 퀵 가이드
+customLayout: InteractiveDocs
+targetVersion:
+  - v2
+versionVariants:
+  v1: /opi/ko/integration/ready/readme?v=v1
+---
+
+퀵 가이드 내용을 포함한 포트원 결제 연동 샘플 프로젝트를 [GitHub 저장소](https://github.com/portone-io/portone-sample)에서 추가로 확인하실 수 있습니다.
+
+## 브라우저 측
+
+### 포트원 브라우저 SDK 불러오기
+
+포트원 브라우저 SDK를 불러옵니다.
+
+<!-- CONDITIONAL CONTENT language=frontend/React START -->
+
+아래 명령어로 브라우저 SDK를 설치합니다.
+
+![NPM Version](https://img.shields.io/npm/v/%40portone%2Fbrowser-sdk)
+
+<div class="tabs-container">
+
+<div class="tabs-content" data-title="npm">
+
+```shell
+npm install --save @portone/browser-sdk
+```
+
+</div>
+
+<div class="tabs-content" data-title="yarn">
+
+```shell
+yarn add @portone/browser-sdk
+```
+
+</div>
+
+<div class="tabs-content" data-title="pnpm">
+
+```shell
+pnpm add @portone/browser-sdk
+```
+
+</div>
+
+<div class="tabs-content" data-title="bun">
+
+```shell
+bun add @portone/browser-sdk
+```
+
+</div>
+
+<div class="tabs-content" data-title="deno">
+
+```shell
+deno add npm:@portone/browser-sdk
+```
+
+</div>
+
+<div class="tabs-content" data-title="ni">
+
+```shell
+ni @portone/browser-sdk
+```
+
+</div>
+
+</div>
+
+<!-- CONDITIONAL CONTENT language=frontend/React END -->
+
+### 상품 정보 불러오기
+
+서버로부터 결제할 상품의 정보를 불러옵니다.
+
+### 결제 요청
+
+포트원 브라우저 SDK를 사용하여 결제를 요청합니다.
+
+- storeId: string
+
+  **상점 아이디**
+
+  포트원 계정에 생성된 상점을 식별하는 고유한 값으로 [관리자 콘솔 > 연동 정보](https://admin.portone.io/integration-v2/manage/channel) 우측 상단에서 확인할 수 있습니다.
+
+- channelKey: string
+
+  **채널키**
+
+  [관리자 콘솔 > 연동 정보](https://admin.portone.io/integration-v2/manage/channel)에서 채널 연동 시 생성된 채널키입니다.
+
+- paymentId: string
+
+  **고객사 주문 고유 번호**
+
+  주문을 식별하는 고유 번호로, 포트원에서 제공하지 않고 직접 입력합니다.
+
+  이미 승인이 완료된 `paymentId`로 결제나 가상계좌 발급을 시도하는 경우 에러가 발생합니다.
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' START -->
+
+  <div class="hint" data-style="warning">
+
+  토스페이먼츠의 경우 영문 대소문자, 숫자, `-`, `_`만 허용되며, 6자 이상 64자 이하로 입력합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' START -->
+
+  <div class="hint" data-style="warning">
+
+  KCP의 경우 영문 대소문자, 숫자만 허용되며, 40자 이하로 입력합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' START -->
+
+  <div class="hint" data-style="warning">
+
+  스마트로의 경우 영문 대소문자, 숫자만 허용되며, 40자 이하로 입력합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' START -->
+
+  <div class="hint" data-style="warning">
+
+  한국결제네트웍스의 경우 영문 대소문자, 숫자만 허용되며, 32자 이하로 입력합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' START -->
+
+  <div class="hint" data-style="warning">
+
+  KG이니시스의 경우 ASCII 문자만 허용되며, 40자 이하로 입력합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' END -->
+
+- orderName: string
+
+  **주문명**
+
+  주문명으로 자유롭게 입력합니다.
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' START -->
+
+  <div class="hint" data-style="warning">
+
+  나이스페이먼츠의 경우 최대 40바이트까지 입력할 수 있으며, 사용 가능한 특수문자는 아래와 같습니다.
+
+  - 사용 가능: `_`
+  - 사용 불가: `% & | $ - + = [ ]`
+  - 사용 가능하나 권장하지 않음: `( )`
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' START -->
+
+  <div class="hint" data-style="warning">
+
+  KCP의 경우 최대 100바이트까지 입력할 수 있습니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' START -->
+
+  <div class="hint" data-style="warning">
+
+  스마트로의 경우 최대 40바이트까지 입력할 수 있습니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' START -->
+
+  <div class="hint" data-style="warning">
+
+  한국결제네트웍스의 경우 최대 256바이트까지 입력할 수 있습니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' START -->
+
+  <div class="hint" data-style="warning">
+
+  KG이니시스의 경우 최대 40바이트까지 입력할 수 있으며, 40바이트 초과시 37바이트에서 잘리고 "..."가 추가됩니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' END -->
+
+- totalAmount: number
+
+  **결제 금액**
+
+  결제 금액을 정수로 입력합니다.
+
+  - 해외 통화의 경우 통화의 최소 단위를 기준으로 합니다. 예를 들어, USD의 최소 단위는 센트(0.01 USD)이므로, 6 USD의 경우 100배하여 600으로 입력합니다.
+
+  - 통화의 최소 단위는 [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html)에 의해 표준화된 minor unit입니다.
+    - KRW: 1배
+    - USD: 100배
+    - JPY: 1배
+
+- currency: string
+
+  **결제 통화**
+
+  [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html)에 의해 표준화된 알파벳 통화 코드를 입력합니다.
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' START -->
+
+  <div class="hint" data-style="warning">
+
+  토스페이먼츠는 `KRW`만을 지원합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' START -->
+
+  <div class="hint" data-style="warning">
+
+  나이스페이먼츠는 `KRW`만을 지원합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' START -->
+
+  <div class="hint" data-style="warning">
+
+  스마트로는 `KRW`와 `USD`만을 지원합니다. 상점 아이디의 설정에 따라 결제 통화가 고정되어 `currency`와 일치하지 않을 수 있습니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' START -->
+
+  <div class="hint" data-style="warning">
+
+  한국결제네트웍스는 `KRW`와 `USD`만을 지원합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'ksnet' START -->
+
+  <div class="hint" data-style="warning">
+
+  KSNET은 `KRW`와 `USD`만을 지원합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'ksnet' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' START -->
+
+  <div class="hint" data-style="warning">
+
+  KCP는 `KRW`와 `USD`만을 지원합니다. `USD`의 경우 별도 계약이 필요합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name, payMethods } }) => name === 'inicis' && payMethods === 'card' START -->
+
+  <div class="hint" data-style="warning">
+
+  KG이니시스 카드 결제는 `KRW`와 `USD`만을 지원합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name, payMethods } }) => name === 'inicis' && payMethods === 'card' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name, payMethods } }) => name === 'inicis' && payMethods !== 'card' START -->
+
+  <div class="hint" data-style="warning">
+
+  카드 결제를 제외한 KG이니시스는 `KRW`만을 지원합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name, payMethods } }) => name === 'inicis' && payMethods !== 'card' END -->
+
+- payMethod: string
+
+  **결제 수단**
+
+  사용할 결제 수단에 맞는 값을 입력합니다.
+
+  <details>
+
+  <summary>지원 결제 수단 코드</summary>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'toss' START -->
+
+  - 카드: `CARD`
+  - 실시간 계좌이체: `TRANSFER`
+  - 가상계좌: `VIRTUAL_ACCOUNT`
+  - 휴대폰 소액결제: `MOBILE`
+  - 간편결제: `EASY_PAY`
+  - 상품권: `GIFT_CERTIFICATE`
+
+  <div class="hint" data-style="warning">
+
+  휴대폰 소액결제, 간편결제, 상품권 결제는 별도 계약이 필요합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'toss' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'nice' START -->
+
+  - 카드: `CARD`
+  - 실시간 계좌이체: `TRANSFER`
+  - 가상계좌: `VIRTUAL_ACCOUNT`
+  - 휴대폰 소액결제: `MOBILE`
+  - 간편결제: `EASY_PAY`
+  - 상품권: `GIFT_CERTIFICATE`
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'nice' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'smartro' START -->
+
+  - 카드: `CARD`
+  - 실시간 계좌이체: `TRANSFER`
+  - 가상계좌: `VIRTUAL_ACCOUNT`
+  - 휴대폰 소액결제: `MOBILE`
+  - 간편결제: `EASY_PAY`
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'smartro' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'kpn' START -->
+
+  - 카드: `CARD`
+  - 실시간 계좌이체: `TRANSFER`
+  - 가상계좌: `VIRTUAL_ACCOUNT`
+  - 휴대폰 소액결제: `MOBILE`
+  - 간편결제: `EASY_PAY`
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'kpn' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'inicis' START -->
+
+  - 카드: `CARD`
+  - 실시간 계좌이체: `TRANSFER`
+  - 가상계좌: `VIRTUAL_ACCOUNT`
+  - 휴대폰 소액결제: `MOBILE`
+  - 간편결제: `EASY_PAY`
+  - 상품권: `GIFT_CERTIFICATE`
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'inicis' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'ksnet' START -->
+
+  - 카드: `CARD`
+  - 실시간 계좌이체: `TRANSFER`
+  - 가상계좌: `VIRTUAL_ACCOUNT`
+  - 휴대폰 소액결제: `MOBILE`
+  - 간편결제: `EASY_PAY`
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'ksnet' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'kcp' START -->
+
+  - 카드: `CARD`
+  - 실시간 계좌이체: `TRANSFER`
+  - 가상계좌: `VIRTUAL_ACCOUNT`
+  - 휴대폰 소액결제: `MOBILE`
+  - 간편결제: `EASY_PAY`
+  - 상품권: `GIFT_CERTIFICATE`
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'kcp' END -->
+
+  </details>
+
+<!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "card" START -->
+
+- card?: object
+
+  **카드 결제 추가 정보**
+
+  `payMethod`가 `CARD`인 경우 카드 결제와 관련한 추가 정보를 입력할 수 있습니다.
+
+  - cardCompany?: string
+
+    **단독 노출 카드사**
+
+    구매자가 카드사를 선택하지 않고 입력한 카드사 화면으로 바로 이동하도록 합니다.
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' START -->
+
+    <div class="hint" data-style="warning">
+
+    토스페이먼츠의 경우 카드사 단독 노출과 동시에 할부를 설정하려면 `card.installment.monthOption.fixedMonth`를 반드시 전달해야 하며, 그렇지 않을 경우 일시불로 결제됩니다.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' START -->
+
+    <div class="hint" data-style="warning">
+
+    나이스페이먼츠의 경우 카드사 단독 노출 시 `card.installment.monthOption.fixedMonth`를 필수로 지정해야 합니다.
+    결제 금액이 할부 지원 금액 미만인 경우 할부 개월 수를 `0`으로 전달해야 합니다.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' START -->
+
+    <div class="hint" data-style="warning">
+
+    스마트로의 경우 전북카드, 카카오뱅크 카드는 Windows에서만 단독 노출이 가능합니다.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' START -->
+
+    <div class="hint" data-style="warning">
+
+    KCP의 경우 카드사 단독 노출 시 `bypass.kcp_v2.site_name`을 필수로 지정해야 할 수 있습니다.
+    자세한 사항은 해당 파라미터 설명을 참조해 주세요.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' START -->
+
+    <div class="hint" data-style="warning">
+
+    한국결제네트웍스의 경우 카드사 단독 노출 시에 아래 3가지 약관 동의 절차가 고객사 페이지 내에 있어야 합니다.
+
+    - `https://www.firstpay.co.kr/jsp/common/agreementPopup.jsp?type=1` (전자금융거래 이용약관)
+    - `https://www.firstpay.co.kr/jsp/common/agreementPopup.jsp?type=3` (개인정보 수집 및 이용처리 동의)
+    - `https://www.firstpay.co.kr/jsp/common/agreementPopup.jsp?type=4` (개인정보 제3자 제공 동의)
+
+    영어 약관이 필요한 경우 URL 뒤에 `&langType=ENG`을 추가하여 사용할 수 있습니다.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' START -->
+
+    <div class="hint" data-style="warning">
+
+    KG이니시스의 경우 카드사 단독 노출 시 별도 계약이 필요합니다.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' END -->
+
+    <details>
+
+    <summary>지원 카드사 코드 목록</summary>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' START -->
+
+    - `KOREA_DEVELOPMENT_BANK` (KDB산업은행 카드)
+    - `KFCC` (새마을금고 카드)
+    - `SHINHYUP` (신협 카드)
+    - `EPOST`(우체국 카드)
+    - `SAVINGS_BANK_KOREA` (저축은행 카드)
+    - `KAKAO_BANK` (카카오뱅크 카드)
+    - `WOORI_CARD` (우리카드)
+    - `BC_CARD` (BC카드)
+    - `GWANGJU_CARD` (광주카드)
+    - `SAMSUNG_CARD` (삼성카드)
+    - `SHINHAN_CARD` (신한카드)
+    - `HYUNDAI_CARD` (현대카드)
+    - `LOTTE_CARD` (롯데카드)
+    - `SUHYUP_CARD` (수협카드)
+    - `CITI_CARD` (씨티카드)
+    - `NH_CARD` (NH농협카드)
+    - `JEONBUK_CARD` (전북카드)
+    - `JEJU_CARD` (제주카드)
+    - `HANA_CARD` (하나카드)
+    - `KOOKMIN_CARD` (국민카드)
+    - `K_BANK` (케이뱅크 카드)
+    - `TOSS_BANK` (토스뱅크 카드)
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => ['nice', 'smartro', 'kpn', 'inicis', 'ksnet', 'kcp'].includes(name) START -->
+
+    - `KOREA_DEVELOPMENT_BANK` (KDB산업은행 카드)
+    - `KFCC` (새마을금고 카드)
+    - `SHINHYUP` (신협 카드)
+    - `EPOST` (우체국 카드)
+    - `SAVINGS_BANK_KOREA` (저축은행 카드)
+    - `KAKAO_BANK` (카카오뱅크 카드)
+    - `WOORI_CARD` (우리카드)
+    - `BC_CARD` (BC카드)
+    - `GWANGJU_CARD` (광주카드)
+    - `SAMSUNG_CARD` (삼성카드)
+    - `SHINHAN_CARD` (신한카드)
+    - `HYUNDAI_CARD` (현대카드)
+    - `LOTTE_CARD` (롯데카드)
+    - `SUHYUP_CARD` (수협카드)
+    - `CITI_CARD` (씨티카드)
+    - `NH_CARD` (NH농협카드)
+    - `JEONBUK_CARD` (전북카드)
+    - `JEJU_CARD` (제주카드)
+    - `HANA_CARD` (하나카드)
+    - `KOOKMIN_CARD` (국민카드)
+    - `K_BANK` (케이뱅크 카드)
+    - `TOSS_BANK` (토스뱅크 카드)
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => ['nice', 'smartro', 'kpn', 'inicis', 'ksnet', 'kcp'].includes(name) END -->
+
+    </details>
+
+  - availableCards?: string\[]
+
+    **카드사 일부 노출**
+
+    지정한 일부 카드사만을 목록에 노출할 수 있습니다. 상단의 카드사 식별 값 항목을 참고해주세요.
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => !['kcp', 'kpn', 'inicis'].includes(name) START -->
+
+  - useFreeInterestFromMall?: boolean
+
+    **상점 분담 무이자 활성화 여부**
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' START -->
+
+    <div class="hint" data-style="warning">
+
+    토스페이먼츠의 경우 상점 분담 무이자 할부 이용 시 별도 계약이 필요합니다.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => !['kcp', 'kpn', 'inicis'].includes(name) END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => !['kcp', 'inicis'].includes(name) START -->
+
+  - useInstallment?: boolean
+
+    **할부 사용 여부**
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => !['kcp', 'inicis'].includes(name) END -->
+
+  - installment?: object
+
+    **할부 설정**
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' START -->
+
+    <div class="hint" data-style="warning">
+
+    토스페이먼츠의 경우 신용카드 할부 이용 시 별도 계약이 필요합니다.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' START -->
+
+    <div class="hint" data-style="warning">
+
+    스마트로의 경우 신용카드 할부 이용 시 별도 계약이 필요합니다.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' END -->
+
+    - freeInstallmentPlans?: object\[]
+
+      **무이자 할부 설정**
+
+      고객사가 부담하는 무이자 할부 설정입니다.
+
+      <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' START -->
+
+      <div class="hint" data-style="warning">
+
+      스마트로의 경우 상점 부담 무이자 할부 이용 시 별도 계약이 필요합니다.
+
+      </div>
+
+      <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' END -->
+
+      <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' START -->
+
+      <div class="hint" data-style="warning">
+
+      한국결제네트웍스의 경우 상점 부담 무이자 할부 이용 시 별도 계약이 필요합니다.
+
+      </div>
+
+      <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' END -->
+
+      <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' START -->
+
+      <div class="hint" data-style="warning">
+
+      KG이니시스의 경우 상점 부담 무이자 할부 이용 시 별도 계약이 필요합니다.
+
+      </div>
+
+      <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' END -->
+
+      - cardCompany: string
+
+        **무이자 할부를 제공하는 카드사 식별 값**
+
+        상단의 카드사 식별 값 항목을 참고해주세요.
+
+      - months: number\[]
+
+        **무이자 할부를 제공하는 개월 수**
+
+    - monthOption?: object
+
+      **할부 개월 수 설정**
+
+      할부 결제 시 할부 개월 수를 설정할 수 있습니다.
+
+      <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name !== 'kcp' START -->
+
+      `fixedMonth`와 `availableMonthList` 중 하나만 제공해주세요.
+
+      <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name !== 'kcp' END -->
+
+      - fixedMonth: number
+
+        **구매자가 선택할 수 없도록 고정된 할부 개월 수**
+
+        구매자가 할부 개월 수를 선택할 수 있도록 하려면 `availableMonthList`를 사용해주세요.
+
+      <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => !['kcp', 'smartro', 'inicis'].includes(name) START -->
+
+      - availableMonthList: number\[]
+
+        **구매자가 선택할 수 있는 할부 개월 수 목록**
+
+      <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => !['kcp', 'smartro', 'inicis'].includes(name) END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => !['kcp', 'smartro'].includes(name) START -->
+
+  - useCardPoint?: boolean
+
+    **카드사 포인트 사용 여부**
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' START -->
+
+    <div class="hint" data-style="warning">
+
+    토스페이먼츠의 경우 카드사 포인트 사용 시 별도 계약이 필요합니다.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' START -->
+
+    <div class="hint" data-style="warning">
+
+    나이스페이먼츠의 경우 카드사 포인트 사용 시 별도 계약이 필요합니다.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' START -->
+
+    <div class="hint" data-style="warning">
+
+    KG이니시스의 경우 카드사 포인트 사용 시 별도 계약이 필요합니다.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => !['kcp', 'smartro'].includes(name) END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => !['kpn', 'inicis'].includes(name) START -->
+
+  - useAppCardOnly?: boolean
+
+    **앱 카드만 허용할지 여부**
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' START -->
+
+    <div class="hint" data-style="warning">
+
+    토스페이먼츠의 경우 씨티카드는 적용이 불가능합니다.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => !['kpn', 'inicis'].includes(name) END -->
+
+<!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "card" END -->
+
+<!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "virtualAccount" START -->
+
+- virtualAccount?: object
+
+  **가상계좌 발급 추가 정보**
+
+  `payMethod`가 `VIRTUAL_ACCOUNT`인 경우 가상계좌와 관련한 추가 정보를 입력할 수 있습니다.
+
+  <!-- CONDITIONAL CONTENT when=({ pg: {name }}) => name !== 'kcp' START -->
+
+  - cashReceiptType?: string
+
+    **결제창에서 발급 가능한 현금영수증 발급 유형**
+
+    - `PERSONAL` (소득공제용)
+    - `CORPORATE` (지출증빙용)
+    - `ANONYMOUS` (미발행(국세청번호 자동발급))
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' START -->
+
+    <div class="hint" data-style="warning">
+
+    스마트로의 경우 `cashReceiptType`과 `bankCode`를 같이 사용해야 합니다.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: {name }}) => name !== 'kcp' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: {name }}) => !['kpn', 'kcp'].includes(name) START -->
+
+  - customerIdentifier?: string
+
+    **현금영수증 발행 대상 식별 정보**
+
+    소득공제용(`PERSONAL`)의 경우 전화번호를, 지출증빙용(`CORPORATE`)의 경우 사업자번호를 입력하며, 미발행(`ANONYMOUS`)의 경우 무시됩니다.
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' START -->
+
+    <div class="hint" data-style="warning">
+
+    스마트로의 경우 `cashReceiptType`에 `ANONYMOUS` 외의 값이 설정되면 올바른 `customerIdentifier`를 반드시 입력해야 합니다.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: {name }}) => !['kpn', 'kcp'].includes(name) END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: {name }}) => !['kcp', 'kpn'].includes(name) START -->
+
+  - fixedOption?: oneof object
+
+    **고정식 가상계좌 설정**
+
+    - `pgAccountId`와 `accountNumber` 중 하나만 입력해주세요.
+
+    * pgAccountId?: string
+
+      결제대행사로부터 사전에 가상계좌를 발급받은 경우, 그 번호를 입력해주세요.
+
+    * accountNumber?: string
+
+      고정하여 사용할 가상계좌 번호를 입력해주세요.
+
+  <!-- CONDITIONAL CONTENT when=({ pg: {name }}) => !['kcp', 'kpn'].includes(name) END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: {name }}) => !['kcp', 'kpn'].includes(name) START -->
+
+  - bankCode?: string
+
+    **단독 노출 은행**
+
+    구매자가 은행을 선택하지 않고 입력한 은행이 자동 선택되도록 합니다.
+
+    <details>
+
+    <summary>지원 은행 코드</summary>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' START -->
+
+    - `KYONGNAM_BANK` (경남은행)
+    - `GWANGJU_BANK` (광주은행)
+    - `KOOKMIN_BANK` (국민은행)
+    - `INDUSTRIAL_BANK_OF_KOREA` (기업은행)
+    - `NH_NONGHYUP_BANK` (NH농협은행)
+    - `DAEGU_BANK` (대구은행)
+    - `BUSAN_BANK` (부산은행)
+    - `KFCC` (새마을금고)
+    - `SUHYUP_BANK` (수협은행)
+    - `SHINHAN_BANK` (신한은행)
+    - `WOORI_BANK` (우리은행)
+    - `EPOST` (우체국)
+    - `HANA_BANK` (하나은행)
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' START -->
+
+    - `INDUSTRIAL_BANK_OF_KOREA` (기업은행)
+    - `KOOKMIN_BANK` (국민은행)
+    - `NH_NONGHYUP_BANK` (NH농협은행)
+    - `WOORI_BANK` (우리은행)
+    - `SC_BANK_KOREA` (SC제일은행)
+    - `DAEGU_BANK` (대구은행)
+    - `BUSAN_BANK` (부산은행)
+    - `GWANGJU_BANK` (광주은행)
+    - `EPOST` (우체국)
+    - `HANA_BANK` (하나은행)
+    - `SHINHAN_BANK` (신한은행)
+    - `K_BANK` (케이뱅크)
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' START -->
+
+    - `INDUSTRIAL_BANK_OF_KOREA` (기업은행)
+    - `KOOKMIN_BANK` (국민은행)
+    - `NH_NONGHYUP_BANK` (NH농협은행)
+    - `WOORI_BANK` (우리은행)
+    - `SC_BANK_KOREA` (SC제일은행)
+    - `DAEGU_BANK` (대구은행)
+    - `BUSAN_BANK` (부산은행)
+    - `GWANGJU_BANK` (광주은행)
+    - `EPOST` (우체국)
+    - `HANA_BANK` (하나은행)
+    - `SHINHAN_BANK` (신한은행)
+    - `K_BANK` (케이뱅크)
+    - `SUHYUP_BANK` (수협은행)
+    - `JEONBUK_BANK` (전북은행)
+    - `KYONGNAM_BANK` (경남은행)
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' START -->
+
+    - `INDUSTRIAL_BANK_OF_KOREA` (기업은행)
+    - `KOOKMIN_BANK` (국민은행)
+    - `NH_NONGHYUP_BANK` (NH농협은행)
+    - `WOORI_BANK` (우리은행)
+    - `SC_BANK_KOREA` (SC제일은행)
+    - `CITI_BANK_KOREA` (한국씨티은행)
+    - `DAEGU_BANK` (대구은행)
+    - `BUSAN_BANK` (부산은행)
+    - `GWANGJU_BANK` (광주은행)
+    - `EPOST` (우체국)
+    - `HANA_BANK` (하나은행)
+    - `SHINHAN_BANK` (신한은행)
+    - `KYONGNAM_BANK` (경남은행)
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'ksnet' START -->
+
+    - `INDUSTRIAL_BANK_OF_KOREA` (기업은행)
+    - `KOOKMIN_BANK` (국민은행)
+    - `NH_NONGHYUP_BANK` (NH농협은행)
+    - `WOORI_BANK` (우리은행)
+    - `SC_BANK_KOREA` (SC제일은행)
+    - `DAEGU_BANK` (대구은행)
+    - `BUSAN_BANK` (부산은행)
+    - `GWANGJU_BANK` (광주은행)
+    - `EPOST` (우체국)
+    - `HANA_BANK` (하나은행)
+    - `SHINHAN_BANK` (신한은행)
+    - `JEONBUK_BANK` (전북은행)
+    - `KYONGNAM_BANK` (경남은행)
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'ksnet' END -->
+
+    </details>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: {name }}) => !['kcp', 'kpn'].includes(name) END -->
+
+  - accountExpiry?: object
+
+    **가상계좌 입금 만료기한**
+
+    `validHours`와 `dueDate` 중 하나만 입력해주세요.
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' START -->
+
+    <div class="hint" data-style="warning">
+
+    나이스페이먼츠의 경우 입금 만료기한을 필수로 입력해야 합니다.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' END -->
+
+    - validHours?: number
+
+      **가상계좌 입금 유효 시간**
+
+      가상계좌 입금 유효기간을 시간 단위로 입력해주세요.
+
+      - `3`을 전달하면 지금으로부터 3시간 후에 만료됩니다.
+
+    - dueDate?: string
+
+      **가상계좌 입금 만료 시각**
+
+      - 아래 형식 중 하나로 입력해주세요.
+        - `YYYYMMDD`
+        - `YYYYMMDDHHmmss`
+        - `YYYY-MM-DD`
+        - `YYYY-MM-DD HH:mm:ss`
+
+<!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "virtualAccount" END -->
+
+<!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "transfer" START -->
+
+- transfer?: object
+
+  **계좌이체 추가 정보**
+
+  `payMethod`가 `TRANSFER`인 경우 계좌이체와 관련한 추가 정보를 입력할 수 있습니다.
+
+  - cashReceiptType?: string
+
+    **결제창에서 발급 가능한 현금영수증 발급 유형**
+
+    - `PERSONAL` (소득공제용)
+    - `CORPORATE` (지출증빙용)
+    - `ANONYMOUS` (미발행(국세청번호 자동발급))
+
+  - customerIdentifier?: string
+
+    **현금영수증 발행 대상 식별 정보**
+
+  - bankCode?: string
+
+    **단독 노출 은행**
+
+    구매자가 은행을 선택하지 않고 입력한 은행이 자동 선택되도록 합니다.
+
+    <details>
+
+    <summary>지원 은행 코드</summary>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' START -->
+
+    - `KYONGNAM_BANK` (경남은행)
+    - `GWANGJU_BANK` (광주은행)
+    - `KOOKMIN_BANK` (국민은행)
+    - `INDUSTRIAL_BANK_OF_KOREA` (기업은행)
+    - `NH_NONGHYUP_BANK` (NH농협은행)
+    - `DAEGU_BANK` (대구은행)
+    - `BUSAN_BANK` (부산은행)
+    - `KFCC` (새마을금고)
+    - `SUHYUP_BANK` (수협은행)
+    - `SHINHAN_BANK` (신한은행)
+    - `WOORI_BANK` (우리은행)
+    - `EPOST` (우체국)
+    - `HANA_BANK` (하나은행)
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' END -->
+
+    </details>
+
+<!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "transfer" END -->
+
+<!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "mobile" START -->
+
+- mobile?: object
+
+  **휴대폰 소액결제 추가 정보**
+
+  `payMethod`가 `MOBILE`인 경우 휴대폰 소액결제와 관련한 추가 정보를 입력할 수 있습니다.
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' START -->
+
+  - carrier?: string
+
+    **단독 호출 통신사**
+
+    구매자가 통신사를 선택하지 않고 입력한 통신사가 자동 선택되도록 합니다.
+
+    - `SKT` (SKT)
+    - `KT` (KT)
+    - `LGU` (LGU)
+    - `HELLO` (LG 헬로모바일)
+    - `KCT` (티플러스)
+    - `SK7` (SK 세븐모바일)
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' START -->
+
+  - availableCarriers?: string\[]
+
+    **통신사 일부 노출**
+
+    지정한 일부 통신사만을 목록에 노출할 수 있습니다. 상단의 통신사 식별 값 항목을 참고해주세요.
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' END -->
+
+<!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "mobile" END -->
+
+<!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "giftCertificate" START -->
+
+- giftCertificate?: object
+
+  **상품권 추가 정보**
+
+  `payMethod`가 `GIFT_CERTIFICATE`인 경우 상품권과 관련한 추가 정보를 입력할 수 있습니다.
+
+  - giftCertificateType?: string
+
+    **상품권 유형**
+
+    <details>
+
+    <summary>지원 상품권 유형 코드</summary>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "toss" START -->
+
+    - `BOOKNLIFE` (도서문화상품권)
+    - `SMART_MUNSANG` (스마트문상, (구)게임문화상품권)
+    - `CULTURELAND` (문화상품권)
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "toss" END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "nice" START -->
+
+    - `CULTURELAND` (문화상품권)
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "nice" END -->
+
+    </details>
+
+<!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "giftCertificate" END -->
+
+<!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "easyPay" START -->
+
+- easyPay?: object
+
+  **간편결제 추가 정보**
+
+  `payMethod`가 `EASY_PAY`인 경우 간편결제와 관련한 추가 정보를 입력할 수 있습니다.
+
+  - easyPayProvider?: string
+
+    **간편결제 수단**
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' START -->
+
+    <div class="hint" data-style="warning">
+
+    한국결제네트웍스의 경우 간편결제 수단을 직접 지정하려면 별도 계약이 필요합니다.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' START -->
+
+    <div class="hint" data-style="warning">
+
+    KG이니시스의 경우 간편결제 수단 설정 시 별도 계약이 필요합니다.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' END -->
+
+    <details>
+
+    <summary>지원 간편결제 코드</summary>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'toss' START -->
+
+    - `PAYCO` (페이코)
+    - `SAMSUNGPAY` (삼성페이)
+    - `APPLEPAY` (애플페이)
+    - `SSGPAY` (SSG페이)
+    - `KAKAOPAY` (카카오페이)
+    - `NAVERPAY` (네이버페이)
+    - `LPAY` (L페이)
+    - `TOSSPAY` (토스페이)
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'toss' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'kpn' START -->
+
+    - `KAKAOPAY` (카카오페이)
+    - `SAMSUNGPAY` (삼성페이)
+    - `TOSSPAY` (토스페이)
+    - `PAYCO` (페이코)
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'kpn' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'inicis' START -->
+
+    - `KAKAOPAY` (카카오페이)
+    - `NAVERPAY` (네이버페이)
+    - `SAMSUNGPAY` (삼성페이)
+    - `SSGPAY` (SSG페이)
+    - `APPLEPAY` (애플페이)
+    - `LPAY` (L페이)
+    - `TOSSPAY` (토스페이)
+    - `PAYCO` (페이코)
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'inicis' END -->
+
+    </details>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' START -->
+
+  - useFreeInterestFromMall?: boolean
+
+    **상점분담 무이자 활성화 여부**
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' START -->
+
+  - useCardPoint?: boolean
+
+    **카드사 포인트 사용 여부**
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' START -->
+
+  - availableCards?: string\[]
+
+    **카드사 일부 노출**
+
+    지정한 일부 카드사만을 목록에 노출할 수 있습니다.
+
+    <details>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' START -->
+
+    - `KOREA_DEVELOPMENT_BANK` (KDB산업은행 카드)
+    - `KFCC` (새마을금고 카드)
+    - `SHINHYUP` (신협 카드)
+    - `EPOST`(우체국 카드)
+    - `SAVINGS_BANK_KOREA` (저축은행 카드)
+    - `KAKAO_BANK` (카카오뱅크 카드)
+    - `WOORI_CARD` (우리카드)
+    - `BC_CARD` (BC카드)
+    - `GWANGJU_CARD` (광주카드)
+    - `SAMSUNG_CARD` (삼성카드)
+    - `SHINHAN_CARD` (신한카드)
+    - `HYUNDAI_CARD` (현대카드)
+    - `LOTTE_CARD` (롯데카드)
+    - `SUHYUP_CARD` (수협카드)
+    - `CITI_CARD` (씨티카드)
+    - `NH_CARD` (NH농협카드)
+    - `JEONBUK_CARD` (전북카드)
+    - `JEJU_CARD` (제주카드)
+    - `HANA_CARD` (하나카드)
+    - `KOOKMIN_CARD` (국민카드)
+    - `K_BANK` (케이뱅크 카드)
+    - `TOSS_BANK` (토스뱅크 카드)
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => ['nice', 'smartro', 'kpn', 'inicis', 'ksnet'].includes(name) START -->
+
+    - `KOREA_DEVELOPMENT_BANK` (KDB산업은행 카드)
+    - `KFCC` (새마을금고 카드)
+    - `SHINHYUP` (신협 카드)
+    - `EPOST` (우체국 카드)
+    - `SAVINGS_BANK_KOREA` (저축은행 카드)
+    - `KAKAO_BANK` (카카오뱅크 카드)
+    - `WOORI_CARD` (우리카드)
+    - `BC_CARD` (BC카드)
+    - `GWANGJU_CARD` (광주카드)
+    - `SAMSUNG_CARD` (삼성카드)
+    - `SHINHAN_CARD` (신한카드)
+    - `HYUNDAI_CARD` (현대카드)
+    - `LOTTE_CARD` (롯데카드)
+    - `SUHYUP_CARD` (수협카드)
+    - `CITI_CARD` (씨티카드)
+    - `NH_CARD` (NH농협카드)
+    - `JEONBUK_CARD` (전북카드)
+    - `JEJU_CARD` (제주카드)
+    - `HANA_CARD` (하나카드)
+    - `KOOKMIN_CARD` (국민카드)
+    - `K_BANK` (케이뱅크 카드)
+    - `TOSS_BANK` (토스뱅크 카드)
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => ['nice', 'smartro', 'kpn', 'inicis', 'ksnet'].includes(name) END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' START -->
+
+    - `KOREA_DEVELOPMENT_BANK` (KDB산업은행 카드)
+    - `KFCC` (새마을금고 카드)
+    - `SHINHYUP` (신협 카드)
+    - `EPOST` (우체국 카드)
+    - `SAVINGS_BANK_KOREA` (저축은행 카드)
+    - `KAKAO_BANK` (카카오뱅크 카드)
+    - `WOORI_CARD` (우리카드)
+    - `BC_CARD` (BC카드)
+    - `GWANGJU_CARD` (광주카드)
+    - `SAMSUNG_CARD` (삼성카드)
+    - `SHINHAN_CARD` (신한카드)
+    - `HYUNDAI_CARD` (현대카드)
+    - `LOTTE_CARD` (롯데카드)
+    - `SUHYUP_CARD` (수협카드)
+    - `CITI_CARD` (씨티카드)
+    - `NH_CARD` (NH농협카드)
+    - `JEJU_CARD` (제주카드)
+    - `HANA_CARD` (하나카드)
+    - `KOOKMIN_CARD` (국민카드)
+    - `K_BANK` (케이뱅크 카드)
+    - `TOSS_BANK` (토스뱅크 카드)
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' END -->
+
+    </details>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' START -->
+
+  - installment?: object
+
+    **할부 설정**
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' START -->
+
+    <div class="hint" data-style="warning">
+
+    나이스페이먼츠의 경우 할부 사용 시 별도 계약이 필요합니다.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' END -->
+
+    - freeInstallmentPlans?: object\[]
+
+      **무이자 할부 설정**
+
+      고객사가 부담하는 무이자 할부 설정입니다.
+
+      - cardCompany: string
+
+        **무이자 할부를 제공하는 카드사 식별 값**
+
+        상단의 카드사 식별 값 항목을 참고해주세요.
+
+      - months: number\[]
+
+        **무이자 할부를 제공하는 개월 수**
+
+    - monthOption?: object
+
+      **할부 개월 수 설정**
+
+      할부 결제 시 할부 개월 수를 설정할 수 있습니다.
+
+      `fixedMonth`와 `availableMonthList` 중 하나만 제공해주세요.
+
+      - fixedMonth: number
+
+        **구매자가 선택할 수 없도록 고정된 할부 개월 수**
+
+        구매자가 할부 개월 수를 선택할 수 있도록 하려면 `availableMonthList`를 사용해주세요.
+
+      - availableMonthList: number\[]
+
+        **구매자가 선택할 수 있는 할부 개월 수 목록**
+
+        <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' START -->
+
+        <div class="hint" data-style="warning">
+
+        토스페이먼츠의 경우 자체 정책에 따라 **일시불부터 전달한 값 중 최댓값까지 모두 표시**됩니다.
+
+        </div>
+
+        <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' START -->
+
+  - cashReceiptType?: string
+
+    **결제창에서 발급 가능한 현금영수증 발급 유형**
+
+    - `PERSONAL` (소득공제용)
+    - `CORPORATE` (지출증빙용)
+    - `ANONYMOUS` (미발행(국세청번호 자동발급))
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' START -->
+
+  - customerIdentifier?: string
+
+    **현금영수증 발행 대상 식별 정보**
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' START -->
+
+  - availablePayMethods?: string\[]
+
+    **노출할 간편결제 방식**
+
+    - `CARD` (카드 결제)
+    - `CHARGE` (포인트 충전 및 적립 결제)
+    - `MONEY` (토스페이 머니 결제)
+    - `TRANSFER` (계좌 결제)
+
+    <!-- CONDITIONAL CONTENT when=({ pg: {name}}) => name === "nice" START -->
+
+    <div class="hint" data-style="warning">
+
+    나이스페이먼츠의 경우 일부 간편결제 수단에 대해 `availablePayMethods`가 필수입니다.
+
+    - 네이버페이: 카드 결제인 경우 `CARD`, 포인트 혹은 머니 결제인 경우 `CHARGE`를 입력합니다.
+    - SSG페이: 계좌 결제를 노출하는 `TRANSFER`만 유효하며, 카드 혹은 머니 결제인 경우 `availablePayMethods`를 생략해야 합니다.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: {name}}) => name === "nice" END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' END -->
+
+<!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "easyPay" END -->
+
+- taxFreeAmount?: number
+
+  **면세 금액**
+
+  결제 금액 중 면세금액에 해당하는 금액을 입력합니다.
+
+  - 미입력 시 0으로 취급됩니다.
+  - 결제 금액과 동일하게 통화별 scale factor가 적용된 금액으로 전달해주세요.
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' START -->
+
+  <div class="hint" data-style="warning">
+
+  토스페이먼츠의 경우 면세 및 복합과세 이용 시 별도 계약이 필요합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' START -->
+
+  <div class="hint" data-style="warning">
+
+  나이스페이먼츠와 계약 시 지정된 면세금액을 반드시 입력해야 합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' START -->
+
+  <div class="hint" data-style="warning">
+
+  KCP의 경우 면세 금액을 직접 지정하기 위해서는 별도 계약이 필요합니다.
+  계약을 진행하지 않고 값을 지정하는 경우 요청한 내용과 다른 금액으로 결제가 발생할 수 있습니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' START -->
+
+  <div class="hint" data-style="warning">
+
+  한국결제네트웍스의 경우 면세 금액을 직접 지정하기 위해서는 별도 계약이 필요합니다.
+  계약을 진행하지 않고 값을 지정하는 경우 요청한 내용과 다른 금액으로 결제가 발생할 수 있습니다.
+  면세 금액이 지정된 경우, MID에 지정된 면세 및 과세 여부보다 지정된 금액을 우선합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' START -->
+
+  <div class="hint" data-style="warning">
+
+  KG이니시스의 경우 면세 금액을 직접 지정하기 위해서는 별도 계약이 필요합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' END -->
+
+- vatAmount?: number
+
+  **부가세**
+
+  부가세 금액을 입력합니다.
+
+  - 미입력 시 과세 금액의 1/11 로 자동 계산됩니다.
+  - 결제 금액과 동일하게 통화별 scale factor가 적용된 금액으로 전달해주세요.
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' START -->
+
+  <div class="hint" data-style="warning">
+
+  KCP의 경우 부가세 금액을 직접 지정하기 위해서는 별도 계약이 필요합니다.
+  계약을 진행하지 않고 값을 지정하는 경우 요청한 내용과 다른 금액으로 결제가 발생할 수 있습니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' START -->
+
+  <div class="hint" data-style="warning">
+
+  KG이니시스의 경우 부가세 금액을 직접 지정하기 위해서는 별도 계약이 필요합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' END -->
+
+- customer?: object
+
+  **구매자 정보**
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'ksnet' START -->
+
+  <div class="hint" data-style="warning">
+
+  KSNET 결제 시 구매자 이름을 필수로 입력해야 합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'ksnet' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'inicis' START -->
+
+  <div class="hint" data-style="warning">
+
+  KG이니시스 결제 시 PC 환경에서는 구매자 이름, 연락처, 이메일을 필수로 입력해야 합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'inicis' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'smartro' START -->
+
+  <div class="hint" data-style="warning">
+
+  스마트로 결제 시 구매자 연락처를 필수로 입력해야 합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'smartro' END -->
+
+  - customerId?: string
+
+    **구매자 고유 아이디**
+
+    구매자를 식별하는 고유 번호로, 자유롭게 입력합니다.
+
+  - fullName?: string
+
+    **구매자 전체 이름**
+
+    - `fullName`과 (`firstName`, `lastName`) 쌍 중 하나만 입력해 주세요.
+
+  - firstName?: string
+
+    **구매자의 성을 제외한 이름**
+
+    - `firstName`과 `lastName`은 함께 입력해야 합니다. 전체 이름은 `{firstName} {lastName}`으로 기록됩니다.
+
+  - lastName?: string
+
+    **구매자의 성**
+
+    - `firstName`과 `lastName`은 함께 입력해야 합니다. 전체 이름은 `{firstName} {lastName}`으로 기록됩니다.
+
+  - phoneNumber?: string
+
+    **구매자 연락처**
+
+  - email?: string
+
+    **구매자 이메일 주소**
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' START -->
+
+    <div class="hint" data-style="warning">
+
+    KG이니시스의 경우 특수문자는 `@`와 `.`만 허용됩니다.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' END -->
+
+  - address?: object
+
+    **구매자 주소**
+
+    - country?: string
+
+      **국가**
+
+      [ISO 3166-1 alpha-2](https://www.iso.org/iso-3166-country-codes.html)에 의해 표준화된 2글자 국가 코드입니다.
+
+    - addressLine1: string
+
+      **일반 주소**
+
+    - addressLine2: string
+
+      **상세 주소**
+
+    - city?: string
+
+      **도시**
+
+    - province?: string
+
+      **주, 도, 시**
+
+  - zipcode?: string
+
+    **구매자 우편번호**
+
+  - gender?: string
+
+    **구매자 성별**
+
+    - `MALE`, `FEMALE`, `OTHER` 중 하나를 입력해주세요.
+
+  - birthYear?: string
+
+    **구매자 출생년도**
+
+    - `1990`과 같이 숫자 4자리로 입력해 주세요.
+
+  - birthMonth?: string
+
+    **구매자 출생월**
+
+    - `07`과 같이 숫자 2자리로 입력해 주세요.
+
+  - birthDay?: string
+
+    **구매자 출생일**
+
+    - `08`과 같이 숫자 2자리로 입력해 주세요.
+
+- customData?: object
+
+  `customData`에는 임의의 데이터를 저장할 수 있습니다.
+  서버에서 결제건 조회 시에 확인할 수 있으며, 상품 정보를 전달하여 서버가 인식한 상품 정보와 일치하는지 확인할 수 있습니다.
+
+- bypass?: object
+
+  **결제대행사 고유 기능**
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "toss" START -->
+
+  - tosspayments?: object
+
+    - discountCode?: string
+
+      - 결제수단에 프로모션을 적용할 경우 토스페이먼츠로부터 제공받은 코드를 입력합니다.
+
+    - useInternationalCardOnly?: boolean
+
+      - `true`로 설정하면 해외 카드로만 결제를 허용합니다.
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "toss" END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "nice" START -->
+
+  - nice\_v2?: object
+
+    - LogoImage?: string
+
+      **결제창 로고 이미지 URL**
+
+    - NPDisableScroll?: string
+
+      **PC환경 결제창 스크롤 미사용 여부**
+
+      기본값은 `N`입니다.
+
+      - `Y`: 미사용
+      - `N`: 사용
+
+    - SkinType?: string
+
+      **결제창 스킨 색상**
+
+      `red`, `green`, `purple`, `gray`, `dark` 중 하나를 입력해주세요.
+
+    - UserCI?: string
+
+      **문화상품권 결제 시 구매자 CI 정보**
+
+      아이디/비밀번호 외 추가로 CI 인증이 필요한 경우 사용합니다.
+
+      <div class="hint" data-style="warning">
+
+      나이스페이먼츠와 별도 계약이 필요합니다.
+
+      </div>
+
+    - MallUserID?: string
+
+      **구매자 식별 번호**
+
+      <div class="hint" data-style="warning">
+
+      문화 상품권 결제 시 필수 입력입니다.
+
+      </div>
+
+    - DirectCouponYN?: string
+
+      **신용카드 쿠폰 자동 적용 여부**
+
+      기본값은 `N`입니다.
+
+      - `Y`: 사전 등록된 선 할인 쿠폰을 자동 적용
+      - `N`: 쿠폰 미적용
+
+      <div class="hint" data-style="warning">
+
+      나이스페이먼츠와 별도 계약이 필요합니다.
+
+      </div>
+
+    - DirectShowOpt?: string
+
+      **단독 호출 결제 수단**
+
+      - `BANK`: 계좌이체
+      - `CELLPHONE`: 휴대폰 소액결제
+
+    - CardShowOpt?: string
+
+      **카드사별 호출 방식**
+
+      `카드 코드:노출 유형` 값의 목록을 `|`로 구분하여 입력해주세요.
+
+      - 카드 코드
+        - `02` (국민)
+        - `04` (삼성)
+        - `06` (신한)
+        - `07` (현대)
+        - `08` (롯데)
+        - `12` (NH)
+        - `15` (우리)
+
+      - 노출 유형
+        - `1` (안심클릭)
+        - `2` (간편결제)
+        - `3` (앱카드 직접 호출)
+
+      - `08:3|02:3`의 경우 롯데카드와 국민카드 선택시 앱카드를 직접 호출합니다.
+
+    - PaycoClientId?: string
+
+      **페이코에서 고객사에 발급한 Client Id**
+
+      페이코 계정 자동 로그인 기능을 사용하는 경우 입력합니다.
+
+      <div class="hint" data-style="warning">
+
+      나이스페이먼츠와 별도 계약이 필요합니다.
+
+      </div>
+
+    - PaycoAccessToken?: string
+
+      **페이코 접속 토큰**
+
+      페이코 계정 자동 로그인 기능을 사용하는 경우 입력합니다.
+
+      <div class="hint" data-style="warning">
+
+      나이스페이먼츠와 별도 계약이 필요합니다.
+
+      </div>
+
+    - SamsungPayType?: string
+
+      **삼성페이 고객사 유형**
+
+      기본값은 `99`입니다.
+
+      - `01`: 삼성페이 내 쇼핑
+      - `99`: 기타
+
+      <div class="hint" data-style="warning">
+
+      나이스페이먼츠와 별도 계약이 필요합니다.
+
+      </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "nice" END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' START -->
+
+  - smartro\_v2?: object
+
+    - GoodsCnt?: number
+
+      **결제 상품 품목 개수**
+
+    - SkinColor?: string
+
+      **결제창 색상**
+
+      `RED`, `GREEN`, `BLUE`, `PURPLE`을 선택할 수 있으며, 기본값은 `RED`입니다.
+
+    - OpenType?: string
+
+      **허용 카드 국가 설정**
+
+      - `KR`: 국내 카드만 허용 (기본값)
+      - `EN`: 해외 카드만 허용
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' START -->
+
+  - kpn: object
+
+    - CardSelect?: string\[]
+
+      **카드결제 특수 결제방식 노출**
+
+      카드결제 시에 특정 카드사에 해당하지 않는 특수 결제방식을 노출할 수 있습니다.
+
+      - `GLOBAL`: 해외 카드(Visa, Mastercard, JCB)를 노출합니다.
+      - `LEGACY_AUTH`: 구 인증결제 방식을 노출합니다.
+      - `KEY_IN`: 키인 결제를 노출합니다.
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "kcp" START -->
+
+  - kcp\_v2?: object
+
+  * site\_logo?: string
+
+    **결제창 로고 URL**
+
+    - 결제창 좌측 상단에 표시됩니다.
+    - 이미지 사이즈는 가로 150px, 세로 50px 미만으로 설정해야 하며, GIF, JPG 파일만 지원됩니다.
+
+  * skin\_indx?: number
+
+    **결제창 색상**
+
+    PC로 결제창 호출 시 결제창 색상을 변경합니다.
+
+    - 1: 청색 (#207bba, 기본값)
+    - 2: 자주색 (#b52ecb)
+    - 3: 갈색 (#9a6d3f)
+    - 4: 분홍색 (#e41f7d)
+    - 5: 남색 (#284c8c)
+    - 6: 청록색 (#319cb9)
+    - 7: 황토색 (#a77f1d)
+    - 8: 주황색 (#b2b2b2)
+    - 9: 초록색 (#3cc871)
+    - 10: 다홍색 (#ee3b34)
+    - 11: 검은색 (#000000)
+    - 12: 은색 (#f4f4f4)
+
+  * kcp\_pay\_title?: string
+
+    **결제창 상단 문구**
+
+    결제창의 상단에 `NHN KCP - 결제의 중심!` 대신 표시될 문구입니다.
+
+  * shop\_user\_id?: string
+
+    **기관에 따라 리스크 관리 조치를 위한 쇼핑몰 관리 ID**
+
+    - 상품권, 휴대폰 결제 시 필수로 입력해야 합니다.
+
+  * site\_name?: string
+
+    **카드사 단독 노출 시 결제창에 표기될 상호명**
+
+    - PC의 경우 신한, 현대, 삼성, 농협, 하나, 외환, 롯데, 씨티, 우리카드 단독 노출 시 필수로 입력해야 합니다.
+    - 모바일의 경우 필수로 입력해야 합니다.
+
+  * disp\_tax\_yn?: string
+
+    **현금영수증 노출 여부**
+
+    결제창에서 현금영수증 노출 여부를 설정합니다. 실시간 계좌이체 또는 가상계좌 결제 시 사용할 수 있습니다.
+
+    - `Y`: 노출
+    - `N`: 노출하지 않음
+    - `R`: 소득공제로 노출
+    - `E`: 지출증빙으로 노출
+
+  * deli\_term?: string
+
+    **에스크로 결제 예상 배송 소요일**
+
+    에스크로 결제 시, 결제 상품의 예상 배송 소요일입니다. 에스크로 결제 사용 시 입력을 권장하고 있습니다.
+
+    - 기본값은 `00`입니다.
+    - 항상 두 자리 수로 입력되어야 합니다. 예상 배송 소요기간이 3일인 경우, `03`으로 입력합니다.
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "kcp" END -->
+
+- redirectUrl?: string
+
+  **리디렉션 방식에서 결제 프로세스 완료 후 이동될 고객사 URL**
+
+  - 대부분의 모바일 결제환경에서 반드시 입력해야 합니다.
+
+- noticeUrls?: string\[]
+
+  **결제 웹훅 수신 URL**
+
+  관리자 콘솔에서 설정한 웹훅 주소 대신 사용할 주소입니다.
+
+  - 해당 값 설정시 관리자 콘솔에 설정한 주소로는 웹훅이 발송되지 않습니다.
+
+- appScheme?: string
+
+  **모바일 결제 후 고객사 앱으로 복귀하기 위한 URL scheme**
+
+  ISP/앱카드에서 결제 완료 후 고객사 앱으로 복귀할 때 사용합니다.
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "toss" START -->
+
+  <div class="hint" data-style="warning">
+
+  토스페이먼츠의 경우 `myappscheme://` 형식으로 입력해 주세요.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "toss" END -->
+
+- productType?: string
+
+  **상품 유형**
+
+  - 실물 상품: `PRODUCT_TYPE_REAL`
+  - 디지털 상품: `PRODUCT_TYPE_DIGITAL`
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name, payMethods }}) => name === "nice" && payMethods === 'mobile' START -->
+
+  <div class="hint" data-style="warning">
+
+  나이스페이먼츠 휴대폰 소액결제 시 `productType`는 필수 입력이며, 상점에 설정된 상품 유형과 입력된 상품 유형이 다른 경우 결제가 실패합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name, payMethods }}) => name === "nice" && payMethods === 'mobile' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name, payMethods } }) => name === 'smartro' && payMethods === 'mobile' START -->
+
+  <div class="hint" data-style="warning">
+
+  스마트로 휴대폰 소액결제 시 `productType`는 필수 입력이며, 상점에 설정된 상품 유형과 입력된 상품 유형이 다른 경우 결제가 실패합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name, payMethods } }) => name === 'smartro' && payMethods === 'mobile' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name, payMethods } }) => name === 'kpn' && payMethods === 'mobile' START -->
+
+  <div class="hint" data-style="warning">
+
+  한국결제네트웍스 휴대폰 소액결제 시 `productType`는 필수 입력입니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name, payMethods } }) => name === 'kpn' && payMethods === 'mobile' END -->
+
+- offerPeriod?: oneof object
+
+  **서비스 제공 기간**
+
+  `range`와 `interval` 중 하나만 입력해주세요.
+
+  - range?: object
+
+    **서비스 제공 기간 범위**
+
+    - from?: string
+
+      **시작 시점**
+
+    - to?: string
+
+      **종료 시점**
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' START -->
+
+    <div class="hint" data-style="warning">
+
+    스마트로의 경우 `from`과 `to`를 동시에 입력해야 합니다.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' END -->
+
+  - interval?: string
+
+    **제공 기간**
+
+    - `{number}d` (`{number}`일)
+    - `{number}m` (`{number}`분)
+    - `{number}y` (`{number}`년)
+
+- products?: object\[]
+
+  **구매 상품 상세 정보**
+
+  - id: string
+
+    **상품 아이디**
+
+  - name: string
+
+    **상품명**
+
+  - code?: string
+
+    **상품 코드**
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'toss' START -->
+
+    <div class="hint" data-style="warning">
+
+    토스페이먼츠의 경우 반드시 입력해주세요.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'toss' END -->
+
+  - amount: number
+
+    **상품 단위 가격**
+
+    - 결제 금액과 동일하게 통화별 scale factor가 적용된 금액으로 전달해주세요.
+
+  - quantity: number
+
+    **상품 수량**
+
+  - tag?: string
+
+    **상품 태그**
+
+- storeDetails?: object
+
+  **상점 정보**
+
+  - ceoFullName?: string
+
+    **상점 대표자 이름**
+
+  - phoneNumber?: string
+
+    **상점 연락처**
+
+  - address?: string
+
+    **상점 주소**
+
+  - zipcode?: string
+
+    **상점 우편번호**
+
+- isCulturalExpense?: boolean
+
+  **문화비 지출 여부**
+
+  도서, 공연, 박물관 등 문화비 지출 여부
+
+- isEscrow?: boolean
+
+  **에스크로 결제 여부**
+
+  `true`로 설정하면 에스크로를 사용합니다.
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "toss" START -->
+
+  <div class="hint" data-style="warning">
+
+  토스페이먼츠의 경우 에스크로 사용 시 별도 계약이 필요합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "toss" END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' START -->
+
+  <div class="hint" data-style="warning">
+
+  나이스페이먼츠의 경우 에스크로 사용 시 별도 계약이 필요합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' START -->
+
+  <div class="hint" data-style="warning">
+
+  한국결제네트웍스의 경우 에스크로 사용 시 별도 계약이 필요합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' START -->
+
+  <div class="hint" data-style="warning">
+
+  KG이니시스의 경우 에스크로 사용 시 별도 계약이 필요합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => ['kcp', 'kpn', 'inicis'].includes(name) START -->
+
+  - locale?: string
+
+  **결제창 언어**
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => ['kcp', 'kpn'].includes(name) START -->
+
+  - 한국어: `KO_KR`
+  - 영어: `EN_US`
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => ['kcp', 'kpn'].includes(name) END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' START -->
+
+  - 한국어: `KO_KR`
+  - 영어: `EN_US`
+  - 중국어(간체): `ZH_CN`
+
+  <div class="hint" data-style="warning">
+
+  KG이니시스의 경우 중국어(간체)는 PC 결제 시에만 지원됩니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => ['kcp', 'kpn', 'inicis'].includes(name) END -->
+
+- country?: string
+
+  **결제 국가**
+
+  [ISO 3166-1 alpha-2](https://www.iso.org/iso-3166-country-codes.html)에 의해 표준화된 2글자 국가 코드입니다.
+
+- popup?: object
+
+  **결제창이 팝업 방식일 경우 결제창에 적용할 속성**
+
+  - center?: boolean
+
+    `true`로 설정하면 결제창이 브라우저 화면의 정중앙에 표시됩니다.
+
+### 결제 오류 처리
+
+결제 중 오류가 발생하여 결제가 완료되지 않은 경우를 처리합니다.
+
+`SDK`의 반환 값에 `code`가 있는 경우 오류 상태로 `message` 필드에 오류 메시지가 존재합니다.
+결제대행사로부터 오류를 전달받은 경우 `code`는 `FAILURE_TYPE_PG`이고, 결제대행사의 오류 코드인 `pgCode`를 기반으로 결제 오류를 처리할 수 있습니다.
+
+### 서버 측으로 결제 완료 요청
+
+완료된 결제의 `paymentId`를 서버로 전송하여 결제 상태를 반영합니다.
+
+<!-- CONDITIONAL CONTENT when=({ pg }) => pg.payMethods !== "virtualAccount"  START -->
+
+### 결제 완료 상태 처리
+
+서버로부터 검증 후 결제가 완료된 경우를 처리합니다.
+
+<!-- CONDITIONAL CONTENT when=({ pg }) => pg.payMethods !== "virtualAccount"  END -->
+
+<!-- CONDITIONAL CONTENT when=({ pg }) => pg.payMethods === "virtualAccount"  START -->
+
+### 가상계좌 발급 상태 처리
+
+서버로부터 검증 후 가상계좌가 발급된 경우를 처리합니다.
+
+<!-- CONDITIONAL CONTENT when=({ pg }) => pg.payMethods === "virtualAccount"  END -->
+
+### 결제 실패 상태 처리
+
+서버로부터 검증 결과를 획득하여, 결제가 최종적으로 실패한 경우를 처리합니다.
+
+## 서버 측
+
+### 포트원 서버 SDK 불러오기
+
+포트원 서버 SDK를 불러옵니다.
+
+<!-- CONDITIONAL CONTENT language=backend/Express START -->
+
+아래 명령어로 서버 SDK를 설치합니다.
+
+![NPM Version](https://img.shields.io/npm/v/%40portone%2Fserver-sdk)
+
+![JSR Version](https://img.shields.io/jsr/v/%40portone/server-sdk)
+
+<div class="tabs-container">
+
+<div class="tabs-content" data-title="npm">
+
+```shell
+npm install --save @portone/server-sdk
+```
+
+</div>
+
+<div class="tabs-content" data-title="yarn">
+
+```shell
+yarn add @portone/server-sdk
+```
+
+</div>
+
+<div class="tabs-content" data-title="pnpm">
+
+```shell
+pnpm add @portone/server-sdk
+```
+
+</div>
+
+<div class="tabs-content" data-title="bun">
+
+```shell
+bun add @portone/server-sdk
+```
+
+</div>
+
+<div class="tabs-content" data-title="deno">
+
+```shell
+deno add jsr:@portone/server-sdk
+```
+
+</div>
+
+<div class="tabs-content" data-title="ni">
+
+```shell
+ni @portone/server-sdk
+```
+
+</div>
+
+</div>
+
+Node.js의 경우 v20 이상에서 정상 동작하며, v20 미만 버전은 폴리필이 필요합니다.
+
+<details>
+
+<summary>폴리필 방법</summary>
+
+<div class="tabs-container">
+
+<div class="tabs-content" data-title="Node.js v18 이상 v20 미만">
+
+애플리케이션 코드 시작 부분에 아래 코드를 삽입해 주세요.
+
+```javascript title="CommonJS"
+globalThis.crypto = require("node:crypto").webcrypto;
+```
+
+```javascript title="ESM"
+import { webcrypto } from "node:crypto";
+globalThis.crypto = webcrypto;
+```
+
+</div>
+
+<div class="tabs-content" data-title="Node.js v18 미만">
+
+[@whatwg-node/fetch](https://www.npmjs.com/package/@whatwg-node/fetch) 패키지를 의존성에 추가해 주세요.
+
+애플리케이션 코드 시작 부분에 아래 코드를 삽입해 주세요.
+
+```javascript title="CommonJS"
+const { fetch, crypto } = require("@whatwg-node/fetch");
+globalThis.fetch = fetch;
+globalThis.crypto = crypto;
+```
+
+```javascript title="ESM"
+import { crypto, fetch } from "@whatwg-node/fetch";
+globalThis.fetch = fetch;
+globalThis.crypto = crypto;
+```
+
+</div>
+
+</div>
+
+</details>
+
+<!-- CONDITIONAL CONTENT language=backend/Express END -->
+
+<!-- CONDITIONAL CONTENT language=backend/FastAPI START -->
+
+아래 명령어로 서버 SDK를 설치합니다.
+
+![PyPI - Version](https://img.shields.io/pypi/v/portone-server-sdk)
+
+<div class="tabs-container">
+
+<div class="tabs-content" data-title="uv">
+
+```shell
+uv add portone-server-sdk
+```
+
+</div>
+
+<div class="tabs-content" data-title="poetry">
+
+```shell
+poetry add portone-server-sdk
+```
+
+</div>
+
+<div class="tabs-content" data-title="rye">
+
+```shell
+rye add portone-server-sdk
+```
+
+</div>
+
+<div class="tabs-content" data-title="pipenv">
+
+```shell
+pipenv install portone-server-sdk
+```
+
+</div>
+
+<div class="tabs-content" data-title="Conda">
+
+```shell
+conda install portone-server-sdk
+```
+
+</div>
+
+<div class="tabs-content" data-title="Hatch">
+
+```toml title="pyproject.toml"
+[project]
+dependencies = [
+  "portone-server-sdk~=x.x.x"
+]
+```
+
+</div>
+
+<div class="tabs-content" data-title="PDM">
+
+```shell
+pdm add portone-server-sdk
+```
+
+</div>
+
+<div class="tabs-content" data-title="pip requirements">
+
+```shell title="requirements.txt"
+portone-server-sdk ~= x.x.x
+```
+
+</div>
+
+</div>
+
+<!-- CONDITIONAL CONTENT language=backend/FastAPI END -->
+
+<!-- CONDITIONAL CONTENT language=backend/Flask START -->
+
+아래 명령어로 서버 SDK를 설치합니다.
+
+![PyPI - Version](https://img.shields.io/pypi/v/portone-server-sdk)
+
+<div class="tabs-container">
+
+<div class="tabs-content" data-title="uv">
+
+```shell
+uv add portone-server-sdk
+```
+
+</div>
+
+<div class="tabs-content" data-title="poetry">
+
+```shell
+poetry add portone-server-sdk
+```
+
+</div>
+
+<div class="tabs-content" data-title="rye">
+
+```shell
+rye add portone-server-sdk
+```
+
+</div>
+
+<div class="tabs-content" data-title="pipenv">
+
+```shell
+pipenv install portone-server-sdk
+```
+
+</div>
+
+<div class="tabs-content" data-title="Conda">
+
+```shell
+conda install portone-server-sdk
+```
+
+</div>
+
+<div class="tabs-content" data-title="Hatch">
+
+```toml title="pyproject.toml"
+[project]
+dependencies = [
+  "portone-server-sdk~=x.x.x"
+]
+```
+
+</div>
+
+<div class="tabs-content" data-title="PDM">
+
+```shell
+pdm add portone-server-sdk
+```
+
+</div>
+
+<div class="tabs-content" data-title="pip requirements">
+
+```shell title="requirements.txt"
+portone-server-sdk ~= x.x.x
+```
+
+</div>
+
+</div>
+
+<!-- CONDITIONAL CONTENT language=backend/Flask END -->
+
+<!-- CONDITIONAL CONTENT language=backend/Spring_Kotlin START -->
+
+Maven Central을 통해 서버 SDK를 설치합니다.
+
+[![Maven Central Version](https://img.shields.io/maven-central/v/io.portone/server-sdk)](https://central.sonatype.com/artifact/io.portone/server-sdk)
+
+[![javadoc](https://javadoc.io/badge2/io.portone/server-sdk/javadoc.svg)](https://javadoc.io/doc/io.portone/server-sdk)
+
+<div class="tabs-container">
+
+<div class="tabs-content" data-title="Apache Maven">
+
+```xml
+<dependency>
+  <groupId>io.portone</groupId>
+  <artifactId>server-sdk</artifactId>
+  <version>x.x.x</version>
+</dependency>
+```
+
+</div>
+
+<div class="tabs-content" data-title="Gradle (Kotlin)">
+
+```kotlin
+implementation("io.portone:server-sdk:x.x.x")
+```
+
+</div>
+
+<div class="tabs-content" data-title="Gradle (Groovy)">
+
+```groovy
+implementation 'io.portone:server-sdk:x.x.x'
+```
+
+</div>
+
+</div>
+
+<!-- CONDITIONAL CONTENT language=backend/Spring_Kotlin END -->
+
+### 포트원 API Secret 설정
+
+서버 SDK를 사용하기 위해 포트원 V2 API Secret을 설정합니다.
+API Secret은 포트원 관리자콘솔의 [결제 연동 > 연동 정보 > 식별코드 ・ API Keys > V2 API](https://admin.portone.io/integration-v2/manage/api-keys?version=v2)에서 발급받으실 수 있습니다.
+
+### 결제 완료 요청
+
+완료된 결제의 실제 상태를 조회해 시스템에 반영합니다. 브라우저 SDK를 통해 결제하는 경우 모든 결제 과정이 브라우저에서 진행되므로 결제가 조작되는 것을 막기 위해 서버에서 검증이 필요합니다.
+
+### 결제 정보 조회
+
+브라우저에서 전송한 `paymentId`를 통해 실제 결제 상태를 조회합니다.
+
+<!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'toss' START -->
+
+<div class="hint" data-style="warning">
+
+ISP/페이북을 통한 결제 시 토스페이먼츠가 실제 카드 번호와 다른 카드 번호를 전달하고 있어 결제 내역 단건 조회시 응답되는 `payment_method_detail.card.detail.bin` 정보가 정확하지 않을 수 있습니다.
+
+</div>
+
+<!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'toss' END -->
+
+### 결제 정보 일치 검증
+
+포트원에 전달한 `customData`로 조회한 상품 정보와 결제 정보가 일치하는지 검증합니다.
+
+### 웹훅 수신
+
+결제 상태의 변화를 실시간으로 확인해야 한다면 웹훅을 사용할 수 있습니다.
+
+### HTTP Body 수신 설정
+
+웹훅 내용을 검증하기 위해서는 HTTP Body를 문자열 형태로 수신해야 합니다.
+
+### 웹훅 검증
+
+수신한 웹훅이 위조되지 않았는지 포트원 서버 SDK를 사용하여 검증합니다.
+
+### 결제 상태 업데이트
+
+검증된 웹훅 결과를 바탕으로 결제 상태를 업데이트합니다.
+
+
 # https://developers.portone.io/opi/ko/integration/ready/_components/integration-guide/inicis
 
 ---
@@ -20715,14 +22020,18 @@ targetVersions:
 
 3. 아래의 크레덴셜 값들을 확인합니다. 값이 표시되지 않는 경우 생성/갱신 버튼을 클릭해 주세요.
 
-   **웹결제 signkey 생성 조회**의 조회 버튼을 클릭하여 값을 확인할 수 있습니다.
-   **INIAPI key 생성 갱신**의 조회 버튼을 클릭하여 \[INIAPI KEY], \[INIAPI IV] 값을 확인할 수 있습니다.
+   <ul>
+
+   <li>**웹결제 signkey 생성 조회**의 조회 버튼을 클릭하여 값을 확인할 수 있습니다.</li>
+   <li>**INIAPI key 생성 갱신**의 조회 버튼을 클릭하여 \[INIAPI KEY], \[INIAPI IV] 값을 확인할 수 있습니다.</li>
 
    <!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
 
-   **모바일 금액위변조 HashKey**의 조회 버튼을 클릭하여 값을 확인할 수 있습니다.
+   <li>**모바일 금액위변조 HashKey**의 조회 버튼을 클릭하여 값을 확인할 수 있습니다.</li>
 
    <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
+   </ul>
 
 (이미지 첨부: KG이니시스 가맹점관리자 내 크레덴셜 정보 조회 화면 1)
 
@@ -20769,21 +22078,21 @@ title: 용어 사전
 description: ''
 ---
 
-|   용어  |                           설명                           |                                           비고                                          |
-| :---: | :----------------------------------------------------: | :-----------------------------------------------------------------------------------: |
-|   콘솔  |   포트원의 거래내역을 확인하고 파트너와 정산을 등록하고 내역을 확인 할 수 있는 솔루션입니다.  |                         [관리자콘솔 바로가기](https://admin.portone.io)                        |
-|  고객사  |             포트원의 결제서비스를 이용하고 있는 포트원의 고객입니다.            |                                                                                       |
-|  파트너  |          고객사가 결제사정산 이후 하위정산을 받을 고객사의 파트너사 입니다.         |                                                                                       |
-| 결제사정산 |       포트원의 결제 이후 결제대행사(PG) 또는 간편결제사로부터 고객사가 받는 정산      |                                                                                       |
-| 파트너정산 |              결제사정산 이후에 고객사가 파트너에게 내려주는 정산              |                                                                                       |
-|   계약  |        고객사와 파트너 사이에 정산이 이루어지기 위한 조건(중개수수료, 주기 등)       |                                                                                       |
-|  영업일  |                 은행이 영업을 하는 날로, 휴일이 아닌 날                | 10일(금), 11일(토), 12(일), 13(월)이라고 할 때, 11,12,13일의 전영업일은 10일이고, 10,11,12일의 후영업일은 13일입니다. |
-|  달력일  |                      휴일과 상관없는 단순일                      |                                                                                       |
-|  수수료  |                   절차 및 중개 등 때 수수하는 금전                  |                                                                                       |
-|  부가세  | 상품(재화)의 거래나 서비스(용역)의 제공과정에서 얻어지는 부가가치(이윤)에 대하여 과세하는 세금 |                  일반과세자는 10%의 세율이 적용함으로, 수수료가 3천원 일 경우, 부가세는 300원으로 계산                 |
-| 할인분담금 |             할인금액에 대해 고객사와 파트너가 나누어 부담하는 금액             |                                                                                       |
-|   정률  |               수수료를 계산하는 방식으로 백분율을 곱하는 방식               |                          3만원에 대해 3%의 수수료로 계약 했을 시, 수수료는 900원                          |
-|   정액  |           수수료를 계산하는 방식으로 고정된 금액 또는 건수에 곱하는 방식          |                                       판매 건당 1천원                                       |
+|   용어   |                                             설명                                             |                                                         비고                                                        |
+|:--------:|:--------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------:|
+|   콘솔   |  포트원의 거래내역을 확인하고 파트너와 정산을 등록하고 내역을 확인 할 수 있는 솔루션입니다.  |                                   [관리자콘솔 바로가기](https://admin.portone.io)                                   |
+|  고객사  |                   포트원의 결제서비스를 이용하고 있는 포트원의 고객입니다.                   |                                                                                                                     |
+|  파트너  |              고객사가 결제사정산 이후 하위정산을 받을 고객사의 파트너사 입니다.              |                                                                                                                     |
+|결제사정산|          포트원의 결제 이후 결제대행사(PG) 또는 간편결제사로부터 고객사가 받는 정산          |                                                                                                                     |
+|파트너정산|                      결제사정산 이후에 고객사가 파트너에게 내려주는 정산                     |                                                                                                                     |
+|   계약   |            고객사와 파트너 사이에 정산이 이루어지기 위한 조건(중개수수료, 주기 등)           |                                                                                                                     |
+|  영업일  |                            은행이 영업을 하는 날로, 휴일이 아닌 날                           |10일(금), 11일(토), 12(일), 13(월)이라고 할 때, 11,12,13일의 전영업일은 10일이고, 10,11,12일의 후영업일은 13일입니다.|
+|  달력일  |                                    휴일과 상관없는 단순일                                    |                                                                                                                     |
+|  수수료  |                               절차 및 중개 등 때 수수하는 금전                               |                                                                                                                     |
+|  부가세  |상품(재화)의 거래나 서비스(용역)의 제공과정에서 얻어지는 부가가치(이윤)에 대하여 과세하는 세금|                일반과세자는 10%의 세율이 적용함으로, 수수료가 3천원 일 경우, 부가세는 300원으로 계산                |
+|할인분담금|                    할인금액에 대해 고객사와 파트너가 나누어 부담하는 금액                    |                                                                                                                     |
+|   정률   |                        수수료를 계산하는 방식으로 백분율을 곱하는 방식                       |                               3만원에 대해 3%의 수수료로 계약 했을 시, 수수료는 900원                               |
+|   정액   |                수수료를 계산하는 방식으로 고정된 금액 또는 건수에 곱하는 방식                |                                                   판매 건당 1천원                                                   |
 
 
 # https://developers.portone.io/platform/ko/guides/process
@@ -20823,6 +22132,74 @@ description: ''
 - 포트원은 파트너별로 **누적된 정산금액을 정산일에 맞춰 이체할 금액을 계산**합니다.
 
 
+# https://developers.portone.io/platform/ko/readme
+
+---
+title: 파트너 정산 자동화 서비스 가이드
+description: ''
+---
+
+## ✔️ 파트너 정산 자동화 서비스란?
+
+<div class="hint" data-style="etc">
+
+👍 **매달 반복되는 모든 파트너(하위셀러) 정산을 한 번에 처리하는 원스톱 정산 솔루션입니다.**
+
+</div>
+
+포트원의 파트너 정산 자동화 서비스를 이용하여 **마켓플레이스**, **플랫폼 사업자**들이 간단한 API연동과
+포트원 관리자 콘솔을 통해서 간편하게 하위정산을 처리할 수 있습니다.
+
+플랫폼 사업을 운영하는 포트원의 고객사분들의 다양한 요청을 통해 기획된 본 서비스는,
+모든 정산 케이스들을 매우 편리하게 처리할 수 있습니다.
+
+**하위셀러 정산 시스템 구축**을 위해 고객사 자체 개발에 드는 많은 비용과 시간을,
+포트원 파트너 정산 자동화 서비스로 재무, 개발 공수를 획기적으로 줄여보세요.
+
+## ✔️ 어떤 비지니스에 파트너 정산 자동화 서비스가 필요할까요?
+
+파트너정산 서비스를 통해 정산 금액을 계산 및 관리하고 정산주기에 맞춰서 이체하실 수 있습니다.
+
+각 주문건별로 중개수수료, 부가세, 할인 분담금 등을 파트너정산 서비스에서는 자동으로 정산금액을 계산합니다.
+
+### 🛒 커머스 마켓플레이스
+
+- 셀러가 마켓플레이스에 입점하여 상품을 판매하는 경우, 셀러에게 중개 수수료 및 할인분담금 등을 정산하는 경우
+- 마케팅 채널 비용, 풀필먼트와 같이 추가로 발생하는 비용을 정산하는 경우
+
+### 🖥 온라인 강의 플랫폼
+
+- 크리에이터와 Revenue Share를 통해 주문건 마다 수익을 나누는 경우 (크리에이터, 파트너와 각 주문건별로 Revenue Share를 처리하는 경우)
+
+### 🛵 배달 플랫폼
+
+- 앱에서 이루어진 주문건별로 배달업체 및 식당과 수수료를 정산하는 경우
+
+### 🤝 중고거래 플랫폼
+
+- 앱에서 이루어진 거래건당 중개 수수료를 정산하는 경우
+- 매입상품 플랫폼 커머스, 주기적으로 매입하는 상품에 대한 정산을 처리하는 경우
+
+## ✔️ 왜 파트너 정산 자동화 서비스를 꼭 써야할까요?
+
+포트원 결제 연동 서비스에서 확장하여 복잡한 정산도 손쉽게 처리가 가능합니다!
+
+### 간단한 정산 API를 통해 실시간 정산 데이터 등록 및 관리
+
+- 주문정보를 통한 손쉬운 정산 관리
+- 주문건 외 추가 처리 필요한 정산건별
+
+### 단순 중개수수료 처리부터 다양한 파트너 과금 모델 지원
+
+- 쿠폰 및 포인트에 적용되는 할인 분담율
+- 마케팅 비용 분담, 풀필먼트 수수료와 같은 주문별 추가 수수료
+- 정산 시 수식 편집 가능
+
+### 뱅킹앱 엑셀 다운로드 및 지급대행을 통한 이체 자동화
+
+[파트너 정산 자동화 서비스 가이드](https://www.youtube.com/watch?v=tLeo78Ko4h4)
+
+
 # https://developers.portone.io/platform/ko/usages/client
 
 ---
@@ -20838,10 +22215,10 @@ description: ''
 
 - 계약 조건
 
-  | 파트너 | 중개수수료 |          정산주기         |
-  | :-: | :---: | :-------------------: |
-  |  A  |  10%  | D+2, 매월 31일, 전 영업일 기준 |
-  |  B  |  20%  | D+2, 매월 31일, 전 영업일 기준 |
+  |파트너|중개수수료|           정산주기           |
+  |:----:|:--------:|:----------------------------:|
+  |   A  |    10%   |D+2, 매월 31일, 전 영업일 기준|
+  |   B  |    20%   |D+2, 매월 31일, 전 영업일 기준|
 
 
 # https://developers.portone.io/platform/ko/usages/contract
@@ -20853,9 +22230,9 @@ description: ''
 
 ## 사전 조건
 
-|  계약 | 중개수수료 |          정산주기         |
-| :-: | :---: | :-------------------: |
-| 계약1 |  10%  | D+2, 매월 31일, 전 영업일 기준 |
+| 계약|중개수수료|           정산주기           |
+|:---:|:--------:|:----------------------------:|
+|계약1|    10%   |D+2, 매월 31일, 전 영업일 기준|
 
 ## 샘플 코드
 
@@ -21477,10 +22854,10 @@ axios
 - 결제금액 : 14,000원
 - 판매 파트너 : A, 정산시작일 (결제완료 시점): 2023-08-11
 
-|  상품 |   가격   |  갯수 |
-| :-: | :----: | :-: |
-|  A  | 2,000원 |  5개 |
-|  B  | 4,000원 |  1개 |
+|상품|  가격 |갯수|
+|:--:|:-----:|:--:|
+|  A |2,000원| 5개|
+|  B |4,000원| 1개|
 
 ### 샘플 코드
 
@@ -22957,74 +24334,6 @@ axios
 </div>
 
 
-# https://developers.portone.io/platform/ko/readme
-
----
-title: 파트너 정산 자동화 서비스 가이드
-description: ''
----
-
-## ✔️ 파트너 정산 자동화 서비스란?
-
-<div class="hint" data-style="etc">
-
-👍 **매달 반복되는 모든 파트너(하위셀러) 정산을 한 번에 처리하는 원스톱 정산 솔루션입니다.**
-
-</div>
-
-포트원의 파트너 정산 자동화 서비스를 이용하여 **마켓플레이스**, **플랫폼 사업자**들이 간단한 API연동과
-포트원 관리자 콘솔을 통해서 간편하게 하위정산을 처리할 수 있습니다.
-
-플랫폼 사업을 운영하는 포트원의 고객사분들의 다양한 요청을 통해 기획된 본 서비스는,
-모든 정산 케이스들을 매우 편리하게 처리할 수 있습니다.
-
-**하위셀러 정산 시스템 구축**을 위해 고객사 자체 개발에 드는 많은 비용과 시간을,
-포트원 파트너 정산 자동화 서비스로 재무, 개발 공수를 획기적으로 줄여보세요.
-
-## ✔️ 어떤 비지니스에 파트너 정산 자동화 서비스가 필요할까요?
-
-파트너정산 서비스를 통해 정산 금액을 계산 및 관리하고 정산주기에 맞춰서 이체하실 수 있습니다.
-
-각 주문건별로 중개수수료, 부가세, 할인 분담금 등을 파트너정산 서비스에서는 자동으로 정산금액을 계산합니다.
-
-### 🛒 커머스 마켓플레이스
-
-- 셀러가 마켓플레이스에 입점하여 상품을 판매하는 경우, 셀러에게 중개 수수료 및 할인분담금 등을 정산하는 경우
-- 마케팅 채널 비용, 풀필먼트와 같이 추가로 발생하는 비용을 정산하는 경우
-
-### 🖥 온라인 강의 플랫폼
-
-- 크리에이터와 Revenue Share를 통해 주문건 마다 수익을 나누는 경우 (크리에이터, 파트너와 각 주문건별로 Revenue Share를 처리하는 경우)
-
-### 🛵 배달 플랫폼
-
-- 앱에서 이루어진 주문건별로 배달업체 및 식당과 수수료를 정산하는 경우
-
-### 🤝 중고거래 플랫폼
-
-- 앱에서 이루어진 거래건당 중개 수수료를 정산하는 경우
-- 매입상품 플랫폼 커머스, 주기적으로 매입하는 상품에 대한 정산을 처리하는 경우
-
-## ✔️ 왜 파트너 정산 자동화 서비스를 꼭 써야할까요?
-
-포트원 결제 연동 서비스에서 확장하여 복잡한 정산도 손쉽게 처리가 가능합니다!
-
-### 간단한 정산 API를 통해 실시간 정산 데이터 등록 및 관리
-
-- 주문정보를 통한 손쉬운 정산 관리
-- 주문건 외 추가 처리 필요한 정산건별
-
-### 단순 중개수수료 처리부터 다양한 파트너 과금 모델 지원
-
-- 쿠폰 및 포인트에 적용되는 할인 분담율
-- 마케팅 비용 분담, 풀필먼트 수수료와 같은 주문별 추가 수수료
-- 정산 시 수식 편집 가능
-
-### 뱅킹앱 엑셀 다운로드 및 지급대행을 통한 이체 자동화
-
-[파트너 정산 자동화 서비스 가이드](https://www.youtube.com/watch?v=tLeo78Ko4h4)
-
-
 # https://developers.portone.io/release-notes/api-sdk/2023-04-24
 
 ---
@@ -23117,6 +24426,8 @@ writtenAt: 2023-05-25T00:00:00.000Z
 본 기능 설정을 위한 자세한 내용은 관련 API 문서를 확인 바랍니다.
 [→ 페이팔 RT 빌링키 발급 연동가이드 바로가기](https://developers.portone.io/docs/ko/pg/payment-gateway/rt)
 
+<br />
+
 ### ✔️ 네이버페이(결제형)을 이용 중인 경우, 모바일 결제창이 표시됩니다
 
 네이버페이의 업데이트에 따라, 네이버페이(결제형)을 이용 중인 경우 PC에서 결제창 호출 시 모바일 UI의 결제창이 표시되도록 수정했습니다.
@@ -23126,6 +24437,8 @@ writtenAt: 2023-05-25T00:00:00.000Z
 
 본 기능 설정을 위한 자세한 내용은 관련 API 문서를 확인 바랍니다.
 [→ 네이버페이(결제형) 팝업 모드 설정하기](https://developers.portone.io/docs/ko/pg/simple/naver)
+
+<br />
 
 ### ✔️ 워드프레스 우커머스를 통해 네이버페이(주문형)을 이용 중인 경우, 구매자의 배송지 변경 사항이 자동 반영됩니다
 
@@ -23271,6 +24584,8 @@ API를 통해 PG 설정 정보 호출시 channel\_name과 channel\_key 응답을
 
 본 기능 설정을 위한 자세한 내용은 관련 API 문서를 확인 바랍니다.
 [→ PG MID 복수조회 API 호출하기](https://developers.portone.io/docs/ko/api/miscellaneous-api/pg/pg-mid-api)
+
+<br />
 
 ## 기타 수정사항
 
@@ -23436,6 +24751,8 @@ writtenAt: 2024-01-25T00:00:00.000Z
 
 \[결제 상세 내역 조회]에서 엑셀 다운로드시 기존에 PG계정으로 표시되던 컬럼명이 **PG상점아이디(MID)** 로 표시됩니다.
 
+<br />
+
 ## 기타 수정사항
 
 ### **결제 모듈 V1**✔️ Microsoft Edge 브라우저에서 adblock extension과 충돌하는 현상이 수정되었습니다.
@@ -23538,6 +24855,8 @@ writtenAt: 2024-03-18T00:00:00.000Z
 
 토스페이먼츠를 통해 카카오페이, 페이코, 삼성페이, Lpay, 토스페이 호출 시 기존에는 POPUP 방식으로 호출되었으나
 이번 업데이트를 통해 IFRAME으로 이용 가능하여 간편결제 창을 닫은 후에도 정상적으로 실패응답을 확인할 수 있습니다.
+
+<br />
 
 ## 기타 수정사항
 
@@ -24158,6 +25477,258 @@ PG 거래대사 메뉴를 통해 아래 2가지의 업무에 쉽게 활용하실
 (관련 이미지 첨부)
 
 
+# https://developers.portone.io/release-notes/console/2023-04-24
+
+---
+releasedAt: 2023-04-24T00:00:00.000Z
+writtenAt: 2023-04-27T00:00:00.000Z
+---
+
+## 주요 업데이트 사항
+
+### ✔️ 결제내역 조회 시 상태 승인 시각을 기준으로 확인할 수 있습니다
+
+관리자콘솔 `[결제 상세 내역 조회]` 메뉴 - `[기준 시각]`을 `'상태 승인 시각'`으로 선택해 보세요.\
+다섯 가지 결제 상태에 따라 가장 최근에 업데이트된 시각을 확인할 수 있습니다.
+
+앞으로는 결제건의 결제 상태와 더불어 마지막 결제 상태가 업데이트된 시각도 함께 볼 수 있습니다.
+
+<div class="hint" data-style="info">
+
+**Tip**: 포트원 관리자콘솔은 결제 상태를 결제완료, 결제예정, 결제실패, 결제취소, 승인대기로 분류하고 있습니다.
+
+</div>
+
+(관련 이미지 첨부)
+
+## 기타 수정사항
+
+### ✔️ 매니저 권한을 부여받은 계정으로 정산 서비스를 이용할 수 있습니다
+
+포트원 관리자콘솔은 계정 권한을 총 다섯 가지로 분류하고 있습니다.
+
+1. **Admin(Owner)**: 모든 기능 접근 가능, 계정 삭제 시 상점 삭제
+2. **Admin**: 모든 기능 접근 가능
+3. **Dev**: 결제 연동 설정, 결제 내역 조회
+4. **Manager**: 결제 내역 조회 및 수정, 리포트 조회, 계정 관리
+5. **Read Only**: 결제 내역 조회, 리포트 조회
+
+### ✔️ 결제연동 설정 시, 결제대행사로 다날 또는 KG이니시스를 선택하는 경우에만 본인인증을 선택할 수 있습니다
+
+관리자콘솔 `[결제연동]` 메뉴 - `[테스트/실 연동 관리]` 탭에서 결제대행사 설정 및 추가를 진행할 때
+본인인증 서비스를 제공하는 다날과 KG이니시스를 선택하는 경우에만 채널 속성에서 `'본인인증'` 선택이
+활성화 됩니다. 이 외 결제대행사 선택 시 `'본인인증'` 선택은 비활성화 됩니다.
+
+(관련 이미지 첨부)
+
+
+# https://developers.portone.io/release-notes/console/2023-05-08
+
+---
+releasedAt: 2023-05-08T00:00:00.000Z
+writtenAt: 2023-05-11T00:00:00.000Z
+---
+
+(관련 이미지 첨부)
+
+
+# https://developers.portone.io/release-notes/console/2023-05-22
+
+---
+releasedAt: 2023-05-22T00:00:00.000Z
+writtenAt: 2023-05-25T00:00:00.000Z
+---
+
+(관련 이미지 첨부)
+
+<br />
+
+## 주요 업데이트 사항
+
+### ✔️ 페이코 직연동을 이용 중인 경우, 판매자용 매출전표가 표시됩니다
+
+이번 업데이트를 통해 판매자용 매출전표가 표시되도록 수정했습니다.
+관리자콘솔 \[결제 상세 내역 조회] - 결제 건 선택 - ‘승인 영수증’을 선택해 확인해보세요.
+
+
+# https://developers.portone.io/release-notes/console/2023-07-05
+
+---
+releasedAt: 2023-07-05T00:00:00.000Z
+writtenAt: 2023-07-05T00:00:00.000Z
+---
+
+## 주요 업데이트 사항
+
+### ✔️ 전자결제 신청시 포트원 추천 패키지를 선택할 수 있습니다.
+
+수많은 결제수단과 결제대행사 중 어떤 것이 우리 서비스에 알맞을지 고민됐다면, 포트원이 추천하는 결제수단과 결제대행사를 선택해서 전자결제를 신청하세요.
+
+결제 데이터를 기반으로 증명된, 온라인 서비스를 운영 중인 기업이 가장 많이 이용하는 결제수단 네
+가지를 제안합니다. 결제수단 선택시 포트원이 추천하는 결제대행사를 즉시 확인할 수 있습니다.
+
+포트원 추천 패키지는 결제수단, 결제대행사 이용 비용, 결제형태와 연동방식을 종합적으로 고려하여
+선별했습니다. 특정 결제수단과 결제대행사를 이용을 원한다면 \[전자결제 직접 선택하기]를 통해 자유롭게
+골라보세요.
+
+(관련 이미지 첨부)
+
+### ✔️ 전자결제 신청시 결제서비스의 모든 구성을 커스텀할 수 있습니다.
+
+기존에는 결제수단을 선택한 후 다음 페이지에서 결제대행사와 결제형태를 확인할 수 있었기에 전자결제 신청 과정이 번거로웠습니다.
+
+앞으로는 한 페이지에서 결제수단별로 이용 가능한 결제대행사를 확인하고, 결제형태까지 선택해보세요. 선택한 결제서비스는 장바구니에 담겨 즉시 확인하고 수정할 수 있습니다.
+
+결제대행사별로 제공하는 결제수단이 궁금하다면, 우측 상단의 \[모든 결제대행사 보기]를 통해 포트원에서 지원하는 모든 결제대행사와 결제수단, 수수료까지 한 눈에 살펴보세요.
+
+(관련 이미지 첨부)
+
+
+# https://developers.portone.io/release-notes/console/2023-07-07
+
+---
+releasedAt: 2023-07-07T00:00:00.000Z
+writtenAt: 2023-07-10T00:00:00.000Z
+---
+
+## 주요 업데이트 사항
+
+### **PG 거래대사**✔️ 엑심베이의 정산내역을 확인할 수 있습니다
+
+이번 업데이트를 통해 처음으로 해외결제건의 정산내역을 조회할 수 있습니다.
+관리자콘솔 \[정산]메뉴 - \[통합 내역 조회]에서 정산내역을 조회할 수 있으며, 엑심베이를 통한 7월 5일 결제건부터 확인할 수 있습니다.\
+엑심베이는 결제일로부터 2일 후에 결제일의 정산내역을 수신합니다.
+이용에 참고바랍니다.
+
+📍정산통합조회 서비스의 기능이 궁금하다면 [→ 서비스소개 보기](https://guide.portone.io/a89f61e5-4545-41ae-9b72-14f506adcac6)\
+📍이용 중인 PG사도 정산내역 조회가 가능한지 궁금하다면
+[→ 지원 PG사 확인하기](https://guide.portone.io/a89f61e5-4545-41ae-9b72-14f506adcac6)\
+📍정산통합조회 서비스의 이용방법이 궁금하다면 [→ 이용방법 보기](https://guide.portone.io/92af7604-5813-48fa-a186-82e8e7356a3e)
+
+### **PG 거래대사**✔️ 정산 통화별로 정산내역을 조회할 수 있습니다
+
+기존에는 원화로만 정산내역을 조회할 수 있엇지만, 이번 업데이트를 통해 결제통화 및 정산통화별로 정산내역을 조회할 수 있습니다.
+또한 \[통합 내역 조회] 메뉴의 조회 기준일이 정산예정일에 맞추어 자동으로 설정됩니다.
+
+(관련 이미지 첨부)
+
+
+# https://developers.portone.io/release-notes/console/2023-07-17
+
+---
+releasedAt: 2023-07-17T00:00:00.000Z
+writtenAt: 2023-07-19T00:00:00.000Z
+---
+
+## 주요 업데이트 사항
+
+### ✔️ KG이니시스 승인 영수증에서 신규 매출전표가 표시됩니다
+
+이번 업데이트를 통해 관리자콘솔의 \[결제 내역 상세 조회] 메뉴에서 KG이니시스 결제건 선택시 승인 영수증에서 신규 매출전표가 표시됩니다.
+
+<br />
+
+## 기타 수정사항
+
+- 클래식 콘솔에서 결제내역 조회시 모든 PG사를 필터로 추가하여 검색할 수 있습니다
+
+
+# https://developers.portone.io/release-notes/console/2023-08-23
+
+---
+releasedAt: 2023-08-23T00:00:00.000Z
+writtenAt: 2023-08-23T00:00:00.000Z
+---
+
+## 주요 업데이트 사항
+
+### **PG 거래대사**✔️ KG이니시스의 정산내역을 확인할 수 있습니다.
+
+이번 업데이트를 통해 KG이니시스를 포함한 주요 10개 결제대행사(PG)/간편결제사의 정산 내역을 조회할 수 있습니다.
+관리자콘솔 메뉴 \[결제사 정산] - \[통합 내역 조회]에서 정산 내역을 조회할 수 있으며, KG이니시스의 경우 8월 1일 결제건부터 조회가 가능하오니 이용에 참고하시기 바랍니다.
+
+📍 정산 통합 조회 서비스의 기능이 궁금하다면
+[→ 서비스 소개 보기](https://guide.portone.io/a89f61e5-4545-41ae-9b72-14f506adcac6)\
+📍 이용 중인 결제대행사(PG사)도 정산 내역 조회가 가능한지 궁금하다면
+[→ 지원 결제대행사(PG)사 확인하기](https://guide.portone.io/a89f61e5-4545-41ae-9b72-14f506adcac6)\
+📍 정산 통합 조회 서비스의 이용 방법이 궁금하다면 [→ 이용 방법 보기](https://guide.portone.io/92af7604-5813-48fa-a186-82e8e7356a3e)
+
+
+# https://developers.portone.io/release-notes/console/2023-09-12
+
+---
+releasedAt: 2023-09-15T00:00:00.000Z
+writtenAt: 2023-09-15T00:00:00.000Z
+---
+
+## 주요 업데이트 사항
+
+### ✔️ 전자결제 신청하기 페이지 리뉴얼
+
+이번 업데이트를 통해 전자결제 신청 후 계약 진행 상황을 실시간을 볼 수 있는 상태값 조회 페이지가 개선되었습니다.
+이외에 자세한 리뉴얼 상황은 아래와 같습니다.
+
+📍 결제대행사별로, 계약 건별로 상황을 확인할 수 있습니다.\
+📍 계약 과정에서 필요한 서류 등 체크리스트를 확인할 수 있습니다.\
+📍 워드프레스/ 우커머스 사이트를 지원하는 결제대행사 정보를 확인하실 수 있습니다.\
+📍 포트원 추천패키지 상세 가이드가 추가되었습니다.
+
+
+# https://developers.portone.io/release-notes/console/2023-12-27
+
+---
+releasedAt: 2023-12-27T00:00:00.000Z
+writtenAt: 2024-01-02T00:00:00.000Z
+---
+
+## 주요 업데이트 사항
+
+### **PG 거래대사**✔️ 헥토파이낸셜의 정산내역을 확인할 수 있습니다.
+
+이번 업데이트를 통해 헥토파이낸셜을 포함한 11개 PG사와 간편결제사의 정산 내역을 조회할 수 있습니다.
+관리자콘솔 메뉴 \[결제사 정산] - \[통합 내역 조회]에서 정산 내역을 조회할 수 있으며,
+헥토파이낸셜의 경우 8월 1일 결제건부터 조회가 가능하오니 이용에 참고하시기 바랍니다.
+
+📍 정산 통합 조회 서비스의 기능이 궁금하다면
+[→ 서비스 소개 보기](https://guide.portone.io/a89f61e5-4545-41ae-9b72-14f506adcac6)\
+📍 이용 중인 결제대행사(PG사)도 정산 내역 조회가 가능한지 궁금하다면
+[→ 지원 결제대행사(PG)사 확인하기](https://guide.portone.io/a89f61e5-4545-41ae-9b72-14f506adcac6)\
+📍 정산 통합 조회 서비스의 이용 방법이 궁금하다면 [→ 이용 방법 보기](https://guide.portone.io/92af7604-5813-48fa-a186-82e8e7356a3e)
+
+## 기타 수정사항
+
+### **결제 모듈 V1**✔️ KG이니시스 결제 시 결제 통화 위/변조 검사가 추가되었습니다.
+
+PC 환경에서 KG이니시스의 승인 요청시 결제 통화 및 결제 금액 위/변조 검사를 진행합니다.
+
+
+# https://developers.portone.io/release-notes/console/2024-09-05
+
+---
+releasedAt: 2024-09-05T00:00:00.000Z
+writtenAt: 2024-09-05T00:00:00.000Z
+---
+
+## 주요 업데이트 사항
+
+### ✔️ 좌측 메뉴 영역이 새롭게 변경되었습니다.
+
+(관련 이미지 첨부)
+
+기존 \[파트너 정산] 메뉴는 \[파트너 정산 자동화], \[애널리틱스] 메뉴는 \[결제 데이터 분석]으로 변경됩니다.
+
+- **\[메뉴 접기]**
+
+  - 메뉴 접기 아이콘을 클릭하여 좌측 메뉴 영역을 접을 수 있습니다.
+  - 메뉴가 접힌 상태에서 한번 더 클릭하는 경우 다시 메뉴를 펼칠 수 있습니다.
+
+- **\[전자결제 신청]**
+  - 전자결제 신청을 원하시는 경우 좌측 메뉴 영역 하단의 \[전자결제 신청]을 클릭해 주세요.
+
+- **\[로그아웃]**
+  - 좌측 메뉴 영역 상단의 \[계정 정보]를 클릭한 후 \[로그아웃]을 클릭해 주세요.
+
+
 # https://developers.portone.io/release-notes/platform/2023-08-31
 
 ---
@@ -24207,16 +25778,16 @@ writtenAt: 2023-11-09T00:00:00.000Z
 
 이번 릴리즈를 통해서 각 수식 별로 사용 가능 변수는 아래와 같습니다.
 
-|         영문 변수 명         |   한글 변수 명   | 플랫폼수수료수식 | 할인분담수식 | 추가수수료수식 |
-| :---------------------: | :---------: | :------: | :----: | :-----: |
-|      ORDER\_AMOUNT      |     주문금액    |     O    |    X   |    O    |
-|     PAYMENT\_AMOUNT     |     결제금액    |     O    |    X   |    O    |
-|     DISCOUNT\_AMOUNT    |     할인금액    |     O    |    O   |    O    |
-|       FIXED\_RATE       |      정률     |     O    |    O   |    O    |
-|      FIXED\_AMOUNT      |      정액     |     O    |    X   |    O    |
-| DISCOUNT\_SHARE\_AMOUNT |    할인분담금    |     O    |    X   |    O    |
-|  PLATFORM\_FEE\_AMOUNT  |  플랫폼중개수수료액  |     X    |    X   |    O    |
-|    PLATFORM\_FEE\_VAT   | 플랫폼중개수수료부가세 |     X    |    X   |    O    |
+|      영문 변수 명     |     한글 변수 명     |플랫폼수수료수식|할인분담수식|추가수수료수식|
+|:---------------------:|:--------------------:|:--------------:|:----------:|:------------:|
+|     ORDER\_AMOUNT     |       주문금액       |        O       |      X     |       O      |
+|    PAYMENT\_AMOUNT    |       결제금액       |        O       |      X     |       O      |
+|    DISCOUNT\_AMOUNT   |       할인금액       |        O       |      O     |       O      |
+|      FIXED\_RATE      |         정률         |        O       |      O     |       O      |
+|     FIXED\_AMOUNT     |         정액         |        O       |      X     |       O      |
+|DISCOUNT\_SHARE\_AMOUNT|      할인분담금      |        O       |      X     |       O      |
+| PLATFORM\_FEE\_AMOUNT |  플랫폼중개수수료액  |        X       |      X     |       O      |
+|   PLATFORM\_FEE\_VAT  |플랫폼중개수수료부가세|        X       |      X     |       O      |
 
 
 # https://developers.portone.io/release-notes/platform/2023-11-14
@@ -24527,15 +26098,15 @@ writtenAt: 2024-07-05T00:00:00.000Z
 
 - 상세 내용은 아래 표 참조
 
-  | 권한 / 역할  | Owner | Admin | Dev | Manager | Read Only | Read Only (엑셀 다운로드 불가) | API Secret |
-  | -------- | ----- | ----- | --- | ------- | --------- | ---------------------- | ---------- |
-  | 정산 관리 정책 | 조회/편집 | 조회/편집 | 조회  | 조회      | 조회        | 조회                     | 조회/편집      |
-  | 파트너 관리   | 조회/편집 | 조회/편집 | 조회  | 조회      | 조회        | 조회                     | 조회/편집      |
-  | 정산 상세 조회 | 조회/편집 | 조회/편집 | 조회  | 조회      | 조회        | 조회                     | 조회/편집      |
-  | 정산 내역 관리 | 조회/편집 | 조회/편집 | 조회  | 조회      | 조회        | 조회                     | 조회/편집      |
-  | 지급 내역 관리 | 조회/편집 | 조회/편집 | 조회  | 조회      | 조회        | 조회                     | 조회         |
-  | 일괄 지급 관리 | 조회/편집 | 조회/편집 | 조회  | 조회      | 조회        | 조회                     | 조회         |
-  | 내역 다운로드  | 가능    | 가능    | 가능  | 가능      | 가능        | 불가능                    | 가능         |
+  |권한 / 역할   |Owner    |Admin    |Dev |Manager|Read Only|Read Only <br />(엑셀 다운로드 불가)|API Secret|
+  |--------------|---------|---------|----|-------|---------|------------------------------------|----------|
+  |정산 관리 정책|조회/편집|조회/편집|조회|조회   |조회     |조회                                |조회/편집 |
+  |파트너 관리   |조회/편집|조회/편집|조회|조회   |조회     |조회                                |조회/편집 |
+  |정산 상세 조회|조회/편집|조회/편집|조회|조회   |조회     |조회                                |조회/편집 |
+  |정산 내역 관리|조회/편집|조회/편집|조회|조회   |조회     |조회                                |조회/편집 |
+  |지급 내역 관리|조회/편집|조회/편집|조회|조회   |조회     |조회                                |조회      |
+  |일괄 지급 관리|조회/편집|조회/편집|조회|조회   |조회     |조회                                |조회      |
+  |내역 다운로드 |가능     |가능     |가능|가능   |가능     |불가능                              |가능      |
 
 ## 개선 사항
 
@@ -25159,19 +26730,19 @@ writtenAt: 2025-01-16T00:00:00.000Z
 
 - 세금계산서 발행 요청 **이메일을 재발송**할 경우, 기존 이메일 **토큰 만료되어 조회 불가**한 케이스에 대하여 에러 메시지를 노출합니다.
 
-(이미지 첨부: true)
+(관련 이미지 첨부)
 
 **기존 세금계산서 토큰 유효기간 만료 에러**
 
 - **토큰이 만료(이메일 발송일로부터 2달 경과)된 세금계산서**에 대하여 에러 메시지를 노출합니다.
 
-(이미지 첨부: true)
+(관련 이미지 첨부)
 
 ## ✔️ 정산내역관리/지급내역관리 표 헤더 상단고정
 
 - 정산/지급내역관리의 **표 리스트를 스크롤**하는 경우, **컬럼명을 고정**하여 각 컬럼 항목에 해당하는 데이터를 명확하게 인지할 수 있도록 개선하였습니다.
 
-(이미지 첨부: true)
+(관련 이미지 첨부)
 
 ---
 
@@ -25213,7 +26784,7 @@ writtenAt: 2025-02-10T00:00:00.000Z
 
 - **회계 기준에 맞는** 부가세 및 정산 금액에 대한 **소수부 처리 기준**을 설정하여 **정밀한 정산**이 가능합니다.
 
-(이미지 첨부: true)
+(관련 이미지 첨부)
 
 ### ✅ **이제 정산 자동화, 더 쉽고 유연하게!**
 
@@ -25221,13 +26792,19 @@ writtenAt: 2025-02-10T00:00:00.000Z
 
 다양한 예외 사항을 고려한 정산 구조를 설정하고, 플랫폼에 맞는 정산 정책을 더욱 유연하게 운영해 보세요!
 
+<br />
+
 📢 **업데이트 사용 방법:** \[파트너 정산 자동화] → \[정산 정책 관리] → \[계산 관리]
+
+<br />
+
+<br />
 
 ### 🚧 API 변경사항
 
 이제 [주문 정산건 생성](https://developers.portone.io/api/rest-v2/platform.transfer?v=v2#post%20%2Fplatform%2Ftransfers%2Forder)하실 때에 정산 파라미터를 활용하실 수 있습니다.
 
-(이미지 첨부: true)
+(관련 이미지 첨부)
 
 사용자 정의 함수의 계산 결과와 파라미터에 지정된 값을 응답 메세지에서 확인할 수 있습니다.
 
@@ -25267,7 +26844,7 @@ writtenAt: 2025-02-13T00:00:00.000Z
 
 이제 API를 활용하여 **세금계산서 발행 프로세스를 더욱 간편하게 자동화**하세요! 🚀
 
-(이미지 첨부: true)
+(관련 이미지 첨부)
 
 ---
 
@@ -25302,6 +26879,8 @@ writtenAt: 2025-03-04T00:00:00.000Z
 
 (이미지 첨부: Step 2. 수기 정산건 등록 시 정산 내역 관리 목록에서 즉시 확인 가능)
 
+<br />
+
 ## ✔️ 2. 국세청 미연동 사업자번호 세금계산서 발행 제한
 
 - **기존:** 국세청 연동되지 않은 사업자번호도 세금계산서 **발행 요청 가능** → 공급자가 발행 페이지에서 오류 확인
@@ -25312,7 +26891,9 @@ writtenAt: 2025-03-04T00:00:00.000Z
   - 세금계산서 > 세금계산서 작성 > **일괄등록 (단건등록은 기존에도 국세청 미연동자 세금계산서 발행 제한)**
   - 세금계산서 > 세금계산서 목록 > **요청실패**
 
-(이미지 첨부: true)
+(관련 이미지 첨부)
+
+<br />
 
 늘 파트너정산자동화 서비스를 이용해주셔 감사합니다.
 
@@ -25325,252 +26906,48 @@ writtenAt: 2025-03-04T00:00:00.000Z
 파트너정산 자동화 팀 드림
 
 
-# https://developers.portone.io/release-notes/console/2023-04-24
+# https://developers.portone.io/release-notes/platform/2025-03-17
 
 ---
-releasedAt: 2023-04-24T00:00:00.000Z
-writtenAt: 2023-04-27T00:00:00.000Z
+releasedAt: 2025-03-17T00:00:00.000Z
+writtenAt: 2025-03-17T00:00:00.000Z
 ---
 
-## 주요 업데이트 사항
+안녕하세요 파트너 정산 자동화 팀입니다.
 
-### ✔️ 결제내역 조회 시 상태 승인 시각을 기준으로 확인할 수 있습니다
+세금계산서 역발행 기능에 대해 두 가지 주요 업데이트를 안내드립니다.
 
-관리자콘솔 `[결제 상세 내역 조회]` 메뉴 - `[기준 시각]`을 `'상태 승인 시각'`으로 선택해 보세요.\
-다섯 가지 결제 상태에 따라 가장 최근에 업데이트된 시각을 확인할 수 있습니다.
+## ✔️ 1. 세금계산서 역발행 상태 변화 웹훅 기능 지원
 
-앞으로는 결제건의 결제 상태와 더불어 마지막 결제 상태가 업데이트된 시각도 함께 볼 수 있습니다.
+- 세금계산서 및 연동사업자의 상태 변경 시, **웹훅을 통해 실시간 알림을 제공합니다.**
+- 웹훅 사용을 희망하는 고객사는 문의 부탁드립니다. (상세 스펙 및 설정 지원)
 
-<div class="hint" data-style="info">
+## ✔️ 2. 사업자등록 정보조회 API 지원
 
-**Tip**: 포트원 관리자콘솔은 결제 상태를 결제완료, 결제예정, 결제실패, 결제취소, 승인대기로 분류하고 있습니다.
+- **사업자등록번호만으로** 해당 사업자에 대한 **상세 정보를 조회**할 수 있습니다. [(API 확인하기)](https://developers.portone.io/api/rest-v2/platform.company?v=v2#post%20%2Fb2b%2Fcompanies%2Fbusiness-info)
 
-</div>
+- 사업자등록번호를 입력하면 아래 항목들이 응답값으로 제공됩니다. (다건 지원이며, 건당 비용 발생)
+  - **응답 항목:**
+    사업자등록번호, 상호, 대표자명, 우편번호, 주소, 사업자유형, 사업상태, 과세유형, 간이과세-일반과세전환일, 폐업일, 개업일, 업태, 종목, 업종코드, 법인등록번호, 전화번호, 관할세무서코드, 관할세무서명
 
-(관련 이미지 첨부)
+- 본 API를 활용하면 세금계산서 역발행 시 **파트너사의 사업자 정보를 자동으로 최신 상태로 업데이트**하여 **업무 효율성을 극대화**할 수 있습니다.
 
-## 기타 수정사항
+## 🔹 **사용 문의 경로**
 
-### ✔️ 매니저 권한을 부여받은 계정으로 정산 서비스를 이용할 수 있습니다
+- 기존 파트너정산자동화 제품을 이용하고 계신 고객이더라도, 세금계산서 역발행 기능 사용을 위해서는 별도 문의가 필요합니다.
 
-포트원 관리자콘솔은 계정 권한을 총 다섯 가지로 분류하고 있습니다.
+- 세금계산서 상태변화 웹훅 및 사업자번호 기업정보조회 API 연동이 필요하신 고객사는
+  [📩 support.b2b@portone.io](mailto:support.b2b@portone.io)로 문의해 주세요.
 
-1. **Admin(Owner)**: 모든 기능 접근 가능, 계정 삭제 시 상점 삭제
-2. **Admin**: 모든 기능 접근 가능
-3. **Dev**: 결제 연동 설정, 결제 내역 조회
-4. **Manager**: 결제 내역 조회 및 수정, 리포트 조회, 계정 관리
-5. **Read Only**: 결제 내역 조회, 리포트 조회
+포트원의 전체 업데이트 소식은 [개발자센터 릴리즈노트](https://developers.portone.io/release-notes) 페이지에서 확인할 수 있습니다.
 
-### ✔️ 결제연동 설정 시, 결제대행사로 다날 또는 KG이니시스를 선택하는 경우에만 본인인증을 선택할 수 있습니다
-
-관리자콘솔 `[결제연동]` 메뉴 - `[테스트/실 연동 관리]` 탭에서 결제대행사 설정 및 추가를 진행할 때
-본인인증 서비스를 제공하는 다날과 KG이니시스를 선택하는 경우에만 채널 속성에서 `'본인인증'` 선택이
-활성화 됩니다. 이 외 결제대행사 선택 시 `'본인인증'` 선택은 비활성화 됩니다.
-
-(관련 이미지 첨부)
-
-
-# https://developers.portone.io/release-notes/console/2023-05-08
+늘 파트너정산자동화 서비스를 이용해주셔 감사합니다.
 
 ---
-releasedAt: 2023-05-08T00:00:00.000Z
-writtenAt: 2023-05-11T00:00:00.000Z
----
 
-(관련 이미지 첨부)
+감사합니다.
 
-
-# https://developers.portone.io/release-notes/console/2023-05-22
-
----
-releasedAt: 2023-05-22T00:00:00.000Z
-writtenAt: 2023-05-25T00:00:00.000Z
----
-
-(관련 이미지 첨부)
-
-## 주요 업데이트 사항
-
-### ✔️ 페이코 직연동을 이용 중인 경우, 판매자용 매출전표가 표시됩니다
-
-이번 업데이트를 통해 판매자용 매출전표가 표시되도록 수정했습니다.
-관리자콘솔 \[결제 상세 내역 조회] - 결제 건 선택 - ‘승인 영수증’을 선택해 확인해보세요.
-
-
-# https://developers.portone.io/release-notes/console/2023-07-05
-
----
-releasedAt: 2023-07-05T00:00:00.000Z
-writtenAt: 2023-07-05T00:00:00.000Z
----
-
-## 주요 업데이트 사항
-
-### ✔️ 전자결제 신청시 포트원 추천 패키지를 선택할 수 있습니다.
-
-수많은 결제수단과 결제대행사 중 어떤 것이 우리 서비스에 알맞을지 고민됐다면, 포트원이 추천하는 결제수단과 결제대행사를 선택해서 전자결제를 신청하세요.
-
-결제 데이터를 기반으로 증명된, 온라인 서비스를 운영 중인 기업이 가장 많이 이용하는 결제수단 네
-가지를 제안합니다. 결제수단 선택시 포트원이 추천하는 결제대행사를 즉시 확인할 수 있습니다.
-
-포트원 추천 패키지는 결제수단, 결제대행사 이용 비용, 결제형태와 연동방식을 종합적으로 고려하여
-선별했습니다. 특정 결제수단과 결제대행사를 이용을 원한다면 \[전자결제 직접 선택하기]를 통해 자유롭게
-골라보세요.
-
-(관련 이미지 첨부)
-
-### ✔️ 전자결제 신청시 결제서비스의 모든 구성을 커스텀할 수 있습니다.
-
-기존에는 결제수단을 선택한 후 다음 페이지에서 결제대행사와 결제형태를 확인할 수 있었기에 전자결제 신청 과정이 번거로웠습니다.
-
-앞으로는 한 페이지에서 결제수단별로 이용 가능한 결제대행사를 확인하고, 결제형태까지 선택해보세요. 선택한 결제서비스는 장바구니에 담겨 즉시 확인하고 수정할 수 있습니다.
-
-결제대행사별로 제공하는 결제수단이 궁금하다면, 우측 상단의 \[모든 결제대행사 보기]를 통해 포트원에서 지원하는 모든 결제대행사와 결제수단, 수수료까지 한 눈에 살펴보세요.
-
-(관련 이미지 첨부)
-
-
-# https://developers.portone.io/release-notes/console/2023-07-07
-
----
-releasedAt: 2023-07-07T00:00:00.000Z
-writtenAt: 2023-07-10T00:00:00.000Z
----
-
-## 주요 업데이트 사항
-
-### **PG 거래대사**✔️ 엑심베이의 정산내역을 확인할 수 있습니다
-
-이번 업데이트를 통해 처음으로 해외결제건의 정산내역을 조회할 수 있습니다.
-관리자콘솔 \[정산]메뉴 - \[통합 내역 조회]에서 정산내역을 조회할 수 있으며, 엑심베이를 통한 7월 5일 결제건부터 확인할 수 있습니다.\
-엑심베이는 결제일로부터 2일 후에 결제일의 정산내역을 수신합니다.
-이용에 참고바랍니다.
-
-📍정산통합조회 서비스의 기능이 궁금하다면 [→ 서비스소개 보기](https://guide.portone.io/a89f61e5-4545-41ae-9b72-14f506adcac6)\
-📍이용 중인 PG사도 정산내역 조회가 가능한지 궁금하다면
-[→ 지원 PG사 확인하기](https://guide.portone.io/a89f61e5-4545-41ae-9b72-14f506adcac6)\
-📍정산통합조회 서비스의 이용방법이 궁금하다면 [→ 이용방법 보기](https://guide.portone.io/92af7604-5813-48fa-a186-82e8e7356a3e)
-
-### **PG 거래대사**✔️ 정산 통화별로 정산내역을 조회할 수 있습니다
-
-기존에는 원화로만 정산내역을 조회할 수 있엇지만, 이번 업데이트를 통해 결제통화 및 정산통화별로 정산내역을 조회할 수 있습니다.
-또한 \[통합 내역 조회] 메뉴의 조회 기준일이 정산예정일에 맞추어 자동으로 설정됩니다.
-
-(관련 이미지 첨부)
-
-
-# https://developers.portone.io/release-notes/console/2023-07-17
-
----
-releasedAt: 2023-07-17T00:00:00.000Z
-writtenAt: 2023-07-19T00:00:00.000Z
----
-
-## 주요 업데이트 사항
-
-### ✔️ KG이니시스 승인 영수증에서 신규 매출전표가 표시됩니다
-
-이번 업데이트를 통해 관리자콘솔의 \[결제 내역 상세 조회] 메뉴에서 KG이니시스 결제건 선택시 승인 영수증에서 신규 매출전표가 표시됩니다.
-
-## 기타 수정사항
-
-- 클래식 콘솔에서 결제내역 조회시 모든 PG사를 필터로 추가하여 검색할 수 있습니다
-
-
-# https://developers.portone.io/release-notes/console/2023-08-23
-
----
-releasedAt: 2023-08-23T00:00:00.000Z
-writtenAt: 2023-08-23T00:00:00.000Z
----
-
-## 주요 업데이트 사항
-
-### **PG 거래대사**✔️ KG이니시스의 정산내역을 확인할 수 있습니다.
-
-이번 업데이트를 통해 KG이니시스를 포함한 주요 10개 결제대행사(PG)/간편결제사의 정산 내역을 조회할 수 있습니다.
-관리자콘솔 메뉴 \[결제사 정산] - \[통합 내역 조회]에서 정산 내역을 조회할 수 있으며, KG이니시스의 경우 8월 1일 결제건부터 조회가 가능하오니 이용에 참고하시기 바랍니다.
-
-📍 정산 통합 조회 서비스의 기능이 궁금하다면
-[→ 서비스 소개 보기](https://guide.portone.io/a89f61e5-4545-41ae-9b72-14f506adcac6)\
-📍 이용 중인 결제대행사(PG사)도 정산 내역 조회가 가능한지 궁금하다면
-[→ 지원 결제대행사(PG)사 확인하기](https://guide.portone.io/a89f61e5-4545-41ae-9b72-14f506adcac6)\
-📍 정산 통합 조회 서비스의 이용 방법이 궁금하다면 [→ 이용 방법 보기](https://guide.portone.io/92af7604-5813-48fa-a186-82e8e7356a3e)
-
-
-# https://developers.portone.io/release-notes/console/2023-09-12
-
----
-releasedAt: 2023-09-15T00:00:00.000Z
-writtenAt: 2023-09-15T00:00:00.000Z
----
-
-## 주요 업데이트 사항
-
-### ✔️ 전자결제 신청하기 페이지 리뉴얼
-
-이번 업데이트를 통해 전자결제 신청 후 계약 진행 상황을 실시간을 볼 수 있는 상태값 조회 페이지가 개선되었습니다.
-이외에 자세한 리뉴얼 상황은 아래와 같습니다.
-
-📍 결제대행사별로, 계약 건별로 상황을 확인할 수 있습니다.\
-📍 계약 과정에서 필요한 서류 등 체크리스트를 확인할 수 있습니다.\
-📍 워드프레스/ 우커머스 사이트를 지원하는 결제대행사 정보를 확인하실 수 있습니다.\
-📍 포트원 추천패키지 상세 가이드가 추가되었습니다.
-
-
-# https://developers.portone.io/release-notes/console/2023-12-27
-
----
-releasedAt: 2023-12-27T00:00:00.000Z
-writtenAt: 2024-01-02T00:00:00.000Z
----
-
-## 주요 업데이트 사항
-
-### **PG 거래대사**✔️ 헥토파이낸셜의 정산내역을 확인할 수 있습니다.
-
-이번 업데이트를 통해 헥토파이낸셜을 포함한 11개 PG사와 간편결제사의 정산 내역을 조회할 수 있습니다.
-관리자콘솔 메뉴 \[결제사 정산] - \[통합 내역 조회]에서 정산 내역을 조회할 수 있으며,
-헥토파이낸셜의 경우 8월 1일 결제건부터 조회가 가능하오니 이용에 참고하시기 바랍니다.
-
-📍 정산 통합 조회 서비스의 기능이 궁금하다면
-[→ 서비스 소개 보기](https://guide.portone.io/a89f61e5-4545-41ae-9b72-14f506adcac6)\
-📍 이용 중인 결제대행사(PG사)도 정산 내역 조회가 가능한지 궁금하다면
-[→ 지원 결제대행사(PG)사 확인하기](https://guide.portone.io/a89f61e5-4545-41ae-9b72-14f506adcac6)\
-📍 정산 통합 조회 서비스의 이용 방법이 궁금하다면 [→ 이용 방법 보기](https://guide.portone.io/92af7604-5813-48fa-a186-82e8e7356a3e)
-
-## 기타 수정사항
-
-### **결제 모듈 V1**✔️ KG이니시스 결제 시 결제 통화 위/변조 검사가 추가되었습니다.
-
-PC 환경에서 KG이니시스의 승인 요청시 결제 통화 및 결제 금액 위/변조 검사를 진행합니다.
-
-
-# https://developers.portone.io/release-notes/console/2024-09-05
-
----
-releasedAt: 2024-09-05T00:00:00.000Z
-writtenAt: 2024-09-05T00:00:00.000Z
----
-
-## 주요 업데이트 사항
-
-### ✔️ 좌측 메뉴 영역이 새롭게 변경되었습니다.
-
-(관련 이미지 첨부)
-
-기존 \[파트너 정산] 메뉴는 \[파트너 정산 자동화], \[애널리틱스] 메뉴는 \[결제 데이터 분석]으로 변경됩니다.
-
-- **\[메뉴 접기]**
-
-  - 메뉴 접기 아이콘을 클릭하여 좌측 메뉴 영역을 접을 수 있습니다.
-  - 메뉴가 접힌 상태에서 한번 더 클릭하는 경우 다시 메뉴를 펼칠 수 있습니다.
-
-- **\[전자결제 신청]**
-  - 전자결제 신청을 원하시는 경우 좌측 메뉴 영역 하단의 \[전자결제 신청]을 클릭해 주세요.
-
-- **\[로그아웃]**
-  - 좌측 메뉴 영역 상단의 \[계정 정보]를 클릭한 후 \[로그아웃]을 클릭해 주세요.
+파트너정산 자동화 팀 드림
 
 
 # https://developers.portone.io/blog/posts/2024-02/v2-oom
@@ -26769,239 +28146,246 @@ ZIO는 그러한 조건에 잘 부합하는 Effect System이었고 현재까지�
 [zio]: https://zio.dev/
 
 
-# https://developers.portone.io/blog/posts/2024-07/v2-event-sourcing-basic
+# https://developers.portone.io/blog/posts/2024-03/tgs
 
 ---
-title: 포트원 V2 이야기 - Event Sourcing으로 결제 시스템 만들기 (기본편)
-description: 포트원 V2 시스템의 근간을 이루고 있는 기술 중 하나인 Event Sourcing에 대해 소개합니다.
-author: BaekGeunYoung
-date: 2024-07-07T15:00:00.000Z
+title: 포트원이 여러 PG사의 인터페이스를 연동하는 방법
+description: 여러 PG사의 인터페이스를 효율적으로 연동하기 위한 결정사항들을 소개합니다.
+author: ChanceKim
+date: 2024-03-11T15:00:00.000Z
 tags:
-  - Core V2
   - Backend
-  - Event Sourcing
+  - MSA
+  - gRPC
+  - DDD
+  - Typed Error
 ---
 
-안녕하세요. 포트원 V2 이야기로 다시 돌아온 포트원 엔지니어 Kai입니다.
-포트원 V2 시스템을 구성하고 있는 핵심 기술들 중 이번에 소개해 드릴 것은 Event Sourcing이라는 기술입니다.
-Event Sourcing이 무엇인지, 포트원이 결제 시스템을 구축하는 데에 왜 이 기술을 도입하기로 결정했는지,
-도입을 결정하면서 함께 신경 쓴 것들은 무엇인지, 직접 기술을 적용하면서 느낀 챌린지는 무엇인지 등에 대해 정리해 보도록 하겠습니다.
-(참고로 Event Sourcing에 관한 글은 기본편과 심화편으로 나누어 업로드될 예정입니다!)
+소프트웨어 엔지니어로서 새로운 서비스를 개발하다 보면 결제 기능을 구현해야 하는 경우가 생깁니다.
+일반적으로 엔지니어들은 결제 기능을 구현하기 위해 특정 PG사가 제공하는 연동 가이드를 따라가며 개발을 진행하고, 서비스를 런칭합니다.
+그러나 포트원은 여러 PG사의 인터페이스를 추상화하여 어떤 PG사를 사용하는지와 관계없이 통일된 인터페이스를 제공하는 것을 핵심 가치로 삼고 있습니다.
+따라서 포트원의 엔지니어들은 일반적인 PG 연동 작업과는 다른 차원의 문제들을 해결해 나가야 합니다.
 
-## Event Sourcing이란?
+다른 한편으로 포트원은 현재 모놀리식 아키텍처(V1)에서 MSA(V2)로의 전환을 진행중입니다.
+V1을 완전히 버리고 V2로 넘어가는 것이 아니기 때문에 하나의 PG사를 새로 연동할 때, V1과 V2 모두에 연동해주어야 하죠.
+흔히 잘 운영되는 시스템의 특정 모듈을 변경하는 작업을 달리는 자동차의 바퀴를 갈아 끼우는 일에 빗대어 이야기하곤 하는데,
+포트원의 현재 상황은 나란히 달리고 있는 구형 자동차와 신형 자동차의 바퀴를 한꺼번에 갈아 끼워야 하는 상황입니다.
 
-Event Sourcing이란 DB에 데이터를 저장하는 방식에 관한 기술입니다.
-일반적으로 백엔드 어플리케이션을 만들 때, DB에는 보통 State(상태)를 저장하곤 합니다.
-이러한 방식은 직관적이어서 이해하기 쉽다는 장점이 있지만, 항상 엔티티의 최종 상태만을 담고 있기 때문에 변경된 기록을 정확하게 추적할 수 없고,
-한 데이터에 대해 검색 및 변경 요청이 빈번하게 발생하기 때문에 동시성으로 인한 문제를 피하려 많은 고민을 해야 합니다.
+이 글에서는 이와 같은 어려움 속에서 최적의 업무 효율을 달성하기 위해 선택한 아키텍처 레벨 및 단일 서비스 레벨의 결정사항에 대해 설명드리려 합니다.
 
-반면 Event Sourcing 방식에서는 종 상태만을 저장하는 것이 아니라, 엔티티의 상태를 변경하기 위해 발생하는 하나하나의 사건(Event)들을 모두 DB에 저장합니다.
-때문에 특정 엔티티에 대한 변경 내역을 모두 추적할 수 있으며, 이벤트는 한 번 발생한 이후 수정되지 않기 때문에 Update나 Delete 없이 항상 Insert 작업만 일어납니다.
+## PG사 간의 인터페이스 차이
 
-## 결제와 Event Sourcing
+먼저, PG사 간의 인터페이스가 얼마나 다른지를 살펴보기 위해 예시를 들어 보겠습니다.
+아래는 대표적인 간편결제사 두 곳에서 결제창을 생성하기 위해 필요한 파라미터 목록입니다.
 
-포트원은 이러한 Event Sourcing이라는 기술을 왜 도입하기로 결정했을까요?
-아시다시피 포트원은 오랜 시간 동안 PG 통합 결제 모듈을 제공해왔고 그동안 많은 시행착오와 노하우를 쌓아왔습니다.
-Event Sourcing을 사용하기로 결정하는 데에는 기존의 시스템을 운영하면서 가지고 있던 아쉬움들이 큰 영향을 주었는데요,
-크게 두 가지 정도를 소개 드릴 수 있을 것 같습니다.
+- 카카오페이 결제 파라미터
 
-### 1. 정확한 내역 파악의 필요성
+|       Name       |   타입   |필수여부|                                                         설명                                                         |
+|:----------------:|:--------:|:------:|:--------------------------------------------------------------------------------------------------------------------:|
+|        cid       |  String  |    O   |                                                   가맹점 코드, 10자                                                  |
+|    cid\_secret   |  String  |    X   |                                   가맹점 코드 인증키, 24자, 숫자와 영문 소문자 조합                                  |
+|partner\_order\_id|  String  |    O   |                                              가맹점 주문번호, 최대 100자                                             |
+| partner\_user\_id|  String  |    O   |                                              가맹점 회원 id, 최대 100자                                              |
+|    item\_name    |  String  |    O   |                                                  상품명, 최대 100자                                                  |
+|    item\_code    |  String  |    X   |                                                 상품코드, 최대 100자                                                 |
+|     quantity     |  Integer |    O   |                                                       상품 수량                                                      |
+|   total\_amount  |  Integer |    O   |                                                       상품 총액                                                      |
+| tax\_free\_amount|  Integer |    O   |                                                   상품 비과세 금액                                                   |
+|    vat\_amount   |  Integer |    X   |상품 부가세 금액 값을 보내지 않을 경우 다음과 같이 VAT 자동 계산 (상품총액 - 상품 비과세 금액)/11 : 소숫점 이하 반올림|
+|  green\_deposit  |  Integer |    X   |                                                       컵 보증금                                                      |
+|   approval\_url  |  String  |    O   |                                         결제 성공 시 redirect url, 최대 255자                                        |
+|    cancel\_url   |  String  |    O   |                                         결제 취소 시 redirect url, 최대 255자                                        |
+|     fail\_url    |  String  |    O   |                                         결제 실패 시 redirect url, 최대 255자                                        |
+| available\_cards |JSON Array|    X   |                             결제 수단으로써 사용 허가할 카드사를 지정해야 하는 경우 사용                             |
 
-기존 시스템을 운영하면서 느꼈던 가장 큰 pain point는 결제건에 대한 변경 내역을 정확히 알 수 없다는 것이었는데요,
-아래와 같이 구체적인 변경 내역을 물어오는 문의들이 여러 고객사로부터 자주 있었습니다.
+- 네이버페이 결제 파라미터
 
-- 어떤 결제건에 부분 환불 요청을 총 몇 번 / 각각 언제 했는지
-- 어떤 결제건의 특정 타입의 웹훅이 몇 번 재시도 되었는지
-- 어떤 결제건의 PG사 승인 응답 전문이 무엇인지
+|           Name          |  타입 |필수여부|                                                                                                                                                                                                                                                         설명                                                                                                                                                                                                                                                         |
+|:-----------------------:|:-----:|:------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|      merchantPayKey     | String|    O   |                                                                                                                                                                                                                      가맹점 주문내역 확인 가능한 가맹점 결제번호 또는 주문번호를 전달해야 합니다                                                                                                                                                                                                                     |
+|merchantPayTransactionKey| String|        |                                                                                                                                                                                                      가맹점 주문내역 히스토리 확인이 가능한 가맹점 결제 트랜잭션 번호 또는 주문 트랜잭션 번호를 전달해야 합니다.                                                                                                                                                                                                     |
+|     merchantUserKey     | String|        |                                                                                                                                                                                                                   가맹점의 사용자 키(개인 아이디와 같은 개인정보 데이터는 제외하여 전달해야 합니다)                                                                                                                                                                                                                  |
+|       productName       | String|    O   |                                                                                                                                                                                                                                대표 상품명. 예: 장미의 이름 외 1건(X), 장미의 이름(O)                                                                                                                                                                                                                                |
+|       productCount      | Number|    O   |                                                                                                                                                                                                                         상품 수량 예: A 상품 2개 + B 상품 1개의 경우 productCount 3으로 전달                                                                                                                                                                                                                         |
+|      totalPayAmount     | Number|    O   |                                                                                                                                                                                                                                          총 결제 금액. 최소 결제금액은 10원                                                                                                                                                                                                                                          |
+|      taxScopeAmount     | Number|    O   |                                                                                                                                                                                                                과세 대상 금액. 과세 대상 금액 + 면세 대상 금액 + 컵 보증금 금액 (옵션) = 총 결제 금액                                                                                                                                                                                                                |
+|     taxExScopeAmount    | Number|    O   |                                                                                                                                                                                                                면세 대상 금액. 과세 대상 금액 + 면세 대상 금액 + 컵 보증금 금액 (옵션) = 총 결제 금액                                                                                                                                                                                                                |
+| environmentDepositAmount| Number|        |                                                                                                                                                                    1회용 컵에 담은 상품의 결제건인 경우에만 필수값이며, 그 외에는 전달할 필요가 없습니다.  컵 보증금 금액. 과세 대상 금액 + 면세 대상 금액 + 컵 보증금 금액 (옵션) = 총 결제 금액                                                                                                                                                                    |
+|        returnUrl        | String|    O   |                                                                                                                    결제 인증 결과 전달 URL, 결제 완료 후 이동할 URL(returnUrl + 가맹점 파라미터 전달이 가능합니다) 네이버페이는 결제 작업 완료 후, 가맹점이 등록한 returnUrl로 리디렉션을 수행합니다 가맹점은 이를 활용하여 내부 처리를 수행하거나 구매자에게 결제 결과 화면을 노출할 수 있습니다                                                                                                                    |
+|      purchaserName      | String|        |                                                                                                                                                                                                       구매자 성명. 결제 상품이 보험 및 위험 업종 등인 경우에만 필수 값입니다. 그 외에는 전달할 필요가 없습니다                                                                                                                                                                                                       |
+|    purchaserBirthday    | String|        |                                                                                                                                                                                                구매자 생년월일(yyyymmdd). 결제 상품이 보험 및 위험 업종 등인 경우에만 필수 값입니다. 그 외에는 전달할 필요가 없습니다                                                                                                                                                                                                |
+|      extraDeduction     |Boolean|        |                                                                                                                                              도서 / 공연 / 영화 소득공제 대상 여부. 문화체육관광부에서 인증한 소득공제 제공 사업자가 대상 상품을 판매하는 경우 필수 값입니다. 해당 파라미터를 사용하기 위해서는 별도 요청을 주셔야 합니다. true : 대상, false : 비 대상                                                                                                                                              |
+|        useCfmYmdt       | String|        |이용완료일(yyyymmdd) 가맹점 타입이 이용완료일 정산 또는 이용완료일 포인트 적립인 경우 필수 해당 값을 기준으로 이용완료일 정산의 경우 '정산기준일' 또는 이용완료일 포인트 적립인 경우 '포인트적립 기준일'이 지정됩니다. 이용완료일은 반드시 결제일과 같거나 결제일 이후여야 하며, 이용완료일이 결제일자 이전으로 적용될 경우 에러(InvalidUseCfmYmdt)가 발생됩니다. 이용완료일이 결제일자 기준으로 1년을 초과할 경우 별도 에러가 발생되지는 않으나 전달한 이용완료일(useCfmYmdt) 값이 결제일자 +365일로 조정 처리됩니다.|
+|  merchantExtraParameter | String|        |                                                                                                                                                                                            가맹점 자체적으로 추가 구분값으로 활용 가능한 별도의 예비 필드 (개인 아이디와 같은 개인정보 데이터는 제외하여 전달해야 합니다)                                                                                                                                                                                            |
+|       productItems      | Array |    O   |                                                                                                                                                                                                                                                   productItem 배열                                                                                                                                                                                                                                                   |
+|     subMerchantInfo     | Object|        |                                                                                                                                                                                                                                하부가맹점 정보. PG 업종 가맹점인 경우에만 필수값입니다                                                                                                                                                                                                                               |
 
-기존에는 이러한 문의가 들어오면 로그를 확인해 보곤 하는데, 로그는 영원히 검색 엔진에 올려둘 수가 없기 때문에
-시간이 오래 지난 변경 내역은 확인하기가 힘듭니다. 따라서 완벽한 답변을 드릴 수 없었던 경우도 종종 있었는데,
-Event Sourcing을 도입하게 되면 엔티티에 가해진 모든 이벤트가 DB에 저장되기 때문에 이렇게 맥락 파악을 요청하는 문의에 완벽하게 대응할 수 있을 것이라고 생각했습니다.
-또한 포트원은 데이터를 기반으로 여러 가지 인사이트를 제공하고 운영 효율화를 도와줄 수 있는 B2B SaaS 기업으로의 도약을 계획하고 있었는데,
-이러한 상황에서 Event Sourcing 방식으로 쌓인 풍부한 raw data는 앞으로 포트원의 발전을 뒷받침할 든든한 뿌리가 될 것이라고 생각했습니다.
-종합해 보면, 무엇보다 결제라는 행위는 돈을 주고받는 것이기 때문에 결제 서비스를 제공하는 입장에서 데이터를 최대한 정확하게 보관하는 것이 매우 중요하다고 생각하여 Event Sourcing이 매력적인 선택지로 다가왔던 것 같습니다.
+위처럼 같은 기능을 하는 인터페이스임에도 PG사에 따라 파라미터 명과 파라미터 타입, 필수 파라미터 목록 모두 상이한 것을 볼 수 있습니다.
+심지어 사용하는 통신 프로토콜마저 PG사마다 상이하죠.
+2개의 PG사만을 비교해도 이러한 차이가 뚜렷한데, 포트원은 30개가 넘는 PG사 모듈을 제공하고 있기 때문에 인터페이스를 효과적으로 추상화하는 것이 매우 중요한 과제입니다.
 
-### 2. 자유로운 스키마 발전의 필요성
+## 아키텍처 레벨 결정사항
 
-기존 시스템이 갖고 있던 또 하나의 pain point는 DB Schema에 관한 것인데요,
-아시다시피 포트원은 국내외의 여러 PG사 결제 모듈을 하나의 인터페이스, 하나의 플로우로 통합해 주는 PG 통합 연동 모듈을 제공하고 있습니다.
-때문에 어떤 PG사를 포트원에서 추가적으로 지원하기 위해 작업을 할 땐 해당 PG사에서 지원하는 파라미터 목록을 확인한 후,
-포트원에서 이미 정의한 파라미터로 맵핑할 수 있는지를 검사합니다. 만약 맵핑할만한 파라미터가 마땅히 존재하지 않는다면 포트원에서는 새로이 인터페이스에 파라미터를 추가하고 내부 디비에도 해당 데이터를 저장할 수 있도록 스키마를 발전시켜야 합니다.
-포트원의 기존 시스템은 MySQL을 사용하고 있었고, DB 스키마의 지원을 받아 데이터를 정형화하여 관리하고 있었습니다.
-때문에 스키마에 필드를 추가하고 싶을 땐 `ALTER TABLE ADD COLUMN` 과 같은 DDL을 실행해야 하는데요,
-기술이 많이 발전했다고 해도 Online DDL 실행은 여전히 개발자들에게 어렵고 부담스러운 작업입니다.
-처리해야 할 데이터의 양이 많다면 DDL 실행이 완료되기까지 시간이 굉장히 오래 걸릴 수 있으며,
-그동안 DB Server의 자원을 많이 점유해 실 서비스에 영향을 줄 수도 있습니다.
+### 추상화만을 담당하는 마이크로서비스
 
-반면 Event Sourcing을 하게 되면 DB Schema에 의존하지 않고 자체적인 Event 포맷 정의 및 직렬화/역직렬화 전략을 구성하게 되기 때문에 이러한 문제로부터 완전히 자유로울 수 있습니다.
-사실 스키마를 자유롭게 구성할 수 있다는 점이 백엔드 개발에서 큰 장점이 되는 경우가 많지는 않은데,
-포트원은 여러 PG사의 인터페이스를 통합하는 특성을 갖고 있기 때문에 이 점을 큰 장점으로 생각하게 되었습니다.
+앞서 설명드린 것처럼 현재 포트원은 모놀리식 아키텍처(V1)에서 MSA(V2)로의 전환 작업을 진행 중입니다.
+이러한 전환 과정에서 V1과 V2를 모두 운영하며 새로운 PG를 연동하려면 V1과 V2 양쪽에 모두 연동 작업을 수행해야 합니다.
+이는 개발 리소스를 두 배로 소모하는 일이며 매우 비효율적인 작업입니다.
 
-## Event Sourcing과 잘 어울리는 DB 고르기
+이러한 비효율을 최소화하기 위해 저희는 V1과 V2에서 모두 사용 가능한 PG 인터페이스 추상화용 마이크로서비스인
+TGS(Transaction Gateway Service)를 도입했습니다.
+이 서비스 도입을 통해 V1과 V2에서 고객사의 요청을 처리하는 서비스들은 어떤 PG사로 결제가 이루어지든 통일된 인터페이스를 이용해 결제를 발생시킬 수 있습니다.
+포트원이 고객사에게 주는 편리함을 포트원 내부에서는 TGS가 다른 서비스들에게 제공하는 것이죠.
 
-### 1. Event Sourcing의 DB 접근 특징
+다만 TGS의 도입에 앞서 선행돼야 하는 작업이 있었습니다.
+모놀리식 서비스인 V1의 코드를 일부 수정하여 PG사의 인터페이스를 직접 호출하는 것이 아니라 TGS의 인터페이스를 호출하도록 변경해주어야 했습니다.
+이 작업 역시 작지 않은 작업이었지만 V1과 V2가 언제까지 함께 운영될지 모르는 상황에서
+서비스를 계속해서 발전시켜 나가려면 어느 정도 시간이 들더라도 반드시 해야만 하는 일이라는 결론에 도달했습니다.
 
-Event Sourcing은 한마디로 DB에 최종 상태만을 저장하는 것이 아니라 개별 이벤트를 모두 저장하는 기술인데요,
-이 때문에 어플리케이션에서 DB에 접근하는 패턴이나 DB를 다루는 방식이 어느 정도의 특징을 띠게 됩니다. 이를 대략적으로 정리해보면 아래와 같습니다.
+TGS가 PG의 인터페이스를 추상화하는 역할을 담당하게 되면서 외부로부터 결제 요청을 처리하는 서비스는 결제 데이터를 저장하고 서빙하는 본연의 역할에 충실할 수 있게 됐습니다.
 
-- Update/Delete 없이 항상 Insert와 Select만 발생한다.
-- 이벤트의 형태는 매우 다양하므로, DB Schema에 의존하지 않는 자체적인 Event 직렬화 전략이 필요하다.
-- 쿼리가 다양하지 않고 단일하다. (Insert 쿼리 한 개, Select 쿼리 한 개)
-- 상태가 아닌 개별 이벤트를 저장하므로 굉장히 많은 양의 데이터가 쌓인다.
+### gRPC를 통한 API 제공
 
-### 2. 특징에 어울리는 DB 고르기
+(이미지 첨부: 효율적인 PG사 연동을 위한 아키텍처)
 
-그리고 이러한 특징들과 잘 어울리는 DB로는 어떤 것이 있을까요?
-이 특징들을 잘 서포트하는 DB를 고르기 위해서는 DB가 갖추어야 하는 기능과 갖추지 않아도 되는 기능을 정리해 볼 필요가 있습니다.
+TGS가 API를 제공하는 방식 역시 아키텍처를 설계할 때의 주요 결정사항 중 하나였습니다.
+가장 흔히 사용되는 방식으로는 REST API가 있지만 저희는 gRPC를 이용하여 API를 제공하기로 결정했습니다.
+저희는 gRPC가 가지는 여러 장점 중 아래 두 가지에 집중했습니다.
 
-- Insert와 Select query만 발생하며 쿼리가 복잡하지 않음 → Transaction 지원이 그다지 필요하지 않음
-- DB Schema를 활용해 데이터를 정형화할 필요가 없음 → Schemaless DB를 사용해도 무방
-- 데이터가 매우 많이 쌓임 → Scale out이 자유로운 DB를 사용해야 함
+#### 1. 인터페이스 우선 개발
 
-위와 같은 요구사항을 잘 만족하는 DB는 무엇일까요?
-많은 선택지가 있을 수 있겠지만 일반적으로 NoSQL DB를 우선 떠올릴 수 있습니다.
-포트원에서도 Cassandra라는 NoSQL DB를 Event Sourcing을 위한 DB로 사용하고 있는데요,
-Cassandra는 특히 peer-to-peer architecture를 갖는 Dynamo Style의 DB로 이론상 무제한에 가까운 Scalability를 제공하기 때문에 Event Sourcing에서 사용하기에 적합하다고 판단했습니다.
+TGS는 포트원의 내부 서비스와 PG사의 중간 다리 역할을 하는 만큼 신규로 연동할 PG사가 기존에 연동된 PG사에서 요구하던 파라미터 이외의 파라미터를 요구하거나,
+기존에 연동된 PG사가 새로운 파라미터를 제공하는 경우에는 인터페이스의 수정이 불가피합니다.
+만약 이런 수정 작업 중 TGS의 작업자가 변경된 인터페이스의 공유를 깜빡하는 경우에는 외부로 API를 제공하는 서비스들에서 해당 기능을 제공하기 어려워지기 때문에,
+TGS 작업자는 다른 서비스로 인터페이스를 공유하는 것이 매우 중요합니다.
 
-### 3. 이외 고려할 것들
+gRPC를 사용하는 경우 proto file로 인터페이스를 우선 정의하고 해당 파일을 기반으로 생성된 서버/클라이언트 코드를 사용하여 통신하게 됩니다.
+인터페이스가 먼저 정의가 돼야지만 서버 기능 추가가 가능하기 때문에, proto file에 수정이 있는 경우 클라이언트가 되는 서비스의 개발자들로부터
+반드시 리뷰를 받도록 PR 정책을 수립하면 인터페이스가 공유되지 않는 상황을 프로세스적으로 방지할 수 있습니다.
 
-물론 위에 적은 내용들만을 고려해서 DB를 선택할 수 있는 것은 아닙니다.
-무엇보다 어플리케이션에 존재하는 모든 영속 엔티티를 Event Sourcing 방식으로 관리할 필요는 없기 때문에 보다 일반적인 용례를 커버할 수도 있어야 하는데,
-이 점을 생각한다면 SQL 인터페이스를 제공하며 Transaction 지원도 되고 수평 확장도 용이한 [Google Spanner](https://cloud.google.com/spanner/)나 [CockroachDB](https://github.com/cockroachdb/cockroach) 등을 사용하는 것을 고려해 볼 수도 있습니다.
-이러한 DB를 사용하지 않은 이유를 정리해 보면 크게 아래와 같습니다.
+#### 2. 언어별로 자동 생성되는 클라이언트
 
-**1) 검증되지 않은 DB**
+위에서 언급했듯이 gRPC는 proto file로 작성된 인터페이스를 기반으로 클라이언트 코드를 생성할 수 있습니다.
+현재 V1, V2는 각각 PHP와 Scala를 사용하여 개발 돼 있기 때문에 proto file을 기반으로 클라이언트 코드를 생성할 수 있다면,
+TGS의 인터페이스가 변경되더라도 각기 다른 언어로 작성된 클라이언트 코드를 수정해주어야 한다는 부담이 사라지게 됩니다.
 
-Google Spanner나 CochroachDB와 같이 NoSQL과 SQL의 장점을 융합하려는 시도는 비교적 최근에 이루어지고 있는 것이고, 해당 DB에 대해 아주 잘 알고 있는 개발자가 사내에 존재하는 것이 아니라면 충분히 검증된 다른 DB를 사용하는 것이 낫다고 판단했습니다.
+물론 REST API의 경우 이미 널리 사용되고 있어 학습을 위한 기간이 거의 필요하지 않고, 다양한 라이브러리들이 지원된다는 장점이 있지만,
+포트원 내부 서비스와 PG사들 사이에서 인터페이스를 추상화해 주어야 한다는 목적에 맞춰 보았을 때
+위 2가지의 장점이 REST API가 가지는 장점보다 더 많은 이득을 준다고 판단되어 최종적으로 gRPC를 사용하고 있습니다.
 
-**2) MSA 환경**
+## 서비스 레벨의 결정사항
 
-저희는 Microservice Architecture를 구성해두었기 때문에 Event Sourcing이 필요한 Bounded Context가 꽤 명확한 편이었습니다.
-따라서 해당 Context 내에서는 Event Sourcing으로 커버하기 힘든 유스케이스가 거의 없다는 점도 의사결정의 주된 고려 사항이었습니다.
+### Domain Driven Design(DDD)
 
-**3) AuroraDB 도입을 위한 환경이 이미 마련되어 있음**
+TGS는 PG사마다 다른 용어와 개념을 공통화하여 도메인 영역을 최대한 간결하게 만들어야 합니다.
+만약 PG사에서 사용되는 용어가 도메인 영역에 침범하도록 개발을 진행한다면
+도메인 영역은 너무 많은 개념을 담게 되어 처음부터 개발을 해온 사람이 아니라면 도저히 이해할 수 없는 서비스가 돼버릴 것입니다.
 
-저희 아키텍처의 다른 마이크로 서비스들은 모두 AuroraDB를 활발하게 사용하고 있었기 때문에 NoSQL로 커버할 수 없는 용례가 나타나더라도 언제든 AuroraDB를 쉽게 도입할 수 있었습니다.
+실제로 TGS의 초기 구현은 이와 같은 문제를 가진 채로 개발이 진행됐습니다.
+TGS는 프레젠테이션, 어플리케이션, 도메인, 인프라 레이어로 이루어진
+[레이어드 아키텍처](https://www.baeldung.com/cs/layered-architecture)를 따릅니다.
+아래 사진은 이런 구조에서 토스페이먼츠를 위한 클래스들이 도메인 레이어를 침범하여 포트원 도메인 클래스와 혼재되어 있는 모습을 보여주는 사진입니다.
 
-결과적으로 저희는 대부분의 상황에서 NoSQL을 이용해 Event Sourcing을 하고 있고, 내부적으로 존재하는 사소한 유스케이스에 대해서는 AuroraDB를 사용하여 서비스를 운영하고 있습니다.
+(이미지 첨부: 개발초기 TGS의 도메인 레이어)
 
-## Event Sourcing 구현 살펴보기
+이대로 계속 개발을 진행했다면 TGS에 연동하는 PG사가 늘어남에 따라 도메인 레이어가 계속해서 비대해질 수밖에 없었을 것입니다.
+어플리케이션 레이어의 경우에는 상황이 더 심각합니다.
+비즈니스 로직은 포트원 도메인 엔티티에 정의돼 있기 때문에 어플리케이션 로직에서는 PG사별 객체를 포트원 엔티티로 전환한 후 비즈니스 로직을 실행하고,
+이를 다시 프레젠테이션 레이어로 올려보내주어야 하죠.
+이렇게 프레젠테이션 레이어를 제외한 모든 레이어에 구석구석 침투해 있는 PG사별 클래스로 인해 프로젝트 전체 구조를 파악하지 못한 경우에
+신규 기능 연동이 매우 어려운 상황이었습니다.
 
-Event Sourcing의 특징과 의사결정 배경을 살펴보았으니, 이제 실제 구현에 대해서도 간단하게 살펴보겠습니다.
-Event Sourcing은 생소한 기술이긴 하지만 핵심 아이디어 자체는 매우 간단합니다.
-로직을 수행하는 과정에서 일어난 사건들을 이벤트로 저장하고, 이 이벤트들을 이용해 외부로 노출될 상태를 만들어내는 것입니다.
-이러한 아이디어를 구현하는 데에 필요한 핵심적인 함수 두 가지가 있습니다.
+이와 같은 문제를 해결하기 위해서 TGS에는 DDD 방법론을 도입하여,
+도메인 영역에서 사용되는 용어들을 정리하고 이를 기반으로 어플리케이션 및 프레젠테이션 영역을 보다 깔끔하게 만들어 주기로 결정했습니다.
+TGS에 DDD를 도입하는 과정은 크게 3단계로 나누어 진행됐습니다.
 
-- `commandHandler: (Command, State) => Response`
-- `eventHandler: (State, Seq[Event]) => State`
+#### 1. 보편 언어(Ubiquitous Language) 정리
 
-이 두 함수에 대해 알아보기 이전에 `Command`, `Event`, `State`가 무엇인지를 먼저 설명하겠습니다.
+보편 언어를 정리하는 일은 DDD의 시작이라고 할 수 있습니다.
+명확하게 정리된 보편 언어는 도메인을 이해하기 쉽게 만들어주고, 구성원들간의 미스 커뮤니케이션이 일어나지 않도록 도움을 줍니다.
+TGS는 여러 PG사와의 통신을 담당하는 서비스인 만큼, 여러 PG 연동을 경험한 분들에게 도움의 받아 보편 언어를 정리했습니다.
+정리된 보편 언어는 항상 접근이 간편한 곳에 위치해 있어야 하기 때문에 저희는 이를 위한 레포지토리를 생성하고 용어들을 마크다운 파일로 정리했습니다.
 
-- `Command`: 특정 로직의 수행을 지시하는 명령입니다. HTTP에 비유하자면 Request의 역할을 한다고 이해하시면 좋을 것 같습니다.
-- `Event`: `Command`를 받아 로직을 수행하는 과정에서 발생하는 사건들을 표현하는 객체입니다. 이 `Event` 들은 DB에 저장되어 Single Source Of Truth의 역할을 합니다.
-- `State`: 일련의 `Event`들이 모여 결과적으로 만들어지는 상태를 뜻합니다. 일반적으로 백엔드 애플리케이션에서 흔히 다루는 도메인 엔티티라고 생각하시면 됩니다.
+(이미지 첨부: 보편 언어를 위한 레파지토리)
 
-기본적인 개념에 대해 알았으니, 이제 `commandHandler` 와 `eventHandler` 가 무엇인지는 쉽게 이해할 수 있을 것 같습니다.
+#### 2. 보편 언어를 이용해 도메인 엔티티와 값 객체(VO) 정의
 
-- `commandHandler`: 현재 상태(State)에서 명령(Command)를 받아 도메인 로직을 수행하고, 응답을 리턴하는 함수입니다. 로직을 수행하는 과정에서 이벤트를 쌓을 때마다 `eventHandler`를 호출합니다.
-- `eventHandler`: 현재 상태(State)에서 어떤 이벤트(Event)가 새로 쌓이게 되면 어떤 새로운 상태로 전이할지를 정의하는 함수입니다.
+정리된 보편 언어는 코드에도 그대로 녹아들어야 합니다. 그래야만 엔지니어와 관련자 사이에 통일된 언어로 커뮤니케이션이 가능하기 때문이죠.
+리팩토링 전 KSNET의 API를 통해 발생한 거래를 저장하기 위한 클래스와 리팩토링 후의 클래스 모습입니다.
+변경 전에는 `aid`, `tid`, `tradeDate` 처럼 PG사에서 사용하는 언어를 이용해 데이터를 저장했다면,
+변경 후에는 포트원의 보편 언어로 모두 대체된 모습을 볼 수 있습니다.
 
-그다지 어렵지 않죠? `commandHandler`는 일반적인 어플리케이션에서 작성하는 도메인 로직과 유사하지만 DB에 상태를 직접 업데이트하는 것이 아니라 이벤트를 쌓을 뿐이고,
-새롭게 쌓인 이벤트를 가지고 최신 상태를 만들어내는 코드가 `eventHandler`에 정의되는 것입니다. `commandHandler`의 예시를 하나 들어보겠습니다. 수기 결제 요청을 받아 수행하는 commandHandler입니다.
+<div class="hint" data-style="info">
 
-```scala
-// commandHandler: 설명을 위해 단순화한 예시 코드입니다.
-for {
-  // 1. 수기결제를 시작한다는 내용의 이벤트 저장
-  _ <- persist(Event.CommandReceived(id, form, store, customer))
+클래스명에 PG사의 명칭이 들어가있어서 도메인 엔티티가 아니라고 느껴질 수 있지만,
+각 PG사와의 거래는 분명하게 TGS의 [bounded context](https://martinfowler.com/bliki/BoundedContext.html) 안에 존재하는 개념이기에 PG사의 명칭을 클래스명에 포함시켰습니다.
 
-  // 2. 사용자가 넘긴 channel key를 이용해 channel 얻어오기
-  channel <- channelService
-               .fetchChannel(store.id, form.channelKey)
-               .flatMapError(e => fail(Event.FetchingChannelFailed(form.channelKey, e)))
+</div>
 
-  // 3. 채널 정보 요청 결과를 이벤트로 저장
-  _ <- persist(Event.FetchingChannelSucceeded(channel))
+(이미지 첨부: 보편 언어를 사용하는 클래스)
 
-  // 4. 채널을 이용해 PG사에 수기결제 요청하기
-  result <- txGatewayService
-            .payInstantly(base, channel, paymentMethodForm)
-            .flatMapError(e => fail(base, channel, Event.TgsFailed(e)))
+#### 3. 각 PG사를 위한 데이터 클래스는 인프라 레이어로 이동
 
-  // 5. 수기 결제 요청 결과를 이벤트로 저장
-  _ <- persist(Event.TgsSucceeded(result))
+도메인 레이어를 보편 언어를 이용한 엔티티와 값 객체로 채우게 되면서 PG사를 위한 클래스들은 자연스럽게 인프라 레이어로 이동시켰습니다.
+그리고 인프라 레이어에서 PG사의 클래스를 도메인 엔티티와 값 객체로 변환하여 반환하게 만들었습니다.
+이제 PG사의 클래스들은 인프라 레이어에서 DTO로써만 존재하게 됐습니다.
+그리고 자연스럽게 PG사와 통신하는 Client 구현체는 부패 방지 계층의 역할을 띄게 됩니다.
+부패 방지 계층이란 연동하고자 하는 시스템과 기존 시스템 사이에 존재하는 도메인 모델의 차이를 기존 시스템에 맞게 변환하기 위한 계층으로,
+도메인 레이어를 외부의 용어와 완벽하게 분리할 수 있게 도와줍니다.
 
-  ...
-} yield Response.Succeeded(result)
-```
+(이미지 첨부: 인프라 레이어에 존재하는 PG사별 Client 구현체)
 
-위 코드에서 `persist`함수를 호출할 때마다 DB에 이벤트가 쌓이게 되고, eventHandler를 거쳐 상태가 업데이트되는데요,
-`persist`함수를 어떻게 주입하고 있는지도 확인해 보겠습니다.
-eventHandler 역할을 하는 `handleEvent` 함수에서 상태가 어떻게 전이되는지 확인할 수 있습니다.
+도메인 레이어와 어플리케이션 레이어를 수정하는 개발자는 더 이상 인프라 레이어의 구현에 대해서 알 필요가 없습니다.
+그저 Client가 반환한 도메인 엔티티와 값 객체를 이용해 로직을 구성하기만 하면 되는 것이죠.
 
-```scala
-val persist = new Persist[E] {
-  def apply(event: E): UIO[Unit] =
-  for {
-      state    <- current.get
-      newState  = handleEvent(state, event)
-      _        <- eventRepository.insert(entityId, state.sequenceNr, event)
-      _        <- current.update(_ => newState)
-    } yield ()
+3단계로 진행된 리팩토링 과정에서 사실 대단한 DDD 기법을 사용하지는 않았습니다.
+Aggregate, CQRS, 이벤트 소싱 등의 기법은 전혀 등장하지 않았죠.
+그렇지만 보편 언어를 정의하여 커뮤니케이션의 효율을 높이고,
+기술 의존도가 없는 도메인 레이어에 비즈니스 로직을 응축해 놓음으로써 이식성이 높아졌기에 DDD가 추구하던 본질적인 장점은 취할 수 있게 되었습니다.
+덤으로 간단해진 어플리케이션 레이어 로직 덕분에 PG 연동 속도도 빨라지게 되어 생산성도 비약적으로 증가했습니다.
+
+### Typed Error 활용
+
+결제 도메인에서 에러 처리는 다른 도메인보다 특히나 중요합니다. 잘못된 에러 처리로 인해 결제 내역이 사라진다거나 결제가 여러 번 처리된다면 매우 큰 혼란이 생길 것입니다.
+명확한 에러 처리를 위해서는 특정 함수에서 어떤 에러가 발생할 수 있는지 문서화하는 것이 중요하나,
+문서와 주석은 outdated 되기 쉽다는 단점이 있습니다.
+저희는 이런 문제를 해결하기 위한 방법으로 함수형 프로그래밍을 위한 Kotlin 라이브러리인
+[Arrow](https://arrow-kt.io/)의 typed error를 적극적으로 활용하고 있습니다.
+
+Typed error를 사용하면 특정 함수에서 발생할 수 있는 에러를 코드를 통해 문서화할 수 있기 때문에 outdated 될 염려가 없고,
+에러 처리가 강제되기 때문에 특정 에러 케이스를 놓친다거나 하는 문제가 발생할 염려가 적습니다.
+예를 들어, Arrow를 사용해 함수 시그니처에 typed error를 적용하면 아래와 같은 코드를 작성하게 됩니다.
+Typed error를 적용함으로써 예시 코드의 `pay()` 함수에선 `AmountTooBig`, `InvalidCardInfo`, `TransactionAlreadyExists`
+에러가 발생할 수 있다는 것을 코드 레벨에서 확인할 수 있습니다.
+
+```kotlin
+interface Example {
+    fun pay(): Effect<PayError, Unit>
+
+    sealed interface PayError {
+      data object AmountTooBig: PayError
+      data object InvalidCardInfo: PayError
+      data object TransactionAlreadyExists: PayError
+    }
 }
-
-// eventHandler: 설명을 위해 단순화한 예시 코드입니다.
-private def handleEvent(state: State, event: Event): State =
-  (state, event) match {
-    case (_: State.Empty, _: Event.CommandReceived)          => State.Initialized(???)
-    case (_: State.Empty, _: Event.FetchingChannelSucceeded) => State.ChannelSelected(???)
-    case (_: State.ChannelSelected, _: TgsSucceeded)         => State.Paid(???)
-
-    ...
-  }
 ```
 
-위 예시에선 설명을 위해 단순화한 부분이 많지만, Event Sourcing 구현의 핵심을 이루는 `commandHandler` 와 `eventHandler` 가 어떻게 구성되는지에 대해 충분히 감을 잡으셨을 것이라고 생각합니다.
-Event Sourcing의 구현에 있어 더 디테일하게 신경 써야 할 부분들에 대해서는 심화편에서 좀 더 깊게 다루어보도록 하겠습니다!
+반면 typed error를 사용하는 코드는 이런 의문을 가지게 합니다. ‘Kotlin에서 의도적으로 삭제한 checked exception를 다시 되살리는 것 아닌가?’.
+네, typed error는 checked exception과 거의 동일한 의도로 사용됩니다.
+Kotlin에서 checked exception을 삭제한 주요 이유는 대부분의 exception은 처리할 수 없는 exception이기 때문입니다.
+하지만 저희는 꼭 처리해 주어야 하는 예외 케이스가 있다면 checked exception을 사용하는 것이 그렇지 않은 경우보다 코드 퀄리티를 높여줄 수 있다고 생각했으며,
+결제가 예외 처리에 매우 민감한 도메인이라는 점을 감안하여 checked exception을 대신할 수 있는 typed error를 사용하고 있습니다.
 
-## Event Sourcing 도입에 따른 Challenge
+물론 typed error를 잘못 사용할 경우에는 checked exception이 가지던 문제점들이 그대로 발생할 수 있습니다.
+때문에 올바른 방법으로 사용하는 것이 매우 중요하며, 이에 대한 내용은 추후 별도의 글에서 다뤄보도록 하겠습니다.
 
-저희가 Event Sourcing을 도입하게 된 것은 분명 해당 위에서 설명드린 여러 가지 장점을 누리기 위해서이지만,
-반대로 해당 기술을 도입하면서 추가적으로 신경 써야 할 것들 또한 적지 않았습니다.
-혹시 Event Sourcing의 도입을 고려하고 있지만 어떠한 챌린지가 있을지를 몰라 의사결정에 어려움을 겪고 계신 분들이 있다면,
-그런 분들께 도움을 드리고자 제가 느낀 챌린지들을 공유하고자 합니다.
+## 마치며
 
-### Challenge 1. Event 직렬화/역직렬화에 각별히 신경 써야 한다.
+지금까지 포트원이 여러 PG사의 인터페이스를 효율적으로 연동하기 위해 논의했던 기술적 결정사항들에 대해 알아보았습니다.
+부디 이 글이 비슷한 문제를 해결하고자 하는 분들에게 작게나마 도움이 된다면 좋겠습니다.
 
-글의 윗부분에서 Event Sourcing의 특징에 대해 소개할 때, 해당 기술을 도입하게 되면 DB Schema에 의존하지 않는 자체적인 데이터 포맷 정의 및 직렬화/역직렬화 전략을 구성해야 한다고 말씀드렸는데요,
-이는 장점과 단점이 공존하는 특징인 것 같습니다.
-DB Schema에 얽매이지 않고 자유롭게 데이터의 형식을 정의할 수 있게 되는 대신, 모든 이벤트를 DB에 저장할 수 있는 형태로 직렬화하고, 반대로 역직렬화하는 코드를 모두 수동으로 작성해야 합니다.
-그리고 직렬화 포맷의 특성을 이해하고 이벤트가 하위 호환성을 유지할 수 있도록 많은 신경을 써주어야 합니다.
-
-### Challenge 2. DB를 직접 조작하기가 힘들다.
-
-일반적으로 DB의 내용은 항상 어플리케이션을 통해서만 수정하는 것이 바람직하지만, 드물게는 개발자가 DB에 직접 접속해 데이터를 강제로 조작하는 경우도 있습니다.
-이는 위험한 행동이긴 하지만 어쩔 수 없는 상황에서는 분명 유용할 수 있는 프랙티스입니다.
-다만 이러한 접근은 DB에 담긴 데이터가 human-readable/human-updatable 할 때만 유용하며, Event Sourcing DB에는 직렬화된 데이터가 담기기 때문에 이 데이터를 사람이 수동으로 조작하는 것에는 한계가 있습니다.
-이런 경우 강제 업데이트를 위한 별도의 기능을 어플리케이션에 개발해야 할 것입니다.
-
-### Challenge 3. 조회를 위한 별도의 모델이 필요하다.
-
-사용자가 조회를 통해 얻고 싶은 것은 상태이지만, Event Sourcing DB의 record에는 개별 이벤트가 담겨있습니다.
-따라서 Event Sourcing을 도입하게 되면 특정 조건으로 필터를 걸어 조건을 만족하는 엔티티를 한 번에 조회하는 등의 요구사항에 대응할 수 없습니다.
-Event Sourcing을 사용하면서 동시에 이러한 요구사항에 대응하기 위해서는 조회를 위한 별도의 모델이 필요합니다.
-보통 Event Sourcing DB로부터 주기적으로 데이터를 전달받아 조회에 특화된 별도 DB에 데이터를 동기화하고 이 별도 DB를 조회 요구사항을 만족하는 식으로 접근하게 되는데,
-이러한 접근 방식을 CQRS(Command-Query Responsibility Segregation) 패턴이라고 부릅니다.
-CQRS 패턴을 구현하기 위해서는 신뢰성 있는 데이터 동기화 아키텍처를 구성해야 하며, 이 아키텍처가 충분히 성숙해지기까지 꽤 많은 리소스를 들여야 할 것입니다.
-
-## 정리
-
-포트원 V2 시스템의 근간을 이루고 있는 Event Sourcing 기술의 개념과 도입 배경, 간단한 구현과 Challenge까지 개괄적인 내용을 함께 살펴보았습니다.
-Event Sourcing의 경우 굉장히 낯선 기술이고, 국내에서 해당 기술을 도입한 사례를 거의 찾아볼 수 없었기 때문에 저희도 실제로 이 기술을 도입하면서 많은 시행착오가 있었는데요,
-많은 분들이 본 글을 읽고 Event Sourcing 기술이 가지는 특징과 장단점에 대해 더 깊게 이해하게 되셨기를 바래봅니다.
-
-과감한 결정을 한 만큼 장기적으로 그 효과는 강력할 것이라고 생각합니다.
-Event Sourcing이라는 단단한 뿌리 위에서 폭발적으로 성장하는 포트원을 지켜봐 주세요!
+포트원은 지금도 고객사에게 더 좋은 결제 경험을 제공하기 위해 노력하고 있습니다.
+저희와 함께 간편한 결제 연동이라는 문제를 함께 풀어나가고 싶으신 분이 계시다면 포트원의 문을 두드려 주시면 감사하겠습니다!
 
 
 # https://developers.portone.io/blog/posts/2024-04/gcp-datastream
@@ -27877,243 +29261,236 @@ Solid는 이미 프로덕션에도 충분히 적용해볼 만한, 많은 장점�
 [web vitals]: https://web.dev/articles/vitals?hl=ko
 
 
-# https://developers.portone.io/blog/posts/2024-03/tgs
+# https://developers.portone.io/blog/posts/2024-07/v2-event-sourcing-basic
 
 ---
-title: 포트원이 여러 PG사의 인터페이스를 연동하는 방법
-description: 여러 PG사의 인터페이스를 효율적으로 연동하기 위한 결정사항들을 소개합니다.
-author: ChanceKim
-date: 2024-03-11T15:00:00.000Z
+title: 포트원 V2 이야기 - Event Sourcing으로 결제 시스템 만들기 (기본편)
+description: 포트원 V2 시스템의 근간을 이루고 있는 기술 중 하나인 Event Sourcing에 대해 소개합니다.
+author: BaekGeunYoung
+date: 2024-07-07T15:00:00.000Z
 tags:
+  - Core V2
   - Backend
-  - MSA
-  - gRPC
-  - DDD
-  - Typed Error
+  - Event Sourcing
 ---
 
-소프트웨어 엔지니어로서 새로운 서비스를 개발하다 보면 결제 기능을 구현해야 하는 경우가 생깁니다.
-일반적으로 엔지니어들은 결제 기능을 구현하기 위해 특정 PG사가 제공하는 연동 가이드를 따라가며 개발을 진행하고, 서비스를 런칭합니다.
-그러나 포트원은 여러 PG사의 인터페이스를 추상화하여 어떤 PG사를 사용하는지와 관계없이 통일된 인터페이스를 제공하는 것을 핵심 가치로 삼고 있습니다.
-따라서 포트원의 엔지니어들은 일반적인 PG 연동 작업과는 다른 차원의 문제들을 해결해 나가야 합니다.
+안녕하세요. 포트원 V2 이야기로 다시 돌아온 포트원 엔지니어 Kai입니다.
+포트원 V2 시스템을 구성하고 있는 핵심 기술들 중 이번에 소개해 드릴 것은 Event Sourcing이라는 기술입니다.
+Event Sourcing이 무엇인지, 포트원이 결제 시스템을 구축하는 데에 왜 이 기술을 도입하기로 결정했는지,
+도입을 결정하면서 함께 신경 쓴 것들은 무엇인지, 직접 기술을 적용하면서 느낀 챌린지는 무엇인지 등에 대해 정리해 보도록 하겠습니다.
+(참고로 Event Sourcing에 관한 글은 기본편과 심화편으로 나누어 업로드될 예정입니다!)
 
-다른 한편으로 포트원은 현재 모놀리식 아키텍처(V1)에서 MSA(V2)로의 전환을 진행중입니다.
-V1을 완전히 버리고 V2로 넘어가는 것이 아니기 때문에 하나의 PG사를 새로 연동할 때, V1과 V2 모두에 연동해주어야 하죠.
-흔히 잘 운영되는 시스템의 특정 모듈을 변경하는 작업을 달리는 자동차의 바퀴를 갈아 끼우는 일에 빗대어 이야기하곤 하는데,
-포트원의 현재 상황은 나란히 달리고 있는 구형 자동차와 신형 자동차의 바퀴를 한꺼번에 갈아 끼워야 하는 상황입니다.
+## Event Sourcing이란?
 
-이 글에서는 이와 같은 어려움 속에서 최적의 업무 효율을 달성하기 위해 선택한 아키텍처 레벨 및 단일 서비스 레벨의 결정사항에 대해 설명드리려 합니다.
+Event Sourcing이란 DB에 데이터를 저장하는 방식에 관한 기술입니다.
+일반적으로 백엔드 어플리케이션을 만들 때, DB에는 보통 State(상태)를 저장하곤 합니다.
+이러한 방식은 직관적이어서 이해하기 쉽다는 장점이 있지만, 항상 엔티티의 최종 상태만을 담고 있기 때문에 변경된 기록을 정확하게 추적할 수 없고,
+한 데이터에 대해 검색 및 변경 요청이 빈번하게 발생하기 때문에 동시성으로 인한 문제를 피하려 많은 고민을 해야 합니다.
 
-## PG사 간의 인터페이스 차이
+반면 Event Sourcing 방식에서는 종 상태만을 저장하는 것이 아니라, 엔티티의 상태를 변경하기 위해 발생하는 하나하나의 사건(Event)들을 모두 DB에 저장합니다.
+때문에 특정 엔티티에 대한 변경 내역을 모두 추적할 수 있으며, 이벤트는 한 번 발생한 이후 수정되지 않기 때문에 Update나 Delete 없이 항상 Insert 작업만 일어납니다.
 
-먼저, PG사 간의 인터페이스가 얼마나 다른지를 살펴보기 위해 예시를 들어 보겠습니다.
-아래는 대표적인 간편결제사 두 곳에서 결제창을 생성하기 위해 필요한 파라미터 목록입니다.
+## 결제와 Event Sourcing
 
-- 카카오페이 결제 파라미터
+포트원은 이러한 Event Sourcing이라는 기술을 왜 도입하기로 결정했을까요?
+아시다시피 포트원은 오랜 시간 동안 PG 통합 결제 모듈을 제공해왔고 그동안 많은 시행착오와 노하우를 쌓아왔습니다.
+Event Sourcing을 사용하기로 결정하는 데에는 기존의 시스템을 운영하면서 가지고 있던 아쉬움들이 큰 영향을 주었는데요,
+크게 두 가지 정도를 소개 드릴 수 있을 것 같습니다.
 
-|        Name        |     타입     | 필수여부 |                                     설명                                     |
-| :----------------: | :--------: | :--: | :------------------------------------------------------------------------: |
-|         cid        |   String   |   O  |                                 가맹점 코드, 10자                                |
-|     cid\_secret    |   String   |   X  |                       가맹점 코드 인증키, 24자, 숫자와 영문 소문자 조합                       |
-| partner\_order\_id |   String   |   O  |                              가맹점 주문번호, 최대 100자                             |
-|  partner\_user\_id |   String   |   O  |                             가맹점 회원 id, 최대 100자                             |
-|     item\_name     |   String   |   O  |                                상품명, 최대 100자                                |
-|     item\_code     |   String   |   X  |                                상품코드, 최대 100자                               |
-|      quantity      |   Integer  |   O  |                                    상품 수량                                   |
-|    total\_amount   |   Integer  |   O  |                                    상품 총액                                   |
-|  tax\_free\_amount |   Integer  |   O  |                                  상품 비과세 금액                                 |
-|     vat\_amount    |   Integer  |   X  | 상품 부가세 금액 값을 보내지 않을 경우 다음과 같이 VAT 자동 계산 (상품총액 - 상품 비과세 금액)/11 : 소숫점 이하 반올림 |
-|   green\_deposit   |   Integer  |   X  |                                    컵 보증금                                   |
-|    approval\_url   |   String   |   O  |                        결제 성공 시 redirect url, 최대 255자                       |
-|     cancel\_url    |   String   |   O  |                        결제 취소 시 redirect url, 최대 255자                       |
-|      fail\_url     |   String   |   O  |                        결제 실패 시 redirect url, 최대 255자                       |
-|  available\_cards  | JSON Array |   X  |                     결제 수단으로써 사용 허가할 카드사를 지정해야 하는 경우 사용                     |
+### 1. 정확한 내역 파악의 필요성
 
-- 네이버페이 결제 파라미터
+기존 시스템을 운영하면서 느꼈던 가장 큰 pain point는 결제건에 대한 변경 내역을 정확히 알 수 없다는 것이었는데요,
+아래와 같이 구체적인 변경 내역을 물어오는 문의들이 여러 고객사로부터 자주 있었습니다.
 
-|            Name           |    타입   | 필수여부 |                                                                                                                                                         설명                                                                                                                                                         |
-| :-----------------------: | :-----: | :--: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|       merchantPayKey      |  String |   O  |                                                                                                                                     가맹점 주문내역 확인 가능한 가맹점 결제번호 또는 주문번호를 전달해야 합니다                                                                                                                                     |
-| merchantPayTransactionKey |  String |      |                                                                                                                            가맹점 주문내역 히스토리 확인이 가능한 가맹점 결제 트랜잭션 번호 또는 주문 트랜잭션 번호를 전달해야 합니다.                                                                                                                           |
-|      merchantUserKey      |  String |      |                                                                                                                                   가맹점의 사용자 키(개인 아이디와 같은 개인정보 데이터는 제외하여 전달해야 합니다)                                                                                                                                   |
-|        productName        |  String |   O  |                                                                                                                                        대표 상품명. 예: 장미의 이름 외 1건(X), 장미의 이름(O)                                                                                                                                        |
-|        productCount       |  Number |   O  |                                                                                                                                 상품 수량 예: A 상품 2개 + B 상품 1개의 경우 productCount 3으로 전달                                                                                                                                 |
-|       totalPayAmount      |  Number |   O  |                                                                                                                                                총 결제 금액. 최소 결제금액은 10원                                                                                                                                               |
-|       taxScopeAmount      |  Number |   O  |                                                                                                                               과세 대상 금액. 과세 대상 금액 + 면세 대상 금액 + 컵 보증금 금액 (옵션) = 총 결제 금액                                                                                                                              |
-|      taxExScopeAmount     |  Number |   O  |                                                                                                                               면세 대상 금액. 과세 대상 금액 + 면세 대상 금액 + 컵 보증금 금액 (옵션) = 총 결제 금액                                                                                                                              |
-|  environmentDepositAmount |  Number |      |                                                                                                     1회용 컵에 담은 상품의 결제건인 경우에만 필수값이며, 그 외에는 전달할 필요가 없습니다.  컵 보증금 금액. 과세 대상 금액 + 면세 대상 금액 + 컵 보증금 금액 (옵션) = 총 결제 금액                                                                                                    |
-|         returnUrl         |  String |   O  |                                                                      결제 인증 결과 전달 URL, 결제 완료 후 이동할 URL(returnUrl + 가맹점 파라미터 전달이 가능합니다) 네이버페이는 결제 작업 완료 후, 가맹점이 등록한 returnUrl로 리디렉션을 수행합니다 가맹점은 이를 활용하여 내부 처리를 수행하거나 구매자에게 결제 결과 화면을 노출할 수 있습니다                                                                      |
-|       purchaserName       |  String |      |                                                                                                                            구매자 성명. 결제 상품이 보험 및 위험 업종 등인 경우에만 필수 값입니다. 그 외에는 전달할 필요가 없습니다                                                                                                                           |
-|     purchaserBirthday     |  String |      |                                                                                                                      구매자 생년월일(yyyymmdd). 결제 상품이 보험 및 위험 업종 등인 경우에만 필수 값입니다. 그 외에는 전달할 필요가 없습니다                                                                                                                     |
-|       extraDeduction      | Boolean |      |                                                                                       도서 / 공연 / 영화 소득공제 대상 여부. 문화체육관광부에서 인증한 소득공제 제공 사업자가 대상 상품을 판매하는 경우 필수 값입니다. 해당 파라미터를 사용하기 위해서는 별도 요청을 주셔야 합니다. true : 대상, false : 비 대상                                                                                       |
-|         useCfmYmdt        |  String |      | 이용완료일(yyyymmdd) 가맹점 타입이 이용완료일 정산 또는 이용완료일 포인트 적립인 경우 필수 해당 값을 기준으로 이용완료일 정산의 경우 '정산기준일' 또는 이용완료일 포인트 적립인 경우 '포인트적립 기준일'이 지정됩니다. 이용완료일은 반드시 결제일과 같거나 결제일 이후여야 하며, 이용완료일이 결제일자 이전으로 적용될 경우 에러(InvalidUseCfmYmdt)가 발생됩니다. 이용완료일이 결제일자 기준으로 1년을 초과할 경우 별도 에러가 발생되지는 않으나 전달한 이용완료일(useCfmYmdt) 값이 결제일자 +365일로 조정 처리됩니다. |
-|   merchantExtraParameter  |  String |      |                                                                                                                      가맹점 자체적으로 추가 구분값으로 활용 가능한 별도의 예비 필드 (개인 아이디와 같은 개인정보 데이터는 제외하여 전달해야 합니다)                                                                                                                      |
-|        productItems       |  Array  |   O  |                                                                                                                                                   productItem 배열                                                                                                                                                   |
-|      subMerchantInfo      |  Object |      |                                                                                                                                          하부가맹점 정보. PG 업종 가맹점인 경우에만 필수값입니다                                                                                                                                          |
+- 어떤 결제건에 부분 환불 요청을 총 몇 번 / 각각 언제 했는지
+- 어떤 결제건의 특정 타입의 웹훅이 몇 번 재시도 되었는지
+- 어떤 결제건의 PG사 승인 응답 전문이 무엇인지
 
-위처럼 같은 기능을 하는 인터페이스임에도 PG사에 따라 파라미터 명과 파라미터 타입, 필수 파라미터 목록 모두 상이한 것을 볼 수 있습니다.
-심지어 사용하는 통신 프로토콜마저 PG사마다 상이하죠.
-2개의 PG사만을 비교해도 이러한 차이가 뚜렷한데, 포트원은 30개가 넘는 PG사 모듈을 제공하고 있기 때문에 인터페이스를 효과적으로 추상화하는 것이 매우 중요한 과제입니다.
+기존에는 이러한 문의가 들어오면 로그를 확인해 보곤 하는데, 로그는 영원히 검색 엔진에 올려둘 수가 없기 때문에
+시간이 오래 지난 변경 내역은 확인하기가 힘듭니다. 따라서 완벽한 답변을 드릴 수 없었던 경우도 종종 있었는데,
+Event Sourcing을 도입하게 되면 엔티티에 가해진 모든 이벤트가 DB에 저장되기 때문에 이렇게 맥락 파악을 요청하는 문의에 완벽하게 대응할 수 있을 것이라고 생각했습니다.
+또한 포트원은 데이터를 기반으로 여러 가지 인사이트를 제공하고 운영 효율화를 도와줄 수 있는 B2B SaaS 기업으로의 도약을 계획하고 있었는데,
+이러한 상황에서 Event Sourcing 방식으로 쌓인 풍부한 raw data는 앞으로 포트원의 발전을 뒷받침할 든든한 뿌리가 될 것이라고 생각했습니다.
+종합해 보면, 무엇보다 결제라는 행위는 돈을 주고받는 것이기 때문에 결제 서비스를 제공하는 입장에서 데이터를 최대한 정확하게 보관하는 것이 매우 중요하다고 생각하여 Event Sourcing이 매력적인 선택지로 다가왔던 것 같습니다.
 
-## 아키텍처 레벨 결정사항
+### 2. 자유로운 스키마 발전의 필요성
 
-### 추상화만을 담당하는 마이크로서비스
+기존 시스템이 갖고 있던 또 하나의 pain point는 DB Schema에 관한 것인데요,
+아시다시피 포트원은 국내외의 여러 PG사 결제 모듈을 하나의 인터페이스, 하나의 플로우로 통합해 주는 PG 통합 연동 모듈을 제공하고 있습니다.
+때문에 어떤 PG사를 포트원에서 추가적으로 지원하기 위해 작업을 할 땐 해당 PG사에서 지원하는 파라미터 목록을 확인한 후,
+포트원에서 이미 정의한 파라미터로 맵핑할 수 있는지를 검사합니다. 만약 맵핑할만한 파라미터가 마땅히 존재하지 않는다면 포트원에서는 새로이 인터페이스에 파라미터를 추가하고 내부 디비에도 해당 데이터를 저장할 수 있도록 스키마를 발전시켜야 합니다.
+포트원의 기존 시스템은 MySQL을 사용하고 있었고, DB 스키마의 지원을 받아 데이터를 정형화하여 관리하고 있었습니다.
+때문에 스키마에 필드를 추가하고 싶을 땐 `ALTER TABLE ADD COLUMN` 과 같은 DDL을 실행해야 하는데요,
+기술이 많이 발전했다고 해도 Online DDL 실행은 여전히 개발자들에게 어렵고 부담스러운 작업입니다.
+처리해야 할 데이터의 양이 많다면 DDL 실행이 완료되기까지 시간이 굉장히 오래 걸릴 수 있으며,
+그동안 DB Server의 자원을 많이 점유해 실 서비스에 영향을 줄 수도 있습니다.
 
-앞서 설명드린 것처럼 현재 포트원은 모놀리식 아키텍처(V1)에서 MSA(V2)로의 전환 작업을 진행 중입니다.
-이러한 전환 과정에서 V1과 V2를 모두 운영하며 새로운 PG를 연동하려면 V1과 V2 양쪽에 모두 연동 작업을 수행해야 합니다.
-이는 개발 리소스를 두 배로 소모하는 일이며 매우 비효율적인 작업입니다.
+반면 Event Sourcing을 하게 되면 DB Schema에 의존하지 않고 자체적인 Event 포맷 정의 및 직렬화/역직렬화 전략을 구성하게 되기 때문에 이러한 문제로부터 완전히 자유로울 수 있습니다.
+사실 스키마를 자유롭게 구성할 수 있다는 점이 백엔드 개발에서 큰 장점이 되는 경우가 많지는 않은데,
+포트원은 여러 PG사의 인터페이스를 통합하는 특성을 갖고 있기 때문에 이 점을 큰 장점으로 생각하게 되었습니다.
 
-이러한 비효율을 최소화하기 위해 저희는 V1과 V2에서 모두 사용 가능한 PG 인터페이스 추상화용 마이크로서비스인
-TGS(Transaction Gateway Service)를 도입했습니다.
-이 서비스 도입을 통해 V1과 V2에서 고객사의 요청을 처리하는 서비스들은 어떤 PG사로 결제가 이루어지든 통일된 인터페이스를 이용해 결제를 발생시킬 수 있습니다.
-포트원이 고객사에게 주는 편리함을 포트원 내부에서는 TGS가 다른 서비스들에게 제공하는 것이죠.
+## Event Sourcing과 잘 어울리는 DB 고르기
 
-다만 TGS의 도입에 앞서 선행돼야 하는 작업이 있었습니다.
-모놀리식 서비스인 V1의 코드를 일부 수정하여 PG사의 인터페이스를 직접 호출하는 것이 아니라 TGS의 인터페이스를 호출하도록 변경해주어야 했습니다.
-이 작업 역시 작지 않은 작업이었지만 V1과 V2가 언제까지 함께 운영될지 모르는 상황에서
-서비스를 계속해서 발전시켜 나가려면 어느 정도 시간이 들더라도 반드시 해야만 하는 일이라는 결론에 도달했습니다.
+### 1. Event Sourcing의 DB 접근 특징
 
-TGS가 PG의 인터페이스를 추상화하는 역할을 담당하게 되면서 외부로부터 결제 요청을 처리하는 서비스는 결제 데이터를 저장하고 서빙하는 본연의 역할에 충실할 수 있게 됐습니다.
+Event Sourcing은 한마디로 DB에 최종 상태만을 저장하는 것이 아니라 개별 이벤트를 모두 저장하는 기술인데요,
+이 때문에 어플리케이션에서 DB에 접근하는 패턴이나 DB를 다루는 방식이 어느 정도의 특징을 띠게 됩니다. 이를 대략적으로 정리해보면 아래와 같습니다.
 
-### gRPC를 통한 API 제공
+- Update/Delete 없이 항상 Insert와 Select만 발생한다.
+- 이벤트의 형태는 매우 다양하므로, DB Schema에 의존하지 않는 자체적인 Event 직렬화 전략이 필요하다.
+- 쿼리가 다양하지 않고 단일하다. (Insert 쿼리 한 개, Select 쿼리 한 개)
+- 상태가 아닌 개별 이벤트를 저장하므로 굉장히 많은 양의 데이터가 쌓인다.
 
-(이미지 첨부: 효율적인 PG사 연동을 위한 아키텍처)
+### 2. 특징에 어울리는 DB 고르기
 
-TGS가 API를 제공하는 방식 역시 아키텍처를 설계할 때의 주요 결정사항 중 하나였습니다.
-가장 흔히 사용되는 방식으로는 REST API가 있지만 저희는 gRPC를 이용하여 API를 제공하기로 결정했습니다.
-저희는 gRPC가 가지는 여러 장점 중 아래 두 가지에 집중했습니다.
+그리고 이러한 특징들과 잘 어울리는 DB로는 어떤 것이 있을까요?
+이 특징들을 잘 서포트하는 DB를 고르기 위해서는 DB가 갖추어야 하는 기능과 갖추지 않아도 되는 기능을 정리해 볼 필요가 있습니다.
 
-#### 1. 인터페이스 우선 개발
+- Insert와 Select query만 발생하며 쿼리가 복잡하지 않음 → Transaction 지원이 그다지 필요하지 않음
+- DB Schema를 활용해 데이터를 정형화할 필요가 없음 → Schemaless DB를 사용해도 무방
+- 데이터가 매우 많이 쌓임 → Scale out이 자유로운 DB를 사용해야 함
 
-TGS는 포트원의 내부 서비스와 PG사의 중간 다리 역할을 하는 만큼 신규로 연동할 PG사가 기존에 연동된 PG사에서 요구하던 파라미터 이외의 파라미터를 요구하거나,
-기존에 연동된 PG사가 새로운 파라미터를 제공하는 경우에는 인터페이스의 수정이 불가피합니다.
-만약 이런 수정 작업 중 TGS의 작업자가 변경된 인터페이스의 공유를 깜빡하는 경우에는 외부로 API를 제공하는 서비스들에서 해당 기능을 제공하기 어려워지기 때문에,
-TGS 작업자는 다른 서비스로 인터페이스를 공유하는 것이 매우 중요합니다.
+위와 같은 요구사항을 잘 만족하는 DB는 무엇일까요?
+많은 선택지가 있을 수 있겠지만 일반적으로 NoSQL DB를 우선 떠올릴 수 있습니다.
+포트원에서도 Cassandra라는 NoSQL DB를 Event Sourcing을 위한 DB로 사용하고 있는데요,
+Cassandra는 특히 peer-to-peer architecture를 갖는 Dynamo Style의 DB로 이론상 무제한에 가까운 Scalability를 제공하기 때문에 Event Sourcing에서 사용하기에 적합하다고 판단했습니다.
 
-gRPC를 사용하는 경우 proto file로 인터페이스를 우선 정의하고 해당 파일을 기반으로 생성된 서버/클라이언트 코드를 사용하여 통신하게 됩니다.
-인터페이스가 먼저 정의가 돼야지만 서버 기능 추가가 가능하기 때문에, proto file에 수정이 있는 경우 클라이언트가 되는 서비스의 개발자들로부터
-반드시 리뷰를 받도록 PR 정책을 수립하면 인터페이스가 공유되지 않는 상황을 프로세스적으로 방지할 수 있습니다.
+### 3. 이외 고려할 것들
 
-#### 2. 언어별로 자동 생성되는 클라이언트
+물론 위에 적은 내용들만을 고려해서 DB를 선택할 수 있는 것은 아닙니다.
+무엇보다 어플리케이션에 존재하는 모든 영속 엔티티를 Event Sourcing 방식으로 관리할 필요는 없기 때문에 보다 일반적인 용례를 커버할 수도 있어야 하는데,
+이 점을 생각한다면 SQL 인터페이스를 제공하며 Transaction 지원도 되고 수평 확장도 용이한 [Google Spanner](https://cloud.google.com/spanner/)나 [CockroachDB](https://github.com/cockroachdb/cockroach) 등을 사용하는 것을 고려해 볼 수도 있습니다.
+이러한 DB를 사용하지 않은 이유를 정리해 보면 크게 아래와 같습니다.
 
-위에서 언급했듯이 gRPC는 proto file로 작성된 인터페이스를 기반으로 클라이언트 코드를 생성할 수 있습니다.
-현재 V1, V2는 각각 PHP와 Scala를 사용하여 개발 돼 있기 때문에 proto file을 기반으로 클라이언트 코드를 생성할 수 있다면,
-TGS의 인터페이스가 변경되더라도 각기 다른 언어로 작성된 클라이언트 코드를 수정해주어야 한다는 부담이 사라지게 됩니다.
+**1) 검증되지 않은 DB**
 
-물론 REST API의 경우 이미 널리 사용되고 있어 학습을 위한 기간이 거의 필요하지 않고, 다양한 라이브러리들이 지원된다는 장점이 있지만,
-포트원 내부 서비스와 PG사들 사이에서 인터페이스를 추상화해 주어야 한다는 목적에 맞춰 보았을 때
-위 2가지의 장점이 REST API가 가지는 장점보다 더 많은 이득을 준다고 판단되어 최종적으로 gRPC를 사용하고 있습니다.
+Google Spanner나 CochroachDB와 같이 NoSQL과 SQL의 장점을 융합하려는 시도는 비교적 최근에 이루어지고 있는 것이고, 해당 DB에 대해 아주 잘 알고 있는 개발자가 사내에 존재하는 것이 아니라면 충분히 검증된 다른 DB를 사용하는 것이 낫다고 판단했습니다.
 
-## 서비스 레벨의 결정사항
+**2) MSA 환경**
 
-### Domain Driven Design(DDD)
+저희는 Microservice Architecture를 구성해두었기 때문에 Event Sourcing이 필요한 Bounded Context가 꽤 명확한 편이었습니다.
+따라서 해당 Context 내에서는 Event Sourcing으로 커버하기 힘든 유스케이스가 거의 없다는 점도 의사결정의 주된 고려 사항이었습니다.
 
-TGS는 PG사마다 다른 용어와 개념을 공통화하여 도메인 영역을 최대한 간결하게 만들어야 합니다.
-만약 PG사에서 사용되는 용어가 도메인 영역에 침범하도록 개발을 진행한다면
-도메인 영역은 너무 많은 개념을 담게 되어 처음부터 개발을 해온 사람이 아니라면 도저히 이해할 수 없는 서비스가 돼버릴 것입니다.
+**3) AuroraDB 도입을 위한 환경이 이미 마련되어 있음**
 
-실제로 TGS의 초기 구현은 이와 같은 문제를 가진 채로 개발이 진행됐습니다.
-TGS는 프레젠테이션, 어플리케이션, 도메인, 인프라 레이어로 이루어진
-[레이어드 아키텍처](https://www.baeldung.com/cs/layered-architecture)를 따릅니다.
-아래 사진은 이런 구조에서 토스페이먼츠를 위한 클래스들이 도메인 레이어를 침범하여 포트원 도메인 클래스와 혼재되어 있는 모습을 보여주는 사진입니다.
+저희 아키텍처의 다른 마이크로 서비스들은 모두 AuroraDB를 활발하게 사용하고 있었기 때문에 NoSQL로 커버할 수 없는 용례가 나타나더라도 언제든 AuroraDB를 쉽게 도입할 수 있었습니다.
 
-(이미지 첨부: 개발초기 TGS의 도메인 레이어)
+결과적으로 저희는 대부분의 상황에서 NoSQL을 이용해 Event Sourcing을 하고 있고, 내부적으로 존재하는 사소한 유스케이스에 대해서는 AuroraDB를 사용하여 서비스를 운영하고 있습니다.
 
-이대로 계속 개발을 진행했다면 TGS에 연동하는 PG사가 늘어남에 따라 도메인 레이어가 계속해서 비대해질 수밖에 없었을 것입니다.
-어플리케이션 레이어의 경우에는 상황이 더 심각합니다.
-비즈니스 로직은 포트원 도메인 엔티티에 정의돼 있기 때문에 어플리케이션 로직에서는 PG사별 객체를 포트원 엔티티로 전환한 후 비즈니스 로직을 실행하고,
-이를 다시 프레젠테이션 레이어로 올려보내주어야 하죠.
-이렇게 프레젠테이션 레이어를 제외한 모든 레이어에 구석구석 침투해 있는 PG사별 클래스로 인해 프로젝트 전체 구조를 파악하지 못한 경우에
-신규 기능 연동이 매우 어려운 상황이었습니다.
+## Event Sourcing 구현 살펴보기
 
-이와 같은 문제를 해결하기 위해서 TGS에는 DDD 방법론을 도입하여,
-도메인 영역에서 사용되는 용어들을 정리하고 이를 기반으로 어플리케이션 및 프레젠테이션 영역을 보다 깔끔하게 만들어 주기로 결정했습니다.
-TGS에 DDD를 도입하는 과정은 크게 3단계로 나누어 진행됐습니다.
+Event Sourcing의 특징과 의사결정 배경을 살펴보았으니, 이제 실제 구현에 대해서도 간단하게 살펴보겠습니다.
+Event Sourcing은 생소한 기술이긴 하지만 핵심 아이디어 자체는 매우 간단합니다.
+로직을 수행하는 과정에서 일어난 사건들을 이벤트로 저장하고, 이 이벤트들을 이용해 외부로 노출될 상태를 만들어내는 것입니다.
+이러한 아이디어를 구현하는 데에 필요한 핵심적인 함수 두 가지가 있습니다.
 
-#### 1. 보편 언어(Ubiquitous Language) 정리
+- `commandHandler: (Command, State) => Response`
+- `eventHandler: (State, Seq[Event]) => State`
 
-보편 언어를 정리하는 일은 DDD의 시작이라고 할 수 있습니다.
-명확하게 정리된 보편 언어는 도메인을 이해하기 쉽게 만들어주고, 구성원들간의 미스 커뮤니케이션이 일어나지 않도록 도움을 줍니다.
-TGS는 여러 PG사와의 통신을 담당하는 서비스인 만큼, 여러 PG 연동을 경험한 분들에게 도움의 받아 보편 언어를 정리했습니다.
-정리된 보편 언어는 항상 접근이 간편한 곳에 위치해 있어야 하기 때문에 저희는 이를 위한 레포지토리를 생성하고 용어들을 마크다운 파일로 정리했습니다.
+이 두 함수에 대해 알아보기 이전에 `Command`, `Event`, `State`가 무엇인지를 먼저 설명하겠습니다.
 
-(이미지 첨부: 보편 언어를 위한 레파지토리)
+- `Command`: 특정 로직의 수행을 지시하는 명령입니다. HTTP에 비유하자면 Request의 역할을 한다고 이해하시면 좋을 것 같습니다.
+- `Event`: `Command`를 받아 로직을 수행하는 과정에서 발생하는 사건들을 표현하는 객체입니다. 이 `Event` 들은 DB에 저장되어 Single Source Of Truth의 역할을 합니다.
+- `State`: 일련의 `Event`들이 모여 결과적으로 만들어지는 상태를 뜻합니다. 일반적으로 백엔드 애플리케이션에서 흔히 다루는 도메인 엔티티라고 생각하시면 됩니다.
 
-#### 2. 보편 언어를 이용해 도메인 엔티티와 값 객체(VO) 정의
+기본적인 개념에 대해 알았으니, 이제 `commandHandler` 와 `eventHandler` 가 무엇인지는 쉽게 이해할 수 있을 것 같습니다.
 
-정리된 보편 언어는 코드에도 그대로 녹아들어야 합니다. 그래야만 엔지니어와 관련자 사이에 통일된 언어로 커뮤니케이션이 가능하기 때문이죠.
-리팩토링 전 KSNET의 API를 통해 발생한 거래를 저장하기 위한 클래스와 리팩토링 후의 클래스 모습입니다.
-변경 전에는 `aid`, `tid`, `tradeDate` 처럼 PG사에서 사용하는 언어를 이용해 데이터를 저장했다면,
-변경 후에는 포트원의 보편 언어로 모두 대체된 모습을 볼 수 있습니다.
+- `commandHandler`: 현재 상태(State)에서 명령(Command)를 받아 도메인 로직을 수행하고, 응답을 리턴하는 함수입니다. 로직을 수행하는 과정에서 이벤트를 쌓을 때마다 `eventHandler`를 호출합니다.
+- `eventHandler`: 현재 상태(State)에서 어떤 이벤트(Event)가 새로 쌓이게 되면 어떤 새로운 상태로 전이할지를 정의하는 함수입니다.
 
-<div class="hint" data-style="info">
+그다지 어렵지 않죠? `commandHandler`는 일반적인 어플리케이션에서 작성하는 도메인 로직과 유사하지만 DB에 상태를 직접 업데이트하는 것이 아니라 이벤트를 쌓을 뿐이고,
+새롭게 쌓인 이벤트를 가지고 최신 상태를 만들어내는 코드가 `eventHandler`에 정의되는 것입니다. `commandHandler`의 예시를 하나 들어보겠습니다. 수기 결제 요청을 받아 수행하는 commandHandler입니다.
 
-클래스명에 PG사의 명칭이 들어가있어서 도메인 엔티티가 아니라고 느껴질 수 있지만,
-각 PG사와의 거래는 분명하게 TGS의 [bounded context](https://martinfowler.com/bliki/BoundedContext.html) 안에 존재하는 개념이기에 PG사의 명칭을 클래스명에 포함시켰습니다.
+```scala
+// commandHandler: 설명을 위해 단순화한 예시 코드입니다.
+for {
+  // 1. 수기결제를 시작한다는 내용의 이벤트 저장
+  _ <- persist(Event.CommandReceived(id, form, store, customer))
 
-</div>
+  // 2. 사용자가 넘긴 channel key를 이용해 channel 얻어오기
+  channel <- channelService
+               .fetchChannel(store.id, form.channelKey)
+               .flatMapError(e => fail(Event.FetchingChannelFailed(form.channelKey, e)))
 
-(이미지 첨부: 보편 언어를 사용하는 클래스)
+  // 3. 채널 정보 요청 결과를 이벤트로 저장
+  _ <- persist(Event.FetchingChannelSucceeded(channel))
 
-#### 3. 각 PG사를 위한 데이터 클래스는 인프라 레이어로 이동
+  // 4. 채널을 이용해 PG사에 수기결제 요청하기
+  result <- txGatewayService
+            .payInstantly(base, channel, paymentMethodForm)
+            .flatMapError(e => fail(base, channel, Event.TgsFailed(e)))
 
-도메인 레이어를 보편 언어를 이용한 엔티티와 값 객체로 채우게 되면서 PG사를 위한 클래스들은 자연스럽게 인프라 레이어로 이동시켰습니다.
-그리고 인프라 레이어에서 PG사의 클래스를 도메인 엔티티와 값 객체로 변환하여 반환하게 만들었습니다.
-이제 PG사의 클래스들은 인프라 레이어에서 DTO로써만 존재하게 됐습니다.
-그리고 자연스럽게 PG사와 통신하는 Client 구현체는 부패 방지 계층의 역할을 띄게 됩니다.
-부패 방지 계층이란 연동하고자 하는 시스템과 기존 시스템 사이에 존재하는 도메인 모델의 차이를 기존 시스템에 맞게 변환하기 위한 계층으로,
-도메인 레이어를 외부의 용어와 완벽하게 분리할 수 있게 도와줍니다.
+  // 5. 수기 결제 요청 결과를 이벤트로 저장
+  _ <- persist(Event.TgsSucceeded(result))
 
-(이미지 첨부: 인프라 레이어에 존재하는 PG사별 Client 구현체)
-
-도메인 레이어와 어플리케이션 레이어를 수정하는 개발자는 더 이상 인프라 레이어의 구현에 대해서 알 필요가 없습니다.
-그저 Client가 반환한 도메인 엔티티와 값 객체를 이용해 로직을 구성하기만 하면 되는 것이죠.
-
-3단계로 진행된 리팩토링 과정에서 사실 대단한 DDD 기법을 사용하지는 않았습니다.
-Aggregate, CQRS, 이벤트 소싱 등의 기법은 전혀 등장하지 않았죠.
-그렇지만 보편 언어를 정의하여 커뮤니케이션의 효율을 높이고,
-기술 의존도가 없는 도메인 레이어에 비즈니스 로직을 응축해 놓음으로써 이식성이 높아졌기에 DDD가 추구하던 본질적인 장점은 취할 수 있게 되었습니다.
-덤으로 간단해진 어플리케이션 레이어 로직 덕분에 PG 연동 속도도 빨라지게 되어 생산성도 비약적으로 증가했습니다.
-
-### Typed Error 활용
-
-결제 도메인에서 에러 처리는 다른 도메인보다 특히나 중요합니다. 잘못된 에러 처리로 인해 결제 내역이 사라진다거나 결제가 여러 번 처리된다면 매우 큰 혼란이 생길 것입니다.
-명확한 에러 처리를 위해서는 특정 함수에서 어떤 에러가 발생할 수 있는지 문서화하는 것이 중요하나,
-문서와 주석은 outdated 되기 쉽다는 단점이 있습니다.
-저희는 이런 문제를 해결하기 위한 방법으로 함수형 프로그래밍을 위한 Kotlin 라이브러리인
-[Arrow](https://arrow-kt.io/)의 typed error를 적극적으로 활용하고 있습니다.
-
-Typed error를 사용하면 특정 함수에서 발생할 수 있는 에러를 코드를 통해 문서화할 수 있기 때문에 outdated 될 염려가 없고,
-에러 처리가 강제되기 때문에 특정 에러 케이스를 놓친다거나 하는 문제가 발생할 염려가 적습니다.
-예를 들어, Arrow를 사용해 함수 시그니처에 typed error를 적용하면 아래와 같은 코드를 작성하게 됩니다.
-Typed error를 적용함으로써 예시 코드의 `pay()` 함수에선 `AmountTooBig`, `InvalidCardInfo`, `TransactionAlreadyExists`
-에러가 발생할 수 있다는 것을 코드 레벨에서 확인할 수 있습니다.
-
-```kotlin
-interface Example {
-    fun pay(): Effect<PayError, Unit>
-
-    sealed interface PayError {
-      data object AmountTooBig: PayError
-      data object InvalidCardInfo: PayError
-      data object TransactionAlreadyExists: PayError
-    }
-}
+  ...
+} yield Response.Succeeded(result)
 ```
 
-반면 typed error를 사용하는 코드는 이런 의문을 가지게 합니다. ‘Kotlin에서 의도적으로 삭제한 checked exception를 다시 되살리는 것 아닌가?’.
-네, typed error는 checked exception과 거의 동일한 의도로 사용됩니다.
-Kotlin에서 checked exception을 삭제한 주요 이유는 대부분의 exception은 처리할 수 없는 exception이기 때문입니다.
-하지만 저희는 꼭 처리해 주어야 하는 예외 케이스가 있다면 checked exception을 사용하는 것이 그렇지 않은 경우보다 코드 퀄리티를 높여줄 수 있다고 생각했으며,
-결제가 예외 처리에 매우 민감한 도메인이라는 점을 감안하여 checked exception을 대신할 수 있는 typed error를 사용하고 있습니다.
+위 코드에서 `persist`함수를 호출할 때마다 DB에 이벤트가 쌓이게 되고, eventHandler를 거쳐 상태가 업데이트되는데요,
+`persist`함수를 어떻게 주입하고 있는지도 확인해 보겠습니다.
+eventHandler 역할을 하는 `handleEvent` 함수에서 상태가 어떻게 전이되는지 확인할 수 있습니다.
 
-물론 typed error를 잘못 사용할 경우에는 checked exception이 가지던 문제점들이 그대로 발생할 수 있습니다.
-때문에 올바른 방법으로 사용하는 것이 매우 중요하며, 이에 대한 내용은 추후 별도의 글에서 다뤄보도록 하겠습니다.
+```scala
+val persist = new Persist[E] {
+  def apply(event: E): UIO[Unit] =
+  for {
+      state    <- current.get
+      newState  = handleEvent(state, event)
+      _        <- eventRepository.insert(entityId, state.sequenceNr, event)
+      _        <- current.update(_ => newState)
+    } yield ()
+}
 
-## 마치며
+// eventHandler: 설명을 위해 단순화한 예시 코드입니다.
+private def handleEvent(state: State, event: Event): State =
+  (state, event) match {
+    case (_: State.Empty, _: Event.CommandReceived)          => State.Initialized(???)
+    case (_: State.Empty, _: Event.FetchingChannelSucceeded) => State.ChannelSelected(???)
+    case (_: State.ChannelSelected, _: TgsSucceeded)         => State.Paid(???)
 
-지금까지 포트원이 여러 PG사의 인터페이스를 효율적으로 연동하기 위해 논의했던 기술적 결정사항들에 대해 알아보았습니다.
-부디 이 글이 비슷한 문제를 해결하고자 하는 분들에게 작게나마 도움이 된다면 좋겠습니다.
+    ...
+  }
+```
 
-포트원은 지금도 고객사에게 더 좋은 결제 경험을 제공하기 위해 노력하고 있습니다.
-저희와 함께 간편한 결제 연동이라는 문제를 함께 풀어나가고 싶으신 분이 계시다면 포트원의 문을 두드려 주시면 감사하겠습니다!
+위 예시에선 설명을 위해 단순화한 부분이 많지만, Event Sourcing 구현의 핵심을 이루는 `commandHandler` 와 `eventHandler` 가 어떻게 구성되는지에 대해 충분히 감을 잡으셨을 것이라고 생각합니다.
+Event Sourcing의 구현에 있어 더 디테일하게 신경 써야 할 부분들에 대해서는 심화편에서 좀 더 깊게 다루어보도록 하겠습니다!
+
+## Event Sourcing 도입에 따른 Challenge
+
+저희가 Event Sourcing을 도입하게 된 것은 분명 해당 위에서 설명드린 여러 가지 장점을 누리기 위해서이지만,
+반대로 해당 기술을 도입하면서 추가적으로 신경 써야 할 것들 또한 적지 않았습니다.
+혹시 Event Sourcing의 도입을 고려하고 있지만 어떠한 챌린지가 있을지를 몰라 의사결정에 어려움을 겪고 계신 분들이 있다면,
+그런 분들께 도움을 드리고자 제가 느낀 챌린지들을 공유하고자 합니다.
+
+### Challenge 1. Event 직렬화/역직렬화에 각별히 신경 써야 한다.
+
+글의 윗부분에서 Event Sourcing의 특징에 대해 소개할 때, 해당 기술을 도입하게 되면 DB Schema에 의존하지 않는 자체적인 데이터 포맷 정의 및 직렬화/역직렬화 전략을 구성해야 한다고 말씀드렸는데요,
+이는 장점과 단점이 공존하는 특징인 것 같습니다.
+DB Schema에 얽매이지 않고 자유롭게 데이터의 형식을 정의할 수 있게 되는 대신, 모든 이벤트를 DB에 저장할 수 있는 형태로 직렬화하고, 반대로 역직렬화하는 코드를 모두 수동으로 작성해야 합니다.
+그리고 직렬화 포맷의 특성을 이해하고 이벤트가 하위 호환성을 유지할 수 있도록 많은 신경을 써주어야 합니다.
+
+### Challenge 2. DB를 직접 조작하기가 힘들다.
+
+일반적으로 DB의 내용은 항상 어플리케이션을 통해서만 수정하는 것이 바람직하지만, 드물게는 개발자가 DB에 직접 접속해 데이터를 강제로 조작하는 경우도 있습니다.
+이는 위험한 행동이긴 하지만 어쩔 수 없는 상황에서는 분명 유용할 수 있는 프랙티스입니다.
+다만 이러한 접근은 DB에 담긴 데이터가 human-readable/human-updatable 할 때만 유용하며, Event Sourcing DB에는 직렬화된 데이터가 담기기 때문에 이 데이터를 사람이 수동으로 조작하는 것에는 한계가 있습니다.
+이런 경우 강제 업데이트를 위한 별도의 기능을 어플리케이션에 개발해야 할 것입니다.
+
+### Challenge 3. 조회를 위한 별도의 모델이 필요하다.
+
+사용자가 조회를 통해 얻고 싶은 것은 상태이지만, Event Sourcing DB의 record에는 개별 이벤트가 담겨있습니다.
+따라서 Event Sourcing을 도입하게 되면 특정 조건으로 필터를 걸어 조건을 만족하는 엔티티를 한 번에 조회하는 등의 요구사항에 대응할 수 없습니다.
+Event Sourcing을 사용하면서 동시에 이러한 요구사항에 대응하기 위해서는 조회를 위한 별도의 모델이 필요합니다.
+보통 Event Sourcing DB로부터 주기적으로 데이터를 전달받아 조회에 특화된 별도 DB에 데이터를 동기화하고 이 별도 DB를 조회 요구사항을 만족하는 식으로 접근하게 되는데,
+이러한 접근 방식을 CQRS(Command-Query Responsibility Segregation) 패턴이라고 부릅니다.
+CQRS 패턴을 구현하기 위해서는 신뢰성 있는 데이터 동기화 아키텍처를 구성해야 하며, 이 아키텍처가 충분히 성숙해지기까지 꽤 많은 리소스를 들여야 할 것입니다.
+
+## 정리
+
+포트원 V2 시스템의 근간을 이루고 있는 Event Sourcing 기술의 개념과 도입 배경, 간단한 구현과 Challenge까지 개괄적인 내용을 함께 살펴보았습니다.
+Event Sourcing의 경우 굉장히 낯선 기술이고, 국내에서 해당 기술을 도입한 사례를 거의 찾아볼 수 없었기 때문에 저희도 실제로 이 기술을 도입하면서 많은 시행착오가 있었는데요,
+많은 분들이 본 글을 읽고 Event Sourcing 기술이 가지는 특징과 장단점에 대해 더 깊게 이해하게 되셨기를 바래봅니다.
+
+과감한 결정을 한 만큼 장기적으로 그 효과는 강력할 것이라고 생각합니다.
+Event Sourcing이라는 단단한 뿌리 위에서 폭발적으로 성장하는 포트원을 지켜봐 주세요!

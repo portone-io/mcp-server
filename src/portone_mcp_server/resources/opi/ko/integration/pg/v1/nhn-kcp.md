@@ -161,6 +161,8 @@ IMP.request_pay(
 
   **결제금액**
 
+<br />
+
 #### 기타 파라미터
 
 - display?: object

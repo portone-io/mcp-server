@@ -16,6 +16,8 @@ versionVariants:
 
 포트원 브라우저 SDK를 불러옵니다.
 
+<!-- CONDITIONAL CONTENT language=frontend/React START -->
+
 아래 명령어로 브라우저 SDK를 설치합니다.
 
 ![NPM Version](https://img.shields.io/npm/v/%40portone%2Fbrowser-sdk)
@@ -72,6 +74,8 @@ ni @portone/browser-sdk
 
 </div>
 
+<!-- CONDITIONAL CONTENT language=frontend/React END -->
+
 ### 상품 정보 불러오기
 
 서버로부터 결제할 상품의 정보를 불러옵니다.
@@ -100,11 +104,17 @@ ni @portone/browser-sdk
 
   이미 승인이 완료된 `paymentId`로 결제나 가상계좌 발급을 시도하는 경우 에러가 발생합니다.
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' START -->
+
   <div class="hint" data-style="warning">
 
   토스페이먼츠의 경우 영문 대소문자, 숫자, `-`, `_`만 허용되며, 6자 이상 64자 이하로 입력합니다.
 
   </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' START -->
 
   <div class="hint" data-style="warning">
 
@@ -112,11 +122,19 @@ ni @portone/browser-sdk
 
   </div>
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' START -->
+
   <div class="hint" data-style="warning">
 
   스마트로의 경우 영문 대소문자, 숫자만 허용되며, 40자 이하로 입력합니다.
 
   </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' START -->
 
   <div class="hint" data-style="warning">
 
@@ -124,17 +142,25 @@ ni @portone/browser-sdk
 
   </div>
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' START -->
+
   <div class="hint" data-style="warning">
 
   KG이니시스의 경우 ASCII 문자만 허용되며, 40자 이하로 입력합니다.
 
   </div>
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' END -->
+
 - orderName: string
 
   **주문명**
 
   주문명으로 자유롭게 입력합니다.
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' START -->
 
   <div class="hint" data-style="warning">
 
@@ -146,11 +172,19 @@ ni @portone/browser-sdk
 
   </div>
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' START -->
+
   <div class="hint" data-style="warning">
 
   KCP의 경우 최대 100바이트까지 입력할 수 있습니다.
 
   </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' START -->
 
   <div class="hint" data-style="warning">
 
@@ -158,17 +192,27 @@ ni @portone/browser-sdk
 
   </div>
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' START -->
+
   <div class="hint" data-style="warning">
 
   한국결제네트웍스의 경우 최대 256바이트까지 입력할 수 있습니다.
 
   </div>
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' START -->
+
   <div class="hint" data-style="warning">
 
   KG이니시스의 경우 최대 40바이트까지 입력할 수 있으며, 40바이트 초과시 37바이트에서 잘리고 "..."가 추가됩니다.
 
   </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' END -->
 
 - totalAmount: number
 
@@ -189,11 +233,17 @@ ni @portone/browser-sdk
 
   [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html)에 의해 표준화된 알파벳 통화 코드를 입력합니다.
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' START -->
+
   <div class="hint" data-style="warning">
 
   토스페이먼츠는 `KRW`만을 지원합니다.
 
   </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' START -->
 
   <div class="hint" data-style="warning">
 
@@ -201,11 +251,19 @@ ni @portone/browser-sdk
 
   </div>
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' START -->
+
   <div class="hint" data-style="warning">
 
   스마트로는 `KRW`와 `USD`만을 지원합니다. 상점 아이디의 설정에 따라 결제 통화가 고정되어 `currency`와 일치하지 않을 수 있습니다.
 
   </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' START -->
 
   <div class="hint" data-style="warning">
 
@@ -213,11 +271,19 @@ ni @portone/browser-sdk
 
   </div>
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'ksnet' START -->
+
   <div class="hint" data-style="warning">
 
   KSNET은 `KRW`와 `USD`만을 지원합니다.
 
   </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'ksnet' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' START -->
 
   <div class="hint" data-style="warning">
 
@@ -225,17 +291,27 @@ ni @portone/browser-sdk
 
   </div>
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name, payMethods } }) => name === 'inicis' && payMethods === 'card' START -->
+
   <div class="hint" data-style="warning">
 
   KG이니시스 카드 결제는 `KRW`와 `USD`만을 지원합니다.
 
   </div>
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name, payMethods } }) => name === 'inicis' && payMethods === 'card' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name, payMethods } }) => name === 'inicis' && payMethods !== 'card' START -->
+
   <div class="hint" data-style="warning">
 
   카드 결제를 제외한 KG이니시스는 `KRW`만을 지원합니다.
 
   </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name, payMethods } }) => name === 'inicis' && payMethods !== 'card' END -->
 
 - payMethod: string
 
@@ -246,6 +322,8 @@ ni @portone/browser-sdk
   <details>
 
   <summary>지원 결제 수단 코드</summary>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'toss' START -->
 
   - 카드: `CARD`
   - 실시간 계좌이체: `TRANSFER`
@@ -260,24 +338,9 @@ ni @portone/browser-sdk
 
   </div>
 
-  - 카드: `CARD`
-  - 실시간 계좌이체: `TRANSFER`
-  - 가상계좌: `VIRTUAL_ACCOUNT`
-  - 휴대폰 소액결제: `MOBILE`
-  - 간편결제: `EASY_PAY`
-  - 상품권: `GIFT_CERTIFICATE`
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'toss' END -->
 
-  - 카드: `CARD`
-  - 실시간 계좌이체: `TRANSFER`
-  - 가상계좌: `VIRTUAL_ACCOUNT`
-  - 휴대폰 소액결제: `MOBILE`
-  - 간편결제: `EASY_PAY`
-
-  - 카드: `CARD`
-  - 실시간 계좌이체: `TRANSFER`
-  - 가상계좌: `VIRTUAL_ACCOUNT`
-  - 휴대폰 소액결제: `MOBILE`
-  - 간편결제: `EASY_PAY`
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'nice' START -->
 
   - 카드: `CARD`
   - 실시간 계좌이체: `TRANSFER`
@@ -286,11 +349,29 @@ ni @portone/browser-sdk
   - 간편결제: `EASY_PAY`
   - 상품권: `GIFT_CERTIFICATE`
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'nice' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'smartro' START -->
+
   - 카드: `CARD`
   - 실시간 계좌이체: `TRANSFER`
   - 가상계좌: `VIRTUAL_ACCOUNT`
   - 휴대폰 소액결제: `MOBILE`
   - 간편결제: `EASY_PAY`
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'smartro' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'kpn' START -->
+
+  - 카드: `CARD`
+  - 실시간 계좌이체: `TRANSFER`
+  - 가상계좌: `VIRTUAL_ACCOUNT`
+  - 휴대폰 소액결제: `MOBILE`
+  - 간편결제: `EASY_PAY`
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'kpn' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'inicis' START -->
 
   - 카드: `CARD`
   - 실시간 계좌이체: `TRANSFER`
@@ -298,10 +379,35 @@ ni @portone/browser-sdk
   - 휴대폰 소액결제: `MOBILE`
   - 간편결제: `EASY_PAY`
   - 상품권: `GIFT_CERTIFICATE`
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'inicis' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'ksnet' START -->
+
+  - 카드: `CARD`
+  - 실시간 계좌이체: `TRANSFER`
+  - 가상계좌: `VIRTUAL_ACCOUNT`
+  - 휴대폰 소액결제: `MOBILE`
+  - 간편결제: `EASY_PAY`
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'ksnet' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'kcp' START -->
+
+  - 카드: `CARD`
+  - 실시간 계좌이체: `TRANSFER`
+  - 가상계좌: `VIRTUAL_ACCOUNT`
+  - 휴대폰 소액결제: `MOBILE`
+  - 간편결제: `EASY_PAY`
+  - 상품권: `GIFT_CERTIFICATE`
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'kcp' END -->
 
   </details>
 
-* card?: object
+<!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "card" START -->
+
+- card?: object
 
   **카드 결제 추가 정보**
 
@@ -313,11 +419,17 @@ ni @portone/browser-sdk
 
     구매자가 카드사를 선택하지 않고 입력한 카드사 화면으로 바로 이동하도록 합니다.
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' START -->
+
     <div class="hint" data-style="warning">
 
     토스페이먼츠의 경우 카드사 단독 노출과 동시에 할부를 설정하려면 `card.installment.monthOption.fixedMonth`를 반드시 전달해야 하며, 그렇지 않을 경우 일시불로 결제됩니다.
 
     </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' START -->
 
     <div class="hint" data-style="warning">
 
@@ -326,11 +438,19 @@ ni @portone/browser-sdk
 
     </div>
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' START -->
+
     <div class="hint" data-style="warning">
 
     스마트로의 경우 전북카드, 카카오뱅크 카드는 Windows에서만 단독 노출이 가능합니다.
 
     </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' START -->
 
     <div class="hint" data-style="warning">
 
@@ -338,6 +458,10 @@ ni @portone/browser-sdk
     자세한 사항은 해당 파라미터 설명을 참조해 주세요.
 
     </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' START -->
 
     <div class="hint" data-style="warning">
 
@@ -351,15 +475,23 @@ ni @portone/browser-sdk
 
     </div>
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' START -->
+
     <div class="hint" data-style="warning">
 
     KG이니시스의 경우 카드사 단독 노출 시 별도 계약이 필요합니다.
 
     </div>
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' END -->
+
     <details>
 
     <summary>지원 카드사 코드 목록</summary>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' START -->
 
     - `KOREA_DEVELOPMENT_BANK` (KDB산업은행 카드)
     - `KFCC` (새마을금고 카드)
@@ -384,6 +516,10 @@ ni @portone/browser-sdk
     - `K_BANK` (케이뱅크 카드)
     - `TOSS_BANK` (토스뱅크 카드)
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => ['nice', 'smartro', 'kpn', 'inicis', 'ksnet', 'kcp'].includes(name) START -->
+
     - `KOREA_DEVELOPMENT_BANK` (KDB산업은행 카드)
     - `KFCC` (새마을금고 카드)
     - `SHINHYUP` (신협 카드)
@@ -407,6 +543,8 @@ ni @portone/browser-sdk
     - `K_BANK` (케이뱅크 카드)
     - `TOSS_BANK` (토스뱅크 카드)
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => ['nice', 'smartro', 'kpn', 'inicis', 'ksnet', 'kcp'].includes(name) END -->
+
     </details>
 
   - availableCards?: string\[]
@@ -415,9 +553,13 @@ ni @portone/browser-sdk
 
     지정한 일부 카드사만을 목록에 노출할 수 있습니다. 상단의 카드사 식별 값 항목을 참고해주세요.
 
-  * useFreeInterestFromMall?: boolean
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => !['kcp', 'kpn', 'inicis'].includes(name) START -->
+
+  - useFreeInterestFromMall?: boolean
 
     **상점 분담 무이자 활성화 여부**
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' START -->
 
     <div class="hint" data-style="warning">
 
@@ -425,13 +567,23 @@ ni @portone/browser-sdk
 
     </div>
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => !['kcp', 'kpn', 'inicis'].includes(name) END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => !['kcp', 'inicis'].includes(name) START -->
+
   - useInstallment?: boolean
 
     **할부 사용 여부**
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => !['kcp', 'inicis'].includes(name) END -->
+
   - installment?: object
 
     **할부 설정**
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' START -->
 
     <div class="hint" data-style="warning">
 
@@ -439,11 +591,17 @@ ni @portone/browser-sdk
 
     </div>
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' START -->
+
     <div class="hint" data-style="warning">
 
     스마트로의 경우 신용카드 할부 이용 시 별도 계약이 필요합니다.
 
     </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' END -->
 
     - freeInstallmentPlans?: object\[]
 
@@ -451,11 +609,17 @@ ni @portone/browser-sdk
 
       고객사가 부담하는 무이자 할부 설정입니다.
 
+      <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' START -->
+
       <div class="hint" data-style="warning">
 
       스마트로의 경우 상점 부담 무이자 할부 이용 시 별도 계약이 필요합니다.
 
       </div>
+
+      <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' END -->
+
+      <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' START -->
 
       <div class="hint" data-style="warning">
 
@@ -463,11 +627,17 @@ ni @portone/browser-sdk
 
       </div>
 
+      <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' END -->
+
+      <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' START -->
+
       <div class="hint" data-style="warning">
 
       KG이니시스의 경우 상점 부담 무이자 할부 이용 시 별도 계약이 필요합니다.
 
       </div>
+
+      <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' END -->
 
       - cardCompany: string
 
@@ -485,7 +655,11 @@ ni @portone/browser-sdk
 
       할부 결제 시 할부 개월 수를 설정할 수 있습니다.
 
+      <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name !== 'kcp' START -->
+
       `fixedMonth`와 `availableMonthList` 중 하나만 제공해주세요.
+
+      <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name !== 'kcp' END -->
 
       - fixedMonth: number
 
@@ -493,13 +667,21 @@ ni @portone/browser-sdk
 
         구매자가 할부 개월 수를 선택할 수 있도록 하려면 `availableMonthList`를 사용해주세요.
 
-      * availableMonthList: number\[]
+      <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => !['kcp', 'smartro', 'inicis'].includes(name) START -->
+
+      - availableMonthList: number\[]
 
         **구매자가 선택할 수 있는 할부 개월 수 목록**
 
-  * useCardPoint?: boolean
+      <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => !['kcp', 'smartro', 'inicis'].includes(name) END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => !['kcp', 'smartro'].includes(name) START -->
+
+  - useCardPoint?: boolean
 
     **카드사 포인트 사용 여부**
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' START -->
 
     <div class="hint" data-style="warning">
 
@@ -507,11 +689,19 @@ ni @portone/browser-sdk
 
     </div>
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' START -->
+
     <div class="hint" data-style="warning">
 
     나이스페이먼츠의 경우 카드사 포인트 사용 시 별도 계약이 필요합니다.
 
     </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' START -->
 
     <div class="hint" data-style="warning">
 
@@ -519,9 +709,17 @@ ni @portone/browser-sdk
 
     </div>
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => !['kcp', 'smartro'].includes(name) END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => !['kpn', 'inicis'].includes(name) START -->
+
   - useAppCardOnly?: boolean
 
     **앱 카드만 허용할지 여부**
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' START -->
 
     <div class="hint" data-style="warning">
 
@@ -529,11 +727,21 @@ ni @portone/browser-sdk
 
     </div>
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => !['kpn', 'inicis'].includes(name) END -->
+
+<!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "card" END -->
+
+<!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "virtualAccount" START -->
+
 - virtualAccount?: object
 
   **가상계좌 발급 추가 정보**
 
   `payMethod`가 `VIRTUAL_ACCOUNT`인 경우 가상계좌와 관련한 추가 정보를 입력할 수 있습니다.
+
+  <!-- CONDITIONAL CONTENT when=({ pg: {name }}) => name !== 'kcp' START -->
 
   - cashReceiptType?: string
 
@@ -543,11 +751,19 @@ ni @portone/browser-sdk
     - `CORPORATE` (지출증빙용)
     - `ANONYMOUS` (미발행(국세청번호 자동발급))
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' START -->
+
     <div class="hint" data-style="warning">
 
     스마트로의 경우 `cashReceiptType`과 `bankCode`를 같이 사용해야 합니다.
 
     </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: {name }}) => name !== 'kcp' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: {name }}) => !['kpn', 'kcp'].includes(name) START -->
 
   - customerIdentifier?: string
 
@@ -555,11 +771,19 @@ ni @portone/browser-sdk
 
     소득공제용(`PERSONAL`)의 경우 전화번호를, 지출증빙용(`CORPORATE`)의 경우 사업자번호를 입력하며, 미발행(`ANONYMOUS`)의 경우 무시됩니다.
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' START -->
+
     <div class="hint" data-style="warning">
 
     스마트로의 경우 `cashReceiptType`에 `ANONYMOUS` 외의 값이 설정되면 올바른 `customerIdentifier`를 반드시 입력해야 합니다.
 
     </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: {name }}) => !['kpn', 'kcp'].includes(name) END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: {name }}) => !['kcp', 'kpn'].includes(name) START -->
 
   - fixedOption?: oneof object
 
@@ -575,6 +799,10 @@ ni @portone/browser-sdk
 
       고정하여 사용할 가상계좌 번호를 입력해주세요.
 
+  <!-- CONDITIONAL CONTENT when=({ pg: {name }}) => !['kcp', 'kpn'].includes(name) END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: {name }}) => !['kcp', 'kpn'].includes(name) START -->
+
   - bankCode?: string
 
     **단독 노출 은행**
@@ -584,6 +812,8 @@ ni @portone/browser-sdk
     <details>
 
     <summary>지원 은행 코드</summary>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' START -->
 
     - `KYONGNAM_BANK` (경남은행)
     - `GWANGJU_BANK` (광주은행)
@@ -599,6 +829,10 @@ ni @portone/browser-sdk
     - `EPOST` (우체국)
     - `HANA_BANK` (하나은행)
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' START -->
+
     - `INDUSTRIAL_BANK_OF_KOREA` (기업은행)
     - `KOOKMIN_BANK` (국민은행)
     - `NH_NONGHYUP_BANK` (NH농협은행)
@@ -611,6 +845,10 @@ ni @portone/browser-sdk
     - `HANA_BANK` (하나은행)
     - `SHINHAN_BANK` (신한은행)
     - `K_BANK` (케이뱅크)
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' START -->
 
     - `INDUSTRIAL_BANK_OF_KOREA` (기업은행)
     - `KOOKMIN_BANK` (국민은행)
@@ -628,6 +866,10 @@ ni @portone/browser-sdk
     - `JEONBUK_BANK` (전북은행)
     - `KYONGNAM_BANK` (경남은행)
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' START -->
+
     - `INDUSTRIAL_BANK_OF_KOREA` (기업은행)
     - `KOOKMIN_BANK` (국민은행)
     - `NH_NONGHYUP_BANK` (NH농협은행)
@@ -641,6 +883,10 @@ ni @portone/browser-sdk
     - `HANA_BANK` (하나은행)
     - `SHINHAN_BANK` (신한은행)
     - `KYONGNAM_BANK` (경남은행)
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'ksnet' START -->
 
     - `INDUSTRIAL_BANK_OF_KOREA` (기업은행)
     - `KOOKMIN_BANK` (국민은행)
@@ -656,7 +902,11 @@ ni @portone/browser-sdk
     - `JEONBUK_BANK` (전북은행)
     - `KYONGNAM_BANK` (경남은행)
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'ksnet' END -->
+
     </details>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: {name }}) => !['kcp', 'kpn'].includes(name) END -->
 
   - accountExpiry?: object
 
@@ -664,11 +914,15 @@ ni @portone/browser-sdk
 
     `validHours`와 `dueDate` 중 하나만 입력해주세요.
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' START -->
+
     <div class="hint" data-style="warning">
 
     나이스페이먼츠의 경우 입금 만료기한을 필수로 입력해야 합니다.
 
     </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' END -->
 
     - validHours?: number
 
@@ -687,6 +941,10 @@ ni @portone/browser-sdk
         - `YYYYMMDDHHmmss`
         - `YYYY-MM-DD`
         - `YYYY-MM-DD HH:mm:ss`
+
+<!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "virtualAccount" END -->
+
+<!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "transfer" START -->
 
 - transfer?: object
 
@@ -716,6 +974,8 @@ ni @portone/browser-sdk
 
     <summary>지원 은행 코드</summary>
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' START -->
+
     - `KYONGNAM_BANK` (경남은행)
     - `GWANGJU_BANK` (광주은행)
     - `KOOKMIN_BANK` (국민은행)
@@ -730,13 +990,21 @@ ni @portone/browser-sdk
     - `EPOST` (우체국)
     - `HANA_BANK` (하나은행)
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' END -->
+
     </details>
+
+<!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "transfer" END -->
+
+<!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "mobile" START -->
 
 - mobile?: object
 
   **휴대폰 소액결제 추가 정보**
 
   `payMethod`가 `MOBILE`인 경우 휴대폰 소액결제와 관련한 추가 정보를 입력할 수 있습니다.
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' START -->
 
   - carrier?: string
 
@@ -751,11 +1019,21 @@ ni @portone/browser-sdk
     - `KCT` (티플러스)
     - `SK7` (SK 세븐모바일)
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' START -->
+
   - availableCarriers?: string\[]
 
     **통신사 일부 노출**
 
     지정한 일부 통신사만을 목록에 노출할 수 있습니다. 상단의 통신사 식별 값 항목을 참고해주세요.
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' END -->
+
+<!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "mobile" END -->
+
+<!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "giftCertificate" START -->
 
 - giftCertificate?: object
 
@@ -771,13 +1049,25 @@ ni @portone/browser-sdk
 
     <summary>지원 상품권 유형 코드</summary>
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "toss" START -->
+
     - `BOOKNLIFE` (도서문화상품권)
     - `SMART_MUNSANG` (스마트문상, (구)게임문화상품권)
     - `CULTURELAND` (문화상품권)
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "toss" END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "nice" START -->
+
     - `CULTURELAND` (문화상품권)
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "nice" END -->
+
     </details>
+
+<!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "giftCertificate" END -->
+
+<!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "easyPay" START -->
 
 - easyPay?: object
 
@@ -789,11 +1079,17 @@ ni @portone/browser-sdk
 
     **간편결제 수단**
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' START -->
+
     <div class="hint" data-style="warning">
 
     한국결제네트웍스의 경우 간편결제 수단을 직접 지정하려면 별도 계약이 필요합니다.
 
     </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' START -->
 
     <div class="hint" data-style="warning">
 
@@ -801,10 +1097,14 @@ ni @portone/browser-sdk
 
     </div>
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' END -->
+
     <details>
 
     <summary>지원 간편결제 코드</summary>
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'toss' START -->
+
     - `PAYCO` (페이코)
     - `SAMSUNGPAY` (삼성페이)
     - `APPLEPAY` (애플페이)
@@ -814,10 +1114,18 @@ ni @portone/browser-sdk
     - `LPAY` (L페이)
     - `TOSSPAY` (토스페이)
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'toss' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'kpn' START -->
+
     - `KAKAOPAY` (카카오페이)
     - `SAMSUNGPAY` (삼성페이)
     - `TOSSPAY` (토스페이)
     - `PAYCO` (페이코)
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'kpn' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'inicis' START -->
 
     - `KAKAOPAY` (카카오페이)
     - `NAVERPAY` (네이버페이)
@@ -827,16 +1135,28 @@ ni @portone/browser-sdk
     - `LPAY` (L페이)
     - `TOSSPAY` (토스페이)
     - `PAYCO` (페이코)
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'inicis' END -->
 
     </details>
 
-  * useFreeInterestFromMall?: boolean
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' START -->
+
+  - useFreeInterestFromMall?: boolean
 
     **상점분담 무이자 활성화 여부**
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' START -->
 
   - useCardPoint?: boolean
 
     **카드사 포인트 사용 여부**
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' START -->
 
   - availableCards?: string\[]
 
@@ -845,6 +1165,8 @@ ni @portone/browser-sdk
     지정한 일부 카드사만을 목록에 노출할 수 있습니다.
 
     <details>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' START -->
 
     - `KOREA_DEVELOPMENT_BANK` (KDB산업은행 카드)
     - `KFCC` (새마을금고 카드)
@@ -869,6 +1191,10 @@ ni @portone/browser-sdk
     - `K_BANK` (케이뱅크 카드)
     - `TOSS_BANK` (토스뱅크 카드)
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => ['nice', 'smartro', 'kpn', 'inicis', 'ksnet'].includes(name) START -->
+
     - `KOREA_DEVELOPMENT_BANK` (KDB산업은행 카드)
     - `KFCC` (새마을금고 카드)
     - `SHINHYUP` (신협 카드)
@@ -892,6 +1218,10 @@ ni @portone/browser-sdk
     - `K_BANK` (케이뱅크 카드)
     - `TOSS_BANK` (토스뱅크 카드)
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => ['nice', 'smartro', 'kpn', 'inicis', 'ksnet'].includes(name) END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' START -->
+
     - `KOREA_DEVELOPMENT_BANK` (KDB산업은행 카드)
     - `KFCC` (새마을금고 카드)
     - `SHINHYUP` (신협 카드)
@@ -914,17 +1244,27 @@ ni @portone/browser-sdk
     - `K_BANK` (케이뱅크 카드)
     - `TOSS_BANK` (토스뱅크 카드)
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' END -->
+
     </details>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' START -->
 
   - installment?: object
 
     **할부 설정**
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' START -->
 
     <div class="hint" data-style="warning">
 
     나이스페이먼츠의 경우 할부 사용 시 별도 계약이 필요합니다.
 
     </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' END -->
 
     - freeInstallmentPlans?: object\[]
 
@@ -960,11 +1300,19 @@ ni @portone/browser-sdk
 
         **구매자가 선택할 수 있는 할부 개월 수 목록**
 
+        <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' START -->
+
         <div class="hint" data-style="warning">
 
         토스페이먼츠의 경우 자체 정책에 따라 **일시불부터 전달한 값 중 최댓값까지 모두 표시**됩니다.
 
         </div>
+
+        <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' START -->
 
   - cashReceiptType?: string
 
@@ -974,9 +1322,17 @@ ni @portone/browser-sdk
     - `CORPORATE` (지출증빙용)
     - `ANONYMOUS` (미발행(국세청번호 자동발급))
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' START -->
+
   - customerIdentifier?: string
 
     **현금영수증 발행 대상 식별 정보**
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' START -->
 
   - availablePayMethods?: string\[]
 
@@ -987,6 +1343,8 @@ ni @portone/browser-sdk
     - `MONEY` (토스페이 머니 결제)
     - `TRANSFER` (계좌 결제)
 
+    <!-- CONDITIONAL CONTENT when=({ pg: {name}}) => name === "nice" START -->
+
     <div class="hint" data-style="warning">
 
     나이스페이먼츠의 경우 일부 간편결제 수단에 대해 `availablePayMethods`가 필수입니다.
@@ -995,6 +1353,12 @@ ni @portone/browser-sdk
     - SSG페이: 계좌 결제를 노출하는 `TRANSFER`만 유효하며, 카드 혹은 머니 결제인 경우 `availablePayMethods`를 생략해야 합니다.
 
     </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: {name}}) => name === "nice" END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' END -->
+
+<!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "easyPay" END -->
 
 - taxFreeAmount?: number
 
@@ -1005,11 +1369,17 @@ ni @portone/browser-sdk
   - 미입력 시 0으로 취급됩니다.
   - 결제 금액과 동일하게 통화별 scale factor가 적용된 금액으로 전달해주세요.
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' START -->
+
   <div class="hint" data-style="warning">
 
   토스페이먼츠의 경우 면세 및 복합과세 이용 시 별도 계약이 필요합니다.
 
   </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' START -->
 
   <div class="hint" data-style="warning">
 
@@ -1017,12 +1387,20 @@ ni @portone/browser-sdk
 
   </div>
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' START -->
+
   <div class="hint" data-style="warning">
 
   KCP의 경우 면세 금액을 직접 지정하기 위해서는 별도 계약이 필요합니다.
   계약을 진행하지 않고 값을 지정하는 경우 요청한 내용과 다른 금액으로 결제가 발생할 수 있습니다.
 
   </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' START -->
 
   <div class="hint" data-style="warning">
 
@@ -1032,11 +1410,17 @@ ni @portone/browser-sdk
 
   </div>
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' START -->
+
   <div class="hint" data-style="warning">
 
   KG이니시스의 경우 면세 금액을 직접 지정하기 위해서는 별도 계약이 필요합니다.
 
   </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' END -->
 
 - vatAmount?: number
 
@@ -1047,6 +1431,8 @@ ni @portone/browser-sdk
   - 미입력 시 과세 금액의 1/11 로 자동 계산됩니다.
   - 결제 금액과 동일하게 통화별 scale factor가 적용된 금액으로 전달해주세요.
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' START -->
+
   <div class="hint" data-style="warning">
 
   KCP의 경우 부가세 금액을 직접 지정하기 위해서는 별도 계약이 필요합니다.
@@ -1054,15 +1440,23 @@ ni @portone/browser-sdk
 
   </div>
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' START -->
+
   <div class="hint" data-style="warning">
 
   KG이니시스의 경우 부가세 금액을 직접 지정하기 위해서는 별도 계약이 필요합니다.
 
   </div>
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' END -->
+
 - customer?: object
 
   **구매자 정보**
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'ksnet' START -->
 
   <div class="hint" data-style="warning">
 
@@ -1070,17 +1464,27 @@ ni @portone/browser-sdk
 
   </div>
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'ksnet' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'inicis' START -->
+
   <div class="hint" data-style="warning">
 
   KG이니시스 결제 시 PC 환경에서는 구매자 이름, 연락처, 이메일을 필수로 입력해야 합니다.
 
   </div>
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'inicis' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'smartro' START -->
+
   <div class="hint" data-style="warning">
 
   스마트로 결제 시 구매자 연락처를 필수로 입력해야 합니다.
 
   </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'smartro' END -->
 
   - customerId?: string
 
@@ -1114,11 +1518,15 @@ ni @portone/browser-sdk
 
     **구매자 이메일 주소**
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' START -->
+
     <div class="hint" data-style="warning">
 
     KG이니시스의 경우 특수문자는 `@`와 `.`만 허용됩니다.
 
     </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' END -->
 
   - address?: object
 
@@ -1183,6 +1591,8 @@ ni @portone/browser-sdk
 
   **결제대행사 고유 기능**
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "toss" START -->
+
   - tosspayments?: object
 
     - discountCode?: string
@@ -1192,6 +1602,10 @@ ni @portone/browser-sdk
     - useInternationalCardOnly?: boolean
 
       - `true`로 설정하면 해외 카드로만 결제를 허용합니다.
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "toss" END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "nice" START -->
 
   - nice\_v2?: object
 
@@ -1319,6 +1733,10 @@ ni @portone/browser-sdk
 
       </div>
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "nice" END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' START -->
+
   - smartro\_v2?: object
 
     - GoodsCnt?: number
@@ -1338,6 +1756,10 @@ ni @portone/browser-sdk
       - `KR`: 국내 카드만 허용 (기본값)
       - `EN`: 해외 카드만 허용
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' START -->
+
   - kpn: object
 
     - CardSelect?: string\[]
@@ -1349,6 +1771,10 @@ ni @portone/browser-sdk
       - `GLOBAL`: 해외 카드(Visa, Mastercard, JCB)를 노출합니다.
       - `LEGACY_AUTH`: 구 인증결제 방식을 노출합니다.
       - `KEY_IN`: 키인 결제를 노출합니다.
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "kcp" START -->
 
   - kcp\_v2?: object
 
@@ -1417,6 +1843,8 @@ ni @portone/browser-sdk
     - 기본값은 `00`입니다.
     - 항상 두 자리 수로 입력되어야 합니다. 예상 배송 소요기간이 3일인 경우, `03`으로 입력합니다.
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "kcp" END -->
+
 - redirectUrl?: string
 
   **리디렉션 방식에서 결제 프로세스 완료 후 이동될 고객사 URL**
@@ -1437,11 +1865,15 @@ ni @portone/browser-sdk
 
   ISP/앱카드에서 결제 완료 후 고객사 앱으로 복귀할 때 사용합니다.
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "toss" START -->
+
   <div class="hint" data-style="warning">
 
   토스페이먼츠의 경우 `myappscheme://` 형식으로 입력해 주세요.
 
   </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "toss" END -->
 
 - productType?: string
 
@@ -1450,11 +1882,17 @@ ni @portone/browser-sdk
   - 실물 상품: `PRODUCT_TYPE_REAL`
   - 디지털 상품: `PRODUCT_TYPE_DIGITAL`
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name, payMethods }}) => name === "nice" && payMethods === 'mobile' START -->
+
   <div class="hint" data-style="warning">
 
   나이스페이먼츠 휴대폰 소액결제 시 `productType`는 필수 입력이며, 상점에 설정된 상품 유형과 입력된 상품 유형이 다른 경우 결제가 실패합니다.
 
   </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name, payMethods }}) => name === "nice" && payMethods === 'mobile' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name, payMethods } }) => name === 'smartro' && payMethods === 'mobile' START -->
 
   <div class="hint" data-style="warning">
 
@@ -1462,11 +1900,17 @@ ni @portone/browser-sdk
 
   </div>
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name, payMethods } }) => name === 'smartro' && payMethods === 'mobile' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name, payMethods } }) => name === 'kpn' && payMethods === 'mobile' START -->
+
   <div class="hint" data-style="warning">
 
   한국결제네트웍스 휴대폰 소액결제 시 `productType`는 필수 입력입니다.
 
   </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name, payMethods } }) => name === 'kpn' && payMethods === 'mobile' END -->
 
 - offerPeriod?: oneof object
 
@@ -1486,11 +1930,15 @@ ni @portone/browser-sdk
 
       **종료 시점**
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' START -->
+
     <div class="hint" data-style="warning">
 
     스마트로의 경우 `from`과 `to`를 동시에 입력해야 합니다.
 
     </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' END -->
 
   - interval?: string
 
@@ -1516,11 +1964,15 @@ ni @portone/browser-sdk
 
     **상품 코드**
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'toss' START -->
+
     <div class="hint" data-style="warning">
 
     토스페이먼츠의 경우 반드시 입력해주세요.
 
     </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'toss' END -->
 
   - amount: number
 
@@ -1568,11 +2020,17 @@ ni @portone/browser-sdk
 
   `true`로 설정하면 에스크로를 사용합니다.
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "toss" START -->
+
   <div class="hint" data-style="warning">
 
   토스페이먼츠의 경우 에스크로 사용 시 별도 계약이 필요합니다.
 
   </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "toss" END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' START -->
 
   <div class="hint" data-style="warning">
 
@@ -1580,11 +2038,19 @@ ni @portone/browser-sdk
 
   </div>
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' START -->
+
   <div class="hint" data-style="warning">
 
   한국결제네트웍스의 경우 에스크로 사용 시 별도 계약이 필요합니다.
 
   </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' START -->
 
   <div class="hint" data-style="warning">
 
@@ -1592,12 +2058,22 @@ ni @portone/browser-sdk
 
   </div>
 
-  #### locale?: string
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => ['kcp', 'kpn', 'inicis'].includes(name) START -->
+
+  - locale?: string
 
   **결제창 언어**
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => ['kcp', 'kpn'].includes(name) START -->
+
   - 한국어: `KO_KR`
   - 영어: `EN_US`
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => ['kcp', 'kpn'].includes(name) END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' START -->
 
   - 한국어: `KO_KR`
   - 영어: `EN_US`
@@ -1608,6 +2084,10 @@ ni @portone/browser-sdk
   KG이니시스의 경우 중국어(간체)는 PC 결제 시에만 지원됩니다.
 
   </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => ['kcp', 'kpn', 'inicis'].includes(name) END -->
 
 - country?: string
 
@@ -1634,13 +2114,21 @@ ni @portone/browser-sdk
 
 완료된 결제의 `paymentId`를 서버로 전송하여 결제 상태를 반영합니다.
 
+<!-- CONDITIONAL CONTENT when=({ pg }) => pg.payMethods !== "virtualAccount"  START -->
+
 ### 결제 완료 상태 처리
 
 서버로부터 검증 후 결제가 완료된 경우를 처리합니다.
 
+<!-- CONDITIONAL CONTENT when=({ pg }) => pg.payMethods !== "virtualAccount"  END -->
+
+<!-- CONDITIONAL CONTENT when=({ pg }) => pg.payMethods === "virtualAccount"  START -->
+
 ### 가상계좌 발급 상태 처리
 
 서버로부터 검증 후 가상계좌가 발급된 경우를 처리합니다.
+
+<!-- CONDITIONAL CONTENT when=({ pg }) => pg.payMethods === "virtualAccount"  END -->
 
 ### 결제 실패 상태 처리
 
@@ -1651,6 +2139,8 @@ ni @portone/browser-sdk
 ### 포트원 서버 SDK 불러오기
 
 포트원 서버 SDK를 불러옵니다.
+
+<!-- CONDITIONAL CONTENT language=backend/Express START -->
 
 아래 명령어로 서버 SDK를 설치합니다.
 
@@ -1757,80 +2247,9 @@ globalThis.crypto = crypto;
 
 </details>
 
-아래 명령어로 서버 SDK를 설치합니다.
+<!-- CONDITIONAL CONTENT language=backend/Express END -->
 
-![PyPI - Version](https://img.shields.io/pypi/v/portone-server-sdk)
-
-<div class="tabs-container">
-
-<div class="tabs-content" data-title="uv">
-
-```shell
-uv add portone-server-sdk
-```
-
-</div>
-
-<div class="tabs-content" data-title="poetry">
-
-```shell
-poetry add portone-server-sdk
-```
-
-</div>
-
-<div class="tabs-content" data-title="rye">
-
-```shell
-rye add portone-server-sdk
-```
-
-</div>
-
-<div class="tabs-content" data-title="pipenv">
-
-```shell
-pipenv install portone-server-sdk
-```
-
-</div>
-
-<div class="tabs-content" data-title="Conda">
-
-```shell
-conda install portone-server-sdk
-```
-
-</div>
-
-<div class="tabs-content" data-title="Hatch">
-
-```toml title="pyproject.toml"
-[project]
-dependencies = [
-  "portone-server-sdk~=x.x.x"
-]
-```
-
-</div>
-
-<div class="tabs-content" data-title="PDM">
-
-```shell
-pdm add portone-server-sdk
-```
-
-</div>
-
-<div class="tabs-content" data-title="pip requirements">
-
-```shell title="requirements.txt"
-portone-server-sdk ~= x.x.x
-```
-
-</div>
-
-</div>
+<!-- CONDITIONAL CONTENT language=backend/FastAPI START -->
 
 아래 명령어로 서버 SDK를 설치합니다.
 
@@ -1906,6 +2325,89 @@ portone-server-sdk ~= x.x.x
 </div>
 
 </div>
+
+<!-- CONDITIONAL CONTENT language=backend/FastAPI END -->
+
+<!-- CONDITIONAL CONTENT language=backend/Flask START -->
+
+아래 명령어로 서버 SDK를 설치합니다.
+
+![PyPI - Version](https://img.shields.io/pypi/v/portone-server-sdk)
+
+<div class="tabs-container">
+
+<div class="tabs-content" data-title="uv">
+
+```shell
+uv add portone-server-sdk
+```
+
+</div>
+
+<div class="tabs-content" data-title="poetry">
+
+```shell
+poetry add portone-server-sdk
+```
+
+</div>
+
+<div class="tabs-content" data-title="rye">
+
+```shell
+rye add portone-server-sdk
+```
+
+</div>
+
+<div class="tabs-content" data-title="pipenv">
+
+```shell
+pipenv install portone-server-sdk
+```
+
+</div>
+
+<div class="tabs-content" data-title="Conda">
+
+```shell
+conda install portone-server-sdk
+```
+
+</div>
+
+<div class="tabs-content" data-title="Hatch">
+
+```toml title="pyproject.toml"
+[project]
+dependencies = [
+  "portone-server-sdk~=x.x.x"
+]
+```
+
+</div>
+
+<div class="tabs-content" data-title="PDM">
+
+```shell
+pdm add portone-server-sdk
+```
+
+</div>
+
+<div class="tabs-content" data-title="pip requirements">
+
+```shell title="requirements.txt"
+portone-server-sdk ~= x.x.x
+```
+
+</div>
+
+</div>
+
+<!-- CONDITIONAL CONTENT language=backend/Flask END -->
+
+<!-- CONDITIONAL CONTENT language=backend/Spring_Kotlin START -->
 
 Maven Central을 통해 서버 SDK를 설치합니다.
 
@@ -1945,6 +2447,8 @@ implementation 'io.portone:server-sdk:x.x.x'
 
 </div>
 
+<!-- CONDITIONAL CONTENT language=backend/Spring_Kotlin END -->
+
 ### 포트원 API Secret 설정
 
 서버 SDK를 사용하기 위해 포트원 V2 API Secret을 설정합니다.
@@ -1958,11 +2462,15 @@ API Secret은 포트원 관리자콘솔의 [결제 연동 > 연동 정보 > 식�
 
 브라우저에서 전송한 `paymentId`를 통해 실제 결제 상태를 조회합니다.
 
+<!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'toss' START -->
+
 <div class="hint" data-style="warning">
 
 ISP/페이북을 통한 결제 시 토스페이먼츠가 실제 카드 번호와 다른 카드 번호를 전달하고 있어 결제 내역 단건 조회시 응답되는 `payment_method_detail.card.detail.bin` 정보가 정확하지 않을 수 있습니다.
 
 </div>
+
+<!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'toss' END -->
 
 ### 결제 정보 일치 검증
 

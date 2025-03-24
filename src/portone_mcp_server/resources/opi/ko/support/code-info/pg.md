@@ -14,28 +14,28 @@ API방식으로 연동하실 때는 [비인증 결제(일회성) API](https://de
 
 </div>
 
-|     결제대행사    | 코드값(pg provider) | 결제창 방식 | API 방식 |           발급과 동시에 결제 기능 (결제창기준)          |
-| :----------: | :--------------: | :----: | :----: | :--------------------------------------: |
-| 나이스페이먼츠(구모듈) |       nice       |    X   |    O   |                     -                    |
-| 나이스페이먼츠(신모듈) |     nice\_v2     |    X   |    O   |                     -                    |
-|  토스페이먼츠(신모듈) |   tosspayments   |    O   |    O   |                    불가능                   |
-|      KCP     |   kcp\_billing   |    O   |    X   |                    불가능                   |
-|      KCP     |        kcp       |    X   |    O   |                     -                    |
-|    KG이니시스    |   html5\_inicis  |    O   |    X   |                    불가능                   |
-|    KG이니시스    |      inicis      |    X   |    O   |                     -                    |
-|      다날      |    danal\_tpay   |    O   |    X   |                    가능                    |
-|   다날(휴대폰결제)  |       danal      |    O   |    O   |                    가능                    |
-|    헥토파이낸셜    |      settle      |    X   |    O   |                     -                    |
-|  이지페이(KICC)  |       kicc       |    O   |    X   |                    불가능                   |
-|     키움페이     |       daou       |    X   |    O   |                     -                    |
-|    KG모빌리언스   |     moblians     |    O   |    X   |                    가능                    |
-|     KSNET    |       ksnet      |    X   |    O   |                     -                    |
-|   스마트로(신모듈)  |    smartro\_v2   |    O   |    X   |                    불가능                   |
-|    웰컴페이먼츠    |      welcome     |    O   |    O   | 발급 수단에 따라 상이함. (카드 : 불가능 / 휴대폰소액결제 : 가능) |
-|     카카오페이    |     kakaopay     |    O   |    X   |                    가능                    |
-|     네이버페이    |     naverpay     |    O   |    X   |                    불가능                   |
-|      페이코     |       payco      |    O   |    X   |                    불가능                   |
-|     토스페이     |    tosspay\_v2   |    O   |    X   |                    불가능                   |
-| 헥토파이낸셜 내통장결제 |    settle\_acc   |    O   |    X   |                    가능                    |
-|     페이먼트월    |    paymentwall   |    O   |    X   |                    가능                    |
-|   페이팔 (RT)   |    paypal\_v2    |    O   |    X   |                    불가능                   |
+|       결제대행사      |코드값(pg provider)|결제창 방식|API 방식|              발급과 동시에 결제 기능 (결제창기준)              |
+|:---------------------:|:-----------------:|:---------:|:------:|:--------------------------------------------------------------:|
+| 나이스페이먼츠(구모듈)|        nice       |     X     |    O   |                                -                               |
+| 나이스페이먼츠(신모듈)|      nice\_v2     |     X     |    O   |                                -                               |
+|  토스페이먼츠(신모듈) |    tosspayments   |     O     |    O   |                             불가능                             |
+|          KCP          |    kcp\_billing   |     O     |    X   |                             불가능                             |
+|          KCP          |        kcp        |     X     |    O   |                                -                               |
+|       KG이니시스      |   html5\_inicis   |     O     |    X   |                             불가능                             |
+|       KG이니시스      |       inicis      |     X     |    O   |                                -                               |
+|          다날         |    danal\_tpay    |     O     |    X   |                              가능                              |
+|    다날(휴대폰결제)   |       danal       |     O     |    O   |                              가능                              |
+|      헥토파이낸셜     |       settle      |     X     |    O   |                                -                               |
+|     이지페이(KICC)    |        kicc       |     O     |    X   |                             불가능                             |
+|        키움페이       |        daou       |     X     |    O   |                                -                               |
+|      KG모빌리언스     |      moblians     |     O     |    X   |                              가능                              |
+|         KSNET         |       ksnet       |     X     |    O   |                                -                               |
+|    스마트로(신모듈)   |    smartro\_v2    |     O     |    X   |                             불가능                             |
+|      웰컴페이먼츠     |      welcome      |     O     |    O   |발급 수단에 따라 상이함. (카드 : 불가능 / 휴대폰소액결제 : 가능)|
+|       카카오페이      |      kakaopay     |     O     |    X   |                              가능                              |
+|       네이버페이      |      naverpay     |     O     |    X   |                             불가능                             |
+|         페이코        |       payco       |     O     |    X   |                             불가능                             |
+|        토스페이       |    tosspay\_v2    |     O     |    X   |                             불가능                             |
+|헥토파이낸셜 내통장결제|    settle\_acc    |     O     |    X   |                              가능                              |
+|       페이먼트월      |    paymentwall    |     O     |    X   |                              가능                              |
+|      페이팔 (RT)      |     paypal\_v2    |     O     |    X   |                             불가능                             |

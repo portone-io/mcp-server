@@ -130,13 +130,25 @@ targetVersions:
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
 
-API 문서 바로가기
+<a class="m-4" href="https://developers.portone.io/api/rest-v1">
+
+<span>API 문서 바로가기</span>
+
+<i class="i-ic-baseline-chevron-right inline-block text-2xl" />
+
+</a>
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
 
-API 문서 바로가기
+<a class="m-4" href="https://developers.portone.io/api/rest-v2">
+
+<span>API 문서 바로가기</span>
+
+<i class="i-ic-baseline-chevron-right inline-block text-2xl" />
+
+</a>
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
 

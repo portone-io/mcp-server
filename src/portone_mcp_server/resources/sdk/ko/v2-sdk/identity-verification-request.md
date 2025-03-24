@@ -9,3 +9,6 @@ versionVariants:
 
 ## `requestIdentityVerification` 요청 데이터 정의
 
+- request: IdentityVerificationRequest
+
+  [definition link](https://developers.portone.io/schema/browser-sdk.yml#/resources/request/IdentityVerificationRequest)

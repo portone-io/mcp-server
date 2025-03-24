@@ -101,11 +101,11 @@ const verificationResult = await fetch("{서버의 인증 정보를 받는 endpo
 
 결과값에 들어 있는 필드는 다음과 같습니다.
 
-| 필드명                    | 설명        | 비고   |
-| ---------------------- | --------- | ---- |
-| identityVerificationId | 본인인증 건 ID | 공통   |
-| code                   | 오류 코드     | 실패 시 |
-| message                | 오류 문구     | 실패 시 |
+|필드명                |설명          |비고   |
+|----------------------|--------------|-------|
+|identityVerificationId|본인인증 건 ID|공통   |
+|code                  |오류 코드     |실패 시|
+|message               |오류 문구     |실패 시|
 
 #### 3-1. redirect 방식의 경우
 
@@ -123,11 +123,11 @@ PortOne.requestIdentityVerification({
 
 쿼리 문자열로 전달되는 내용은 다음과 같습니다.
 
-| 키                      | 설명      | 비고   |
-| ---------------------- | ------- | ---- |
-| identityVerificationId | 결제 건 ID | 공통   |
-| code                   | 오류 코드   | 실패 시 |
-| message                | 오류 문구   | 실패 시 |
+|키                    |설명      |비고   |
+|----------------------|----------|-------|
+|identityVerificationId|결제 건 ID|공통   |
+|code                  |오류 코드 |실패 시|
+|message               |오류 문구 |실패 시|
 
 예를 들어 identityVerificationId가 `identity-verification-39ecfa97`, redirectUrl이
 `https://example.com/identity-verification-redirect`인 경우, 결제 성공 시에

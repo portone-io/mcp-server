@@ -7,7 +7,7 @@ versionVariants:
   v2: /sdk/ko/v2-sdk/identity-verification-response
 ---
 
-## rsp (object)&#x20;
+## rsp (object) <a href="#request_pay-rsp" id="request_pay-rsp" />
 
 - success: boolean
 

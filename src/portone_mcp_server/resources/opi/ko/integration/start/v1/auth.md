@@ -7,7 +7,7 @@ versionVariants:
   v2: /opi/ko/integration/start/v2/checkout
 ---
 
-## 인증 결제란?&#x20;
+## 인증 결제란? <span id="definition" />
 
 인증 결제는 결제 시 PG사로부터 결제에 대한 인증 결과 수신 이후 해당 인증키로 결제를 요청하는
 결제 방식을 지칭합니다. 국내에서 제일 많이 볼 수 있는 결제 방식으로 결제 주문 페이지에서 결제가
@@ -40,7 +40,7 @@ versionVariants:
 
 <summary>
 
-영상으로 보기
+<strong>영상으로 보기</strong>
 
 </summary>
 
@@ -48,7 +48,7 @@ versionVariants:
 
 </details>
 
-### 1. 포트원 SDK 설치하기&#x20;
+### 1. 포트원 SDK 설치하기 <span id="sdk-installation" />
 
 포트원은 다양한 PG의 결제창을 통일된 방법으로 호출할 수 있도록 자바스크립트 SDK를 제공합니다.
 브라우저에서 포트원 SDK를 호출하여 결제를 진행하게 됩니다.
@@ -69,7 +69,7 @@ versionVariants:
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
 
-#### SDK 초기화하기&#x20;
+#### SDK 초기화하기 <span id="sdk-initialization" />
 
 포트원 SDK를 사용하여 결제창을 호출하려면, 먼저 포트원 SDK를 초기화하여야 합니다.
 
@@ -175,7 +175,7 @@ const response = await PortOne.requestPayment({
 
 </div>
 
-### 3. 결제 결과 처리하기&#x20;
+### 3. 결제 결과 처리하기 <span id="handle-result" />
 
 결제창이 활성화되는 방식에 따라 결제 결과를 획득하는 방법이 상이합니다.
 
@@ -191,7 +191,7 @@ SDK의 반환값 대신 URL의 [쿼리 문자열](http://en.wikipedia.org/wiki/Q
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
 
-#### SDK 반환값으로 처리하기&#x20;
+#### SDK 반환값으로 처리하기 <span id="handle-callback" />
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
 
@@ -275,15 +275,15 @@ async function requestPayment() {
 
 결과값에 들어 있는 필드는 다음과 같습니다.
 
-| 필드명         | 설명      | 비고      |
-| ----------- | ------- | ------- |
-| `paymentId` | 결제 건 ID | 공통      |
-| `code`      | 오류 코드   | 실패 시 포함 |
-| `message`   | 오류 문구   | 실패 시 포함 |
+|필드명     |설명      |비고        |
+|-----------|----------|------------|
+|`paymentId`|결제 건 ID|공통        |
+|`code`     |오류 코드 |실패 시 포함|
+|`message`  |오류 문구 |실패 시 포함|
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
 
-#### URL 쿼리 문자열로 처리하기&#x20;
+#### URL 쿼리 문자열로 처리하기 <span id="handle-redirect" />
 
 모바일 환경에서의 결제는 대부분 리다이렉트 방식으로 이루어집니다.
 리다이렉트 방식에서는 브라우저가 결제창으로 리다이렉트되었다가,
@@ -319,12 +319,12 @@ PortOne.requestPayment({
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
 
-| 키              | 설명           | 비고      |
-| -------------- | ------------ | ------- |
-| `imp_uid`      | 포트원 결제 ID    | 공통      |
-| `merchant_uid` | 고객사 주문 고유 번호 | 공통      |
-| `error_code`   | 오류 코드        | 실패 시 포함 |
-| `error_msg`    | 오류 문구        | 실패 시 포함 |
+|키            |설명                 |비고        |
+|--------------|---------------------|------------|
+|`imp_uid`     |포트원 결제 ID       |공통        |
+|`merchant_uid`|고객사 주문 고유 번호|공통        |
+|`error_code`  |오류 코드            |실패 시 포함|
+|`error_msg`   |오류 문구            |실패 시 포함|
 
 예를 들어 `merchant_uid`가 `payment-39ecfa97`, `m_redirect_url`이 `https://example.com/payment-redirect`인 경우,
 결제 성공 시에 `https://example.com/payment-redirect?merchant_uid=payment-39ecfa97`로 리다이렉트됩니다.
@@ -333,18 +333,18 @@ PortOne.requestPayment({
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
 
-| 키            | 설명      | 비고      |
-| ------------ | ------- | ------- |
-| `payment_id` | 결제 건 ID | 공통      |
-| `code`       | 오류 코드   | 실패 시 포함 |
-| `message`    | 오류 문구   | 실패 시 포함 |
+|키          |설명      |비고        |
+|------------|----------|------------|
+|`payment_id`|결제 건 ID|공통        |
+|`code`      |오류 코드 |실패 시 포함|
+|`message`   |오류 문구 |실패 시 포함|
 
 예를 들어 `paymentId`가 `payment-39ecfa97`, `redirectUrl`이 `https://example.com/payment-redirect`인 경우,
 결제 성공 시에 `https://example.com/payment-redirect?payment_id=payment-39ecfa97`로 리다이렉트됩니다.
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
 
-### 4. 결제 완료 처리하기&#x20;
+### 4. 결제 완료 처리하기 <span id="complete" />
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
 

@@ -27,6 +27,8 @@ versionVariants:
 
     (이미지 첨부: \<Postman 에서 Open API Spec 파일 Import 하기>)
 
+    <br />
+
     (이미지 첨부: \<Postman Import 후 API Structure 예시>)
 
   - **직관성 있는 스키마 설계**
@@ -102,7 +104,11 @@ V2는 최신 결제 기능을 가장 빠르게 제공합니다. 곧 출시될 �
 
 - **다날 본인인증**
 
+<br />
+
 ## 새로워진 V2 시스템과 함께 비즈니스를 한 단계 업그레이드할 준비가 되셨나요?
+
+<br />
 
 <div class="hint" data-style="info">
 

@@ -38,7 +38,11 @@ await IMP.loadModule(
 
 <details>
 
-<summary>주요 파라미터 설명</summary>
+<summary>
+
+<strong>주요 파라미터 설명</strong>
+
+</summary>
 
 - moduleType: string
 
@@ -151,7 +155,11 @@ brandpayModule.openSettings();
 
 <details>
 
-<summary>setupPassword 설명</summary>
+<summary>
+
+<strong>setupPassword 설명</strong>
+
+</summary>
 
 결제할 때 사용할 비밀번호를 설정할 수 있는 메서드입니다. 비밀번호 등록・변경이 완료되면 Promise가 resolve됩니다.
 
@@ -169,7 +177,11 @@ brandpayModule.setupPassword().catch(function (error) {
 
 <details>
 
-<summary>getPaymentMethods 설명</summary>
+<summary>
+
+<strong>getPaymentMethods 설명</strong>
+
+</summary>
 
 등록되어 있는 결제 수단을 조회하는 메서드입니다. 조회가 성공했을 때 Promise가 resolve되고 고객의 결제수단 정보(BrandpayMethodResponse)가 반환됩니다.
 
@@ -192,7 +204,11 @@ brandpayModule
 
 <details>
 
-<summary>openSettings 설명</summary>
+<summary>
+
+<strong>openSettings 설명</strong>
+
+</summary>
 
 브랜드페이에서 사용하는 결제수단, 비밀번호 설정을 관리하는 결제 관리창을 열 수 있습니다.
 

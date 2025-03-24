@@ -9,3 +9,6 @@ versionVariants:
 
 ## `requestIssueBillingKeyAndPay` 응답 데이터 정의
 
+- response: IssueBillingKeyAndPayResponse
+
+  [definition link](https://developers.portone.io/schema/browser-sdk.yml#/resources/response/IssueBillingKeyAndPayResponse)

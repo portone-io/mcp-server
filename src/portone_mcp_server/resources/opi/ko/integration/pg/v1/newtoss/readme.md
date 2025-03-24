@@ -82,7 +82,11 @@ IMP.request_pay(
 
 <details>
 
-<summary>주요 파라미터 설명</summary>
+<summary>
+
+<strong>주요 파라미터 설명</strong>
+
+</summary>
 
 - channelKey: string
 

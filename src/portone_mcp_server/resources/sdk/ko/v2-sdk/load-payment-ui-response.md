@@ -11,7 +11,12 @@ versionVariants:
 
 ### onPaymentSuccess
 
+- response: PaymentResponse
 
+  [definition link](https://developers.portone.io/schema/browser-sdk.yml#/resources/response/PaymentResponse)
 
 ### onPaymentFail
 
+- response: PaymentError
+
+  [definition link](https://developers.portone.io/schema/browser-sdk.yml#/resources/exception/PaymentError)

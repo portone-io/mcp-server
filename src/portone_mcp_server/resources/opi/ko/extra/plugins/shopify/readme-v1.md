@@ -20,34 +20,34 @@ targetVersions:
 
 ## 포트원의 Shopify plugin을 통해 이용하실 수 있는 국내PG사와 결제 수단은 아래와 같습니다.
 
-| PG사           | 지역     | 타입   | 결제수단            |
-| ------------- | ------ | ---- | --------------- |
-| KAKAOPAY      | Korea  | 간편결제 | 일체              |
-| PAYCO         | Korea  | 간편결제 | 일체              |
-| TOSSPAY       | Korea  | 간편결제 | 일체              |
-| KG INICIS     | Korea  | PG   | 카드결제            |
-| KG INICIS     | Korea  | PG   | NAVERPAY(허브형)   |
-| KG INICIS     | Korea  | PG   | KAKAOPAY(허브형)   |
-| KG INICIS     | Korea  | PG   | PAYCO(허브형)      |
-| KG INICIS     | Korea  | PG   | TOSSPAY(허브형)    |
-| NHN KCP       | Korea  | PG   | 카드결제            |
-| NHN KCP       | Korea  | PG   | NAVERPAY(허브형)   |
-| NHN KCP       | Korea  | PG   | KAKAOPAY(허브형)   |
-| TOSS PAYMENTS | Korea  | PG   | 카드결제            |
-| TOSS PAYMENTS | Korea  | PG   | NAVERPAY(허브형)   |
-| TOSS PAYMENTS | Korea  | PG   | KAKAOPAY(허브형)   |
-| TOSS PAYMENTS | Korea  | PG   | 계좌이체            |
-| NICE PAYMENTS | Korea  | PG   | 카드결제            |
-| NICE PAYMENTS | Korea  | PG   | NAVERPAY(허브형)   |
-| NICE PAYMENTS | Korea  | PG   | KAKAOPAY(허브형)   |
-| PAYMENTWALL   | Global | PG   | 카드결제            |
-| PAYMENTWALL   | Global | PG   | 간편결제            |
-| EXIMBAY       | Global | PG   | 카드결제            |
-| EXIMBAY       | Global | PG   | Alipay+         |
-| EXIMBAY       | Global | PG   | WeChatPay       |
-| EXIMBAY       | Global | PG   | UnionPay        |
-| EXIMBAY       | Japan  | PG   | eContext(편의점결제) |
-| PAYLETTER     | Global | PG   | 카드결제            |
+|PG사         |지역  |타입    |결제수단            |
+|-------------|------|--------|--------------------|
+|KAKAOPAY     |Korea |간편결제|일체                |
+|PAYCO        |Korea |간편결제|일체                |
+|TOSSPAY      |Korea |간편결제|일체                |
+|KG INICIS    |Korea |PG      |카드결제            |
+|KG INICIS    |Korea |PG      |NAVERPAY(허브형)    |
+|KG INICIS    |Korea |PG      |KAKAOPAY(허브형)    |
+|KG INICIS    |Korea |PG      |PAYCO(허브형)       |
+|KG INICIS    |Korea |PG      |TOSSPAY(허브형)     |
+|NHN KCP      |Korea |PG      |카드결제            |
+|NHN KCP      |Korea |PG      |NAVERPAY(허브형)    |
+|NHN KCP      |Korea |PG      |KAKAOPAY(허브형)    |
+|TOSS PAYMENTS|Korea |PG      |카드결제            |
+|TOSS PAYMENTS|Korea |PG      |NAVERPAY(허브형)    |
+|TOSS PAYMENTS|Korea |PG      |KAKAOPAY(허브형)    |
+|TOSS PAYMENTS|Korea |PG      |계좌이체            |
+|NICE PAYMENTS|Korea |PG      |카드결제            |
+|NICE PAYMENTS|Korea |PG      |NAVERPAY(허브형)    |
+|NICE PAYMENTS|Korea |PG      |KAKAOPAY(허브형)    |
+|PAYMENTWALL  |Global|PG      |카드결제            |
+|PAYMENTWALL  |Global|PG      |간편결제            |
+|EXIMBAY      |Global|PG      |카드결제            |
+|EXIMBAY      |Global|PG      |Alipay+             |
+|EXIMBAY      |Global|PG      |WeChatPay           |
+|EXIMBAY      |Global|PG      |UnionPay            |
+|EXIMBAY      |Japan |PG      |eContext(편의점결제)|
+|PAYLETTER    |Global|PG      |카드결제            |
 
 ## 글로벌 포트원에서 지원하는 해외PSP 목록은 아래 링크에서 문서 목록을 참고해 주세요.
 

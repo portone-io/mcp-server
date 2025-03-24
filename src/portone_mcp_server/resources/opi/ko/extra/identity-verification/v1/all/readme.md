@@ -13,3 +13,5 @@ targetVersions:
 하는 방식으로 이루어 집니다.
 
 > **이용가능 수단 : 네이버 / PASS / 페이코 / TOSS / 금융인증서 / 카카오 / 신한 / KB모바일 / 삼성패스**
+
+[이미지 링크](<https://developers.portone.io/gitbook-assets/ko/image (24) (2).png>)

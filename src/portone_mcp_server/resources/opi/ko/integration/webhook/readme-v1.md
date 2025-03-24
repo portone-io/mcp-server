@@ -237,4 +237,6 @@ callback URL을 호출할 수 없습니다.하지만 [ngrok](http://ngrok.com/) 
 있습니다.다음은 `localhost:3000`으로 실행된 개발환경을 ngrok 을 이용해서 외부 접속 가능한 도메인으로
 포워딩하는 예제입니다. 해당 도메인을 callback URL로 설정하면 호출 테스트를 할 수 있습니다.
 
-ngrok 사용 예시
+[이미지 링크](https://developers.portone.io/gitbook-assets/ko/ngrok.gif)
+
+<p>ngrok 사용 예시</p>

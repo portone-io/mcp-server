@@ -121,6 +121,8 @@ display.card\_quota 파라미터로 결제창에 렌더링 될 할부 개월수 
 
 - PC - 카드결제 - ISP 선택: 할부 기간 선택 불가능
 
+  [이미지 링크](<https://developers.portone.io/gitbook-assets/ko/image (184).png>)
+
 - PC - 카드결제 - ISP 선택 - 페이북 팝업: 할부 기간 선택 가능
 
 다소 헷갈릴 수 있으나 간편결제는 간편결제 앱에서 할부 개월수를 선택할 수 있어 토스페이먼츠 결제창에서 선택할 수 없다는 토스 답변이 있었습니다.
@@ -189,6 +191,10 @@ display.card\_quota 파라미터로 결제창에 렌더링 될 할부 개월수 
 단, ISP 계열의 카드사인 경우에는 페이북 팝업에서 확인이 가능하며 이 값을 사용자가 변경 할 수는 없습니다.
 
 - 예. BC카드 다이렉트 호출 + 5개월 고정 할부 개월수 지정\\
+
+  [이미지 링크](<https://developers.portone.io/gitbook-assets/ko/image (181).png>)
+
+
 
 ```json
 {
@@ -297,6 +303,8 @@ display.card\_quota 파라미터로 결제창에 렌더링 될 할부 개월수 
 
 `bypass.cashReceiptType`(현금성 결제시, 결제창 내에 현금영수증 발급 유형 설정 값)을 corporate(지출 증빙)으로 설정하고 결제창을 호출하면 토스페이먼츠 결제창에서 현금영수증 발급 유형이 “지출증빙”으로 표기되어있으나 발급 번호가 사업자등록번호가 아닌 주민등록번호로 설정되어있으며 이를 변경할 수 없는 토스 버그가 있습니다. 따라서 구매자는 현금영수증 발급 유형을 지출증빙용이 아닌 소득공제용이나 미발행으로 바꿔서 선택한 후 다시 지출증빙용을 선택해야합니다.
 
+[이미지 링크](<https://developers.portone.io/gitbook-assets/ko/image (180).png>)
+
 </details>
 
 <details>
@@ -312,6 +320,8 @@ display.card\_quota 파라미터로 결제창에 렌더링 될 할부 개월수 
 <summary>삼성페이 결제 중단시 결제창 잘림 현상</summary>
 
 삼성페이 결제창 렌더링 후 장시간 대기했다가 우측 상단 X 버튼을 눌러 결제 프로세스를 중단하면 아래와 같이 잘린 화면이 렌더링됩니다. 가로 스크롤도 동작하지 않아(스크롤은 움직이지만 화면은 고정) 사용자 경험이 다소 저해됩니다.
+
+[이미지 링크](<https://developers.portone.io/gitbook-assets/ko/image (177).png>)
 
 </details>
 

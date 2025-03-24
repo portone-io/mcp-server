@@ -9,3 +9,6 @@ versionVariants:
 
 ## `updateLoadPaymentUIRequest` 요청 데이터 정의
 
+- request: LoadPaymentUIRequest
+
+  [definition link](https://developers.portone.io/schema/browser-sdk.yml#/resources/request/LoadPaymentUIRequest)

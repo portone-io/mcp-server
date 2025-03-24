@@ -32,14 +32,18 @@ targetVersions:
 
 3. 아래의 크레덴셜 값들을 확인합니다. 값이 표시되지 않는 경우 생성/갱신 버튼을 클릭해 주세요.
 
-   **웹결제 signkey 생성 조회**의 조회 버튼을 클릭하여 값을 확인할 수 있습니다.
-   **INIAPI key 생성 갱신**의 조회 버튼을 클릭하여 \[INIAPI KEY], \[INIAPI IV] 값을 확인할 수 있습니다.
+   <ul>
+
+   <li>**웹결제 signkey 생성 조회**의 조회 버튼을 클릭하여 값을 확인할 수 있습니다.</li>
+   <li>**INIAPI key 생성 갱신**의 조회 버튼을 클릭하여 \[INIAPI KEY], \[INIAPI IV] 값을 확인할 수 있습니다.</li>
 
    <!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
 
-   **모바일 금액위변조 HashKey**의 조회 버튼을 클릭하여 값을 확인할 수 있습니다.
+   <li>**모바일 금액위변조 HashKey**의 조회 버튼을 클릭하여 값을 확인할 수 있습니다.</li>
 
    <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
+   </ul>
 
 (이미지 첨부: KG이니시스 가맹점관리자 내 크레덴셜 정보 조회 화면 1)
 

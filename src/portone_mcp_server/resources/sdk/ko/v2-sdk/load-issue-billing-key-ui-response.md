@@ -11,7 +11,12 @@ versionVariants:
 
 ### onIssueBillingKeySuccess
 
+- response: IssueBillingKeyResponse
 
+  [definition link](https://developers.portone.io/schema/browser-sdk.yml#/resources/response/IssueBillingKeyResponse)
 
 ### onIssueBillingKeyFail
 
+- response: IssueBillingKeyError
+
+  [definition link](https://developers.portone.io/schema/browser-sdk.yml#/resources/exception/IssueBillingKeyError)

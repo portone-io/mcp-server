@@ -13,7 +13,7 @@ versionVariants:
 
 <summary>
 
-영상으로 보기
+<strong>영상으로 보기</strong>
 
 </summary>
 
@@ -30,7 +30,70 @@ SDK를 지원하지 않는 플랫폼을 포함하여 다양한 플랫폼에서 �
 
 포트원은 다양한 PG의 결제창을 통일된 방법으로 호출할 수 있도록 자바스크립트 SDK를 제공합니다. 브라우저에서 포트원 SDK를 호출하여 결제를 진행하게 됩니다.
 
+포트원 V2 SDK는 npm 레지스트리와 CDN을 통해 배포되고 있습니다.
 
+- npm, yarn 등 패키지 매니저를 사용한다면 의존
+  대상으로 [@portone/browser-sdk](https://www.npmjs.com/package/@portone/browser-sdk)를 추가하세요.
+
+- 패키지 매니저를 사용하지 않는다면 `<script>` 요소를 이용하여 CDN에서 SDK를 직접 불러오세요.
+
+- CDN에서 ESM 모듈 형태로도 SDK를 제공하고 있습니다.
+
+<div class="tabs-container">
+
+<div class="tabs-content" data-title="패키지 의존 대상으로 추가">
+
+사용하는 패키지 매니저에 알맞은 명령어를 실행하세요.
+
+```shell
+npm i @portone/browser-sdk
+```
+
+```shell
+yarn add @portone/browser-sdk
+```
+
+```shell
+pnpm add @portone/browser-sdk
+```
+
+패키지 매니저로 SDK를 불러온 경우 `PortOne` 객체를 import해서 사용합니다.
+
+```javascript
+import * as PortOne from "@portone/browser-sdk/v2";
+```
+
+</div>
+
+<div class="tabs-content" data-title="<script> 요소로 추가">
+
+```html
+<script src="https://cdn.portone.io/v2/browser-sdk.js"></script>
+```
+
+`<script>` 요소로 SDK를 불러온 경우 전역 객체 `window`에 `PortOne` 객체가 추가됩니다.
+
+</div>
+
+<div class="tabs-content" data-title="ESM 모듈로 추가">
+
+ESM 모듈을 사용하는 경우 URL에서 `PortOne` 객체를 직접 import할 수 있습니다.
+
+```javascript
+import * as PortOne from "https://cdn.portone.io/v2/browser-sdk.esm.js";
+```
+
+</div>
+
+</div>
+
+<div class="hint" data-style="info">
+
+**타입스크립트 지원**
+
+포트원 V2 SDK는 타입스크립트 선언 파일(`.d.ts`)의 형식으로 타입 정보를 제공하고 있습니다. npm 레지스트리를 이용하는 경우 각종 개발 환경에서 별도 설정 없이 사용 가능합니다.
+
+</div>
 
 ## 2. 결제 요청
 
@@ -97,13 +160,13 @@ async function requestPayment() {
 
 결과값에 들어 있는 필드는 다음과 같습니다.
 
-| 필드명       | 설명           | 비고                 |
-| --------- | ------------ | ------------------ |
-| paymentId | 결제 건 ID      | 공통                 |
-| code      | 오류 코드        | 실패 시               |
-| message   | 오류 문구        | 실패 시               |
-| pgCode    | PG 오류 코드 그대로 | 실패 및 PG 오류 코드 존재 시 |
-| pgMessage | PG 오류 문구 그대로 | 실패 및 PG 오류 문구 존재 시 |
+|필드명   |설명               |비고                        |
+|---------|-------------------|----------------------------|
+|paymentId|결제 건 ID         |공통                        |
+|code     |오류 코드          |실패 시                     |
+|message  |오류 문구          |실패 시                     |
+|pgCode   |PG 오류 코드 그대로|실패 및 PG 오류 코드 존재 시|
+|pgMessage|PG 오류 문구 그대로|실패 및 PG 오류 문구 존재 시|
 
 ### 3-1. redirect 방식의 경우
 
@@ -120,13 +183,13 @@ PortOne.requestPayment({
 
 쿼리 문자열로 전달되는 내용은 다음과 같습니다.
 
-| 키         | 설명           | 비고                 |
-| --------- | ------------ | ------------------ |
-| paymentId | 결제 건 ID      | 공통                 |
-| code      | 오류 코드        | 실패 시               |
-| message   | 오류 문구        | 실패 시               |
-| pgCode    | PG 오류 코드 그대로 | 실패 및 PG 오류 코드 존재 시 |
-| pgMessage | PG 오류 문구 그대로 | 실패 및 PG 오류 문구 존재 시 |
+|키       |설명               |비고                        |
+|---------|-------------------|----------------------------|
+|paymentId|결제 건 ID         |공통                        |
+|code     |오류 코드          |실패 시                     |
+|message  |오류 문구          |실패 시                     |
+|pgCode   |PG 오류 코드 그대로|실패 및 PG 오류 코드 존재 시|
+|pgMessage|PG 오류 문구 그대로|실패 및 PG 오류 문구 존재 시|
 
 예를 들어 paymentId가 `payment-39ecfa97`, redirectUrl이 `https://example.com/payment-redirect`인 경우,
 결제 성공 시에 `https://example.com/payment-redirect?paymentId=payment-39ecfa97`로 리다이렉트됩니다.

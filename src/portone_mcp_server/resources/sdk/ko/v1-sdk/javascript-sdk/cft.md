@@ -7,7 +7,7 @@ versionVariants:
   v2: /sdk/ko/v2-sdk/identity-verification-request
 ---
 
-## certification(param, callback)&#x20;
+## certification(param, callback) <a href="#certification" id="certification" />
 
 - channelKey: string
 

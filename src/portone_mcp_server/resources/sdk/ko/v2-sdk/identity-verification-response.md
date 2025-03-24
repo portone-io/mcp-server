@@ -9,3 +9,6 @@ versionVariants:
 
 ## `requestIdentityVerification` 응답 데이터 정의
 
+- response: IdentityVerificationResponse
+
+  [definition link](https://developers.portone.io/schema/browser-sdk.yml#/resources/response/IdentityVerificationResponse)

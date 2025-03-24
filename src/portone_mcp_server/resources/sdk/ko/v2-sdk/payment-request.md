@@ -9,3 +9,6 @@ versionVariants:
 
 ## `requestPayment` 요청 데이터 정의
 
+- request: PaymentRequest
+
+  [definition link](https://developers.portone.io/schema/browser-sdk.yml#/resources/request/PaymentRequest)

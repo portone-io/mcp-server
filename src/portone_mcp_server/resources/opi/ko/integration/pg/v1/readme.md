@@ -32,7 +32,7 @@ versionVariants:
 
 [키움페이 (다우데이타/페이조아)](https://developers.portone.io/opi/ko/integration/pg/v1/daou/readme)
 
-[핵토파이낸셜](https://developers.portone.io/opi/ko/integration/pg/v1/settle/readme)
+[헥토파이낸셜](https://developers.portone.io/opi/ko/integration/pg/v1/settle/readme)
 
 [KG모빌리언스](https://developers.portone.io/opi/ko/integration/pg/v1/kg)
 

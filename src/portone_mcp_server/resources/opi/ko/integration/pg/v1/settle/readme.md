@@ -1,11 +1,11 @@
 ---
-title: 핵토파이낸셜
-description: 핵토파이낸셜 결제 연동 방법을 안내합니다.
+title: 헥토파이낸셜
+description: 헥토파이낸셜 결제 연동 방법을 안내합니다.
 targetVersions:
   - v1
 ---
 
-## 1. 핵토파이낸셜 채널 설정하기
+## 1. 헥토파이낸셜 채널 설정하기
 
 [결제대행사 채널 설정하기](https://developers.portone.io/opi/ko/integration/ready/readme#3-결제대행사-채널-설정하기) 페이지의 내용을 참고하여 채널 설정을 진행합니다.
 
@@ -14,7 +14,7 @@ targetVersions:
 ## 2.결제 요청하기
 
 [JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk-old/readme) `IMP.request_pay(param, callback)`을
-호출하여 핵토파이낸셜 결제창을 호출할 수 있습니다. **결제결과**는 PC의 경우 `IMP.request_pay(param, callback)`
+호출하여 헥토파이낸셜 결제창을 호출할 수 있습니다. **결제결과**는 PC의 경우 `IMP.request_pay(param, callback)`
 호출 후 **`callback`** 으로 수신되며
 모바일의 경우 **`m_redirect_url`** 로 리디렉션됩니다.
 

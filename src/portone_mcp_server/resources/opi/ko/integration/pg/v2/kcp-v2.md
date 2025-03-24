@@ -533,6 +533,8 @@ function requestIssueBillingKey() {
 
 ### 주요 파라미터
 
+<br />
+
 - storeId: string
 
   **스토어 아이디**
@@ -600,10 +602,12 @@ function requestIssueBillingKey() {
 
     **KCP에서 제공하는 파라미터 모음**
 
-    **결제창에서 주민번호/사업자 번호 고정여부 설정**
+    - batch\_soc\_choice?: 'percard' | 'cocard'
 
-    - S: 주민번호만 표시
-    - C: 사업자번호만 표시
+      **결제창에서 주민번호/사업자 번호 고정여부 설정**
+
+      - S: 주민번호만 표시
+      - C: 사업자번호만 표시
 
 ### SDK 빌링키 발급 - 유의사항
 

@@ -8639,8 +8639,8 @@
     },
     "/b2b/companies/business-info": {
       "post": {
-        "summary": "사업자 정보 조회",
-        "description": "사업자 정보 조회\n\n요청된 사업자번호에 해당하는 사업자의 정보를 조회합니다.",
+        "summary": "사업자등록 정보조회",
+        "description": "사업자등록 정보조회\n\n요청된 사업자등록번호 리스트에 해당하는 사업자등록 정보를 조회합니다.\n해당 API 사용을 위해서는 별도 문의가 필요합니다.",
         "operationId": "getB2bBusinessInfos",
         "requestBody": {
           "content": {
@@ -8654,7 +8654,7 @@
         },
         "responses": {
           "200": {
-            "description": "성공 응답으로 사업자 정보 조회 결과 리스트를 반환합니다.",
+            "description": "성공 응답으로 사업자등록 정보조회 결과 리스트를 반환합니다.",
             "content": {
               "application/json": {
                 "schema": {
@@ -8662,7 +8662,7 @@
                 }
               }
             },
-            "x-portone-description": "성공 응답으로 사업자 정보 조회 결과 리스트를 반환합니다."
+            "x-portone-description": "성공 응답으로 사업자등록 정보조회 결과 리스트를 반환합니다."
           },
           "400": {
             "description": "* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우",
@@ -8713,9 +8713,9 @@
             "portOne": []
           }
         ],
-        "x-portone-category": "b2b.business",
-        "x-portone-title": "사업자 정보 조회",
-        "x-portone-description": "요청된 사업자번호에 해당하는 사업자의 정보를 조회합니다.",
+        "x-portone-category": "platform.company",
+        "x-portone-title": "사업자등록 정보조회",
+        "x-portone-description": "요청된 사업자등록번호 리스트에 해당하는 사업자등록 정보를 조회합니다.\n해당 API 사용을 위해서는 별도 문의가 필요합니다.",
         "x-portone-error": {
           "$ref": "#/components/schemas/GetB2bBusinessInfosError"
         }
@@ -11010,8 +11010,8 @@
         "x-portone-status-code": 404
       },
       "B2bBusinessInfo": {
-        "title": "사업자 정보",
-        "description": "사업자 정보",
+        "title": "사업자등록 정보",
+        "description": "사업자등록 정보",
         "type": "object",
         "required": [
           "brn",
@@ -11030,7 +11030,7 @@
         "properties": {
           "brn": {
             "type": "string",
-            "title": "사업자 등록 번호"
+            "title": "사업자등록번호"
           },
           "name": {
             "type": "string",
@@ -11101,11 +11101,11 @@
             "title": "관할세무서명"
           }
         },
-        "x-portone-title": "사업자 정보"
+        "x-portone-title": "사업자등록 정보"
       },
       "B2bBusinessInfoResult": {
-        "title": "사업자 정보 조회 결과",
-        "description": "사업자 정보 조회 결과",
+        "title": "사업자등록 정보조회 결과",
+        "description": "사업자등록 정보조회 결과",
         "type": "object",
         "required": [
           "brn"
@@ -11117,14 +11117,14 @@
           },
           "businessInfo": {
             "$ref": "#/components/schemas/B2bBusinessInfo",
-            "title": "사업자 정보"
+            "title": "사업자등록 정보"
           },
           "error": {
             "type": "string",
-            "title": "조회 실패 메시지"
+            "title": "조회 실패 시 에러 메시지"
           }
         },
-        "x-portone-title": "사업자 정보 조회 결과"
+        "x-portone-title": "사업자등록 정보조회 결과"
       },
       "B2bCertificate": {
         "title": "B2bCertificate",
@@ -23044,8 +23044,8 @@
         "x-portone-title": "예금주 조회 응답 정보"
       },
       "GetB2bBusinessInfosBody": {
-        "title": "사업자 정보 다건 조회를 위한 입력 정보",
-        "description": "사업자 정보 다건 조회를 위한 입력 정보",
+        "title": "사업자등록 정보 조회를 위한 입력 정보",
+        "description": "사업자등록 정보 조회를 위한 입력 정보",
         "type": "object",
         "required": [
           "brnList"
@@ -23059,7 +23059,7 @@
             "title": "조회할 사업자등록번호 리스트"
           }
         },
-        "x-portone-title": "사업자 정보 다건 조회를 위한 입력 정보"
+        "x-portone-title": "사업자등록 정보 조회를 위한 입력 정보"
       },
       "GetB2bBusinessInfosError": {
         "title": "GetB2bBusinessInfosError",
@@ -23092,22 +23092,22 @@
         }
       },
       "GetB2bBusinessInfosResponse": {
-        "title": "사업자 정보 다건 조회 성공 응답",
-        "description": "사업자 정보 다건 조회 성공 응답",
+        "title": "사업자등록 정보 조회 성공 응답",
+        "description": "사업자등록 정보 조회 성공 응답",
         "type": "object",
         "required": [
           "result"
         ],
         "properties": {
           "result": {
-            "title": "사업자 정보 다건 조회 결과 리스트",
+            "title": "사업자등록 정보 리스트",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/B2bBusinessInfoResult"
             }
           }
         },
-        "x-portone-title": "사업자 정보 다건 조회 성공 응답"
+        "x-portone-title": "사업자등록 정보 조회 성공 응답"
       },
       "GetB2bCertificateError": {
         "title": "GetB2bCertificateError",
@@ -47042,18 +47042,6 @@
       "id": "identityVerification",
       "title": "본인인증 관련 API",
       "description": "본인인증과 관련된 API 기능을 제공합니다."
-    },
-    {
-      "id": "b2b",
-      "title": "B2B API",
-      "description": "B2B API 기능을 제공합니다.",
-      "children": [
-        {
-          "id": "b2b.business",
-          "title": "사업자 관련 API",
-          "description": "B2B 사업자 관련 API 기능을 제공합니다."
-        }
-      ]
     },
     {
       "id": "platform",

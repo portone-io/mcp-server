@@ -23,10 +23,18 @@ targetVersions:
 
 웹훅은 가상계좌, 정기결제를 이용하시는 경우 필수 설정사항이지만,그 외에도 안정적인 결제서비스 구축을 위해 강력히 권장드리는 기능입니다. 설정 방법은 다음과 같습니다.
 
+[이미지 링크](<https://developers.portone.io/gitbook-assets/ko/Screen Shot 2022-11-18 at 2.56.49 PM.png>)
+
+
+
 - 웹훅(Notification)발송 공통 URL : 웹훅통지를 받으실 고객사 서버의 url을 기재해주세요.
 - 호출테스트 : 기입하신 url로 수신받으실 수 있는지 호출 테스트를 해보실 수 있습니다.
 
 ## 테스트 연동 관리
+
+[이미지 링크](<https://developers.portone.io/gitbook-assets/ko/Screen Shot 2022-11-18 at 3.06.39 PM.png>)
+
+
 
 - 테스트 연동 관리에서 고객사가 결제 테스트를 하실 수 있는 각 결제대행사 별 테스트 상점아이디 와 그
   외 credential 정보를 제공합니다.
@@ -38,6 +46,14 @@ targetVersions:
   뒤 해당 결제대행사의 테스트 카드에 `정보 수정` 을 누른뒤 입력 및 등록 하신후 사용하실 수 있습니다.
 
 ## 실 연동 관리
+
+[이미지 링크](<https://developers.portone.io/gitbook-assets/ko/Screen Shot 2022-11-18 at 3.07.49 PM.png>)
+
+
+
+[이미지 링크](<https://developers.portone.io/gitbook-assets/ko/Screen Shot 2022-11-18 at 3.08.11 PM.png>)
+
+
 
 - 실 연동 채널 카드는 전자 결제 신청하기를 통해 신청하신 결제대행사 결제 형태에 따라 각각 생성할 수
   있습니다. 즉 결제대행사로부터 발급 받으신 상점아이디 및 그 외 credential을 입력하실 수 있는 카드를

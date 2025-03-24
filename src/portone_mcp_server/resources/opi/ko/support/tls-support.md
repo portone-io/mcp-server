@@ -12,62 +12,190 @@ v1 API 서버(api.iamport.kr)의 TLS 버전 및 Cipher Suite 지원 범위가 �
 - TLS 1.0, 1.1 버전에 대한 지원이 중단됩니다.
 - 보안성이 떨어지는 일부 Legacy Cipher Suite 들에 대한 지원이 중단됩니다.
 
-Protocol
-Cipher Suite
-2024-09-01 전
-2024-09-01 이후
+<table class="table-tls-support">
 
-HTTP
-N/A
-O
-X
+<thead>
 
-TLSv1.0
-(omitted)
+<tr>
 
-TLSv1.1
-(omitted)
+<th>Protocol</th>
+<th>Cipher Suite</th>
+<th>2024-09-01 전</th>
+<th>2024-09-01 이후</th>
 
-TLSv1.2
-AES256-SHA
-O
-X
+</tr>
 
-AES128-SHA
-AES128-GCM-SHA256
-AES128-SHA256
-AES256-GCM-SHA384
-AES256-SHA256
-ECDHE-ECDSA-AES128-SHA
-ECDHE-RSA-AES128-SHA
-ECDHE-RSA-AES256-SHA
-ECDHE-ECDSA-AES256-SHA
+</thead>
 
-ECDHE-ECDSA-AES128-SHA256
-O
-O
+<tbody>
 
-ECDHE-RSA-AES128-SHA256
-ECDHE-ECDSA-AES256-SHA384
-ECDHE-RSA-AES256-SHA384
-ECDHE-ECDSA-AES128-GCM-SHA256
-ECDHE-RSA-AES128-GCM-SHA256
-ECDHE-ECDSA-AES256-GCM-SHA384
-ECDHE-RSA-AES256-GCM-SHA384
+<tr>
 
-TLSv1.3
-TLS-AES-128-GCM-SHA256
-O
-O
+<td>HTTP</td>
+<td>
 
-TLS-AES-256-GCM-SHA384
-TLS-CHACHA20-POLY1305-SHA256
+<i>N/A</i>
+
+</td>
+<td rowspan="3" class="supported">O</td>
+<td rowspan="3" class="unsupported">X</td>
+
+</tr>
+
+<tr>
+
+<td>TLSv1.0</td>
+<td>
+
+<i>(omitted)</i>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>TLSv1.1</td>
+<td>
+
+<i>(omitted)</i>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td rowspan="18">TLSv1.2</td>
+<td>AES256-SHA</td>
+<td rowspan="10" class="supported">O</td>
+<td rowspan="10" class="unsupported">X</td>
+
+</tr>
+
+<tr>
+
+<td>AES128-SHA</td>
+
+</tr>
+<tr>
+
+<td>AES128-GCM-SHA256</td>
+
+</tr>
+<tr>
+
+<td>AES128-SHA256</td>
+
+</tr>
+<tr>
+
+<td>AES256-GCM-SHA384</td>
+
+</tr>
+<tr>
+
+<td>AES256-SHA256</td>
+
+</tr>
+<tr>
+
+<td>ECDHE-ECDSA-AES128-SHA</td>
+
+</tr>
+<tr>
+
+<td>ECDHE-RSA-AES128-SHA</td>
+
+</tr>
+<tr>
+
+<td>ECDHE-RSA-AES256-SHA</td>
+
+</tr>
+<tr>
+
+<td>ECDHE-ECDSA-AES256-SHA</td>
+
+</tr>
+
+<tr>
+
+<td style="display:none" />
+
+<td>ECDHE-ECDSA-AES128-SHA256</td>
+<td rowspan="8" class="supported">O</td>
+<td rowspan="8" class="supported">O</td>
+
+</tr>
+
+<tr>
+
+<td>ECDHE-RSA-AES128-SHA256</td>
+
+</tr>
+<tr>
+
+<td>ECDHE-ECDSA-AES256-SHA384</td>
+
+</tr>
+<tr>
+
+<td>ECDHE-RSA-AES256-SHA384</td>
+
+</tr>
+<tr>
+
+<td>ECDHE-ECDSA-AES128-GCM-SHA256</td>
+
+</tr>
+<tr>
+
+<td>ECDHE-RSA-AES128-GCM-SHA256</td>
+
+</tr>
+<tr>
+
+<td>ECDHE-ECDSA-AES256-GCM-SHA384</td>
+
+</tr>
+<tr>
+
+<td>ECDHE-RSA-AES256-GCM-SHA384</td>
+
+</tr>
+
+<tr>
+
+<td rowspan="3">TLSv1.3</td>
+<td>TLS-AES-128-GCM-SHA256</td>
+<td rowspan="3" class="supported">O</td>
+<td rowspan="3" class="supported">O</td>
+
+</tr>
+
+<tr>
+
+<td>TLS-AES-256-GCM-SHA384</td>
+
+</tr>
+<tr>
+
+<td>TLS-CHACHA20-POLY1305-SHA256</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<br />
 
 <details>
 
 <summary>
 
-HTTP 평문 통신 지원을 중단하는 이유
+<strong>HTTP 평문 통신 지원을 중단하는 이유</strong>
 
 </summary>
 
@@ -98,7 +226,7 @@ API를 평문 HTTP 통신으로 호출하고 계시는 고객님께선 즉시 AP
 
 <summary>
 
-TLS 1.0, 1.1 지원을 중단하는 이유
+<strong>TLS 1.0, 1.1 지원을 중단하는 이유</strong>
 
 </summary>
 
@@ -178,7 +306,7 @@ TLS 1.0과 1.1을 deprecate 시켰으며, AWS, Google[^tls-1.0-chrome], Apple, M
 
 <summary>
 
-일부 Legacy Cipher Suite 들에 대한 지원을 중단하는 이유
+<strong>일부 Legacy Cipher Suite 들에 대한 지원을 중단하는 이유</strong>
 
 </summary>
 
@@ -225,7 +353,7 @@ Cryptography Extension) Provider가 타원곡선 암호화 알고리즘을 지�
 
 <summary>
 
-JDK 8u261 이상으로 버전 업그레이드
+<strong>JDK 8u261 이상으로 버전 업그레이드</strong>
 
 </summary>
 
@@ -242,7 +370,7 @@ Java 7의 경우, Java 6과 마찬가지로 보안 업데이트가 중단된 상
 
 <summary>
 
-서드파티 라이브러리를 통한 TLS 버전 업데이트
+<strong>서드파티 라이브러리를 통한 TLS 버전 업데이트</strong>
 
 </summary>
 
@@ -291,7 +419,7 @@ Cipher Suite를 지원하지 않기도 합니다.
 
 <summary>
 
-JDK 8u261 이상으로 버전 업그레이드
+<strong>JDK 8u261 이상으로 버전 업그레이드</strong>
 
 </summary>
 
@@ -305,7 +433,7 @@ JDK 8u261 이상으로 버전 업그레이드
 
 <summary>
 
-JDK 7u321 이상으로 버전 업그레이드, 1.2 사용 설정
+<strong>JDK 7u321 이상으로 버전 업그레이드, 1.2 사용 설정</strong>
 
 </summary>
 
@@ -350,13 +478,15 @@ JDK 버전업이 완료되었다면, 아래 두 방법 중 하나를 골라 기�
 
 <summary>
 
-서드파티 라이브러리를 통한 TLS 버전 업데이트
+<strong>서드파티 라이브러리를 통한 TLS 버전 업데이트</strong>
 
 </summary>
 
 Java 6 가이드와 마찬가지 방법으로 서드파티 라이브러리를 통해 TLS 버전을 업데이트할 수 있습니다.
 
 </details>
+
+<p style="height:5rem" />
 
 ---
 

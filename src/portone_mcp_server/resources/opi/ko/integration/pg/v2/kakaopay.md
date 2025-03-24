@@ -54,7 +54,11 @@ versionVariants:
   - `custom_message`: 결제 화면에 보여줄 사용자 정의 문구입니다.(카카오페이와 사전 협의 필요)
   - 해당 필드를 채워서 요청할 시 아래와 같이 카카오페이 결제창 내에서 문구가 띄워집니다.
 
-* `easyPay`
+[이미지 링크](https://developers.portone.io/gitbook-assets/ko/KakaoTalk_Photo_2023-04-10-17-39-36.jpeg)
+
+
+
+- `easyPay`
   - `easyPayProvider`
     - 카카오페이의 경우 PG사 자체가 간편결제사이므로 `easyPayProvider` 는 비워두어도 무방하며 다른 값을 채울 경우 무시됩니다.
 

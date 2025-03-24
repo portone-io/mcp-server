@@ -9,3 +9,6 @@ versionVariants:
 
 ## `loadIssueBillingKeyUI` 요청 데이터 정의
 
+- request: LoadIssueBillingKeyUIRequest
+
+  [definition link](https://developers.portone.io/schema/browser-sdk.yml#/resources/request/LoadIssueBillingKeyUIRequest)

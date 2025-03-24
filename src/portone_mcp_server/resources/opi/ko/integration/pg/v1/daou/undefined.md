@@ -72,7 +72,11 @@ PC 결제의 경우 키움페이 결제창이 iframe 방식으로 호출되기 �
 사파리 브라우저에서 하나카드 / NH앱캐시(계좌이체) 결제 시 아래와 같이
 `세션 유효기간이 초과되어 카드사와 연결이 종료되었습니다`와 같은 메시지가 렌더링되며 결제 진행이 불가능한 경우가 발생할 수 있습니다.
 
+[참고이미지](<https://developers.portone.io/gitbook-assets/ko/image (116).png>)
+
 이러한 현상이 발생한 경우, 사파리 환경설정에서 아래와 같이 `크로스 사이트 추적 방지` 해제 및 `모든 쿠키 차단`이 모두 해제하신 후 다시 시도하시길 바랍니다.
+
+[참고이미지](<https://developers.portone.io/gitbook-assets/ko/image (159).png>)
 
 </details>
 
@@ -83,7 +87,11 @@ PC 결제의 경우 키움페이 결제창이 iframe 방식으로 호출되기 �
 사파리와 파이어폭스에서 키움페이 결제창을 호출한 뒤 BC카드 선택 후 다음 버튼 클릭시 `지불에 실패하였습니다`라는 알림창이 뜨면서 결제 진행이
 불가능한 경우가 발생할 수 있습니다.
 
+[참고이미지](<https://developers.portone.io/gitbook-assets/ko/image (223).png>)
+
 이러한 현상이 발생한 경우, 사파리 환경설정에서 아래와 같이 `*.payjoa.co.kr` 도메인에 대해 팝업을 `허용`으로 설정해야 합니다.
+
+[참고이미지](<https://developers.portone.io/gitbook-assets/ko/image (256).png>)
 
 </details>
 
@@ -165,6 +173,8 @@ GET http://api.iamport.kr/payments/{포트원 번호}?**extension=true**
 <summary>에스크로 결제 시 구매자 전화번호 자동 입력 불가</summary>
 
 에스크로 결제시 결제 요청 시 입력된 구매자 전화번호가 결제창에 자동 완성되지 않습니다.
+
+[참고이미지](<https://developers.portone.io/gitbook-assets/ko/image (253).png>)
 
 </details>
 

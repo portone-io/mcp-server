@@ -112,7 +112,7 @@ IMP.request_pay(
 
 </div>
 
-## 추가 기능&#x20;
+## 추가 기능 <a href="#additional-features" id="additional-features" />
 
 Paypal에서는 고위험업종(게임, 디지털 콘텐츠) 고객사의 경우 판매자 보호 및 더 높은 수준의 위험관리를
 위해 STC API(SetTransactionContext API)를 제공합니다.
@@ -147,7 +147,7 @@ STC API를 사용하기 위해서는 **Paypal과의 STC 데이터 협의**가 �
 
 </div>
 
-
+(파일 다운로드 링크)
 
 <div class="hint" data-style="warning">
 

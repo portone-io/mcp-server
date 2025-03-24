@@ -20,7 +20,7 @@ versionVariants:
 
 (관련 이미지 첨부)
 
-## 2. 최신 JavaScript SDK로 업데이트하기&#x20;
+## 2. 최신 JavaScript SDK로 업데이트하기 <a href="#2." id="2." />
 
 토스페이 결제는 최신 SDK에서만 지원되는 기능입니다.
 
@@ -75,7 +75,11 @@ IMP.request_pay(
 
 <details>
 
-<summary>주요 파라미터 설명</summary>
+<summary>
+
+<strong>주요 파라미터 설명</strong>
+
+</summary>
 
 - channelKey: string
 
@@ -177,7 +181,11 @@ IMP.request_pay(
 
 <details>
 
-<summary>주요 파라미터 설명</summary>
+<summary>
+
+<strong>주요 파라미터 설명</strong>
+
+</summary>
 
 - channelKey: string
 

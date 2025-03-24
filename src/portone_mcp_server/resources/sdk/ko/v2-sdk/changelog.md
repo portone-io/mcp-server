@@ -5,3 +5,4 @@ targetVersions:
   - v2
 ---
 
+[SDK Changelog](https://developers.portone.io/sdk/ko/v2-sdk/changelog)

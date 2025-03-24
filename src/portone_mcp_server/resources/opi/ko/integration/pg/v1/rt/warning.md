@@ -71,12 +71,12 @@ GET /subscribe/customers/{customer_uid}
 </noscript>
 ```
 
-| 파라미터      | 설명                                                        | 예시                                              |
-| --------- | --------------------------------------------------------- | ----------------------------------------------- |
-| `fncls`   | `fnparams-dede7cc5-15fd-4c75-a9f4-36c430ee3a99`로 항상 고정    | `fnparams-dede7cc5-15fd-4c75-a9f4-36c430ee3a99` |
-| `f`       | 주문번호(`merchant_uid`) 전달                                   | `mid_1683690731602`                             |
-| `s`       | string (`{페이팔 Account ID}_{페이지 유형}` 형식. 페이지 유형은 아래 목록 참고) | `7WBB3CKT63FRG_checkout-page`                   |
-| `sandbox` | 페이팔 Account ID가 테스트 용인지 운영 용인지 여부                         | `true`                                          |
+|파라미터 |설명                                                                           |예시                                           |
+|---------|-------------------------------------------------------------------------------|-----------------------------------------------|
+|`fncls`  |`fnparams-dede7cc5-15fd-4c75-a9f4-36c430ee3a99`로 항상 고정                    |`fnparams-dede7cc5-15fd-4c75-a9f4-36c430ee3a99`|
+|`f`      |주문번호(`merchant_uid`) 전달                                                  |`mid_1683690731602`                            |
+|`s`      |string (`{페이팔 Account ID}_{페이지 유형}` 형식. 페이지 유형은 아래 목록 참고)|`7WBB3CKT63FRG_checkout-page`                  |
+|`sandbox`|페이팔 Account ID가 테스트 용인지 운영 용인지 여부                             |`true`                                         |
 
 **\[페이지 유형]**
 

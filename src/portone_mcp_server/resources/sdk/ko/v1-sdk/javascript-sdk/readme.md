@@ -13,7 +13,7 @@ versionVariants:
 
 </div>
 
-## SDK Library 로드하기&#x20;
+## SDK Library 로드하기 <a href="#sdk-library" id="sdk-library" />
 
 **포트원 JavaScript SDK**를 사용하기 위해서 SDK Script Tag를 다음과 같이 페이지 HTML에 추가해야
 합니다. 라이브러리가 로드되면, **IMP** 전역 객체를 **window** 객체의 프로퍼티로 접근하여 **IMP**의

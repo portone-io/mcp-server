@@ -14,7 +14,7 @@ versionVariants:
 
 <div class="hint" data-style="info">
 
-포트원 V2에서는 페이팔 일반결제의 경우 SPB(Smart Payment Button), 정기결제의 경우 RT(Reference Transaction) 방식만 지원합니다.&#x20;
+포트원 V2에서는 페이팔 일반결제의 경우 SPB(Smart Payment Button), 정기결제의 경우 RT(Reference Transaction) 방식만 지원합니다. <br />
 페이팔은 카드나 계좌 등의 결제수단을 지정하여 결제를 호출할 수 없습니다. (단, 페이팔 계정내에서 사용자가 등록한 결제수단에 따라 카드 혹은 계좌 등을 선택할 수 있습니다.)
 
 </div>
@@ -234,7 +234,11 @@ function updateLoadIssueBillingKeyUIRequest() {
 
 판매자 보호 정책에 관한 자세한 내용 및 협의가 필요한 경우 페이팔에 직접 문의해 주세요.
 
+<br />
+
 ---
+
+<br />
 
 고위험 산업에 해당하는 산업군들은 다음과 같습니다.
 
@@ -331,19 +335,19 @@ _({
 
 <summary>이벤트/티켓 판매 산업</summary>
 
-| Field Name            | Description                        | Format                                                          |
-| --------------------- | ---------------------------------- | --------------------------------------------------------------- |
-| sender\_account\_id   | 구매자 계정의 id                         |                                                                 |
-| sender\_first\_name   | 구매자의 이름                            |                                                                 |
-| sender\_last\_name    | 구매자의 성                             |                                                                 |
-| sender\_email         | 구매자의 이메일                           | E.123 - Email Address                                           |
-| sender\_phone         | 구매자의 휴대전화 번호                       | E.123 - Telephone Number (national notation)                    |
-| sender\_country\_code | 구매자의 국가 코드                         | ISO Alpha-2 Country Code                                        |
-| sender\_create\_date  | 구매자의 계정 생성일                        | ISO 8601 date format                                            |
-| dg\_delivery\_method  | 발신 방법                              | (`email`, `phone`, `venue_pickup`, `kiosk_pickup`) 중의 하나로 전송해야함 |
-| cd\_string\_one       | 여분 필드 1(행사일 등의 정보 입력, 중요도 낮음)      |                                                                 |
-| cd\_string\_two       | 여분 필드 2 (행사 카테고리 등의 정보 입력, 중요도 낮음) |                                                                 |
-| cd\_int\_one          | 티켓의 수(중요도 낮음)                      |                                                                 |
+|Field Name           |Description                                            |Format                                                                   |
+|---------------------|-------------------------------------------------------|-------------------------------------------------------------------------|
+|sender\_account\_id  |구매자 계정의 id                                       |                                                                         |
+|sender\_first\_name  |구매자의 이름                                          |                                                                         |
+|sender\_last\_name   |구매자의 성                                            |                                                                         |
+|sender\_email        |구매자의 이메일                                        |E.123 - Email Address                                                    |
+|sender\_phone        |구매자의 휴대전화 번호                                 |E.123 - Telephone Number (national notation)                             |
+|sender\_country\_code|구매자의 국가 코드                                     |ISO Alpha-2 Country Code                                                 |
+|sender\_create\_date |구매자의 계정 생성일                                   |ISO 8601 date format                                                     |
+|dg\_delivery\_method |발신 방법                                              |(`email`, `phone`, `venue_pickup`, `kiosk_pickup`) 중의 하나로 전송해야함|
+|cd\_string\_one      |여분 필드 1(행사일 등의 정보 입력, 중요도 낮음)        |                                                                         |
+|cd\_string\_two      |여분 필드 2 (행사 카테고리 등의 정보 입력, 중요도 낮음)|                                                                         |
+|cd\_int\_one         |티켓의 수(중요도 낮음)                                 |                                                                         |
 
 </details>
 
@@ -351,15 +355,15 @@ _({
 
 <summary>연료 산업</summary>
 
-| Field Name            | Description  | Format                                       |
-| --------------------- | ------------ | -------------------------------------------- |
-| sender\_account\_id   | 구매자 계정의 id   |                                              |
-| sender\_first\_name   | 구매자의 이름      |                                              |
-| sender\_last\_name    | 구매자의 성       |                                              |
-| sender\_email         | 구매자의 이메일     | E.123 - Email Address                        |
-| sender\_phone         | 구매자의 휴대전화 번호 | E.123 - Telephone Number (national notation) |
-| sender\_country\_code | 구매자의 국가 코드   | ISO Alpha-2 Country Code                     |
-| sender\_create\_date  | 구매자의 계정 생성일  | ISO 8601 date format                         |
+|Field Name           |Description           |Format                                      |
+|---------------------|----------------------|--------------------------------------------|
+|sender\_account\_id  |구매자 계정의 id      |                                            |
+|sender\_first\_name  |구매자의 이름         |                                            |
+|sender\_last\_name   |구매자의 성           |                                            |
+|sender\_email        |구매자의 이메일       |E.123 - Email Address                       |
+|sender\_phone        |구매자의 휴대전화 번호|E.123 - Telephone Number (national notation)|
+|sender\_country\_code|구매자의 국가 코드    |ISO Alpha-2 Country Code                    |
+|sender\_create\_date |구매자의 계정 생성일  |ISO 8601 date format                        |
 
 </details>
 
@@ -367,15 +371,15 @@ _({
 
 <summary>게임/디지털 상품 산업</summary>
 
-| Field Name            | Description  | Format                                       |
-| --------------------- | ------------ | -------------------------------------------- |
-| sender\_account\_id   | 구매자 계정의 id   |                                              |
-| sender\_first\_name   | 구매자의 이름      |                                              |
-| sender\_last\_name    | 구매자의 성       |                                              |
-| sender\_email         | 구매자의 이메일     | E.123 - Email Address                        |
-| sender\_phone         | 구매자의 휴대전화 번호 | E.123 - Telephone Number (national notation) |
-| sender\_country\_code | 구매자의 국가 코드   | ISO Alpha-2 Country Code                     |
-| sender\_create\_date  | 구매자의 계정 생성일  | ISO 8601 date format                         |
+|Field Name           |Description           |Format                                      |
+|---------------------|----------------------|--------------------------------------------|
+|sender\_account\_id  |구매자 계정의 id      |                                            |
+|sender\_first\_name  |구매자의 이름         |                                            |
+|sender\_last\_name   |구매자의 성           |                                            |
+|sender\_email        |구매자의 이메일       |E.123 - Email Address                       |
+|sender\_phone        |구매자의 휴대전화 번호|E.123 - Telephone Number (national notation)|
+|sender\_country\_code|구매자의 국가 코드    |ISO Alpha-2 Country Code                    |
+|sender\_create\_date |구매자의 계정 생성일  |ISO 8601 date format                        |
 
 </details>
 
@@ -383,27 +387,27 @@ _({
 
 <summary>마켓플레이스 산업</summary>
 
-| Field Name                       | Description                                                                                       | Format                                       |
-| -------------------------------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------- |
-| sender\_account\_id              | 구매자/발신자 계정의 id                                                                                    |                                              |
-| sender\_first\_name              | 구매자/발신자의 이름                                                                                       |                                              |
-| sender\_last\_name               | 구매자/발신자의 성                                                                                        |                                              |
-| sender\_email                    | 구매자/발신자의 이메일                                                                                      | E.123 - Email Address                        |
-| sender\_phone                    | 구매자/발신자의 휴대전화 번호                                                                                  | E.123 - Telephone Number (national notation) |
-| sender\_address\_zip             | (미국 머천트 한정) 구매자/발신자가 고객사 계정에 등록한 우편번호                                                             |                                              |
-| sender\_country\_code            | 구매자/발신자의 국가 코드                                                                                    | ISO Alpha-2 Country Code                     |
-| sender\_create\_date             | 구매자/발신자의 계정 생성일                                                                                   | ISO 8601 date format                         |
-| sender\_signup\_ip               | 구매자/발신자의 회원 가입 시점의 IP 주소                                                                          | IP(IPv4 / IPv6)                              |
-| sender\_popularity\_score        | 구매자/발신자의 신용도 점수                                                                                   | (high, medium, low) 중의 하나                    |
-| receiver\_account\_id            | 판매자/수신자 계정의 id                                                                                    |                                              |
-| receiver\_create\_date           | 판매자/수신자의 계정 생성일                                                                                   | ISO 8601 date format                         |
-| receiver\_email                  | 판매자/수신자의 이메일                                                                                      | E.123 - Email Address                        |
-| receiver\_address\_country\_code | 판매자/수신자의 국가 코드                                                                                    | ISO Alpha-2 Country Code                     |
-| business\_name                   | 판매자/수신자가 계정에 등록한 사업용 이름                                                                           |                                              |
-| recipient\_popularity\_score     | 판매자/수신자의 신용도 점수                                                                                   | (high, medium, low) 중의 하나                    |
-| first\_interaction\_date         | 발신자/수신자의 첫 번째 상호작용 날짜. '상호작용'의 정의는 고객사에서 정의합니다. ex)발신자와 수신자 간의 첫 번째 거래 시도, 발신자와 수신자 간의 친구 추가 날짜 등 | ISO 8601 date format                         |
-| txn\_count\_total                | 발신자/구매자가 현재까지 고객사에서 진행한 총 거래 횟수(PayPal 또는 기타 결제수단을 통해)                                            | Number                                       |
-| transaction\_is\_tangible        | 판매자/수신자의 거래가 유형 거래인지, 무형 거래인지를 나타내는 필드                                                            | 유형 거래인 경우 1, 무형 거래인 경우 0                     |
+|Field Name                      |Description                                                                                                                                                        |Format                                      |
+|--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------|
+|sender\_account\_id             |구매자/발신자 계정의 id                                                                                                                                            |                                            |
+|sender\_first\_name             |구매자/발신자의 이름                                                                                                                                               |                                            |
+|sender\_last\_name              |구매자/발신자의 성                                                                                                                                                 |                                            |
+|sender\_email                   |구매자/발신자의 이메일                                                                                                                                             |E.123 - Email Address                       |
+|sender\_phone                   |구매자/발신자의 휴대전화 번호                                                                                                                                      |E.123 - Telephone Number (national notation)|
+|sender\_address\_zip            |(미국 머천트 한정) 구매자/발신자가 고객사 계정에 등록한 우편번호                                                                                                   |                                            |
+|sender\_country\_code           |구매자/발신자의 국가 코드                                                                                                                                          |ISO Alpha-2 Country Code                    |
+|sender\_create\_date            |구매자/발신자의 계정 생성일                                                                                                                                        |ISO 8601 date format                        |
+|sender\_signup\_ip              |구매자/발신자의 회원 가입 시점의 IP 주소                                                                                                                           |IP(IPv4 / IPv6)                             |
+|sender\_popularity\_score       |구매자/발신자의 신용도 점수                                                                                                                                        |(high, medium, low) 중의 하나               |
+|receiver\_account\_id           |판매자/수신자 계정의 id                                                                                                                                            |                                            |
+|receiver\_create\_date          |판매자/수신자의 계정 생성일                                                                                                                                        |ISO 8601 date format                        |
+|receiver\_email                 |판매자/수신자의 이메일                                                                                                                                             |E.123 - Email Address                       |
+|receiver\_address\_country\_code|판매자/수신자의 국가 코드                                                                                                                                          |ISO Alpha-2 Country Code                    |
+|business\_name                  |판매자/수신자가 계정에 등록한 사업용 이름                                                                                                                          |                                            |
+|recipient\_popularity\_score    |판매자/수신자의 신용도 점수                                                                                                                                        |(high, medium, low) 중의 하나               |
+|first\_interaction\_date        |발신자/수신자의 첫 번째 상호작용 날짜. '상호작용'의 정의는 고객사에서 정의합니다. ex)발신자와 수신자 간의 첫 번째 거래 시도, 발신자와 수신자 간의 친구 추가 날짜 등|ISO 8601 date format                        |
+|txn\_count\_total               |발신자/구매자가 현재까지 고객사에서 진행한 총 거래 횟수(PayPal 또는 기타 결제수단을 통해)                                                                          |Number                                      |
+|transaction\_is\_tangible       |판매자/수신자의 거래가 유형 거래인지, 무형 거래인지를 나타내는 필드                                                                                                |유형 거래인 경우 1, 무형 거래인 경우 0      |
 
 </details>
 
@@ -411,23 +415,23 @@ _({
 
 <summary>온라인 여행 산업(렌터카, 숙박, 여행 패키지, 교통)</summary>
 
-| Field Name                | Description                                                   | Format                                       |
-| ------------------------- | ------------------------------------------------------------- | -------------------------------------------- |
-| sender\_account\_id       | 구매자 계정의 id                                                    |                                              |
-| sender\_first\_name       | 구매자의 이름                                                       |                                              |
-| sender\_last\_name        | 구매자의 성                                                        |                                              |
-| sender\_email             | 구매자의 이메일                                                      | E.123 - Email Address                        |
-| sender\_phone             | 구매자의 휴대전화 번호                                                  | E.123 - Telephone Number (national notation) |
-| sender\_country\_code     | 구매자의 국가 코드                                                    | ISO Alpha-2 Country Code                     |
-| sender\_create\_date      | 구매자의 계정 생성일                                                   | ISO 8601 date format                         |
-| ota\_type                 | 여행 산업 종류(숙박인 경우 hotel 등, 교통인 경우 train 등의 종류 입력)               |                                              |
-| ota\_service\_start\_date | 서비스 제공 시작일                                                    | ISO 8601 date format                         |
-| ota\_service\_end\_date   | 서비스 제공 종료일                                                    | ISO 8601 date format                         |
-| ota\_service\_guest\_t\_f | 게스트(서비스를 받는 사람) 변경 가능 여부, 사기범들이 변경 가능 서비스에 비용을 지불하는 경향이 있습니다. | 변경 가능시 1, 아닐시 0                              |
-| ota\_start\_country       | 서비스를 시작한 국가 (ex: 차 렌트, 숙박이 예약된 국가)                            | ISO Alpha-2 Country Code                     |
-| ota\_start\_city          | 서비스를 시작한 도시                                                   |                                              |
-| ota\_start\_zip\_code     | 서비스 시작 장소의 우편 번호                                              |                                              |
-| cd\_string\_one           | 여분 필드 1, 여행 산업 - 교통에 해당하는 머천트만 사용, 티켓 종류 입력                   | ISO 8601 date format                         |
+|Field Name               |Description                                                                                              |Format                                      |
+|-------------------------|---------------------------------------------------------------------------------------------------------|--------------------------------------------|
+|sender\_account\_id      |구매자 계정의 id                                                                                         |                                            |
+|sender\_first\_name      |구매자의 이름                                                                                            |                                            |
+|sender\_last\_name       |구매자의 성                                                                                              |                                            |
+|sender\_email            |구매자의 이메일                                                                                          |E.123 - Email Address                       |
+|sender\_phone            |구매자의 휴대전화 번호                                                                                   |E.123 - Telephone Number (national notation)|
+|sender\_country\_code    |구매자의 국가 코드                                                                                       |ISO Alpha-2 Country Code                    |
+|sender\_create\_date     |구매자의 계정 생성일                                                                                     |ISO 8601 date format                        |
+|ota\_type                |여행 산업 종류(숙박인 경우 hotel 등, 교통인 경우 train 등의 종류 입력)                                   |                                            |
+|ota\_service\_start\_date|서비스 제공 시작일                                                                                       |ISO 8601 date format                        |
+|ota\_service\_end\_date  |서비스 제공 종료일                                                                                       |ISO 8601 date format                        |
+|ota\_service\_guest\_t\_f|게스트(서비스를 받는 사람) 변경 가능 여부, 사기범들이 변경 가능 서비스에 비용을 지불하는 경향이 있습니다.|변경 가능시 1, 아닐시 0                     |
+|ota\_start\_country      |서비스를 시작한 국가 (ex: 차 렌트, 숙박이 예약된 국가)                                                   |ISO Alpha-2 Country Code                    |
+|ota\_start\_city         |서비스를 시작한 도시                                                                                     |                                            |
+|ota\_start\_zip\_code    |서비스 시작 장소의 우편 번호                                                                             |                                            |
+|cd\_string\_one          |여분 필드 1, 여행 산업 - 교통에 해당하는 머천트만 사용, 티켓 종류 입력                                   |ISO 8601 date format                        |
 
 </details>
 
@@ -435,19 +439,19 @@ _({
 
 <summary>P2P 산업</summary>
 
-| Field Name                       | Description  | Format                                       |
-| -------------------------------- | ------------ | -------------------------------------------- |
-| sender\_account\_id              | 구매자 계정의 id   |                                              |
-| sender\_first\_name              | 구매자의 이름      |                                              |
-| sender\_last\_name               | 구매자의 성       |                                              |
-| sender\_email                    | 구매자의 이메일     | E.123 - Email Address                        |
-| sender\_phone                    | 구매자의 휴대전화 번호 | E.123 - Telephone Number (national notation) |
-| sender\_country\_code            | 구매자의 국가 코드   | ISO Alpha-2 Country Code                     |
-| sender\_create\_date             | 구매자의 계정 생성일  | ISO 8601 date format                         |
-| receiver\_account\_id            | 수신자 계정의 id   |                                              |
-| receiver\_create\_date           | 수신자의 계정 생성일  | ISO 8601 date format                         |
-| receiver\_email                  | 수신자의 이메일     | E.123 - Email Address                        |
-| receiver\_address\_country\_code | 수신자의 국가 코드   | ISO Alpha-2 Country Code                     |
+|Field Name                      |Description           |Format                                      |
+|--------------------------------|----------------------|--------------------------------------------|
+|sender\_account\_id             |구매자 계정의 id      |                                            |
+|sender\_first\_name             |구매자의 이름         |                                            |
+|sender\_last\_name              |구매자의 성           |                                            |
+|sender\_email                   |구매자의 이메일       |E.123 - Email Address                       |
+|sender\_phone                   |구매자의 휴대전화 번호|E.123 - Telephone Number (national notation)|
+|sender\_country\_code           |구매자의 국가 코드    |ISO Alpha-2 Country Code                    |
+|sender\_create\_date            |구매자의 계정 생성일  |ISO 8601 date format                        |
+|receiver\_account\_id           |수신자 계정의 id      |                                            |
+|receiver\_create\_date          |수신자의 계정 생성일  |ISO 8601 date format                        |
+|receiver\_email                 |수신자의 이메일       |E.123 - Email Address                       |
+|receiver\_address\_country\_code|수신자의 국가 코드    |ISO Alpha-2 Country Code                    |
 
 </details>
 
@@ -455,17 +459,17 @@ _({
 
 <summary>소매, 식품 산업</summary>
 
-| Field Name            | Description           | Format                                       |
-| --------------------- | --------------------- | -------------------------------------------- |
-| sender\_account\_id   | 구매자 계정의 id            |                                              |
-| sender\_first\_name   | 구매자의 이름               |                                              |
-| sender\_last\_name    | 구매자의 성                |                                              |
-| sender\_email         | 구매자의 이메일              | E.123 - Email Address                        |
-| sender\_phone         | 구매자의 휴대전화 번호          | E.123 - Telephone Number (national notation) |
-| sender\_country\_code | 구매자의 국가 코드            | ISO Alpha-2 Country Code                     |
-| sender\_create\_date  | 구매자의 계정 생성일           | ISO 8601 date format                         |
-| dg\_delivery\_method  | 발신 방법                 | (`email`, `phone`) 중의 하나로 전송해야함              |
-| highrisk\_txn\_flag   | 고객사에서 고위험으로 분류한 상품 여부 | 위험 상품인 경우 1, 아닐 시 0                          |
+|Field Name           |Description                           |Format                                      |
+|---------------------|--------------------------------------|--------------------------------------------|
+|sender\_account\_id  |구매자 계정의 id                      |                                            |
+|sender\_first\_name  |구매자의 이름                         |                                            |
+|sender\_last\_name   |구매자의 성                           |                                            |
+|sender\_email        |구매자의 이메일                       |E.123 - Email Address                       |
+|sender\_phone        |구매자의 휴대전화 번호                |E.123 - Telephone Number (national notation)|
+|sender\_country\_code|구매자의 국가 코드                    |ISO Alpha-2 Country Code                    |
+|sender\_create\_date |구매자의 계정 생성일                  |ISO 8601 date format                        |
+|dg\_delivery\_method |발신 방법                             |(`email`, `phone`) 중의 하나로 전송해야함   |
+|highrisk\_txn\_flag  |고객사에서 고위험으로 분류한 상품 여부|위험 상품인 경우 1, 아닐 시 0               |
 
 </details>
 
@@ -473,18 +477,18 @@ _({
 
 <summary>택시, 공유 이동수단 산업</summary>
 
-| Field Name            | Description                           | Format                                       |
-| --------------------- | ------------------------------------- | -------------------------------------------- |
-| sender\_account\_id   | 구매자 계정의 id                            |                                              |
-| sender\_first\_name   | 구매자의 이름                               |                                              |
-| sender\_last\_name    | 구매자의 성                                |                                              |
-| sender\_email         | 구매자의 이메일                              | E.123 - Email Address                        |
-| sender\_phone         | 구매자의 휴대전화 번호                          | E.123 - Telephone Number (national notation) |
-| sender\_address\_zip  | (미국 머천트 한정) 구매자/발신자가 고객사 계정에 등록한 우편번호 |                                              |
-| sender\_country\_code | 구매자의 국가 코드                            | ISO Alpha-2 Country Code                     |
-| sender\_create\_date  | 구매자의 계정 생성일                           | ISO 8601 date format                         |
-| highrisk\_txn\_flag   | 차량 예약과 같은 고객사에서 고위험으로 분류한 결제 건 여부     | 위험 거래인 경우 1, 아닐 시 0                          |
-| cd\_string\_one       | 여분 필드 1                               |                                              |
+|Field Name           |Description                                                     |Format                                      |
+|---------------------|----------------------------------------------------------------|--------------------------------------------|
+|sender\_account\_id  |구매자 계정의 id                                                |                                            |
+|sender\_first\_name  |구매자의 이름                                                   |                                            |
+|sender\_last\_name   |구매자의 성                                                     |                                            |
+|sender\_email        |구매자의 이메일                                                 |E.123 - Email Address                       |
+|sender\_phone        |구매자의 휴대전화 번호                                          |E.123 - Telephone Number (national notation)|
+|sender\_address\_zip |(미국 머천트 한정) 구매자/발신자가 고객사 계정에 등록한 우편번호|                                            |
+|sender\_country\_code|구매자의 국가 코드                                              |ISO Alpha-2 Country Code                    |
+|sender\_create\_date |구매자의 계정 생성일                                            |ISO 8601 date format                        |
+|highrisk\_txn\_flag  |차량 예약과 같은 고객사에서 고위험으로 분류한 결제 건 여부      |위험 거래인 경우 1, 아닐 시 0               |
+|cd\_string\_one      |여분 필드 1                                                     |                                            |
 
 </details>
 
@@ -492,15 +496,15 @@ _({
 
 <summary>통신사</summary>
 
-| Field Name            | Description  | Format                                       |
-| --------------------- | ------------ | -------------------------------------------- |
-| sender\_account\_id   | 구매자 계정의 id   |                                              |
-| sender\_first\_name   | 구매자의 이름      |                                              |
-| sender\_last\_name    | 구매자의 성       |                                              |
-| sender\_email         | 구매자의 이메일     | E.123 - Email Address                        |
-| sender\_phone         | 구매자의 휴대전화 번호 | E.123 - Telephone Number (national notation) |
-| sender\_country\_code | 구매자의 국가 코드   | ISO Alpha-2 Country Code                     |
-| sender\_create\_date  | 구매자의 계정 생성일  | ISO 8601 date format                         |
+|Field Name           |Description           |Format                                      |
+|---------------------|----------------------|--------------------------------------------|
+|sender\_account\_id  |구매자 계정의 id      |                                            |
+|sender\_first\_name  |구매자의 이름         |                                            |
+|sender\_last\_name   |구매자의 성           |                                            |
+|sender\_email        |구매자의 이메일       |E.123 - Email Address                       |
+|sender\_phone        |구매자의 휴대전화 번호|E.123 - Telephone Number (national notation)|
+|sender\_country\_code|구매자의 국가 코드    |ISO Alpha-2 Country Code                    |
+|sender\_create\_date |구매자의 계정 생성일  |ISO 8601 date format                        |
 
 </details>
 
@@ -508,15 +512,15 @@ _({
 
 <summary>결제 시스템 보안 서비스 산업</summary>
 
-| Field Name            | Description  | Format                                       |
-| --------------------- | ------------ | -------------------------------------------- |
-| sender\_account\_id   | 구매자 계정의 id   |                                              |
-| sender\_first\_name   | 구매자의 이름      |                                              |
-| sender\_last\_name    | 구매자의 성       |                                              |
-| sender\_email         | 구매자의 이메일     | E.123 - Email Address                        |
-| sender\_phone         | 구매자의 휴대전화 번호 | E.123 - Telephone Number (national notation) |
-| sender\_country\_code | 구매자의 국가 코드   | ISO Alpha-2 Country Code                     |
-| sender\_create\_date  | 구매자의 계정 생성일  | ISO 8601 date format                         |
+|Field Name           |Description           |Format                                      |
+|---------------------|----------------------|--------------------------------------------|
+|sender\_account\_id  |구매자 계정의 id      |                                            |
+|sender\_first\_name  |구매자의 이름         |                                            |
+|sender\_last\_name   |구매자의 성           |                                            |
+|sender\_email        |구매자의 이메일       |E.123 - Email Address                       |
+|sender\_phone        |구매자의 휴대전화 번호|E.123 - Telephone Number (national notation)|
+|sender\_country\_code|구매자의 국가 코드    |ISO Alpha-2 Country Code                    |
+|sender\_create\_date |구매자의 계정 생성일  |ISO 8601 date format                        |
 
 </details>
 
@@ -524,18 +528,18 @@ _({
 
 <summary>기타 산업</summary>
 
-| Field Name            | Description  | Format                                       |
-| --------------------- | ------------ | -------------------------------------------- |
-| sender\_account\_id   | 구매자 계정의 id   |                                              |
-| sender\_first\_name   | 구매자의 이름      |                                              |
-| sender\_last\_name    | 구매자의 성       |                                              |
-| sender\_email         | 구매자의 이메일     | E.123 - Email Address                        |
-| sender\_phone         | 구매자의 휴대전화 번호 | E.123 - Telephone Number (national notation) |
-| sender\_country\_code | 구매자의 국가 코드   | ISO Alpha-2 Country Code                     |
-| sender\_create\_date  | 구매자의 계정 생성일  | ISO 8601 date format                         |
-| cd\_string\_one       | 여분 필드 1      |                                              |
-| cd\_string\_two       | 여분 필드 2      |                                              |
-| cd\_int\_one          | 여분 숫자필드 1    | Number                                       |
+|Field Name           |Description           |Format                                      |
+|---------------------|----------------------|--------------------------------------------|
+|sender\_account\_id  |구매자 계정의 id      |                                            |
+|sender\_first\_name  |구매자의 이름         |                                            |
+|sender\_last\_name   |구매자의 성           |                                            |
+|sender\_email        |구매자의 이메일       |E.123 - Email Address                       |
+|sender\_phone        |구매자의 휴대전화 번호|E.123 - Telephone Number (national notation)|
+|sender\_country\_code|구매자의 국가 코드    |ISO Alpha-2 Country Code                    |
+|sender\_create\_date |구매자의 계정 생성일  |ISO 8601 date format                        |
+|cd\_string\_one      |여분 필드 1           |                                            |
+|cd\_string\_two      |여분 필드 2           |                                            |
+|cd\_int\_one         |여분 숫자필드 1       |Number                                      |
 
 </details>
 
@@ -1385,12 +1389,16 @@ Pay Later 버튼은 **구매자가 접속한 국가에 따라 다른 버튼이 �
 
 Pay Later 기능을 지원하는 국가에서 접속하더라도 구매자 계정에 설정된 국가가 Pay Later를 제공하지 않는 국가인 경우, 일반 카드 결제 화면이 렌더링됩니다.
 
+<br />
+
 #### 2. Pay Later 사용 국가별 페이팔 계정 생성하기
 
 Pay Later(할부) 기능을 여러 국가에 제공하기 위해서는 **페이팔 머천트 계정을 국가별로 각각 따로 만들어야** 합니다.
 예를 들어 고객사이 \[독일], \[스페인], \[이탈리아] 3개 국가에 대해 Pay Later 서비스를 제공하고자 하는 경우 고객사는 \[독일], \[스페인], \[이탈리아]의 **페이팔 머천트 계정을 각각 따로 만들어야** 합니다.
 
 국가별로 생성한 페이팔 Account ID를 \[결제 연동] > \[채널 관리] 페이지에서 채널 등록 후 결제창 호출 시 지정해야 합니다. **고객사는 구매자가 접속한 국가에 따라 올바른 채널의 채널키를 전달해야** 합니다.
+
+<br />
 
 #### 3. Pay Later 국가별 정책 알아보기
 
@@ -1791,12 +1799,12 @@ Pay Later(할부) 기능을 여러 국가에 제공하기 위해서는 **페이�
 
 - 파라미터 설명
 
-  | 파라미터      | 설명                                                        | 예시                                              |
-  | --------- | --------------------------------------------------------- | ----------------------------------------------- |
-  | `fncls`   | `fnparams-dede7cc5-15fd-4c75-a9f4-36c430ee3a99`로 항상 고정    | `fnparams-dede7cc5-15fd-4c75-a9f4-36c430ee3a99` |
-  | `f`       | 주문번호(`paymentId`) 전달                                      | `paymentId_230980198`                           |
-  | `s`       | string (`{페이팔 Account ID}_{페이지 유형}` 형식. 페이지 유형은 아래 목록 참고) | `7WBB3CKT63FRG_checkout-page`                   |
-  | `sandbox` | 페이팔 Account ID가 테스트 용인지 운영 용인지 여부                         | `true`                                          |
+  |파라미터 |설명                                                                           |예시                                           |
+  |---------|-------------------------------------------------------------------------------|-----------------------------------------------|
+  |`fncls`  |`fnparams-dede7cc5-15fd-4c75-a9f4-36c430ee3a99`로 항상 고정                    |`fnparams-dede7cc5-15fd-4c75-a9f4-36c430ee3a99`|
+  |`f`      |주문번호(`paymentId`) 전달                                                     |`paymentId_230980198`                          |
+  |`s`      |string (`{페이팔 Account ID}_{페이지 유형}` 형식. 페이지 유형은 아래 목록 참고)|`7WBB3CKT63FRG_checkout-page`                  |
+  |`sandbox`|페이팔 Account ID가 테스트 용인지 운영 용인지 여부                             |`true`                                         |
 
 - 페이지 유형
 
