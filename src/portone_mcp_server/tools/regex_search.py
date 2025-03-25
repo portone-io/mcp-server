@@ -19,7 +19,6 @@ def initialize(documents: Documents):
     def regex_search_portone_docs(query: str, context_size: int) -> str:
         """포트원 문서의 내용 중 파이썬 re 정규표현식 형식의 query가 매칭된 부분을 모두 찾아 반환합니다.
         정규식 기반으로 관련 포트원 문서를 찾고 싶은 경우 이 도구를 사용합니다.
-        포트원 관련 내용에 대해서는 이미 알고 있는 내용이더라도 본 도구를 통해 포트원 문서 내용을 확실하게 확인한 후 사용자의 질의를 처리하세요.
 
         Args:
             query: Python re 패키지가 지원하는 Regular Expression 형식의 문자열을 입력해야 하며, 영어 알파벳 대소문자는 구분 없이 매칭됩니다.
