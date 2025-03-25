@@ -19,7 +19,7 @@ dev = [
 ]
 
 [project.scripts]
-portone-mcp-server = "portone_mcp_server.server:main"
+portone-mcp-server = "portone_mcp_server:main"
 
 [build-system]
 requires = ["hatchling"]
@@ -40,5 +40,5 @@ venv = ".venv"
 
 [tool.ruff]
 target-version = "py312"
-line-length = 180
+line-length = 160
 lint.select = ["E", "F", "I"]
