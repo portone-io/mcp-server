@@ -15,7 +15,7 @@
      "portone-mcp-server": {
        "command": "uvx",
        "args": [
-         "portone-mcp-server"
+         "portone-mcp-server@latest"
        ]
      }
    }
