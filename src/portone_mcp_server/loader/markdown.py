@@ -64,7 +64,7 @@ class MarkdownDocument:
 
 
 def load_markdown_docs(
-    package_name: str = "portone_mcp_server.resources",
+    package_name: str,
     exclude_files: List[str] = ["v1-docs-full.md", "v2-docs-full.md"],
 ) -> Dict[str, MarkdownDocument]:
     """

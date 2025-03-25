@@ -26,7 +26,7 @@ class Schema:
     additional_schemas: Dict[str, SchemaFile] = field(default_factory=dict)
 
 
-def load_schema(package_name: str = "portone_mcp_server.resources.schema") -> Schema:
+def load_schema(package_name: str) -> Schema:
     """
     Load all schema files from the schema package.
 

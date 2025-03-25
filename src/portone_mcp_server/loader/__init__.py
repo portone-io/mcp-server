@@ -4,6 +4,8 @@ from typing import Dict
 from .markdown import MarkdownDocument, load_markdown_docs
 from .schema import Schema, load_schema
 
+resources_package = "portone_mcp_server.resources"
+
 
 @dataclass
 class Documents:
@@ -14,10 +16,7 @@ class Documents:
     schema: Schema
 
 
-def load_all(
-    docs_package: str = "portone_mcp_server.resources",
-    schema_package: str = "portone_mcp_server.resources.schema",
-) -> Documents:
+def load_all() -> Documents:
     """
     Load all documents and schema files.
 
@@ -29,6 +28,7 @@ def load_all(
         Documents object containing readme, all markdown files, and schema files
     """
     # Load all markdown docs including README.md
+    docs_package = resources_package + ".docs"
     markdown_docs = load_markdown_docs(docs_package)
 
     # Find README.md in the docs and remove it from the dictionary.
@@ -40,6 +40,7 @@ def load_all(
         raise ValueError(f"README.md not found in {docs_package}")
 
     # Load schema files
+    schema_package = docs_package + ".schema"
     schema = load_schema(schema_package)
 
     # Initialize Documents
