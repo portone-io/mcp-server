@@ -1,10 +1,9 @@
+import importlib.resources
 from dataclasses import dataclass
 from typing import Dict
 
 from .markdown import MarkdownDocument, load_markdown_docs
 from .schema import Schema, load_schema
-
-resources_package = "portone_mcp_server.resources"
 
 
 @dataclass
@@ -16,7 +15,7 @@ class Documents:
     schema: Schema
 
 
-def load_all() -> Documents:
+def load_documents(docs_package: str) -> Documents:
     """
     Load all documents and schema files.
 
@@ -28,7 +27,6 @@ def load_all() -> Documents:
         Documents object containing readme, all markdown files, and schema files
     """
     # Load all markdown docs including README.md
-    docs_package = resources_package + ".docs"
     markdown_docs = load_markdown_docs(docs_package)
 
     # Find README.md in the docs and remove it from the dictionary.
@@ -47,3 +45,16 @@ def load_all() -> Documents:
     documents = Documents(readme=readme.content, markdown_docs=markdown_docs, schema=schema)
 
     return documents
+
+
+@dataclass
+class Resources:
+    instructions: str
+    documents: Documents
+
+
+def load_resources(resources_package: str = "portone_mcp_server.resources") -> Resources:
+    instructions = importlib.resources.read_text(resources_package, "instructions.md")
+    documents = load_documents(resources_package + ".docs")
+
+    return Resources(instructions=instructions, documents=documents)
