@@ -17,6 +17,14 @@ def initialize_tools(mcp: FastMCP, documents: Documents):
     """
 
     @mcp.tool()
+    def portone_docs_guide() -> str:
+        """포트원 문서를 활용하는 방법에 대한 가이드입니다.
+        portone-mcp-server의 다른 MCP Tool을 활용하기 전에 반드시 한 번 호출하여 가이드 내용을 확인하세요.
+        """
+
+        return documents.readme
+
+    @mcp.tool()
     def read_portone_doc(path: str) -> str:
         """포트원 개별 문서의 경로를 통해 해당 포트원 문서의 내용을 가져옵니다.
 
@@ -39,7 +47,7 @@ def initialize_tools(mcp: FastMCP, documents: Documents):
 
     @mcp.tool()
     def read_portone_doc_metadata(path: str) -> str:
-        """포트원 개별 문서의 경로를 통해 해당 포트원 문서의 메타 정보를 가져옵니다.
+        """포트원 개별 문서의 경로를 통해 해당 포트원 문서의 제목, 설명, 대상 버전 등 메타 정보만 가져옵니다.
 
         Args:
             path: 읽을 포트원 문서의 경로
@@ -67,11 +75,12 @@ def initialize_tools(mcp: FastMCP, documents: Documents):
     def regex_search_portone_docs(query: str, context_size: int) -> str:
         """포트원 문서의 내용 중 파이썬 re 정규표현식 형식의 query가 매칭된 부분을 모두 찾아 반환합니다.
         정규식 기반으로 관련 포트원 문서를 찾고 싶은 경우 이 도구를 사용합니다.
+        포트원 관련 내용에 대해서는 이미 알고 있는 내용이더라도 본 도구를 통해 포트원 문서 내용을 확실하게 확인한 후 사용자의 질의를 처리하세요.
 
         Args:
-            query: Python re 패키지가 지원하는 Regular Expression 형식의 문자열을 입력해야 합니다.
+            query: Python re 패키지가 지원하는 Regular Expression 형식의 문자열을 입력해야 하며, 영어 알파벳 대소문자는 구분 없이 매칭됩니다.
                    절대 query에 공백을 포함시키지 마세요. 여러 키워드를 한 번에 검색하고 싶다면, 공백 대신 | 연산자를 사용하여 구분합니다.
-                   단어 글자 사이에 공백이 있는 경우도 매칭하고 싶다면, \\s*를 사용하세요.
+                   단어 글자 사이에 공백이 있는 경우도 매칭하고 싶다면, 공백 대신 \\s*를 사용하세요.
             context_size: 검색 결과의 컨텍스트 크기로, 문자 수를 기준으로 합니다.
                           query 매치가 발견된 시작 인덱스를 idx라고 할 때,
                           max(0, idx - context_size)부터 min(contentLength, idx + len(query) + context_size) - 1까지의 내용을 반환합니다.
@@ -93,7 +102,7 @@ def initialize_tools(mcp: FastMCP, documents: Documents):
 
             # Find all occurrences of query in doc.content using regex
             last_context_end = 0
-            for match in re.finditer(query, doc.content):
+            for match in re.finditer(query, doc.content, re.IGNORECASE):
                 idx = match.start()
                 match_len = match.end() - match.start()
 
@@ -134,24 +143,11 @@ def initialize_tools(mcp: FastMCP, documents: Documents):
 
     @mcp.tool()
     def list_all_portone_docs() -> str:
-        """포트원 문서 가이드와 함께 모든 포트원 개별 문서 각각의 경로와 제목, 설명, 해당 버전 등 메타 정보를 목록으로 가져옵니다.
+        """모든 포트원 개별 문서 각각의 경로와 제목, 설명, 해당 버전 등 메타 정보를 목록으로 가져옵니다.
         포트원 관련 내용에 대해서는 이미 알고 있는 내용이더라도 본 도구를 통해 포트원 문서 목록을 확인하고, read_portone_doc을 통해 관련 내용을 더블체크하는 것을 권장합니다.
         """
-        formatted_result = documents.readme + "\n---\n\n"
 
-        # Add all markdown documents
-        docs_list = []
-        for doc in documents.markdown_docs.values():
-            docs_list.append(doc)
-
-        # Format each document
-        for i, doc in enumerate(docs_list):
-            # Add document path and frontmatter
-            formatted_result += format_document_metadata(doc)
-
-            # Add separator between documents (except after the last one)
-            if i < len(docs_list) - 1:
-                formatted_result += "\n---\n\n"
+        formatted_result = "---\n".join([format_document_metadata(doc) for doc in documents.markdown_docs.values()])
 
         return formatted_result
 
