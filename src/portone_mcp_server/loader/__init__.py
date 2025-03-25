@@ -9,7 +9,7 @@ from .schema import Schema, load_schema
 class Documents:
     """Class representing all documents and schema files."""
 
-    guide: str
+    readme: str
     markdown_docs: Dict[str, MarkdownDocument]
     schema: Schema
 
@@ -26,23 +26,23 @@ def load_all(
         schema_package: Package name for the schema
 
     Returns:
-        Documents object containing guide, all markdown files, and schema files
+        Documents object containing readme, all markdown files, and schema files
     """
-    # Load all markdown docs including guide-for-llms.md
+    # Load all markdown docs including README.md
     markdown_docs = load_markdown_docs(docs_package)
 
-    # Find guide-for-llms.md in the docs and remove it from the dictionary.
-    guide = markdown_docs.get("guide-for-llms.md")
-    markdown_docs.pop("guide-for-llms.md", None)
+    # Find README.md in the docs and remove it from the dictionary.
+    readme = markdown_docs.get("README.md")
+    markdown_docs.pop("README.md", None)
 
-    # If guide-for-llms.md wasn't found, raise an error
-    if guide is None:
-        raise ValueError("guide-for-llms.md not found in docs package")
+    # If README.md wasn't found, raise an error
+    if readme is None:
+        raise ValueError(f"README.md not found in {docs_package}")
 
     # Load schema files
     schema = load_schema(schema_package)
 
     # Initialize Documents
-    documents = Documents(guide=guide.content, markdown_docs=markdown_docs, schema=schema)
+    documents = Documents(readme=readme.content, markdown_docs=markdown_docs, schema=schema)
 
     return documents

@@ -4,7 +4,7 @@ description: PortOne 개발자센터 웹사이트 내 존재하는 문서들의 
 targetVersions:
   - v1
   - v2
-date: 2025-03-24
+date: 2025-03-25
 author: PortOne
 ---
 
@@ -27,10 +27,10 @@ author: PortOne
 - [포트원 SDK 소개](https://developers.portone.io/sdk/ko/readme): 포트원에서 제공하는 SDK 가이드입니다.
 - [API 하위호환성 지원](https://developers.portone.io/api/backward-compatibility): 포트원이 보장하는 V1, V2 API 하위호환성에 대한 내용입니다.
 - [PG 거래대사 가이드](https://developers.portone.io/opi/ko/etc/recon): PG 거래대사는 PG사와 간편결제사로부터 정산 받는 금액 및 상세내역을 포트원 콘솔에서 PG가 여러 개여도 한 번에 자동 대사된 데이터를 확인할 수 있는 통합 조회 서비스입니다.
+- [AI 도구 활용하기](https://developers.portone.io/opi/ko/integration/using-ai-tools): AI 도구를 활용하여 쉽고 빠르게 포트원을 연동하세요. 연동 코드 작성은 물론, 24시간 언제나 관련 질의에 대한 답변을 받을 수 있습니다.
+- [포트원 결제 연동 Doc](https://developers.portone.io/opi/ko/readme): 포트원 결제 연동 가이드입니다. 빠른 시간 안에 결제를 연동할 수 있게 도와드립니다.
 - [직접 문의하기](https://developers.portone.io/opi/ko/support/contact): 기술지원 문의를 위한 연락처 정보입니다.
 - [TLS 지원 범위](https://developers.portone.io/opi/ko/support/tls-support): 포트원 v1 API의 TLS 지원 범위 및 설정 가이드를 확인할 수 있습니다.
-- [포트원 결제 연동 Doc](https://developers.portone.io/opi/ko/readme): 포트원 결제 연동 가이드입니다. 빠른 시간 안에 결제를 연동할 수 있게 도와드립니다.
-- [AI 도구 활용하기](https://developers.portone.io/opi/ko/integration/using-ai-tools): AI 도구를 활용하여 쉽고 빠르게 포트원을 연동하세요. 연동 코드 작성은 물론, 24시간 언제나 관련 질의에 대한 답변을 받을 수 있습니다.
 - [상점 계정 관리](https://developers.portone.io/opi/ko/console/guide/account): 포트원 콘솔에서 하위 상점을 생성하여 상점별로 결제 거래 건을 분리하여 관리할 수 있으며, 해당 상점을 관리할 수 있는 계정을 별도로 생성하여 권한을 나눌 수 있습니다. 이에 대해 안내합니다.
 - [빌링결제 내역 조회](https://developers.portone.io/opi/ko/console/guide/billing-payments): 포트원을 통해 발생한 빌링키 결제 내역을 상태별로 조회하고 결제 예약일 변경, 예약 해지, 결제 재시도, 결제 재예약 기능을 이용하여 빌링 결제 건을 관리할 수 있으며, 결제 실패 건에 대한 일괄 재시도를 자동화해주는 리커버리 기능에 대해 안내합니다.
 - [연동 정보](https://developers.portone.io/opi/ko/console/guide/channel-manage): 포트원 결제 모듈을 사용하기 위한 연동 설정을 관리할 수 있습니다. 결제대행사 채널 관리, 식별코드 및 API Keys, 결제알림(웹훅) 관리, 추가 설정 관리 방법에 대해 안내합니다. 
@@ -41,13 +41,12 @@ author: PortOne
 - [프로모션](https://developers.portone.io/opi/ko/console/guide/promotion): 카드사 할인을 사용하기 위한 프로모션 설정을 관리할 수 있습니다. 관리자콘솔 내 프로모션 설정 방법을 안내합니다.
 - [관리자 콘솔 소개](https://developers.portone.io/opi/ko/console/guide/readme): 포트원 관리자 콘솔 사용법을 안내합니다.
 - [전자결제 신청](https://developers.portone.io/opi/ko/console/guide/reg): 결제대행사 및 결제수단을 선택하고 전자결제를 신청하는 과정을 안내합니다.
-- [스마트 라우팅 - 콘솔 가이드](https://developers.portone.io/opi/ko/extra/smart-routing/console-guide): 멀티PG 환경을 클릭 한 번으로 쉽게 만들 수 있는 결제 트래픽 분산 자동화 서비스 입니다.
-- [스마트 라우팅 - 연동하기](https://developers.portone.io/opi/ko/extra/smart-routing/integration): 멀티PG 환경을 클릭 한 번으로 쉽게 만들 수 있는 결제 트래픽 분산 자동화 서비스 입니다.
-- [스마트 라우팅](https://developers.portone.io/opi/ko/extra/smart-routing/intro): 멀티PG 환경을 클릭 한 번으로 쉽게 만들 수 있는 결제 트래픽 분산 자동화 서비스 입니다.
-- [퀵 가이드](https://developers.portone.io/opi/ko/quick-guide/payment): 결제연동 퀵 가이드
 - [프로모션 생성하기](https://developers.portone.io/opi/ko/extra/promotion/console-guide): 프로모션 기간, 예산, 할인 조건 등 설정 방법을 안내합니다.
 - [프로모션 결제 연동하기](https://developers.portone.io/opi/ko/extra/promotion/integration): 프로모션 할인금액을 적용하는 방법을 안내합니다.
 - [프로모션](https://developers.portone.io/opi/ko/extra/promotion/intro): 카드 즉시 할인을 쉽게 운영 및 관리할 수 있는 서비스입니다.
+- [스마트 라우팅 - 콘솔 가이드](https://developers.portone.io/opi/ko/extra/smart-routing/console-guide): 멀티PG 환경을 클릭 한 번으로 쉽게 만들 수 있는 결제 트래픽 분산 자동화 서비스 입니다.
+- [스마트 라우팅 - 연동하기](https://developers.portone.io/opi/ko/extra/smart-routing/integration): 멀티PG 환경을 클릭 한 번으로 쉽게 만들 수 있는 결제 트래픽 분산 자동화 서비스 입니다.
+- [스마트 라우팅](https://developers.portone.io/opi/ko/extra/smart-routing/intro): 멀티PG 환경을 클릭 한 번으로 쉽게 만들 수 있는 결제 트래픽 분산 자동화 서비스 입니다.
 - [결제 연동 준비하기](https://developers.portone.io/opi/ko/integration/ready/readme): 포트원을 이용한 연동 개발이 처음이시라면 아래 안내 사항에 따라 진행하세요.
 - [가상계좌 입금통보 설정](https://developers.portone.io/opi/ko/integration/virtual-account/readme): 결제대행사별 입금통보 URL을 안내합니다.
 
@@ -76,9 +75,10 @@ author: PortOne
 
 ### V2 문서 통합 가이드
 
-- [컨펌 프로세스](https://developers.portone.io/opi/ko/extra/confirm-process/readme-v2): 결제승인의 주체를 고객사 서버로 가져갈수 있는 서비스 입니다.
 - [스마트 라우팅](https://developers.portone.io/opi/ko/console/guide/smartrouting): 포트원 스마트 라우팅을 사용하기 위한 그룹 설정을 관리할 수 있습니다. 관리자콘솔 내 스마트 라우팅 그룹 설정 방법을 안내합니다.
+- [컨펌 프로세스](https://developers.portone.io/opi/ko/extra/confirm-process/readme-v2): 결제승인의 주체를 고객사 서버로 가져갈수 있는 서비스 입니다.
 - [본인인증 연동하기](https://developers.portone.io/opi/ko/extra/identity-verification/readme-v2): 포트원을 이용하여 간편하게 본인인증을 연동하는 방법을 확인합니다.
+- [퀵 가이드](https://developers.portone.io/opi/ko/quick-guide/payment): 결제연동 퀵 가이드
 - [웹훅 연동하기](https://developers.portone.io/opi/ko/integration/webhook/readme-v2): 웹훅 알림을 받아 결제 정보를 동기화할 수 있습니다.
 - [다날 본인인증](https://developers.portone.io/opi/ko/integration/pg/v2/danal-identity-verification): 다날 본인인증 연동 방법을 안내합니다.
 - [엑심베이](https://developers.portone.io/opi/ko/integration/pg/v2/eximbay-v2): 엑심베이 결제 연동 방법을 안내합니다.
@@ -109,6 +109,7 @@ author: PortOne
 ### V1 문서 SDK
 
 - [모바일 SDK 레퍼런스](https://developers.portone.io/sdk/ko/v1-mobile-sdk/readme): 포트원에서 제공하는 네이티브 모바일 SDK(플러그인)를 통해 포트원 서비스를 연동할 수 있습니다.
+- [Javascript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk-old/readme): 결제창 연동시 호출 및 응답 파라미터를 확인 할 수 있습니다.
 - [본인인증 결과 파라미터](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/cft-rt): 본인인증 요청에 대해 반환되는 응답 정보를 확인합니다.
 - [본인인증 요청 파라미터](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/cft): 본인인증 요청에 필요한 파라미터 정보를 확인합니다.
 - [모듈 로드 결과 파라미터](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/load-module-rt): 모듈로드 요청에 대해 반환되는 응답정보를 확인합니다.
@@ -116,7 +117,6 @@ author: PortOne
 - [결제요청 파라미터](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/payrq): 결제요청 파라미터를 확인 할 수 있습니다.
 - [결제응답 파라미터](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/payrt): callback 으로 내려가는 응답 파라미터 항목을 확인할 수 있습니다.
 - [JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/readme): 결제창 연동시 호출 및 응답 파라미터를 확인 할 수 있습니다.
-- [Javascript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk-old/readme): 결제창 연동시 호출 및 응답 파라미터를 확인 할 수 있습니다.
 
 ### V1 문서 통합 가이드
 
@@ -125,14 +125,15 @@ author: PortOne
 - [포트원 결제 플로우](https://developers.portone.io/opi/ko/support/flow): PG사 직연동과 포트원 연동시의 결제 플로우 차이점을 확인할 수 있습니다.
 - [리디렉션이란?](https://developers.portone.io/opi/ko/support/redirect): 리디렉션의 정의를 자세히 확인할수 있습니다.
 - [면세금액 결제방법](https://developers.portone.io/opi/ko/support/tax): 결제 요청 시 상황에 맞게 면세 금액를 설정할 수 있는 방법을 설명합니다.
-- [컨펌 프로세스](https://developers.portone.io/opi/ko/extra/confirm-process/readme-v1): 결제요청의 주체를 고객사 서버로 가져갈수 있는 서비스 입니다.
 - [내 식별코드, API Keys](https://developers.portone.io/opi/ko/console/guide/api-keys)
 - [결제 연동 하기](https://developers.portone.io/opi/ko/console/guide/connect)
 - [결제 내역](https://developers.portone.io/opi/ko/console/guide/list): 결제가 이루어진 거래내역을 조회할 수 있는 메뉴입니다.
+- [컨펌 프로세스](https://developers.portone.io/opi/ko/extra/confirm-process/readme-v1): 결제요청의 주체를 고객사 서버로 가져갈수 있는 서비스 입니다.
 - [결제 URL 생성하기](https://developers.portone.io/opi/ko/extra/link-pay/readme-v1): 결제 URL 생성 API 사용법을 안내합니다.
-- [플러그인을 통해 포트원 이용하기](https://developers.portone.io/opi/ko/extra/plugins/readme-v1): 여러 플랫폼의 플러그인을 통해 포트원을 이용하는 방법을 안내합니다.
 - [프로모션 결제 취소하기](https://developers.portone.io/opi/ko/extra/promotion/refund): 프로모션을 적용하여 승인된 결제건들에 대하여 취소/환불하는 방법을 안내합니다.
-- [자주 묻는 질문](https://developers.portone.io/opi/ko/support/faq/undefined): 고객사에서 빈번하게 물어보시는 질문을 확인 합니다.
+- [오픈 전 체크리스트](https://developers.portone.io/opi/ko/integration/checklist/readme-v1): 결제 오픈전 자가진단을 해볼수 있는 오픈 전 체크사항 리스트 입니다.
+- [플러그인을 통해 포트원 이용하기](https://developers.portone.io/opi/ko/extra/plugins/readme-v1): 여러 플랫폼의 플러그인을 통해 포트원을 이용하는 방법을 안내합니다.
+- [웹훅 연동하기](https://developers.portone.io/opi/ko/integration/webhook/readme-v1): 포트원 웹훅을 사용하여 포트원 서버에 저장된 결제 정보를 고객사 서버에 동기화하고 네트워크 불안정성을 보완하는 방법을 설명합니다.
 - [카드사 코드](https://developers.portone.io/opi/ko/support/code-info/card-code): PortOne 에서 처리하는 카드사별 코드목록 입니다.
 - [택배사 코드](https://developers.portone.io/opi/ko/support/code-info/code): 에스크로 배송등록에 필요한 택배사 코드표를 확인합니다.
 - [PG사별 은행코드](https://developers.portone.io/opi/ko/support/code-info/pg-1): 각 PG사별 은행코드를 확인할 수 있습니다.
@@ -141,15 +142,14 @@ author: PortOne
 - [결제대행사별 빌링키 획득 규칙](https://developers.portone.io/opi/ko/support/code-info/pg): 결제대행사별 빌링키 획득 규칙을 안내합니다.
 - [해외 카드코드](https://developers.portone.io/opi/ko/support/code-info/portone-code): 금융결제원 기관코드가 정의되어 있지 않은 해외 카드사 코드를 확인합니다.
 - [코드 정보](https://developers.portone.io/opi/ko/support/code-info/readme): PG사/카드사/택배사/은행별 코드들을 확인할 수 있습니다.
-- [오픈 전 체크리스트](https://developers.portone.io/opi/ko/integration/checklist/readme-v1): 결제 오픈전 자가진단을 해볼수 있는 오픈 전 체크사항 리스트 입니다.
-- [웹훅 연동하기](https://developers.portone.io/opi/ko/integration/webhook/readme-v1): 포트원 웹훅을 사용하여 포트원 서버에 저장된 결제 정보를 고객사 서버에 동기화하고 네트워크 불안정성을 보완하는 방법을 설명합니다.
+- [자주 묻는 질문](https://developers.portone.io/opi/ko/support/faq/undefined): 고객사에서 빈번하게 물어보시는 질문을 확인 합니다.
 - [본인인증 연동하기](https://developers.portone.io/opi/ko/extra/identity-verification/v1/readme): 포트원을 이용하여 간편하게 본인인증을 연동하는 방법을 확인합니다.
+- [결제취소(환불) 연동하기](https://developers.portone.io/opi/ko/integration/cancel/v1/basic): 포트원 결제취소 API를 이용한 결제취소 방법을 안내합니다.
+- [가상계좌 환불하기](https://developers.portone.io/opi/ko/integration/cancel/v1/virtual-account): 가상계좌 입금내역을 환불하는 방법을 확인합니다.
+- [Shopify 플러그인](https://developers.portone.io/opi/ko/extra/plugins/shopify/readme-v1): Shopify 플러그인을 통해 포트원을 사용하는 방법을 안내합니다.
 - [결제버튼생성 플러그인](https://developers.portone.io/opi/ko/extra/plugins/wordpress/button)
 - [Easy Digital Downloads 플러그인](https://developers.portone.io/opi/ko/extra/plugins/wordpress/edd): Easy Digital Downloads(EDD)용 플러그인을 통해 포트원과 연동합니다.
 - [워드프레스 플러그인](https://developers.portone.io/opi/ko/extra/plugins/wordpress/readme-v1): 워드프레스 플러그인을 통해 포트원을 사용하는 방법을 안내합니다.
-- [Shopify 플러그인](https://developers.portone.io/opi/ko/extra/plugins/shopify/readme-v1): Shopify 플러그인을 통해 포트원을 사용하는 방법을 안내합니다.
-- [결제취소(환불) 연동하기](https://developers.portone.io/opi/ko/integration/cancel/v1/basic): 포트원 결제취소 API를 이용한 결제취소 방법을 안내합니다.
-- [가상계좌 환불하기](https://developers.portone.io/opi/ko/integration/cancel/v1/virtual-account): 가상계좌 입금내역을 환불하는 방법을 확인합니다.
 - [블루월넛](https://developers.portone.io/opi/ko/integration/pg/v1/blue): 블루월넛 결제 연동방법을 안내합니다.
 - [다날](https://developers.portone.io/opi/ko/integration/pg/v1/danal): 다날 결제연동 방법을 안내합니다.
 - [엑심베이](https://developers.portone.io/opi/ko/integration/pg/v1/eximbay): 엑심베이 결제 연동 방법을 안내합니다.
@@ -187,19 +187,19 @@ author: PortOne
 - [3. 인증 완료정보 전달하기](https://developers.portone.io/opi/ko/extra/identity-verification/v1/phone/3): 휴대폰 본인인증 이후 획득된 정보를 처리하는 방법을 안내합니다.
 - [4. 인증정보 조회 및 활용하기](https://developers.portone.io/opi/ko/extra/identity-verification/v1/phone/4): 인증정보를 획득하고 활용하는 방법을 안내합니다.
 - [휴대폰 본인인증 연동하기](https://developers.portone.io/opi/ko/extra/identity-verification/v1/phone/readme): 포트원을 이용하여 간편하게 휴대폰 본인인증을 연동하는 방법을 확인합니다.
+- [일반결제 연동하기](https://developers.portone.io/opi/ko/extra/plugins/wordpress/woocommerce/payment): 우커머스 플러그인을 통해 일반결제를 연동합니다.
+- [우커머스 플러그인](https://developers.portone.io/opi/ko/extra/plugins/wordpress/woocommerce/readme): 포트원 우커머스 플러그인 사용방법을 안내합니다.
+- [정기결제 연동하기](https://developers.portone.io/opi/ko/extra/plugins/wordpress/woocommerce/subscription): 우커머스 플러그인을 통해 정기결제를 연동합니다.
+- [가상계좌 입금통보 URL 설정하기](https://developers.portone.io/opi/ko/extra/plugins/wordpress/woocommerce/vbank): 우커머스 플러그인에서 가상계좌 입금통지 URL을 설정합니다.
 - [PortOne(KR) 가입 및 PG 계약](https://developers.portone.io/opi/ko/extra/plugins/shopify/shopify/shopify-1): Shopify 연동을 위해 선행해야할 내용을 설명합니다.
 - [PortOne(Global) 가입 및 결제수단 설정](https://developers.portone.io/opi/ko/extra/plugins/shopify/shopify/shopify-2): Shopify 연동을 위해 선행해야할 내용을 설명합니다.
 - [PortOne(Global) 에 Shopify 스토어 등록](https://developers.portone.io/opi/ko/extra/plugins/shopify/shopify/shopify-3): Shopify 스토어 등록방법을 설명합니다.
 - [Shopify 스토어에 PortOne 연결하기](https://developers.portone.io/opi/ko/extra/plugins/shopify/shopify/shopify-4): Shopify 스토어에 PortOne 연결방법을 설명합니다.
 - [엔드유저의 Shopify 결제 경험](https://developers.portone.io/opi/ko/extra/plugins/shopify/shopify/shopify-5): 실 고객의 Shopify 결제 화면을 설명합니다.
-- [일반결제 연동하기](https://developers.portone.io/opi/ko/extra/plugins/wordpress/woocommerce/payment): 우커머스 플러그인을 통해 일반결제를 연동합니다.
-- [우커머스 플러그인](https://developers.portone.io/opi/ko/extra/plugins/wordpress/woocommerce/readme): 포트원 우커머스 플러그인 사용방법을 안내합니다.
-- [정기결제 연동하기](https://developers.portone.io/opi/ko/extra/plugins/wordpress/woocommerce/subscription): 우커머스 플러그인을 통해 정기결제를 연동합니다.
-- [가상계좌 입금통보 URL 설정하기](https://developers.portone.io/opi/ko/extra/plugins/wordpress/woocommerce/vbank): 우커머스 플러그인에서 가상계좌 입금통지 URL을 설정합니다.
-- [키움페이 (다우데이타/페이조아)](https://developers.portone.io/opi/ko/integration/pg/v1/daou/readme): 키움페이 연동 방법을 안내합니다.
-- [키움페이 유의사항](https://developers.portone.io/opi/ko/integration/pg/v1/daou/undefined): 결제 연동시 유의사항을 안내합니다.
 - [KSNET](https://developers.portone.io/opi/ko/integration/pg/v1/ksnet/readme): KSNET 결제창 연동 가이드입니다.
 - [연동 주의사항](https://developers.portone.io/opi/ko/integration/pg/v1/ksnet/warning): KSNET 연동 시 주의사항을 확인할 수 있습니다.
+- [키움페이 (다우데이타/페이조아)](https://developers.portone.io/opi/ko/integration/pg/v1/daou/readme): 키움페이 연동 방법을 안내합니다.
+- [키움페이 유의사항](https://developers.portone.io/opi/ko/integration/pg/v1/daou/undefined): 결제 연동시 유의사항을 안내합니다.
 - [토스페이먼츠(신모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/newtoss/readme): 토스페이먼츠 (신모듈 / 2022-07-27 버전) 연동 방법을 확인합니다.
 - [연동 유의사항](https://developers.portone.io/opi/ko/integration/pg/v1/newtoss/warning): 토스페이먼츠 (신 모듈) 연동 유의사항을 소개합니다.
 - [빌링키 발급 / API 연동 유의사항](https://developers.portone.io/opi/ko/integration/pg/v1/nice-v2/billing-api-caution): (신)나이스페이먼츠 비인증 결제 연동 유의사항을 소개합니다.
@@ -207,16 +207,14 @@ author: PortOne
 - [나이스페이먼츠 (신모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/nice-v2/readme): 나이스페이먼츠 연동 방법을 안내합니다.
 - [페이팔(Reference Transaction) 정기결제](https://developers.portone.io/opi/ko/integration/pg/v1/rt/readme): 페이팔(Reference Transaction) 빌링키 발급 및 정기결제 연동 방법을 안내합니다.
 - [연동 유의사항](https://developers.portone.io/opi/ko/integration/pg/v1/rt/warning): (신)페이팔 정기결제(RT) 이용시 특이사항을 확인할수 있습니다.
+- [API 연동](https://developers.portone.io/opi/ko/integration/pg/v1/smartro-v2/api): 스마트로 API 연동 방법을 안내합니다.
+- [연동 유의사항](https://developers.portone.io/opi/ko/integration/pg/v1/smartro-v2/caution): 스마트로 연동 유의사항을 소개합니다.
+- [스마트로(신모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/smartro-v2/readme): 스마트로 연동 방법을 안내합니다.
 - [내통장결제](https://developers.portone.io/opi/ko/integration/pg/v1/settle/mybank): 헥토파이낸셜에서 제공하는 오픈뱅킹 기반 계좌간편결제 연동 방법을 안내합니다.
 - [헥토파이낸셜](https://developers.portone.io/opi/ko/integration/pg/v1/settle/readme): 헥토파이낸셜 결제 연동 방법을 안내합니다.
 - [페이팔(Smart Payment Buttons) 일반결제](https://developers.portone.io/opi/ko/integration/pg/v1/spb/readme): 페이팔(Smart Payment Buttons) 일반결제 연동 방법을 안내합니다.
 - [고위험 거래 상세 정보](https://developers.portone.io/opi/ko/integration/pg/v1/spb/stc): (신)페이팔 일반결제(SPB) 이용시 특이사항을 확인할수 있습니다.
 - [연동 유의사항](https://developers.portone.io/opi/ko/integration/pg/v1/spb/warning): (신)페이팔 일반결제(SPB) 이용시 특이사항을 확인할수 있습니다.
-- [API 연동](https://developers.portone.io/opi/ko/integration/pg/v1/smartro-v2/api): 스마트로 API 연동 방법을 안내합니다.
-- [연동 유의사항](https://developers.portone.io/opi/ko/integration/pg/v1/smartro-v2/caution): 스마트로 연동 유의사항을 소개합니다.
-- [스마트로(신모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/smartro-v2/readme): 스마트로 연동 방법을 안내합니다.
-- [연동 유의사항](https://developers.portone.io/opi/ko/integration/pg/v1/tosspay-v2/caution): (신) 토스페이 연동 유의사항을 소개합니다.
-- [토스페이(tosspay_v2)](https://developers.portone.io/opi/ko/integration/pg/v1/tosspay-v2/readme): 토스페이 연동 방법을 안내합니다.
 - [모듈 로딩 연동](https://developers.portone.io/opi/ko/integration/pg/v1/toss-brandpay/module): 토스페이먼츠 브랜드페이의 모듈 로딩에 연동 방법을 안내합니다.
 - [토스페이먼츠 브랜드페이](https://developers.portone.io/opi/ko/integration/pg/v1/toss-brandpay/readme): 토스페이먼츠 브랜드페이 연동 방법을 안내합니다.
 - [연동 유의사항](https://developers.portone.io/opi/ko/integration/pg/v1/toss-brandpay/warning): 토스페이먼츠 브랜드페이 연동 유의사항을 소개합니다.
@@ -224,6 +222,8 @@ author: PortOne
 - [API 연동](https://developers.portone.io/opi/ko/integration/pg/v1/welcome/api): 웰컴페이먼츠 API 연동 방법을 안내합니다.
 - [연동 유의사항](https://developers.portone.io/opi/ko/integration/pg/v1/welcome/caution): 웰컴페이먼츠 연동 유의사항을 소개합니다.
 - [웰컴페이먼츠](https://developers.portone.io/opi/ko/integration/pg/v1/welcome/readme): 웰컴페이먼츠 연동 방법을 안내합니다.
+- [연동 유의사항](https://developers.portone.io/opi/ko/integration/pg/v1/tosspay-v2/caution): (신) 토스페이 연동 유의사항을 소개합니다.
+- [토스페이(tosspay_v2)](https://developers.portone.io/opi/ko/integration/pg/v1/tosspay-v2/readme): 토스페이 연동 방법을 안내합니다.
 
 ## 파트너정산
 
@@ -275,6 +275,16 @@ author: PortOne
 - [API / SDK 2024-09-27](https://developers.portone.io/release-notes/api-sdk/2024-09-27)
 - [API / SDK 2024-12-19](https://developers.portone.io/release-notes/api-sdk/2024-12-19)
 - [API / SDK 2025-01-15](https://developers.portone.io/release-notes/api-sdk/2025-01-15)
+- [관리자콘솔 2023-04-24](https://developers.portone.io/release-notes/console/2023-04-24)
+- [관리자콘솔 2023-05-08](https://developers.portone.io/release-notes/console/2023-05-08)
+- [관리자콘솔 2023-05-22](https://developers.portone.io/release-notes/console/2023-05-22)
+- [관리자콘솔 2023-07-05](https://developers.portone.io/release-notes/console/2023-07-05)
+- [관리자콘솔 2023-07-07](https://developers.portone.io/release-notes/console/2023-07-07)
+- [관리자콘솔 2023-07-17](https://developers.portone.io/release-notes/console/2023-07-17)
+- [관리자콘솔 2023-08-23](https://developers.portone.io/release-notes/console/2023-08-23)
+- [관리자콘솔 2023-09-12](https://developers.portone.io/release-notes/console/2023-09-12)
+- [관리자콘솔 2023-12-27](https://developers.portone.io/release-notes/console/2023-12-27)
+- [관리자콘솔 2024-09-05](https://developers.portone.io/release-notes/console/2024-09-05)
 - [파트너 정산 자동화 2023-08-31](https://developers.portone.io/release-notes/platform/2023-08-31)
 - [파트너 정산 자동화 2023-11-08](https://developers.portone.io/release-notes/platform/2023-11-08)
 - [파트너 정산 자동화 2023-11-14](https://developers.portone.io/release-notes/platform/2023-11-14)
@@ -296,23 +306,13 @@ author: PortOne
 - [파트너 정산 자동화 2025-02-13](https://developers.portone.io/release-notes/platform/2025-02-13)
 - [파트너 정산 자동화 2025-03-04](https://developers.portone.io/release-notes/platform/2025-03-04)
 - [파트너 정산 자동화 2025-03-17](https://developers.portone.io/release-notes/platform/2025-03-17)
-- [관리자콘솔 2023-04-24](https://developers.portone.io/release-notes/console/2023-04-24)
-- [관리자콘솔 2023-05-08](https://developers.portone.io/release-notes/console/2023-05-08)
-- [관리자콘솔 2023-05-22](https://developers.portone.io/release-notes/console/2023-05-22)
-- [관리자콘솔 2023-07-05](https://developers.portone.io/release-notes/console/2023-07-05)
-- [관리자콘솔 2023-07-07](https://developers.portone.io/release-notes/console/2023-07-07)
-- [관리자콘솔 2023-07-17](https://developers.portone.io/release-notes/console/2023-07-17)
-- [관리자콘솔 2023-08-23](https://developers.portone.io/release-notes/console/2023-08-23)
-- [관리자콘솔 2023-09-12](https://developers.portone.io/release-notes/console/2023-09-12)
-- [관리자콘솔 2023-12-27](https://developers.portone.io/release-notes/console/2023-12-27)
-- [관리자콘솔 2024-09-05](https://developers.portone.io/release-notes/console/2024-09-05)
 
 ## 블로그
 
+- [포트원이 여러 PG사의 인터페이스를 연동하는 방법](https://developers.portone.io/blog/posts/2024-03/tgs): 여러 PG사의 인터페이스를 효율적으로 연동하기 위한 결정사항들을 소개합니다.
 - [포트원 V2 이야기 - OOM 이슈 탐방기](https://developers.portone.io/blog/posts/2024-02/v2-oom): ZIO를 사용하면서 발생했던 OOM 이슈에 대해 원인을 분석합니다.
 - [포트원 V2 이야기 - 웹훅 재시도, 어디까지 고도화해 보셨나요?](https://developers.portone.io/blog/posts/2024-02/v2-webhook): 웹훅의 중요성과 한계점을 살펴보고 포트원 V2에서 웹훅 시스템을 고도화한 이야기를 소개합니다.
 - [포트원 V2 이야기 - Scala와 ZIO로 안정적인 결제 시스템 만들기](https://developers.portone.io/blog/posts/2024-02/v2-zio): 안정적인 결제 시스템을 만들기 위해 기술적으로 의사결정한 내용에 대해 소개합니다.
-- [포트원 V2 이야기 - Event Sourcing으로 결제 시스템 만들기 (기본편)](https://developers.portone.io/blog/posts/2024-07/v2-event-sourcing-basic): 포트원 V2 시스템의 근간을 이루고 있는 기술 중 하나인 Event Sourcing에 대해 소개합니다.
-- [포트원이 여러 PG사의 인터페이스를 연동하는 방법](https://developers.portone.io/blog/posts/2024-03/tgs): 여러 PG사의 인터페이스를 효율적으로 연동하기 위한 결정사항들을 소개합니다.
 - [Data Evolution: The Shift from AWS DMS to GCP Datastream](https://developers.portone.io/blog/posts/2024-04/gcp-datastream): Gives an overview of the PortOne Data Infrastructure and the migration story from AWS DMS to GCP Datastream.
 - [Solid로 간결하게 고성능 웹앱 만들기](https://developers.portone.io/blog/posts/2024-04/solid): 포트원에서 사용하는 프론트엔드 웹 프레임워크 중 하나인 Solid에 대해 소개하고, 포트원 내에서의 활용 사례를 다룹니다.
+- [포트원 V2 이야기 - Event Sourcing으로 결제 시스템 만들기 (기본편)](https://developers.portone.io/blog/posts/2024-07/v2-event-sourcing-basic): 포트원 V2 시스템의 근간을 이루고 있는 기술 중 하나인 Event Sourcing에 대해 소개합니다.

@@ -2,7 +2,7 @@
 title: 퀵 가이드
 description: 결제연동 퀵 가이드
 customLayout: InteractiveDocs
-targetVersion:
+targetVersions:
   - v2
 versionVariants:
   v1: /opi/ko/integration/ready/readme?v=v1
