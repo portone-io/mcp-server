@@ -1,7 +1,7 @@
 from mcp.server.fastmcp import FastMCP
 
 from .loader import load_resources
-from .tools import list_all_docs, read_doc, read_doc_metadata, regex_search
+from .tools import list_all_docs, read_doc, read_doc_metadata, read_v2_payment_backend_code, read_v2_payment_frontend_code, regex_search
 
 
 def run_server():
@@ -20,6 +20,10 @@ def run_server():
     mcp.add_tool(read_doc_metadata.initialize(documents))
     mcp.add_tool(read_doc.initialize(documents))
     mcp.add_tool(regex_search.initialize(documents))
+
+    api_base_path = "https://developers.portone.io"
+    mcp.add_tool(read_v2_payment_backend_code.initialize(api_base_path))
+    mcp.add_tool(read_v2_payment_frontend_code.initialize(api_base_path))
 
     # Run the server
     mcp.run("stdio")
