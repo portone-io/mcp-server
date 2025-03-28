@@ -2,7 +2,7 @@ import re
 from dataclasses import dataclass
 
 from ..loader import Documents
-from .utils import format_document_metadata
+from .utils.markdown import format_document_metadata
 
 
 @dataclass

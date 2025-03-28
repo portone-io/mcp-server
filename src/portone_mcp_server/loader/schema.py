@@ -1,6 +1,8 @@
 import importlib.resources
-from dataclasses import dataclass, field
-from typing import Dict
+from dataclasses import dataclass
+from typing import Any
+
+import yaml
 
 
 @dataclass
@@ -17,33 +19,31 @@ class Schema:
     """Class representing all schema files."""
 
     openapi_v1_json: SchemaFile
-    openapi_v1_yml: SchemaFile
+    openapi_v1_yml: Any  # Parsed YAML content
     openapi_v2_json: SchemaFile
-    openapi_v2_yml: SchemaFile
-    browser_sdk_v2_yml: SchemaFile
+    openapi_v2_yml: Any  # Parsed YAML content
+    browser_sdk_v2_yml: Any  # Parsed YAML content
     graphql_v2: SchemaFile
-    # Additional schema files can be stored here
-    additional_schemas: Dict[str, SchemaFile] = field(default_factory=dict)
 
 
 def load_schema(package_name: str) -> Schema:
     """
-    Load all schema files from the schema package.
+    Load all schema files from the schema package and parse YAML content.
 
     Args:
         package_name: Name of the package containing schema files
 
     Returns:
-        Schema object containing all schema files
+        Schema object containing schema files with YAML files parsed
     """
-    # Create empty Schema
+    # Create empty SchemaFile for non-YAML files
     empty_file = SchemaFile(path="", content="", file_type="")
     schema = Schema(
         openapi_v1_json=empty_file,
-        openapi_v1_yml=empty_file,
+        openapi_v1_yml=None,
         openapi_v2_json=empty_file,
-        openapi_v2_yml=empty_file,
-        browser_sdk_v2_yml=empty_file,
+        openapi_v2_yml=None,
+        browser_sdk_v2_yml=None,
         graphql_v2=empty_file,
     )
 
@@ -73,13 +73,17 @@ def load_schema(package_name: str) -> Schema:
             file_type = rel_path.split(".")[-1] if "." in rel_path else "unknown"
             content = resource.read_text(encoding="utf-8")
 
-            # Create schema file
-            schema_file = SchemaFile(path=rel_path, content=content, file_type=file_type)
-
-            if rel_path in file_map:
-                setattr(schema, file_map[rel_path], schema_file)
+            # Create schema file or parse YAML content
+            if file_type.lower() in ["yml", "yaml"]:
+                # Parse YAML content
+                parsed_content = yaml.safe_load(content)
+                if rel_path in file_map:
+                    setattr(schema, file_map[rel_path], parsed_content)
             else:
-                schema.additional_schemas[rel_path] = schema_file
+                # For other types, keep as SchemaFile
+                schema_file = SchemaFile(path=rel_path, content=content, file_type=file_type)
+                if rel_path in file_map:
+                    setattr(schema, file_map[rel_path], schema_file)
 
     except Exception as e:
         print(f"Error loading schema package '{package_name}': {e}")

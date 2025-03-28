@@ -1,4 +1,4 @@
-from ..loader.markdown import MarkdownDocument
+from ...loader.markdown import MarkdownDocument
 
 
 def format_document_metadata(doc: MarkdownDocument) -> str:

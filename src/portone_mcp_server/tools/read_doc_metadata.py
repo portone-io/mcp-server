@@ -1,5 +1,5 @@
 from ..loader import Documents
-from .utils import format_document_metadata
+from .utils.markdown import format_document_metadata
 
 
 def initialize(documents: Documents):
