@@ -6,16 +6,6 @@ targetVersions:
   - v2
 ---
 
-## llms.txt 표준 지원
-
-포트원 개발자센터 웹사이트는 [llms.txt 표준](https://llmstxt.org)을 준수하며, LLM이 문서 정보를 쉽게 조회할 수 있도록 지원하고 있습니다.
-
-- [llms.txt](https://developers.portone.io/llms.txt): LLM을 위한 가이드 및 문서 목차를 포함합니다.
-- [llms-full.txt](https://developers.portone.io/llms-full.txt): llms.txt에 더해 모든 문서 내용을 추가로 포함합니다.
-- [llms-small.txt](https://developers.portone.io/llms-small.txt): llms.txt에 더해 모든 문서의 메타 정보만 추가로 포함합니다.
-
-llms.txt, llms-small.txt를 사용하는 AI 어시스턴트의 프롬프트에 포함하거나, llms-full.txt를 파일로 업로드해 질의하는 방식으로도 활용이 가능합니다.
-
 ## 포트원 MCP (Model Context Protocol) 서버
 
 포트원은 쉬운 연동과 빠른 개발을 위해 MCP 서버를 제공합니다. [(GitHub 저장소 바로가기)](https://github.com/portone-io/mcp-server)
@@ -38,7 +28,7 @@ Cursor, Windsurf, Claude Code, Claude for Desktop 등 다양한 AI 도구의 설
 
     "portone-mcp-server": {
       "command": "uvx",
-      "args": ["portone-mcp-server"]
+      "args": ["portone-mcp-server@latest"]
     }
   }
 }
@@ -58,31 +48,40 @@ Cursor, Windsurf, Claude Code, Claude for Desktop 등 다양한 AI 도구의 설
 
 #### 개발 관련 프롬프트 예시
 
-- _"포트원 V2 Python 서버 SDK를 사용해서 서버 연동 코드를 작성해줘"_
-- _"포트원 V2 Kotlin 서버 SDK를 사용해 웹훅 검증을 구현해줘"_
-- _"포트원 V1 브라우저 SDK를 사용한 페이팔 결제창 호출을 구현해줘"_
-- _"파트너정산 자동화 서비스에 파트너 등록하는 코드를 타입스크립트로 구현해줘"_
-- _"포트원 V2 본인인증 기능 연동해줘"_
+- _"포트원 V2로 카카오페이 결제창 호출을 구현해줘"_
+- _"포트원 문서 읽고 V1 페이팔 결제창 호출하는 코드 작성해줘"_
+- _"포트원 V2 Python 서버 SDK 사용해서 결제건 조회하는 스크립트 작성해줘"_
+- _"Kotlin으로 포트원 V2 웹훅 검증하는 코드 작성해줘"_
+- _"Java로 포트원 서버 SDK 사용해서 포트원 V2 결제 연동하는 법 알려줘"_
+- _"포트원 파트너정산 자동화 서비스에 파트너 등록하는 코드를 타입스크립트로 구현해줘"_
 
 #### 전반적인 질의 예시
 
-- _"포트원 V2와 V1의 차이점을 설명해줘"_
+- _"포트원 문서 읽고 V2와 V1의 차이점을 설명해줘"_
 - _"포트원 V2가 지원하는 PG사 목록 보여줘"_
 - _"포트원 API의 하위호환성 정책 설명해줘"_
 - _"포트원 파트너정산 자동화 서비스가 제공하는 기능들을 요약해줘"_
 
+## llms.txt 표준 지원
+
+포트원 개발자센터 웹사이트는 [llms.txt 표준](https://llmstxt.org)을 준수하며, LLM이 문서 정보를 쉽게 조회할 수 있도록 지원하고 있습니다.
+
+- [llms.txt](https://developers.portone.io/llms.txt): LLM을 위한 가이드 및 문서 목차를 포함합니다.
+- [llms-full.txt](https://developers.portone.io/llms-full.txt): llms.txt에 더해 모든 문서 내용을 추가로 포함합니다.
+- [llms-small.txt](https://developers.portone.io/llms-small.txt): llms.txt에 더해 모든 문서의 메타 정보만 추가로 포함합니다.
+
+llms.txt, llms-small.txt를 사용하는 AI 어시스턴트의 프롬프트에 포함하거나, llms-full.txt를 파일로 업로드해 질의하는 방식으로도 활용이 가능합니다.
+
 ## LLM 전용 개발자센터 문서 디렉터리
 
-Cursor, Windsurf, Claude Code와 같이 코드베이스 맥락을 자동으로 분석하는 AI 도구를 사용하는 경우,
-LLM을 위한 포트원 문서 디렉터리를 다운받아 작업 중인 코드베이스 내에 위치시키는 방식으로도 활용할 수 있습니다.
+포트원 개발자센터 내 문서들을 마크다운 형식으로 담고 있는 LLM 전용 문서 디렉터리를 제공합니다.
 
-이 경우, 위 AI 도구들이 제공하는 임베딩 기반 색인과 RAG (Retrieval Augmented Generation) 검색이 자동적으로 적용되어
-보다 원활히 원하는 결과를 얻으실 수 있습니다.
+해당 디렉터리는 포트원 MCP 서버와 같은 포트원 관련 도구를 만드는 데 사용될 수 있으며,
+
+Cursor, Windsurf, Claude Code와 같이 코드베이스 맥락을 자동으로 분석하는 AI 도구를 사용하는 경우
+해당 디렉터리를 해당 도구로 열어 질의하는 방식으로도 활용하실 수 있습니다.
+
+이 경우 위 AI 도구들이 제공하는 임베딩 기반 색인과 RAG (Retrieval Augmented Generation) 검색이 자동적으로 적용되어
+일부 질의에 대해 보다 원활하게 원하는 결과를 얻으실 수 있습니다.
 
 (파일: LLM 전용 포트원 문서 디렉터리 다운로드)
-
-### 사용 방법
-
-1. 위 링크를 눌러 LLM 전용 포트원 문서 압축 파일을 다운로드합니다.
-2. 압축을 해제하고, 해당 디렉터리를 작업 중인 코드베이스 내에 위치시킵니다.
-3. 포트원 관련 질의 시 AI에게 해당 디렉터리를 태그하여 질의합니다.

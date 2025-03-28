@@ -1645,9 +1645,9 @@ resources:
               type: integer
               optional: true
               description: |
-                **본인인증을 진행할 수 있는 최소 나이**
+                **본인인증을 진행할 수 있는 최소 만 나이**
 
-                해당 값을 채워서 요청할 경우 본인인증을 진행할 수 있는 최소 나이를 설정할 수 있습니다.
+                해당 값을 채워서 요청할 경우 본인인증을 진행할 수 있는 최소 만 나이를 설정할 수 있습니다.
             IsCarrier:
               type: string
               optional: true

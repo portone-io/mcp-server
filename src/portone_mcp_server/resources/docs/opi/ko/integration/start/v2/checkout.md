@@ -33,7 +33,7 @@ SDK를 지원하지 않는 플랫폼을 포함하여 다양한 플랫폼에서 �
 포트원 V2 SDK는 npm 레지스트리와 CDN을 통해 배포되고 있습니다.
 
 - npm, yarn 등 패키지 매니저를 사용한다면 의존
-  대상으로 [@portone/browser-sdk](https://www.npmjs.com/package/@portone/browser-sdk)를 추가하세요.
+  대상으로 [@portone/browser-sdk](http://www.npmjs.com/package/@portone/browser-sdk)를 추가하세요.
 
 - 패키지 매니저를 사용하지 않는다면 `<script>` 요소를 이용하여 CDN에서 SDK를 직접 불러오세요.
 

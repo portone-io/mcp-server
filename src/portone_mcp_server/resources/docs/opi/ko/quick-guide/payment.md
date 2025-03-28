@@ -12,6 +12,8 @@ versionVariants:
 
 ## 브라우저 측
 
+<!-- SECTION client:import-portone-sdk START -->
+
 ### 포트원 브라우저 SDK 불러오기
 
 포트원 브라우저 SDK를 불러옵니다.
@@ -76,9 +78,17 @@ ni @portone/browser-sdk
 
 <!-- CONDITIONAL CONTENT language=frontend/React END -->
 
+<!-- SECTION client:import-portone-sdk END -->
+
+<!-- SECTION client:fetch-item START -->
+
 ### 상품 정보 불러오기
 
 서버로부터 결제할 상품의 정보를 불러옵니다.
+
+<!-- SECTION client:fetch-item END -->
+
+<!-- SECTION client:request-payment START -->
 
 ### 결제 요청
 
@@ -154,6 +164,16 @@ ni @portone/browser-sdk
 
   <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' END -->
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'hyphen' START -->
+
+  <div class="hint" data-style="warning">
+
+  하이픈의 경우 영문 대소문자, 숫자, `_`만 허용되며, 50자 이하로 입력합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'hyphen' END -->
+
 - orderName: string
 
   **주문명**
@@ -213,6 +233,27 @@ ni @portone/browser-sdk
   </div>
 
   <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'naver' START -->
+
+  <div class="hint" data-style="warning">
+
+  네이버페이의 경우 `bypass.naverpay.productItems`의 개수에 따라 주문명 뒤에 `외 X개`가 붙으므로,
+  주문명을 `bypass.naverpay.productItems[0].name`으로 입력하는 것이 권장됩니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'naver' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'hyphen' START -->
+
+  <div class="hint" data-style="warning">
+
+  하이픈의 경우 최대 1000바이트까지 입력할 수 있습니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'hyphen' END -->
 
 - totalAmount: number
 
@@ -313,11 +354,51 @@ ni @portone/browser-sdk
 
   <!-- CONDITIONAL CONTENT when=({ pg: { name, payMethods } }) => name === 'inicis' && payMethods !== 'card' END -->
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kakao' START -->
+
+  <div class="hint" data-style="warning">
+
+  카카오페이는 `KRW`만을 지원합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kakao' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'naver' START -->
+
+  <div class="hint" data-style="warning">
+
+  네이버페이는 `KRW`만을 지원합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'naver' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'tosspay' START -->
+
+  <div class="hint" data-style="warning">
+
+  토스페이는 `KRW`만을 지원합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'tosspay' END -->
+
 - payMethod: string
 
   **결제 수단**
 
   사용할 결제 수단에 맞는 값을 입력합니다.
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'eximbay' START -->
+
+  <div class="hint" data-style="warning">
+
+  엑심베이의 경우 결제수단에 상관없이 `CARD`를 입력해야 하며, 특정 결제수단만을 표시하기 위해서는 `bypass.eximbay_v2`를 사용해야 합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'eximbay' END -->
 
   <details>
 
@@ -403,9 +484,21 @@ ni @portone/browser-sdk
 
   <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'kcp' END -->
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => ['kakao', 'naver', 'tosspay', 'hyphen'].includes(name) START -->
+
+  - 간편결제: `EASY_PAY`
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => ['kakao', 'naver', 'tosspay', 'hyphen'].includes(name) END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'eximbay' START -->
+
+  - `CARD`
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'eximbay' END -->
+
   </details>
 
-<!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "card" START -->
+<!-- CONDITIONAL CONTENT when=({ pg: { payMethods, name }}) => payMethods === "card" && name !== "eximbay" START -->
 
 - card?: object
 
@@ -518,7 +611,7 @@ ni @portone/browser-sdk
 
     <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' END -->
 
-    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => ['nice', 'smartro', 'kpn', 'inicis', 'ksnet', 'kcp'].includes(name) START -->
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => ['nice', 'smartro', 'kpn', 'inicis', 'ksnet'].includes(name) START -->
 
     - `KOREA_DEVELOPMENT_BANK` (KDB산업은행 카드)
     - `KFCC` (새마을금고 카드)
@@ -543,7 +636,33 @@ ni @portone/browser-sdk
     - `K_BANK` (케이뱅크 카드)
     - `TOSS_BANK` (토스뱅크 카드)
 
-    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => ['nice', 'smartro', 'kpn', 'inicis', 'ksnet', 'kcp'].includes(name) END -->
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => ['nice', 'smartro', 'kpn', 'inicis', 'ksnet'].includes(name) END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' START -->
+
+    - `KOREA_DEVELOPMENT_BANK` (KDB산업은행 카드)
+    - `KFCC` (새마을금고 카드)
+    - `SHINHYUP` (신협 카드)
+    - `EPOST` (우체국 카드)
+    - `SAVINGS_BANK_KOREA` (저축은행 카드)
+    - `KAKAO_BANK` (카카오뱅크 카드)
+    - `WOORI_CARD` (우리카드)
+    - `BC_CARD` (BC카드)
+    - `GWANGJU_CARD` (광주카드)
+    - `SAMSUNG_CARD` (삼성카드)
+    - `SHINHAN_CARD` (신한카드)
+    - `HYUNDAI_CARD` (현대카드)
+    - `LOTTE_CARD` (롯데카드)
+    - `SUHYUP_CARD` (수협카드)
+    - `CITI_CARD` (씨티카드)
+    - `NH_CARD` (NH농협카드)
+    - `JEJU_CARD` (제주카드)
+    - `HANA_CARD` (하나카드)
+    - `KOOKMIN_CARD` (국민카드)
+    - `K_BANK` (케이뱅크 카드)
+    - `TOSS_BANK` (토스뱅크 카드)
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' END -->
 
     </details>
 
@@ -667,6 +786,16 @@ ni @portone/browser-sdk
 
         구매자가 할부 개월 수를 선택할 수 있도록 하려면 `availableMonthList`를 사용해주세요.
 
+        <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'toss' START -->
+
+        <div class="hint" data-style="warning">
+
+        토스페이먼츠의 경우 현대카드는 1만원, 그 외는 5만원 이상 결제에 대해서만 적용됩니다.
+
+        </div>
+
+        <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'toss' END -->
+
       <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => !['kcp', 'smartro', 'inicis'].includes(name) START -->
 
       - availableMonthList: number\[]
@@ -731,7 +860,7 @@ ni @portone/browser-sdk
 
   <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => !['kpn', 'inicis'].includes(name) END -->
 
-<!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "card" END -->
+<!-- CONDITIONAL CONTENT when=({ pg: { payMethods, name }}) => payMethods === "card" && name !== "eximbay" END -->
 
 <!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "virtualAccount" START -->
 
@@ -960,9 +1089,24 @@ ni @portone/browser-sdk
     - `CORPORATE` (지출증빙용)
     - `ANONYMOUS` (미발행(국세청번호 자동발급))
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => !['inicis', 'kcp'].includes(name) START -->
+
   - customerIdentifier?: string
 
     **현금영수증 발행 대상 식별 정보**
+
+    휴대폰 번호 또는 사업자번호를 입력합니다.
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'ksnet' START -->
+
+    KSNET의 경우 휴대폰 번호 및 사업자번호는 숫자만 입력해야 합니다.
+    하이픈(`-`)을 포함한 다른 문자가 포함되는 경우 별다른 에러 표시 없이 결제는 정상승인되지만 현금영수증이 발급되지 않습니다.
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'ksnet' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => !['inicis', 'kcp'].includes(name) END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' START -->
 
   - bankCode?: string
 
@@ -974,25 +1118,26 @@ ni @portone/browser-sdk
 
     <summary>지원 은행 코드</summary>
 
-    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' START -->
-
-    - `KYONGNAM_BANK` (경남은행)
-    - `GWANGJU_BANK` (광주은행)
-    - `KOOKMIN_BANK` (국민은행)
-    - `INDUSTRIAL_BANK_OF_KOREA` (기업은행)
-    - `NH_NONGHYUP_BANK` (NH농협은행)
-    - `DAEGU_BANK` (대구은행)
-    - `BUSAN_BANK` (부산은행)
-    - `KFCC` (새마을금고)
-    - `SUHYUP_BANK` (수협은행)
-    - `SHINHAN_BANK` (신한은행)
-    - `WOORI_BANK` (우리은행)
-    - `EPOST` (우체국)
-    - `HANA_BANK` (하나은행)
-
-    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' END -->
+    - `BANK_INDUSTRIAL_BANK_OF_KOREA` (기업은행)
+    - `BANK_KOOKMIN_BANK` (국민은행)
+    - `BANK_SUHYUP_BANK` (수협은행)
+    - `BANK_NH_NONGHYUP_BANK` (농협은행)
+    - `BANK_WOORI_BANK` (우리은행)
+    - `BANK_SC_BANK_KOREA` (SC 제일은행)
+    - `BANK_CITI_BANK_KOREA` (씨티은행)
+    - `BANK_DAEGU_BANK` (대구은행)
+    - `BANK_BUSAN_BANK` (부산은행)
+    - `BANK_GWANGJU_BANK` (광주은행)
+    - `BANK_JEONBUK_BANK` (전북은행)
+    - `BANK_KYONGNAM_BANK` (경남은행)
+    - `BANK_HANA_BANK` (하나은행)
+    - `BANK_SHINHAN_BANK` (신한은행)
+    - `BANK_EPOST` (우체국)
+    - `BANK_K_BANK` (케이뱅크)
 
     </details>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'smartro' END -->
 
 <!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "transfer" END -->
 
@@ -1004,7 +1149,7 @@ ni @portone/browser-sdk
 
   `payMethod`가 `MOBILE`인 경우 휴대폰 소액결제와 관련한 추가 정보를 입력할 수 있습니다.
 
-  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' START -->
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => !['kpn', 'inicis'].includes(name) START -->
 
   - carrier?: string
 
@@ -1019,9 +1164,9 @@ ni @portone/browser-sdk
     - `KCT` (티플러스)
     - `SK7` (SK 세븐모바일)
 
-  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' END -->
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => !['kpn', 'inicis'].includes(name) END -->
 
-  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' START -->
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => !['kpn', 'kcp'].includes(name) START -->
 
   - availableCarriers?: string\[]
 
@@ -1029,7 +1174,17 @@ ni @portone/browser-sdk
 
     지정한 일부 통신사만을 목록에 노출할 수 있습니다. 상단의 통신사 식별 값 항목을 참고해주세요.
 
-  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' END -->
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' START -->
+
+    <div class="hint" data-style="warning">
+
+    KG이니시스의 경우 모바일 환경에서만 `availableCarriers` 옵션을 사용 가능합니다.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => !['kpn', 'kcp'].includes(name) END -->
 
 <!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "mobile" END -->
 
@@ -1045,23 +1200,60 @@ ni @portone/browser-sdk
 
     **상품권 유형**
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "toss" START -->
+
+    <div class="hint" data-style="warning">
+
+    토스페이먼츠의 경우 상품권 유형을 필수로 지정해야 합니다.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "toss" END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "nice" START -->
+
+    <div class="hint" data-style="warning">
+
+    나이스페이먼츠의 경우 상품권 유형을 필수로 지정해야 합니다.s
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "nice" END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'inicis' START -->
+
+    <div class="hint" data-style="warning">
+
+    KG이니시스 모바일 환경의 경우 상품권 유형을 필수로 지정해야 합니다.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'inicis' END -->
+
     <details>
 
     <summary>지원 상품권 유형 코드</summary>
 
-    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "toss" START -->
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => ['toss', 'inicis'].includes(name) START -->
 
     - `BOOKNLIFE` (도서문화상품권)
     - `SMART_MUNSANG` (스마트문상, (구)게임문화상품권)
     - `CULTURELAND` (문화상품권)
 
-    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "toss" END -->
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => ['toss', 'inicis'].includes(name) END -->
 
     <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "nice" START -->
 
     - `CULTURELAND` (문화상품권)
 
     <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "nice" END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'kcp' START -->
+
+    - `CULTURELAND` (문화상품권)
+    - `BOOKNLIFE` (도서문화상품권)
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'kcp' END -->
 
     </details>
 
@@ -1074,6 +1266,8 @@ ni @portone/browser-sdk
   **간편결제 추가 정보**
 
   `payMethod`가 `EASY_PAY`인 경우 간편결제와 관련한 추가 정보를 입력할 수 있습니다.
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => !['kakao', 'naver', 'tosspay', 'hyphen'].includes(name) START -->
 
   - easyPayProvider?: string
 
@@ -1116,6 +1310,42 @@ ni @portone/browser-sdk
 
     <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'toss' END -->
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'nice' START -->
+
+    - `PAYCO` (페이코)
+    - `SKPAY` (11페이)
+    - `SAMSUNGPAY` (삼성페이)
+    - `SSGPAY` (SSG페이)
+    - `APPLEPAY` (애플페이)
+    - `KAKAOPAY` (카카오페이)
+    - `NAVERPAY` (네이버페이)
+    - `LPAY` (L페이)
+    - `TOSSPAY` (토스페이)
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'nice' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'smartro' START -->
+
+    - `PAYCO` (페이코)
+    - `KAKAOPAY` (카카오페이)
+    - `NAVERPAY` (네이버페이)
+    - `SKPAY` (11페이)
+    - `LPAY` (L페이)
+    - `PINPAY` (핀페이)
+    - `SAMSUNGPAY` (삼성페이)
+    - `TOSSPAY` (토스페이)
+    - `LINEPAY` (라인페이)
+    - `TMONEYPAY` (티머니)
+
+    <div class="hint" data-style="warning">
+
+    스마트로의 경우 네이버페이는 카드결제만 가능합니다.
+    네이버페이 포인트 및 머니 결제는 결제수단을 `CARD`로 설정해 주세요.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'smartro' END -->
+
     <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'kpn' START -->
 
     - `KAKAOPAY` (카카오페이)
@@ -1138,25 +1368,65 @@ ni @portone/browser-sdk
 
     <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'inicis' END -->
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'kcp' START -->
+
+    - `NAVERPAY` (네이버페이)
+    - `PAYCO` (페이코)
+    - `KAKAOPAY` (카카오페이)
+    - `SAMSUNGPAY` (삼성페이)
+    - `APPLEPAY` (애플페이)
+    - `LPAY` (L페이)
+    - `SSGPAY` (SSG페이)
+    - `TOSSPAY` (토스페이)
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'kcp' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'ksnet' START -->
+
+    - `KAKAOPAY` (카카오페이)
+    - `LPAY` (L페이)
+    - `NAVERPAY` (네이버페이)
+    - `PAYCO` (페이코)
+
+    <div class="hint" data-style="warning">
+
+    KSNET의 경우 카카오페이를 사용하기 위해서는 앱 또는 웹 하단에 대표자명, 주소, 전화번호와 같은 상점 정보를 필수로 입력해야 합니다.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'ksnet' END -->
+
     </details>
 
-  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' START -->
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => !['kakao', 'naver', 'tosspay', 'hyphen'].includes(name) END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => !['kpn', 'inicis', 'ksnet'].includes(name) START -->
 
   - useFreeInterestFromMall?: boolean
 
     **상점분담 무이자 활성화 여부**
 
-  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' END -->
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' START -->
 
-  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' START -->
+    <div class="hint" data-style="warning">
+
+    나이스페이먼츠의 경우 카카오페이, 네이버페이, 애플페이, LPAY 사용 시 상점분담 무이자를 사용하실 수 없습니다.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => !['kpn', 'inicis', 'ksnet'].includes(name) END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => !['kpn', 'inicis'].includes(name) START -->
 
   - useCardPoint?: boolean
 
     **카드사 포인트 사용 여부**
 
-  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' END -->
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => !['kpn', 'inicis'].includes(name) END -->
 
-  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' START -->
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => !['kpn', 'inicis', 'naver', 'tosspay', 'hyphen'].includes(name) START -->
 
   - availableCards?: string\[]
 
@@ -1165,6 +1435,8 @@ ni @portone/browser-sdk
     지정한 일부 카드사만을 목록에 노출할 수 있습니다.
 
     <details>
+
+    <summary>지원 카드사 코드 목록</summary>
 
     <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' START -->
 
@@ -1246,11 +1518,26 @@ ni @portone/browser-sdk
 
     <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kcp' END -->
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kakao' START -->
+
+    - `SHINHAN_CARD` (신한카드)
+    - `KOOKMIN_CARD` (국민카드)
+    - `HYUNDAI_CARD` (현대카드)
+    - `LOTTE_CARD` (롯데카드)
+    - `SAMSUNG_CARD` (삼성카드)
+    - `NH_CARD` (NH농협카드)
+    - `BC_CARD` (BC카드)
+    - `HANA_CARD` (하나카드)
+    - `CITI_CARD` (씨티카드)
+    - `KAKAO_BANK` (카카오뱅크 카드)
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kakao' END -->
+
     </details>
 
-  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' END -->
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => !['kpn', 'inicis', 'naver', 'tosspay', 'hyphen'].includes(name) END -->
 
-  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' START -->
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => !['kpn', 'naverpay'].includes(name) START -->
 
   - installment?: object
 
@@ -1265,6 +1552,8 @@ ni @portone/browser-sdk
     </div>
 
     <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'nice' END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => !['ksnet', 'kakao'].includes(name) START -->
 
     - freeInstallmentPlans?: object\[]
 
@@ -1282,19 +1571,51 @@ ni @portone/browser-sdk
 
         **무이자 할부를 제공하는 개월 수**
 
+    <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => !['ksnet', 'kakao'].includes(name) END -->
+
     - monthOption?: object
 
       **할부 개월 수 설정**
 
       할부 결제 시 할부 개월 수를 설정할 수 있습니다.
 
+      <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kakao' START -->
+
       `fixedMonth`와 `availableMonthList` 중 하나만 제공해주세요.
+
+      <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kakao' END -->
+
+      <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'ksnet' START -->
+
+      <div class="hint" data-style="warning">
+
+      KSNET의 경우 할부 개월 수 설정은 네이버페이, 카카오페이, L페이만 가능합니다.
+
+      </div>
+
+      <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'ksnet' END -->
 
       - fixedMonth: number
 
         **구매자가 선택할 수 없도록 고정된 할부 개월 수**
 
+        <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kakao' START -->
+
         구매자가 할부 개월 수를 선택할 수 있도록 하려면 `availableMonthList`를 사용해주세요.
+
+        <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kakao' END -->
+
+        <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kakao' START -->
+
+        <div class="hint" data-style="warning">
+
+        카카오페이의 경우, 결제 금액이 5만원 미만이어도 해당 파라미터가 채워져 있으면 체크카드로 결제가 불가능합니다.
+
+        </div>
+
+        <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kakao' END -->
+
+      <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kakao' START -->
 
       - availableMonthList: number\[]
 
@@ -1310,9 +1631,11 @@ ni @portone/browser-sdk
 
         <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'toss' END -->
 
-  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' END -->
+      <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kakao' END -->
 
-  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' START -->
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => !['kpn', 'naverpay'].includes(name) END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => !['kpn', 'tosspay'].includes(name) START -->
 
   - cashReceiptType?: string
 
@@ -1322,17 +1645,17 @@ ni @portone/browser-sdk
     - `CORPORATE` (지출증빙용)
     - `ANONYMOUS` (미발행(국세청번호 자동발급))
 
-  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' END -->
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => !['kpn', 'tosspay'].includes(name) END -->
 
-  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' START -->
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => !['kpn', 'inicis', 'tosspay'].includes(name) START -->
 
   - customerIdentifier?: string
 
     **현금영수증 발행 대상 식별 정보**
 
-  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' END -->
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => !['kpn', 'inicis', 'tosspay'].includes(name) END -->
 
-  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' START -->
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => !['kpn', 'inicis'].includes(name) START -->
 
   - availablePayMethods?: string\[]
 
@@ -1356,7 +1679,7 @@ ni @portone/browser-sdk
 
     <!-- CONDITIONAL CONTENT when=({ pg: {name}}) => name === "nice" END -->
 
-  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name !== 'kpn' END -->
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => !['kpn', 'inicis'].includes(name) END -->
 
 <!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "easyPay" END -->
 
@@ -1485,6 +1808,37 @@ ni @portone/browser-sdk
   </div>
 
   <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'smartro' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'naver' START -->
+
+  <div class="hint" data-style="warning">
+
+  네이버페이 계약 당시 고위험 업종으로 별도 안내를 받은 경우 고객의 이름, 출생년도, 출생월, 출생일을 필수로 입력해야 합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'naver' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'hyphen' START -->
+
+  <div class="hint" data-style="warning">
+
+  하이픈의 경우 구매자 이름을 필수로 입력해야 합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'hyphen' END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'eximbay' START -->
+
+  <div class="hint" data-style="warning">
+
+  엑심베이의 경우 구매자 이름과 이메일을 필수로 입력해야 합니다.
+  일본 편의점 결제 사용 시 구매자 연락처를 필수로 입력해야 합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'eximbay' END -->
 
   - customerId?: string
 
@@ -1760,7 +2114,7 @@ ni @portone/browser-sdk
 
   <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kpn' START -->
 
-  - kpn: object
+  - kpn?: object
 
     - CardSelect?: string\[]
 
@@ -1843,7 +2197,359 @@ ni @portone/browser-sdk
     - 기본값은 `00`입니다.
     - 항상 두 자리 수로 입력되어야 합니다. 예상 배송 소요기간이 3일인 경우, `03`으로 입력합니다.
 
+  * complex\_pnt\_yn?: string
+
+    **복합 포인트 사용 여부**
+
+    - `Y`: 카드 및 포인트 결제
+    - `N`: 포인트로만 결제
+
+  * pt\_memcorp\_cd?: string
+
+    **베네피아 회원소속사코드**
+
+    베네피아 복지포인트를 사용하는 경우 필수로 입력합니다.
+
+  * disp\_tax\_yn?: string
+
+    **가상계좌 및 계좌이체 현금영수증 노출 여부**
+
+    - `Y`: 노출
+    - `N`: 미노출
+    - `R`: 소득공제용 노출
+    - `E`: 지출증빙용 노출
+
   <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "kcp" END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "ksnet" START -->
+
+  - ksnet?: object
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "easyPay" START -->
+
+    - easyPayDirect?: boolean
+
+      **간편결제 직접 호출 여부**
+
+      - `true`로 설정하면 KSNET 결제창을 표시하지 않고 간편결제 화면을 바로 표시합니다.
+      - 간편결제 직접 호출 시 `productType` 파라미터는 필수입니다.
+      - 카카오페이 직접 호출 시 `storeDetails.ceoFullName`, `storeDetails.address`, `storeDetails.phoneNumber` 값이 필수입니다.
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "easyPay" END -->
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "card" START -->
+
+    - sndQpayType?: string
+
+      **간편결제 표시 구분**
+
+      `'1'`일 경우 간편결제 수단을 표시합니다.
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { payMethods }}) => payMethods === "card" END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "ksnet" END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "kakao" START -->
+
+  - kakao?: object
+
+    - custom\_message?: string
+
+      **결제 화면에 보여줄 사용자 정의 문구**
+
+      <div class="hint" data-style="warning">
+
+      `custom_message`를 사용하기 위해서는 카카오페이와 사전 협의가 필요합니다.
+
+      </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "kakao" END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "naver" START -->
+
+  - naver?: object
+
+    - useCfmYmdt?: string
+
+      **이용 완료일**
+
+      - `YYYYMMDD` 형식으로 입력해주세요.
+      - 상품 유형에 따라 필수 값으로 계약된 경우에 입력합니다.
+
+    - productItems?: object\[]
+
+      **상품 정보**
+
+      - categoryType: string
+
+        **결제 상품 유형**
+
+        [공식 매뉴얼](https://developers.pay.naver.com/docs/v2/api#etc-etc_product)을 참조해 주세요.
+
+      - categoryId: string
+
+        **결제 상품 분류**
+
+        [공식 매뉴얼](https://developers.pay.naver.com/docs/v2/api#etc-etc_product)을 참조해 주세요.
+
+      - uid: string
+
+        **결제 상품 식별값**
+
+        고객사 내부적으로 관리하는 상품 고유 ID를 활용하는 것이 일반적이지만, [공식 매뉴얼](https://developers.pay.naver.com/docs/v2/api#etc-etc_product) 참고가 필요합니다.
+
+      - name: string
+
+        **상품명**
+
+      - count: number
+
+        **결제 상품 개수**
+
+      - payReferrer?: string
+
+        **결제 상품 유입경로**
+
+        네이버 플랫폼의 타 서비스와 제휴계약 후 유입분석을 진행하는 경우에만 입력합니다.
+
+        [공식 매뉴얼](https://developers.pay.naver.com/docs/v2/api#etc-etc_product_ref)
+
+      - startDate?: string
+
+        **시작일(YYYYMMDD)**
+
+      - endDate?: string
+
+        **종료일(YYYYMMDD)**
+
+      - sellerId?: string
+
+        **하위 판매자 식별키**
+
+        고객사가 하위 판매자를 식별하기 위한 고유 ID (영문 대소문자 및 숫자 허용)
+
+        - 고객사의 업종이 통신판매중개업에 해당하여 네이버페이 계약 당시 별도의 안내를 받은 대상 고객사만 필수 입력합니다.
+        - 비대상 고객사는 입력하지 않습니다.
+
+    - deliveryFee?: number
+
+      **배송비**
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "naver" END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "tosspay" START -->
+
+  - tosspay?: object
+
+    - expiredTime?: string
+
+      **결제 만료 기한**
+
+      - `yyyy-MM-dd HH:mm:ss` 의 형식으로 입력해야 합니다.
+      - 입력하지 않을 경우, 기본값인 15분으로 설정됩니다.
+      - 최대 60분까지 설정할 수 있습니다.
+
+    - cashReceiptTradeOption?: string
+
+      **현금영수증 발급 대상 타입**
+
+      전달하지 않을 경우, 기본값은 `GENERAL` 입니다.
+
+      - `GENERAL` : 일반
+      - `CULTURE` : 문화비
+      - `PUBLIC_TP` : 교통비
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "tosspay" END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "hyphen" START -->
+
+  - hyphen?: object
+
+    - designCd?: string
+
+      **결제창 디자인 코드**
+
+      `#`으로 시작하는 여섯 자리 16진수 코드입니다.
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "hyphen" END -->
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "eximbay" START -->
+
+  - eximbay?: object
+
+    - payment?: object
+
+      **결제 정보**
+
+      - payment\_method?: string
+
+        **단독 노출 결제 수단**
+
+        가능한 값의 목록은 [공식 매뉴얼](https://developer.eximbay.com/eximbay/api_sdk/code-organization.html)을 참조해 주세요.
+
+      - multi\_payment\_method?: string\[]
+
+        **노출할 결제 수단 목록**
+
+        가능한 값의 목록은 [공식 매뉴얼](https://developer.eximbay.com/eximbay/api_sdk/code-organization.html)을 참조해 주세요.
+
+    - merchant?: object
+
+      **상점 정보**
+
+      - shop?: string
+
+        **상점명**
+
+      - partner\_code?: string
+
+        **파트너 코드**
+
+    - tax?: object
+
+      **현금영수증 정보**
+
+      <div class="hint" data-style="warning">
+
+      네이버페이 결제 시 `tax` 하위 모든 파라미터를 입력해야 합니다.
+
+      </div>
+
+      - receipt\_status?: string
+
+        **현금영수증 발급 여부**
+
+        - `Y`: 발급
+        - `N`: 미발급
+
+        <div class="hint" data-style="warning">
+
+        계좌이체 사용 시 `Y`로 설정해야 합니다.
+
+        </div>
+
+    - surcharge?: object\[]
+
+      **부가금 정보**
+
+      최대 3개까지 입력할 수 있습니다.
+
+      - name?: string
+
+        **항목명**
+
+      - quantity?: number
+
+        **수량**
+
+      - unit\_price?: number
+
+        **단가 (음수 가능)**
+
+    - ship\_to?: object
+
+      **배송지 정보**
+
+      - city?: string
+
+        **배송지 도시**
+
+      - country?: string
+
+        **배송지 국가**
+
+        [ISO 3166-1 alpha-2](https://www.iso.org/iso-3166-country-codes.html)에 의해 표준화된 2글자 국가 코드입니다.
+
+      - first\_name?: string
+
+        **수신인의 성을 제외한 이름**
+
+      - last\_name?: string
+
+        **수신인의 성**
+
+      - phone\_number?: string
+
+        **수신인 전화번호**
+
+      - postal\_code?: string
+
+        **배송지 우편번호**
+
+      - state?: string
+
+        **배송지 주 정보**
+
+        배송지가 미국 혹은 캐나다인 경우에만 입력합니다.
+
+      - street1?: string
+
+        **배송지 상세 주소**
+
+    - bill\_to?: object
+
+      **청구지 정보**
+
+      - city?: string
+
+        **청구지 도시**
+
+      - country?: string
+
+        **청구지 국가**
+
+        [ISO 3166-1 alpha-2](https://www.iso.org/iso-3166-country-codes.html)에 의해 표준화된 2글자 국가 코드입니다.
+
+      - first\_name?: string
+
+        **청구 카드 명의자의 성을 제외한 이름**
+
+      - last\_name?: string
+
+        **청구 카드 명의자의 성**
+
+      - phone\_number?: string
+
+        **청구 카드 명의자의 전화번호**
+
+      - postal\_code?: string
+
+        **청구지 우편번호**
+
+      - state?: string
+
+        **청구지 주 정보**
+
+        청구지가 미국 혹은 캐나다인 경우에만 입력합니다.
+
+      - street1?: string
+
+        **청구지 상세 주소**
+
+    - settings?: object
+
+      **결제창 설정**
+
+      - call\_from\_app?: string
+
+        **인앱 웹뷰 여부**
+
+        - `Y`: 인앱 웹뷰
+        - `N`: 브라우저
+
+        기본값은 `N`입니다.
+
+      - issuer\_country?: string
+
+        해외 결제 가맹점에서 국내 결제를 사용할 경우 `KR` 값을 입력해야 합니다.
+
+      - virtualaccount\_expiry\_date?: string
+
+        **가상계좌 만료일**
+
+        - `yyyyMMddHH` 형식으로 입력해야 합니다.
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "eximbay" END -->
 
 - redirectUrl?: string
 
@@ -1879,38 +2585,10 @@ ni @portone/browser-sdk
 
   **상품 유형**
 
+  휴대폰 소액결제 시 `productType`는 필수 입력이며, 상점에 설정된 상품 유형과 입력된 상품 유형이 다른 경우 결제가 실패합니다.
+
   - 실물 상품: `PRODUCT_TYPE_REAL`
   - 디지털 상품: `PRODUCT_TYPE_DIGITAL`
-
-  <!-- CONDITIONAL CONTENT when=({ pg: { name, payMethods }}) => name === "nice" && payMethods === 'mobile' START -->
-
-  <div class="hint" data-style="warning">
-
-  나이스페이먼츠 휴대폰 소액결제 시 `productType`는 필수 입력이며, 상점에 설정된 상품 유형과 입력된 상품 유형이 다른 경우 결제가 실패합니다.
-
-  </div>
-
-  <!-- CONDITIONAL CONTENT when=({ pg: { name, payMethods }}) => name === "nice" && payMethods === 'mobile' END -->
-
-  <!-- CONDITIONAL CONTENT when=({ pg: { name, payMethods } }) => name === 'smartro' && payMethods === 'mobile' START -->
-
-  <div class="hint" data-style="warning">
-
-  스마트로 휴대폰 소액결제 시 `productType`는 필수 입력이며, 상점에 설정된 상품 유형과 입력된 상품 유형이 다른 경우 결제가 실패합니다.
-
-  </div>
-
-  <!-- CONDITIONAL CONTENT when=({ pg: { name, payMethods } }) => name === 'smartro' && payMethods === 'mobile' END -->
-
-  <!-- CONDITIONAL CONTENT when=({ pg: { name, payMethods } }) => name === 'kpn' && payMethods === 'mobile' START -->
-
-  <div class="hint" data-style="warning">
-
-  한국결제네트웍스 휴대폰 소액결제 시 `productType`는 필수 입력입니다.
-
-  </div>
-
-  <!-- CONDITIONAL CONTENT when=({ pg: { name, payMethods } }) => name === 'kpn' && payMethods === 'mobile' END -->
 
 - offerPeriod?: oneof object
 
@@ -1952,6 +2630,16 @@ ni @portone/browser-sdk
 
   **구매 상품 상세 정보**
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'eximbay' START -->
+
+  <div class="hint" data-style="warning">
+
+  엑심베이의 경우 간편결제 사용 시 필수로 입력해야 하며, 상품 정보에 상품 링크가 필수입니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'eximbay' END -->
+
   - id: string
 
     **상품 아이디**
@@ -1988,9 +2676,23 @@ ni @portone/browser-sdk
 
     **상품 태그**
 
+  - link?: string
+
+    **상품 링크**
+
 - storeDetails?: object
 
   **상점 정보**
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name, payMethods }}) => name === "ksnet" && payMethods === "easyPay" START -->
+
+  <div class="hint" data-style="warning">
+
+  KSNET의 경우 카카오페이 직접 호출 시 `storeDetails.ceoFullName`, `storeDetails.address`, `storeDetails.phoneNumber` 값이 필수입니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name, payMethods }}) => name === "ksnet" && payMethods === "easyPay" END -->
 
   - ceoFullName?: string
 
@@ -2008,11 +2710,39 @@ ni @portone/browser-sdk
 
     **상점 우편번호**
 
+  - businessName?: string
+
+    **상점 사업자명**
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'hyphen' START -->
+
+    <div class="hint" data-style="warning">
+
+    하이픈의 경우 미입력 시 대표상점명으로 설정됩니다.
+
+    </div>
+
+    <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'hyphen' END -->
+
+  - businessRegistrationNumber?: string
+
+    **상점 사업자 번호**
+
 - isCulturalExpense?: boolean
 
   **문화비 지출 여부**
 
   도서, 공연, 박물관 등 문화비 지출 여부
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "kakao" START -->
+
+  <div class="hint" data-style="warning">
+
+  카카오페이의 경우 문화비는 지원하지 않으며, `isCulturalExpense` 값은 포트원 내부적으로만 저장됩니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "kakao" END -->
 
 - isEscrow?: boolean
 
@@ -2060,6 +2790,16 @@ ni @portone/browser-sdk
 
   <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'inicis' END -->
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kakao' START -->
+
+  <div class="hint" data-style="warning">
+
+  카카오페이의 경우 에스크로 결제를 지원하지 않으며, `isEscrow` 값은 포트원 내부적으로만 저장됩니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name } }) => name === 'kakao' END -->
+
   <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => ['kcp', 'kpn', 'inicis'].includes(name) START -->
 
   - locale?: string
@@ -2095,6 +2835,10 @@ ni @portone/browser-sdk
 
   [ISO 3166-1 alpha-2](https://www.iso.org/iso-3166-country-codes.html)에 의해 표준화된 2글자 국가 코드입니다.
 
+- promotionId?: string
+
+  **프로모션 아이디**
+
 - popup?: object
 
   **결제창이 팝업 방식일 경우 결제창에 적용할 속성**
@@ -2103,6 +2847,10 @@ ni @portone/browser-sdk
 
     `true`로 설정하면 결제창이 브라우저 화면의 정중앙에 표시됩니다.
 
+<!-- SECTION client:request-payment END -->
+
+<!-- SECTION client:handle-payment-error START -->
+
 ### 결제 오류 처리
 
 결제 중 오류가 발생하여 결제가 완료되지 않은 경우를 처리합니다.
@@ -2110,31 +2858,51 @@ ni @portone/browser-sdk
 `SDK`의 반환 값에 `code`가 있는 경우 오류 상태로 `message` 필드에 오류 메시지가 존재합니다.
 결제대행사로부터 오류를 전달받은 경우 `code`는 `FAILURE_TYPE_PG`이고, 결제대행사의 오류 코드인 `pgCode`를 기반으로 결제 오류를 처리할 수 있습니다.
 
+<!-- SECTION client:handle-payment-error END -->
+
+<!-- SECTION client:request-server-side-verification START -->
+
 ### 서버 측으로 결제 완료 요청
 
 완료된 결제의 `paymentId`를 서버로 전송하여 결제 상태를 반영합니다.
 
 <!-- CONDITIONAL CONTENT when=({ pg }) => pg.payMethods !== "virtualAccount"  START -->
 
+<!-- SECTION client:handle-payment-status:paid START -->
+
 ### 결제 완료 상태 처리
 
 서버로부터 검증 후 결제가 완료된 경우를 처리합니다.
+
+<!-- SECTION client:handle-payment-status:paid END -->
 
 <!-- CONDITIONAL CONTENT when=({ pg }) => pg.payMethods !== "virtualAccount"  END -->
 
 <!-- CONDITIONAL CONTENT when=({ pg }) => pg.payMethods === "virtualAccount"  START -->
 
+<!-- SECTION client:handle-payment-status:virtual-account-issued START -->
+
 ### 가상계좌 발급 상태 처리
 
 서버로부터 검증 후 가상계좌가 발급된 경우를 처리합니다.
 
+<!-- SECTION client:handle-payment-status:virtual-account-issued END -->
+
 <!-- CONDITIONAL CONTENT when=({ pg }) => pg.payMethods === "virtualAccount"  END -->
+
+<!-- SECTION client:handle-payment-status:failed START -->
 
 ### 결제 실패 상태 처리
 
 서버로부터 검증 결과를 획득하여, 결제가 최종적으로 실패한 경우를 처리합니다.
 
+<!-- SECTION client:handle-payment-status:failed END -->
+
+<!-- SECTION client:request-server-side-verification END -->
+
 ## 서버 측
+
+<!-- SECTION server:import-portone-sdk START -->
 
 ### 포트원 서버 SDK 불러오기
 
@@ -2449,14 +3217,26 @@ implementation 'io.portone:server-sdk:x.x.x'
 
 <!-- CONDITIONAL CONTENT language=backend/Spring_Kotlin END -->
 
+<!-- SECTION server:import-portone-sdk END -->
+
+<!-- SECTION server:portone-api-secret START -->
+
 ### 포트원 API Secret 설정
 
 서버 SDK를 사용하기 위해 포트원 V2 API Secret을 설정합니다.
 API Secret은 포트원 관리자콘솔의 [결제 연동 > 연동 정보 > 식별코드 ・ API Keys > V2 API](https://admin.portone.io/integration-v2/manage/api-keys?version=v2)에서 발급받으실 수 있습니다.
 
+<!-- SECTION server:portone-api-secret END -->
+
+<!-- SECTION server:complete-payment START -->
+
 ### 결제 완료 요청
 
 완료된 결제의 실제 상태를 조회해 시스템에 반영합니다. 브라우저 SDK를 통해 결제하는 경우 모든 결제 과정이 브라우저에서 진행되므로 결제가 조작되는 것을 막기 위해 서버에서 검증이 필요합니다.
+
+<!-- SECTION server:complete-payment END -->
+
+<!-- SECTION server:complete-payment:get-payment START -->
 
 ### 결제 정보 조회
 
@@ -2472,22 +3252,44 @@ ISP/페이북을 통한 결제 시 토스페이먼츠가 실제 카드 번호와
 
 <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === 'toss' END -->
 
+<!-- SECTION server:complete-payment:get-payment END -->
+
+<!-- SECTION server:complete-payment:verify-payment START -->
+
 ### 결제 정보 일치 검증
 
 포트원에 전달한 `customData`로 조회한 상품 정보와 결제 정보가 일치하는지 검증합니다.
+
+<!-- SECTION server:complete-payment:verify-payment END -->
+
+<!-- SECTION server:webhook START -->
 
 ### 웹훅 수신
 
 결제 상태의 변화를 실시간으로 확인해야 한다면 웹훅을 사용할 수 있습니다.
 
+<!-- SECTION server:webhook:raw-body START -->
+
 ### HTTP Body 수신 설정
 
 웹훅 내용을 검증하기 위해서는 HTTP Body를 문자열 형태로 수신해야 합니다.
+
+<!-- SECTION server:webhook:raw-body END -->
+
+<!-- SECTION server:webhook:verify START -->
 
 ### 웹훅 검증
 
 수신한 웹훅이 위조되지 않았는지 포트원 서버 SDK를 사용하여 검증합니다.
 
+<!-- SECTION server:webhook:verify END -->
+
+<!-- SECTION server:webhook:complete-payment START -->
+
 ### 결제 상태 업데이트
 
 검증된 웹훅 결과를 바탕으로 결제 상태를 업데이트합니다.
+
+<!-- SECTION server:webhook:complete-payment END -->
+
+<!-- SECTION server:webhook END -->

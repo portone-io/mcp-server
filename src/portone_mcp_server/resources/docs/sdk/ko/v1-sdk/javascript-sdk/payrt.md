@@ -117,7 +117,7 @@ PG사 또는 결제수단에 따라서 반환되는 속성들이 상이합니다
 
 - name: string
 
-  **주문자명**
+  **주문명**
 
 - pg\_provider: string
 

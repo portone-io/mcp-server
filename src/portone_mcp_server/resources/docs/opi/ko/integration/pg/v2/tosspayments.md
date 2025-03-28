@@ -229,6 +229,9 @@ async function schedulePayment() {
 - `isCulturalExpense`
   - 문화비(도서, 공연, 박물관 등) 지출 여부를 구분하고자 할 때 파라미터를 입력하여 사용할 수 있습니다.
 
+- `card.installment.monthOption.fixedMonth`
+  - 토스페이먼츠의 경우 현대카드는 1만원, 그 외는 5만원 이상 결제에 대해서만 적용됩니다.
+
 - `bypass`
 
   - 토스페이먼츠에서는 아래의 파라미터를 지원합니다.
