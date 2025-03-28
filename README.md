@@ -84,6 +84,27 @@
    }
    ```
 
+1. 문서 업데이트하기
+
+   요구사항: 로컬에 developers.portone.io 저장소가 클론되어 있어야 합니다.
+
+   developers.portone.io 저장소에서 생성된 문서를 MCP 서버에 업데이트하려면 다음과 같이 실행합니다:
+
+   ```bash
+   # 환경 변수를 사용하는 방법
+   export DEVELOPERS_PORTONE_IO_PATH="/path/to/developers.portone.io"
+   uv run update_docs.py
+
+   # 또는 대화형으로 실행
+   uv run update_docs.py
+   # 프롬프트가 표시되면 developers.portone.io 저장소 경로 입력
+   ```
+
+   이 스크립트는 다음을 수행합니다:
+
+   1. developers.portone.io 저장소에서 `pnpm docs-for-llms` 명령을 실행
+   2. MCP 서버의 docs 디렉토리를 새로 생성된 내용으로 교체
+
 ## 라이선스
 
 [Apache License 2.0](LICENSE)
