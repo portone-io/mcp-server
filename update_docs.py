@@ -1,10 +1,19 @@
-#!/usr/bin/env python3
-
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "pyyaml",
+#     "requests",
+# ]
+# ///
 import os
 import shutil
 import subprocess
 import sys
 from pathlib import Path
+from typing import Any
+
+import requests
+import yaml
 
 
 def run_docs_for_llms(developers_repo_path):
@@ -45,6 +54,96 @@ def run_docs_for_llms(developers_repo_path):
     return generated_docs_path
 
 
+def fetchAndSave(url: str, target_path: Path, frontmatter: dict[str, Any] | None):
+    """
+    Fetch content from a URL and save it to the specified path
+
+    Args:
+        url: The URL to fetch content from
+        target_path: The path where the content should be saved
+        frontmatter: The yaml frontmatter to add to the file
+    """
+
+    print(f"Fetching content from {url}...")
+    try:
+        response = requests.get(url, timeout=30)
+        response.raise_for_status()  # Raise an exception for HTTP errors
+
+        # Create parent directories if they don't exist
+        target_path.parent.mkdir(parents=True, exist_ok=True)
+
+        # Write the content to the file with frontmatter
+        with open(target_path, "wb") as f:
+            # If frontmatter is provided, add it before the content
+            if frontmatter:
+                # Convert frontmatter to YAML format
+                frontmatter_yaml = yaml.dump(frontmatter, default_flow_style=False, allow_unicode=True, sort_keys=False)
+                # Create the frontmatter block with --- delimiters
+                frontmatter_block = f"---\n{frontmatter_yaml}---\n\n".encode("utf-8")
+                f.write(frontmatter_block)
+
+            # Write the response content
+            f.write(response.content)
+
+        print(f"Content saved to {target_path}")
+    except requests.RequestException as e:
+        print(f"Error fetching content from {url}: {e}")
+
+
+def update_server_sdk_docs(target_docs_dir: Path):
+    fetchAndSave(
+        url="https://raw.githubusercontent.com/portone-io/server-sdk/refs/heads/main/javascript/README.md",
+        target_path=target_docs_dir / "sdk" / "ko" / "v2-server-sdk" / "javascript.md",
+        frontmatter={
+            "title": "포트원 V2 JavaScript, TypeScript 서버 SDK",
+            "description": "JavaScript, TypeScript를 위한 포트원 V2 서버 SDK 사용 방법을 안내합니다.",
+            "targetVersions": ["v2"],
+        },
+    )
+
+    fetchAndSave(
+        url="https://raw.githubusercontent.com/portone-io/server-sdk/refs/heads/main/jvm/README.md",
+        target_path=target_docs_dir / "sdk" / "ko" / "v2-server-sdk" / "jvm.md",
+        frontmatter={
+            "title": "포트원 V2 JVM 서버 SDK",
+            "description": "JVM 환경(Java, Kotlin, Scala 등)을 위한 포트원 V2 서버 SDK 사용 방법을 안내합니다.",
+            "targetVersions": ["v2"],
+        },
+    )
+
+    fetchAndSave(
+        url="https://raw.githubusercontent.com/portone-io/server-sdk/refs/heads/main/python/README.md",
+        target_path=target_docs_dir / "sdk" / "ko" / "v2-server-sdk" / "python.md",
+        frontmatter={
+            "title": "포트원 V2 Python 서버 SDK",
+            "description": "Python을 위한 포트원 V2 서버 SDK 사용 방법을 안내합니다.",
+            "targetVersions": ["v2"],
+        },
+    )
+
+
+def update_mobile_sdk_docs(target_docs_dir: Path):
+    fetchAndSave(
+        url="https://raw.githubusercontent.com/portone-io/android-sdk/refs/heads/main/README.md",
+        target_path=target_docs_dir / "sdk" / "ko" / "v2-mobile-sdk" / "android.md",
+        frontmatter={
+            "title": "포트원 V2 Android 모바일 SDK",
+            "description": "Android를 위한 포트원 V2 모바일 SDK 사용 방법을 안내합니다.",
+            "targetVersions": ["v2"],
+        },
+    )
+
+    fetchAndSave(
+        url="https://raw.githubusercontent.com/portone-io/react-native-sdk/refs/heads/main/README.md",
+        target_path=target_docs_dir / "sdk" / "ko" / "v2-mobile-sdk" / "react-native.md",
+        frontmatter={
+            "title": "포트원 V2 React Native 모바일 SDK",
+            "description": "React Native를 위한 포트원 V2 모바일 SDK 사용 방법을 안내합니다.",
+            "targetVersions": ["v2"],
+        },
+    )
+
+
 def update_mcp_docs(developers_repo_path):
     """
     Update the MCP server documentation with the latest from developers.portone.io
@@ -72,6 +171,9 @@ def update_mcp_docs(developers_repo_path):
     # Copy the generated docs to the target directory
     print(f"Copying new docs from {generated_docs_path} to {target_docs_dir}...")
     shutil.copytree(generated_docs_path, target_docs_dir)
+
+    update_server_sdk_docs(target_docs_dir)
+    update_mobile_sdk_docs(target_docs_dir)
 
     print("Documentation update completed successfully!")
 
