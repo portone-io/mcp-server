@@ -86,7 +86,10 @@
 
 1. 문서 업데이트하기
 
-   요구사항: 로컬에 developers.portone.io 저장소가 클론되어 있어야 합니다.
+   요구사항:
+   - 로컬에 developers.portone.io 저장소가 클론되어 있어야 합니다.
+   - nvm (Node Version Manager) 및 노드 23 버전이 설치되어 있어야 합니다.
+   - corepack이 설치되어 있어야 합니다.
 
    developers.portone.io 저장소에서 생성된 문서를 MCP 서버에 업데이트하려면 다음과 같이 실행합니다:
 
