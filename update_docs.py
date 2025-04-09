@@ -8,7 +8,6 @@
 import os
 import shutil
 import subprocess
-import sys
 from pathlib import Path
 from typing import Any
 
@@ -16,7 +15,10 @@ import requests
 import yaml
 
 
-def run_docs_for_llms(developers_repo_path):
+def run_docs_for_llms(
+    repo_path: str,
+    node_version: int,
+) -> Path:
     """
     Run 'pnpm docs-for-llms' in the developers.portone.io repository
 
@@ -26,22 +28,22 @@ def run_docs_for_llms(developers_repo_path):
     Returns:
         Path to the generated docs-for-llms directory
     """
-    print(f"Running 'pnpm docs-for-llms' in {developers_repo_path}...")
+    print(f"Running 'pnpm docs-for-llms' in {repo_path}...")
 
     # Ensure the path exists and is a directory
-    dev_repo = Path(developers_repo_path)
+    dev_repo = Path(repo_path)
     if not dev_repo.exists() or not dev_repo.is_dir():
-        raise ValueError(f"The provided path '{developers_repo_path}' does not exist or is not a directory")
+        raise ValueError(f"The provided path '{repo_path}' does not exist or is not a directory")
 
     # Check if package.json exists to validate it's likely the correct repository
     if not (dev_repo / "package.json").exists():
-        raise ValueError(f"The provided path '{developers_repo_path}' does not appear to be a valid repository (no package.json found)")
+        raise ValueError(f"The provided path '{repo_path}' does not appear to be a valid repository (no package.json found)")
 
     # Run nvm, corepack, and pnpm commands in a single shell command
     try:
         # Create a shell command that sources NVM, sets Node.js version, enables corepack, and runs pnpm
         # We need to source NVM first because it's a shell function, not a standalone executable
-        shell_command = '. "$NVM_DIR/nvm.sh" && nvm use 23 && corepack enable && pnpm docs-for-llms'
+        shell_command = f'. "$NVM_DIR/nvm.sh" && nvm use {node_version} && corepack enable && pnpm install && pnpm docs-for-llms'
 
         # Run the combined shell command, inheriting environment variables
         subprocess.run(shell_command, cwd=str(dev_repo), check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=True, env=os.environ)
@@ -149,7 +151,7 @@ def update_mobile_sdk_docs(target_docs_dir: Path):
     )
 
 
-def update_mcp_docs(developers_repo_path):
+def update_mcp_docs(developers_repo_path: str, help_repo_path: str):
     """
     Update the MCP server documentation with the latest from developers.portone.io
 
@@ -162,9 +164,6 @@ def update_mcp_docs(developers_repo_path):
     # Define the target docs directory
     target_docs_dir = script_dir / "src" / "portone_mcp_server" / "resources" / "docs"
 
-    # Run the docs-for-llms command and get the path to the generated docs
-    generated_docs_path = run_docs_for_llms(developers_repo_path)
-
     # Remove the existing docs directory
     print(f"Removing existing docs directory at {target_docs_dir}...")
     if target_docs_dir.exists():
@@ -173,9 +172,19 @@ def update_mcp_docs(developers_repo_path):
     # Create the parent directory if it doesn't exist
     target_docs_dir.parent.mkdir(parents=True, exist_ok=True)
 
+    # Run the docs-for-llms command and get the path to the generated docs
+    generated_dev_docs_path = run_docs_for_llms(repo_path=developers_repo_path, node_version=23)
+
     # Copy the generated docs to the target directory
-    print(f"Copying new docs from {generated_docs_path} to {target_docs_dir}...")
-    shutil.copytree(generated_docs_path, target_docs_dir)
+    print(f"Copying new docs from {generated_dev_docs_path} to {target_docs_dir}...")
+    shutil.copytree(generated_dev_docs_path, target_docs_dir)
+
+    # Run the docs-for-llms command and get the path to the generated docs
+    generated_help_docs_path = run_docs_for_llms(repo_path=help_repo_path, node_version=20)
+
+    # Copy the generated docs to the target directory
+    print(f"Copying new docs from {generated_help_docs_path} to {target_docs_dir}...")
+    shutil.copytree(generated_help_docs_path, target_docs_dir / "help")
 
     update_server_sdk_docs(target_docs_dir)
     update_mobile_sdk_docs(target_docs_dir)
@@ -183,24 +192,39 @@ def update_mcp_docs(developers_repo_path):
     print("Documentation update completed successfully!")
 
 
-def main():
+def get_repo_path(env_var_name: str, prompt_message: str) -> str:
+    """
+    Get a repository path from environment variable or user input
+
+    Args:
+        env_var_name: Name of the environment variable to check
+        prompt_message: Message to display when prompting the user
+
+    Returns:
+        The repository path
+    """
     # Check if the path is provided as an environment variable
-    developers_repo_path = os.environ.get("DEVELOPERS_PORTONE_IO_PATH", "")
+    repo_path = os.environ.get(env_var_name, "")
 
     # If not found in environment variables, prompt the user
-    if not developers_repo_path:
-        print("Enter the path to the local developers.portone.io repository:")
-        developers_repo_path = input().strip()
-
-        if not developers_repo_path:
-            print("Error: Repository path cannot be empty", file=sys.stderr)
-            sys.exit(1)
+    if not repo_path:
+        print(prompt_message)
+        repo_path = input().strip()
 
     # Expand the tilde (~) to the user's home directory if present
-    if developers_repo_path.startswith("~"):
-        developers_repo_path = os.path.expanduser(developers_repo_path)
+    if repo_path.startswith("~"):
+        repo_path = os.path.expanduser(repo_path)
 
-    update_mcp_docs(developers_repo_path)
+    return repo_path
+
+
+def main():
+    # Get repository paths
+    developers_repo_path = get_repo_path("DEVELOPERS_PORTONE_IO_PATH", "Enter the path to the local developers.portone.io repository:")
+
+    help_repo_path = get_repo_path("HELP_PORTONE_IO_PATH", "Enter the path to the local help.portone.io repository:")
+
+    update_mcp_docs(developers_repo_path, help_repo_path)
 
 
 if __name__ == "__main__":
