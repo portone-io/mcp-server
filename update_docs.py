@@ -37,11 +37,16 @@ def run_docs_for_llms(developers_repo_path):
     if not (dev_repo / "package.json").exists():
         raise ValueError(f"The provided path '{developers_repo_path}' does not appear to be a valid repository (no package.json found)")
 
-    # Run the pnpm command
+    # Run nvm, corepack, and pnpm commands in a single shell command
     try:
-        subprocess.run(["pnpm", "docs-for-llms"], cwd=str(dev_repo), check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        # Create a shell command that sources NVM, sets Node.js version, enables corepack, and runs pnpm
+        # We need to source NVM first because it's a shell function, not a standalone executable
+        shell_command = '. "$NVM_DIR/nvm.sh" && nvm use 23 && corepack enable && pnpm docs-for-llms'
+
+        # Run the combined shell command, inheriting environment variables
+        subprocess.run(shell_command, cwd=str(dev_repo), check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=True, env=os.environ)
     except subprocess.CalledProcessError as e:
-        print(f"Error running 'pnpm docs-for-llms': {e}")
+        print(f"Error: {e}")
         print(f"stdout: {e.stdout}")
         print(f"stderr: {e.stderr}")
         raise
