@@ -12,13 +12,14 @@ class SearchOccurrence:
     context: str
 
     def __str__(self) -> str:
-        return f"```txt start_index={self.start_index} end_index={self.end_index}\n{self.context}\n```\n"
+        return f"```txt startIndex={self.start_index} endIndex={self.end_index}\n{self.context}\n```\n"
 
 
 def initialize(documents: Documents):
     def regex_search_portone_docs(query: str, context_size: int) -> str:
         """포트원 문서의 내용 중 파이썬 re 정규표현식 형식의 query가 매칭된 부분을 모두 찾아 반환합니다.
         정규식 기반으로 관련 포트원 문서를 찾고 싶은 경우 이 도구를 사용합니다.
+        Frontmatter와 문서 내용 모두 검색합니다.
 
         Args:
             query: Python re 패키지가 지원하는 Regular Expression 형식의 문자열을 입력해야 하며, 영어 알파벳 대소문자는 구분 없이 매칭됩니다.
@@ -43,8 +44,14 @@ def initialize(documents: Documents):
             content_len = len(doc.content)
             occurrences: list[SearchOccurrence] = []
 
-            # Find all occurrences of query in doc.content using regex
             last_context_end = 0
+
+            # Check frontmatter
+            if doc.frontmatter and doc.frontmatter.search(query):
+                last_context_end = min(content_len, context_size)
+                occurrences.append(SearchOccurrence(start_index=0, end_index=last_context_end, context=doc.content[:last_context_end]))
+
+            # Find all occurrences of query in doc.content using regex
             for match in re.finditer(query, doc.content, re.IGNORECASE):
                 idx = match.start()
                 match_len = match.end() - match.start()
