@@ -1,7 +1,6 @@
 import importlib.resources
 import re
 from dataclasses import dataclass, field
-from datetime import datetime
 from typing import Any, Dict, List, Optional
 
 import yaml
@@ -14,44 +13,63 @@ class Frontmatter:
     title: Optional[str] = None
     description: Optional[str] = None
     targetVersions: Optional[List[str]] = None
-    releasedAt: Optional[datetime] = None
-    writtenAt: Optional[datetime] = None
-    author: Optional[str] = None
-    date: Optional[datetime] = None
-    tags: Optional[List[str]] = None
-    # Additional fields can be stored here
-    additional_fields: Dict[str, Any] = field(default_factory=dict)
+
+    # All fields are stored here
+    all_fields_dict: Dict[str, Any] = field(default_factory=dict)
+    # Original frontmatter string
+    raw_string: str = ""
 
     @classmethod
-    def from_dict(cls, data: Optional[Dict[str, Any]]) -> Optional["Frontmatter"]:
-        """Create a Frontmatter instance from a dictionary."""
+    def from_text(cls, frontmatter_text: str) -> "Frontmatter":
+        """Create a Frontmatter instance from raw frontmatter text.
+
+        Args:
+            frontmatter_text: Raw frontmatter text in YAML format
+
+        Returns:
+            Frontmatter instance
+
+        Raises:
+            ValueError: If frontmatter_text is empty or None
+            yaml.YAMLError: If there's an error parsing the YAML
+        """
+        if not frontmatter_text:
+            raise ValueError("Frontmatter text cannot be empty")
+
+        # Parse frontmatter as YAML
+        data = yaml.safe_load(frontmatter_text)
         if data is None:
-            return None
+            raise ValueError("Parsed frontmatter data is None")
 
         # Extract known fields
         known_fields = {
             "title",
             "description",
             "targetVersions",
-            "releasedAt",
-            "writtenAt",
-            "author",
-            "date",
-            "tags",
         }
 
         # Create kwargs for known fields
         kwargs = {}
-        additional_fields = {}
-
         for key, value in data.items():
             if key in known_fields:
                 kwargs[key] = value
-            else:
-                additional_fields[key] = value
 
-        kwargs["additional_fields"] = additional_fields
+        kwargs["all_fields_dict"] = data
+        kwargs["raw_string"] = frontmatter_text
+
         return cls(**kwargs)
+
+    def search(self, regex: str) -> bool:
+        """
+        Check if the frontmatter contains the specified regex in its raw string content.
+
+        Args:
+            regex: The regex to search for
+
+        Returns:
+            True if the regex is found in the raw string, False otherwise
+        """
+        return re.search(regex, self.raw_string) is not None
 
 
 @dataclass
@@ -162,12 +180,11 @@ def parse_markdown_content(content: str) -> ParsedMarkdown:
         frontmatter_text = frontmatter_match.group(1)
         content_text = frontmatter_match.group(2)
 
-        # Parse frontmatter as YAML
+        # Create frontmatter from raw text
         try:
-            frontmatter_dict = yaml.safe_load(frontmatter_text)
-            frontmatter = Frontmatter.from_dict(frontmatter_dict)
+            frontmatter = Frontmatter.from_text(frontmatter_text)
             return ParsedMarkdown(content=content_text.strip(), frontmatter=frontmatter)
-        except yaml.YAMLError as e:
+        except Exception as e:
             print(f"Error parsing frontmatter: {e}")
             return ParsedMarkdown(content=content)
 
