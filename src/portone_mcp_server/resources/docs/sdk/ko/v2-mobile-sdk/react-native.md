@@ -123,6 +123,7 @@ yarn add -D @portone/browser-sdk
     <package android:name="com.sktelecom.tauth" />
     <package android:name="com.kt.ktauth" />
     <package android:name="com.lguplus.smartotp" />
+    <package android:name="com.shinhan.sbanking" />
     <intent>
       <action android:name="android.intent.action.VIEW" />
       <category android:name="android.intent.category.BROWSABLE" />

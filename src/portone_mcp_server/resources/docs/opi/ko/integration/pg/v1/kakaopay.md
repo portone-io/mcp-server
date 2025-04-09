@@ -196,6 +196,8 @@ curl -H "Content-Type: application/json" \
 
 (관련 이미지 첨부)
 
+- app\_scheme 파라미터는 카카오페이 정책에 따라 iOS에서만 사용 가능합니다.
+
 </div>
 
 <div class="hint" data-style="info">

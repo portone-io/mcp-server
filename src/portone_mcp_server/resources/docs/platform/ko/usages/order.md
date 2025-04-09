@@ -106,10 +106,10 @@ axios
       "settlement": 8900, //최종 정산금액
       "payment": 10000, //결제금액
       "order": 10000, //주문금액
-      "platformFee": 1000, //중개 수수료 10%
-      "platformFeeVat": 100, //중개수수료 부가세
-      "additionalFee": 0, //추가 수수료
-      "additionalFeeVat": 0, //추가 수수료 부가세
+      "platformFee": 1000, //중개수수료 10%
+      "platformFeeVat": 100, //중개수수료 부가세 부담금
+      "additionalFee": 0, //추가수수료
+      "additionalFeeVat": 0, //추가수수료 부가세 부담금
       "discount": 0, //할인금액
       "discountShare": 0 //할인금액 중 파트너가 부담하는 금액
     },
@@ -259,10 +259,10 @@ axios
       "settlement": 4450, //최종 정산취소금액
       "payment": 5000, //결제 취소 금액
       "order": 5000, //주문 취소 금액
-      "platformFee": 500, //중개 수수료 10%
-      "platformFeeVat": 50, //중개수수료 부가세
-      "additionalFee": 0, //추가 수수료
-      "additionalFeeVat": 0, //추가 수수료 부가세
+      "platformFee": 500, //중개수수료 10%
+      "platformFeeVat": 50, //중개수수료 부가세 부담금
+      "additionalFee": 0, //추가수수료
+      "additionalFeeVat": 0, //추가수수료 부가세 부담금
       "discount": 0, //할인금액
       "discountShare": 0 //할인금액 중 파트너가 부담하는 금액
     },
@@ -333,7 +333,7 @@ orderTransferData ={
         },
         "quantity": 5,
         "discounts": [], # 해당 상품에만 적용되는 할인정보
-        "additionalFees": [], # 해당 상품에만 적용되는 추가 수수료 정보
+        "additionalFees": [], # 해당 상품에만 적용되는 추가수수료 정보
       },
       {
         "product": {
@@ -344,7 +344,7 @@ orderTransferData ={
         },
         "quantity": 1,
         "discounts": [], # 해당 상품에만 적용되는 할인정보
-        "additionalFees": [], # 해당 상품에만 적용되는 추가 수수료 정보
+        "additionalFees": [], # 해당 상품에만 적용되는 추가수수료 정보
       }
     ]
   }
@@ -380,7 +380,7 @@ const orderTransferData = {
         },
         quantity: 5,
         discounts: [], // 해당 상품에만 적용되는 할인정보
-        additionalFees: [], // 해당 상품에만 적용되는 추가 수수료 정보
+        additionalFees: [], // 해당 상품에만 적용되는 추가수수료 정보
       },
       {
         product: {
@@ -391,7 +391,7 @@ const orderTransferData = {
         },
         quantity: 1,
         discounts: [], // 해당 상품에만 적용되는 할인정보
-        additionalFees: [], // 해당 상품에만 적용되는 추가 수수료 정보
+        additionalFees: [], // 해당 상품에만 적용되는 추가수수료 정보
       },
     ],
   },
@@ -509,8 +509,8 @@ axios
         }
       }
     ],
-    "additionalFees": [], //전체 주문건에 대한 추가 수수료 정문
-    "discounts": [] //전체 주문건에 대한 할인정보
+    "additionalFees": [], //전체 주문건에 대한 추가수수료 정보
+    "discounts": [] //전체 주문건에 대한 할인 정보
   }
 }
 ```
@@ -646,10 +646,10 @@ axios
       "settlement": 3560, //최종 정산취소금액
       "payment": 4000, //결제 취소 금액
       "order": 4000, //주문 취소 금액
-      "platformFee": 400, //중개 수수료 10%
-      "platformFeeVat": 40, //중개수수료 부가세
-      "additionalFee": 0, //추가 수수료
-      "additionalFeeVat": 0, //추가 수수료 부가세
+      "platformFee": 400, //중개수수료 10%
+      "platformFeeVat": 40, //중개수수료 부가세 부담금
+      "additionalFee": 0, //추가수수료
+      "additionalFeeVat": 0, //추가수수료 부가세 부담금
       "discount": 0, //할인금액
       "discountShare": 0 //할인금액 중 파트너가 부담하는 금액
     },
@@ -1100,7 +1100,7 @@ async function post_platform_api(endpoint, payload) {
 
 </div>
 
-## 주문 정산 추가 수수료 반영
+## 주문 정산 추가수수료 반영
 
 추가수수료 정책 생성 은 로켓배송, 마케팅채널 수수료 등 특정 주문건에 적용되는 수수료 입니다.
 관리자 콘솔이나 API를 통해서 적용하실 수 있습니다.
@@ -1113,7 +1113,7 @@ async function post_platform_api(endpoint, payload) {
 - 결제금액 : 8,000원
 - 판매 파트너 : A
 - 정산시작일 (결제완료 시점): 2023-08-11
-- 추가 수수료 정책: 수수료율 5%, 부가세 파트너 부담
+- 추가수수료 정책: 수수료율 5%, 부가세 파트너 부담
 
 <div class="tabs-container">
 
@@ -1224,7 +1224,7 @@ const orderTransferPayload = {
       "platformFee": 1000,
       "platformFeeVat": 100,
       "additionalFee": 500, //추가수수료
-      "additionalFeeVat": 50, //추가수수료 부가세
+      "additionalFeeVat": 50, //추가수수료 부가세 부담금
       "discount": 0,
       "discountShare": 0
     },
@@ -1268,7 +1268,7 @@ const orderTransferPayload = {
 
 </div>
 
-## 주문 정산 상품별 추가 수수료 반영
+## 주문 정산 상품별 추가수수료 반영
 
 주문 전체가 아닌 특정 상품에대해서 할인 정책영 적용하고 싶으시면 `orderLines` 의 각 상품 항목의
 `additionalFees` 파라미터에 전달하시면 됩니다.
@@ -1281,7 +1281,7 @@ const orderTransferPayload = {
 - 결제금액 : 16,000원
 - 판매 파트너 : A
 - 정산시작일 (결제완료 시점): 2023-08-11
-- 추가 수수료 정책: 수수료율 5%, 부가세 파트너 부담
+- 추가수수료 정책: 수수료율 5%, 부가세 파트너 부담
 
 <div class="tabs-container">
 
@@ -1301,7 +1301,7 @@ orderTransfer_payload = {
       },
       "quantity": 2,
       "additionalFees": [{
-          "policyId": "fee_1" # 상품별 추가 수수료 정책
+          "policyId": "fee_1" # 상품별 추가수수료 정책
           }
         ]
       }
@@ -1358,7 +1358,7 @@ const orderTransferPayload = {
         quantity: 2,
         additionalFees: [
           {
-            policyId: "fee_1", // 상품별 추가 수수료 정책
+            policyId: "fee_1", // 상품별 추가수수료 정책
           },
         ],
       },

@@ -102,7 +102,7 @@
 
    이 스크립트는 다음을 수행합니다:
 
-   1. developers.portone.io 저장소에서 `pnpm docs-for-llms` 명령을 실행
+   1. developers.portone.io 저장소에서 `pnpm docs-for-llms` 명령을 실행 (로컬에 설정된 브랜치 기준으로 문서 생성)
    2. MCP 서버의 docs 디렉토리를 새로 생성된 내용으로 교체
    3. 개발자센터 외 문서 다운로드 및 교체
 

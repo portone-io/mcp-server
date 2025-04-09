@@ -10,6 +10,11 @@ targetVersions:
 - [결제대행사 채널 설정하기](https://developers.portone.io/opi/ko/integration/ready/readme#3-결제대행사-채널-설정하기) 페이지의 내용을 참고하여 채널 설정을 진행합니다.
 - V2 결제 모듈을 사용하시려면 엑심베이 신모듈로 연동하셔야 합니다.
 
+## 해외결제 차지백 웹훅 등록
+
+- 해외결제 차지백 웹훅을 수신하기 위해서는 엑심베이에 웹훅 URL로 `https://tx-gateway-service.prod.iamport.co/eximbay-v2`를 등록해 주셔야 합니다.
+- 웹훅 URL을 등록하신 후 받으신 Secret Key를 채널 정보에 입력해 주세요.
+
 ## 결제 창 호출
 
 브라우저 SDK의 `PortOne.requestPayment` 함수를 사용해 결제창을 호출합니다.
@@ -40,3 +45,5 @@ targetVersions:
 - 아래 결제수단의 경우 사용이 제한되므로 결제 연동 시 유의해 주시기 바랍니다.
   - 가상계좌(`P305`) : 호환성 이슈로 추후 지원 예정
   - Klarna(`P197`) : 엑심베이 정책에 따라 신규 결제 사용 불가
+
+- 모바일 앱 내에서 결제를 연동할 경우 `appScheme` 파라미터를 설정하고 `bypass.eximbay_v2.settings.call_from_app` 파라미터를 "Y"로 설정해야 합니다.

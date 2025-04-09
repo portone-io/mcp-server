@@ -88,7 +88,6 @@
 - [우커머스 플러그인](https://developers.portone.io/opi/ko/extra/plugins/wordpress/woocommerce/readme): 포트원 우커머스 플러그인 사용방법을 안내합니다.
 - [정기결제 연동하기](https://developers.portone.io/opi/ko/extra/plugins/wordpress/woocommerce/subscription): 우커머스 플러그인을 통해 정기결제를 연동합니다.
 - [가상계좌 입금통보 URL 설정하기](https://developers.portone.io/opi/ko/extra/plugins/wordpress/woocommerce/vbank): 우커머스 플러그인에서 가상계좌 입금통지 URL을 설정합니다.
-- [프로모션 결제 취소하기](https://developers.portone.io/opi/ko/extra/promotion/refund): 프로모션을 적용하여 승인된 결제건들에 대하여 취소/환불하는 방법을 안내합니다.
 - [결제취소(환불) 연동하기](https://developers.portone.io/opi/ko/integration/cancel/v1/basic): 포트원 결제취소 API를 이용한 결제취소 방법을 안내합니다.
 - [가상계좌 환불하기](https://developers.portone.io/opi/ko/integration/cancel/v1/virtual-account): 가상계좌 입금내역을 환불하는 방법을 확인합니다.
 - [오픈 전 체크리스트](https://developers.portone.io/opi/ko/integration/checklist/readme-v1): 결제 오픈전 자가진단을 해볼수 있는 오픈 전 체크사항 리스트 입니다.
@@ -170,6 +169,7 @@
 - [프로모션 생성하기](https://developers.portone.io/opi/ko/extra/promotion/console-guide): 프로모션 기간, 예산, 할인 조건 등 설정 방법을 안내합니다.
 - [프로모션 결제 연동하기](https://developers.portone.io/opi/ko/extra/promotion/integration): 프로모션 할인금액을 적용하는 방법을 안내합니다.
 - [프로모션](https://developers.portone.io/opi/ko/extra/promotion/intro): 카드 즉시 할인을 쉽게 운영 및 관리할 수 있는 서비스입니다.
+- [프로모션 결제 취소하기](https://developers.portone.io/opi/ko/extra/promotion/refund): 프로모션을 적용하여 승인된 결제건들에 대하여 취소/환불하는 방법을 안내합니다.
 - [스마트 라우팅 - 콘솔 가이드](https://developers.portone.io/opi/ko/extra/smart-routing/console-guide): 멀티PG 환경을 클릭 한 번으로 쉽게 만들 수 있는 결제 트래픽 분산 자동화 서비스 입니다.
 - [스마트 라우팅 - 연동하기](https://developers.portone.io/opi/ko/extra/smart-routing/integration): 멀티PG 환경을 클릭 한 번으로 쉽게 만들 수 있는 결제 트래픽 분산 자동화 서비스 입니다.
 - [스마트 라우팅](https://developers.portone.io/opi/ko/extra/smart-routing/intro): 멀티PG 환경을 클릭 한 번으로 쉽게 만들 수 있는 결제 트래픽 분산 자동화 서비스 입니다.
@@ -189,7 +189,7 @@
 - [고객사 예시](https://developers.portone.io/platform/ko/usages/client)
 - [계약 예시](https://developers.portone.io/platform/ko/usages/contract)
 - [할인 예시](https://developers.portone.io/platform/ko/usages/discount)
-- [추가 수수료 예시](https://developers.portone.io/platform/ko/usages/fee)
+- [추가수수료 예시](https://developers.portone.io/platform/ko/usages/fee)
 - [주문정산 예시](https://developers.portone.io/platform/ko/usages/order)
 - [파트너 예시](https://developers.portone.io/platform/ko/usages/partner)
 - [AI 도구 활용하기](https://developers.portone.io/platform/ko/using-ai-tools): AI 도구를 활용하여 쉽고 빠르게 포트원을 연동하세요. 연동 코드 작성은 물론, 24시간 언제나 관련 질의에 대한 답변을 받을 수 있습니다.
@@ -262,6 +262,8 @@
 - [파트너 정산 자동화 2025-02-13](https://developers.portone.io/release-notes/platform/2025-02-13)
 - [파트너 정산 자동화 2025-03-04](https://developers.portone.io/release-notes/platform/2025-03-04)
 - [파트너 정산 자동화 2025-03-17](https://developers.portone.io/release-notes/platform/2025-03-17)
+- [파트너 정산 자동화 2025-04-03](https://developers.portone.io/release-notes/platform/2025-04-03)
+- [파트너 정산 자동화 2025-04-08](https://developers.portone.io/release-notes/platform/2025-04-08)
 
 ### 블로그
 
@@ -2798,146 +2800,6 @@ targetVersions:
 우커머스 주문내역을 조회하면 해당 주문건이 완료 상태로 변경된 것을 확인할 수 있습니다.
 
 ![](/gitbook-assets/ko/vbank-7.png)
-
-
-# https://developers.portone.io/opi/ko/extra/promotion/refund
-
----
-title: 프로모션 결제 취소하기
-description: 프로모션을 적용하여 승인된 결제건들에 대하여 취소/환불하는 방법을 안내합니다.
-targetVersions:
-  - v1
----
-
-## 프로모션 결제 취소하기
-
-프로모션이 적용된 결제에 대해 결제 취소가 가능합니다.
-결제 취소 시 차감되었던 프로모션 예산은 다시 정책에 알맞게 조정되어 취소 후 잔여 금액에 적용되어야하는 프로모션 금액만큼을
-제한 만큼 복구됩니다.
-
-<div class="hint" data-style="info">
-
-콘솔에서 설정한 **프로모션 예산 미복구** 옵션에 따라 복구 여부가 작동합니다.
-
-예산 복구를 원하지 않으실 경우 프로모션 예산 미복구 옵션을 활성화 시켜주세요.
-
-</div>
-
-<div class="hint" data-style="danger">
-
-결제 취소 이후 잔여 요청 금액이 프로모션 정책에 위반되고 이로 인해 취소 이후 잔여 승인 금액이 현재 잔여 승인 금액보다 커지는 경우가 존재합니다.
-
-해당 경우 취소가 불가능합니다.
-
-- ex) `10,000원 이상 결제 시 10% 할인` 프로모션으로 10,000원 결제 이후 500원 취소 요청.
-  취소 시 프로모션 정책에 위반되어 잔여 승인 금액이 9,500원이어야하지만 최초 실 승인 금액이 9,000원이므로 취소 불가.
-
-</div>
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
-
-### 예제 코드
-
-```ts
-// imp_uid, merchant_uid, amount, checksum, retain_promotion 등 정보를 전달받습니다.
-// 포트원 결제 취소 API 호출
-const onetimeResponse = await fetch("https://api.iamport.kr/payments/cancel", {
-  method: "POST",
-  headers: {
-    Authorization: `Bearer ${ACCESS_TOKEN}`,
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    imp_uid: `imp_XXXXXXXXXXXX`, // 포트원 고유 주문번호
-    merchant_uid: `order_id_XXXXXXXXXXXX`, // 고객사 주문번호
-    amount: number, // 취소 요청 금액
-    checksum: number, // 현 시점 취소 가능한 잔액
-    reason: "단순 변심", // 취소 사유
-    retain_promotion: boolean, // 프로모션 혜택 유지 여부
-    // 중략...
-  }),
-});
-```
-
-### 주요 파라미터
-
-- imp\_uid: string
-
-  **포트원 고유 주문번호**
-
-  - 취소할 결제건의 포트원 고유 주문번호를 전달합니다.
-  - `imp_uid`와 `merchant_uid` 둘 중 하나는 필수입니다.
-
-- merchant\_uid: string
-
-  **고객사 주문번호**
-
-  - 취소할 결제건의 결제 당시 설정한 고객사의 주문번호를 전달합니다.
-  - `imp_uid`와 `merchant_uid` 둘 중 하나는 필수입니다.
-
-- amount?: integer
-
-  **결제 취소 요청 금액**
-
-  - (부분)취소 요청 금액을 전달합니다.
-  - 미입력시 잔여 취소 가능 금액만큼 전체 취소됩니다.
-
-  <div class="hint" data-style="danger">
-
-  취소 요청 금액은 프로모션 적용 금액을 고려하지 않고 전달합니다.
-
-  ex) 10,000원 결제에 10% 할인 프로모션이 적용된 결제(실 승인 금액은 9,000원)에 대해 전체 취소 시 `amount`는 `10000`으로 전달.
-
-  </div>
-
-- checksum?: integer
-
-  **현 시점 취소 가능한 잔액**
-
-  - 현 시점 취소 가능한 잔액을 전달합니다.
-  - 고객사의 계산 상 남아있는 잔여 금액과 포트원 내부 데이터 상 잔여 금액을 비교하며 불일치할 시 취소를 진행하지 않습니다.
-
-  <div class="hint" data-style="danger">
-
-  취소 가능한 잔액 역시 프로모션 적용 금액을 고려하지 않고 전달합니다.
-
-  ex) 20,000원 결제에 10% 할인 프로모션이 적용된 결제(실 승인 금액은 18,000원)에 대해 `amount`를 `10000`로 하여 1차 부분취소 완료.(실 취소 승인 금액은 9,000원)
-
-  2차 부분 취소 시 `checksum`은 `10000`으로 전달.
-
-  </div>
-
-- reason?: string
-
-  **취소 사유**
-
-- retain\_promotion?: boolean\*\*
-
-  **프로모션 혜택 유지 여부**
-
-  - 프로모션 결제 취소 이후 잔여 금액이 프로모션 정책에 위반되더라도 정책을 계속해서 유지할지 여부를 전달합니다. (default: `false`)
-
-  <div class="hint" data-style="warning">
-
-  프로모션 할인이 적용된 거래 건을 여러번 부분 취소하는 경우 처음 선택한 취소 옵션으로만 가능합니다. 예를 들어 \[프로모션 혜택 유지]로 처음 부분 취소한 경우 동일 거래 건에 대해 부분 취소를 진행하는 경우 \[프로모션 혜택 유지] 옵션으로만 취소가 가능합니다.
-
-  </div>
-
-  <details>
-
-  <summary> 프로모션 혜택 유지 여부 예시 </summary>
-
-  - 프로모션 혜택 유지 (`true`): 결제 부분 취소시 잔여 결제 금액이 할인 적용 기준 금액보다 적더라도 프로모션 할인 혜택이 그대로 유지됩니다. 할인 혜택을 동일한 수준으로 유지하기 위해 기존에 적용된 할인 조건을 할인율로 환산하여 적용하게 됩니다.
-    - ex1) 프로모션 할인 조건이 `5천원 이상 결제시 10% 할인`일 때, 6000원 결제 요청시 프로모션 할인이 적용되어 5400원이 실제 결제됩니다. 이 때, 2000원 부분 취소시 **프로모션 혜택 조정** 옵션을 선택한 경우 프로모션 조건에 부합하지 않아 실제 1400원이 결제 취소 요청되며, 결제 완료 금액은 4000원이 됩니다.
-    - ex2) 프로모션 할인 조건이 `5천원 이상 결제시 1000원 할인`일 때, 6000원 결제 요청시 프로모션 할인이 적용되어 5000원이 실제 결제됩니다. 이 때, 2000원 부분 취소시 **프로모션 혜택 조정** 옵션을 선택한 경우 프로모션 조건에 부합하지 않아 실제 1000원이 결제 취소 요청되며, 결제 완료 금액은 4000원이 됩니다.
-
-  - 프로모션 혜택 조정 (`false`) : 결제 부분 취소시 잔여 결제 금액이 할인 적용 기준 금액보다 적은 경우 잔여 결제 금액에 맞추어 프로모션 할인 금액이 차감되어 적용됩니다.
-    - ex1) 프로모션 할인 조건이 `5천원 이상 결제시 10% 할인`일 때, 6000원 결제 요청시 프로모션 할인이 적용되어 5400원이 실제 결제됩니다. 이 때, 2000원 부분 취소시 **프로모션 혜택 유지** 옵션을 선택한 경우 실제 1800원이 결제 취소 요청되며, 결제 완료 금액은 3600원이 됩니다. (주문금액 6000원에서 2000원 부분 취소시 주문금액은 4000원이며 기존 할인 조건인 10% 할인이 유지되어 실 결제 금액은 3600원이 됩니다.)
-    - ex2) 프로모션 할인 조건이 `5천원 이상 결제시 1000원 할인`일 때 6000원 결제 요청시 프로모션 할인이 적용되어 5000원이 실제 결제됩니다. 이 때, 2000원 부분 취소시 **프로모션 혜택 유지** 옵션을 선택한 경우 실제 1800원이 결제 취소 요청되며, 결제 완료 금액은 3200원이 됩니다. (본 예시에서 기존에 적용된 할인 조건인 5천원 이상 결제시 1000원 할인은 20% 할인으로 환산됩니다. 주문금액 6000원에서 2000원 부분 취소시 남은 주문금액은 4000원이므로, 취소 이후 결제 완료 금액은 3200원이 되고 실제 취소 금액은 1800원이 됩니다.)
-
-  </details>
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
 
 
 # https://developers.portone.io/opi/ko/integration/cancel/v1/basic
@@ -5554,6 +5416,8 @@ curl -H "Content-Type: application/json" \
 (관련 이미지 첨부)
 
 (관련 이미지 첨부)
+
+- app\_scheme 파라미터는 카카오페이 정책에 따라 iOS에서만 사용 가능합니다.
 
 </div>
 
@@ -8890,7 +8754,7 @@ IMP.request_pay(
       kcpQuick: {
         //KCP퀵페이 설정 정보
         actionType: "Register", //결제수단 등록
-        memberCI: "djkDFJ45dFndkl", //본인인증 후 전달된 CI 값
+        encryptedCI: "encrypted_ci", // 본인인증 후 전달받은 CI를 암호화한 값
         memeberID: "use_your_unique_id", //사용자에 대한 고유 식별값
       },
     },
@@ -8925,7 +8789,7 @@ IMP.request_pay(
       kcpQuick: {
         //KCP퀵페이 설정 정보
         actionType: "Deregister", //결제수단 삭제
-        memberCI: "djkDFJ45dFndkl", //결제수단 등록시 입력한 CI 값
+        encryptedCI: "encrypted_ci", // 본인인증 후 전달받은 CI를 암호화한 값
         memeberID: "use_your_unique_id", //사용자에 대한 고유 식별값
       },
     },
@@ -8964,7 +8828,7 @@ IMP.request_pay(
       kcpQuick: {
         //KCP퀵페이 설정 정보
         actionType: "Pay", //결제 요청
-        memberCI: "djkDFJ45dFndkl", //결제수단 등록시 입력한 CI 값
+        encryptedCI: "encrypted_ci", // 본인인증 후 전달받은 CI를 암호화한 값
         memeberID: "use_your_unique_id", //사용자에 대한 고유 식별값
       },
     },
@@ -9003,7 +8867,7 @@ IMP.request_pay(
       kcpQuick: {
         //KCP퀵페이 설정 정보
         actionType: "PinChange", //PIN번호 변경
-        memberCI: "djkDFJ45dFndkl", //결제수단 등록시 입력한 CI 값
+        encryptedCI: "encrypted_ci", // 본인인증 후 전달받은 CI를 암호화한 값
         memeberID: "use_your_unique_id", //사용자에 대한 고유 식별값
       },
     },
@@ -9038,7 +8902,7 @@ IMP.request_pay(
       kcpQuick: {
         //KCP퀵페이 설정 정보
         actionType: "PinReset", //PIN번호 초기화
-        memberCI: "djkDFJ45dFndkl", //결제수단 등록시 입력한 CI 값
+        encryptedCI: "encrypted_ci", // 본인인증 후 전달받은 CI를 암호화한 값
         memeberID: "use_your_unique_id", //사용자에 대한 고유 식별값
       },
     },
@@ -9077,7 +8941,7 @@ IMP.request_pay(
       kcpQuick: {
         //KCP퀵페이 설정 정보
         actionType: "PhoneChange", //등록된 휴대폰 번호 변경
-        memberCI: "djkDFJ45dFndkl", //본인인증 후 전달된 CI 값
+        encryptedCI: "encrypted_ci", // 본인인증 후 전달받은 CI를 암호화한 값
         memeberID: "use_your_unique_id", //사용자에 대한 고유 식별값
       },
     },
@@ -9116,7 +8980,7 @@ IMP.request_pay(
       kcpQuick: {
         //KCP퀵페이 설정 정보
         actionType: "Terminate", //유저 및 결제수단 삭제
-        memberCI: "djkDFJ45dFndkl", //본인인증 후 전달된 CI 값
+        encryptedCI: "encrypted_ci", // 본인인증 후 전달받은 CI를 암호화한 값
         memeberID: "use_your_unique_id", //사용자에 대한 고유 식별값
       },
     },
@@ -9220,9 +9084,9 @@ IMP.request_pay(
       - PhoneChange : 전화번호 변경
       - Terminate : 결제 수단 해지
 
-    - memberCI: string
+    - encryptedCI: string
 
-      **본인인증 CI값**
+      **암호화된 본인인증 CI**
 
     - memberID: string
 
@@ -9274,6 +9138,33 @@ IMP.request_pay(
 
 <details>
 
+<summary>`encryptedCI` 파라미터 안내</summary>
+
+본인인증 후 전달받은 CI 값을 아래 방법으로 암호화하여 입력해야합니다.
+
+포트원 계정의 [REST API Secret](https://developers.portone.io/api/rest-v1/auth?v=v1) 을 SHA-256 해시 알고리즘으로 처리하여 암호화 키를 생성한 후, 해당 키를 사용해 CI 데이터를 AES-256-ECB 방식으로 암호화해야 합니다.
+암호화된 결과는 Base64로 인코딩하여 encryptedCI 파라미터 값으로 전달합니다.
+
+```pseudo
+FUNCTION encryptCi(ci, apiSecret):
+# Step 1: SHA-256으로 API Secret을 해시하여 암호화 키 생성
+key = SHA256(apiSecret)
+
+# Step 2: AES-256-ECB 알고리즘으로 CI 데이터를 암호화
+encryptedData = AES256Encrypt(data = ci, key = key, mode = ECB)
+
+# Step 3: 암호화된 데이터를 Base64로 인코딩
+base64EncodedData = Base64Encode(encryptedData)
+
+# Step 4: Base64 인코딩된 결과 반환
+RETURN base64EncodedData
+END FUNCTION
+```
+
+</details>
+
+<details>
+
 <summary>결제수단을 여러개 등록할 수 있습니다.</summary>
 
 한 고객에게 여러개의 결제수단을 등록할 수 있습니다.
@@ -9286,7 +9177,7 @@ IMP.request_pay(
 
 <summary>결제수단 삭제 요청시 등록할 때 입력한 정보를 동일하게 입력해야 합니다.</summary>
 
-결제수단 삭제(actionType:Deregister) 요청시 결제수단 등록할 때 사용된 `customer_uid` + `memberCI` + `memberID` + `deviceID` + `noAuth` 조합을
+결제수단 삭제(actionType:Deregister) 요청시 결제수단 등록할 때 사용된 `customer_uid` + `encryptedCI` + `memberID` + `deviceID` + `noAuth` 조합을
 동일하게 전송해야 합니다.
 
 </details>
@@ -12165,9 +12056,24 @@ IMP.request_pay(
 
     <div class="hint" data-style="warning">
 
-    **2024년 6월부터 필수 파라미터로 변경되었습니다.** (신규 계약 고객의 경우 해당 파라미터를 누락한 채
-    결제 요청하실 경우, 결제가 중단될 수 있습니다. 다만, 기존 고객의 경우 당분간은 해당 파라미터를 제외한 채
-    결제가 가능하오나 자세한 사항은 헥토파이낸셜에 문의해 주시기 바랍니다.)
+    본인인증 후 전달받은 CI 값을 AES-256-ECB 방식을 사용해 암호화하여 16진수로 인코딩한 결과를 입력해야합니다.
+    암호화 키(key)는 포트원 관리자콘솔 채널 등록 시 "암호화 키" 항목에 입력한 값을 사용합니다.
+
+    ```pseudo
+    INPUT: ci (string), key (string)
+    OUTPUT: custCI (string)
+
+    BEGIN
+    # Step 1: CI 데이터를 AES-256-ECB 방식으로 암호화
+    binaryData ← AES256ECB(key, ci)
+
+    # Step 2: 암호화된 데이터를 16진수 문자열로 변환
+    custCI ← ConvertToHex(binaryData)
+
+    # Step 3: 결과 반환
+    RETURN custCI
+    END
+    ```
 
     </div>
 
@@ -12290,9 +12196,24 @@ IMP.request_pay(
 
     <div class="hint" data-style="warning">
 
-    **2024년 6월부터 필수 파라미터로 변경되었습니다.** (신규 계약 고객의 경우 해당 파라미터를 누락한 채
-    결제 요청하실 경우, 결제가 중단될 수 있습니다. 다만, 기존 고객의 경우 당분간은 해당 파라미터를 제외한 채
-    결제가 가능하오나 자세한 사항은 헥토파이낸셜에 문의해 주시기 바랍니다.)
+    본인인증 후 전달받은 CI 값을 AES-256-ECB 방식을 사용해 암호화하여 16진수로 인코딩한 결과를 입력해야합니다.
+    암호화 키(key)는 포트원 관리자콘솔 채널 등록 시 "암호화 키" 항목에 입력한 값을 사용합니다.
+
+    ```pseudo
+    INPUT: ci (string), key (string)
+    OUTPUT: custCI (string)
+
+    BEGIN
+    # Step 1: CI 데이터를 AES-256-ECB 방식으로 암호화
+    binaryData ← AES256ECB(key, ci)
+
+    # Step 2: 암호화된 데이터를 16진수 문자열로 변환
+    custCI ← ConvertToHex(binaryData)
+
+    # Step 3: 결과 반환
+    RETURN custCI
+    END
+    ```
 
     </div>
 
@@ -15993,7 +15914,7 @@ IMP.request_pay(
   **결제수단 구분코드**
 
   - card(신용카드)
-  - trans(실시간 계좌이체)
+  - transfer(퀵계좌이체)
   - vbank(가상계좌)
   - phone(휴대폰소액결제)
   - applepay(애플페이)
@@ -23857,6 +23778,328 @@ targetVersions:
 
 [프로모션 결제 연동하기](https://developers.portone.io/opi/ko/extra/promotion/integration)
 
+[프로모션 결제 취소하기](https://developers.portone.io/opi/ko/extra/promotion/refund)
+
+
+# https://developers.portone.io/opi/ko/extra/promotion/refund
+
+---
+title: 프로모션 결제 취소하기
+description: 프로모션을 적용하여 승인된 결제건들에 대하여 취소/환불하는 방법을 안내합니다.
+targetVersions:
+  - v1
+  - v2
+---
+
+## 프로모션 결제 취소하기
+
+프로모션이 적용된 결제에 대해 결제 취소가 가능합니다.
+결제 취소 시 취소 정책에 따라 적용된 프로모션 금액 중 회수된 금액만큼 프로모션 예산 금액으로 복구됩니다.
+
+<div class="hint" data-style="info">
+
+콘솔에서 프로모션 생성시 설정한 **프로모션 예산 미복구** 옵션에 따라 예산 복구 여부가 결정됩니다.
+
+예산 복구를 원하지 않는 경우 프로모션 예산 미복구 옵션을 **활성화** 상태로 설정해 주세요.
+
+</div>
+
+<div class="hint" data-style="danger">
+
+결제 취소시 경우에 따라 결제 건이 프로모션 정책에 해당되지 않을 수 있습니다.
+이로 인해 취소 이후 잔여 승인 금액 (잔여 실 결제 금액)이 현재 잔여 승인 금액보다 커질 수 있으며, 이런 경우 취소가 불가능합니다.
+
+- ex) `10,000원 이상 결제 시 10% 할인` 프로모션을 적용한 후 10,000원을 결제 요청한 경우
+  실제 9,000원이 결제됩니다. 이후 500원을 취소 요청하게 되면 프로모션 정책에 해당하지 않게 되고,
+  실제 결제되어야 하는 금액이 9,500원이 되어야 합니다.
+  하지만 기존에 실제 승인된 금액이 9,000원이므로 이런 경우 결제 취소가 불가합니다.
+
+</div>
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+
+### 예제 코드
+
+```ts
+// imp_uid, merchant_uid, amount, checksum, retain_promotion 등 정보를 전달받습니다.
+// 포트원 결제 취소 API 호출
+const onetimeResponse = await fetch("https://api.iamport.kr/payments/cancel", {
+  method: "POST",
+  headers: {
+    Authorization: `Bearer ${ACCESS_TOKEN}`,
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    imp_uid: `imp_XXXXXXXXXXXX`, // 포트원 고유 주문번호
+    merchant_uid: `order_id_XXXXXXXXXXXX`, // 고객사 주문번호
+    amount: number, // 취소 요청 금액
+    checksum: number, // 현 시점 취소 가능한 잔액
+    reason: "단순 변심", // 취소 사유
+    retain_promotion: boolean, // 프로모션 혜택 유지 여부
+    // 중략...
+  }),
+});
+```
+
+### 주요 파라미터
+
+- imp\_uid: string
+
+  **포트원 고유 주문번호**
+
+  - 취소할 결제건의 포트원 고유 주문번호를 전달합니다.
+  - `imp_uid`와 `merchant_uid` 둘 중 하나는 필수입니다.
+
+- merchant\_uid: string
+
+  **고객사 주문번호**
+
+  - 취소할 결제건의 결제 당시 설정한 고객사의 주문번호를 전달합니다.
+  - `imp_uid`와 `merchant_uid` 둘 중 하나는 필수입니다.
+
+- amount?: integer
+
+  **결제 취소 요청 금액**
+
+  - (부분)취소 요청 금액을 전달합니다.
+  - 미입력시 잔여 취소 가능 금액만큼 전체 취소됩니다.
+
+  <div class="hint" data-style="danger">
+
+  취소 요청 금액은 프로모션 적용 금액을 고려하지 않고 전달합니다.
+
+  ex) `10,000원 결제에 10% 할인` 프로모션이 적용되어 10,000을 결제 요청한 경우 실 승인 금액은 9,000원이고,
+  이에 대해 전체 취소를 요청하는 경우 `amount`는 `10000`으로 전달해야 합니다.
+
+  </div>
+
+- checksum?: integer
+
+  **현 시점 취소 가능한 잔액**
+
+  - 현 시점 취소 가능한 잔액을 전달합니다.
+  - 고객사의 계산 상 남아있는 잔여 금액과 포트원 내부 데이터 상 잔여 금액을 비교하며 불일치할 시 취소를 진행하지 않습니다.
+
+  <div class="hint" data-style="danger">
+
+  취소 요청 금액은 프로모션이 적용되지 않은 주문금액을 기준으로 전달합니다.
+
+  ex) 20,000원 결제에 10% 할인 프로모션이 적용된 결제(실 승인 금액은 18,000원)에 대해 `amount`를 `10000`로 하여 1차 부분취소 완료.(실 취소 승인 금액은 9,000원)
+
+  2차 부분 취소 시 `checksum`은 `10000`으로 전달.
+
+  </div>
+
+- reason?: string
+
+  **취소 사유**
+
+- retain\_promotion?: boolean
+
+  **프로모션 혜택 유지 여부**
+
+  - 프로모션 결제 취소 이후 잔여 금액이 프로모션 정책에 위반되더라도 정책을 계속해서 유지할지 여부를 전달합니다. (default: `false`)
+
+  <div class="hint" data-style="warning">
+
+  프로모션 할인이 적용된 거래 건을 여러번 부분 취소하는 경우 처음 선택한 취소 옵션으로만 가능합니다. 예를 들어 \[프로모션 혜택 유지]로 처음 부분 취소한 경우 동일 거래 건에 대해 부분 취소를 진행하는 경우 \[프로모션 혜택 유지] 옵션으로만 취소가 가능합니다.
+
+  </div>
+
+  - \<Parameter.Type>true\</Parameter.Type>
+
+    **프로모션 할인 혜택 유지**
+
+    부분 취소 후 남은 결제 금액이 원래 프로모션 적용 기준보다 낮아지더라도, 최초 적용된 할인 혜택을 그대로 유지합니다.
+    이 경우 최초 할인 적용 시 산출된 할인율 또는 할인액을 기준으로, 부분 취소 후 남은 주문금액에 동일 할인 비율을
+    재적용하여 최종 결제 금액을 계산합니다.
+
+    - **할인율 적용 예시:**
+      - **조건:** '5천원 이상 결제 시 10% 할인'
+
+      - **처리:**
+        1. 주문금액 6,000원에 10% 할인 적용 → 최종 결제액: 6,000원 x 90% = 5,400원
+        2. 2,000원 부분 취소 시 남은 주문금액: 6,000원 - 2,000원 = 4,000원
+        3. 유지 옵션에 따라 10% 할인 재적용: 4,000원 x 10% = 400원 할인
+        4. 재계산 최종 결제액: 4,000원 - 400원 = 3,600원
+        5. **취소 요청 금액:** 5,400원 - 3,600원 = 1,800원
+
+    - **할인액 적용 예시:**
+      - **조건:** '5천원 이상 결제 시 1,000원 할인'
+
+      - **처리:**
+        1. 주문금액 6,000원에서 1,000원 할인 적용 → 최종 결제액: 6,000원 - 1,000원 = 5,000원
+        2. 2,000원 부분 취소 시 남은 주문금액: 6,000원 - 2,000원 = 4,000원
+        3. 할인 효과는 5,000원 기준으로 1,000원 할인, 즉 20% 할인으로 해석됨
+        4. 유지 옵션에 따라 20% 할인 재적용: 4,000원 x 20% = 800원 할인
+        5. 재계산 최종 결제액: 4,000원 - 800원 = 3,200원
+        6. **취소 요청 금액:** 5,000원 - 3,200원 = 1,800원
+
+  - \<Parameter.Type>false\</Parameter.Type>
+
+    **프로모션 할인 혜택 조정**
+
+    부분 취소 후 남은 주문금액이 원래 프로모션 적용 기준(예: 5천원 이상)에 미달하면, 할인 혜택이 제거되어
+    재적용되지 않습니다. 이 경우 남은 주문금액에서 할인 혜택을 적용하지 않고, 할인 미적용 금액 그대로 결제 금액을
+    산출합니다.
+
+    - **할인율 적용 예시:**
+      - **조건:** '5천원 이상 결제 시 10% 할인'
+
+      - **처리:**
+        1. 주문금액 6,000원에 10% 할인 적용 → 최종 결제액: 6,000원 x 90% = 5,400원
+        2. 2,000원 부분 취소 시 남은 주문금액: 6,000원 - 2,000원 = 4,000원
+        3. 할인 조건 미충족으로 할인 혜택 제거 → 재계산 최종 결제액: 4,000원
+        4. **취소 요청 금액:** 5,400원 - 4,000원 = 1,400원
+
+    - **할인액 적용 예시:**
+      - **조건:** '5천원 이상 결제 시 1,000원 할인'
+
+      - **처리:**
+        1. 주문금액 6,000원에서 1,000원 할인 적용 → 최종 결제액: 6,000원 - 1,000원 = 5,000원
+        2. 2,000원 부분 취소 시 남은 주문금액: 6,000원 - 2,000원 = 4,000원
+        3. 할인 조건 미충족으로 할인 혜택 제거 → 재계산 최종 결제액: 4,000원
+        4. **취소 요청 금액:** 5,000원 - 4,000원 = 1,000원
+
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+
+### 예제 코드
+
+```ts
+import { GetPaymentError, PaymentClient } from "@portone/server-sdk/payment";
+
+const portone = PaymentClient({ secret: PORTONE_API_SECRET });
+
+async function cancelPayment() {
+  try {
+    // 포트원 결제 취소 API 호출
+    const cancelPaymentResponse = await portone.cancelPayment({
+      paymentId: "1234567890",
+      reason: "단순 변심",
+      amount: 1000,
+      promotionDiscountRetainOption: "RETAIN",
+    });
+    return cancelPaymentResponse;
+  } catch (e) {
+    if (e instanceof CancelPaymentError) {
+      return e.data;
+    }
+    throw e;
+  }
+}
+```
+
+### 주요 파라미터
+
+자세한 파라미터 구성은 [결제 취소 API 문서](https://developers.portone.io/api/rest-v2/payment?v=v2#post%20%2Fpayments%2F%7BpaymentId%7D%2Fcancel)를 참고해주시기 바랍니다.
+
+- paymentId: string
+
+  **결제 건 아이디**
+
+  - 취소할 결제건의 결제 아이디 입니다.
+
+- storeId?: string
+
+  **상점 아이디**
+
+  접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 토큰에 담긴 상점 아이디로 취소 요청됩니다.
+
+- amount?: integer
+
+  **결제 취소 요청 금액**
+
+  - (부분)취소 요청 금액을 전달합니다.
+  - 미입력시 잔여 취소 가능 금액만큼 전체 취소됩니다.
+
+  <div class="hint" data-style="danger">
+
+  취소 요청 금액은 프로모션이 적용되지 않은 주문금액을 기준으로 전달합니다.
+
+  ex) `10,000원 결제에 10% 할인` 프로모션이 적용되어 10,000을 결제 요청한 경우 실 승인 금액은 9,000원이고,
+  이에 대해 전체 취소를 요청하는 경우 `amount`는 `10000`으로 전달해야 합니다.
+
+  </div>
+
+- reason?: string
+
+  **취소 사유**
+
+- promotionDiscountRetainOption?: <>
+  &#x20; \<Parameter.Type>"RETAIN"\</Parameter.Type>
+  &#x20; {" | "}
+  &#x20; \<Parameter.Type>"RELEASE"\</Parameter.Type>
+  \</>
+
+  **프로모션 혜택 유지 여부**
+
+  - 프로모션 결제 취소 이후 잔여 금액이 프로모션 정책에 위반되더라도 정책을 계속해서 유지할지 여부를 전달합니다. (기본값: "RELEASE")
+
+  <div class="hint" data-style="warning">
+
+  프로모션 할인이 적용된 거래 건을 여러번 부분 취소하는 경우 처음 선택한 취소 옵션으로만 가능합니다.
+  예를 들어 \[프로모션 혜택 유지]로 처음 부분 취소한 경우 동일 거래 건에 대해 부분 취소를 진행하는 경우 \[프로모션 혜택 유지] 옵션으로만 취소가 가능합니다.
+
+  </div>
+
+  - \<Parameter.Type>"RETAIN"\</Parameter.Type>
+
+    **프로모션 할인 혜택 유지**
+
+    부분 취소 후 남은 결제 금액이 원래 프로모션 적용 기준보다 낮아지더라도, 최초 적용된 할인 혜택을 그대로 유지합니다.
+    이 경우 최초 할인 적용 시 산출된 할인율 또는 할인액을 기준으로, 부분 취소 후 남은 주문금액에 동일 할인 비율을
+    재적용하여 최종 결제 금액을 계산합니다.
+
+    - **할인율 적용 예시:**
+      - **조건:** '5천원 이상 결제 시 10% 할인'
+
+      - **처리:**
+        1. 주문금액 6,000원에 10% 할인 적용 → 최종 결제액: 6,000원 x 90% = 5,400원
+        2. 2,000원 부분 취소 시 남은 주문금액: 6,000원 - 2,000원 = 4,000원
+        3. 유지 옵션에 따라 10% 할인 재적용: 4,000원 x 10% = 400원 할인
+        4. 재계산 최종 결제액: 4,000원 - 400원 = 3,600원
+        5. **취소 요청 금액:** 5,400원 - 3,600원 = 1,800원
+
+    - **할인액 적용 예시:**
+      - **조건:** '5천원 이상 결제 시 1,000원 할인'
+
+      - **처리:**
+        1. 주문금액 6,000원에서 1,000원 할인 적용 → 최종 결제액: 6,000원 - 1,000원 = 5,000원
+        2. 2,000원 부분 취소 시 남은 주문금액: 6,000원 - 2,000원 = 4,000원
+        3. 할인 효과는 5,000원 기준으로 1,000원 할인, 즉 20% 할인으로 해석됨
+        4. 유지 옵션에 따라 20% 할인 재적용: 4,000원 x 20% = 800원 할인
+        5. 재계산 최종 결제액: 4,000원 - 800원 = 3,200원
+        6. **취소 요청 금액:** 5,000원 - 3,200원 = 1,800원
+
+  - \<Parameter.Type>"RELEASE"\</Parameter.Type>
+
+    **프로모션 할인 혜택 조정**
+
+    부분 취소 후 남은 주문금액이 원래 프로모션 적용 기준보다 낮아지면, 할인 혜택이 제거됩니다 .
+    이 경우 남은 주문금액에서 할인 혜택을 적용하지 않고, 할인 미적용 금액 그대로 결제 금액을 산출합니다.
+
+    - **할인율 적용 예시:**
+      - **조건:** '5천원 이상 결제 시 10% 할인'
+
+      - **처리:**
+        1. 주문금액 6,000원에 10% 할인 적용 → 최종 결제액: 6,000원 x 90% = 5,400원
+        2. 2,000원 부분 취소 시 남은 주문금액: 6,000원 - 2,000원 = 4,000원
+        3. 할인 조건 미충족으로 할인 혜택 제거 → 재계산 최종 결제액: 4,000원
+        4. **취소 요청 금액:** 5,400원 - 4,000원 = 1,400원
+
+    - **할인액 적용 예시:**
+      - **조건:** '5천원 이상 결제 시 1,000원 할인'
+
+      - **처리:**
+        1. 주문금액 6,000원에서 1,000원 할인 적용 → 최종 결제액: 6,000원 - 1,000원 = 5,000원
+        2. 2,000원 부분 취소 시 남은 주문금액: 6,000원 - 2,000원 = 4,000원
+        3. 할인 조건 미충족으로 할인 혜택 제거 → 재계산 최종 결제액: 4,000원
+        4. **취소 요청 금액:** 5,000원 - 4,000원 = 1,000원
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
 
 # https://developers.portone.io/opi/ko/extra/smart-routing/console-guide
 
@@ -25302,8 +25545,8 @@ API 빌링키 발급 요청 시 스마트 라우팅 그룹 아이디를 지정�
 - **(구) 나이스페이먼츠** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
 - **NHN KCP** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
 - **KG 이니시스** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
-- **토스페이먼츠(신모듈)** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
-- **토스페이먼츠(구모듈)** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
+- **토스페이먼츠(신모듈)** : 카드 / 퀵계좌이체 / 가상계좌 / 휴대폰 소액결제
+- **토스페이먼츠(구모듈)** : 카드 / 퀵계좌이체 / 가상계좌 / 휴대폰 소액결제
 - **스마트로(신모듈)** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
 - **스마트로(구모듈)** : 카드 / 실시간 계좌이체 / 가상계좌
 - **다날** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
@@ -25345,7 +25588,7 @@ API 빌링키 발급 요청 시 스마트 라우팅 그룹 아이디를 지정�
 
 - **나이스페이먼츠** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
 - **KG이니시스** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
-- **토스페이먼츠** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
+- **토스페이먼츠** : 카드 / 퀵계좌이체 / 가상계좌 / 휴대폰 소액결제
 - **한국결제네트웍스(KPN)** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
 - **KSNET** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
 - **스마트로** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
@@ -26427,6 +26670,19 @@ DI\_CODE는 12자리로 고객사에서 자체적으로 사이트(서비스)를 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
 
 </details>
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+
+<details>
+
+<summary>페이레터 해외결제</summary>
+
+1. 페이레터 계약 완료 이후, 페이레터로부터 전달 받은 StoreID, API Key값을 포트원 콘솔에서 채널 추가 시\
+   `[StoreID]`, `[API Key]` 항목에 입력한 후 저장을 클릭합니다.
+
+</details>
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
 
 ## <span id="integration-identifiers">4. 포트원 연동정보 확인하기</span>
 
@@ -27680,7 +27936,7 @@ description: ''
 전반적인 프로세스는 다음과 같으며 포트원의 결제 서비스를 이용하고 있다고 가정합니다.
 
 - 포트원 고객사는 API/콘솔을 통해 **파트너와 포트원 고객사간의 계약을 등록**합니다.
-  - 중개 수수료, 정산 주기, 추가 수수료 등 정산정보를 등록합니다.
+  - 중개수수료, 정산 주기, 추가수수료 등 정산정보를 등록합니다.
 
 - 포트원 고객사는 API/콘솔을 통해 **파트너(하위셀러)를 등록**합니다.
   - 파트너 아이디, 파트너 계좌 등 파트너 정보를 등록합니다.
@@ -27906,7 +28162,7 @@ description: ''
 
 ### 🛒 커머스 마켓플레이스
 
-- 셀러가 마켓플레이스에 입점하여 상품을 판매하는 경우, 셀러에게 중개 수수료 및 할인분담금 등을 정산하는 경우
+- 셀러가 마켓플레이스에 입점하여 상품을 판매하는 경우, 셀러에게 중개수수료 및 할인분담금 등을 정산하는 경우
 - 마케팅 채널 비용, 풀필먼트와 같이 추가로 발생하는 비용을 정산하는 경우
 
 ### 🖥 온라인 강의 플랫폼
@@ -27919,7 +28175,7 @@ description: ''
 
 ### 🤝 중고거래 플랫폼
 
-- 앱에서 이루어진 거래건당 중개 수수료를 정산하는 경우
+- 앱에서 이루어진 거래건당 중개수수료를 정산하는 경우
 - 매입상품 플랫폼 커머스, 주기적으로 매입하는 상품에 대한 정산을 처리하는 경우
 
 ## ✔️ 왜 파트너 정산 자동화 서비스를 꼭 써야할까요?
@@ -27934,7 +28190,7 @@ description: ''
 ### 단순 중개수수료 처리부터 다양한 파트너 과금 모델 지원
 
 - 쿠폰 및 포인트에 적용되는 할인 분담율
-- 마케팅 비용 분담, 풀필먼트 수수료와 같은 주문별 추가 수수료
+- 마케팅 비용 분담, 풀필먼트 수수료와 같은 주문별 추가수수료
 - 정산 시 수식 편집 가능
 
 ### 뱅킹앱 엑셀 다운로드 및 지급대행을 통한 이체 자동화
@@ -28189,7 +28445,7 @@ axios
 # https://developers.portone.io/platform/ko/usages/fee
 
 ---
-title: 추가 수수료 예시
+title: 추가수수료 예시
 description: ''
 ---
 
@@ -28230,7 +28486,7 @@ fee_A = requests.post('https://api.portone.io/platform/additional-fee-policies',
 ```js
 const axios = require("axios");
 const additionalfees_payload = {
-  id: "addtional_fee_3", //추가 수수료 아이디
+  id: "addtional_fee_3", //추가수수료 아이디
   fee: {
     fixedRate: 5, // 5%분담
   },
@@ -28397,10 +28653,10 @@ axios
       "settlement": 8900, //최종 정산금액
       "payment": 10000, //결제금액
       "order": 10000, //주문금액
-      "platformFee": 1000, //중개 수수료 10%
-      "platformFeeVat": 100, //중개수수료 부가세
-      "additionalFee": 0, //추가 수수료
-      "additionalFeeVat": 0, //추가 수수료 부가세
+      "platformFee": 1000, //중개수수료 10%
+      "platformFeeVat": 100, //중개수수료 부가세 부담금
+      "additionalFee": 0, //추가수수료
+      "additionalFeeVat": 0, //추가수수료 부가세 부담금
       "discount": 0, //할인금액
       "discountShare": 0 //할인금액 중 파트너가 부담하는 금액
     },
@@ -28550,10 +28806,10 @@ axios
       "settlement": 4450, //최종 정산취소금액
       "payment": 5000, //결제 취소 금액
       "order": 5000, //주문 취소 금액
-      "platformFee": 500, //중개 수수료 10%
-      "platformFeeVat": 50, //중개수수료 부가세
-      "additionalFee": 0, //추가 수수료
-      "additionalFeeVat": 0, //추가 수수료 부가세
+      "platformFee": 500, //중개수수료 10%
+      "platformFeeVat": 50, //중개수수료 부가세 부담금
+      "additionalFee": 0, //추가수수료
+      "additionalFeeVat": 0, //추가수수료 부가세 부담금
       "discount": 0, //할인금액
       "discountShare": 0 //할인금액 중 파트너가 부담하는 금액
     },
@@ -28624,7 +28880,7 @@ orderTransferData ={
         },
         "quantity": 5,
         "discounts": [], # 해당 상품에만 적용되는 할인정보
-        "additionalFees": [], # 해당 상품에만 적용되는 추가 수수료 정보
+        "additionalFees": [], # 해당 상품에만 적용되는 추가수수료 정보
       },
       {
         "product": {
@@ -28635,7 +28891,7 @@ orderTransferData ={
         },
         "quantity": 1,
         "discounts": [], # 해당 상품에만 적용되는 할인정보
-        "additionalFees": [], # 해당 상품에만 적용되는 추가 수수료 정보
+        "additionalFees": [], # 해당 상품에만 적용되는 추가수수료 정보
       }
     ]
   }
@@ -28671,7 +28927,7 @@ const orderTransferData = {
         },
         quantity: 5,
         discounts: [], // 해당 상품에만 적용되는 할인정보
-        additionalFees: [], // 해당 상품에만 적용되는 추가 수수료 정보
+        additionalFees: [], // 해당 상품에만 적용되는 추가수수료 정보
       },
       {
         product: {
@@ -28682,7 +28938,7 @@ const orderTransferData = {
         },
         quantity: 1,
         discounts: [], // 해당 상품에만 적용되는 할인정보
-        additionalFees: [], // 해당 상품에만 적용되는 추가 수수료 정보
+        additionalFees: [], // 해당 상품에만 적용되는 추가수수료 정보
       },
     ],
   },
@@ -28800,8 +29056,8 @@ axios
         }
       }
     ],
-    "additionalFees": [], //전체 주문건에 대한 추가 수수료 정문
-    "discounts": [] //전체 주문건에 대한 할인정보
+    "additionalFees": [], //전체 주문건에 대한 추가수수료 정보
+    "discounts": [] //전체 주문건에 대한 할인 정보
   }
 }
 ```
@@ -28937,10 +29193,10 @@ axios
       "settlement": 3560, //최종 정산취소금액
       "payment": 4000, //결제 취소 금액
       "order": 4000, //주문 취소 금액
-      "platformFee": 400, //중개 수수료 10%
-      "platformFeeVat": 40, //중개수수료 부가세
-      "additionalFee": 0, //추가 수수료
-      "additionalFeeVat": 0, //추가 수수료 부가세
+      "platformFee": 400, //중개수수료 10%
+      "platformFeeVat": 40, //중개수수료 부가세 부담금
+      "additionalFee": 0, //추가수수료
+      "additionalFeeVat": 0, //추가수수료 부가세 부담금
       "discount": 0, //할인금액
       "discountShare": 0 //할인금액 중 파트너가 부담하는 금액
     },
@@ -29391,7 +29647,7 @@ async function post_platform_api(endpoint, payload) {
 
 </div>
 
-## 주문 정산 추가 수수료 반영
+## 주문 정산 추가수수료 반영
 
 추가수수료 정책 생성 은 로켓배송, 마케팅채널 수수료 등 특정 주문건에 적용되는 수수료 입니다.
 관리자 콘솔이나 API를 통해서 적용하실 수 있습니다.
@@ -29404,7 +29660,7 @@ async function post_platform_api(endpoint, payload) {
 - 결제금액 : 8,000원
 - 판매 파트너 : A
 - 정산시작일 (결제완료 시점): 2023-08-11
-- 추가 수수료 정책: 수수료율 5%, 부가세 파트너 부담
+- 추가수수료 정책: 수수료율 5%, 부가세 파트너 부담
 
 <div class="tabs-container">
 
@@ -29515,7 +29771,7 @@ const orderTransferPayload = {
       "platformFee": 1000,
       "platformFeeVat": 100,
       "additionalFee": 500, //추가수수료
-      "additionalFeeVat": 50, //추가수수료 부가세
+      "additionalFeeVat": 50, //추가수수료 부가세 부담금
       "discount": 0,
       "discountShare": 0
     },
@@ -29559,7 +29815,7 @@ const orderTransferPayload = {
 
 </div>
 
-## 주문 정산 상품별 추가 수수료 반영
+## 주문 정산 상품별 추가수수료 반영
 
 주문 전체가 아닌 특정 상품에대해서 할인 정책영 적용하고 싶으시면 `orderLines` 의 각 상품 항목의
 `additionalFees` 파라미터에 전달하시면 됩니다.
@@ -29572,7 +29828,7 @@ const orderTransferPayload = {
 - 결제금액 : 16,000원
 - 판매 파트너 : A
 - 정산시작일 (결제완료 시점): 2023-08-11
-- 추가 수수료 정책: 수수료율 5%, 부가세 파트너 부담
+- 추가수수료 정책: 수수료율 5%, 부가세 파트너 부담
 
 <div class="tabs-container">
 
@@ -29592,7 +29848,7 @@ orderTransfer_payload = {
       },
       "quantity": 2,
       "additionalFees": [{
-          "policyId": "fee_1" # 상품별 추가 수수료 정책
+          "policyId": "fee_1" # 상품별 추가수수료 정책
           }
         ]
       }
@@ -29649,7 +29905,7 @@ const orderTransferPayload = {
         quantity: 2,
         additionalFees: [
           {
-            policyId: "fee_1", // 상품별 추가 수수료 정책
+            policyId: "fee_1", // 상품별 추가수수료 정책
           },
         ],
       },
@@ -31601,11 +31857,11 @@ writtenAt: 2023-11-09T00:00:00.000Z
 
 - ADD\_FEE\_AMOUNT(추가수수료액) , PLATFORM\_FEE\_AMOUNT(플랫폼중개수수료액) → **FIXED\_AMOUNT**(정액)
 
-### ✔️ 추가 수수료 수식에서 신규 변수를 지원합니다.
+### ✔️ 추가수수료 수식에서 신규 변수를 지원합니다.
 
-추가 수수료 수식에서는 플랫폼 중개 수수료 수식을 통해 계산된 PLATFORM\_FEE\_AMOUNT(플랫폼중개수수료액)이
-추가로 지원됩니다. 이를 통해 추가 수수료를 부여할 때, 결제 혹은 주문 금액 중에서 중개 수수료를 제외한
-금액만 추가 수수료를 부여하실 수 있습니다.
+추가수수료 수식에서는 플랫폼 중개수수료 수식을 통해 계산된 PLATFORM\_FEE\_AMOUNT(플랫폼중개수수료액)이
+추가로 지원됩니다. 이를 통해 추가수수료를 부여할 때, 결제 혹은 주문 금액 중에서 중개수수료를 제외한
+금액만 추가수수료를 부여하실 수 있습니다.
 
 ## 수식 별 변수 지원 현황
 
@@ -32775,6 +33031,229 @@ writtenAt: 2025-03-17T00:00:00.000Z
 포트원의 전체 업데이트 소식은 [개발자센터 릴리즈노트](https://developers.portone.io/release-notes) 페이지에서 확인할 수 있습니다.
 
 늘 파트너정산자동화 서비스를 이용해주셔 감사합니다.
+
+---
+
+감사합니다.
+
+파트너정산 자동화 팀 드림
+
+
+# https://developers.portone.io/release-notes/platform/2025-04-03
+
+---
+releasedAt: 2025-04-03T00:00:00.000Z
+writtenAt: 2025-04-03T00:00:00.000Z
+---
+
+안녕하세요, 파트너 정산 자동화팀입니다.
+
+이번 업데이트는 고객사 분들의 소중한 피드백을 바탕으로 진행되었습니다. 계산관리와 지급내역관리 기능이 한층 더 개선되어, 보다 편리하게 이용하실 수 있습니다.
+
+이번 업데이트를 통해 기대하실 수 있는 주요 효과는 다음과 같습니다:
+
+1. **수식 등록 전, 예상 금액을 미리 검증하고 정확하게 테스트**
+2. 정산 금액 중 **과세 금액과 면세 금액을 구분**, 부가세를 **정확히 계산**
+3. **지급 상태별 조회** 기능을 통해 더욱 세밀한 검색 가능
+
+아래에서 자세한 업데이트 사항을 확인해 주세요.
+
+## ✔️ 정산금 계산 수식 테스트
+
+- 정산 금액 계산을 위한 **수식을 미리 테스트**하고, **예상 정산 금액을 검증**할 수 있는 기능이 출시 되었습니다.
+  - **원천세, 부가세 등 각종 세금 및 금액 계산 테스트 가능**
+
+- 수식 테스트는 아래 기능을 지원합니다.
+  - **`수식 입력 방식`**: 기존 규칙 불러오기, 직접 입력
+  - **`주문 정보`**: 주문 금액, 상품 금액에 대한 정산금 계산
+  - **`수식 지원 범위`**: 계약, 추가수수료, 할인 정책, 사용자 정의 정산 파라미터 적용
+  - **`테스트 금액`**: 정산금액, 정산면세금액
+
+- 경로: 정산정책관리 > 계산관리 > **`수식테스트`** (최하단 우측)
+
+(관련 이미지 첨부)
+
+## ✔️ 정산 면세액 계산 지원
+
+- 정산금액 중 **과세 금액, 면세 금액을 구분**할 수 있도록 지원합니다.
+- 정산 면세금액 지원으로 고객 분들은 세금계산서 발행 시, **“부가세”를 정확하게 입력**할 수 있습니다.
+- 수기정산건/주문정산건 모두 지원하며, 중개수수료/추가수수료/할인분담금 및 사용자수식을 활용하여 **최종 정산금액과 정산면세금액을 계산**할 수 있습니다.
+- 경로: 정산정책관리 > 계산관리 > **`정산 면세액`**
+
+(관련 이미지 첨부)
+
+## ✔️ 지급상태별 조회 위한 검색조건 추가 (상태 업데이트 일시)
+
+지급내역에서 신규 검색조건이 추가되었습니다.
+
+**지급 상태 업데이트 일시**로 검색조건을 설정하고, 각 상태값을 선택하여 **지급상태**를 확인할 수 있습니다.
+
+- 1단계: 검색조건 > **`상태 업데이트 일시`**
+- 2단계: 날짜 설정
+- 3단계: 각 탭의 상태값 선택 (**`전체`**, **`예약됨`**, **`준비중`**, **`송금처리중`**, **`성공`**, **`실패`**, **`중단`**, **`취소`**)
+
+(관련 이미지 첨부)
+
+## ✔️ API 변경사항
+
+**정산 상세 / 정산 내역 관련 응답 결과에 정산 면세금액 추가**
+
+(관련 이미지 첨부)
+
+- 정산건 조회
+  - 주문 / 주문취소 유형 :  `amount.settlementTaxFree`
+  - 수기 정산 유형 : `settlementTaxFreeAmount`
+
+- 정산 다건 조회
+  - 주문 / 주문취소 유형 : `transferSummaries.amount.settlementTaxFree`
+  - 수기 정산 유형 : `transferSummaries.settlementTaxFreeAmount`
+
+- 주문 정산 / 주문 취소 정산 생성 : `transfer.amount.settlementTaxFree`
+
+**수기 정산건 등록 시 파라미터에 정산 면세금액 추가**
+
+(관련 이미지 첨부)
+
+- 경로 : `settlementTaxFreeAmount`  선택 값이며 입력하지 않을 시 0원으로 취급됩니다.
+
+**지급 내역 다건 조회 필터에 상태값 업데이트 시간 범위 추가**
+
+(관련 이미지 첨부)
+
+## 🚧 API 지원 종료 필드 삭제 안내
+
+별도 정산 관련 **지원 종료 필드에 대해서는 4월 중 제거될 예정**입니다.
+
+- 정산건 조회 - 주문 / 주문취소 유형 :  `amount.taxFree/supply`
+- 정산 다건 조회 - 주문 / 주문취소 유형 : `transferSummaries.amount.taxFree/supply`
+- 주문 정산 / 주문 취소 정산 생성 : `transfer.amount.taxFree/supply`
+
+해당 컬럼들은 `paymentTaxFree` / `paymentSupply` 로 대체하여 활용가능하니 참고 부탁드립니다.
+
+늘 파트너 정산 자동화 서비스를 애용해주셔서 감사합니다.
+
+---
+
+감사합니다.
+
+파트너정산 자동화 팀 드림
+
+
+# https://developers.portone.io/release-notes/platform/2025-04-08
+
+---
+releasedAt: 2025-04-08T00:00:00.000Z
+writtenAt: 2025-04-08T00:00:00.000Z
+---
+
+안녕하세요, 파트너 정산 자동화팀입니다.<br />
+파트너에게 지급할 금액을 계산할 때, **정산금액을 어떤 기준으로 해석할지** 선택할 수 있는 기능이 새롭게 추가되었습니다.<br />
+이번 개선을 통해 **공급가액 기준 또는 합계금액 기준** 중 선택하여, 더욱 유연하고 명확한 지급 기준을 설정할 수 있습니다.<br />
+또한, **일괄지급 시 통장 메모(적요)** 기능이 더 눈에 잘 띄고 쉽게 설정되도록 **UI가 개선**되었습니다.<br />
+자주 사용하는 통장 메모는 한 번만 등록해두면, 지급 시 자동으로 적용되니 한번 설정해보시는 것 어떨까요? <br />
+
+⚠️ **\[중요] 업데이트**로 인한 **API 변경사항**도 하단에서 꼭 확인해주세요.
+
+---
+
+## 🔍 주요 기능 안내
+
+### 1. **정산 세부 금액 확인 가능 (공급가액 / 면세금액 / 부가세액)**
+
+지난 업데이트에서 지원된 면세금액을 활용하여 공급가액 / 면세금액 / 부가세액을 분리하여 확인 확정할 수 있습니다.
+
+정산금액은 다음 세 가지 항목으로 구분되어 확인 가능합니다:
+
+- **공급가액**: 과세 대상 금액(세전)
+- **면세금액**: 면세 대상 금액
+- **부가세액**: 공급가액 기준으로 자동 계산된 세금
+
+> 이 정보를 기반으로, 지급 금액 계산의 기준을 선택할 수 있습니다.
+
+### 2. **지급금액 산정 기준 선택 가능 (정산금액 취급 기준 설정)**
+
+정산정책 등록 시 지급금액을 계산할 때 어떤 기준으로 정산금액을 사용할지 선택할 수 있습니다.
+
+|설정값               |**설명**                                                                           |**지급금액 계산 방식**                 |
+|---------------------|-----------------------------------------------------------------------------------|---------------------------------------|
+|**합계금액** (기본값)|정산금액을 `공급가액 + 면세금액 + 부가세`로 간주하여 지급                          |지급금액 = 정산금액                    |
+|**공급가액**         |정산금액을 `공급가액 + 면세금액`으로 간주하고, <br /> 부가세는 별도로 계산되어 지급|지급금액 = 정산금액 × 1.1 (부가세 별도)|
+
+---
+
+## ✅ 화면 변경 안내
+
+### 1. 정산 규칙 **설정 페이지 리뉴얼**
+
+- 기존의 **정산 정책 관리 > 정산 규칙 탭**이 **‘설정’ 탭**으로 변경되었습니다.
+- 구조: **정산 정책 설정** / **지급 금액 설정** 으로 구성
+- **정산 금액 취급 기준** 설정이 추가되어, 정산 금액 계산 시 **부가세 포함 여부**를 설정할 수 있습니다.
+
+(관련 이미지 첨부)
+
+### 2. **지급 내역 관리 - 테이블 항목 추가**
+
+- 지급 내역 테이블에 아래 항목들이 추가되어 설정 탭에서 선택한 **지급 기준**을 한눈에 확인할 수 있습니다.
+  - `원천징수세액 차감 여부`: 차감 / 미차감
+  - `정산 금액 취급 기준`: 합계 금액 / 공급가액
+
+(관련 이미지 첨부)
+
+---
+
+### 3. **일괄지급 기본 설정 UI 개선**
+
+- 일괄지급 시 **통장 적요 메모**를 미리 등록하면, 매번 자동으로 적용됩니다.
+- 이 편리한 기능의 활용도를 높이기 위해 UI 디자인이 개선되었습니다.
+
+> ✨ 한 번만 설정해두면, 반복 작업 없이 간편하게 지급 메모가 적용됩니다.
+
+(관련 이미지 첨부)
+
+---
+
+## ⚠️ API 변경 안내
+
+사전 고지된 deprecated 속성들이 삭제되었습니다.
+
+### \[중요] 정산 다건 조회 API
+
+> GET /platform/partner-settlements
+
+- `items.type` 이 `ORDER` 혹은 `ORDER_CANCEL` 인 경우 `amount` 객체 내에
+  - `supply` 가 삭제되었습니다. `paymentSupply` 로 대체 사용해주시길 바랍니다.
+  - `taxFree` 가 삭제되었습니다. `paymentTaxFree` 로 대체 사용해주시길 바랍니다.
+
+### \[중요] 정산 상세 관련 API
+
+> **관련 API**
+>
+> \- GET /platform/transfer-summaries
+>
+> \- GET /platform/transfers/{id}
+>
+> \- POST /platform/transfers/order
+>
+> \- POST /platform/transfers/order-cancel
+
+- `type` 이 `ORDER` 혹은 `ORDER_CANCEL` 인 경우 `amount` 객체 내에
+  - `supply` 가 삭제되었습니다. `paymentSupply` 로 대체 사용해주시길 바랍니다.
+  - `taxFree` 가 삭제되었습니다. `paymentTaxFree` 로 대체 사용해주시길 바랍니다.
+
+### 지급 다건 조회 API
+
+> GET /platform/payouts
+
+- 200 응답 시  `items` 배열 객체 내
+  - 지급 금액 계산 관련 옵션
+    - `deductWht` 원천징수세액 차감 여부 추가되었습니다.
+    - `failReason` 지급실패사유 추가되었습니다.
+    - `settlementAmountType` 정산금액 취급 기준이 추가되었습니다.
+
+  - 확정 세부 금액
+    - `supplyAmount` 확정 공급가액 추가되었습니다.
+    - `vatAmount` 확정 부가세액 추가되었습니다.
+    - `taxFreeAmont` 확정 면세금액 추가되었습니다.
 
 ---
 

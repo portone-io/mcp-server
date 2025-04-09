@@ -84,7 +84,7 @@ IMP.request_pay(
   **결제수단 구분코드**
 
   - card(신용카드)
-  - trans(실시간 계좌이체)
+  - transfer(퀵계좌이체)
   - vbank(가상계좌)
   - phone(휴대폰소액결제)
   - applepay(애플페이)

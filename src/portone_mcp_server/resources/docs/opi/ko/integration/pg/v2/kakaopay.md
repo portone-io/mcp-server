@@ -77,6 +77,9 @@ versionVariants:
       - `CARD_COMPANY_CITI_CARD`
       - `CARD_COMPANY_KAKAO_BANK`
 
+  - `appScheme`
+    - 카카오페이 정책에 따라 iOS에서만 사용 가능합니다.
+
 ### 결제 (`requestPayment`)
 
 - `currency`

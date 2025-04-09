@@ -13568,7 +13568,7 @@
           "issuedAt": {
             "type": "string",
             "format": "date-time",
-            "title": "빌링크 발급 완료 시점"
+            "title": "빌링키 발급 완료 시점"
           }
         }
       },
@@ -18235,6 +18235,11 @@
             "format": "int64",
             "title": "정산 금액"
           },
+          "settlementTaxFreeAmount": {
+            "type": "integer",
+            "format": "int64",
+            "title": "정산 면세 금액"
+          },
           "settlementDate": {
             "description": "날짜를 나타내는 문자열로, `yyyy-MM-dd` 형식을 따릅니다.",
             "type": "string",
@@ -21325,27 +21330,29 @@
           "GRABPAY",
           "SHOPEEPAY",
           "JKOPAY",
-          "PAYPAY"
+          "PAYPAY",
+          "AMAZONPAY",
+          "RAKUTENPAY",
+          "DBARAI",
+          "AUPAY",
+          "MERPAY"
         ],
         "x-portone-title": "간편 결제사",
         "x-portone-enum": {
           "MIR": {},
-          "KB_APP": {},
           "SMILEPAY": {},
           "KLARNA": {},
           "NAVERPAY": {},
           "CHAI": {},
           "GRABPAY": {},
           "TOSS_BRANDPAY": {},
-          "PAYPAL": {},
           "LGPAY": {},
           "JKOPAY": {},
-          "SAMSUNGPAY": {},
-          "KPAY": {},
           "SHOPEEPAY": {},
-          "SKPAY": {},
           "ALIPAY": {},
           "LPAY": {},
+          "DBARAI": {},
+          "KB_APP": {},
           "LINEPAY": {},
           "PAYCO": {},
           "PINPAY": {},
@@ -21353,8 +21360,16 @@
           "TMONEY": {},
           "TOSSPAY": {},
           "SSGPAY": {},
+          "MERPAY": {},
+          "PAYPAL": {},
           "APPLEPAY": {},
           "HYPHEN": {},
+          "AUPAY": {},
+          "SAMSUNGPAY": {},
+          "KPAY": {},
+          "AMAZONPAY": {},
+          "SKPAY": {},
+          "RAKUTENPAY": {},
           "PAYPAY": {},
           "KAKAOPAY": {}
         }
@@ -23961,6 +23976,70 @@
           }
         },
         "x-portone-title": "현금영수증 다건 조회 성공 응답 정보"
+      },
+      "GetChannelsBody": {
+        "title": "GetChannelsBody",
+        "type": "object",
+        "properties": {
+          "storeId": {
+            "type": "string",
+            "title": "상점 아이디",
+            "description": "접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 토큰에 담긴 상점 아이디를 사용합니다."
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "limit": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "GetChannelsError": {
+        "title": "GetChannelsError",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ForbiddenError"
+          },
+          {
+            "$ref": "#/components/schemas/InvalidRequestError"
+          },
+          {
+            "$ref": "#/components/schemas/UnauthorizedError"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "FORBIDDEN": "#/components/schemas/ForbiddenError",
+            "INVALID_REQUEST": "#/components/schemas/InvalidRequestError",
+            "UNAUTHORIZED": "#/components/schemas/UnauthorizedError"
+          }
+        }
+      },
+      "GetChannelsResponse": {
+        "title": "채널 다건 조회 성공 응답 정보",
+        "description": "채널 다건 조회 성공 응답 정보",
+        "type": "object",
+        "required": [
+          "items",
+          "page"
+        ],
+        "properties": {
+          "items": {
+            "title": "조회된 채널 리스트",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Channel"
+            }
+          },
+          "page": {
+            "$ref": "#/components/schemas/PageInfo",
+            "title": "페이지 정보"
+          }
+        },
+        "x-portone-title": "채널 다건 조회 성공 응답 정보"
       },
       "GetIdentityVerificationError": {
         "title": "GetIdentityVerificationError",
@@ -26572,70 +26651,6 @@
             "PROMOTION_GROUP_NOT_FOUND": "#/components/schemas/PromotionGroupNotFoundError"
           }
         }
-      },
-      "GetV2SupportedChannelsBody": {
-        "title": "GetV2SupportedChannelsBody",
-        "type": "object",
-        "properties": {
-          "storeId": {
-            "type": "string",
-            "title": "상점 아이디",
-            "description": "접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 토큰에 담긴 상점 아이디를 사용합니다."
-          },
-          "page": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "limit": {
-            "type": "integer",
-            "format": "int32"
-          }
-        }
-      },
-      "GetV2SupportedChannelsError": {
-        "title": "GetV2SupportedChannelsError",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/ForbiddenError"
-          },
-          {
-            "$ref": "#/components/schemas/InvalidRequestError"
-          },
-          {
-            "$ref": "#/components/schemas/UnauthorizedError"
-          }
-        ],
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "FORBIDDEN": "#/components/schemas/ForbiddenError",
-            "INVALID_REQUEST": "#/components/schemas/InvalidRequestError",
-            "UNAUTHORIZED": "#/components/schemas/UnauthorizedError"
-          }
-        }
-      },
-      "GetV2SupportedChannelsResponse": {
-        "title": "채널 다건 조회 성공 응답 정보",
-        "description": "채널 다건 조회 성공 응답 정보",
-        "type": "object",
-        "required": [
-          "items",
-          "page"
-        ],
-        "properties": {
-          "items": {
-            "title": "조회된 채널 리스트",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Channel"
-            }
-          },
-          "page": {
-            "$ref": "#/components/schemas/PageInfo",
-            "title": "페이지 정보"
-          }
-        },
-        "x-portone-title": "채널 다건 조회 성공 응답 정보"
       },
       "GiftCertificateType": {
         "title": "상품권 타입",
@@ -30132,7 +30147,7 @@
           },
           "isTest": {
             "type": "boolean",
-            "title": "테스트 결제 필터링"
+            "title": "테스트 결제 여부"
           },
           "isScheduled": {
             "type": "boolean",
@@ -33188,6 +33203,10 @@
               "$ref": "#/components/schemas/PaymentScheduleStatus"
             },
             "description": "값을 입력하지 않으면 상태 필터링이 적용되지 않습니다."
+          },
+          "isForTest": {
+            "type": "boolean",
+            "title": "테스트 결제 여부"
           }
         },
         "x-portone-title": "결제 예약 건 다건 조회를 위한 입력 정보"
@@ -34020,7 +34039,8 @@
           "KPN",
           "KCP_V2",
           "HYPHEN",
-          "EXIMBAY_V2"
+          "EXIMBAY_V2",
+          "INICIS_JP"
         ],
         "x-portone-title": "PG사 결제 모듈",
         "x-portone-enum": {
@@ -34050,6 +34070,7 @@
           "DAOU": {},
           "GALAXIA": {},
           "PINPAY": {},
+          "INICIS_JP": {},
           "SETTLE_ACC": {},
           "TOSSPAY_V2": {},
           "TOSSPAY": {},
@@ -36234,7 +36255,8 @@
           "settlementCurrency",
           "isForTest",
           "userDefinedProperties",
-          "settlementAmount"
+          "settlementAmount",
+          "settlementTaxFreeAmount"
         ],
         "properties": {
           "type": {
@@ -36291,6 +36313,11 @@
             "type": "integer",
             "format": "int64",
             "title": "정산 금액"
+          },
+          "settlementTaxFreeAmount": {
+            "type": "integer",
+            "format": "int64",
+            "title": "정산 면세 금액"
           }
         },
         "x-portone-title": "수기 정산건"
@@ -36309,7 +36336,8 @@
           "isForTest",
           "partnerUserDefinedProperties",
           "userDefinedProperties",
-          "settlementAmount"
+          "settlementAmount",
+          "settlementTaxFreeAmount"
         ],
         "properties": {
           "type": {
@@ -36357,6 +36385,10 @@
             }
           },
           "settlementAmount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "settlementTaxFreeAmount": {
             "type": "integer",
             "format": "int64"
           }
@@ -36785,6 +36817,7 @@
         "type": "object",
         "required": [
           "settlement",
+          "settlementTaxFree",
           "payment",
           "paymentVat",
           "paymentVatBurden",
@@ -36809,6 +36842,11 @@
             "type": "integer",
             "format": "int64",
             "title": "정산 금액"
+          },
+          "settlementTaxFree": {
+            "type": "integer",
+            "format": "int64",
+            "title": "정산 면세 금액"
           },
           "payment": {
             "type": "integer",
@@ -37719,6 +37757,7 @@
           "settlementCurrency",
           "status",
           "amount",
+          "taxFreeAmount",
           "isForTest"
         ],
         "properties": {
@@ -37759,6 +37798,11 @@
             "type": "integer",
             "format": "int64",
             "title": "정산 금액"
+          },
+          "taxFreeAmount": {
+            "type": "integer",
+            "format": "int64",
+            "title": "정산 면세 금액"
           },
           "isForTest": {
             "type": "boolean",
@@ -38315,13 +38359,12 @@
           "SETTLEMENT_START_DATE_RANGE",
           "SETTLEMENT_CURRENCY",
           "SETTLEMENT_AMOUNT",
+          "SETTLEMENT_TAX_FREE_AMOUNT",
           "SETTLEMENT_ORDER_AMOUNT",
           "SETTLEMENT_ORDER_TAX_FREE_AMOUNT",
           "SETTLEMENT_PAYMENT_AMOUNT",
           "SETTLEMENT_PAYMENT_VAT_AMOUNT",
           "SETTLEMENT_PAYMENT_VAT_BURDEN_AMOUNT",
-          "SETTLEMENT_SUPPLY_AMOUNT",
-          "SETTLEMENT_TAX_FREE_AMOUNT",
           "SETTLEMENT_PAYMENT_SUPPLY_AMOUNT",
           "SETTLEMENT_PAYMENT_TAX_FREE_AMOUNT",
           "SETTLEMENT_PLATFORM_FEE_AMOUNT",
@@ -38374,12 +38417,14 @@
           "SETTLEMENT_ORDER_TAX_FREE_AMOUNT": {
             "title": "면세 주문 금액"
           },
+          "SETTLEMENT_DATE": {
+            "title": "정산 일"
+          },
           "TAXATION_TYPE": {
             "title": "과세 유형"
           },
           "SETTLEMENT_TAX_FREE_AMOUNT": {
-            "title": "결제 면세액",
-            "description": "해당 필드는 deprecated되어 9월까지만 유지되고 이후 삭제될 예정입니다. 대신 SETTLEMENT_PAYMENT_TAX_FREE_AMOUNT 필드를 사용해주세요."
+            "title": "정산 면세 금액"
           },
           "SETTLEMENT_ADDITIONAL_FEE_VAT_AMOUNT": {
             "title": "추가 수수료 부가세"
@@ -38425,13 +38470,6 @@
           },
           "SETTLEMENT_PAYMENT_TAX_FREE_AMOUNT": {
             "title": "결제 면세액"
-          },
-          "SETTLEMENT_DATE": {
-            "title": "정산 일"
-          },
-          "SETTLEMENT_SUPPLY_AMOUNT": {
-            "title": "결제 공급가액",
-            "description": "해당 필드는 deprecated되어 9월까지만 유지되고 이후 삭제될 예정입니다. 대신 SETTLEMENT_PAYMENT_SUPPLY_AMOUNT 필드를 사용해주세요."
           },
           "SETTLEMENT_ADDITIONAL_FEE_AMOUNT": {
             "title": "추가 수수료"
@@ -39116,7 +39154,11 @@
           "account",
           "currency",
           "amount",
+          "supplyAmount",
+          "taxFreeAmount",
+          "vatAmount",
           "settlementAmount",
+          "settlementTaxFreeAmount",
           "incomeTaxAmount",
           "localIncomeTaxAmount",
           "createdAt"
@@ -39153,19 +39195,43 @@
           },
           "amount": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "title": "지급금액"
+          },
+          "supplyAmount": {
+            "type": "integer",
+            "format": "int64",
+            "title": "공급가액"
+          },
+          "taxFreeAmount": {
+            "type": "integer",
+            "format": "int64",
+            "title": "면세 금액"
+          },
+          "vatAmount": {
+            "type": "integer",
+            "format": "int64",
+            "title": "부가세"
           },
           "settlementAmount": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "title": "정산 금액"
+          },
+          "settlementTaxFreeAmount": {
+            "type": "integer",
+            "format": "int64",
+            "title": "정산 면세 금액"
           },
           "incomeTaxAmount": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "title": "원천징수세액 (소득세)"
           },
           "localIncomeTaxAmount": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "title": "원천징수세액 (지방소득세)"
           },
           "withdrawalMemo": {
             "type": "string"
@@ -39265,7 +39331,11 @@
         "properties": {
           "timestampRange": {
             "$ref": "#/components/schemas/DateTimeRange",
-            "title": "시간 범위"
+            "title": "생성 시간 범위"
+          },
+          "statusUpdatedTimestampRange": {
+            "$ref": "#/components/schemas/DateTimeRange",
+            "title": "상태값 업데이트 시간 범위"
           },
           "payoutId": {
             "type": "string",
@@ -39380,6 +39450,7 @@
           "METHOD",
           "STATUS",
           "STATUS_UPDATED_AT",
+          "SCHEDULED_AT",
           "PARTNER_ID",
           "PARTNER_NAME",
           "ACCOUNT_BANK",
@@ -39388,6 +39459,10 @@
           "CURRENCY",
           "AMOUNT",
           "SETTLEMENT_AMOUNT",
+          "SETTLEMENT_TAX_FREE_AMOUNT",
+          "VAT_AMOUNT",
+          "SUPPLY_AMOUNT",
+          "TAX_FREE_AMOUNT",
           "INCOME_TAX_AMOUNT",
           "LOCAL_INCOME_TAX_AMOUNT",
           "WITHDRAWAL_MEMO",
@@ -39401,14 +39476,14 @@
         ],
         "x-portone-title": "다운로드 할 시트 컬럼",
         "x-portone-enum": {
+          "SETTLEMENT_TAX_FREE_AMOUNT": {
+            "title": "정산 면세 금액"
+          },
           "PARTNER_ID": {
             "title": "파트너 아이디"
           },
           "STATUS_UPDATED_AT": {
             "title": "상태 업데이트 시각"
-          },
-          "STATUS": {
-            "title": "지급 상태"
           },
           "WITHDRAWAL_MEMO": {
             "title": "출금 메모"
@@ -39434,8 +39509,8 @@
           "SETTLEMENT_AMOUNT": {
             "title": "정산 금액"
           },
-          "TAXATION_TYPE": {
-            "title": "과세 유형"
+          "SUPPLY_AMOUNT": {
+            "title": "확정 공급가액"
           },
           "ACCOUNT_HOLDER": {
             "title": "지급 계좌 예금주"
@@ -39450,6 +39525,12 @@
           "CREATED_AT": {
             "title": "지급 생성 시각"
           },
+          "VAT_AMOUNT": {
+            "title": "확정 부가세"
+          },
+          "STATUS": {
+            "title": "지급 상태"
+          },
           "PAYOUT_ID": {
             "title": "지급 아이디"
           },
@@ -39461,6 +39542,15 @@
           },
           "AMOUNT": {
             "title": "지급 금액"
+          },
+          "TAXATION_TYPE": {
+            "title": "과세 유형"
+          },
+          "TAX_FREE_AMOUNT": {
+            "title": "확정 면세 금액"
+          },
+          "SCHEDULED_AT": {
+            "title": "지급 예약 시각"
           },
           "ACCOUNT_BANK": {
             "title": "지급 계좌 은행"
@@ -40613,6 +40703,7 @@
           "ORDER_NAME",
           "PAYMENT_METHOD",
           "SETTLEMENT_AMOUNT",
+          "SETTLEMENT_TAX_FREE_AMOUNT",
           "SETTLEMENT_ORDER_AMOUNT",
           "SETTLEMENT_ORDER_TAX_FREE_AMOUNT",
           "SETTLEMENT_PAYMENT_AMOUNT",
@@ -40673,6 +40764,9 @@
           },
           "SETTLEMENT_DATE": {
             "title": "정산 일"
+          },
+          "SETTLEMENT_TAX_FREE_AMOUNT": {
+            "title": "정산 면세 금액"
           },
           "SETTLEMENT_ADDITIONAL_FEE_VAT_AMOUNT": {
             "title": "추가 수수료 부가세"

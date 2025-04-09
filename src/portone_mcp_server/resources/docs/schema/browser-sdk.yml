@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=./schema.json
+# yaml-language-server: $schema=./browser-sdk.schema.json
 
 pgProviders: {}
 resources:
@@ -1061,6 +1061,20 @@ resources:
             **구매자 출생일**
 
             ex. `"25"`, `"08"` 같은 형식으로 입력해주세요.
+        firstNameKana:
+          type: string
+          optional: true
+          description: |
+            **구매자 이름 후리가나**
+
+            일본어 읽는 법 표기
+        lastNameKana:
+          type: string
+          optional: true
+          description: |
+            **구매자 성 후리가나**
+
+            일본어 읽는 법 표기
     EasyPayPaymentMethod:
       type: enum
       variants:
@@ -1098,6 +1112,12 @@ resources:
         SKPAY: {}
         TOSS_BRANDPAY: {}
         HYPHEN: {}
+        PAYPAY: {}
+        AMAZONPAY: {}
+        RAKUTENPAY: {}
+        DBARAI: {}
+        AUPAY: {}
+        MERPAY: {}
       valuePrefix: EASY_PAY_PROVIDER
     FreeInstallmentPlan:
       type: object
@@ -1339,6 +1359,8 @@ resources:
           description: 페이팔(SPB)
         ALIPAY:
           description: 알리페이
+        CONVENIENCE_STORE:
+          description: 편의점 결제
       description: |
         **결제수단 구분코드**
 
@@ -1489,6 +1511,10 @@ resources:
           type: string
           optional: true
           description: 상점 우편번호
+        email:
+          type: string
+          optional: true
+          description: 상점 이메일
         businessName:
           type: string
           optional: true
@@ -1497,11 +1523,48 @@ resources:
           type: string
           optional: true
           description: 상점 사업자 등록 번호
+        storeName:
+          type: string
+          optional: true
+          description: 상점명
+        storeNameShort:
+          type: string
+          optional: true
+          description: 상점명 약어
+        storeNameEn:
+          type: string
+          optional: true
+          description: 상점명 영문
+        storeNameKana:
+          type: string
+          optional: true
+          description: 상점명 후리카나 (일본어 읽는법 표기)
+        openingHours:
+          type: object
+          optional: true
+          description: 상점 영업시간 (HH:mm)
+          properties:
+            open:
+              type: string
+              optional: true
+              description: 영업 시작 시간
+            close:
+              type: string
+              optional: true
+              description: 영업 종료 시간
+        contactName:
+          type: string
+          optional: true
+          description: |
+            **상점 연락처 정보 이름**
+
+            ex: 문의창구, 연락처, 지원창구
       description: |
         **상점 정보**
 
         - KSNET 카카오페이의 경우 필수 입력
         - (신)나이스페이의 경우 매출 전표에 표기 할 용도로 선택 입력
+        - 이니시스 일본결제의 경우 JPPG(gmoPayment) 결제의 상점정보로 사용되거나 편의점 결제 시 영수증 표시 정보로 사용됨.
     TransactionType:
       type: enum
       variants:
@@ -2246,6 +2309,11 @@ resources:
           description: "KSNET bypass 파라미터"
           name: KsnetPaymentBypass
           properties:
+            easyPayDirect:
+              type: boolean
+              description: |
+                **KSNET 간편결제 다이렉트 여부**
+              optional: true
             sndQpayType:
               type: enum
               variants:
@@ -3140,6 +3208,68 @@ resources:
                   description: |
                     입금 만료 일자 (yyyyMMddHH)
                   optional: true
+        InicisJp:
+          type: object
+          description: "이니시스 일본 bypass 파라미터"
+          name: InicisJpBypass
+          properties:
+            paymentUI:
+              type: object
+              description: |
+                결제창 UI 설정
+              optional: true
+              properties:
+                colorTheme:
+                  type: string
+                  description: |
+                    **결제창 색상**
+
+                    가능한 값:
+                    - `red1`
+                    - `red2`
+                    - `red3`
+                    - `red4`
+                    - `orange`
+                    - `yellow`
+                    - `black`
+                    - `purple`
+                    - `green`
+                    - `blue1`
+                    - `blue2`
+                    - `blue3`
+                    - `blue4`
+                    - `blue5`
+                    - `blue6`
+                  optional: true
+                logoUrl:
+                  type: string
+                  description: |
+                    **가맹점 로고 이미지 URL**
+
+                    69 * 20 픽셀 크기의 이미지 URL
+                  optional: true
+        PayletterGlobal:
+          type: object
+          description: "페이레터 해외결제 bypass 파라미터"
+          name: PayletterGlobalBypass 
+          properties:
+            pginfo:
+              type: string
+              description: |
+                **결제수단 지정용 파라미터**
+
+                - 해외카드 인증 : `PLCreditCard`
+                - 해외카드 비인증(3DS) : `PLCreditCardMpi`
+                - 유니온페이 : `PLUnionPay_HC`
+                - 위챗페이 PC결제: `WeChatPayQRCodePayment`
+                - 위챗페이 모바일결제 : `WeChatPayH5Payment`
+                - 알리페이 : `ICBAlipay`
+              optional: true
+            servicename:
+              type: string
+              description: |
+                고객사 서비스명, WeChatPay, Alipay 이용 시 필수 입력  
+              optional: true
       PaymentBypass:
         type: object
         description: |
@@ -3201,6 +3331,14 @@ resources:
             type: resourceRef
             optional: true
             $ref: "#/resources/entity/bypass/payment/EximbayV2"
+          inicis_jp:
+            type: resourceRef
+            optional: true
+            $ref: "#/resources/entity/bypass/payment/InicisJp"
+          payletter_global:
+            type: resourceRef
+            optional: true
+            $ref: "#/resources/entity/bypass/payment/PayletterGlobal"  
   exception:
     CheckoutServiceErrorCode:
       type: enum
@@ -4392,6 +4530,23 @@ resources:
               type: emptyObject
             ALIPAY:
               type: emptyObject
+            CONVENIENCE_STORE:
+              type: object
+              properties:
+                paymentDeadline:
+                  type: oneOf
+                  optional: true
+                  description: |
+                    **편의점결제 지불기한**
+                  properties:
+                    validHours:
+                      type: integer
+                      description: |
+                        **유효 시간(단위: 시간)**
+                    dueDate:
+                      type: string
+                      description: |
+                        **만료일시(ISO8601 형식)**
   response:
     IssueBillingKeyResponse:
       type: object

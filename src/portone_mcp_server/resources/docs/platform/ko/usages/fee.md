@@ -1,5 +1,5 @@
 ---
-title: 추가 수수료 예시
+title: 추가수수료 예시
 description: ''
 ---
 
@@ -40,7 +40,7 @@ fee_A = requests.post('https://api.portone.io/platform/additional-fee-policies',
 ```js
 const axios = require("axios");
 const additionalfees_payload = {
-  id: "addtional_fee_3", //추가 수수료 아이디
+  id: "addtional_fee_3", //추가수수료 아이디
   fee: {
     fixedRate: 5, // 5%분담
   },

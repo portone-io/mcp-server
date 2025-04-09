@@ -19,7 +19,7 @@ versionVariants:
 - **일반 결제**
   - `payMethod`파라미터를 결제수단에 따라 아래와 같이 설정해야 합니다.
     - 신용카드 : `CARD`
-    - 실시간 계좌이체 : `TRANSFER`
+    - 퀵계좌이체 : `TRANSFER`
     - 가상계좌 : `VIRTUAL_ACCOUNT`
     - 휴대폰 소액결제 : `MOBILE`
     - 간편 결제 : `EASY_PAY`

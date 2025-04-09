@@ -109,9 +109,24 @@ IMP.request_pay(
 
     <div class="hint" data-style="warning">
 
-    **2024년 6월부터 필수 파라미터로 변경되었습니다.** (신규 계약 고객의 경우 해당 파라미터를 누락한 채
-    결제 요청하실 경우, 결제가 중단될 수 있습니다. 다만, 기존 고객의 경우 당분간은 해당 파라미터를 제외한 채
-    결제가 가능하오나 자세한 사항은 헥토파이낸셜에 문의해 주시기 바랍니다.)
+    본인인증 후 전달받은 CI 값을 AES-256-ECB 방식을 사용해 암호화하여 16진수로 인코딩한 결과를 입력해야합니다.
+    암호화 키(key)는 포트원 관리자콘솔 채널 등록 시 "암호화 키" 항목에 입력한 값을 사용합니다.
+
+    ```pseudo
+    INPUT: ci (string), key (string)
+    OUTPUT: custCI (string)
+
+    BEGIN
+    # Step 1: CI 데이터를 AES-256-ECB 방식으로 암호화
+    binaryData ← AES256ECB(key, ci)
+
+    # Step 2: 암호화된 데이터를 16진수 문자열로 변환
+    custCI ← ConvertToHex(binaryData)
+
+    # Step 3: 결과 반환
+    RETURN custCI
+    END
+    ```
 
     </div>
 
@@ -234,9 +249,24 @@ IMP.request_pay(
 
     <div class="hint" data-style="warning">
 
-    **2024년 6월부터 필수 파라미터로 변경되었습니다.** (신규 계약 고객의 경우 해당 파라미터를 누락한 채
-    결제 요청하실 경우, 결제가 중단될 수 있습니다. 다만, 기존 고객의 경우 당분간은 해당 파라미터를 제외한 채
-    결제가 가능하오나 자세한 사항은 헥토파이낸셜에 문의해 주시기 바랍니다.)
+    본인인증 후 전달받은 CI 값을 AES-256-ECB 방식을 사용해 암호화하여 16진수로 인코딩한 결과를 입력해야합니다.
+    암호화 키(key)는 포트원 관리자콘솔 채널 등록 시 "암호화 키" 항목에 입력한 값을 사용합니다.
+
+    ```pseudo
+    INPUT: ci (string), key (string)
+    OUTPUT: custCI (string)
+
+    BEGIN
+    # Step 1: CI 데이터를 AES-256-ECB 방식으로 암호화
+    binaryData ← AES256ECB(key, ci)
+
+    # Step 2: 암호화된 데이터를 16진수 문자열로 변환
+    custCI ← ConvertToHex(binaryData)
+
+    # Step 3: 결과 반환
+    RETURN custCI
+    END
+    ```
 
     </div>
 

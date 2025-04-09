@@ -27,3 +27,5 @@ targetVersions:
 [프로모션 생성하기](https://developers.portone.io/opi/ko/extra/promotion/console-guide)
 
 [프로모션 결제 연동하기](https://developers.portone.io/opi/ko/extra/promotion/integration)
+
+[프로모션 결제 취소하기](https://developers.portone.io/opi/ko/extra/promotion/refund)

@@ -1002,6 +1002,19 @@ DI\_CODE는 12자리로 고객사에서 자체적으로 사이트(서비스)를 
 
 </details>
 
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
+
+<details>
+
+<summary>페이레터 해외결제</summary>
+
+1. 페이레터 계약 완료 이후, 페이레터로부터 전달 받은 StoreID, API Key값을 포트원 콘솔에서 채널 추가 시\
+   `[StoreID]`, `[API Key]` 항목에 입력한 후 저장을 클릭합니다.
+
+</details>
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
+
 ## <span id="integration-identifiers">4. 포트원 연동정보 확인하기</span>
 
 포트원을 이용한 결제 연동 시 필요한 연동정보를 확인합니다.

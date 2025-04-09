@@ -2581,6 +2581,16 @@ ni @portone/browser-sdk
 
   <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "toss" END -->
 
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "kakao" START -->
+
+  <div class="hint" data-style="warning">
+
+  카카오페이의 경우 iOS에서만 사용 가능합니다.
+
+  </div>
+
+  <!-- CONDITIONAL CONTENT when=({ pg: { name }}) => name === "kakao" END -->
+
 - productType?: string
 
   **상품 유형**

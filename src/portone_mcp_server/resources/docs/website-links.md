@@ -4,7 +4,7 @@ description: PortOne 개발자센터 웹사이트 내 존재하는 문서들의 
 targetVersions:
   - v1
   - v2
-date: 2025-03-28
+date: 2025-04-09
 author: PortOne
 ---
 
@@ -40,6 +40,7 @@ author: PortOne
 - [프로모션 생성하기](https://developers.portone.io/opi/ko/extra/promotion/console-guide): 프로모션 기간, 예산, 할인 조건 등 설정 방법을 안내합니다.
 - [프로모션 결제 연동하기](https://developers.portone.io/opi/ko/extra/promotion/integration): 프로모션 할인금액을 적용하는 방법을 안내합니다.
 - [프로모션](https://developers.portone.io/opi/ko/extra/promotion/intro): 카드 즉시 할인을 쉽게 운영 및 관리할 수 있는 서비스입니다.
+- [프로모션 결제 취소하기](https://developers.portone.io/opi/ko/extra/promotion/refund): 프로모션을 적용하여 승인된 결제건들에 대하여 취소/환불하는 방법을 안내합니다.
 - [스마트 라우팅 - 콘솔 가이드](https://developers.portone.io/opi/ko/extra/smart-routing/console-guide): 멀티PG 환경을 클릭 한 번으로 쉽게 만들 수 있는 결제 트래픽 분산 자동화 서비스 입니다.
 - [스마트 라우팅 - 연동하기](https://developers.portone.io/opi/ko/extra/smart-routing/integration): 멀티PG 환경을 클릭 한 번으로 쉽게 만들 수 있는 결제 트래픽 분산 자동화 서비스 입니다.
 - [스마트 라우팅](https://developers.portone.io/opi/ko/extra/smart-routing/intro): 멀티PG 환경을 클릭 한 번으로 쉽게 만들 수 있는 결제 트래픽 분산 자동화 서비스 입니다.
@@ -81,6 +82,7 @@ author: PortOne
 - [다날 본인인증](https://developers.portone.io/opi/ko/integration/pg/v2/danal-identity-verification): 다날 본인인증 연동 방법을 안내합니다.
 - [엑심베이](https://developers.portone.io/opi/ko/integration/pg/v2/eximbay-v2): 엑심베이 결제 연동 방법을 안내합니다.
 - [하이픈](https://developers.portone.io/opi/ko/integration/pg/v2/hyphen): 하이픈 결제 연동 방법을 안내합니다.
+- [KG이니시스 일본결제](https://developers.portone.io/opi/ko/integration/pg/v2/inicis-jp): KG이니시스 일본결제 연동 방법을 안내합니다.
 - [KG이니시스 통합인증](https://developers.portone.io/opi/ko/integration/pg/v2/inicis-unified-identity-verification): KG이니시스 통합인증 연동 방법을 안내합니다.
 - [KG이니시스](https://developers.portone.io/opi/ko/integration/pg/v2/inicis-v2): KG이니시스 결제 연동 방법을 안내합니다.
 - [카카오페이](https://developers.portone.io/opi/ko/integration/pg/v2/kakaopay): 카카오페이 간편결제 연동 방법을 안내합니다.
@@ -89,6 +91,7 @@ author: PortOne
 - [KSNET](https://developers.portone.io/opi/ko/integration/pg/v2/ksnet): KSNET 결제 연동 방법을 안내합니다.
 - [네이버페이 (결제형)](https://developers.portone.io/opi/ko/integration/pg/v2/naverpay): 네이버페이 간편결제 연동 방법을 안내합니다.
 - [나이스페이먼츠](https://developers.portone.io/opi/ko/integration/pg/v2/nice-v2): 나이스페이먼츠 결제 연동 방법을 안내합니다.
+- [페이레터 해외결제](https://developers.portone.io/opi/ko/integration/pg/v2/payletter-global): 페이레터 해외결제 연동 방법을 안내합니다.
 - [페이팔](https://developers.portone.io/opi/ko/integration/pg/v2/paypal-v2): 페이팔 결제 연동 방법을 안내합니다.
 - [결제대행사 선택하여 연동하기](https://developers.portone.io/opi/ko/integration/pg/v2/readme): 각 PG사별 결제 연동 방법을 확인할 수 있습니다.
 - [스마트로](https://developers.portone.io/opi/ko/integration/pg/v2/smartro-v2): 스마트로 결제 연동 방법을 안내합니다.
@@ -156,7 +159,6 @@ author: PortOne
 - [우커머스 플러그인](https://developers.portone.io/opi/ko/extra/plugins/wordpress/woocommerce/readme): 포트원 우커머스 플러그인 사용방법을 안내합니다.
 - [정기결제 연동하기](https://developers.portone.io/opi/ko/extra/plugins/wordpress/woocommerce/subscription): 우커머스 플러그인을 통해 정기결제를 연동합니다.
 - [가상계좌 입금통보 URL 설정하기](https://developers.portone.io/opi/ko/extra/plugins/wordpress/woocommerce/vbank): 우커머스 플러그인에서 가상계좌 입금통지 URL을 설정합니다.
-- [프로모션 결제 취소하기](https://developers.portone.io/opi/ko/extra/promotion/refund): 프로모션을 적용하여 승인된 결제건들에 대하여 취소/환불하는 방법을 안내합니다.
 - [결제취소(환불) 연동하기](https://developers.portone.io/opi/ko/integration/cancel/v1/basic): 포트원 결제취소 API를 이용한 결제취소 방법을 안내합니다.
 - [가상계좌 환불하기](https://developers.portone.io/opi/ko/integration/cancel/v1/virtual-account): 가상계좌 입금내역을 환불하는 방법을 확인합니다.
 - [오픈 전 체크리스트](https://developers.portone.io/opi/ko/integration/checklist/readme-v1): 결제 오픈전 자가진단을 해볼수 있는 오픈 전 체크사항 리스트 입니다.
@@ -234,7 +236,7 @@ author: PortOne
 - [고객사 예시](https://developers.portone.io/platform/ko/usages/client)
 - [계약 예시](https://developers.portone.io/platform/ko/usages/contract)
 - [할인 예시](https://developers.portone.io/platform/ko/usages/discount)
-- [추가 수수료 예시](https://developers.portone.io/platform/ko/usages/fee)
+- [추가수수료 예시](https://developers.portone.io/platform/ko/usages/fee)
 - [주문정산 예시](https://developers.portone.io/platform/ko/usages/order)
 - [파트너 예시](https://developers.portone.io/platform/ko/usages/partner)
 - [AI 도구 활용하기](https://developers.portone.io/platform/ko/using-ai-tools): AI 도구를 활용하여 쉽고 빠르게 포트원을 연동하세요. 연동 코드 작성은 물론, 24시간 언제나 관련 질의에 대한 답변을 받을 수 있습니다.
@@ -307,6 +309,8 @@ author: PortOne
 - [파트너 정산 자동화 2025-02-13](https://developers.portone.io/release-notes/platform/2025-02-13)
 - [파트너 정산 자동화 2025-03-04](https://developers.portone.io/release-notes/platform/2025-03-04)
 - [파트너 정산 자동화 2025-03-17](https://developers.portone.io/release-notes/platform/2025-03-17)
+- [파트너 정산 자동화 2025-04-03](https://developers.portone.io/release-notes/platform/2025-04-03)
+- [파트너 정산 자동화 2025-04-08](https://developers.portone.io/release-notes/platform/2025-04-08)
 
 ## 블로그
 

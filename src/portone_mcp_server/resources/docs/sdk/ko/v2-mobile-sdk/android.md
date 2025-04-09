@@ -145,6 +145,7 @@ java 8 API를 사용하기 위해, desugaring 의존성을 추가해주셔야 �
         <package android:name="com.lguplus.smartotp" /> <!-- PASS -->
         <package android:name="com.kt.ktauth" /> <!-- PASS -->
         <package android:name="kr.danal.app.damoum" /> <!-- 다날 다모음 -->
+        <package android:name="com.shinhan.sbanking" /> <!-- 신한 SOL뱅크 -->
     </queries>
 ```
 
