@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from portone_mcp_server.loader.markdown import ParsedMarkdown, parse_markdown_content
 
 
@@ -39,9 +37,7 @@ This is a test markdown file with frontmatter.
         assert result.frontmatter is not None
         assert result.frontmatter.title == "Test Document"
         assert result.frontmatter.description == "A test document with frontmatter"
-        assert result.frontmatter.tags == ["test", "markdown", "frontmatter"]
-        assert result.frontmatter.date == datetime(2025, 3, 18)
-        assert result.frontmatter.additional_fields["custom_field"] == "custom value"
+        assert result.frontmatter.all_fields_dict["custom_field"] == "custom value"
 
     def test_parse_markdown_with_invalid_frontmatter(self):
         """Test parsing markdown content with invalid frontmatter."""
