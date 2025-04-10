@@ -18,8 +18,7 @@ class SearchOccurrence:
 def initialize(documents: Documents):
     def regex_search_portone_docs(query: str, context_size: int) -> str:
         """포트원 문서의 내용 중 파이썬 re 정규표현식 형식의 query가 매칭된 부분을 모두 찾아 반환합니다.
-        정규식 기반으로 관련 포트원 문서를 찾고 싶은 경우 이 도구를 사용합니다.
-        Frontmatter와 문서 내용 모두 검색합니다.
+        정규식 기반으로 관련 포트원 문서를 찾고 싶은 경우 이 도구를 사용하며, 메타 정보와 문서 내용 모두 검색합니다.
 
         Args:
             query: Python re 패키지가 지원하는 Regular Expression 형식의 문자열을 입력해야 하며, 영어 알파벳 대소문자는 구분 없이 매칭됩니다.
@@ -31,7 +30,7 @@ def initialize(documents: Documents):
                           단, 이전 검색결과와 겹치는 컨텍스트는 병합되어 반환됩니다.
 
         Returns:
-            포트원 문서를 찾으면 해당 문서의 경로와 제목, 설명을 비롯한 메타 정보와 함께, query가 매칭된 주변 컨텍스트를 반환합니다.
+            포트원 문서를 찾으면 해당 문서의 경로와 길이, 제목, 설명, 대상 버전과 함께, query가 매칭된 주변 컨텍스트를 반환합니다.
             찾지 못하면 오류 메시지를 반환합니다.
         """
         occurrence_count = 0

@@ -4,7 +4,7 @@ from .utils.markdown import format_document_metadata
 
 def initialize(documents: Documents):
     def read_portone_doc_metadata(path: str) -> str:
-        """포트원 개별 문서의 경로를 통해 해당 포트원 문서의 제목, 설명, 대상 버전 등 메타 정보만 가져옵니다.
+        """포트원 개별 문서의 경로를 통해 해당 포트원 문서의 제목, 설명, 대상 버전을 포함한 메타 정보 전체를 가져옵니다.
 
         Args:
             path: 읽을 포트원 문서의 경로
@@ -14,7 +14,7 @@ def initialize(documents: Documents):
         """
         # Check in markdown documents - direct dictionary access
         if path in documents.markdown_docs:
-            return format_document_metadata(documents.markdown_docs[path])
+            return format_document_metadata(documents.markdown_docs[path], full=True)
 
         # Document not found
         return f"Error: Document with path '{path}' not found."
