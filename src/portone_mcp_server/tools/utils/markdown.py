@@ -19,12 +19,12 @@ def format_document_metadata(doc: MarkdownDocument, full: bool = False) -> str:
         "path": doc.path,
         "contentLength": len(doc.content),
     }
-    if full:
-        if doc.frontmatter:
-            dict.update(doc.frontmatter.all_fields_dict)
-    else:
-        if doc.frontmatter:
-            frontmatter = doc.frontmatter
+
+    if doc.frontmatter:
+        frontmatter = doc.frontmatter
+        if full:
+            dict.update(frontmatter.all_fields_dict)
+        else:
             if frontmatter.title:
                 dict["title"] = frontmatter.title
             if frontmatter.description:
