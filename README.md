@@ -5,7 +5,7 @@
 ## MCP 서버 등록하기
 
 1. [uv](https://docs.astral.sh/uv/getting-started/installation/) 및 Python 3.12 이상이 설치되어 있어야 합니다.
-1. Claude Desktop -> Settings -> Developer -> Edit Config를 통해 아래 내용을 추가합니다.
+1. 사용하는 AI 도구의 MCP 설정에서 아래 내용을 추가합니다. (Cursor, Windsurf, Claude Desktop, etc...)
 
    ```json
    "mcpServers": {
@@ -21,9 +21,7 @@
    }
    ```
 
-1. Claude Desktop을 재시작해 portone-mcp-server 및 해당 서버가 제공하는 도구들이 잘 등록되었는지 확인합니다.
-
-1. Cursor, Windsurf 등 MCP를 지원하는 IDE에 대해서도 동일한 방식으로 MCP 서버를 등록할 수 있습니다.
+1. 도구를 재시작해 portone-mcp-server 및 해당 서버가 제공하는 도구들이 잘 등록되었는지 확인합니다.
 
 ## 개발하기
 
@@ -87,6 +85,7 @@
 1. 문서 업데이트하기
 
    요구사항:
+
    - 로컬에 developers.portone.io, help.portone.io 저장소가 클론되어 있어야 합니다.
    - nvm (Node Version Manager) 및 노드 20, 23 버전이 설치되어 있어야 합니다.
    - corepack이 설치되어 있어야 합니다.
