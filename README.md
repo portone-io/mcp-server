@@ -4,7 +4,7 @@
 
 ## MCP 서버 등록하기
 
-1. [uv](https://docs.astral.sh/uv/getting-started/installation/) 및 Python 3.12 이상이 설치되어 있어야 합니다.
+1. [uv](https://docs.astral.sh/uv/getting-started/installation/)가 설치되어 있어야 합니다.
 1. 사용하는 AI 도구의 MCP 설정에서 아래 내용을 추가합니다. (Cursor, Windsurf, Claude Desktop, etc...)
 
    ```json
