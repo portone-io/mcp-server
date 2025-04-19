@@ -255,7 +255,8 @@ resources:
           description: K뱅크 카드
         TOSS_BANK:
           description: 토스뱅크 카드
-        MIRAE_ASSET_SECURITIES: {}
+        MIRAE_ASSET_SECURITIES:
+          description: 미래에셋증권 카드
       valuePrefix: CARD_COMPANY
     Carrier:
       type: enum
@@ -796,186 +797,360 @@ resources:
     Currency:
       type: enum
       variants:
-        KRW: {}
-        USD: {}
-        EUR: {}
-        JPY: {}
-        CNY: {}
-        VND: {}
-        THB: {}
-        SGD: {}
-        AUD: {}
-        HKD: {}
-        AED: {}
-        AFN: {}
-        ALL: {}
-        AMD: {}
-        ANG: {}
-        AOA: {}
-        ARS: {}
-        AWG: {}
-        AZN: {}
-        BAM: {}
-        BBD: {}
-        BDT: {}
-        BGN: {}
-        BHD: {}
-        BIF: {}
-        BMD: {}
-        BND: {}
-        BOB: {}
-        BOV: {}
-        BRL: {}
-        BSD: {}
-        BTN: {}
-        BWP: {}
-        BYN: {}
-        BZD: {}
-        CAD: {}
-        CDF: {}
-        CHE: {}
-        CHF: {}
-        CHW: {}
-        CLF: {}
-        CLP: {}
-        COP: {}
-        COU: {}
-        CRC: {}
-        CUC: {}
-        CUP: {}
-        CVE: {}
-        CZK: {}
-        DJF: {}
-        DKK: {}
-        DOP: {}
-        DZD: {}
-        EGP: {}
-        ERN: {}
-        ETB: {}
-        FJD: {}
-        FKP: {}
-        GBP: {}
-        GEL: {}
-        GHS: {}
-        GIP: {}
-        GMD: {}
-        GNF: {}
-        GTQ: {}
-        GYD: {}
-        HNL: {}
-        HRK: {}
-        HTG: {}
-        HUF: {}
-        IDR: {}
-        ILS: {}
-        INR: {}
-        IQD: {}
-        IRR: {}
-        ISK: {}
-        JMD: {}
-        JOD: {}
-        KES: {}
-        KGS: {}
-        KHR: {}
-        KMF: {}
-        KPW: {}
-        KWD: {}
-        KYD: {}
-        KZT: {}
-        LAK: {}
-        LBP: {}
-        LKR: {}
-        LRD: {}
-        LSL: {}
-        LYD: {}
-        MAD: {}
-        MDL: {}
-        MGA: {}
-        MKD: {}
-        MMK: {}
-        MNT: {}
-        MOP: {}
-        MRU: {}
-        MUR: {}
-        MVR: {}
-        MWK: {}
-        MXN: {}
-        MXV: {}
-        MZN: {}
-        NAD: {}
-        NGN: {}
-        NIO: {}
-        NOK: {}
-        NPR: {}
-        NZD: {}
-        OMR: {}
-        PAB: {}
-        PEN: {}
-        PGK: {}
-        PHP: {}
-        PKR: {}
-        PLN: {}
-        PYG: {}
-        QAR: {}
-        RON: {}
-        RSD: {}
-        RUB: {}
-        RWF: {}
-        SAR: {}
-        SBD: {}
-        SCR: {}
-        SDG: {}
-        SEK: {}
-        SHP: {}
-        SLE: {}
-        SLL: {}
-        SOS: {}
-        SRD: {}
-        SSP: {}
-        STN: {}
-        SVC: {}
-        SYP: {}
-        SZL: {}
-        TJS: {}
-        TMT: {}
-        TND: {}
-        TOP: {}
-        TRY: {}
-        TTD: {}
-        TWD: {}
-        TZS: {}
-        UAH: {}
-        UGX: {}
-        USN: {}
-        UYI: {}
-        UYU: {}
-        UYW: {}
-        UZS: {}
-        VED: {}
-        VES: {}
-        VUV: {}
-        WST: {}
-        XAF: {}
-        XAG: {}
-        XAU: {}
-        XBA: {}
-        XBB: {}
-        XBC: {}
-        XBD: {}
-        XCD: {}
-        XDR: {}
-        XOF: {}
-        XPD: {}
-        XPF: {}
-        XPT: {}
-        XSU: {}
-        XTS: {}
-        XUA: {}
-        XXX: {}
-        YER: {}
-        ZAR: {}
-        ZMW: {}
-        ZWL: {}
+        KRW:
+          description: South Korean won
+        USD:
+          description: United States dollar
+        EUR:
+          description: Euro
+        JPY:
+          description: Japanese yen
+        CNY:
+          description: Chinese yuan
+        VND:
+          description: Vietnamese dong
+        THB:
+          description: Thai baht
+        SGD:
+          description: Singapore dollar
+        AUD:
+          description: Australian dollar
+        HKD:
+          description: Hong Kong dollar
+        AED:
+          description: United Arab Emirates dirham
+        AFN:
+          description: Afghan afghani
+        ALL:
+          description: Albanian lek
+        AMD:
+          description: Armenian dram
+        ANG:
+          description: Netherlands Antillean guilder
+        AOA:
+          description: Angolan kwanza
+        ARS:
+          description: Argentine peso
+        AWG:
+          description: Aruban florin
+        AZN:
+          description: Azerbaijani manat
+        BAM:
+          description: Bosnia and Herzegovina convertible mark
+        BBD:
+          description: Barbadian dollar
+        BDT:
+          description: Bangladeshi taka
+        BGN:
+          description: Bulgarian lev
+        BMD:
+          description: Bermudian dollar
+        BND:
+          description: Brunei dollar
+        BOB:
+          description: Boliviano
+        BOV:
+          description: Bolivian Mvdol
+        BRL:
+          description: Brazilian real
+        BSD:
+          description: Bahamian dollar
+        BWP:
+          description: Botswana pula
+        BYN:
+          description: Belarusian ruble
+        BZD:
+          description: Belize dollar
+        CAD:
+          description: Canadian dollar
+        CDF:
+          description: Congolese franc
+        CHE:
+          description: WIR euro
+        CHF:
+          description: Swiss franc
+        CHW:
+          description: WIR franc
+        CLF:
+          description: Chilean unit of account (UF)
+        CLP:
+          description: Chilean peso
+        COP:
+          description: Colombian peso
+        COU:
+          description: Unidad de Valor Real
+        CRC:
+          description: Costa Rican colon
+        CUC:
+          description: Cuban convertible peso
+        CUP:
+          description: Cuban peso
+        CVE:
+          description: Cape Verdean escudo
+        CZK:
+          description: Czech koruna
+        DJF:
+          description: Djiboutian franc
+        DKK:
+          description: Danish krone
+        DOP:
+          description: Dominican peso
+        DZD:
+          description: Algerian dinar
+        EGP:
+          description: Egyptian pound
+        ERN:
+          description: Eritrean nakfa
+        ETB:
+          description: Ethiopian birr
+        FJD:
+          description: Fiji dollar
+        FKP:
+          description: Falkland Islands pound
+        GBP:
+          description: Pound sterling
+        GEL:
+          description: Georgian lari
+        GHS:
+          description: Ghanaian cedi
+        GIP:
+          description: Gibraltar pound
+        GMD:
+          description: Gambian dalasi
+        GNF:
+          description: Guinean franc
+        GTQ:
+          description: Guatemalan quetzal
+        GYD:
+          description: Guyanese dollar
+        HNL:
+          description: Honduran lempira
+        HRK:
+          description: Croatian kuna
+        HTG:
+          description: Haitian gourde
+        HUF:
+          description: Hungarian forint
+        IDR:
+          description: Indonesian rupiah
+        ILS:
+          description: Israeli new shekel
+        INR:
+          description: Indian rupee
+        IQD:
+          description: Iraqi dinar
+        IRR:
+          description: Iranian rial
+        ISK:
+          description: Icelandic króna
+        JMD:
+          description: Jamaican dollar
+        JOD:
+          description: Jordanian dinar
+        KES:
+          description: Kenyan shilling
+        KGS:
+          description: Kyrgyzstani som
+        KHR:
+          description: Cambodian riel
+        KMF:
+          description: Comoro franc
+        KPW:
+          description: North Korean won
+        KWD:
+          description: Kuwaiti dinar
+        KYD:
+          description: Cayman Islands dollar
+        KZT:
+          description: Kazakhstani tenge
+        LAK:
+          description: Lao kip
+        LBP:
+          description: Lebanese pound
+        LKR:
+          description: Sri Lankan rupee
+        LRD:
+          description: Liberian dollar
+        LSL:
+          description: Lesotho loti
+        LYD:
+          description: Libyan dinar
+        MAD:
+          description: Moroccan dirham
+        MDL:
+          description: Moldovan leu
+        MGA:
+          description: Malagasy ariary
+        MKD:
+          description: Macedonian denar
+        MMK:
+          description: Myanmar kyat
+        MNT:
+          description: Mongolian tögrög
+        MOP:
+          description: Macanese pataca
+        MRU:
+          description: Mauritanian ouguiya
+        MUR:
+          description: Mauritian rupee
+        MVR:
+          description: Maldivian rufiyaa
+        MWK:
+          description: Malawian kwacha
+        MXN:
+          description: Mexican peso
+        MXV:
+          description: Mexican Unidad de Inversion
+        MZN:
+          description: Mozambican metical
+        NAD:
+          description: Namibian dollar
+        NGN:
+          description: Nigerian naira
+        NIO:
+          description: Nicaraguan córdoba
+        NOK:
+          description: Norwegian krone
+        NPR:
+          description: Nepalese rupee
+        NZD:
+          description: New Zealand dollar
+        OMR:
+          description: Omani rial
+        PAB:
+          description: Panamanian balboa
+        PEN:
+          description: Peruvian sol
+        PGK:
+          description: Papua New Guinean kina
+        PHP:
+          description: Philippine peso
+        PKR:
+          description: Pakistani rupee
+        PLN:
+          description: Polish złoty
+        PYG:
+          description: Paraguayan guaraní
+        QAR:
+          description: Qatari riyal
+        RON:
+          description: Romanian leu
+        RSD:
+          description: Serbian dinar
+        RUB:
+          description: Russian ruble
+        RWF:
+          description: Rwandan franc
+        SAR:
+          description: Saudi riyal
+        SBD:
+          description: Solomon Islands dollar
+        SCR:
+          description: Seychelles rupee
+        SDG:
+          description: Sudanese pound
+        SEK:
+          description: Swedish krona
+        SHP:
+          description: Saint Helena pound
+        SLE:
+          description: Sierra Leonean leone (new leone)
+        SLL:
+          description: Sierra Leonean leone (old leone)
+        SOS:
+          description: Somali shilling
+        SRD:
+          description: Surinamese dollar
+        SSP:
+          description: South Sudanese pound
+        STN:
+          description: São Tomé and Príncipe dobra
+        SVC:
+          description: Salvadoran colón
+        SYP:
+          description: Syrian pound
+        SZL:
+          description: Swazi lilangeni
+        TJS:
+          description: Tajikistani somoni
+        TMT:
+          description: Turkmenistan manat
+        TND:
+          description: Tunisian dinar
+        TOP:
+          description: Tongan paʻanga
+        TRY:
+          description: Turkish lira
+        TTD:
+          description: Trinidad and Tobago dollar
+        TWD:
+          description: New Taiwan dollar
+        TZS:
+          description: Tanzanian shilling
+        UAH:
+          description: Ukrainian hryvnia
+        UGX:
+          description: Ugandan shilling
+        USN:
+          description: United States dollar (next day)
+        UYI:
+          description: Uruguay Peso en Unidades Indexadas
+        UYU:
+          description: Uruguayan peso
+        UYW:
+          description: Unidad previsional
+        UZS:
+          description: Uzbekistan som
+        VED:
+          description: Venezuelan bolívar digital
+        VES:
+          description: Venezuelan bolívar soberano
+        VUV:
+          description: Vanuatu vatu
+        WST:
+          description: Samoan tala
+        XAF:
+          description: CFA franc BEAC
+        XAG:
+          description: Silver (one troy ounce)
+        XAU:
+          description: Gold (one troy ounce)
+        XBA:
+          description: European Composite Unit
+        XBB:
+          description: European Monetary Unit
+        XBC:
+          description: European Unit of Account 9
+        XBD:
+          description: European Unit of Account 17
+        XCD:
+          description: East Caribbean dollar
+        XDR:
+          description: Special drawing rights
+        XOF:
+          description: CFA franc BCEAO
+        XPD:
+          description: Palladium (one troy ounce)
+        XPF:
+          description: CFP franc
+        XPT:
+          description: Platinum (one troy ounce)
+        XSU:
+          description: SUCRE
+        XTS:
+          description: Code reserved for testing
+        XUA:
+          description: ADB Unit of Account
+        XXX:
+          description: No currency
+        YER:
+          description: Yemeni rial
+        ZAR:
+          description: South African rand
+        ZMW:
+          description: Zambian kwacha
+        ZWL:
+          description: Zimbabwean dollar
       description: |
         **결제 통화 코드**
         - ISO 4217 통화 코드
@@ -1097,27 +1272,48 @@ resources:
       description: |
         간편 결제 수단
       variants:
-        PAYCO: {}
-        SAMSUNGPAY: {}
-        SSGPAY: {}
-        KAKAOPAY: {}
-        NAVERPAY: {}
-        CHAI: {}
-        LPAY: {}
-        KPAY: {}
-        TOSSPAY: {}
-        LGPAY: {}
-        APPLEPAY: {}
-        PINPAY: {}
-        SKPAY: {}
-        TOSS_BRANDPAY: {}
-        HYPHEN: {}
-        PAYPAY: {}
-        AMAZONPAY: {}
-        RAKUTENPAY: {}
-        DBARAI: {}
-        AUPAY: {}
-        MERPAY: {}
+        PAYCO:
+          description: 페이코
+        SAMSUNGPAY:
+          description: 삼성페이
+        SSGPAY:
+          description: SSG페이
+        KAKAOPAY:
+          description: 카카오페이
+        NAVERPAY:
+          description: 네이버페이
+        CHAI:
+          description: 차이페이
+        LPAY:
+          description: L페이
+        KPAY:
+          description: K페이
+        TOSSPAY:
+          description: 토스페이
+        LGPAY:
+          description: LG페이
+        APPLEPAY:
+          description: 애플페이
+        PINPAY:
+          description: 핀페이
+        SKPAY:
+          description: SK페이
+        TOSS_BRANDPAY:
+          description: 토스 브랜드페이
+        HYPHEN:
+          description: 하이픈
+        PAYPAY:
+          description: PayPay
+        AMAZONPAY:
+          description: 아마존페이
+        RAKUTENPAY:
+          description: 라쿠텐페이
+        DBARAI:
+          description: dBarai
+        AUPAY:
+          description: auPAY
+        MERPAY:
+          description: Merpay
       valuePrefix: EASY_PAY_PROVIDER
     FreeInstallmentPlan:
       type: object
@@ -1154,9 +1350,12 @@ resources:
     Gender:
       type: enum
       variants:
-        MALE: {}
-        FEMALE: {}
-        OTHER: {}
+        MALE:
+          description: 남성
+        FEMALE:
+          description: 여성
+        OTHER:
+          description: 기타
       description: |
         구매자 성별
       valuePrefix: GENDER
@@ -1186,48 +1385,9 @@ resources:
             type: resourceRef
             $ref: "#/resources/entity/FreeInstallmentPlan"
         monthOption:
-          type: oneOf
-          description: |
-            **할부 개월 수 설정**
-
-            할부 결제 시 할부 개월 수를 설정할 수 있습니다.
-
-            `fixedMonth`와 `availableMonthList` 중 하나만 제공해주세요.
-
-            - fixedMonth: 고정 할부 개월 수
-            - availableMonthList: 렌더링을 허용 할 할부 개월 수 리스트
-
-            예1) 3개월 고정 할부 개월 수
-            ```js
-            monthOption: {
-             fixedMonth: 3
-            }
-            ```
-
-            예2) 2, 3, 4, 5, 6개월 리스트 할부 개월 수
-            ```js
-            monthOption: {
-             availableMonthList: [2, 3, 4, 5, 6]
-            }
-            ```
+          type: resourceRef
+          $ref: "#/resources/entity/InstallmentMonthOption"
           optional: true
-          properties:
-            fixedMonth:
-              type: integer
-              description: |
-                **구매자가 선택할 수 없도록 고정된 할부 개월수**
-
-                구매자가 할부 개월 수를 선택할 수 있도록 하려면 `availableMonthList`를 사용해주세요.
-              optional: true
-            availableMonthList:
-              type: array
-              description: |
-                **구매자가 선택할 수 있는 할부 개월수 리스트**
-
-                구매자가 할부 개월 수를 선택할 수 없도록 하려면 `fixedMonth`를 사용해주세요.
-              optional: true
-              items:
-                type: integer
     IssueBillingKeyUIType:
       type: enum
       variants:
@@ -1264,33 +1424,11 @@ resources:
       type: oneOf
       properties:
         range:
-          type: union
+          type: resourceRef
+          $ref: "#/resources/entity/OfferPeriodRange"
+          optional: true
           description: |
             **기간 범위**
-          optional: true
-          types:
-            - type: object
-              properties:
-                from:
-                  type: string
-                  description: |
-                    **시작 시점**
-            - type: object
-              properties:
-                to:
-                  type: string
-                  description: |
-                    **종료 지점**
-            - type: object
-              properties:
-                from:
-                  type: string
-                  description: |
-                    **시작 시점**
-                to:
-                  type: string
-                  description: |
-                    **종료 지점**
         interval:
           type: string
           optional: true
@@ -1729,52 +1867,12 @@ resources:
           name: InicisUnifiedIdentityVerificationBypass
           properties:
             directAgency:
-              type: enum
-              description: |
-                **단독 노출할 인증 업체 코드**
-
-                인증 업체 선택 화면 없이 설정한 인증 업체를 통해 인증하도록 합니다.
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/identityVerification/InicisUnifiedDirectAgency"
               optional: true
-              variants:
-                PAYCO:
-                  description: 페이코
-                PASS:
-                  description: 패스 (통신사)
-                TOSS:
-                  description: 토스
-                KFTC:
-                  description: 금융결제원
-                KAKAO:
-                  description: 카카오
-                NAVER:
-                  description: 네이버
-                SAMSUNG:
-                  description: 삼성패스
-                SHINHAN:
-                  description: 신한은행
-                KB:
-                  description: 국민은행
-                HANA:
-                  description: 하나은행
-                WOORI:
-                  description: 우리은행
-                NH:
-                  description: 농협은행
-                KAKAOBANK:
-                  description: 카카오뱅크
-                SMS:
-                  description: 휴대폰 인증, 별도 계약 필요
             flgFixedUser:
-              type: enum
-              description: |
-                **인증 창에서 고객 정보를 미리 채울지 여부**
-
-                `Y`, `N` 중 하나를 입력해주세요.
-
-                `Y`인 경우 이름, 연락처, 출생년도, 출생월, 출생일을 필수로 입력해야 합니다.
-              variants:
-                Y: {}
-                N: {}
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/identityVerification/InicisUnifiedFlgFixedUser"
             logoUrl:
               type: string
               optional: true
@@ -1790,6 +1888,52 @@ resources:
               optional: true
               description: |
                 DI를 생성할 때 사용할 salt
+        InicisUnifiedDirectAgency:
+          type: enum
+          description: |
+            **단독 노출할 인증 업체 코드**
+
+            인증 업체 선택 화면 없이 설정한 인증 업체를 통해 인증하도록 합니다.
+          variants:
+            PAYCO:
+              description: 페이코
+            PASS:
+              description: 패스 (통신사)
+            TOSS:
+              description: 토스
+            KFTC:
+              description: 금융결제원
+            KAKAO:
+              description: 카카오
+            NAVER:
+              description: 네이버
+            SAMSUNG:
+              description: 삼성패스
+            SHINHAN:
+              description: 신한은행
+            KB:
+              description: 국민은행
+            HANA:
+              description: 하나은행
+            WOORI:
+              description: 우리은행
+            NH:
+              description: 농협은행
+            KAKAOBANK:
+              description: 카카오뱅크
+            SMS:
+              description: 휴대폰 인증, 별도 계약 필요
+        InicisUnifiedFlgFixedUser:
+          type: enum
+          description: |
+            **인증 창에서 고객 정보를 미리 채울지 여부**
+
+            `Y`, `N` 중 하나를 입력해주세요.
+
+            `Y`인 경우 이름, 연락처, 출생년도, 출생월, 출생일을 필수로 입력해야 합니다.
+          variants:
+            Y: {}
+            N: {}
       IdentityVerificationBypass:
         type: object
         description: |
@@ -1809,58 +1953,28 @@ resources:
           name: SmartroV2IssueBillingKeyBypass
           properties:
             SkinColor:
-              type: enum
-              variants:
-                RED: {}
-                GREEN: {}
-                BLUE: {}
-                PURPLE: {}
-              description: |
-                UI 스타일(기본: RED)
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/issueBillingKey/SmartroV2SkinColor"
               optional: true
             IsPwdPass:
-              type: enum
-              variants:
-                Y:
-                  description: |
-                    비밀번호 설정 미사용
-                N:
-                  description: |
-                    비밀번호 설정 사용
-              description: |
-                결제 비밀번호 등록 Skip 여부
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/issueBillingKey/SmartroV2IsPwdPass"
               optional: true
         InicisV2:
           type: object
           name: InicisV2IssueBillingKeyBypass
           properties:
             carduse:
-              type: enum
-              variants:
-                percard:
-                  description: |
-                    개인카드만 선택 가능
-                cocard:
-                  description: |
-                    법인 카드만 선택 가능
-              description: |
-                개인/법인카드 선택 옵션
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/issueBillingKey/InicisV2CardUse"
               optional: true
         KcpV2:
           type: object
           name: KcpV2IssueBillingKeyBypass
           properties:
             batch_soc_choice:
-              type: enum
-              variants:
-                S:
-                  description: |
-                    주민번호만 표시
-                C:
-                  description: |
-                    사업자번호만 표시
-              description: |
-                결제창에서 주민번호/사업자 번호 고정여부 설정
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/issueBillingKey/KcpV2BatchSocChoice"
               optional: true
         Naverpay:
           type: object
@@ -1899,6 +2013,48 @@ resources:
               description: |
                 서브 로고 URL (크기: 64x13)
               optional: true
+        SmartroV2SkinColor:
+          type: enum
+          variants:
+            RED: {}
+            GREEN: {}
+            BLUE: {}
+            PURPLE: {}
+          description: |
+            UI 스타일(기본: RED)
+        SmartroV2IsPwdPass:
+          type: enum
+          variants:
+            Y:
+              description: |
+                비밀번호 설정 미사용
+            N:
+              description: |
+                비밀번호 설정 사용
+          description: |
+            결제 비밀번호 등록 Skip 여부
+        InicisV2CardUse:
+          type: enum
+          variants:
+            percard:
+              description: |
+                개인카드만 선택 가능
+            cocard:
+              description: |
+                법인 카드만 선택 가능
+          description: |
+            개인/법인카드 선택 옵션
+        KcpV2BatchSocChoice:
+          type: enum
+          variants:
+            S:
+              description: |
+                주민번호만 표시
+            C:
+              description: |
+                사업자번호만 표시
+          description: |
+            결제창에서 주민번호/사업자 번호 고정여부 설정
       IssueBillingKeyBypass:
         type: object
         properties:
@@ -1996,110 +2152,131 @@ resources:
           name: PaypalV2LoadIssueBillingKeyUIBypass
           properties:
             style:
-              type: object
-              description: |
-                Paypal 빌링키 발급 UI 호출 시 필요한 파라미터
-              properties:
-                color:
-                  type: enum
-                  variants:
-                    gold: {}
-                    blue: {}
-                    silver: {}
-                    white: {}
-                    black: {}
-                  description: |
-                    버튼 색상
-                  optional: true
-                height:
-                  type: integer
-                  description: |
-                    버튼 높이
-                  optional: true
-                label:
-                  type: enum
-                  variants:
-                    paypal: {}
-                    checkout: {}
-                    buynow: {}
-                    pay: {}
-                    installment: {}
-                    subscribe: {}
-                    donate: {}
-                  description: |
-                    버튼 라벨
-                  optional: true
-                layout:
-                  type: enum
-                  variants:
-                    vertical: {}
-                    horizontal: {}
-                  description: |
-                    버튼 렌더링 방향
-                  optional: true
-                shape:
-                  type: enum
-                  variants:
-                    rect: {}
-                    pill: {}
-                  description: |
-                    버튼 모양
-                  optional: true
-                tagline:
-                  type: boolean
-                  description: |
-                    버튼 하위에 문구 노출 여부
-                  optional: true
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/loadIssueBillingKeyUI/PaypalV2Style"
               optional: true
             shipping_address:
-              type: object
-              properties:
-                recipient_name:
-                  type: string
-                  description: |
-                    수령인 이름
-                  optional: true
-                line1:
-                  type: string
-                  description: |
-                    도로명 주소
-                line2:
-                  type: string
-                  description: |
-                    아파트 동 호수
-                  optional: true
-                city:
-                  type: string
-                  description: |
-                    도시 이름
-                state:
-                  type: string
-                  description: |
-                    주 이름 (아르헨티나, 브라질, 캐나다, 중국, 인도, 이탈리아, 일본, 멕시코, 태국 또는 미국의 경우 필수)
-                  optional: true
-                postal_code:
-                  type: string
-                  description: |
-                    우편번호
-                  optional: true
-                country_code:
-                  type: resourceRef
-                  description: |
-                    국가 코드
-                  $ref: "#/resources/entity/Country"
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/loadIssueBillingKeyUI/PaypalV2ShippingAddress"
               optional: true
             additional_data:
               type: array
               items:
-                type: object
-                properties:
-                  key:
-                    type: string
-                  value:
-                    type: string
+                type: resourceRef
+                $ref: "#/resources/entity/bypass/loadIssueBillingKeyUI/PaypalV2AdditionalData"
+              optional: true
               description: |
                 STC 파라미터
+        PaypalV2Style:
+          type: object
+          description: |
+            Paypal 빌링키 발급 UI 호출 시 필요한 파라미터
+          properties:
+            color:
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/loadIssueBillingKeyUI/PaypalV2StyleColor"
               optional: true
+            height:
+              type: integer
+              description: |
+                버튼 높이
+              optional: true
+            label:
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/loadIssueBillingKeyUI/PaypalV2StyleLabel"
+              optional: true
+            layout:
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/loadIssueBillingKeyUI/PaypalV2StyleLayout"
+              optional: true
+            shape:
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/loadIssueBillingKeyUI/PaypalV2StyleShape"
+              optional: true
+            tagline:
+              type: boolean
+              description: |
+                버튼 하위에 문구 노출 여부
+              optional: true
+        PaypalV2ShippingAddress:
+          type: object
+          properties:
+            recipient_name:
+              type: string
+              description: |
+                수령인 이름
+              optional: true
+            line1:
+              type: string
+              description: |
+                도로명 주소
+            line2:
+              type: string
+              description: |
+                아파트 동 호수
+              optional: true
+            city:
+              type: string
+              description: |
+                도시 이름
+            state:
+              type: string
+              description: |
+                주 이름 (아르헨티나, 브라질, 캐나다, 중국, 인도, 이탈리아, 일본, 멕시코, 태국 또는 미국의 경우 필수)
+              optional: true
+            postal_code:
+              type: string
+              description: |
+                우편번호
+              optional: true
+            country_code:
+              type: resourceRef
+              description: |
+                국가 코드
+              $ref: "#/resources/entity/Country"
+        PaypalV2AdditionalData:
+          type: object
+          properties:
+            key:
+              type: string
+            value:
+              type: string
+        PaypalV2StyleColor:
+          type: enum
+          variants:
+            gold: {}
+            blue: {}
+            silver: {}
+            white: {}
+            black: {}
+          description: |
+            버튼 색상
+        PaypalV2StyleLabel:
+          type: enum
+          variants:
+            paypal: {}
+            checkout: {}
+            buynow: {}
+            pay: {}
+            installment: {}
+            subscribe: {}
+            donate: {}
+          description: |
+            버튼 라벨
+        PaypalV2StyleLayout:
+          type: enum
+          variants:
+            vertical: {}
+            horizontal: {}
+          description: |
+            버튼 렌더링 방향
+        PaypalV2StyleShape:
+          type: enum
+          variants:
+            rect: {}
+            pill: {}
+          description: |
+            버튼 모양
       LoadIssueBillingKeyUIBypass:
         type: object
         properties:
@@ -2113,66 +2290,9 @@ resources:
           name: PaypalV2LoadPaymentUIBypass
           properties:
             style:
-              type: object
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/loadPaymentUI/PaypalV2Style"
               optional: true
-              description: |
-                SPB 버튼 렌더링에 필요한 파라미터
-              properties:
-                color:
-                  type: enum
-                  variants:
-                    gold: {}
-                    blue: {}
-                    silver: {}
-                    white: {}
-                    black: {}
-                  description: |
-                    버튼 색상
-                  optional: true
-                height:
-                  type: integer
-                  description: |
-                    버튼 높이
-                  optional: true
-                label:
-                  type: enum
-                  variants:
-                    paypal: {}
-                    checkout: {}
-                    buynow: {}
-                    pay: {}
-                    installment: {}
-                    subscribe: {}
-                    donate: {}
-                  description: |
-                    버튼 라벨
-                  optional: true
-                layout:
-                  type: enum
-                  variants:
-                    vertical: {}
-                    horizontal: {}
-                  description: |
-                    버튼 렌더링 방향
-                  optional: true
-                shape:
-                  type: enum
-                  variants:
-                    rect: {}
-                    pill: {}
-                  description: |
-                    버튼 모양
-                  optional: true
-                period:
-                  type: string
-                  description: |
-                    label이 installment일 때 할부 결제 되는 월
-                  optional: true
-                tagline:
-                  type: boolean
-                  description: |
-                    버튼 하위에 문구 노출 여부
-                  optional: true
             enable-funding:
               type: string
               description: |
@@ -2189,98 +2309,191 @@ resources:
                 create order API 호출에 필요한 파라미터
               optional: true
               items:
-                type: object
-                properties:
-                  shipping:
-                    type: object
-                    optional: true
-                    description: |
-                      구매 상품 정보
-                    properties:
-                      address:
-                        type: object
-                        optional: true
-                        description: |
-                          수령지 정보
-                        properties:
-                          address_line_1:
-                            type: string
-                            description: |
-                              수령지 주소. 미 입력 시 입력된 주소로 override되지 않음
-                          address_line_2:
-                            type: string
-                            optional: true
-                          admin_area_1:
-                            type: string
-                            optional: true
-                          admin_area_2:
-                            type: string
-                            description: |
-                              필수 입력. 미 입력 시 create order 실패
-                          postal_code:
-                            type: string
-                            optional: true
-                          country_code:
-                            type: resourceRef
-                            description: |
-                              국가 코드
-                            $ref: "#/resources/entity/Country"
+                type: resourceRef
+                $ref: "#/resources/entity/bypass/loadPaymentUI/PaypalV2PurchaseUnit"
             payer:
-              type: object
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/loadPaymentUI/PaypalV2Payer"
               optional: true
-              properties:
-                tax_info:
-                  type: object
-                  optional: true
-                  description: |
-                    구매자 정보
-                  properties:
-                    tax_id:
-                      type: string
-                      description: |
-                        구매자 세금 정보 (브라질 구매자의 경우 필수 입력)
-                    tax_id_type:
-                      type: string
-                address:
-                  type: object
-                  optional: true
-                  properties:
-                    address_line_1:
-                      type: string
-                      description: |
-                        구매자 주소지 정보
-                      optional: true
-                    address_line_2:
-                      type: string
-                      optional: true
-                    admin_area_1:
-                      type: string
-                      optional: true
-                    admin_area_2:
-                      type: string
-                      optional: true
-                    postal_code:
-                      type: string
-                      description: |
-                        우편번호
-                      optional: true
-                    country_code:
-                      type: resourceRef
-                      description: |
-                        국가 코드
-                      $ref: "#/resources/entity/Country"
             additional_data:
               type: array
               items:
-                type: object
-                properties:
-                  key:
-                    type: string
-                  value:
-                    type: string
+                type: resourceRef
+                $ref: "#/resources/entity/bypass/loadPaymentUI/PaypalV2AdditionalData"
               description: |
                 STC 파라미터
               optional: true
+        PaypalV2Style:
+          type: object
+          description: |
+            SPB 버튼 렌더링에 필요한 파라미터
+          properties:
+            color:
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/loadPaymentUI/PaypalV2StyleColor"
+              optional: true
+            height:
+              type: integer
+              description: |
+                버튼 높이
+              optional: true
+            label:
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/loadPaymentUI/PaypalV2StyleLabel"
+              optional: true
+            layout:
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/loadPaymentUI/PaypalV2StyleLayout"
+              optional: true
+            shape:
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/loadPaymentUI/PaypalV2StyleShape"
+              optional: true
+            period:
+              type: string
+              description: |
+                label이 installment일 때 할부 결제 되는 월
+              optional: true
+            tagline:
+              type: boolean
+              description: |
+                버튼 하위에 문구 노출 여부
+              optional: true
+        PaypalV2PurchaseUnit:
+          type: object
+          properties:
+            shipping:
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/loadPaymentUI/PaypalV2PurchaseUnitShipping"
+              optional: true
+        PaypalV2Payer:
+          type: object
+          properties:
+            tax_info:
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/loadPaymentUI/PaypalV2PayerTaxInfo"
+              optional: true
+            address:
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/loadPaymentUI/PaypalV2PayerAddress"
+              optional: true
+        PaypalV2AdditionalData:
+          type: object
+          properties:
+            key:
+              type: string
+            value:
+              type: string
+        PaypalV2StyleColor:
+          type: enum
+          variants:
+            gold: {}
+            blue: {}
+            silver: {}
+            white: {}
+            black: {}
+          description: |
+            버튼 색상
+        PaypalV2StyleLabel:
+          type: enum
+          variants:
+            paypal: {}
+            checkout: {}
+            buynow: {}
+            pay: {}
+            installment: {}
+            subscribe: {}
+            donate: {}
+          description: |
+            버튼 라벨
+        PaypalV2StyleLayout:
+          type: enum
+          variants:
+            vertical: {}
+            horizontal: {}
+          description: |
+            버튼 렌더링 방향
+        PaypalV2StyleShape:
+          type: enum
+          variants:
+            rect: {}
+            pill: {}
+          description: |
+            버튼 모양
+        PaypalV2PurchaseUnitShipping:
+          type: object
+          description: |
+            구매 상품 정보
+          properties:
+            address:
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/loadPaymentUI/PaypalV2PurchaseUnitShippingAddress"
+              optional: true
+        PaypalV2PayerTaxInfo:
+          type: object
+          description: |
+            구매자 정보
+          properties:
+            tax_id:
+              type: string
+              description: |
+                구매자 세금 정보 (브라질 구매자의 경우 필수 입력)
+            tax_id_type:
+              type: string
+        PaypalV2PayerAddress:
+          type: object
+          properties:
+            address_line_1:
+              type: string
+              description: |
+                구매자 주소지 정보
+              optional: true
+            address_line_2:
+              type: string
+              optional: true
+            admin_area_1:
+              type: string
+              optional: true
+            admin_area_2:
+              type: string
+              optional: true
+            postal_code:
+              type: string
+              description: |
+                우편번호
+              optional: true
+            country_code:
+              type: resourceRef
+              description: |
+                국가 코드
+              $ref: "#/resources/entity/Country"
+        PaypalV2PurchaseUnitShippingAddress:
+          type: object
+          description: |
+            수령지 정보
+          properties:
+            address_line_1:
+              type: string
+              description: |
+                수령지 주소. 미 입력 시 입력된 주소로 override되지 않음
+            address_line_2:
+              type: string
+              optional: true
+            admin_area_1:
+              type: string
+              optional: true
+            admin_area_2:
+              type: string
+              description: |
+                필수 입력. 미 입력 시 create order 실패
+            postal_code:
+              type: string
+              optional: true
+            country_code:
+              type: resourceRef
+              description: |
+                국가 코드
+              $ref: "#/resources/entity/Country"
       LoadPaymentUIBypass:
         type: object
         properties:
@@ -2309,22 +2522,14 @@ resources:
           description: "KSNET bypass 파라미터"
           name: KsnetPaymentBypass
           properties:
+            sndQpayType:
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/KsnetSndQpayType"
+              optional: true
             easyPayDirect:
               type: boolean
               description: |
                 **KSNET 간편결제 다이렉트 여부**
-              optional: true
-            sndQpayType:
-              type: enum
-              variants:
-                "1":
-                  description: |
-                    간편 결제 표시
-                "0":
-                  description: |
-                    간편 결제 미표시
-              description: |
-                간편 결제 표시 구분
               optional: true
         Kakaopay:
           type: object
@@ -2347,26 +2552,12 @@ resources:
                 결제 상품 품목 개수
               optional: true
             SkinColor:
-              type: enum
-              variants:
-                RED: {}
-                GREEN: {}
-                BLUE: {}
-                PURPLE: {}
-              description: |
-                UI 스타일 (기본값: `"RED"`)
-
-                `"RED"`, `"GREEN"`, `"BLUE"`, `"PURPLE"` 중 하나의 값으로 입력해주세요.
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/SmartroV2SkinColor"
               optional: true
             OpenType:
-              type: enum
-              variants:
-                KR: {}
-                EN: {}
-              description: |
-                해외 카드만 결제를 허용할지 여부(기본값: `"KR"`)
-
-                `"KR"`, `"EN"` 중 하나의 값으로 입력해주세요.
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/SmartroV2OpenType"
               optional: true
         Naverpay:
           type: object
@@ -2381,88 +2572,11 @@ resources:
             productItems:
               type: array
               items:
-                type: object
-                properties:
-                  categoryType:
-                    type: string
-                    description: |
-                      결제 상품 유형
-                  categoryId:
-                    type: string
-                    description: |
-                      결제 상품 분류
-                  uid:
-                    type: string
-                    description: |
-                      결제 상품 식별값
-                  name:
-                    type: string
-                    description: |
-                      상품명
-                  payReferrer:
-                    type: enum
-                    variants:
-                      NAVER_BOOK: {}
-                      NAVER_MUSIC: {}
-                      NAVER_SHOPPING: {}
-                      NAVER_MAP: {}
-                      NAVER_PLACE: {}
-                      SEARCH_AD: {}
-                      NAVER_SEARCH: {}
-                      BRAND_SEARCH: {}
-                      PARTNER_DIRECT: {}
-                      ETC: {}
-                    description: |
-                      결제 상품 유입경로
-                    optional: true
-                  startDate:
-                    type: string
-                    description: |
-                      시작일(YYYYMMDD)
-                    optional: true
-                  endDate:
-                    type: string
-                    description: |
-                      종료일(YYYYMMDD)
-                    optional: true
-                  sellerId:
-                    type: string
-                    description: |
-                      하위 판매자 식별키
-                    optional: true
-                  count:
-                    type: integer
-                    description: |
-                      결제 상품 개수
+                type: resourceRef
+                $ref: "#/resources/entity/bypass/payment/NaverpayProductItem"
             subMerchantInfo:
-              type: object
-              properties:
-                subMerchantName:
-                  type: string
-                  description: |
-                    하부 가맹점 명
-                subMerchantId:
-                  type: string
-                  description: |
-                    하부 가맹점 ID
-                subMerchantBusinessNo:
-                  type: string
-                  description: |
-                    하부 가맹점 사업자 번호(숫자 10자리)
-                subMerchantPayId:
-                  type: string
-                  description: |
-                    하부 가맹점 결제 키
-                subMerchantTelephoneNo:
-                  type: string
-                  description: |
-                    하부 가맹점 대표 전화번호
-                subMerchantCustomerServiceUrl:
-                  type: string
-                  description: |
-                    하부 가맹점 고객 서비스 URL
-              description: |
-                하부 가맹점 정보. PG 업종 가맹점인 경우에만 필수 값
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/NaverpaySubMerchantInfo"
               optional: true
             deliveryFee:
               type: integer
@@ -2480,25 +2594,12 @@ resources:
                 결제창 로고 이미지 URL
               optional: true
             NPDisableScroll:
-              type: enum
-              variants:
-                Y: {}
-                N: {}
-              description: |
-                결제창 스크롤 미사용 여부 (PC Only, Y: 미사용 / N(default): 사용)
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/NiceV2DisableScroll"
               optional: true
             SkinType:
-              type: enum
-              variants:
-                red: {}
-                green: {}
-                purple: {}
-                gray: {}
-                dark: {}
-              description: |
-                결제창 스킨 색상 설정
-
-                `"red", "green", "purple", "gray", "dark"` 중 하나의 값으로 입력해주세요.
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/NiceV2SkinType"
               optional: true
             UserCI:
               type: string
@@ -2511,22 +2612,12 @@ resources:
                 상점 사용자 아이디. 문화 상품권 결제시 경우 필수 입력
               optional: true
             DirectCouponYN:
-              type: enum
-              variants:
-                Y: {}
-                N: {}
-              description: |
-                신용카드 쿠폰 자동 적용 여부 (Y: 사전 등록된 선 할인 쿠폰을 자동 적용 / N: 쿠폰 미적용(기본값))
-
-                할부 거래 요청 시 할인 적용 후 승인 금액이 할부 가능 금액 (50,000) 미만인 경우 인증 실패 처리
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/NiceV2DirectCoupon"
               optional: true
             DirectShowOpt:
-              type: enum
-              variants:
-                BANK: {}
-                CELLPHONE: {}
-              description: |
-                다이렉트 호출 결제 수단 (BANK: 계좌이체/CELLPHONE: 휴대폰 소액결제)
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/NiceV2DirectShow"
               optional: true
             CardShowOpt:
               type: string
@@ -2551,12 +2642,8 @@ resources:
                 페이코 계정 자동 로그인 기능 사용을 위한 접속 토큰
               optional: true
             SamPayMallType:
-              type: enum
-              variants:
-                "01": {}
-                "99": {}
-              description: |
-                삼성페이 고객사 유형 (01: 삼성페이 內 쇼핑 / 99: 기타 (기본값))
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/NiceV2SamPayMallType"
               optional: true
         TossBrandpay:
           type: object
@@ -2564,103 +2651,13 @@ resources:
           name: TossBrandpayPaymentBypass
           properties:
             brandpayOptions:
-              type: object
-              description: |
-                loadBrandpay 호출시 전달하는 세번째 파라미터
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/TossBrandpayBrandpayOptions"
               optional: true
-              properties:
-                ui:
-                  type: object
-                  optional: true
-                  properties:
-                    highlightColor:
-                      type: string
-                      description: |
-                        UI의 메인 색상. (기본값: #3182f6)
-                      optional: true
-                    buttonStyle:
-                      type: enum
-                      variants:
-                        default: {}
-                        full: {}
-                      description: |
-                        버튼 스타일
-                        - default(기본값): 모서리가 둥글고 주변에 여백을 가진 버튼
-                        - full: 하단 영역이 전부 채워지는 형태의 버튼
-                      optional: true
-                    labels:
-                      type: object
-                      optional: true
-                      properties:
-                        oneTouchPay:
-                          type: string
-                          description: |
-                            UI에 표시되는 원터치 결제를 대신해 사용할 텍스트. (기본값: "원터치 결제")
-                          optional: true
-                    navigationBar:
-                      type: object
-                      optional: true
-                      properties:
-                        visible:
-                          type: boolean
-                          description: |
-                            내비게이션 바 사용 여부. (기본값: true)
-                          optional: true
-                        paddingTop:
-                          type: integer
-                          description: |
-                            내비게이션 바 위쪽에 설정할 여백 값. 값의 단위는 px
-                          optional: true
             widgetOptions:
-              type: object
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/TossBrandpayWidgetOptions"
               optional: true
-              description: |
-                브랜드페이 위젯 render() 함수 호출시 전달하는 두번째 파라미터
-              properties:
-                methodType:
-                  type: enum
-                  variants:
-                    카드: {}
-                    계좌: {}
-                  description: |
-                    위젯에 보여줄 결제 수단. 예) 카드 전달시 등록한 결제 수단 중 카드만 노출 됨
-                  optional: true
-                methodId:
-                  type: string
-                  description: |
-                    위젯에서 기본 결제 수단으로 선택할 결제 수단의 ID
-                  optional: true
-                ui:
-                  type: object
-                  optional: true
-                  properties:
-                    promotionSection:
-                      type: object
-                      optional: true
-                      properties:
-                        summary:
-                          type: object
-                          optional: true
-                          properties:
-                            visible:
-                              type: boolean
-                              description: |
-                                혜택 배지 영역을 보여줄지 여부. 혜택 배지 영역에서는 즉시 할인 대상 카드 정보 등을 간략히 보여 줌. 기본값은 true
-                              optional: true
-                        description:
-                          type: object
-                          optional: true
-                          properties:
-                            visible:
-                              type: boolean
-                              description: |
-                                결제 혜택 영역을 보여줄지 여부. 기본값은 true
-                              optional: true
-                            defaultOpen:
-                              type: boolean
-                              description: |
-                                결제 혜택의 상세 설명을 보여줄지 여부. 각 카드사의 결제 혜택을 자세히 설명 함. 기본값은 false
-                              optional: true
             discountCode:
               type: string
               description: |
@@ -2786,16 +2783,8 @@ resources:
                 결제 만료 기한 (yyyy-MM-dd HH:mm:ss)
               optional: true
             cashReceiptTradeOption:
-              type: enum
-              variants:
-                CULTURE: {}
-                GENERAL: {}
-                PUBLIC_TP: {}
-              description: |
-                현금영수증 발급타입
-                - CULTURE: 문화비
-                - GENERAL: 일반 (기본값)
-                - PUBLIC_TP: 교통비
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/TosspayV2CashReceiptTradeOption"
               optional: true
         InicisV2:
           type: object
@@ -2949,12 +2938,8 @@ resources:
             CardSelect:
               type: array
               items:
-                type: enum
-                variants:
-                  GLOBAL: {}
-                  11PAY: {}
-                  LEGACY_AUTH: {}
-                  KEY_IN: {}
+                type: resourceRef
+                $ref: "#/resources/entity/bypass/payment/KpnCardSelect"
               description: |
                 - 해외카드 (VISA + MASTER + JCB) : `GLOBAL`
                 - 11Pay (SKPay) : `11PAY`
@@ -2978,25 +2963,15 @@ resources:
               type: string
               optional: true
             complex_pnt_yn:
-              type: enum
-              variants:
-                Y: {}
-                N: {}
-              description: |
-                포인트 결제의 경우 신용카드 + 포인트 결제인데, N으로 설정 시 포인트로만 결제가 이루어짐
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/KcpV2ComplexPnt"
               optional: true
             pt_memcorp_cd:
               type: string
               optional: true
             disp_tax_yn:
-              type: enum
-              variants:
-                Y: {}
-                N: {}
-                R: {}
-                E: {}
-              description: |
-                가상계좌, 계좌이체 시 현금영수증 노출 여부
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/KcpV2DispTax"
               optional: true
             site_name:
               type: string
@@ -3014,7 +2989,8 @@ resources:
           name: HyphenBypass
           properties:
             designCd:
-              type: string
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/HyphenDesignCd"
               optional: true
         EximbayV2:
           type: object
@@ -3022,236 +2998,599 @@ resources:
           name: EximbayV2Bypass
           properties:
             payment:
-              type: object
-              description: |
-                결제 정보
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/EximbayV2Payment"
               optional: true
-              properties:
-                payment_method:
-                  type: string
-                  description: |
-                    결제수단 다이렉트
-                  optional: true
-                multi_payment_method:
-                  type: array
-                  items:
-                    type: string
-                  description: |
-                    결제수단 다이렉트 목록
-                  optional: true
             merchant:
-              type: object
-              description: |
-                상점 정보
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/EximbayV2Merchant"
               optional: true
-              properties:
-                shop:
-                  type: string
-                  description: |
-                    상점명
-                  optional: true
-                partner_code:
-                  type: string
-                  description: |
-                    파트너 코드
-                  optional: true
             tax:
-              type: object
-              description: |
-                세금 정보
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/EximbayV2Tax"
               optional: true
-              properties:
-                receipt_status:
-                  type: enum
-                  variants:
-                    Y: {}
-                    N: {}
-                  description: |
-                    현금영수증 발급 여부
-                  optional: true
             surcharge:
               type: array
               description: |
                 최대 3개의 추가 비용 목록
               optional: true
               items:
-                type: object
-                properties:
-                  name:
-                    type: string
-                    description: |
-                      항목명
-                    optional: true
-                  quantity:
-                    type: string
-                    description: |
-                      수량
-                    optional: true
-                  unit_price:
-                    type: string
-                    description: |
-                      단가 (음수 가능)
-                    optional: true
+                type: resourceRef
+                $ref: "#/resources/entity/bypass/payment/EximbayV2Surcharge"
             ship_to:
-              type: object
-              description: |
-                배송지 정보
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/EximbayV2ShipTo"
               optional: true
-              properties:
-                city:
-                  type: string
-                  description: |
-                    배송지 도시
-                  optional: true
-                country:
-                  type: string
-                  description: |
-                    배송지 국가 (ISO 3166 두 자리 국가 코드)
-                  optional: true
-                first_name:
-                  type: string
-                  description: |
-                    수신인의 성을 제외한 이름
-                  optional: true
-                last_name:
-                  type: string
-                  description: |
-                    수신인의 성
-                  optional: true
-                phone_number:
-                  type: string
-                  description: |
-                    수신인 전화번호
-                  optional: true
-                postal_code:
-                  type: string
-                  description: |
-                    배송지 우편번호
-                  optional: true
-                state:
-                  type: string
-                  description: |
-                    배송지가 미국 혹은 캐나다인 경우, 배송지 주 정보
-                  optional: true
-                street1:
-                  type: string
-                  description: |
-                    배송지 상세 주소
-                  optional: true
             bill_to:
-              type: object
-              description: |
-                청구지 정보
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/EximbayV2BillTo"
               optional: true
-              properties:
-                city:
-                  type: string
-                  description: |
-                    청구지 도시
-                  optional: true
-                country:
-                  type: string
-                  description: |
-                    청구지 국가 (ISO 3166 두 자리 국가 코드)
-                  optional: true
-                first_name:
-                  type: string
-                  description: |
-                    청구 카드 명의자의 성을 제외한 이름
-                  optional: true
-                last_name:
-                  type: string
-                  description: |
-                    청구 카드 명의자의 성
-                  optional: true
-                phone_number:
-                  type: string
-                  description: |
-                    청구 카드 명의자의 전화번호
-                  optional: true
-                postal_code:
-                  type: string
-                  description: |
-                    청구지 우편번호
-                  optional: true
-                state:
-                  type: string
-                  description: |
-                    청구지가 미국 혹은 캐나다인 경우, 청구지 주 정보
-                  optional: true
-                street1:
-                  type: string
-                  description: |
-                    청구지 상세 주소
-                  optional: true
             settings:
-              type: object
-              description: |
-                설정 정보
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/EximbayV2Settings"
               optional: true
-              properties:
-                call_from_app:
-                  type: enum
-                  variants:
-                    Y: {}
-                    N: {}
-                  description: |
-                    인앱 웹뷰 여부
-                  optional: true
-                issuer_country:
-                  type: string
-                  description: |
-                    해외 결제 가맹점에서 국내 결제를 사용할 경우 `KR`
-                  optional: true
-                virtualaccount_expiry_date:
-                  type: string
-                  description: |
-                    입금 만료 일자 (yyyyMMddHH)
-                  optional: true
         InicisJp:
           type: object
           description: "이니시스 일본 bypass 파라미터"
           name: InicisJpBypass
           properties:
             paymentUI:
-              type: object
-              description: |
-                결제창 UI 설정
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/InicisJpPaymentUI"
               optional: true
-              properties:
-                colorTheme:
-                  type: string
-                  description: |
-                    **결제창 색상**
+        InicisJpPaymentUI:
+          type: object
+          description: |
+            결제창 UI 설정
+          properties:
+            colorTheme:
+              type: string
+              description: |
+                **결제창 색상**
 
-                    가능한 값:
-                    - `red1`
-                    - `red2`
-                    - `red3`
-                    - `red4`
-                    - `orange`
-                    - `yellow`
-                    - `black`
-                    - `purple`
-                    - `green`
-                    - `blue1`
-                    - `blue2`
-                    - `blue3`
-                    - `blue4`
-                    - `blue5`
-                    - `blue6`
-                  optional: true
-                logoUrl:
-                  type: string
-                  description: |
-                    **가맹점 로고 이미지 URL**
+                가능한 값:
+                - `red1`
+                - `red2`
+                - `red3`
+                - `red4`
+                - `orange`
+                - `yellow`
+                - `black`
+                - `purple`
+                - `green`
+                - `blue1`
+                - `blue2`
+                - `blue3`
+                - `blue4`
+                - `blue5`
+                - `blue6`
+              optional: true
+            logoUrl:
+              type: string
+              description: |
+                **가맹점 로고 이미지 URL**
 
-                    69 * 20 픽셀 크기의 이미지 URL
-                  optional: true
+                69 * 20 픽셀 크기의 이미지 URL
+              optional: true
+        KsnetSndQpayType:
+          type: enum
+          variants:
+            "1":
+              description: |
+                간편 결제 표시
+            "0":
+              description: |
+                간편 결제 미표시
+          description: |
+            간편 결제 표시 구분
+        SmartroV2SkinColor:
+          type: enum
+          variants:
+            RED: {}
+            GREEN: {}
+            BLUE: {}
+            PURPLE: {}
+          description: |
+            UI 스타일 (기본값: `"RED"`)
+
+            `"RED"`, `"GREEN"`, `"BLUE"`, `"PURPLE"` 중 하나의 값으로 입력해주세요.
+        SmartroV2OpenType:
+          type: enum
+          variants:
+            KR: {}
+            EN: {}
+          description: |
+            해외 카드만 결제를 허용할지 여부(기본값: `"KR"`)
+
+            `"KR"`, `"EN"` 중 하나의 값으로 입력해주세요.
+        NaverpayProductItem:
+          type: object
+          properties:
+            categoryType:
+              type: string
+              description: |
+                결제 상품 유형
+            categoryId:
+              type: string
+              description: |
+                결제 상품 분류
+            uid:
+              type: string
+              description: |
+                결제 상품 식별값
+            name:
+              type: string
+              description: |
+                상품명
+            payReferrer:
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/NaverpayProductItemPayReferrer"
+              optional: true
+            startDate:
+              type: string
+              description: |
+                시작일(YYYYMMDD)
+              optional: true
+            endDate:
+              type: string
+              description: |
+                종료일(YYYYMMDD)
+              optional: true
+            sellerId:
+              type: string
+              description: |
+                하위 판매자 식별키
+              optional: true
+            count:
+              type: integer
+              description: |
+                결제 상품 개수
+        NaverpaySubMerchantInfo:
+          type: object
+          properties:
+            subMerchantName:
+              type: string
+              description: |
+                하부 가맹점 명
+            subMerchantId:
+              type: string
+              description: |
+                하부 가맹점 ID
+            subMerchantBusinessNo:
+              type: string
+              description: |
+                하부 가맹점 사업자 번호(숫자 10자리)
+            subMerchantPayId:
+              type: string
+              description: |
+                하부 가맹점 결제 키
+            subMerchantTelephoneNo:
+              type: string
+              description: |
+                하부 가맹점 대표 전화번호
+            subMerchantCustomerServiceUrl:
+              type: string
+              description: |
+                하부 가맹점 고객 서비스 URL
+          description: |
+            하부 가맹점 정보. PG 업종 가맹점인 경우에만 필수 값
+        NiceV2DisableScroll:
+          type: enum
+          variants:
+            Y: {}
+            N: {}
+          description: |
+            결제창 스크롤 미사용 여부 (PC Only, Y: 미사용 / N(default): 사용)
+        NiceV2SkinType:
+          type: enum
+          variants:
+            red: {}
+            green: {}
+            purple: {}
+            gray: {}
+            dark: {}
+          description: |
+            결제창 스킨 색상 설정
+
+            `"red", "green", "purple", "gray", "dark"` 중 하나의 값으로 입력해주세요.
+        NiceV2DirectCoupon:
+          type: enum
+          variants:
+            Y:
+              description: 사전 등록된 선 할인 쿠폰을 자동 적용
+            N:
+              description: 쿠폰 미적용(기본값)
+          description: |
+            신용카드 쿠폰 자동 적용 여부 (Y: 사전 등록된 선 할인 쿠폰을 자동 적용 / N: 쿠폰 미적용(기본값))
+
+            할부 거래 요청 시 할인 적용 후 승인 금액이 할부 가능 금액 (50,000) 미만인 경우 인증 실패 처리
+        NiceV2DirectShow:
+          type: enum
+          variants:
+            BANK:
+              description: 계좌이체
+            CELLPHONE:
+              description: 휴대폰 소액결제
+          description: |
+            다이렉트 호출 결제 수단 (BANK: 계좌이체/CELLPHONE: 휴대폰 소액결제)
+        NiceV2SamPayMallType:
+          type: enum
+          variants:
+            "01":
+              description: 삼성페이 內 쇼핑
+            "99":
+              description: 기타 (기본값)
+          description: |
+            삼성페이 고객사 유형 (01: 삼성페이 內 쇼핑 / 99: 기타 (기본값))
+        TossBrandpayBrandpayOptions:
+          type: object
+          description: |
+            loadBrandpay 호출시 전달하는 세번째 파라미터
+          properties:
+            ui:
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/TossBrandpayBrandpayOptionsUi"
+              optional: true
+        TossBrandpayWidgetOptions:
+          type: object
+          description: |
+            브랜드페이 위젯 render() 함수 호출시 전달하는 두번째 파라미터
+          properties:
+            methodType:
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/TossBrandpayWidgetOptionsMethodType"
+              optional: true
+            methodId:
+              type: string
+              description: |
+                위젯에서 기본 결제 수단으로 선택할 결제 수단의 ID
+              optional: true
+            ui:
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/TossBrandpayWidgetOptionsUi"
+              optional: true
+        TosspayV2CashReceiptTradeOption:
+          type: enum
+          variants:
+            CULTURE:
+              description: 문화비
+            GENERAL:
+              description: 일반 (기본값)
+            PUBLIC_TP:
+              description: 교통비
+          description: |
+            현금영수증 발급타입
+            - CULTURE: 문화비
+            - GENERAL: 일반 (기본값)
+            - PUBLIC_TP: 교통비
+        KpnCardSelect:
+          type: enum
+          variants:
+            GLOBAL:
+              description: 해외카드
+            11PAY:
+              description: 11Pay
+            LEGACY_AUTH:
+              description: 구인증
+            KEY_IN:
+              description: 키인
+        KcpV2ComplexPnt:
+          type: enum
+          variants:
+            Y: {}
+            N: {}
+          description: |
+            포인트 결제의 경우 신용카드 + 포인트 결제인데, N으로 설정 시 포인트로만 결제가 이루어짐
+        KcpV2DispTax:
+          type: enum
+          variants:
+            Y: {}
+            N: {}
+            R: {}
+            E: {}
+          description: |
+            가상계좌, 계좌이체 시 현금영수증 노출 여부
+        HyphenDesignCd:
+          type: string
+        EximbayV2Payment:
+          type: object
+          description: |
+            결제 정보
+          properties:
+            payment_method:
+              type: string
+              description: |
+                결제수단 다이렉트
+              optional: true
+            multi_payment_method:
+              type: array
+              items:
+                type: string
+              description: |
+                결제수단 다이렉트 목록
+              optional: true
+        EximbayV2Merchant:
+          type: object
+          description: |
+            상점 정보
+          properties:
+            shop:
+              type: string
+              description: |
+                상점명
+              optional: true
+            partner_code:
+              type: string
+              description: |
+                파트너 코드
+              optional: true
+        EximbayV2Tax:
+          type: object
+          description: |
+            세금 정보
+          properties:
+            receipt_status:
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/EximbayV2TaxReceiptStatus"
+              optional: true
+        EximbayV2Surcharge:
+          type: object
+          properties:
+            name:
+              type: string
+              description: |
+                항목명
+              optional: true
+            quantity:
+              type: string
+              description: |
+                수량
+              optional: true
+            unit_price:
+              type: string
+              description: |
+                단가 (음수 가능)
+              optional: true
+        EximbayV2ShipTo:
+          type: object
+          description: |
+            배송지 정보
+          properties:
+            city:
+              type: string
+              description: |
+                배송지 도시
+              optional: true
+            country:
+              type: string
+              description: |
+                배송지 국가 (ISO 3166 두 자리 국가 코드)
+              optional: true
+            first_name:
+              type: string
+              description: |
+                수신인의 성을 제외한 이름
+              optional: true
+            last_name:
+              type: string
+              description: |
+                수신인의 성
+              optional: true
+            phone_number:
+              type: string
+              description: |
+                수신인 전화번호
+              optional: true
+            postal_code:
+              type: string
+              description: |
+                배송지 우편번호
+              optional: true
+            state:
+              type: string
+              description: |
+                배송지가 미국 혹은 캐나다인 경우, 배송지 주 정보
+              optional: true
+            street1:
+              type: string
+              description: |
+                배송지 상세 주소
+              optional: true
+        EximbayV2BillTo:
+          type: object
+          description: |
+            청구지 정보
+          properties:
+            city:
+              type: string
+              description: |
+                청구지 도시
+              optional: true
+            country:
+              type: string
+              description: |
+                청구지 국가 (ISO 3166 두 자리 국가 코드)
+              optional: true
+            first_name:
+              type: string
+              description: |
+                청구 카드 명의자의 성을 제외한 이름
+              optional: true
+            last_name:
+              type: string
+              description: |
+                청구 카드 명의자의 성
+              optional: true
+            phone_number:
+              type: string
+              description: |
+                청구 카드 명의자의 전화번호
+              optional: true
+            postal_code:
+              type: string
+              description: |
+                청구지 우편번호
+              optional: true
+            state:
+              type: string
+              description: |
+                청구지가 미국 혹은 캐나다인 경우, 청구지 주 정보
+              optional: true
+            street1:
+              type: string
+              description: |
+                청구지 상세 주소
+              optional: true
+        EximbayV2Settings:
+          type: object
+          description: |
+            설정 정보
+          properties:
+            call_from_app:
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/EximbayV2SettingsCallFromApp"
+              optional: true
+            issuer_country:
+              type: string
+              description: |
+                해외 결제 가맹점에서 국내 결제를 사용할 경우 `KR`
+              optional: true
+            virtualaccount_expiry_date:
+              type: string
+              description: |
+                입금 만료 일자 (yyyyMMddHH)
+              optional: true
+        NaverpayProductItemPayReferrer:
+          type: enum
+          variants:
+            NAVER_BOOK: {}
+            NAVER_MUSIC: {}
+            NAVER_SHOPPING: {}
+            NAVER_MAP: {}
+            NAVER_PLACE: {}
+            SEARCH_AD: {}
+            NAVER_SEARCH: {}
+            BRAND_SEARCH: {}
+            PARTNER_DIRECT: {}
+            ETC: {}
+          description: |
+            결제 상품 유입경로
+        TossBrandpayBrandpayOptionsUi:
+          type: object
+          properties:
+            highlightColor:
+              type: string
+              description: |
+                UI의 메인 색상. (기본값: #3182f6)
+              optional: true
+            buttonStyle:
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/TossBrandpayBrandpayOptionsUiButtonStyle"
+              optional: true
+            labels:
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/TossBrandpayBrandpayOptionsUiLabels"
+              optional: true
+            navigationBar:
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/TossBrandpayBrandpayOptionsUiNavigationBar"
+              optional: true
+        TossBrandpayWidgetOptionsMethodType:
+          type: enum
+          variants:
+            카드: {}
+            계좌: {}
+          description: |
+            위젯에 보여줄 결제 수단. 예) 카드 전달시 등록한 결제 수단 중 카드만 노출 됨
+        TossBrandpayWidgetOptionsUi:
+          type: object
+          properties:
+            promotionSection:
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/TossBrandpayWidgetOptionsUiPromotionSection"
+              optional: true
+        EximbayV2TaxReceiptStatus:
+          type: enum
+          variants:
+            Y: {}
+            N: {}
+          description: |
+            현금영수증 발급 여부
+        EximbayV2SettingsCallFromApp:
+          type: enum
+          variants:
+            Y: {}
+            N: {}
+          description: |
+            인앱 웹뷰 여부
+        TossBrandpayBrandpayOptionsUiButtonStyle:
+          type: enum
+          variants:
+            default:
+              description: 모서리가 둥글고 주변에 여백을 가진 버튼(기본값)
+            full:
+              description: 하단 영역이 전부 채워지는 형태의 버튼
+          description: |
+            버튼 스타일
+            - default(기본값): 모서리가 둥글고 주변에 여백을 가진 버튼
+            - full: 하단 영역이 전부 채워지는 형태의 버튼
+        TossBrandpayBrandpayOptionsUiLabels:
+          type: object
+          properties:
+            oneTouchPay:
+              type: string
+              description: |
+                UI에 표시되는 원터치 결제를 대신해 사용할 텍스트. (기본값: "원터치 결제")
+              optional: true
+        TossBrandpayBrandpayOptionsUiNavigationBar:
+          type: object
+          properties:
+            visible:
+              type: boolean
+              description: |
+                내비게이션 바 사용 여부. (기본값: true)
+              optional: true
+            paddingTop:
+              type: integer
+              description: |
+                내비게이션 바 위쪽에 설정할 여백 값. 값의 단위는 px
+              optional: true
+        TossBrandpayWidgetOptionsUiPromotionSection:
+          type: object
+          properties:
+            summary:
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/TossBrandpayWidgetOptionsUiPromotionSectionSummary"
+              optional: true
+            description:
+              type: resourceRef
+              $ref: "#/resources/entity/bypass/payment/TossBrandpayWidgetOptionsUiPromotionSectionDescription"
+              optional: true
+        TossBrandpayWidgetOptionsUiPromotionSectionSummary:
+          type: object
+          properties:
+            visible:
+              type: boolean
+              description: |
+                혜택 배지 영역을 보여줄지 여부. 혜택 배지 영역에서는 즉시 할인 대상 카드 정보 등을 간략히 보여 줌. 기본값은 true
+              optional: true
+        TossBrandpayWidgetOptionsUiPromotionSectionDescription:
+          type: object
+          properties:
+            visible:
+              type: boolean
+              description: |
+                결제 혜택 영역을 보여줄지 여부. 기본값은 true
+              optional: true
+            defaultOpen:
+              type: boolean
+              description: |
+                결제 혜택의 상세 설명을 보여줄지 여부. 각 카드사의 결제 혜택을 자세히 설명 함. 기본값은 false
+              optional: true
         PayletterGlobal:
           type: object
           description: "페이레터 해외결제 bypass 파라미터"
-          name: PayletterGlobalBypass 
+          name: PayletterGlobalBypass
           properties:
             pginfo:
               type: string
@@ -3268,7 +3607,7 @@ resources:
             servicename:
               type: string
               description: |
-                고객사 서비스명, WeChatPay, Alipay 이용 시 필수 입력  
+                고객사 서비스명, WeChatPay, Alipay 이용 시 필수 입력
               optional: true
       PaymentBypass:
         type: object
@@ -3338,7 +3677,91 @@ resources:
           payletter_global:
             type: resourceRef
             optional: true
-            $ref: "#/resources/entity/bypass/payment/PayletterGlobal"  
+            $ref: "#/resources/entity/bypass/payment/PayletterGlobal"
+    OfferPeriodRange:
+      type: union
+      description: |
+        **기간 범위**
+      types:
+        - type: resourceRef
+          $ref: "#/resources/entity/OfferPeriodRangeFrom"
+        - type: resourceRef
+          $ref: "#/resources/entity/OfferPeriodRangeTo"
+        - type: resourceRef
+          $ref: "#/resources/entity/OfferPeriodRangeFromTo"
+    OfferPeriodRangeFrom:
+      type: object
+      description: |
+        **시작 시점만 있는 기간 범위**
+      properties:
+        from:
+          type: string
+          description: |
+            **시작 시점**
+    OfferPeriodRangeTo:
+      type: object
+      description: |
+        **종료 지점만 있는 기간 범위**
+      properties:
+        to:
+          type: string
+          description: |
+            **종료 지점**
+    OfferPeriodRangeFromTo:
+      type: object
+      description: |
+        **시작 시점과 종료 지점이 모두 있는 기간 범위**
+      properties:
+        from:
+          type: string
+          description: |
+            **시작 시점**
+        to:
+          type: string
+          description: |
+            **종료 지점**
+    InstallmentMonthOption:
+      type: oneOf
+      description: |
+        **할부 개월 수 설정**
+
+        할부 결제 시 할부 개월 수를 설정할 수 있습니다.
+
+        `fixedMonth`와 `availableMonthList` 중 하나만 제공해주세요.
+
+        - fixedMonth: 고정 할부 개월 수
+        - availableMonthList: 렌더링을 허용 할 할부 개월 수 리스트
+
+        예1) 3개월 고정 할부 개월 수
+        ```js
+        monthOption: {
+         fixedMonth: 3
+        }
+        ```
+
+        예2) 2, 3, 4, 5, 6개월 리스트 할부 개월 수
+        ```js
+        monthOption: {
+         availableMonthList: [2, 3, 4, 5, 6]
+        }
+        ```
+      properties:
+        fixedMonth:
+          type: integer
+          description: |
+            **구매자가 선택할 수 없도록 고정된 할부 개월수**
+
+            구매자가 할부 개월 수를 선택할 수 있도록 하려면 `availableMonthList`를 사용해주세요.
+          optional: true
+        availableMonthList:
+          type: array
+          description: |
+            **구매자가 선택할 수 있는 할부 개월수 리스트**
+
+            구매자가 할부 개월 수를 선택할 수 없도록 하려면 `fixedMonth`를 사용해주세요.
+          optional: true
+          items:
+            type: integer
   exception:
     CheckoutServiceErrorCode:
       type: enum
@@ -3916,637 +4339,708 @@ resources:
     IssueBillingKeyRequest:
       type: intersection
       types:
-        - type: object
-          properties:
-            displayAmount:
-              optional: true
-              type: integer
-              description: |
-                빌링키 발급 창에 디스플레이 용으로 띄우는 금액
-            currency:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/Currency"
-              description: |
-                displayAmount 의 화폐
-            storeId:
-              type: resourceRef
-              $ref: "#/resources/entity/StoreId"
-            channelKey:
-              type: resourceRef
-              $ref: "#/resources/entity/ChannelKey"
-              optional: true
-            billingKeyMethod:
-              type: resourceRef
-              $ref: "#/resources/entity/BillingKeyMethod"
-            issueName:
-              optional: true
-              type: string
-              description: |
-                빌링키 발급 주문 명
-            issueId:
-              optional: true
-              type: string
-              description: |
-                빌링키 발급 주문 고유 번호
-            customer:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/Customer"
-            windowType:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/WindowTypes"
-            redirectUrl:
-              type: resourceRef
-              optional: true
-              $ref: "#/resources/entity/RedirectUrl"
-            locale:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/Locale"
-            customData:
-              optional: true
-              type: json
-              description: |
-                **빌링키 발급 정보와 함께 관리하고 싶은 고객사 커스텀 JSON 데이터**
-            offerPeriod:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/OfferPeriod"
-            appScheme:
-              optional: true
-              type: string
-              description: |
-                앱 URL Scheme
-            noticeUrls:
-              optional: true
-              type: array
-              items:
-                type: string
-              description: |
-                웹훅 URL
-            productType:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/ProductType"
-            bypass:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/bypass/IssueBillingKeyBypass"
-            popup:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/Popup"
-        - type: discriminatedUnion
-          types:
-            CARD:
-              type: object
-              properties:
-                cardCompany:
-                  type: resourceRef
-                  optional: true
-                  $ref: "#/resources/entity/CardCompany"
-            MOBILE:
-              type: object
-              properties:
-                carrier:
-                  type: resourceRef
-                  optional: true
-                  $ref: "#/resources/entity/Carrier"
-                avaliableCarriers:
-                  type: array
-                  optional: true
-                  items:
-                    type: resourceRef
-                    $ref: "#/resources/entity/Carrier"
-            EASY_PAY:
-              type: object
-              properties:
-                availableCards:
-                  type: array
-                  optional: true
-                  items:
-                    type: resourceRef
-                    $ref: "#/resources/entity/CardCompany"
-            PAYPAL:
-              type: emptyObject
-          discriminator: billingKeyMethod
+        - type: resourceRef
+          $ref: "#/resources/request/IssueBillingKeyRequestBase"
+        - type: resourceRef
+          $ref: "#/resources/request/IssueBillingKeyRequestUnion"
     IssueBillingKeyAndPayRequest:
       type: intersection
       types:
-        - type: object
-          properties:
-            storeId:
-              type: resourceRef
-              $ref: "#/resources/entity/StoreId"
-            paymentId:
-              type: string
-              description: |
-                주문 번호
-            orderName:
-              type: string
-              description: |
-                주문명
-            totalAmount:
-              type: integer
-              description: |
-                결제 금액(실제 결제 금액 X 10^ 해당 currency의 scale factor
-
-                예) $1.50 -> 150)
-            currency:
-              type: resourceRef
-              $ref: "#/resources/entity/Currency"
-            channelKey:
-              type: resourceRef
-              $ref: "#/resources/entity/ChannelKey"
-              optional: true
-            billingKeyAndPayMethod:
-              type: resourceRef
-              $ref: "#/resources/entity/BillingKeyAndPayMethod"
-            taxFreeAmount:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/TaxFreeAmount"
-            vatAmount:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/VatAmount"
-            customer:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/Customer"
-            windowType:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/WindowTypes"
-            redirectUrl:
-              type: resourceRef
-              optional: true
-              $ref: "#/resources/entity/RedirectUrl"
-            noticeUrls:
-              optional: true
-              type: array
-              items:
-                type: string
-              description: |
-                웹훅 URL
-            locale:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/Locale"
-            isCulturalExpense:
-              optional: true
-              type: boolean
-              description: |
-                문화비 지출 여부
-            customData:
-              optional: true
-              type: json
-              description: |
-                **결제 정보와 함께 관리하고 싶은 고객사 커스텀 JSON 데이터**
-            offerPeriod:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/OfferPeriod"
-            appScheme:
-              optional: true
-              type: string
-              description: |
-                앱 URL Scheme
-            productType:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/ProductType"
-              description: |
-                상품 유형(휴대폰 빌링키 발급시 필수 입력)
-            storeDetails:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/StoreDetails"
-            country:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/Country"
-            bypass:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/bypass/IssueBillingKeyAndPayBypass"
-            popup:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/Popup"
-        - type: discriminatedUnion
-          discriminator: billingKeyAndPayMethod
-          types:
-            MOBILE:
-              type: object
-              properties:
-                carrier:
-                  type: resourceRef
-                  optional: true
-                  $ref: "#/resources/entity/Carrier"
-                avaliableCarriers:
-                  type: array
-                  optional: true
-                  items:
-                    type: resourceRef
-                    $ref: "#/resources/entity/Carrier"
+        - type: resourceRef
+          $ref: "#/resources/request/IssueBillingKeyAndPayRequestBase"
+        - type: resourceRef
+          $ref: "#/resources/request/IssueBillingKeyAndPayRequestUnion"
     PaymentRequest:
       type: intersection
       types:
-        - type: object
-          properties:
-            storeId:
-              type: resourceRef
-              $ref: "#/resources/entity/StoreId"
-            paymentId:
-              type: string
-              description: |
-                **고객사 주문 고유 번호**
+        - type: resourceRef
+          $ref: "#/resources/request/PaymentRequestBase"
+        - type: resourceRef
+          $ref: "#/resources/request/PaymentRequestUnion"
+    IssueBillingKeyRequestBase:
+      type: object
+      properties:
+        displayAmount:
+          optional: true
+          type: integer
+          description: |
+            빌링키 발급 창에 디스플레이 용으로 띄우는 금액
+        currency:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/Currency"
+          description: |
+            displayAmount 의 화폐
+        storeId:
+          type: resourceRef
+          $ref: "#/resources/entity/StoreId"
+        channelKey:
+          type: resourceRef
+          $ref: "#/resources/entity/ChannelKey"
+          optional: true
+        billingKeyMethod:
+          type: resourceRef
+          $ref: "#/resources/entity/BillingKeyMethod"
+        issueName:
+          optional: true
+          type: string
+          description: |
+            빌링키 발급 주문 명
+        issueId:
+          optional: true
+          type: string
+          description: |
+            빌링키 발급 주문 고유 번호
+        customer:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/Customer"
+        windowType:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/WindowTypes"
+        redirectUrl:
+          type: resourceRef
+          optional: true
+          $ref: "#/resources/entity/RedirectUrl"
+        locale:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/Locale"
+        customData:
+          optional: true
+          type: json
+          description: |
+            **빌링키 발급 정보와 함께 관리하고 싶은 고객사 커스텀 JSON 데이터**
+        offerPeriod:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/OfferPeriod"
+        appScheme:
+          optional: true
+          type: string
+          description: |
+            앱 URL Scheme
+        noticeUrls:
+          optional: true
+          type: array
+          items:
+            type: string
+          description: |
+            웹훅 URL
+        productType:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/ProductType"
+        bypass:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/bypass/IssueBillingKeyBypass"
+        popup:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/Popup"
+    IssueBillingKeyRequestUnion:
+      type: discriminatedUnion
+      types:
+        CARD:
+          type: resourceRef
+          $ref: "#/resources/request/IssueBillingKeyRequestUnionCard"
+        MOBILE:
+          type: resourceRef
+          $ref: "#/resources/request/IssueBillingKeyRequestUnionMobile"
+        EASY_PAY:
+          type: resourceRef
+          $ref: "#/resources/request/IssueBillingKeyRequestUnionEasyPay"
+        PAYPAL:
+          type: resourceRef
+          $ref: "#/resources/request/IssueBillingKeyRequestUnionPaypal"
+      discriminator: billingKeyMethod
+    IssueBillingKeyAndPayRequestBase:
+      type: object
+      properties:
+        storeId:
+          type: resourceRef
+          $ref: "#/resources/entity/StoreId"
+        paymentId:
+          type: string
+          description: |
+            주문 번호
+        orderName:
+          type: string
+          description: |
+            주문명
+        totalAmount:
+          type: integer
+          description: |
+            결제 금액(실제 결제 금액 X 10^ 해당 currency의 scale factor
 
-                - 고객사가 채번하는 주문 고유 번호입니다.
-                - 이미 승인 완료 된 `paymentId`로 결제나 가상계좌 발급을 시도하는 경우 에러가 발생합니다.
-            orderName:
-              type: resourceRef
-              $ref: "#/resources/entity/PaymentOrderName"
-            totalAmount:
-              type: resourceRef
-              $ref: "#/resources/entity/PaymentTotalAmount"
-            currency:
-              type: resourceRef
-              $ref: "#/resources/entity/PaymentCurrency"
-            payMethod:
-              type: resourceRef
-              $ref: "#/resources/entity/PaymentPayMethod"
-            channelKey:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/ChannelKey"
-            channelGroupId:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/ChannelGroupId"
-            taxFreeAmount:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/TaxFreeAmount"
-            vatAmount:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/VatAmount"
-            customer:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/Customer"
-            windowType:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/WindowTypes"
-            redirectUrl:
-              type: resourceRef
-              optional: true
-              $ref: "#/resources/entity/RedirectUrl"
-            noticeUrls:
-              optional: true
-              type: array
-              items:
-                type: string
-              description: |
-                **웹훅(Webhook) 수신 주소**
+            예) $1.50 -> 150)
+        currency:
+          type: resourceRef
+          $ref: "#/resources/entity/Currency"
+        channelKey:
+          type: resourceRef
+          $ref: "#/resources/entity/ChannelKey"
+          optional: true
+        billingKeyAndPayMethod:
+          type: resourceRef
+          $ref: "#/resources/entity/BillingKeyAndPayMethod"
+        taxFreeAmount:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/TaxFreeAmount"
+        vatAmount:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/VatAmount"
+        customer:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/Customer"
+        windowType:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/WindowTypes"
+        redirectUrl:
+          type: resourceRef
+          optional: true
+          $ref: "#/resources/entity/RedirectUrl"
+        noticeUrls:
+          optional: true
+          type: array
+          items:
+            type: string
+          description: |
+            웹훅 URL
+        locale:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/Locale"
+        isCulturalExpense:
+          optional: true
+          type: boolean
+          description: |
+            문화비 지출 여부
+        customData:
+          optional: true
+          type: json
+          description: |
+            **결제 정보와 함께 관리하고 싶은 고객사 커스텀 JSON 데이터**
+        offerPeriod:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/OfferPeriod"
+        appScheme:
+          optional: true
+          type: string
+          description: |
+            앱 URL Scheme
+        productType:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/ProductType"
+          description: |
+            상품 유형(휴대폰 빌링키 발급시 필수 입력)
+        storeDetails:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/StoreDetails"
+        country:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/Country"
+        bypass:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/bypass/IssueBillingKeyAndPayBypass"
+        popup:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/Popup"
+    IssueBillingKeyAndPayRequestUnion:
+      type: discriminatedUnion
+      discriminator: billingKeyAndPayMethod
+      optional: true
+      types:
+        MOBILE:
+          type: resourceRef
+          $ref: "#/resources/request/IssueBillingKeyAndPayRequestUnionMobile"
+    PaymentRequestBase:
+      type: object
+      properties:
+        storeId:
+          type: resourceRef
+          $ref: "#/resources/entity/StoreId"
+        paymentId:
+          type: string
+          description: |
+            **고객사 주문 고유 번호**
 
-                유효한 형식의 문자열을 입력해주세요.
+            - 고객사가 채번하는 주문 고유 번호입니다.
+            - 이미 승인 완료 된 `paymentId`로 결제나 가상계좌 발급을 시도하는 경우 에러가 발생합니다.
+        orderName:
+          type: resourceRef
+          $ref: "#/resources/entity/PaymentOrderName"
+        totalAmount:
+          type: resourceRef
+          $ref: "#/resources/entity/PaymentTotalAmount"
+        currency:
+          type: resourceRef
+          $ref: "#/resources/entity/PaymentCurrency"
+        payMethod:
+          type: resourceRef
+          $ref: "#/resources/entity/PaymentPayMethod"
+        channelKey:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/ChannelKey"
+        channelGroupId:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/ChannelGroupId"
+        taxFreeAmount:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/TaxFreeAmount"
+        vatAmount:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/VatAmount"
+        customer:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/Customer"
+        windowType:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/WindowTypes"
+        redirectUrl:
+          type: resourceRef
+          optional: true
+          $ref: "#/resources/entity/RedirectUrl"
+        noticeUrls:
+          optional: true
+          type: array
+          items:
+            type: string
+          description: |
+            **웹훅(Webhook) 수신 주소**
 
-                - 포트원 관리자 콘솔에 설정한 웹훅 주소 대신 사용할 웹훅 주소를 결제시마다 설정할 수 있습니다.
-                - 해당 값 설정시 관리자 콘솔에 설정한 주소로는 웹훅발송이 되지 않는점 유의하시기 바랍니다.
-            confirmUrl:
-              optional: true
-              type: string
-              description: |
-                **최종 결제 승인 요청 여부 확인 URL**
+            유효한 형식의 문자열을 입력해주세요.
 
-                유효한 URL 형식의 문자열을 입력해주세요.
+            - 포트원 관리자 콘솔에 설정한 웹훅 주소 대신 사용할 웹훅 주소를 결제시마다 설정할 수 있습니다.
+            - 해당 값 설정시 관리자 콘솔에 설정한 주소로는 웹훅발송이 되지 않는점 유의하시기 바랍니다.
+        confirmUrl:
+          optional: true
+          type: string
+          description: |
+            **최종 결제 승인 요청 여부 확인 URL**
 
-                **confirm\_process** **사용 시 고객사 endpoint url 설정**
+            유효한 URL 형식의 문자열을 입력해주세요.
 
-                - 기술지원 메일로 별도 요청이 필요합니다. ([tech.support@portone.io](mailto:tech.support@portone.io))
-            appScheme:
-              optional: true
-              type: string
-              description: |
-                **모바일 결제 후 고객사 앱으로 복귀를 위한 URL scheme**
+            **confirm\_process** **사용 시 고객사 endpoint url 설정**
 
-                - WebView 환경 결제시 필수설정 항목 입니다.
-                - ISP/앱카드 앱에서 결제정보인증 후 기존 앱으로 복귀할 때 사용합니다.
-            isEscrow:
-              optional: true
-              type: boolean
-              description: |
-                **에스크로 결제 여부**
+            - 기술지원 메일로 별도 요청이 필요합니다. ([tech.support@portone.io](mailto:tech.support@portone.io))
+        appScheme:
+          optional: true
+          type: string
+          description: |
+            **모바일 결제 후 고객사 앱으로 복귀를 위한 URL scheme**
 
-                미입력 시 기본값: `false`
+            - WebView 환경 결제시 필수설정 항목 입니다.
+            - ISP/앱카드 앱에서 결제정보인증 후 기존 앱으로 복귀할 때 사용합니다.
+        isEscrow:
+          optional: true
+          type: boolean
+          description: |
+            **에스크로 결제 여부**
 
-                - 에스크로 설정은 PG사와 협의 이후 진행되어야 합니다.
-            products:
-              optional: true
-              type: array
-              items:
-                type: resourceRef
-                $ref: "#/resources/entity/Product"
-            isCulturalExpense:
-              optional: true
-              type: boolean
-              description: |
-                **문화비 지출 여부**
+            미입력 시 기본값: `false`
 
-                도서, 공연, 박물관 등 문화비 지출 여부
-            locale:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/Locale"
-            customData:
-              optional: true
-              type: json
-              description: |
-                **결제 정보와 함께 관리하고 싶은 고객사 커스텀 JSON 데이터**
-            bypass:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/bypass/PaymentBypass"
-            country:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/Country"
-            productType:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/ProductType"
-            offerPeriod:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/OfferPeriod"
-            storeDetails:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/StoreDetails"
-            shippingAddress:
-              optional: true
-              description: |
-                배송지 주소 (토스 브랜드페이의 FDS를 위해 사용됨)
-              type: resourceRef
-              $ref: "#/resources/entity/Address"
-            promotionId:
-              optional: true
-              type: string
-              description: |
-                프로모션 아이디
-            popup:
-              optional: true
-              type: resourceRef
-              $ref: "#/resources/entity/Popup"
-        - type: discriminatedUnion
-          discriminator: payMethod
-          types:
-            CARD:
-              type: object
-              description: |
-                **카드 정보**
+            - 에스크로 설정은 PG사와 협의 이후 진행되어야 합니다.
+        products:
+          optional: true
+          type: array
+          items:
+            type: resourceRef
+            $ref: "#/resources/entity/Product"
+        isCulturalExpense:
+          optional: true
+          type: boolean
+          description: |
+            **문화비 지출 여부**
 
-                카드 결제 시, 카드 결제에 대한 세부 정보
-              properties:
-                cardCompany:
-                  type: resourceRef
-                  optional: true
-                  description: |
-                    **카드사 다이렉트 호출 시 필요한 카드사 식별 값**
-                  $ref: "#/resources/entity/CardCompany"
-                availableCards:
-                  optional: true
-                  description: |
-                    **일부 카드사만 노출 설정**
+            도서, 공연, 박물관 등 문화비 지출 여부
+        locale:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/Locale"
+        customData:
+          optional: true
+          type: json
+          description: |
+            **결제 정보와 함께 관리하고 싶은 고객사 커스텀 JSON 데이터**
+        bypass:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/bypass/PaymentBypass"
+        country:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/Country"
+        productType:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/ProductType"
+        offerPeriod:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/OfferPeriod"
+        storeDetails:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/StoreDetails"
+        shippingAddress:
+          optional: true
+          description: |
+            배송지 주소 (토스 브랜드페이의 FDS를 위해 사용됨)
+          type: resourceRef
+          $ref: "#/resources/entity/Address"
+        promotionId:
+          optional: true
+          type: string
+          description: |
+            프로모션 아이디
+        popup:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/Popup"
+    PaymentRequestUnion:
+      type: discriminatedUnion
+      discriminator: payMethod
+      optional: true
+      types:
+        CARD:
+          type: resourceRef
+          $ref: "#/resources/request/PaymentRequestUnionCard"
+        VIRTUAL_ACCOUNT:
+          type: resourceRef
+          $ref: "#/resources/request/PaymentRequestUnionVirtualAccount"
+        TRANSFER:
+          type: resourceRef
+          $ref: "#/resources/request/PaymentRequestUnionTransfer"
+        MOBILE:
+          type: resourceRef
+          $ref: "#/resources/request/PaymentRequestUnionMobile"
+        GIFT_CERTIFICATE:
+          type: resourceRef
+          $ref: "#/resources/request/PaymentRequestUnionGiftCertificate"
+        EASY_PAY:
+          type: resourceRef
+          $ref: "#/resources/request/PaymentRequestUnionEasyPay"
+        PAYPAL:
+          type: resourceRef
+          $ref: "#/resources/request/PaymentRequestUnionPaypal"
+        ALIPAY:
+          type: resourceRef
+          $ref: "#/resources/request/PaymentRequestUnionAlipay"
+        CONVENIENCE_STORE:
+          type: resourceRef
+          $ref: "#/resources/request/PaymentRequestUnionConvenienceStore"
+    IssueBillingKeyRequestUnionCard:
+      type: object
+      properties:
+        cardCompany:
+          type: resourceRef
+          optional: true
+          $ref: "#/resources/entity/CardCompany"
+    IssueBillingKeyRequestUnionMobile:
+      type: object
+      properties:
+        carrier:
+          type: resourceRef
+          optional: true
+          $ref: "#/resources/entity/Carrier"
+        avaliableCarriers:
+          type: array
+          optional: true
+          items:
+            type: resourceRef
+            $ref: "#/resources/entity/Carrier"
+    IssueBillingKeyRequestUnionEasyPay:
+      type: object
+      properties:
+        availableCards:
+          type: array
+          optional: true
+          items:
+            type: resourceRef
+            $ref: "#/resources/entity/CardCompany"
+    IssueBillingKeyRequestUnionPaypal:
+      type: emptyObject
+    IssueBillingKeyAndPayRequestUnionMobile:
+      type: object
+      properties:
+        carrier:
+          type: resourceRef
+          optional: true
+          $ref: "#/resources/entity/Carrier"
+        avaliableCarriers:
+          type: array
+          optional: true
+          items:
+            type: resourceRef
+            $ref: "#/resources/entity/Carrier"
+    PaymentRequestUnionCard:
+      type: object
+      description: |
+        **카드 정보**
 
-                    일부 카드사만을 선택 가능하게 하고 싶은 경우 사용하는 옵션입니다.
-                  type: array
-                  items:
-                    type: resourceRef
-                    $ref: "#/resources/entity/CardCompany"
-                useFreeInterestFromMall:
-                  optional: true
-                  description: |
-                    **상점분담 무이자 활성화 여부**
-                  type: boolean
-                installment:
-                  optional: true
-                  type: resourceRef
-                  $ref: "#/resources/entity/Installment"
-                useCardPoint:
-                  optional: true
-                  description: |
-                    **카드사 포인트 사용 여부**
-                  type: boolean
-                useAppCardOnly:
-                  optional: true
-                  description: |
-                    **앱 카드만 허용할지 여부**
-                  type: boolean
-                useInstallment:
-                  optional: true
-                  type: boolean
-                  description: |
-                    할부 사용 가능 여부
-            VIRTUAL_ACCOUNT:
-              type: object
-              description: |
-                **가상계좌 정보**
+        카드 결제 시, 카드 결제에 대한 세부 정보
+      properties:
+        cardCompany:
+          type: resourceRef
+          optional: true
+          description: |
+            **카드사 다이렉트 호출 시 필요한 카드사 식별 값**
+          $ref: "#/resources/entity/CardCompany"
+        availableCards:
+          optional: true
+          description: |
+            **일부 카드사만 노출 설정**
 
-                가상계좌 발급시 가상계좌 상세 옵션
-              properties:
-                cashReceiptType:
-                  optional: true
-                  type: resourceRef
-                  $ref: "#/resources/entity/CashReceiptType"
-                customerIdentifier:
-                  optional: true
-                  type: string
-                  description: |
-                    **현금영수증 발행 대상 식별 정보**
-                fixedOption:
-                  type: oneOf
-                  description: |
-                    **고정식 가상계좌 설정**
-                  optional: true
-                  properties:
-                    pgAccountId:
-                      type: string
-                      description: |
-                        PG사로부터 사전에 가상계좌에 대한 ID를 발급받아 사용하는 경우의 가상계좌 ID
-                    accountNumber:
-                      type: string
-                      description: |
-                        고정식으로 사용할 가상계좌 번호
-                bankCode:
-                  type: resourceRef
-                  optional: true
-                  $ref: "#/resources/entity/Bank"
-                accountExpiry:
-                  type: oneOf
-                  description: |
-                    **가상계좌 입금 만료기한**
+            일부 카드사만을 선택 가능하게 하고 싶은 경우 사용하는 옵션입니다.
+          type: array
+          items:
+            type: resourceRef
+            $ref: "#/resources/entity/CardCompany"
+        useFreeInterestFromMall:
+          optional: true
+          description: |
+            **상점분담 무이자 활성화 여부**
+          type: boolean
+        installment:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/Installment"
+        useCardPoint:
+          optional: true
+          description: |
+            **카드사 포인트 사용 여부**
+          type: boolean
+        useAppCardOnly:
+          optional: true
+          description: |
+            **앱 카드만 허용할지 여부**
+          type: boolean
+        useInstallment:
+          optional: true
+          type: boolean
+          description: |
+            할부 사용 가능 여부
+    PaymentRequestUnionVirtualAccount:
+      type: object
+      description: |
+        **가상계좌 정보**
 
-                    `validHours`와 `dueDate` 중 하나만 입력해주세요.
-                  optional: true
-                  properties:
-                    validHours:
-                      type: integer
-                      description: |
-                        **가상계좌 입금 유효 시간**
+        가상계좌 발급시 가상계좌 상세 옵션
+      properties:
+        cashReceiptType:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/CashReceiptType"
+        customerIdentifier:
+          optional: true
+          type: string
+          description: |
+            **현금영수증 발행 대상 식별 정보**
+        fixedOption:
+          type: resourceRef
+          $ref: "#/resources/request/PaymentRequestUnionVirtualAccountFixedOption"
+          optional: true
+        bankCode:
+          type: resourceRef
+          optional: true
+          $ref: "#/resources/entity/Bank"
+        accountExpiry:
+          type: resourceRef
+          $ref: "#/resources/request/PaymentRequestUnionVirtualAccountAccountExpiry"
+          optional: true
+        availableBanks:
+          type: array
+          description: |
+            **(KCP V2 전용) 가상계좌 은행 선택 가능 목록**
+          optional: true
+          items:
+            type: resourceRef
+            $ref: "#/resources/entity/Bank"
+    PaymentRequestUnionTransfer:
+      type: object
+      description: |
+        **계좌이체 정보**
 
-                        예) 3을 전달하면 지금으로부터 3시간 후가 만료 기한으로 지정 됨
-                    dueDate:
-                      type: string
-                      description: |
-                        **가상계좌 입금 유효 시각**
+        계좌이체 결제시 계좌이체 상세 옵션
+      properties:
+        cashReceiptType:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/CashReceiptType"
+        customerIdentifier:
+          optional: true
+          type: string
+          description: |
+            **현금영수증 발행 대상 식별 정보**
+        bankCode:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/Bank"
+    PaymentRequestUnionMobile:
+      type: object
+      description: |
+        **휴대폰 소액결제 정보**
 
-                        - YYYYMMDD
-                        - YYYYMMDDHHmmss
-                        - YYYY-MM-DD
-                        - YYYY-MM-DD HH:mm:ss
-                availableBanks:
-                  type: array
-                  description: |
-                    **(KCP V2 전용) 가상계좌 은행 선택 가능 목록**
-                  optional: true
-                  items:
-                    type: resourceRef
-                    $ref: "#/resources/entity/Bank"
-            TRANSFER:
-              type: object
-              description: |
-                **계좌이체 정보**
+        휴대폰 소액결제시 휴대폰 소액결제 상세 옵션
+      properties:
+        carrier:
+          type: resourceRef
+          description: |
+            **휴대폰 소액결제 통신사 바로 호출을 위한 통신사 구분 값**
+          optional: true
+          $ref: "#/resources/entity/Carrier"
+        avaliableCarriers:
+          type: array
+          description: |
+            **일부 통신사만 노출 설정**
 
-                계좌이체 결제시 계좌이체 상세 옵션
-              properties:
-                cashReceiptType:
-                  optional: true
-                  type: resourceRef
-                  $ref: "#/resources/entity/CashReceiptType"
-                customerIdentifier:
-                  optional: true
-                  type: string
-                  description: |
-                    **현금영수증 발행 대상 식별 정보**
-                bankCode:
-                  optional: true
-                  type: resourceRef
-                  $ref: "#/resources/entity/Bank"
-            MOBILE:
-              type: object
-              description: |
-                **휴대폰 소액결제 정보**
+            일부 통신사만을 선택 가능하게 하고 싶은 경우 사용하는 옵션입니다.
+          optional: true
+          items:
+            type: resourceRef
+            $ref: "#/resources/entity/Carrier"
+    PaymentRequestUnionGiftCertificate:
+      type: object
+      description: |
+        **상품권 정보**
 
-                휴대폰 소액결제시 휴대폰 소액결제 상세 옵션
-              properties:
-                carrier:
-                  type: resourceRef
-                  description: |
-                    **휴대폰 소액결제 통신사 바로 호출을 위한 통신사 구분 값**
-                  optional: true
-                  $ref: "#/resources/entity/Carrier"
-                avaliableCarriers:
-                  type: array
-                  description: |
-                    **일부 통신사만 노출 설정**
+        상품권 결제시 상품권 결제 상세 옵션
+      properties:
+        giftCertificateType:
+          type: resourceRef
+          optional: true
+          $ref: "#/resources/entity/GiftCertificateType"
+    PaymentRequestUnionEasyPay:
+      type: object
+      properties:
+        easyPayProvider:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/EasyPayProvider"
+        useFreeInterestFromMall:
+          optional: true
+          description: |
+            **상점분담 무이자 활성화 여부**
+          type: boolean
+        availableCards:
+          optional: true
+          description: |
+            **일부 카드사만 노출 설정**
 
-                    일부 통신사만을 선택 가능하게 하고 싶은 경우 사용하는 옵션입니다.
-                  optional: true
-                  items:
-                    type: resourceRef
-                    $ref: "#/resources/entity/Carrier"
-            GIFT_CERTIFICATE:
-              type: object
-              description: |
-                **상품권 정보**
+            일부 카드사만을 선택 가능하게 하고 싶은 경우 사용하는 옵션입니다.
+          type: array
+          items:
+            type: resourceRef
+            $ref: "#/resources/entity/CardCompany"
+        installment:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/Installment"
+        cashReceiptType:
+          optional: true
+          type: resourceRef
+          $ref: "#/resources/entity/CashReceiptType"
+        customerIdentifier:
+          optional: true
+          type: string
+          description: |
+            현금영수증 발행 대상 식별 정보
+        useCardPoint:
+          optional: true
+          type: boolean
+          description: |
+            카드사 포인트 사용 여부
+        availablePayMethods:
+          optional: true
+          type: array
+          items:
+            type: resourceRef
+            $ref: "#/resources/entity/EasyPayPaymentMethod"
+          description: |
+            노출을 허용할 결제 수단의 종류
+        useInstallment:
+          optional: true
+          type: boolean
+          description: |
+            할부 사용 가능 여부
+    PaymentRequestUnionPaypal:
+      type: emptyObject
+    PaymentRequestUnionAlipay:
+      type: emptyObject
+    PaymentRequestUnionConvenienceStore:
+      type: object
+      properties:
+        paymentDeadline:
+          type: resourceRef
+          $ref: "#/resources/request/PaymentRequestUnionConvenienceStorePaymentDeadline"
+          optional: true
+    PaymentRequestUnionVirtualAccountAccountExpiry:
+      type: oneOf
+      description: |
+        **가상계좌 입금 만료기한**
 
-                상품권 결제시 상품권 결제 상세 옵션
-              properties:
-                giftCertificateType:
-                  type: resourceRef
-                  optional: true
-                  $ref: "#/resources/entity/GiftCertificateType"
-            EASY_PAY:
-              type: object
-              properties:
-                easyPayProvider:
-                  optional: true
-                  type: resourceRef
-                  $ref: "#/resources/entity/EasyPayProvider"
-                useFreeInterestFromMall:
-                  optional: true
-                  description: |
-                    **상점분담 무이자 활성화 여부**
-                  type: boolean
-                availableCards:
-                  optional: true
-                  description: |
-                    **일부 카드사만 노출 설정**
+        `validHours`와 `dueDate` 중 하나만 입력해주세요.
+      properties:
+        validHours:
+          type: integer
+          description: |
+            **가상계좌 입금 유효 시간**
 
-                    일부 카드사만을 선택 가능하게 하고 싶은 경우 사용하는 옵션입니다.
-                  type: array
-                  items:
-                    type: resourceRef
-                    $ref: "#/resources/entity/CardCompany"
-                installment:
-                  optional: true
-                  type: resourceRef
-                  $ref: "#/resources/entity/Installment"
-                cashReceiptType:
-                  optional: true
-                  type: resourceRef
-                  $ref: "#/resources/entity/CashReceiptType"
-                customerIdentifier:
-                  optional: true
-                  type: string
-                  description: |
-                    현금영수증 발행 대상 식별 정보
-                useCardPoint:
-                  optional: true
-                  type: boolean
-                  description: |
-                    카드사 포인트 사용 여부
-                availablePayMethods:
-                  optional: true
-                  type: array
-                  items:
-                    type: resourceRef
-                    $ref: "#/resources/entity/EasyPayPaymentMethod"
-                  description: |
-                    노출을 허용할 결제 수단의 종류
-                useInstallment:
-                  optional: true
-                  type: boolean
-                  description: |
-                    할부 사용 가능 여부
-            PAYPAL:
-              type: emptyObject
-            ALIPAY:
-              type: emptyObject
-            CONVENIENCE_STORE:
-              type: object
-              properties:
-                paymentDeadline:
-                  type: oneOf
-                  optional: true
-                  description: |
-                    **편의점결제 지불기한**
-                  properties:
-                    validHours:
-                      type: integer
-                      description: |
-                        **유효 시간(단위: 시간)**
-                    dueDate:
-                      type: string
-                      description: |
-                        **만료일시(ISO8601 형식)**
+            예) 3을 전달하면 지금으로부터 3시간 후가 만료 기한으로 지정 됨
+        dueDate:
+          type: string
+          description: |
+            **가상계좌 입금 유효 시각**
+
+            - YYYYMMDD
+            - YYYYMMDDHHmmss
+            - YYYY-MM-DD
+            - YYYY-MM-DD HH:mm:ss
+    PaymentRequestUnionVirtualAccountFixedOption:
+      type: oneOf
+      description: |
+        **고정식 가상계좌 설정**
+      properties:
+        pgAccountId:
+          type: string
+          description: |
+            PG사로부터 사전에 가상계좌에 대한 ID를 발급받아 사용하는 경우의 가상계좌 ID
+        accountNumber:
+          type: string
+          description: |
+            고정식으로 사용할 가상계좌 번호
+    PaymentRequestUnionConvenienceStorePaymentDeadline:
+      type: oneOf
+      description: |
+        **편의점결제 지불기한**
+      properties:
+        validHours:
+          type: integer
+          description: |
+            **유효 시간(단위: 시간)**
+        dueDate:
+          type: string
+          description: |
+            **만료일시(ISO8601 형식)**
   response:
     IssueBillingKeyResponse:
       type: object

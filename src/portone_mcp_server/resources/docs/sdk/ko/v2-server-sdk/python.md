@@ -9,6 +9,8 @@ targetVersions:
 
 Python 서버 환경에서 포트원 V2 결제 시스템에 연동하기 위한 SDK입니다.
 
+[API 색인](https://portone-io.github.io/server-sdk/py/)
+
 ## 의존성
 
 현대적인 Python 환경을 사용하며, Python 3.9 이상을 지원합니다. 내부 HTTP
@@ -42,7 +44,9 @@ portone-server-sdk == x.x.x
 
 ### 포트원 REST API
 
-먼저 [포트원 개발자콘솔](https://admin.portone.io/integration-v2/manage/api-keys?version=v2)에서 API Secret을 발급받습니다.
+먼저
+[포트원 개발자콘솔](https://admin.portone.io/integration-v2/manage/api-keys?version=v2)에서
+API Secret을 발급받습니다.
 
 발급받은 API Secret을 사용해 필요한 API에 맞는 Client를 생성합니다.
 
@@ -59,8 +63,9 @@ portone_client = PortOneClient(secret=PORTONE_API_SECRET)
 portone_client.payment.get_payment(...)
 ```
 
-Client의 각 메서드는 메서드마다 고유한 Error와 ValueError을 발생시킬 수 있습니다.
-현재 SDK 버전에서 지원하지 않는 응답을 받을 경우 ValueError가 발생합니다.
+Client의 각 메서드는 메서드마다 고유한 Error와 ValueError을 발생시킬 수
+있습니다. 현재 SDK 버전에서 지원하지 않는 응답을 받을 경우 ValueError가
+발생합니다.
 
 ```python
 from portone_server_sdk.errors import UnknownError, ForbiddenError, InvalidRequestError, PaymentNotFoundError, UnauthorizedError
@@ -85,11 +90,14 @@ except GetPaymentError as e:
 
 ### 웹훅 검증
 
-먼저 [포트원 개발자콘솔](https://admin.portone.io/integration-v2/manage/webhook?version=V2)에서 웹훅 시크릿을 발급받습니다.
+먼저
+[포트원 개발자콘솔](https://admin.portone.io/integration-v2/manage/webhook?version=V2)에서
+웹훅 시크릿을 발급받습니다.
 
 webhook.verify 함수로 웹훅 내용을 검증할 수 있습니다.
 
-**주의: 웹훅 내용은 서버에서 전달한 body를 JSON 형태로 파싱하지 않고, 문자열 형태로 그대로 입력합니다.**
+**주의: 웹훅 내용은 서버에서 전달한 body를 JSON 형태로 파싱하지 않고, 문자열
+형태로 그대로 입력합니다.**
 
 ```python
 import portone_server_sdk as portone
@@ -103,11 +111,13 @@ headers = {
 webhook = portone.webhook.verify(PORTONE_WEBHOOK_SECRET, payload, headers)
 ```
 
-webhook.verify 함수는 웹훅 내용을 Webhook 타입으로 변환하여 반환합니다.
+`webhook.verify` 함수는 웹훅 내용을 Webhook 타입으로 변환하여 반환합니다. 웹훅도
+현재 SDK 버전에서 지원하지 않는 응답을 받을 수 있으며, 이 경우에는 웹훅을 그대로
+JSON 형식으로 파싱한 `dict` 값을 반환합니다.
 
 ```python
 if isinstance(webhook, portone.webhook.WebhookTransactionPaid):
-    println(webhook.data.paymentId)
+    print(webhook.data.paymentId)
 ```
 
 ## 버전

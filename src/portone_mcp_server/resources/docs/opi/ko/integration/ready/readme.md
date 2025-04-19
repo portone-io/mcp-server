@@ -598,7 +598,7 @@ DI\_CODE는 12자리로 고객사에서 자체적으로 사이트(서비스)를 
 
 <div class="tabs-container">
 
-<div class="tabs-content" data-title="결제창 일반/수기결제 및 API 수기/정기결제">
+<div class="tabs-content" data-title="결제창 일반/수기결제 및 API 수기/정기결제/휴대폰 본인인증">
 
 1. 포트원 콘솔에서 채널 추가 시 계약 완료 후 KCP로부터 전달받은 사이트코드 및 사이트키를 입력한 후 `저장`을 클릭합니다.
 

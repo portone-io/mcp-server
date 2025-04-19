@@ -10,6 +10,8 @@ targetVersions:
 JVM 서버 환경에서 포트원 V2 결제 시스템에 연동하기 위한 SDK입니다. 코틀린,
 스칼라, 자바 등의 언어에서 사용할 수 있습니다.
 
+[API 색인](https://javadoc.io/doc/io.portone/server-sdk/latest/index.html)
+
 ## 의존성
 
 JVM 8 이상이 필요합니다.
@@ -22,8 +24,8 @@ Ktor를 사용합니다. JSON 직렬화를 위해 kotlinx.serialization을 사�
 [![Maven Central Version](https://img.shields.io/maven-central/v/io.portone/server-sdk)](https://central.sonatype.com/artifact/io.portone/server-sdk)
 [![javadoc](https://javadoc.io/badge2/io.portone/server-sdk/javadoc.svg)](https://javadoc.io/doc/io.portone/server-sdk)
 
-메이븐 중앙 저장소를 통해 설치합니다.
-의존성 버전이 호환되지 않는 경우에는 `all` classifier을 적용하여 shading 버전을 사용합니다.
+메이븐 중앙 저장소를 통해 설치합니다. 의존성 버전이 호환되지 않는 경우에는 `all`
+classifier을 적용하여 shading 버전을 사용합니다.
 
 ### 그래들
 
@@ -58,17 +60,19 @@ repositories {
 
 ```YAML
 dependencies:
-  - io.portone:server-sdk:x.y.z
-  
-  # shading 버전의 경우
-  - io.portone:server-sdk:x.y.z:all
+    - io.portone:server-sdk:x.y.z
+
+    # shading 버전의 경우
+    - io.portone:server-sdk:x.y.z:all
 ```
 
 ## 사용법
 
 ### 포트원 REST API
 
-먼저 [포트원 개발자콘솔](https://admin.portone.io/integration-v2/manage/api-keys?version=v2)에서 API Secret을 발급받습니다.
+먼저
+[포트원 개발자콘솔](https://admin.portone.io/integration-v2/manage/api-keys?version=v2)에서
+API Secret을 발급받습니다.
 
 발급받은 API Secret을 사용해 필요한 API에 맞는 Client를 생성합니다.
 
@@ -103,7 +107,8 @@ val payment = try {
 ```
 
 포트원 REST API로부터 현재 SDK 버전에서 지원하지 않는 응답을 받을 수 있습니다.
-이 경우를 구분하기 위하여 `Recognized` 및 `Unrecognized` 타입인지를 체크해야 합니다.
+이 경우를 구분하기 위하여 `Recognized` 및 `Unrecognized` 타입인지를 체크해야
+합니다.
 
 ```kotlin
 println(payment.amount.total) // Error: Unresolved reference 'amount'.
@@ -114,11 +119,14 @@ if (payment is Payment.Recognized) {
 
 ### 웹훅 검증
 
-먼저 [포트원 개발자콘솔](https://admin.portone.io/integration-v2/manage/webhook?version=V2)에서 웹훅 시크릿을 발급받습니다.
+먼저
+[포트원 개발자콘솔](https://admin.portone.io/integration-v2/manage/webhook?version=V2)에서
+웹훅 시크릿을 발급받습니다.
 
-WebhookVerifier.verify 메서드로 웹훅 내용을 검증할 수 있습니다.
+`WebhookVerifier.verify` 메서드로 웹훅 내용을 검증할 수 있습니다.
 
-**주의: 웹훅 내용은 서버에서 전달한 body를 JSON 형태로 파싱하지 않고, 문자열 형태로 그대로 입력합니다.**
+**주의: 웹훅 내용은 서버에서 전달한 body를 JSON 형태로 파싱하지 않고, 문자열
+형태로 그대로 입력합니다.**
 
 ```kotlin
 val payload = """{"type":"BillingKey.Issued","timestamp":"2024-04-25T10:00:00.000Z","data":{"storeId":"store-61e0db3d-b967-47db-8b50-96002da90d55","billingKey":"billing-key-75ae3cab-6afe-422d-bf34-3a7b1762451d"}}"""
@@ -131,7 +139,7 @@ val webhook = webhookVerifier.verify(
 )
 ```
 
-WebhookVerifier.verify 메서드는 body를 Webhook 타입으로 변환하여 반환합니다.
+`WebhookVerifier.verify` 메서드는 body를 Webhook 타입으로 변환하여 반환합니다.
 
 ```kotlin
 println(webhook.data.paymentId) // Error: Unresolved reference 'data'.

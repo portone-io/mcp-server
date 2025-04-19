@@ -7,10 +7,11 @@ versionVariants:
   v1: /opi/ko/extra/identity-verification/v1/readme
 ---
 
-**본인인증 서비스**란 인증 절차를 거쳐 본인 여부와 입력한 정보의 정확성을 확인하여 주는 서비스입니다. 현재 존재하는 대표적인 본인인증 서비스는 아래와 같습니다.
+**본인인증 서비스**란 인증 절차를 거쳐 본인 여부와 입력한 정보의 정확성을 확인하여 주는 서비스입니다. 현재 지원하는 본인인증 서비스는 아래와 같습니다.
 
 - 다날 휴대폰 본인인증
 - KG이니시스 통합인증
+- KCP 휴대폰 본인인증
 
 ## 휴대폰 본인인증
 
@@ -28,7 +29,7 @@ versionVariants:
 
 **API를 이용한 본인인증**
 
-수기결제처럼 API 호출만으로 진행하는 본인인증도 지원하고 있습니다. REST API 문서의 해당 부분 설명을 참고해 주세요.
+다날 및 KCP의 경우 수기결제처럼 API 호출만으로 진행하는 본인인증도 지원하고 있습니다. REST API 문서의 해당 부분 설명을 참고해 주세요.
 
 </div>
 
@@ -99,13 +100,7 @@ const verificationResult = await fetch("{서버의 인증 정보를 받는 endpo
 });
 ```
 
-결과값에 들어 있는 필드는 다음과 같습니다.
-
-|필드명                |설명          |비고   |
-|----------------------|--------------|-------|
-|identityVerificationId|본인인증 건 ID|공통   |
-|code                  |오류 코드     |실패 시|
-|message               |오류 문구     |실패 시|
+본인인증 요청 및 응답 파라미터는 [브라우저 SDK 문서](https://developers.portone.io/sdk/ko/v2-sdk/readme)를 참조해 주세요.
 
 #### 3-1. redirect 방식의 경우
 
@@ -121,16 +116,10 @@ PortOne.requestIdentityVerification({
 });
 ```
 
-쿼리 문자열로 전달되는 내용은 다음과 같습니다.
-
-|키                    |설명      |비고   |
-|----------------------|----------|-------|
-|identityVerificationId|결제 건 ID|공통   |
-|code                  |오류 코드 |실패 시|
-|message               |오류 문구 |실패 시|
+쿼리 문자열로 전달되는 내용은 [브라우저 SDK 응답 형식](https://developers.portone.io/sdk/ko/v2-sdk/identity-verification-response)과 동일합니다.
 
 예를 들어 identityVerificationId가 `identity-verification-39ecfa97`, redirectUrl이
-`https://example.com/identity-verification-redirect`인 경우, 결제 성공 시에
+`https://example.com/identity-verification-redirect`인 경우, 본인인증 성공 시에
 `https://example.com/identity-verification-redirect?identityVerificationId=identity-verification-39ecfa97`로
 리다이렉트됩니다.
 
@@ -173,31 +162,39 @@ app.post("/identity-verifications", async (req, res) => {
 - `ci`: 연계 정보(Connecting Information).
   - 사람마다 고유하고 서비스별로 달라지지 않기 때문에, 서비스 간 연계에 사용할 수 있음.
   - 다날의 경우 항상 제공.
+  - KCP의 경우 항상 제공.
   - KG이니시스의 경우 카카오를 제외한 인증 업체에서 항상 제공. 카카오의 경우 별도 서류 작성이 필요합니다.
 
 - `di`: 중복 가입 확인 정보(Duplication Information).
   - 해당 서비스 안에서만 사람마다 고유함.
   - 이용자의 중복 가입을 확인하는 데 사용할 수 있음.
   - 다날의 경우 항상 제공.
+  - KCP의 경우 항상 제공.
   - KG이니시스의 경우 제공되지 않음.
 
 - `name`: 이름
 
 - `gender`: 성별
+  - 다날의 경우 항상 제공.
+  - KCP의 경우 항상 제공.
+  - KG이니시스의 경우 검증되지 않은 정보가 제공됩니다.
 
 - `birthDate`: 생년월일 (YYYY-MM-DD)
 
 - `operator`: 통신사
   - 다날의 경우 하기 안내를 따라 추가 계약 후 제공.
+  - KCP의 경우 항상 제공.
   - KG이니시스의 경우 미제공.
 
 - `phoneNumber`: 숫자로만 구성된 전화번호
   - 다날의 경우 하기 안내를 따라 추가 계약 후 제공.
+  - KCP의 경우 항상 제공.
   - KG이니시스의 경우 항상 제공.
 
 - `isForeigner`: 외국인 여부.
   - 다날의 경우 하기 안내를 따라 추가 계약 후 제공.
-  - KG이니시스의 경우 항상 제공.
+  - KCP의 경우 항상 제공.
+  - KG이니시스의 경우 검증되지 않은 정보가 제공됩니다.
 
 <div class="hint" data-style="info">
 
@@ -217,12 +214,6 @@ app.post("/identity-verifications", async (req, res) => {
 - `(주)마플 : https://marpple.shop/kr/@/privacy`
 - `(주)브레이브모바일 / 숨고 : https://soomgo.com/terms/privacy`
 - `(주)마켓잇 : https://static.marketit.asia/static/privacy-terms.pdf`
-
-</div>
-
-<div class="hint" data-style="info">
-
-KG이니시스의 성별, 외국인 여부는 인증 업체에 따라 사용자가 직접 입력할 수 있고, 정보를 검증하지 않습니다.
 
 </div>
 

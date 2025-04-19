@@ -306,6 +306,7 @@ paths:
         - danal
         - inicis_unified
         - inicis
+        - kcp_v2
       x-portone-category: certification
     delete:
       tags:
@@ -342,17 +343,24 @@ paths:
         - danal
         - inicis_unified
         - inicis
+        - kcp_v2
       x-portone-category: certification
   /certifications/otp/request:
     post:
       tags:
         - certifications
       summary: 본인인증 요청 API
-      description: |-
+      description: >-
         사용자 개인정보를 API로 전달하여, 통신사로부터 확인되는 경우 OTP(6자리 인증번호)를 사용자에게 SMS로 전달합니다.
-              <br><br>통신사 승인을 받은 일부 고객사에 한해 사용하실 수 있으며, 현재 <b>다날</b>을 통해서만 서비스되고 있습니다.
-              <br><br>본인인증 대상자의 성명, 생년월일 + 주민등록 뒷부분 첫 자리, 휴대폰번호, 통신사 정보를 고객사에서 직접 입력받아 API요청하면 됩니다. 전달된 개인정보가 올바를 경우 해당 휴대폰으로 인증번호 SMS가 전송됩니다.
-              <br><br>200응답 시 imp_uid 가 응답데이터로 전달되며, SMS전송된 인증번호를 본인인증 완료 API 로 요청주시면 최종 본인인증 프로세스가 완료됩니다.
+
+        <br><br>통신사 승인을 받은 일부 고객사에 한해 사용하실 수 있으며, 현재 <b>다날</b>, <b>kcp(신모듈)</b>을
+        통해서만 서비스되고 있습니다.
+
+        <br><br>본인인증 대상자의 성명, 생년월일 + 주민등록 뒷부분 첫 자리, 휴대폰번호, 통신사 정보를 고객사에서 직접 입력받아
+        API요청하면 됩니다. 전달된 개인정보가 올바를 경우 해당 휴대폰으로 인증번호 SMS가 전송됩니다.
+
+        <br><br>200응답 시 imp_uid 가 응답데이터로 전달되며, SMS전송된 인증번호를 본인인증 완료 API 로 요청주시면
+        최종 본인인증 프로세스가 완료됩니다.
       operationId: requestOTP
       consumes:
         - application/json
@@ -400,6 +408,12 @@ paths:
           description: >-
             본인인증 대상자 주민등록번호 뒷부분 첫자리(주민등록번호 13자리 중 7번째 자리<br>2000년 이전 출생자는 1 또는
             2, 2000년 이후 출생자는 3 또는 4)
+
+            <br><br> 외국인 고객은 다음 기준에 따라 입력해주세요:
+
+            - 남성: ~1999년생은 5, 2000년 이후 출생자는 7
+
+            - 여성: ~1999년생은 6, 2000년 이후 출생자는 8
           required: true
           type: string
           x-portone-name: 성별구분코드
@@ -407,7 +421,12 @@ paths:
             <p>본인인증 대상자 주민등록번호 뒷부분 첫자리</p>
           x-portone-description: |
             <p>주민등록번호 13자리 중 7번째 자리</p>
-            <p>2000년 이전 출생자는 1 또는 2, 2000년 이후 출생자는 3 또는 4</p>
+            <p>2000년 이전 출생자는 1 또는 2, 2000년 이후 출생자는 3 또는 4
+            <br /><br /> kcp(신모듈)의 경우 외국인 고객은 다음 기준에 따라 입력해주세요:</p>
+            <ul>
+            <li>남성: ~1999년생은 5, 2000년 이후 출생자는 7</li>
+            <li>여성: ~1999년생은 6, 2000년 이후 출생자는 8</li>
+            </ul>
         - name: carrier
           in: formData
           description: >-
@@ -469,15 +488,68 @@ paths:
           in: formData
           description: >-
             PG사 구분자<br>다날 상점아이디를 2개 이상 동시에 사용하시려는 경우 설정하시면 됩니다.
-            <b>danal.{상점아이디}</b> 형태로 지정
+            <b>danal.{상점아이디}</b> 형태로 지정. Deprecated 되었으므로 channelKey 파라미터를
+            사용해주세요.
           required: false
           type: string
-          x-portone-name: PG사 구분코드
+          x-portone-name: PG사 구분코드(deprecated)
           x-portone-summary: |
             <p>본인인증을 요청하고자 하는 PG사 구분자</p>
           x-portone-description: >
             <p>다날 상점아이디를 2개 이상 동시에 사용하시려는 경우 설정하시면 됩니다.
-            <strong>danal.{상점아이디}</strong> 형태로 지정</p>
+            <strong>danal.{상점아이디}</strong> 형태로 지정. Deprecated 되었으므로 channelKey
+            파라미터를 사용해주세요.</p>
+        - name: channelKey
+          in: formData
+          description: >-
+            본인인증을 요청하고자 하는 PG사의 채널키로 kcp(신모듈) 본인인증을 사용하시려는 경우 반드시 channelKey를
+            입력해야합니다.
+          required: true
+          type: string
+          x-portone-name: 채널키
+          x-portone-summary: |
+            <p>본인인증을 요청하고자 하는 PG사의 채널키</p>
+          x-portone-description: |
+            <p>kcp(신모듈) 본인인증을 사용하시려는 경우 반드시 channelKey를 입력해야합니다.</p>
+        - name: verification_method
+          in: formData
+          description: |-
+            본인인증을 진행하고자 하는 방식.
+             - SMS
+             - APP
+
+            지원하는 pg사
+            - kcp(신모듈)
+          required: false
+          type: string
+          enum:
+            - SMS
+            - APP
+          x-portone-name: 본인인증 방식
+          x-portone-summary: |
+            <p>본인인증을 진행하고자 하는 방식</p>
+          x-portone-description: |
+            <p>본인인증을 진행하고자 하는 방식. (현재 kcp(신모듈)만 지원)</p>
+            <ul>
+            <li>SMS</li>
+            <li>APP</li>
+            </ul>
+          x-portone-supported-pgs:
+            - kcp_v2
+        - name: bypass
+          in: formData
+          description: >-
+            JSON string 형식의 PG사별로 특화된 파라미터. <br>전달 한 값은 가공 없이 그대로 PG사로 전달 됩니다.
+            <br>각 PG사별 스펙은 PG사별 연동 문서 참고해주세요
+          required: false
+          type: string
+          x-portone-name: bypass 데이터
+          x-portone-summary: |
+            <p>JSON string 형식의 PG사별로 특화된 파라미터</p>
+          x-portone-description: |
+            <p>전달 한 값은 가공 없이 그대로 PG사로 전달 됩니다. 각 PG사별 스펙은 PG사별 연동 문서 참고해주세요</p>
+          x-portone-supported-pgs:
+            - kcp_v2
       responses:
         '200':
           description: 본인인증을 위한 대상자 정보 검증 완료(인증번호 SMS전송요청 중)
@@ -491,6 +563,7 @@ paths:
           description: 처리 중 다날서버 응답오류 등 오류가 발생한 경우
       x-portone-supported-pgs:
         - danal
+        - kcp_v2
       x-portone-category: certification
   '/certifications/otp/confirm/{imp_uid}':
     post:
@@ -498,8 +571,8 @@ paths:
         - certifications
       summary: 본인인증 완료 API
       description: |-
-        본인인증 요청 API를 통해 SMS로 전송된 인증번호를 전달하여 본인인증을 완료합니다. <br>
-                     본인인증이 완료되면 대상자의 이름, 전화번호, 통신사, 성별, 외국인 여부, 생년월일, CI, DI 값을 응답받을 수 있습니다.
+        본인인증 요청 API를 통해 SMS/APP로 전송된 인증번호를 전달하여 본인인증을 완료합니다. <br>
+             본인인증이 완료되면 대상자의 이름, 전화번호, 통신사, 성별, 외국인 여부, 생년월일, CI, DI 값을 응답받을 수 있습니다.
       operationId: confirmOTP
       consumes:
         - application/json
@@ -517,12 +590,12 @@ paths:
             <p>본인인증 요청 API 요청 후 응답된 인증 고유번호</p>
         - name: otp
           in: formData
-          description: SMS로 전송된 본인인증 번호
-          required: true
+          description: SMS로 전송된 본인인증 번호. KCP (신모듈) APP 방식의 경우에는 해당 값을 전달하지 않습니다.
+          required: false
           type: string
           x-portone-name: 본인인증 번호
           x-portone-description: |
-            <p>SMS로 전송된 본인인증 번호</p>
+            <p>SMS로 전송된 본인인증 번호. KCP (신모듈) APP 방식의 경우에는 해당 값을 전달하지 않습니다.</p>
       responses:
         '200':
           description: 본인인증완료
@@ -538,6 +611,7 @@ paths:
           description: 처리 중 다날서버 응답오류 등 오류가 발생한 경우
       x-portone-supported-pgs:
         - danal
+        - kcp_v2
       x-portone-category: certification
   /subscribe/customers:
     get:
@@ -8171,7 +8245,7 @@ definitions:
         x-portone-description: |
           <p>본인인증 결과건의 PG사 본인인증결과 고유번호</p>
       pg_provider:
-        description: 본인인증 제공 PG사 명칭. danal(다날)
+        description: '본인인증 제공 PG사 명칭. danal(다날), kcp_v2'
         type: string
         x-portone-name: pg사 구분코드
         x-portone-description: |
