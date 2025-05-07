@@ -4,7 +4,7 @@ description: PortOne 개발자센터 웹사이트 내 존재하는 문서들의 
 targetVersions:
   - v1
   - v2
-date: 2025-04-19
+date: 2025-05-07
 author: PortOne
 ---
 
@@ -98,6 +98,7 @@ author: PortOne
 - [스마트로](https://developers.portone.io/opi/ko/integration/pg/v2/smartro-v2): 스마트로 결제 연동 방법을 안내합니다.
 - [토스페이](https://developers.portone.io/opi/ko/integration/pg/v2/tosspay-v2): 토스페이 간편결제 연동 방법을 안내합니다.
 - [토스페이먼츠](https://developers.portone.io/opi/ko/integration/pg/v2/tosspayments): 토스페이먼츠 결제 연동 방법을 안내합니다.
+- [웰컴페이먼츠](https://developers.portone.io/opi/ko/integration/pg/v2/welcome): 웰컴페이먼츠 결제 연동 방법을 안내합니다.
 - [1. 빌링키 발급하기](https://developers.portone.io/opi/ko/integration/start/v2/billing/issue): 결제창 또는 API를 이용하여 빌링키를 발급할 수 있습니다.
 - [2. 결제 요청하기](https://developers.portone.io/opi/ko/integration/start/v2/billing/payment): 포트원 빌링키 결제 API를 사용해 바로 결제를 요청합니다.
 - [빌링키 결제 연동하기](https://developers.portone.io/opi/ko/integration/start/v2/billing/readme): 카드 혹은 휴대 전화 정보를 이용하여 빌링키를 발급하고, 빌링키를 이용해 결제를 요청하는 방법을 안내합니다.

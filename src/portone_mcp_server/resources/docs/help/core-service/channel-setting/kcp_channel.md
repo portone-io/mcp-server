@@ -196,6 +196,8 @@ datetime: 2025-03-03T15:00:00.000Z
 
 - [실 연동 특징 보러가기↗](https://help.portone.io/category/procedure/payment-integration/real?page=1)
 
+![](</uploads/결제서비스/채널설정/\[실연동] 휴대폰_본인인증.png>)
+
 #### **설정경로**
 
 - [포트원 관리자콘솔↗](https://admin.portone.io/) > 결제 연동 > 채널관리 > + 채널 추가
