@@ -7,8 +7,8 @@ from .tools import (
     read_doc_metadata,
     read_openapi_schema,
     read_openapi_schema_summary,
-    read_v2_payment_backend_code,
-    read_v2_payment_frontend_code,
+    read_v2_backend_code,
+    read_v2_frontend_code,
     regex_search,
 )
 
@@ -33,8 +33,8 @@ def run_server():
     mcp.add_tool(read_openapi_schema.initialize(documents.schema))
 
     api_base_path = "https://developers.portone.io"
-    mcp.add_tool(read_v2_payment_backend_code.initialize(api_base_path))
-    mcp.add_tool(read_v2_payment_frontend_code.initialize(api_base_path))
+    mcp.add_tool(read_v2_backend_code.initialize(api_base_path))
+    mcp.add_tool(read_v2_frontend_code.initialize(api_base_path))
 
     # Run the server
     mcp.run("stdio")
