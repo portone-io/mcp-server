@@ -33,8 +33,7 @@
 1. 저장소를 클론한 후 필요한 패키지 설치하기
 
    ```bash
-   uv venv
-   uv sync --extra dev
+   uv sync
    ```
 
 1. MCP 서버 실행

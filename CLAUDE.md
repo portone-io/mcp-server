@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Build & Test Commands
 
-- Setup: `uv venv && uv sync --extra dev`
+- Setup: `uv sync`
 - Run server: `uv run portone-mcp-server`
 - Run all tests: `uv run pytest`
 - Run single test: `uv run pytest tests/test_loader.py::TestParseMarkdownContent::test_parse_markdown_without_frontmatter -v`
