@@ -109,7 +109,7 @@ def initialize(documents: Documents):
             # Truncate if exceeds limit
             if len(full_result) > limit:
                 truncation_msg = f"\n\n... (output truncated due to length limit. Use start_index={start_index + limit} for next page)"
-                return full_result[: limit - len(truncation_msg)] + truncation_msg
+                return full_result[:limit] + truncation_msg
 
             return full_result
 
