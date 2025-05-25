@@ -2,6 +2,7 @@ import re
 from dataclasses import dataclass
 
 from ..loader import Documents
+from .utils.bm25 import calculate_bm25_scores
 from .utils.markdown import format_document_metadata
 
 
@@ -16,7 +17,7 @@ class SearchOccurrence:
 
 
 def initialize(documents: Documents):
-    def regex_search_portone_docs(query: str, context_size: int) -> str:
+    def regex_search_portone_docs(query: str, context_size: int, limit: int = 50000) -> str:
         """포트원 문서의 내용 중 파이썬 re 정규표현식 형식의 query가 매칭된 부분을 모두 찾아 반환합니다.
         정규식 기반으로 관련 포트원 문서를 찾고 싶은 경우 이 도구를 사용하며, 메타 정보와 문서 내용 모두 검색합니다.
 
@@ -28,6 +29,8 @@ def initialize(documents: Documents):
                           query 매치가 발견된 시작 인덱스를 idx라고 할 때,
                           max(0, idx - context_size)부터 min(contentLength, idx + len(query) + context_size) - 1까지의 내용을 반환합니다.
                           단, 이전 검색결과와 겹치는 컨텍스트는 병합되어 반환됩니다.
+            limit: 반환할 최대 문자열 길이입니다. 기본값은 50000입니다.
+                   출력이 이 길이를 초과하면 잘리고 truncation 메시지가 추가됩니다.
 
         Returns:
             포트원 문서를 찾으면 해당 문서의 경로와 길이, 제목, 설명, 대상 버전과 함께, query가 매칭된 주변 컨텍스트를 반환합니다.
@@ -38,8 +41,12 @@ def initialize(documents: Documents):
 
         result = ""
 
-        # Check in markdown documents - direct dictionary access
-        for doc in documents.markdown_docs.values():
+        # First, get documents sorted by BM25 score
+        bm25_scores = calculate_bm25_scores(query, documents.markdown_docs)
+
+        # Process documents in BM25 score order
+        for path, _ in bm25_scores:
+            doc = documents.markdown_docs[path]
             content_len = len(doc.content)
             occurrences: list[SearchOccurrence] = []
 
@@ -88,6 +95,13 @@ def initialize(documents: Documents):
         if occurrence_count == 0:
             return f"Document with query '{query}' not found."
         else:
-            return f"{doc_count} documents and {occurrence_count} occurrences found with query '{query}'\n\n" + result
+            full_result = f"{doc_count} documents and {occurrence_count} occurrences found with query '{query}'\n\n" + result
+
+            # Truncate if exceeds limit
+            if len(full_result) > limit:
+                truncation_msg = "\n\n... (output truncated due to length limit)"
+                return full_result[: limit - len(truncation_msg)] + truncation_msg
+
+            return full_result
 
     return regex_search_portone_docs
