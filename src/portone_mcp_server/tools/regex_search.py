@@ -17,7 +17,7 @@ class SearchOccurrence:
 
 
 def initialize(documents: Documents):
-    def regex_search_portone_docs(query: str, context_size: int, limit: int = 50000) -> str:
+    def regex_search_portone_docs(query: str, context_size: int, limit: int = 50000, start_index: int = 0) -> str:
         """포트원 문서의 내용 중 파이썬 re 정규표현식 형식의 query가 매칭된 부분을 모두 찾아 반환합니다.
         정규식 기반으로 관련 포트원 문서를 찾고 싶은 경우 이 도구를 사용하며, 메타 정보와 문서 내용 모두 검색합니다.
 
@@ -31,6 +31,9 @@ def initialize(documents: Documents):
                           단, 이전 검색결과와 겹치는 컨텍스트는 병합되어 반환됩니다.
             limit: 반환할 최대 문자열 길이입니다. 기본값은 50000입니다.
                    출력이 이 길이를 초과하면 잘리고 truncation 메시지가 추가됩니다.
+            start_index: 결과 문자열의 페이지네이션을 위한 시작 인덱스입니다. 기본값은 0입니다.
+                         전체 결과 문자열에서 start_index 위치부터 limit 길이만큼의 부분 문자열을 반환합니다.
+                         동일한 query, context_size로 다른 start_index를 사용해 다음 결과를 얻을 수 있습니다.
 
         Returns:
             포트원 문서를 찾으면 해당 문서의 경로와 길이, 제목, 설명, 대상 버전과 함께, query가 매칭된 주변 컨텍스트를 반환합니다.
@@ -97,9 +100,15 @@ def initialize(documents: Documents):
         else:
             full_result = f"{doc_count} documents and {occurrence_count} occurrences found with query '{query}'\n\n" + result
 
+            # Apply pagination by slicing from start_index
+            if start_index > 0:
+                if start_index >= len(full_result):
+                    return f"No more results. Total result length: {len(full_result)}"
+                full_result = full_result[start_index:]
+
             # Truncate if exceeds limit
             if len(full_result) > limit:
-                truncation_msg = "\n\n... (output truncated due to length limit)"
+                truncation_msg = f"\n\n... (output truncated due to length limit. Use start_index={start_index + limit} for next page)"
                 return full_result[: limit - len(truncation_msg)] + truncation_msg
 
             return full_result
