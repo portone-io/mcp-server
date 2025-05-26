@@ -151,8 +151,6 @@ brandpayModule.getPaymentMethods();
 brandpayModule.openSettings();
 ```
 
-</div>
-
 <details>
 
 <summary>
@@ -223,5 +221,7 @@ brandpayModule.openSettings().catch(function (error) {
 ```
 
 </details>
+
+</div>
 
 </div>

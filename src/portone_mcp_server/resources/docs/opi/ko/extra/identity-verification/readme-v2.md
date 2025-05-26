@@ -176,8 +176,12 @@ app.post("/identity-verifications", async (req, res) => {
 
 - `gender`: 성별
   - 다날의 경우 항상 제공.
+
   - KCP의 경우 항상 제공.
-  - KG이니시스의 경우 검증되지 않은 정보가 제공됩니다.
+
+  - KG이니시스의 경우 카카오톡 인증을 제외하고 항상 제공합니다.
+    - 카카오톡 인증의 경우 인증기관 검증 절차 없이 사용자가 직접 입력한 정보를 제공합니다.
+    - `FRGNDInfo` 파라미터를 `N`으로 설정한 경우, 카카오톡 인증 시에 성별 정보를 사용자에게 입력받지 않으며, 인증 결과에 성별을 제공하지 않습니다. [참고](https://developers.portone.io/opi/ko/integration/pg/v2/inicis-unified-identity-verification#kg이니시스-특수-파라미터-안내)
 
 - `birthDate`: 생년월일 (YYYY-MM-DD)
 
@@ -193,8 +197,12 @@ app.post("/identity-verifications", async (req, res) => {
 
 - `isForeigner`: 외국인 여부.
   - 다날의 경우 하기 안내를 따라 추가 계약 후 제공.
+
   - KCP의 경우 항상 제공.
-  - KG이니시스의 경우 검증되지 않은 정보가 제공됩니다.
+
+  - KG이니시스의 경우 카카오톡, 네이버 인증을 제외하고 항상 제공합니다.
+    - 카카오톡, 네이버 인증의 경우 인증기관 검증 절차 없이 사용자가 직접 입력한 정보를 제공합니다.
+    - `FRGNDInfo` 파라미터를 `N`으로 설정한 경우, 네이버와 카카오톡 인증 시에 외국인 여부를 사용자에게 입력받지 않으며, 인증 결과에 외국인 여부를 제공하지 않습니다. [참고](https://developers.portone.io/opi/ko/integration/pg/v2/inicis-unified-identity-verification#kg이니시스-특수-파라미터-안내)
 
 <div class="hint" data-style="info">
 

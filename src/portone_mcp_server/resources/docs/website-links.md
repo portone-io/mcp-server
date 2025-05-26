@@ -4,7 +4,7 @@ description: PortOne 개발자센터 웹사이트 내 존재하는 문서들의 
 targetVersions:
   - v1
   - v2
-date: 2025-05-07
+date: 2025-05-26
 author: PortOne
 ---
 
@@ -281,6 +281,7 @@ author: PortOne
 - [API / SDK 2024-09-27](https://developers.portone.io/release-notes/api-sdk/2024-09-27)
 - [API / SDK 2024-12-19](https://developers.portone.io/release-notes/api-sdk/2024-12-19)
 - [API / SDK 2025-01-15](https://developers.portone.io/release-notes/api-sdk/2025-01-15)
+- [API / SDK 2025-05-19](https://developers.portone.io/release-notes/api-sdk/2025-05-19)
 - [관리자콘솔 2023-04-24](https://developers.portone.io/release-notes/console/2023-04-24)
 - [관리자콘솔 2023-05-08](https://developers.portone.io/release-notes/console/2023-05-08)
 - [관리자콘솔 2023-05-22](https://developers.portone.io/release-notes/console/2023-05-22)
@@ -314,6 +315,7 @@ author: PortOne
 - [파트너 정산 자동화 2025-03-17](https://developers.portone.io/release-notes/platform/2025-03-17)
 - [파트너 정산 자동화 2025-04-03](https://developers.portone.io/release-notes/platform/2025-04-03)
 - [파트너 정산 자동화 2025-04-08](https://developers.portone.io/release-notes/platform/2025-04-08)
+- [파트너 정산 자동화 2025-05-14](https://developers.portone.io/release-notes/platform/2025-05-14)
 
 ## 블로그
 

@@ -51,15 +51,9 @@ datetime: 2025-02-28T01:25:51.798Z
 8. PAYMENTWALL\
    \- 이용가능지역 : Global\
    \- 결제수단 : 카드결제, 간편결제
-9. EXIMBAY\
+9. PAYLETTER\
    \- 이용가능지역 : Global\
-   \- 결제수단 : 카드결제, Alipay+, WeChatPay, UnionPay\
-   \- 이용가능지역 : Japan\
-   \- 결제수단 : eContext(편의점결제)
-
-10\. PAYLETTER\
-\- 이용가능지역 : Global\
-\- 결제수단 : 카드결제
+   \- 결제수단 : 카드결제
 
 ## **글로벌 포트원에서 지원하는 해외PSP**
 

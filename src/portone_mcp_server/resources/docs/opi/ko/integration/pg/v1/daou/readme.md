@@ -13,11 +13,11 @@ targetVersions:
 
 ## 2.결제 요청하기
 
-[JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk-old/readme) `IMP.request_pay(param, callback)`을 호출하여 다우 페이조아 결제창을 호출할 수 있습니다. **결제 결과**는 PC의 경우 `IMP.request_pay(param, callback)` 호출 후 **callback**으로 수신되고 모바일의 경우 **m\_redirect\_url**로 리디렉션됩니다.
+[JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk-old/readme) `IMP.request_pay(param, callback)`을 호출하여 키움페이 결제창을 호출할 수 있습니다. **결제 결과**는 PC의 경우 `IMP.request_pay(param, callback)` 호출 후 **callback**으로 수신되고 모바일의 경우 **m\_redirect\_url**로 리디렉션됩니다.
 
 <div class="hint" data-style="warning">
 
-**페이조아 결제창 연동을 위해서는 ****JS SDK Version 1.2.0**** 이상을 사용하셔야 합니다.**
+**키움페이 결제창 연동을 위해서는 ****JS SDK Version 1.2.0**** 이상을 사용하셔야 합니다.**
 
 </div>
 
@@ -40,7 +40,7 @@ IMP.request_pay(
     digital: false, // 디지털로 계약되었다면 true로 설정
     m_redirect_url: "https://allerts.com/payments/complete",
     bypass: {
-      // 페이조아(다우데이타) 전용 파라미터
+      // 키움페이 전용 파라미터
       daou: {
         PRODUCTCODE: "portone",
         CASHRECEIPTFLAG: 0,
@@ -85,9 +85,14 @@ IMP.request_pay(
 
   **결제수단 구분코드**
 
-  - card(신용카드)
-  - trans(실시간 계좌이체)
-  - vbank(가상계좌)
+  - card (신용카드)
+  - trans (실시간 계좌이체)
+  - vbank (가상계좌)
+  - kakaopay (카카오페이)
+  - naverpay (네이버페이)
+  - payco (페이코)
+  - samsung (삼성페이)
+  - applepay (애플페이)
 
 - merchant\_uid: string
 
@@ -99,22 +104,27 @@ IMP.request_pay(
 
   **디지털 컨텐츠 여부**
 
-  고객사 <-> 페이조아간 계약 상태에 따라 정해진 올바른 값을 넣어야 함. 그렇지 않은 경우 결제 진행 불가
+  고객사 <-> 키움페이간 계약 상태에 따라 정해진 올바른 값을 넣어야 함. 그렇지 않은 경우 결제 진행 불가
 
 - bypass.daou.PRODUCTCODE?: string
 
   **결제 상품 고유 번호**
 
-  값에 대해 정해진 규격이 없고 보내지 않을 경우 포트원에서 기본값(iamport)을 설정해 페이조아 측으로 전달
+  값에 대해 정해진 규격이 없고 보내지 않을 경우 포트원에서 기본값(iamport)을 설정해 키움페이 측으로 전달
 
 - bypass.daou.CASHRECEIPTFLAG?: number
 
   **현금영수증 발급 구분코드**
 
-  비 신용결제(계좌,가상)시 페이조아에서 자동발급 여부 구분코드
+  실시간 계좌이체, 가상계좌, 카카오페이 거래 시 키움페이에서 현금영수증 자동발급 여부 구분코드
 
-  - `1`: 허용
-  - `0`: 차단
+  - 실시간 계좌이체, 가상계좌인 경우
+    - `1`: 허용
+    - `0`: 차단
+
+  - 카카오페이인 경우
+    - `Y`: 허용
+    - `N`: 차단
 
 - app\_scheme?: string
 
@@ -286,7 +296,7 @@ curl -H "Content-Type: application/json" \
 
 **주의사항**
 
-- 에스크로 배송정보 등록/수정 시 고객사가 전달한 배송정보(운송장 번호, 택배사 이름 등)에 대해 페이조아 측에서 유효성 체크를 하지 않습니다.
+- 에스크로 배송정보 등록/수정 시 고객사가 전달한 배송정보(운송장 번호, 택배사 이름 등)에 대해 키움페이 측에서 유효성 체크를 하지 않습니다.
 
 </div>
 

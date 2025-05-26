@@ -171,6 +171,7 @@
 - [API / SDK 2024-09-27](https://developers.portone.io/release-notes/api-sdk/2024-09-27)
 - [API / SDK 2024-12-19](https://developers.portone.io/release-notes/api-sdk/2024-12-19)
 - [API / SDK 2025-01-15](https://developers.portone.io/release-notes/api-sdk/2025-01-15)
+- [API / SDK 2025-05-19](https://developers.portone.io/release-notes/api-sdk/2025-05-19)
 - [관리자콘솔 2023-04-24](https://developers.portone.io/release-notes/console/2023-04-24)
 - [관리자콘솔 2023-05-08](https://developers.portone.io/release-notes/console/2023-05-08)
 - [관리자콘솔 2023-05-22](https://developers.portone.io/release-notes/console/2023-05-22)
@@ -204,6 +205,7 @@
 - [파트너 정산 자동화 2025-03-17](https://developers.portone.io/release-notes/platform/2025-03-17)
 - [파트너 정산 자동화 2025-04-03](https://developers.portone.io/release-notes/platform/2025-04-03)
 - [파트너 정산 자동화 2025-04-08](https://developers.portone.io/release-notes/platform/2025-04-08)
+- [파트너 정산 자동화 2025-05-14](https://developers.portone.io/release-notes/platform/2025-05-14)
 
 ### 블로그
 
@@ -630,8 +632,12 @@ app.post("/identity-verifications", async (req, res) => {
 
 - `gender`: 성별
   - 다날의 경우 항상 제공.
+
   - KCP의 경우 항상 제공.
-  - KG이니시스의 경우 검증되지 않은 정보가 제공됩니다.
+
+  - KG이니시스의 경우 카카오톡 인증을 제외하고 항상 제공합니다.
+    - 카카오톡 인증의 경우 인증기관 검증 절차 없이 사용자가 직접 입력한 정보를 제공합니다.
+    - `FRGNDInfo` 파라미터를 `N`으로 설정한 경우, 카카오톡 인증 시에 성별 정보를 사용자에게 입력받지 않으며, 인증 결과에 성별을 제공하지 않습니다. [참고](https://developers.portone.io/opi/ko/integration/pg/v2/inicis-unified-identity-verification#kg이니시스-특수-파라미터-안내)
 
 - `birthDate`: 생년월일 (YYYY-MM-DD)
 
@@ -647,8 +653,12 @@ app.post("/identity-verifications", async (req, res) => {
 
 - `isForeigner`: 외국인 여부.
   - 다날의 경우 하기 안내를 따라 추가 계약 후 제공.
+
   - KCP의 경우 항상 제공.
-  - KG이니시스의 경우 검증되지 않은 정보가 제공됩니다.
+
+  - KG이니시스의 경우 카카오톡, 네이버 인증을 제외하고 항상 제공합니다.
+    - 카카오톡, 네이버 인증의 경우 인증기관 검증 절차 없이 사용자가 직접 입력한 정보를 제공합니다.
+    - `FRGNDInfo` 파라미터를 `N`으로 설정한 경우, 네이버와 카카오톡 인증 시에 외국인 여부를 사용자에게 입력받지 않으며, 인증 결과에 외국인 여부를 제공하지 않습니다. [참고](https://developers.portone.io/opi/ko/integration/pg/v2/inicis-unified-identity-verification#kg이니시스-특수-파라미터-안내)
 
 <div class="hint" data-style="info">
 
@@ -849,26 +859,941 @@ targetVersions:
 ## 해외결제 차지백 웹훅 등록
 
 - 해외결제 차지백 웹훅을 수신하기 위해서는 엑심베이에 웹훅 URL로 `https://tx-gateway-service.prod.iamport.co/eximbay-v2`를 등록해 주셔야 합니다.
-- 웹훅 URL을 등록하신 후 받으신 Secret Key를 채널 정보에 입력해 주세요.
-
-## 결제 창 호출
-
-브라우저 SDK의 `PortOne.requestPayment` 함수를 사용해 결제창을 호출합니다.
-엑심베이 연동만을 위한 파라미터는 [브라우저 SDK 파라미터 목록](https://developers.portone.io/sdk/ko/v2-sdk/payment-request?v=v2#bypass-oneof-object)의 `bypass.eximbay_v2` 항목을 참조해 주세요.
+- 웹훅 URL을 등록하신 후 받으신 웹훅 시크릿 키를 채널 정보에 입력해 주세요.
 
 ## 가능한 결제수단
 
-엑심베이의 경우 포트원의 결제수단 구분과 상관없이 여러 결제수단을 표시할 수 있습니다.
-따라서 항상 `payMethod`는 `CARD`로 설정하고, `bypass.eximbay_v2`를 사용해 결제수단을 설정해야 합니다.
+- **결제창 일반결제**
 
-- MID에 설정된 기본 결제수단을 전부 표시하려면 `bypass.eximbay_v2.payment`를 생략해야 합니다.
-- 특정 결제수단을 단독으로 표시하려면 `bypass.eximbay_v2.payment.payment_method`를 설정합니다.
-- 일부 결제수단만을 표시하려면 `bypass.eximbay_v2.payment.multi_payment_method`에 결제수단 목록을 전달합니다.
-- 엑심베이의 결제수단 코드는 포트원 코드와 상이하므로, [EXIMBAY Docs](https://developer.eximbay.com/eximbay/api_sdk/code-organization.html#paymentCode)에서 확인 후 입력해야 합니다.
+  엑심베이의 경우 포트원의 결제수단 구분과 상관없이 여러 결제수단을 표시할 수 있습니다.
+  `payMethod`를 생략하고, 특정 결제수단만을 노출할 경우 `bypass.eximbay_v2`를 사용해야 합니다.
+
+  - MID에 설정된 기본 결제수단을 전부 표시하려면 `bypass.eximbay_v2.payment`를 생략해야 합니다.
+  - 특정 결제수단을 단독으로 표시하려면 `bypass.eximbay_v2.payment.payment_method`를 설정합니다.
+  - 일부 결제수단만을 표시하려면 `bypass.eximbay_v2.payment.multi_payment_method`에 결제수단 목록을 전달합니다.
+  - 엑심베이의 결제수단 코드는 포트원 코드와 상이하므로, [EXIMBAY Docs](https://developer.eximbay.com/eximbay/api_sdk/code-organization.html#paymentCode)에서 확인 후 입력해야 합니다.
+
+- **결제창 빌링키 발급 및 결제**
+
+  현재 신용카드 결제만 지원하며, `billingKeyAndPayMethod` 파라미터를 `CARD`로 설정해야 합니다.
+
+## SDK 결제 요청하기
+
+결제 요청 시에는 `requestPayment` 함수를 호출해야 합니다. `channelKey` 파라미터에 결제 채널 연동 후 생성된 채널 키를 지정하여 엑심베이 채널 사용을 명시해주세요.
+
+엑심베이 기준으로 작성한 예제 코드는 아래와 같습니다.
+
+<div class="tabs-container">
+
+<div class="tabs-content" data-title="SDK 결제 요청">
+
+```javascript
+import * as PortOne from "@portone/browser-sdk/v2";
+function requestPayment() {
+  PortOne.requestPayment({
+    storeId: "store-4ff4af41-85e3-4559-8eb8-0d08a2c6ceec", // 고객사 storeId로 변경해주세요.
+    channelKey: "channel-key-9987cb87-6458-4888-b94e-68d9a2da896d", // 콘솔 결제 연동 화면에서 채널 연동 시 생성된 채널 키를 입력해주세요.
+    paymentId: `payment${crypto.randomUUID()}`,
+    orderName: "PortOne Purchase",
+    totalAmount: 100, // 1 USD
+    currency: "USD",
+    customer: {
+      fullName: "PortOne",
+      email: "test@example.com",
+    },
+  });
+}
+```
+
+</div>
+
+</div>
+
+### 주요 파라미터
+
+- storeId: string
+
+  **스토어 아이디**
+
+  포트원 계정에 생성된 상점을 식별하는 고유한 값으로 관리자 콘솔에서 확인할 수 있습니다.
+
+- paymentId: string
+
+  **고객사 주문 고유 번호**
+
+  - 고객사가 채번하는 주문 고유 번호입니다.
+  - 이미 승인 완료 된 `paymentId`로 결제나 가상계좌 발급을 시도하는 경우 에러가 발생합니다.
+
+- orderName: string
+
+  **주문명**
+
+  주문명으로 고객사에서 자유롭게 입력합니다.
+
+- channelKey: string
+
+  **채널 키**
+
+  콘솔에서 채널 연동 시 생성된 채널 키입니다.
+
+- totalAmount: number
+
+  **결제 금액**
+
+  결제 금액(실제 결제 금액 X 10^ 해당 currency의 scale factor, 예: $1.50 -> 150)
+
+- currency: string
+
+  **결제 통화 코드**
+
+  - ISO 4217 통화 코드
+  - [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217)
+
+- locale?: Locale
+
+  **결제창 언어**
+
+  - `KO_KR`: 한국어
+  - `EN_US`: 영어
+  - `JA_JP`: 일본어
+  - `ZH_CN`: 중국어 (중국 본토)
+  - `ZH_TW`: 중국어 (대만)
+  - `TH_TH`: 타이어
+  - `VI_VN`: 베트남어
+
+- customer?: object
+
+  **고객 정보**
+
+  엑심베이의 경우 구매자 성명과 이메일은 필수 입력 항목입니다.
+
+  - customerId?: string
+
+    **구매자 고유 ID**
+
+  - fullName?: string
+
+    **구매자 전체 이름**
+
+    `fullName`과 `firstName` / `lastName`이 모두 입력된 경우 `fullName`으로 기록됩니다.
+
+  - firstName?: string
+
+    **구매자 이름**
+
+    `firstName`을 입력하는 경우 `lastName`도 필수로 입력해야 합니다. `fullName`이 없고,
+    `firstName`과 `lastName`이 존재하는 경우 `{firstName} {lastName}`으로 저장됩니다.
+
+  - lastName?: string
+
+    **구매자 성**
+
+    `lastName`을 입력하는 경우 `firstName`도 필수로 입력해야 합니다.
+
+  - phoneNumber?: string
+
+    **구매자 연락처**
+
+  - email?: string
+
+    **구매자 이메일 주소**
+
+    결제 완료 메일이 발송됩니다.
+
+- bypass?: oneof object
+
+  - eximbay\_v2?: object
+
+    **엑심베이 특수 파라미터**
+
+    - payment?: object
+
+      - payment\_method?: string
+
+        **결제수단 단독 노출**
+
+        엑심베이의 결제수단 코드는 포트원 코드와 상이하므로, [EXIMBAY Docs](https://developer.eximbay.com/eximbay/api_sdk/code-organization.html#paymentCode)에서 확인 후 입력해야 합니다.
+
+      - multi\_payment\_method?: string\[]
+
+        **결제수단 노출 목록**
+
+        여러 결제수단을 노출합니다.
+
+    - merchant?: object
+
+      - shop?: string
+
+        **상점명**
+
+      - partner\_code?: string
+
+        **파트너 코드**
+
+    - tax?: object
+
+      - receipt\_status?: string
+
+        **현금영수증 발급 여부**
+
+        - `Y`: 발급
+        - `N`: 미발급
+
+        네이버페이 결제 시 필수 입력이며, 계좌이체 사용 시에는 반드시 `Y`로 입력해야 합니다.
+
+    - surcharge?: object\[]
+
+      **최대 3개의 추가 비용 목록**
+
+      - name?: string
+
+        **항목명**
+
+      - quantity?: string
+
+        **수량**
+
+      - unit\_price?: string
+
+        **단가 (음수 가능)**
+
+    - ship\_to?: object
+
+      - city?: string
+
+        **배송지 도시**
+
+      - country?: string
+
+        **배송지 국가 (ISO 3166 두 자리 국가 코드)**
+
+      - first\_name?: string
+
+        **수신인의 성을 제외한 이름**
+
+      - last\_name?: string
+
+        **수신인의 성**
+
+      - phone\_number?: string
+
+        **수신인 전화번호**
+
+      - postal\_code?: string
+
+        **배송지 우편번호**
+
+      - state?: string
+
+        **배송지가 미국 혹은 캐나다인 경우, 배송지 주 정보**
+
+      - street1?: string
+
+        **배송지 상세 주소**
+
+    - bill\_to?: object
+
+      - city?: string
+
+        **청구지 도시**
+
+      - country?: string
+
+        **청구지 국가 (ISO 3166 두 자리 국가 코드)**
+
+      - first\_name?: string
+
+        **청구 카드 명의자의 성을 제외한 이름**
+
+      - last\_name?: string
+
+        **청구 카드 명의자의 성**
+
+      - phone\_number?: string
+
+        **청구 카드 명의자의 전화번호**
+
+      - postal\_code?: string
+
+        **청구지 우편번호**
+
+      - state?: string
+
+        **청구지가 미국 혹은 캐나다인 경우, 청구지 주 정보**
+
+      - street1?: string
+
+        **청구지 상세 주소**
+
+    - settings?: object
+
+      - call\_from\_app?: string
+
+        **모바일 앱 내에서 결제를 연동할 경우 설정**
+
+        - `Y`: 모바일 앱 환경인 경우
+        - `N`: 모바일 앱 환경이 아닌 경우
+
+      - issuer\_country?: string
+
+        **해외 결제 가맹점에서 국내 결제를 사용할 경우 `KR`**
+
+      - virtualaccount\_expiry\_date?: string
+
+        **입금 만료 일자 (yyyyMMddHH)**
+
+## SDK 빌링키 발급 및 결제 요청하기
+
+엑심베이의 경우 빌링키 발급과 동시에 최초 결제가 일어나며, `requestIssueBillingKeyAndPay` 함수를 호출해야 합니다.
+`channelKey` 파라미터에 결제 채널 연동 후 생성된 채널 키를 지정하여 엑심베이 채널 사용을 명시해주세요.
+
+엑심베이 기준으로 작성한 예제 코드는 아래와 같습니다.
+
+<div class="tabs-container">
+
+<div class="tabs-content" data-title="SDK 빌링키 발급 및 결제 요청">
+
+```javascript
+import * as PortOne from "@portone/browser-sdk/v2";
+function issueBillingKeyAndPay() {
+  PortOne.requestIssueBillingKeyAndPay({
+    storeId: "store-4ff4af41-85e3-4559-8eb8-0d08a2c6ceec", // 고객사 storeId로 변경해주세요.
+    channelKey: "channel-key-9987cb87-6458-4888-b94e-68d9a2da896d", // 콘솔 결제 연동 화면에서 채널 연동 시 생성된 채널 키를 입력해주세요.
+    paymentId: `payment${crypto.randomUUID()}`,
+    orderName: "PortOne Recurring Payment",
+    totalAmount: 100, // 1 USD
+    currency: "USD",
+    billingKeyAndPayMethod: "CARD",
+    customer: {
+      fullName: "PortOne",
+      email: "test@example.com",
+    },
+  });
+}
+```
+
+</div>
+
+</div>
+
+### 주요 파라미터
+
+- storeId: string
+
+  **스토어 아이디**
+
+  포트원 계정에 생성된 상점을 식별하는 고유한 값으로 관리자 콘솔에서 확인할 수 있습니다.
+
+- paymentId: string
+
+  **고객사 주문 고유 번호**
+
+  - 고객사가 채번하는 주문 고유 번호입니다.
+  - 이미 승인 완료 된 `paymentId`로 결제나 가상계좌 발급을 시도하는 경우 에러가 발생합니다.
+
+- orderName: string
+
+  **주문명**
+
+  주문명으로 고객사에서 자유롭게 입력합니다.
+
+- channelKey: string
+
+  **채널 키**
+
+  콘솔에서 채널 연동 시 생성된 채널 키입니다.
+
+- totalAmount: number
+
+  **결제 금액**
+
+  결제 금액(실제 결제 금액 X 10^ 해당 currency의 scale factor, 예: $1.50 -> 150)
+
+- currency: string
+
+  **결제 통화 코드**
+
+  - ISO 4217 통화 코드
+  - [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217)
+
+- billingKeyAndPayMethod: string
+
+  **빌링키 발급 및 결제 방법**
+
+  - `CARD`: 신용카드 결제
+
+- locale?: Locale
+
+  **결제창 언어**
+
+  - `KO_KR`: 한국어
+  - `EN_US`: 영어
+  - `JA_JP`: 일본어
+  - `ZH_CN`: 중국어 (중국 본토)
+  - `ZH_TW`: 중국어 (대만)
+  - `TH_TH`: 타이어
+  - `VI_VN`: 베트남어
+
+- customer?: object
+
+  **고객 정보**
+
+  엑심베이의 경우 구매자 성명과 이메일은 필수 입력 항목입니다.
+
+  - customerId?: string
+
+    **구매자 고유 ID**
+
+  - fullName?: string
+
+    **구매자 전체 이름**
+
+    `fullName`과 `firstName` / `lastName`이 모두 입력된 경우 `fullName`으로 기록됩니다.
+
+  - firstName?: string
+
+    **구매자 이름**
+
+    `firstName`을 입력하는 경우 `lastName`도 필수로 입력해야 합니다. `fullName`이 없고,
+    `firstName`과 `lastName`이 존재하는 경우 `{firstName} {lastName}`으로 저장됩니다.
+
+  - lastName?: string
+
+    **구매자 성**
+
+    `lastName`을 입력하는 경우 `firstName`도 필수로 입력해야 합니다.
+
+  - phoneNumber?: string
+
+    **구매자 연락처**
+
+  - email?: string
+
+    **구매자 이메일 주소**
+
+    결제 완료 메일이 발송됩니다.
+
+- bypass?: oneof object
+
+  - eximbay\_v2?: object
+
+    **엑심베이 특수 파라미터**
+
+    - merchant?: object
+
+      - shop?: string
+
+        **상점명**
+
+    - surcharge?: object\[]
+
+      **최대 3개의 추가 비용 목록**
+
+      - name?: string
+
+        **항목명**
+
+      - quantity?: string
+
+        **수량**
+
+      - unit\_price?: string
+
+        **단가 (음수 가능)**
+
+    - ship\_to?: object
+
+      - city?: string
+
+        **배송지 도시**
+
+      - country?: string
+
+        **배송지 국가 (ISO 3166 두 자리 국가 코드)**
+
+      - first\_name?: string
+
+        **수신인의 성을 제외한 이름**
+
+      - last\_name?: string
+
+        **수신인의 성**
+
+      - phone\_number?: string
+
+        **수신인 전화번호**
+
+      - postal\_code?: string
+
+        **배송지 우편번호**
+
+      - state?: string
+
+        **배송지가 미국 혹은 캐나다인 경우, 배송지 주 정보**
+
+      - street1?: string
+
+        **배송지 상세 주소**
+
+    - bill\_to?: object
+
+      - city?: string
+
+        **청구지 도시**
+
+      - country?: string
+
+        **청구지 국가 (ISO 3166 두 자리 국가 코드)**
+
+      - first\_name?: string
+
+        **청구 카드 명의자의 성을 제외한 이름**
+
+      - last\_name?: string
+
+        **청구 카드 명의자의 성**
+
+      - phone\_number?: string
+
+        **청구 카드 명의자의 전화번호**
+
+      - postal\_code?: string
+
+        **청구지 우편번호**
+
+      - state?: string
+
+        **청구지가 미국 혹은 캐나다인 경우, 청구지 주 정보**
+
+      - street1?: string
+
+        **청구지 상세 주소**
+
+## API 빌링키 단건 결제 요청하기
+
+발급된 빌링키로 단건 결제 요청 시 `POST /payments/{paymentId}/billing-key` API를 호출해야 합니다.
+
+엑심베이 기준으로 작성한 예시 코드는 아래와 같습니다.
+
+<div class="tabs-container">
+
+<div class="tabs-content" data-title="API 단건 결제">
+
+```ts
+const response = await axios({
+  url: `https://api.portone.io/payments/${paymentId}/billing-key`,
+  method: "post",
+  headers: { Authorization: `PortOne ${PORTONE_API_SECRET}` },
+  data: {
+    billingKey: "billing-key-1", // SDK 빌링키 발급 및 결제 시 발급받은 빌링키
+    orderName: "PortOne Recurring Payment",
+    customer: {
+      name: {
+        full: "PortOne",
+      },
+      email: "test@example.com",
+    },
+    amount: {
+      total: 100, // 1 USD
+    },
+    currency: "USD",
+    locale: "KO_KR",
+  },
+});
+```
+
+</div>
+
+</div>
+
+### 주요 파라미터
+
+- paymentId: string
+
+  **결제 주문 번호**
+
+  - 고객사가 채번하는 주문 고유 번호입니다.
+  - 이미 승인 완료 된 `paymentId`로 결제나 가상계좌 발급을 시도하는 경우 에러가 발생합니다.
+  - URL path에 포함하여 요청해야 합니다.
+
+- billingKey: string
+
+  **빌링키 결제에 사용할 빌링키**
+
+- orderName: string
+
+  **주문명**
+
+- amount: object
+
+  **결제 금액**
+
+  `vat`와 `taxFree` 파라미터는 지원하지 않습니다.
+
+  - total: number
+
+    **총 결제 금액**
+
+    결제 금액(실제 결제 금액 X 10^ 해당 currency의 scale factor, 예: $1.50 -> 150)
+
+- currency: string
+
+  **결제 통화**
+
+  - [ISO 4217 통화 코드](https://en.wikipedia.org/wiki/ISO_4217)
+
+- customer: object
+
+  **고객 정보**
+
+  엑심베이의 경우 고객 이름과 이메일은 필수 입력 항목입니다.
+
+  - name: object
+
+    **고객 이름**
+
+    - full?: string
+
+      **한 줄 이름 형식 (ex. 김포트)**
+
+    - separated?: object
+
+      **분리된 이름**
+
+      - first: string
+
+        **이름**
+
+      - last: string
+
+        **성**
+
+  - phoneNumber?: string
+
+    **구매자 연락처**
+
+  - email: string
+
+    **구매자 이메일**
+
+- bypass?: oneof object
+
+  - eximbayV2?: object
+
+    **엑심베이 특수 파라미터**
+
+    - merchant?: object
+
+      - shop?: string
+
+        **상점명**
+
+    - surcharge?: object\[]
+
+      **최대 3개의 추가 비용 목록**
+
+      - name?: string
+
+        **항목명**
+
+      - quantity?: string
+
+        **수량**
+
+      - unitPrice?: string
+
+        **단가 (음수 가능)**
+
+    - shipTo?: object
+
+      - city?: string
+
+        **배송지 도시**
+
+      - country?: string
+
+        **배송지 국가 (ISO 3166 두 자리 국가 코드)**
+
+      - firstName?: string
+
+        **수신인의 성을 제외한 이름**
+
+      - lastName?: string
+
+        **수신인의 성**
+
+      - phoneNumber?: string
+
+        **수신인 전화번호**
+
+      - postalCode?: string
+
+        **배송지 우편번호**
+
+      - state?: string
+
+        **배송지가 미국 혹은 캐나다인 경우, 배송지 주 정보**
+
+      - street1?: string
+
+        **배송지 상세 주소**
+
+    - billTo?: object
+
+      - city?: string
+
+        **청구지 도시**
+
+      - country?: string
+
+        **청구지 국가 (ISO 3166 두 자리 국가 코드)**
+
+      - firstName?: string
+
+        **청구 카드 명의자의 성을 제외한 이름**
+
+      - lastName?: string
+
+        **청구 카드 명의자의 성**
+
+      - phoneNumber?: string
+
+        **청구 카드 명의자의 전화번호**
+
+      - postalCode?: string
+
+        **청구지 우편번호**
+
+      - state?: string
+
+        **청구지가 미국 혹은 캐나다인 경우, 청구지 주 정보**
+
+      - street1?: string
+
+        **청구지 상세 주소**
+
+## API 빌링키 예약/반복 결제 요청하기
+
+예약 결제를 하기 위해서는 `POST /payments/{paymentId}/schedule` 를 이용하여 결제를 예약합니다.
+
+엑심베이 기준으로 작성한 예시 코드는 아래와 같습니다.
+
+<div class="tabs-container">
+
+<div class="tabs-content" data-title="API 예약/반복 결제">
+
+```ts
+const response = await axios({
+  url: `https://api.portone.io/payments/${paymentId}/schedule`,
+  method: "post",
+  headers: { Authorization: `PortOne ${PORTONE_API_SECRET}` },
+  data: {
+    payment: {
+      billingKey: "billing-key-1", // 빌링키 발급 API를 통해 발급받은 빌링키
+      orderName: "PortOne Recurring Payment",
+      customer: {
+        name: {
+          full: "PortOne",
+        },
+        email: "test@example.com",
+      },
+      amount: {
+        total: 100, // 1 USD
+      },
+      currency: "USD",
+      locale: "KO_KR",
+    },
+    timeToPay: "2023-01-01T00:00:00+09:00", // 결제 예정 시점. RFC 3339 형식으로 입력해야 합니다.
+  },
+});
+```
+
+</div>
+
+</div>
+
+### 주요 파라미터
+
+- paymentId: string
+
+  **결제 주문 번호**
+
+  - 고객사가 채번하는 주문 고유 번호입니다.
+  - 이미 승인 완료 된 `paymentId`로 결제나 가상계좌 발급을 시도하는 경우 에러가 발생합니다.
+  - URL path에 포함하여 요청해야 합니다.
+
+- payment: object
+
+  **빌링키 결제 요청 입력정보**
+
+  - billingKey: string
+
+    **빌링키 결제에 사용할 빌링키**
+
+  - orderName: string
+
+    **주문명**
+
+  - amount: object
+
+    **결제 금액**
+
+    `vat`와 `taxFree` 파라미터는 지원하지 않습니다.
+
+    - total: number
+
+      **총 결제 금액**
+
+      결제 금액(실제 결제 금액 X 10^ 해당 currency의 scale factor, 예: $1.50 -> 150)
+
+  - currency: string
+
+    **결제 통화**
+
+    - [ISO 4217 통화 코드](https://en.wikipedia.org/wiki/ISO_4217)
+
+  - customer: object
+
+    **고객 정보**
+
+    엑심베이의 경우 고객 이름과 이메일은 필수 입력 항목입니다.
+
+    - name: object
+
+      **고객 이름**
+
+      - full?: string
+
+        **한 줄 이름 형식 (ex. 김포트)**
+
+      - separated?: object
+
+        **분리된 이름**
+
+        - first: string
+
+          **이름**
+
+        - last: string
+
+          **성**
+
+    - phoneNumber?: string
+
+      **구매자 연락처**
+
+    - email: string
+
+      **구매자 이메일**
+
+  - bypass?: oneof object
+
+    - eximbayV2?: object
+
+      **엑심베이 특수 파라미터**
+
+      - merchant?: object
+
+        - shop?: string
+
+          **상점명**
+
+      - surcharge?: object\[]
+
+        **최대 3개의 추가 비용 목록**
+
+        - name?: string
+
+          **항목명**
+
+        - quantity?: string
+
+          **수량**
+
+        - unitPrice?: string
+
+          **단가 (음수 가능)**
+
+      - shipTo?: object
+
+        - city?: string
+
+          **배송지 도시**
+
+        - country?: string
+
+          **배송지 국가 (ISO 3166 두 자리 국가 코드)**
+
+        - firstName?: string
+
+          **수신인의 성을 제외한 이름**
+
+        - lastName?: string
+
+          **수신인의 성**
+
+        - phoneNumber?: string
+
+          **수신인 전화번호**
+
+        - postalCode?: string
+
+          **배송지 우편번호**
+
+        - state?: string
+
+          **배송지가 미국 혹은 캐나다인 경우, 배송지 주 정보**
+
+        - street1?: string
+
+          **배송지 상세 주소**
+
+      - billTo?: object
+
+        - city?: string
+
+          **청구지 도시**
+
+        - country?: string
+
+          **청구지 국가 (ISO 3166 두 자리 국가 코드)**
+
+        - firstName?: string
+
+          **청구 카드 명의자의 성을 제외한 이름**
+
+        - lastName?: string
+
+          **청구 카드 명의자의 성**
+
+        - phoneNumber?: string
+
+          **청구 카드 명의자의 전화번호**
+
+        - postalCode?: string
+
+          **청구지 우편번호**
+
+        - state?: string
+
+          **청구지가 미국 혹은 캐나다인 경우, 청구지 주 정보**
+
+        - street1?: string
+
+          **청구지 상세 주소**
+
+- timeToPay: string
+
+  **결제 예정 시점**
 
 ## 유의사항
 
+### 공통
+
+- `customer.name` 및 `customer.email`은 필수 입력 항목입니다.
 - `products` 입력 시 `link`를 필수로 입력해야 합니다.
+
+### SDK 결제 요청
 
 - 네이버페이 포인트로 결제할 경우에는 `bypass.eximbay_v2.tax` 내용을 모두 입력해야 합니다.
 
@@ -1530,8 +2455,14 @@ SMS를 통한 본인인증을 진행하기 위해서는 KG이니시스와 별도
 `flgFixedUser` 파라미터의 경우 필수로 입력해야 합니다.
 
 - `flgFixedUser`: 인증 창에 고객 정보가 자동으로 입력하도록 설정할 수 있습니다.
+
 - `directAgency`: 인증 업체를 사용자가 선택하지 않고 특정 인증 업체를 통해 인증하도록 설정할 수 있습니다.
-- `logoUrl`: 인증 창 좌측 상단 KG이니시스 로고 대신 들어갈 로고의 URL입니다
+
+- `logoUrl`: 인증 창 좌측 상단 KG이니시스 로고 대신 들어갈 로고의 URL입니다.
+
+- `FRGNDInfo`: 성별 및 외국인 정보 별도 입력 여부
+  - `Y`(기본값): 성별 및 외국인 정보를 제공하지 않는 네이버, 카카오에서 사용자가 성별 및 외국인 정보를 입력하는 칸을 표시합니다. **해당 정보는 인증 기관을 통해 검증되지 않습니다.**
+  - `N`: 네이버, 카카오에서 사용자가 성별 및 외국인 정보를 입력하는 칸을 표시하지 않습니다.
 
 SDK를 통해 아래와 같이 특수 파라미터들을 입력하실 수 있습니다.
 
@@ -9520,11 +10451,12 @@ versionVariants:
 
 - **엑심베이**
 
-  - 연동 기능 : 인증결제(결제창)
+  - 연동 기능 : 인증결제(결제창) / 정기결제(결제창)
 
   - 결제 수단
 
     - 해외결제 일반결제 : 카드 / 유니온페이 / 알리페이 / 위챗페이 / 일본 편의점 결제 등
+    - 해외결제 정기결제 : 카드
 
 - **페이레터**
 
@@ -11431,7 +12363,7 @@ async function schedulePayment() {
 
 - 무이자 할부가 적용 되어도 ISP 계열 카드로 결제시에는 `무이자` 표기가 되지 않습니다. 고객사은
   토스페이먼츠와 사전 계약 또는 카드사 정책에 따라 무이자 할부 기능을 사용할 수 있습니다. 이에 따라
-  결제창 내에서 각 카드사별 최대 무이자 할부 개우러수에 따라 할부 개월수 옆에 `무이자` 또는 `무`라고
+  결제창 내에서 각 카드사별 최대 무이자 할부 개월 수에 따라 할부 개월 수 옆에 `무이자` 또는 `무`라고
   표기됩니다.
 
   <details>
@@ -24153,7 +25085,7 @@ targetVersions:
 
 |PG              |코드값 (pg provider)|입금통보 주소                                                                                                                                                                | |
 |----------------|--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-|
-|토스페이먼츠    |tosspaysments       |[https://tx-gateway-service.prod.iamport.co/virtual-account/webhook-event/tosspayments](http://tx-gateway-service.prod.iamport.co/virtual-account/webhook-event/tosspayments)| |
+|토스페이먼츠    |tosspayments        |[https://tx-gateway-service.prod.iamport.co/virtual-account/webhook-event/tosspayments](http://tx-gateway-service.prod.iamport.co/virtual-account/webhook-event/tosspayments)| |
 |스마트로        |smartro\_v2         |입금 통보, 환불이체 URL 동일: [https://tx-gateway-service.prod.iamport.co/smartro-v2](http://tx-gateway-service.prod.iamport.co/smartro-v2)                                  | |
 |나이스페이먼츠  |nice\_v2            |[https://tx-gateway-service.prod.iamport.co/nicepay-v2](http://tx-gateway-service.prod.iamport.co/nicepay-v2)                                                                | |
 |KG이니시스      |inicis\_v2          |[https://tx-gateway-service.prod.iamport.co/inicis-v2](http://tx-gateway-service.prod.iamport.co/inicis-v2)                                                                  | |
@@ -28847,6 +29779,59 @@ PG 거래대사 메뉴를 통해 아래 2가지의 업무에 쉽게 활용하실
 (관련 이미지 첨부)
 
 
+# https://developers.portone.io/release-notes/api-sdk/2025-05-19
+
+---
+releasedAt: 2025-05-19T00:00:00.000Z
+writtenAt: 2025-05-19T00:00:00.000Z
+---
+
+안녕하세요 원 페이먼트 인프라팀입니다. 25년 5월 19일, 서비스 업데이트 사항 안내드립니다.
+
+이번 업데이트를 통해 통합 결제 내역 페이지가 새롭게 탈바꿈을 했습니다.
+
+개선 작업은 아래와 같습니다.
+
+### **관리자 콘솔**
+
+## 주요 업데이트 사항
+
+### ✔️ 캘린더 UI 고도화
+
+(이미지 첨부: 캘린더 UI 고도화)
+
+- 상태 승인 시각, 결제 요청 시각을 기준으로 원하는 날짜를 쉽게 조회할 수 있습니다.
+  - 시작일과, 종료일을 직접 입력하거나 캘린더에서 일자를 선택하여 날짜를 조회할 수 있습니다.
+  - “오늘”, “어제”, “1주”, “1개월”, “3개월”, “6개월” 의 프리셋을 활용하여 직접 입력하지 않고도 간편하게 일자를 설정할 수 있습니다.
+
+### ✔️ 검색 조건 최적화
+
+(이미지 첨부: 검색 조건 최적화)
+
+- 검색을 쉽게 할 수 있도록 각 검색 조건마다 최적화 작업을 진행하였습니다.
+  - 주문 정보
+    - 주문자명, 주문자 연락처, 주문명, 주문자 이메일, 주문자 주소로 더욱 정교화된 검색을 할 수 있습니다.
+
+  - 거래번호
+    - 포트원 거래번호, 고객사 거래번호를 동시에 검색할 수 있습니다.
+
+  - 승인번호
+    - 카드사 승인번호, 결제대행사 승인번호, PG결제취소 승인번호를 동시에 검색할 수 있습니다.
+
+### ✔️ 필터 최적화
+
+(이미지 첨부: 필터 최적화)
+
+- 테이블 UI를 고도화함에 따라 테이블 헤더에 필터, 정렬 버튼이 추가되어 빠른 적용이 가능합니다.
+  - Tip) 실 운영 업무를 위해 결제 모드는 “실결제”로 필터가 기본 적용되어 있습니다. 테스트 결제 건을 확인하고 싶으시다면 결제 모드 필터를 해제해 주세요.
+
+### ✔️ 결제 히스토리 파악 가능
+
+(이미지 첨부: 결제 히스토리 파악 가능)
+
+- 기존에는 결제 상세 모달에서만 히스토리를 확인 가능했다면, 이제는 결제 내역에서 바로 확인할 수 있게 되었습니다. 결제 히스토리를 쉽게 확인하고 운영 업무에 활용하실 수 있습니다.
+
+
 # https://developers.portone.io/release-notes/console/2023-04-24
 
 ---
@@ -30541,6 +31526,87 @@ writtenAt: 2025-04-08T00:00:00.000Z
 감사합니다.
 
 파트너정산 자동화 팀 드림
+
+
+# https://developers.portone.io/release-notes/platform/2025-05-14
+
+---
+releasedAt: 2025-05-14T00:00:00.000Z
+writtenAt: 2025-05-14T00:00:00.000Z
+---
+
+안녕하세요 파트너 정산 자동화팀입니다.
+
+**고객사의 가상계좌 입출금 내역을 실시간으로 확인**할 수 있는 **‘이체내역 조회’ 페이지**를 새롭게 제공합니다.
+
+해당 기능을 통해 고객사는 가상계좌를 통한 입금, 출금(지급/송금) 거래에 대한 **투명한 증빙 및 내부 회계 관리**가 가능해집니다.
+
+## 📄 가상계좌 이체내역 조회
+
+### 가상계좌 이체내역 실시간 확인
+
+- **입출금 내역(원장) 제공**: 고객이 보유한 가상계좌를 기준으로 입금 및 출금(지급/송금) 이력을 확인할 수 있습니다.
+
+- **검색 필터 제공**
+  - 1차 필터: 이체 일시 / 이체 ID
+  - 2차 필터: 입금자명, 예금주, 이체 구분 (입금/출금)
+
+- **정렬 및 페이지네이션**: 이체 일시 기준 최신순/오래된순 정렬 가능, 페이지 단위 탐색 지원
+
+### 진입 경로 및 화면
+
+Step 1. 진입 경로: 정산 내역 관리 > 이체내역
+
+(관련 이미지 첨부)
+
+Step 2. 가상계좌 이체 내역 페이지 진입
+
+(관련 이미지 첨부)
+
+### 제공 컬럼 정보
+
+|항목              |설명                      |
+|------------------|--------------------------|
+|이체 일시         |거래 발생 일시            |
+|이체 ID           |이체 요청 식별자          |
+|구분              |입금 / 출금 구분          |
+|입금자명          |(입금 시) 입금자의 명의   |
+|예금주            |(출금 시) 수취 계좌 예금주|
+|이체 계좌 은행    |(출금 시) 수취 계좌 은행명|
+|이체 계좌 번호    |(출금 시) 수취 계좌 번호  |
+|이체 금액         |거래 금액                 |
+|출금 후 잔액      |출금 시 계좌 잔액         |
+|보내는이 통장 메모|출금 시 발신자 메모       |
+|받는이 통장 메모  |출금 시 수신자 메모       |
+
+### 이체내역 엑셀 다운로드 지원
+
+- 조회된 내역을 **엑셀 파일로 다운로드**하여 내부 회계 및 기록 보관에 활용할 수 있습니다.
+
+### 접근 제약 사항
+
+- **가상계좌가 할당되지 않은 고객사**는 해당 메뉴를 확인할 수 없습니다.
+- 현재 제공되는 내역은 **이체가 성공한 내역만** 조회 가능하며, 실패/취소 상태는 표시되지 않습니다.
+
+---
+
+## ⚠️ API 변경 안내
+
+### 주문/주문취소 정산 건 생성 시 “정산일” 지정이 지원
+
+정산 주기로 표현할 수 없는 불규칙적인 정산 일정을 활용하시고 계신 경우, 주문/주문취소 정산 건 생성 시 `settlementDate` 를 지정하셔서 계약 내 정산 주기 정책과 무관하게 해당 일을 정산 일로 활용합니다.
+
+(관련 이미지 첨부)
+
+### 이체내역 API 응답 스키마 업데이트 안내
+
+> 해당 API은 아직 Stable 상태가 아니므로 추가 업데이트 시 호환성이 유지되지 않을 수 있습니다.
+
+이체 내역 조회 페이지 릴리즈에 맞춰 함께 이체 내역 다건 조회 API도 개편되었습니다.
+
+이체내역은 출금(`WITHDRAWAL`), 입금(`DEPOSIT`) 두가지 유형으로 나뉘며 서로 다른 데이터를 확인하실 수 있습니다.
+
+상세한 내용은 개발자 센터를 확인해주세요 🙂
 
 
 # https://developers.portone.io/blog/posts/2024-02/v2-oom

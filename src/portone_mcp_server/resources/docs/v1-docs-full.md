@@ -232,6 +232,7 @@
 - [API / SDK 2024-09-27](https://developers.portone.io/release-notes/api-sdk/2024-09-27)
 - [API / SDK 2024-12-19](https://developers.portone.io/release-notes/api-sdk/2024-12-19)
 - [API / SDK 2025-01-15](https://developers.portone.io/release-notes/api-sdk/2025-01-15)
+- [API / SDK 2025-05-19](https://developers.portone.io/release-notes/api-sdk/2025-05-19)
 - [관리자콘솔 2023-04-24](https://developers.portone.io/release-notes/console/2023-04-24)
 - [관리자콘솔 2023-05-08](https://developers.portone.io/release-notes/console/2023-05-08)
 - [관리자콘솔 2023-05-22](https://developers.portone.io/release-notes/console/2023-05-22)
@@ -265,6 +266,7 @@
 - [파트너 정산 자동화 2025-03-17](https://developers.portone.io/release-notes/platform/2025-03-17)
 - [파트너 정산 자동화 2025-04-03](https://developers.portone.io/release-notes/platform/2025-04-03)
 - [파트너 정산 자동화 2025-04-08](https://developers.portone.io/release-notes/platform/2025-04-08)
+- [파트너 정산 자동화 2025-05-14](https://developers.portone.io/release-notes/platform/2025-05-14)
 
 ### 블로그
 
@@ -2147,34 +2149,34 @@ targetVersions:
 
 ## 포트원의 Shopify plugin을 통해 이용하실 수 있는 국내PG사와 결제 수단은 아래와 같습니다.
 
-|PG사         |지역  |타입    |결제수단            |
-|-------------|------|--------|--------------------|
-|KAKAOPAY     |Korea |간편결제|일체                |
-|PAYCO        |Korea |간편결제|일체                |
-|TOSSPAY      |Korea |간편결제|일체                |
-|KG INICIS    |Korea |PG      |카드결제            |
-|KG INICIS    |Korea |PG      |NAVERPAY(허브형)    |
-|KG INICIS    |Korea |PG      |KAKAOPAY(허브형)    |
-|KG INICIS    |Korea |PG      |PAYCO(허브형)       |
-|KG INICIS    |Korea |PG      |TOSSPAY(허브형)     |
-|NHN KCP      |Korea |PG      |카드결제            |
-|NHN KCP      |Korea |PG      |NAVERPAY(허브형)    |
-|NHN KCP      |Korea |PG      |KAKAOPAY(허브형)    |
-|TOSS PAYMENTS|Korea |PG      |카드결제            |
-|TOSS PAYMENTS|Korea |PG      |NAVERPAY(허브형)    |
-|TOSS PAYMENTS|Korea |PG      |KAKAOPAY(허브형)    |
-|TOSS PAYMENTS|Korea |PG      |계좌이체            |
-|NICE PAYMENTS|Korea |PG      |카드결제            |
-|NICE PAYMENTS|Korea |PG      |NAVERPAY(허브형)    |
-|NICE PAYMENTS|Korea |PG      |KAKAOPAY(허브형)    |
-|PAYMENTWALL  |Global|PG      |카드결제            |
-|PAYMENTWALL  |Global|PG      |간편결제            |
-|EXIMBAY      |Global|PG      |카드결제            |
-|EXIMBAY      |Global|PG      |Alipay+             |
-|EXIMBAY      |Global|PG      |WeChatPay           |
-|EXIMBAY      |Global|PG      |UnionPay            |
-|EXIMBAY      |Japan |PG      |eContext(편의점결제)|
-|PAYLETTER    |Global|PG      |카드결제            |
+|PG사         |지역  |타입    |결제수단        |
+|-------------|------|--------|----------------|
+|KAKAOPAY     |Korea |간편결제|일체            |
+|PAYCO        |Korea |간편결제|일체            |
+|TOSSPAY      |Korea |간편결제|일체            |
+|KG INICIS    |Korea |PG      |카드결제        |
+|KG INICIS    |Korea |PG      |NAVERPAY(허브형)|
+|KG INICIS    |Korea |PG      |KAKAOPAY(허브형)|
+|KG INICIS    |Korea |PG      |PAYCO(허브형)   |
+|KG INICIS    |Korea |PG      |TOSSPAY(허브형) |
+|NHN KCP      |Korea |PG      |카드결제        |
+|NHN KCP      |Korea |PG      |NAVERPAY(허브형)|
+|NHN KCP      |Korea |PG      |KAKAOPAY(허브형)|
+|NHN KCP      |Korea |PG      |TOSSPAY(허브형) |
+|NHN KCP      |Korea |PG      |PAYCO(허브형)   |
+|NHN KCP      |Korea |PG      |APPLEPAY(허브형)|
+|TOSS PAYMENTS|Global|PG      |카드결제        |
+|TOSS PAYMENTS|Korea |PG      |카드결제        |
+|TOSS PAYMENTS|Korea |PG      |NAVERPAY(허브형)|
+|TOSS PAYMENTS|Korea |PG      |KAKAOPAY(허브형)|
+|TOSS PAYMENTS|Korea |PG      |계좌이체        |
+|TOSS PAYMENTS|Korea |PG      |PAYCO(허브형)   |
+|NICE PAYMENTS|Korea |PG      |카드결제        |
+|NICE PAYMENTS|Korea |PG      |NAVERPAY(허브형)|
+|NICE PAYMENTS|Korea |PG      |KAKAOPAY(허브형)|
+|PAYMENTWALL  |Global|PG      |카드결제        |
+|PAYMENTWALL  |Global|PG      |간편결제        |
+|PAYLETTER    |Global|PG      |카드결제        |
 
 ## 글로벌 포트원에서 지원하는 해외PSP 목록은 아래 링크에서 문서 목록을 참고해 주세요.
 
@@ -3850,11 +3852,11 @@ targetVersions:
 
 ## 2.결제 요청하기
 
-[JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk-old/readme) `IMP.request_pay(param, callback)`을 호출하여 다우 페이조아 결제창을 호출할 수 있습니다. **결제 결과**는 PC의 경우 `IMP.request_pay(param, callback)` 호출 후 **callback**으로 수신되고 모바일의 경우 **m\_redirect\_url**로 리디렉션됩니다.
+[JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk-old/readme) `IMP.request_pay(param, callback)`을 호출하여 키움페이 결제창을 호출할 수 있습니다. **결제 결과**는 PC의 경우 `IMP.request_pay(param, callback)` 호출 후 **callback**으로 수신되고 모바일의 경우 **m\_redirect\_url**로 리디렉션됩니다.
 
 <div class="hint" data-style="warning">
 
-**페이조아 결제창 연동을 위해서는 ****JS SDK Version 1.2.0**** 이상을 사용하셔야 합니다.**
+**키움페이 결제창 연동을 위해서는 ****JS SDK Version 1.2.0**** 이상을 사용하셔야 합니다.**
 
 </div>
 
@@ -3877,7 +3879,7 @@ IMP.request_pay(
     digital: false, // 디지털로 계약되었다면 true로 설정
     m_redirect_url: "https://allerts.com/payments/complete",
     bypass: {
-      // 페이조아(다우데이타) 전용 파라미터
+      // 키움페이 전용 파라미터
       daou: {
         PRODUCTCODE: "portone",
         CASHRECEIPTFLAG: 0,
@@ -3922,9 +3924,14 @@ IMP.request_pay(
 
   **결제수단 구분코드**
 
-  - card(신용카드)
-  - trans(실시간 계좌이체)
-  - vbank(가상계좌)
+  - card (신용카드)
+  - trans (실시간 계좌이체)
+  - vbank (가상계좌)
+  - kakaopay (카카오페이)
+  - naverpay (네이버페이)
+  - payco (페이코)
+  - samsung (삼성페이)
+  - applepay (애플페이)
 
 - merchant\_uid: string
 
@@ -3936,22 +3943,27 @@ IMP.request_pay(
 
   **디지털 컨텐츠 여부**
 
-  고객사 <-> 페이조아간 계약 상태에 따라 정해진 올바른 값을 넣어야 함. 그렇지 않은 경우 결제 진행 불가
+  고객사 <-> 키움페이간 계약 상태에 따라 정해진 올바른 값을 넣어야 함. 그렇지 않은 경우 결제 진행 불가
 
 - bypass.daou.PRODUCTCODE?: string
 
   **결제 상품 고유 번호**
 
-  값에 대해 정해진 규격이 없고 보내지 않을 경우 포트원에서 기본값(iamport)을 설정해 페이조아 측으로 전달
+  값에 대해 정해진 규격이 없고 보내지 않을 경우 포트원에서 기본값(iamport)을 설정해 키움페이 측으로 전달
 
 - bypass.daou.CASHRECEIPTFLAG?: number
 
   **현금영수증 발급 구분코드**
 
-  비 신용결제(계좌,가상)시 페이조아에서 자동발급 여부 구분코드
+  실시간 계좌이체, 가상계좌, 카카오페이 거래 시 키움페이에서 현금영수증 자동발급 여부 구분코드
 
-  - `1`: 허용
-  - `0`: 차단
+  - 실시간 계좌이체, 가상계좌인 경우
+    - `1`: 허용
+    - `0`: 차단
+
+  - 카카오페이인 경우
+    - `Y`: 허용
+    - `N`: 차단
 
 - app\_scheme?: string
 
@@ -4123,7 +4135,7 @@ curl -H "Content-Type: application/json" \
 
 **주의사항**
 
-- 에스크로 배송정보 등록/수정 시 고객사가 전달한 배송정보(운송장 번호, 택배사 이름 등)에 대해 페이조아 측에서 유효성 체크를 하지 않습니다.
+- 에스크로 배송정보 등록/수정 시 고객사가 전달한 배송정보(운송장 번호, 택배사 이름 등)에 대해 키움페이 측에서 유효성 체크를 하지 않습니다.
 
 </div>
 
@@ -4142,6 +4154,15 @@ targetVersions:
 ---
 
 ## 키움페이 결제 특이사항
+
+<details>
+
+<summary>주문명, 주문자명은 EUC-KR에서 표현 가능한 문자가 사용해야함</summary>
+
+키움페이의 경우 EUC-KR 인코딩을 사용합니다. 따라서 주문자명(buyer\_name), 주문명(name) 등의
+파라미터에 EUC-KR에서 표현 가능한 문자를 입력해야 합니다.
+
+</details>
 
 <details>
 
@@ -4296,11 +4317,28 @@ GET http://api.iamport.kr/payments/{포트원 번호}?**extension=true**
 
 <details>
 
-<summary>면세금액은 카드 결제만 설정 가능</summary>
+<summary>복합과세 거래는 일부 결제수단에서만 가능</summary>
 
-결제창(`IMP.request_pay` 함수) 호출시 총 결제 금액(`amount`)중 면세 금액(`tax_free`)을 설정할 수 있습니다.
-단, 키움페이 시스템 상 면세 금액은 카드 결제(`pay_method: "card"`) 시에만 가능하고 계좌이체 / 가상계좌 결제 시에는
-설정할 수 없어 전액 과세 처리 됩니다.
+결제창(`IMP.request_pay` 함수) 호출시 총 결제 금액(`amount`)중 면세 금액(`tax_free`)을 설정하여 복합과세 거래로 진행할 수 있습니다.
+단, 키움페이 시스템 상 면세 금액은 카드결제 혹은 간편결제 시에만 가능하고 계좌이체 / 가상계좌 결제 시에는 설정할 수 없어 전액 과세 처리 됩니다.
+
+- 복합과세 거래가 가능한 결제수단 (pay\_method)
+  - card
+  - kakaopay
+  - naverpay
+  - payco
+  - applepay
+  - samsung
+
+</details>
+
+<details>
+
+<summary>카카오페이, 페이코 거래 부분취소 시  취소금액 중 면세금액을 설정 불가</summary>
+
+카카오페이, 페이코 거래를 부분취소 하는 경우 취소금액 중 면세금액을 설정할 수 없습니다.
+따라서 카카오페이, 페이코 복합과세를 부분취소하는 경우 취소금액 중 면세금액은 취소 요청한 금액을 기준으로 기본 부가세율로 계산된 면세금액이 적용되어
+취소됩니다.
 
 </details>
 
@@ -15294,8 +15332,6 @@ brandpayModule.getPaymentMethods();
 brandpayModule.openSettings();
 ```
 
-</div>
-
 <details>
 
 <summary>
@@ -15366,6 +15402,8 @@ brandpayModule.openSettings().catch(function (error) {
 ```
 
 </details>
+
+</div>
 
 </div>
 
@@ -27065,7 +27103,7 @@ targetVersions:
 
 |PG              |코드값 (pg provider)|입금통보 주소                                                                                                                                                                | |
 |----------------|--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-|
-|토스페이먼츠    |tosspaysments       |[https://tx-gateway-service.prod.iamport.co/virtual-account/webhook-event/tosspayments](http://tx-gateway-service.prod.iamport.co/virtual-account/webhook-event/tosspayments)| |
+|토스페이먼츠    |tosspayments        |[https://tx-gateway-service.prod.iamport.co/virtual-account/webhook-event/tosspayments](http://tx-gateway-service.prod.iamport.co/virtual-account/webhook-event/tosspayments)| |
 |스마트로        |smartro\_v2         |입금 통보, 환불이체 URL 동일: [https://tx-gateway-service.prod.iamport.co/smartro-v2](http://tx-gateway-service.prod.iamport.co/smartro-v2)                                  | |
 |나이스페이먼츠  |nice\_v2            |[https://tx-gateway-service.prod.iamport.co/nicepay-v2](http://tx-gateway-service.prod.iamport.co/nicepay-v2)                                                                | |
 |KG이니시스      |inicis\_v2          |[https://tx-gateway-service.prod.iamport.co/inicis-v2](http://tx-gateway-service.prod.iamport.co/inicis-v2)                                                                  | |
@@ -31759,6 +31797,59 @@ PG 거래대사 메뉴를 통해 아래 2가지의 업무에 쉽게 활용하실
 (관련 이미지 첨부)
 
 
+# https://developers.portone.io/release-notes/api-sdk/2025-05-19
+
+---
+releasedAt: 2025-05-19T00:00:00.000Z
+writtenAt: 2025-05-19T00:00:00.000Z
+---
+
+안녕하세요 원 페이먼트 인프라팀입니다. 25년 5월 19일, 서비스 업데이트 사항 안내드립니다.
+
+이번 업데이트를 통해 통합 결제 내역 페이지가 새롭게 탈바꿈을 했습니다.
+
+개선 작업은 아래와 같습니다.
+
+### **관리자 콘솔**
+
+## 주요 업데이트 사항
+
+### ✔️ 캘린더 UI 고도화
+
+(이미지 첨부: 캘린더 UI 고도화)
+
+- 상태 승인 시각, 결제 요청 시각을 기준으로 원하는 날짜를 쉽게 조회할 수 있습니다.
+  - 시작일과, 종료일을 직접 입력하거나 캘린더에서 일자를 선택하여 날짜를 조회할 수 있습니다.
+  - “오늘”, “어제”, “1주”, “1개월”, “3개월”, “6개월” 의 프리셋을 활용하여 직접 입력하지 않고도 간편하게 일자를 설정할 수 있습니다.
+
+### ✔️ 검색 조건 최적화
+
+(이미지 첨부: 검색 조건 최적화)
+
+- 검색을 쉽게 할 수 있도록 각 검색 조건마다 최적화 작업을 진행하였습니다.
+  - 주문 정보
+    - 주문자명, 주문자 연락처, 주문명, 주문자 이메일, 주문자 주소로 더욱 정교화된 검색을 할 수 있습니다.
+
+  - 거래번호
+    - 포트원 거래번호, 고객사 거래번호를 동시에 검색할 수 있습니다.
+
+  - 승인번호
+    - 카드사 승인번호, 결제대행사 승인번호, PG결제취소 승인번호를 동시에 검색할 수 있습니다.
+
+### ✔️ 필터 최적화
+
+(이미지 첨부: 필터 최적화)
+
+- 테이블 UI를 고도화함에 따라 테이블 헤더에 필터, 정렬 버튼이 추가되어 빠른 적용이 가능합니다.
+  - Tip) 실 운영 업무를 위해 결제 모드는 “실결제”로 필터가 기본 적용되어 있습니다. 테스트 결제 건을 확인하고 싶으시다면 결제 모드 필터를 해제해 주세요.
+
+### ✔️ 결제 히스토리 파악 가능
+
+(이미지 첨부: 결제 히스토리 파악 가능)
+
+- 기존에는 결제 상세 모달에서만 히스토리를 확인 가능했다면, 이제는 결제 내역에서 바로 확인할 수 있게 되었습니다. 결제 히스토리를 쉽게 확인하고 운영 업무에 활용하실 수 있습니다.
+
+
 # https://developers.portone.io/release-notes/console/2023-04-24
 
 ---
@@ -33453,6 +33544,87 @@ writtenAt: 2025-04-08T00:00:00.000Z
 감사합니다.
 
 파트너정산 자동화 팀 드림
+
+
+# https://developers.portone.io/release-notes/platform/2025-05-14
+
+---
+releasedAt: 2025-05-14T00:00:00.000Z
+writtenAt: 2025-05-14T00:00:00.000Z
+---
+
+안녕하세요 파트너 정산 자동화팀입니다.
+
+**고객사의 가상계좌 입출금 내역을 실시간으로 확인**할 수 있는 **‘이체내역 조회’ 페이지**를 새롭게 제공합니다.
+
+해당 기능을 통해 고객사는 가상계좌를 통한 입금, 출금(지급/송금) 거래에 대한 **투명한 증빙 및 내부 회계 관리**가 가능해집니다.
+
+## 📄 가상계좌 이체내역 조회
+
+### 가상계좌 이체내역 실시간 확인
+
+- **입출금 내역(원장) 제공**: 고객이 보유한 가상계좌를 기준으로 입금 및 출금(지급/송금) 이력을 확인할 수 있습니다.
+
+- **검색 필터 제공**
+  - 1차 필터: 이체 일시 / 이체 ID
+  - 2차 필터: 입금자명, 예금주, 이체 구분 (입금/출금)
+
+- **정렬 및 페이지네이션**: 이체 일시 기준 최신순/오래된순 정렬 가능, 페이지 단위 탐색 지원
+
+### 진입 경로 및 화면
+
+Step 1. 진입 경로: 정산 내역 관리 > 이체내역
+
+(관련 이미지 첨부)
+
+Step 2. 가상계좌 이체 내역 페이지 진입
+
+(관련 이미지 첨부)
+
+### 제공 컬럼 정보
+
+|항목              |설명                      |
+|------------------|--------------------------|
+|이체 일시         |거래 발생 일시            |
+|이체 ID           |이체 요청 식별자          |
+|구분              |입금 / 출금 구분          |
+|입금자명          |(입금 시) 입금자의 명의   |
+|예금주            |(출금 시) 수취 계좌 예금주|
+|이체 계좌 은행    |(출금 시) 수취 계좌 은행명|
+|이체 계좌 번호    |(출금 시) 수취 계좌 번호  |
+|이체 금액         |거래 금액                 |
+|출금 후 잔액      |출금 시 계좌 잔액         |
+|보내는이 통장 메모|출금 시 발신자 메모       |
+|받는이 통장 메모  |출금 시 수신자 메모       |
+
+### 이체내역 엑셀 다운로드 지원
+
+- 조회된 내역을 **엑셀 파일로 다운로드**하여 내부 회계 및 기록 보관에 활용할 수 있습니다.
+
+### 접근 제약 사항
+
+- **가상계좌가 할당되지 않은 고객사**는 해당 메뉴를 확인할 수 없습니다.
+- 현재 제공되는 내역은 **이체가 성공한 내역만** 조회 가능하며, 실패/취소 상태는 표시되지 않습니다.
+
+---
+
+## ⚠️ API 변경 안내
+
+### 주문/주문취소 정산 건 생성 시 “정산일” 지정이 지원
+
+정산 주기로 표현할 수 없는 불규칙적인 정산 일정을 활용하시고 계신 경우, 주문/주문취소 정산 건 생성 시 `settlementDate` 를 지정하셔서 계약 내 정산 주기 정책과 무관하게 해당 일을 정산 일로 활용합니다.
+
+(관련 이미지 첨부)
+
+### 이체내역 API 응답 스키마 업데이트 안내
+
+> 해당 API은 아직 Stable 상태가 아니므로 추가 업데이트 시 호환성이 유지되지 않을 수 있습니다.
+
+이체 내역 조회 페이지 릴리즈에 맞춰 함께 이체 내역 다건 조회 API도 개편되었습니다.
+
+이체내역은 출금(`WITHDRAWAL`), 입금(`DEPOSIT`) 두가지 유형으로 나뉘며 서로 다른 데이터를 확인하실 수 있습니다.
+
+상세한 내용은 개발자 센터를 확인해주세요 🙂
 
 
 # https://developers.portone.io/blog/posts/2024-02/v2-oom
