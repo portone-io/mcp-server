@@ -5,6 +5,9 @@
 ## MCP 서버 등록하기
 
 1. [uv](https://docs.astral.sh/uv/getting-started/installation/)가 설치되어 있어야 합니다.
+
+   Mac 환경에서는 `brew install uv`로 설치하는 것을 권장합니다.
+
 1. 사용하는 AI 도구의 MCP 설정에서 아래 내용을 추가합니다. (Cursor, Windsurf, Claude Desktop, etc...)
 
    ```json
@@ -29,6 +32,8 @@
 
 - Python 3.12 이상
 - [uv (Python 패키지 관리 도구)](https://docs.astral.sh/uv/getting-started/installation/)
+
+  Mac 환경에서는 `brew install uv`로 설치하는 것을 권장합니다.
 
 1. 저장소를 클론한 후 필요한 패키지 설치하기
 
