@@ -49,6 +49,12 @@ Available tools:
 - `read_openapi_schema`: Reads OpenAPI specifications
 - `read_v2_backend_code`: Fetches backend code examples
 - `read_v2_frontend_code`: Fetches frontend code examples
+- `get_payment`: Retrieves payment information (requires API_SECRET)
+- `get_payments_by_filter`: Searches payments with filters (requires API_SECRET)
+- `get_billing_key`: Retrieves billing key information (requires API_SECRET)
+- `get_billing_keys_by_filter`: Searches billing keys with filters (requires API_SECRET)
+- `get_identity_verification`: Retrieves identity verification information (requires API_SECRET)
+- `get_identity_verifications_by_filter`: Searches identity verifications with filters (requires API_SECRET)
 
 ### Document Structure
 - Documentation is stored in `src/portone_mcp_server/resources/docs/`
