@@ -1,7 +1,15 @@
-from mcp.server.fastmcp import FastMCP
+import importlib.metadata
+from os import environ
+
+from httpx import Client
+from mcp.server import FastMCP
 
 from .loader import load_resources
 from .tools import (
+    get_identity_verification,
+    get_identity_verifications_by_filter,
+    get_payment,
+    get_payments_by_filter,
     list_docs,
     read_doc,
     read_doc_metadata,
@@ -35,6 +43,21 @@ def run_server():
     api_base_path = "https://developers.portone.io"
     mcp.add_tool(read_v2_backend_code.initialize(api_base_path))
     mcp.add_tool(read_v2_frontend_code.initialize(api_base_path))
+
+    api_secret = environ.get("API_SECRET")
+    if api_secret:
+        version = importlib.metadata.version("portone-mcp-server")
+        portone_client = Client(
+            headers={
+                "Authorization": f"PortOne {api_secret}",
+                "User-Agent": f"portone-mcp-server {version}",
+            },
+            base_url="https://api.portone.io",
+        )
+        mcp.add_tool(get_payment.initialize(portone_client))
+        mcp.add_tool(get_identity_verification.initialize(portone_client))
+        mcp.add_tool(get_payments_by_filter.initialize(portone_client))
+        mcp.add_tool(get_identity_verifications_by_filter.initialize(portone_client))
 
     # Run the server
     mcp.run("stdio")

@@ -5,6 +5,7 @@ description = "포트원 사용자를 위한 MCP (Model Context Protocol) 서버
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "httpx>=0.28.1",
     "mcp[cli]>=1.4.1",
     "pyyaml>=6.0.2",
     "requests>=2.32.3",
