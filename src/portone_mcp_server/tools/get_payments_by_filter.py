@@ -69,6 +69,7 @@ def initialize(portone_client: Client):
                 "CUSTOMER_EMAIL": customer_email,
                 "PG_MERCHANT_ID": pg_merchant_id,
             }.items()
+            if value is not None
         ]
         search_filter = filter_out_none(
             {
