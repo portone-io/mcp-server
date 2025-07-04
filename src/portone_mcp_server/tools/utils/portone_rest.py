@@ -74,32 +74,45 @@ def mask_payment_method(method: dict) -> dict:
     return filtered
 
 
-def mask_customer(customer: dict) -> dict:
-    filtered = {}
-    copy_if_exists(customer, filtered, "id")
-    return filtered
-
-
 def mask_selected_channel(channel: dict) -> dict:
     filtered = {}
-    for known_key in ("type", "key", "name", "pgProvider", "pgMerchantId"):
+    for known_key in ("type", "name", "pgProvider"):
         copy_if_exists(channel, filtered, known_key)
     return filtered
 
 
-def mask_billing_key_info(info: dict) -> dict:
+def mask_escrow(escrow: dict) -> dict:
     filtered = {}
-    for known_key in ("status", "billingKey", "storeId", "customData", "issueId", "issueName", "requestedAt", "issuedAt", "channelGroup", "deletedAt"):
-        copy_if_exists(info, filtered, known_key)
-    methods = info.get("methods")
-    if methods is not None:
-        filtered["methods"] = [mask_payment_method(method) for method in methods]
-    channels = info.get("channels")
-    if channels is not None:
-        filtered["channels"] = [mask_selected_channel(channel) for channel in channels]
-    customer = info.get("customer")
-    if customer is not None:
-        filtered["customer"] = mask_customer(customer)
+    for known_key in ("status", "company", "sentAt", "appliedAt", "isAutomaticallyConfirmed"):
+        copy_if_exists(escrow, filtered, known_key)
+    return filtered
+
+
+def mask_cash_receipt(cash_receipt: dict) -> dict:
+    filtered = {}
+    for known_key in ("status", "type", "totalAmount", "taxFreeAmount", "currency", "issuedAt", "cancelledAt"):
+        copy_if_exists(cash_receipt, filtered, known_key)
+    return filtered
+
+
+def mask_payment_cancellation(cancellation: dict) -> dict:
+    filtered = {}
+    for known_key in ("status", "id", "totalAmount", "taxFreeAmount", "vatAmount", "easyPayDiscountAmount", "reason", "cancelledAt", "requestedAt", "trigger"):
+        copy_if_exists(cancellation, filtered, known_key)
+    return filtered
+
+
+def mask_dispute(dispute: dict) -> dict:
+    filtered = {}
+    for known_key in ("status", "reason", "createdAt", "resolvedAt"):
+        copy_if_exists(dispute, filtered, known_key)
+    return filtered
+
+
+def mask_channel_group(channel_group: dict) -> dict:
+    filtered = {}
+    for known_key in ("name", "isForTest"):
+        copy_if_exists(channel_group, filtered, known_key)
     return filtered
 
 
@@ -110,10 +123,8 @@ def mask_payment(payment: dict) -> dict:
         "id",
         "transactionId",
         "storeId",
-        "channelGroup",
         "version",
         "scheduleId",
-        "billingKey",
         "requestedAt",
         "updatedAt",
         "statusChangedAt",
@@ -122,17 +133,10 @@ def mask_payment(payment: dict) -> dict:
         "currency",
         "promotionId",
         "isCulturalExpense",
-        "escrow",
         "products",
         "productCount",
-        "customData",
         "country",
         "paidAt",
-        "pgTxId",
-        "cashReceipt",
-        "receiptUrl",
-        "disputes",
-        "cancellations",
         "cancelledAt",
         "failedAt",
         "failure",
@@ -144,9 +148,22 @@ def mask_payment(payment: dict) -> dict:
     channel = payment.get("channel")
     if channel is not None:
         filtered["channel"] = mask_selected_channel(channel)
-    customer = payment.get("customer")
-    if customer is not None:
-        filtered["customer"] = mask_customer(customer)
+    escrow = payment.get("escrow")
+    if escrow is not None:
+        filtered["escrow"] = mask_escrow(escrow)
+    cash_receipt = payment.get("cashReceipt")
+    if cash_receipt is not None:
+        filtered["cashReceipt"] = mask_cash_receipt(cash_receipt)
+    cancellations = payment.get("cancellations")
+    if cancellations is not None:
+        filtered["cancellations"] = [mask_payment_cancellation(cancellation) for cancellation in cancellations]
+    disputes = payment.get("disputes")
+    if disputes is not None:
+        filtered["disputes"] = [mask_dispute(dispute) for dispute in disputes]
+    channel_group = payment.get("channelGroup")
+    if channel_group is not None:
+        filtered["channelGroup"] = mask_channel_group(channel_group)
+
     return filtered
 
 
@@ -155,25 +172,14 @@ def mask_identity_verification(iv: dict) -> dict:
     for known_key in (
         "status",
         "id",
-        "customData",
         "requestedAt",
         "updatedAt",
         "statusChangedAt",
         "failure",
         "version",
-        "cancellations",
-        "cancelledAt",
-        "failedAt",
-        "failure",
     ):
         copy_if_exists(iv, filtered, known_key)
     channel = iv.get("channel")
     if channel is not None:
         filtered["channel"] = mask_selected_channel(channel)
-    requested_customer = iv.get("requestedCustomer")
-    if requested_customer is not None:
-        filtered["requestedCustomer"] = mask_customer(requested_customer)
-    verified_customer = iv.get("verifiedCustomer")
-    if verified_customer is not None:
-        filtered["verifiedCustomer"] = mask_customer(verified_customer)
     return filtered

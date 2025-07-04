@@ -6,8 +6,6 @@ from mcp.server import FastMCP
 
 from .loader import load_resources
 from .tools import (
-    get_billing_key,
-    get_billing_keys_by_filter,
     get_identity_verification,
     get_identity_verifications_by_filter,
     get_payment,
@@ -57,10 +55,8 @@ def run_server():
             base_url="https://api.portone.io",
         )
         mcp.add_tool(get_payment.initialize(portone_client))
-        mcp.add_tool(get_billing_key.initialize(portone_client))
         mcp.add_tool(get_identity_verification.initialize(portone_client))
         mcp.add_tool(get_payments_by_filter.initialize(portone_client))
-        mcp.add_tool(get_billing_keys_by_filter.initialize(portone_client))
         mcp.add_tool(get_identity_verifications_by_filter.initialize(portone_client))
 
     # Run the server
