@@ -1,35 +1,37 @@
 import type { Documents } from "../types.js";
 import { formatDocumentMetadata } from "./utils/markdown.js";
 
-export function getTool(documents: Documents) {
+export function getTool() {
   return {
-    name: "read_doc",
-    description: "포트원 관련 문서를 읽습니다.",
+    name: "read_portone_doc",
+    title: "포트원 문서 읽기",
+    description: `포트원 개별 문서의 경로를 통해 해당 포트원 문서의 내용을 가져옵니다.
+
+먼저 list_portone_docs을 사용해 포트원 문서 목록을 확인하고, 그 중 원하는 문서의 path를 read_portone_doc에 전달하여 내용을 확인할 수 있습니다.`,
     inputSchema: {
       type: "object",
       properties: {
-        doc_path: {
+        path: {
           type: "string",
-          description:
-            '읽을 문서의 경로. 예: "help/content100000.md", "opi/ko/quick-guide/payment.md"',
+          description: "읽을 포트원 문서의 경로",
         },
       },
-      required: ["doc_path"],
+      required: ["path"],
     },
   };
 }
 
 export async function handler(
   documents: Documents,
-  args: { doc_path: string },
+  args: { path: string },
 ): Promise<string> {
-  const { doc_path: docPath } = args;
+  const { path } = args;
   const { markdownDocs } = documents;
 
-  const doc = markdownDocs[docPath];
+  const doc = markdownDocs[path];
 
   if (!doc) {
-    return `문서를 찾을 수 없습니다: ${docPath}\n\n사용 가능한 문서 목록을 보려면 list_portone_docs 도구를 사용하세요.`;
+    return `포트원 문서를 찾을 수 없습니다: ${path}\n\n사용 가능한 문서 목록을 보려면 list_portone_docs 도구를 사용하세요.`;
   }
 
   const lines: string[] = [];
