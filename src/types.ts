@@ -1,3 +1,4 @@
+import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
 import type { ToolAnnotations } from "@modelcontextprotocol/sdk/types.js";
 import type { ZodRawShape } from "zod";
 
@@ -75,3 +76,19 @@ export interface IdentityVerificationFilter {
   cursor?: string;
   limit?: number;
 }
+
+export type InitTool<
+  Config extends {
+    title?: string;
+    description?: string;
+    inputSchema?: InputArgs;
+    outputSchema?: OutputArgs;
+    annotations?: ToolAnnotations;
+  },
+  InputArgs extends ZodRawShape = ZodRawShape,
+  OutputArgs extends ZodRawShape = ZodRawShape,
+> = [
+  name: string,
+  config: Config,
+  handler: ToolCallback<Config["inputSchema"]>,
+];
