@@ -1,3 +1,19 @@
+import type {
+  ChannelGroupSummary,
+  SelectedChannel,
+} from "@portone/server-sdk/common";
+import {
+  type IdentityVerification,
+  isUnrecognizedIdentityVerification,
+} from "@portone/server-sdk/identityVerification";
+import type {
+  Dispute,
+  Payment,
+  PaymentCancellation,
+  PaymentEscrow,
+  PaymentMethod,
+} from "@portone/server-sdk/payment";
+import type { CashReceipt } from "@portone/server-sdk/payment/cashReceipt";
 import z from "zod";
 
 export const PgProviderSchema = z.enum([
@@ -65,7 +81,9 @@ function copyIfExists(
   }
 }
 
-export function maskPaymentMethod(method: unknown): unknown {
+export function maskPaymentMethod(
+  method: PaymentMethod,
+): Partial<PaymentMethod> {
   if (!method || typeof method !== "object") {
     return method;
   }
@@ -77,13 +95,15 @@ export function maskPaymentMethod(method: unknown): unknown {
 
   const nested = methodObj.method;
   if (nested) {
-    filtered.method = maskPaymentMethod(nested);
+    filtered.method = maskPaymentMethod(nested as PaymentMethod);
   }
 
   return filtered;
 }
 
-export function maskSelectedChannel(channel: unknown): unknown {
+export function maskSelectedChannel(
+  channel: SelectedChannel,
+): Partial<SelectedChannel> {
   if (!channel || typeof channel !== "object") {
     return channel;
   }
@@ -99,7 +119,7 @@ export function maskSelectedChannel(channel: unknown): unknown {
   return filtered;
 }
 
-export function maskEscrow(escrow: unknown): unknown {
+export function maskEscrow(escrow: PaymentEscrow): Partial<PaymentEscrow> {
   if (!escrow || typeof escrow !== "object") {
     return escrow;
   }
@@ -121,7 +141,9 @@ export function maskEscrow(escrow: unknown): unknown {
   return filtered;
 }
 
-export function maskCashReceipt(cashReceipt: unknown): unknown {
+export function maskCashReceipt(
+  cashReceipt: CashReceipt,
+): Partial<CashReceipt> {
   if (!cashReceipt || typeof cashReceipt !== "object") {
     return cashReceipt;
   }
@@ -145,7 +167,9 @@ export function maskCashReceipt(cashReceipt: unknown): unknown {
   return filtered;
 }
 
-export function maskPaymentCancellation(cancellation: unknown): unknown {
+export function maskPaymentCancellation(
+  cancellation: PaymentCancellation,
+): Partial<PaymentCancellation> {
   if (!cancellation || typeof cancellation !== "object") {
     return cancellation;
   }
@@ -172,7 +196,7 @@ export function maskPaymentCancellation(cancellation: unknown): unknown {
   return filtered;
 }
 
-export function maskDispute(dispute: unknown): unknown {
+export function maskDispute(dispute: Dispute): Partial<Dispute> {
   if (!dispute || typeof dispute !== "object") {
     return dispute;
   }
@@ -188,7 +212,9 @@ export function maskDispute(dispute: unknown): unknown {
   return filtered;
 }
 
-export function maskChannelGroup(channelGroup: unknown): unknown {
+export function maskChannelGroup(
+  channelGroup: ChannelGroupSummary,
+): Partial<ChannelGroupSummary> {
   if (!channelGroup || typeof channelGroup !== "object") {
     return channelGroup;
   }
@@ -204,7 +230,7 @@ export function maskChannelGroup(channelGroup: unknown): unknown {
   return filtered;
 }
 
-export function maskPayment(payment: unknown): unknown {
+export function maskPayment(payment: Payment): Partial<Payment> {
   if (!payment || typeof payment !== "object") {
     return payment;
   }
@@ -242,22 +268,22 @@ export function maskPayment(payment: unknown): unknown {
 
   const method = paymentObj.method;
   if (method !== undefined) {
-    filtered.method = maskPaymentMethod(method);
+    filtered.method = maskPaymentMethod(method as PaymentMethod);
   }
 
   const channel = paymentObj.channel;
   if (channel !== undefined) {
-    filtered.channel = maskSelectedChannel(channel);
+    filtered.channel = maskSelectedChannel(channel as SelectedChannel);
   }
 
   const escrow = paymentObj.escrow;
   if (escrow !== undefined) {
-    filtered.escrow = maskEscrow(escrow);
+    filtered.escrow = maskEscrow(escrow as PaymentEscrow);
   }
 
   const cashReceipt = paymentObj.cashReceipt;
   if (cashReceipt !== undefined) {
-    filtered.cashReceipt = maskCashReceipt(cashReceipt);
+    filtered.cashReceipt = maskCashReceipt(cashReceipt as CashReceipt);
   }
 
   const cancellations = paymentObj.cancellations;
@@ -274,15 +300,17 @@ export function maskPayment(payment: unknown): unknown {
 
   const channelGroup = paymentObj.channelGroup;
   if (channelGroup !== undefined) {
-    filtered.channelGroup = maskChannelGroup(channelGroup);
+    filtered.channelGroup = maskChannelGroup(
+      channelGroup as ChannelGroupSummary,
+    );
   }
 
   return filtered;
 }
 
 export function maskIdentityVerification(
-  verification: unknown,
-): Record<string, unknown> {
+  verification: IdentityVerification,
+): Partial<IdentityVerification> {
   const iv = verification as Record<string, unknown>;
   const filtered: Record<string, unknown> = {};
 
@@ -302,7 +330,7 @@ export function maskIdentityVerification(
 
   const channel = iv.channel;
   if (channel !== undefined) {
-    filtered.channel = maskSelectedChannel(channel);
+    filtered.channel = maskSelectedChannel(channel as SelectedChannel);
   }
 
   return filtered;

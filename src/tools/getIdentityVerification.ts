@@ -1,17 +1,15 @@
 import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
+import type { IdentityVerification } from "@portone/server-sdk/identityVerification";
 import z from "zod";
+import type { HttpClient } from "../types.js";
 import { maskIdentityVerification } from "./utils/portoneRest.js";
-import { HttpClient } from "../types.js";
 
-export const name = "get_portone_identity_verification";
+export const name = "getIdentityVerification";
 
 export const config = {
   title: "포트원 본인인증 정보 조회",
-  description: `고객사 본인인증 거래번호로 포트원 서버에서 결제 내역을 검색합니다.
+  description: `고객사 본인인증 거래번호로 포트원 서버에서 본인인증 정보를 조회합니다.
 고객사 본인인증 거래번호는 포트원 V1에서는 merchant_uid이며, V2에서는 identityVerificationId에 해당합니다.
-
-Returns:
-  인증 건을 찾으면 상세 정보를 반환하고, 찾지 못하면 오류를 반환합니다.
 
 Note:
   UNAUTHORIZED 에러의 경우 MCP 서버의 API_SECRET 환경변수 설정이 잘못되었을 가능성이 있습니다.
@@ -27,6 +25,9 @@ Note:
       .describe(
         "하위 상점을 포함한 특정 상점의 인증 건만을 조회할 경우에만 입력합니다. `store-id-{uuid}` 형식입니다.",
       ),
+  },
+  outputSchema: {
+    result: z.object({}).passthrough().describe("본인인증 정보"),
   },
 };
 
@@ -57,16 +58,20 @@ export function init(
         };
       }
 
-      const data = await response.json();
+      const data = (await response.json()) as IdentityVerification;
       const maskedData = maskIdentityVerification(data);
+      const structuredContent = {
+        result: maskedData,
+      };
 
       return {
         content: [
           {
             type: "text",
-            text: JSON.stringify(maskedData, null, 2),
+            text: JSON.stringify(structuredContent, null, 2),
           },
         ],
+        structuredContent,
       };
     } catch {
       return {
