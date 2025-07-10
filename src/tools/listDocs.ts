@@ -10,19 +10,29 @@ export const config = {
   description: `포트원 문서 목록을 카테고리별로 필터링하여 조회합니다.
 목록에는 문서 경로, 제목, 설명, 대상 버전 등 축약된 문서 정보가 포함되어 있습니다.
 
-Args:
-  dev_docs: 개발자를 위한 문서 포함 여부 (blog/, release-notes/, help/로 시작하지 않는 모든 문서)
-  tech_blog: 기술 블로그 포스트 (blog/) 포함 여부
-  release_notes: 개발자센터 릴리즈 노트 (release-notes/) 포함 여부
-  help_docs: 개발과 무관하게 서비스 관련 내용을 일반적으로 담는 헬프센터 문서 (help/) 포함 여부
-
 Returns:
   필터링된 문서 목록 (각 문의 경로, 길이, 제목, 설명, 대상 버전 등)`,
   inputSchema: {
-    dev_docs: z.boolean().default(true),
-    tech_blog: z.boolean().default(false),
-    release_notes: z.boolean().default(false),
-    help_docs: z.boolean().default(true),
+    dev_docs: z
+      .boolean()
+      .default(true)
+      .describe(
+        "개발자를 위한 문서 포함 여부 (blog/, release-notes/, help/로 시작하지 않는 모든 문서)",
+      ),
+    tech_blog: z
+      .boolean()
+      .default(false)
+      .describe("기술 블로그 포스트 (blog/) 포함 여부"),
+    release_notes: z
+      .boolean()
+      .default(false)
+      .describe("개발자센터 릴리즈 노트 (release-notes/) 포함 여부"),
+    help_docs: z
+      .boolean()
+      .default(true)
+      .describe(
+        "개발과 무관하게 서비스 관련 내용을 일반적으로 담는 헬프센터 문서 (help/) 포함 여부",
+      ),
   },
 };
 

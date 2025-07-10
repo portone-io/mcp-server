@@ -8,13 +8,12 @@ export const config = {
   title: "포트원 문서 읽기",
   description: `지정된 경로의 포트원 문서 내용을 읽습니다.
 
-Args:
-  path: 문서의 경로 (예: opi/ko/readme, api/rest-v2/payment)
-
 Returns:
   문서의 전체 내용`,
   inputSchema: {
-    path: z.string().describe("문서의 경로"),
+    path: z
+      .string()
+      .describe("문서의 경로 (예: opi/ko/readme, api/rest-v2/payment)"),
   },
 };
 

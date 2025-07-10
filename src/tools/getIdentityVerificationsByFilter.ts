@@ -1,57 +1,87 @@
 import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
 import z from "zod";
-import { filterOutNone, maskIdentityVerification } from "./utils/portone.js";
+import {
+  maskIdentityVerification,
+  PgProviderSchema,
+} from "./utils/portoneRest.js";
+import { HttpClient } from "../types.js";
+import { filterOutNone } from "./utils/mapping.js";
+import {
+  GetIdentityVerificationsResponse,
+  IdentityVerification,
+} from "@portone/server-sdk/identityVerification";
 
-interface HttpClient {
-  get: (url: string, options?: any) => Promise<Response>;
-}
+const IdentityVerificationTimeStamp = z.enum([
+  "REQUESTED_AT",
+  "VERIFIED_AT",
+  "FAILED_AT",
+  "STATUS_UPDATED_AT",
+]);
+const IdentityVerificationStatus = z.enum(["READY", "VERIFIED", "FAILED"]);
+const Carrier = z.enum(["SKT", "KT", "LGU", "SKT_MVNO", "KT_MVNO", "LGU_MVNO"]);
 
 export const name = "get_portone_identity_verifications_by_filter";
 
 export const config = {
   title: "포트원 본인인증 내역 검색",
-  description: `조건에 맞는 포트원 본인인증 내역을 검색합니다.
-최대 10개의 결과만 반환되며, 민감한 정보는 마스킹됩니다.
-
-Args:
-  from_time: 조회 시작 시간 (ISO 8601 형식)
-  until_time: 조회 종료 시간 (ISO 8601 형식)
-  timestamp_type: 타임스탬프 타입 (REQUESTED_AT, STATUS_CHANGED_AT, VERIFIED_AT)
-  status: 인증 상태 (READY, PENDING, VERIFIED, FAILED)
-  pg_provider: PG사 (DANAL_NICE, INICIS_UNIFIED)
-  carrier: 통신사 (SKT, KTF, LGU, SKT_MVNO, KTF_MVNO, LGU_MVNO)
-  customer_name: 고객명
-  customer_phone_number: 고객 전화번호
-  store_id: 상점 ID
-  cursor: 페이지네이션 커서
-  limit: 조회 개수 (최대 10)
+  description: `포트원 서버에서 주어진 조건을 모두 만족하는 본인인증 정보를 검색합니다.
 
 Returns:
-  검색된 본인인증 내역 목록 (마스킹됨)`,
+  조건을 만족하는 본인인증 건의 개수와, 그중 최대 10개 인증 건의 정보를 반환하고, 찾지 못하면 오류를 반환합니다.
+
+Note:
+  UNAUTHORIZED 에러의 경우 MCP 서버의 API_SECRET 환경변수 설정이 잘못되었을 가능성이 있습니다.
+  날짜 및 시간 정보 입출력 시에는 반드시 타임존을 명시합니다.`,
   inputSchema: {
-    from_time: z.string().optional().describe("조회 시작 시간"),
-    until_time: z.string().optional().describe("조회 종료 시간"),
-    timestamp_type: z
-      .enum(["REQUESTED_AT", "STATUS_CHANGED_AT", "VERIFIED_AT"])
+    from_time: z
+      .string()
+      .datetime({ offset: true })
+      .describe("조회 시작 시간 (ISO 8601 형식)"),
+    until_time: z
+      .string()
+      .datetime({ offset: true })
+      .describe("조회 종료 시간 (ISO 8601 형식)"),
+    timestamp_type: IdentityVerificationTimeStamp.default(
+      "STATUS_UPDATED_AT",
+    ).describe(`조회 범위의 기준이 본인인증을 처음 시도한 시각이면 "REQUESTED_AT",
+본인인증이 완료된 시각이면 "VERIFIED_AT", 실패한 시각이면 "FAILED_AT",
+마지막으로 상태가 변경된 시각이면 "STATUS_UPDATED_AT"입니다.`),
+    store_id: z
+      .string()
       .optional()
-      .describe("타임스탬프 타입"),
+      .describe(
+        "하위 상점을 포함한 특정 상점의 인증 건만을 조회할 경우에만 입력합니다. `store-id-{uuid}` 형식입니다.",
+      ),
     status: z
-      .enum(["READY", "PENDING", "VERIFIED", "FAILED"])
+      .array(IdentityVerificationStatus)
       .optional()
-      .describe("인증 상태"),
+      .describe("포함할 본인인증 상태 목록입니다."),
     pg_provider: z
-      .enum(["DANAL_NICE", "INICIS_UNIFIED"])
+      .array(PgProviderSchema)
       .optional()
-      .describe("PG사"),
+      .describe("본인인증이 일어난 결제대행사 목록입니다."),
+    version: z
+      .enum(["V1", "V2"])
+      .optional()
+      .describe("포함할 포트원 버전입니다. 미입력 시 모두 검색됩니다."),
     carrier: z
-      .enum(["SKT", "KTF", "LGU", "SKT_MVNO", "KTF_MVNO", "LGU_MVNO"])
+      .array(Carrier)
       .optional()
-      .describe("통신사"),
-    customer_name: z.string().optional().describe("고객명"),
-    customer_phone_number: z.string().optional().describe("고객 전화번호"),
-    store_id: z.string().optional().describe("상점 ID"),
-    cursor: z.string().optional().describe("페이지네이션 커서"),
-    limit: z.number().max(10).default(10).describe("조회 개수"),
+      .describe("포함할 통신사 목록입니다. MVNO는 알뜰폰을 뜻합니다."),
+    customer_name: z
+      .string()
+      .optional()
+      .describe("발급자의 성명 일부분입니다."),
+    pg_merchant_id: z
+      .string()
+      .optional()
+      .describe("결제대행사에서 제공한 상점아이디 (MID) 일부분입니다."),
+    is_test: z
+      .boolean()
+      .default(true)
+      .describe(
+        "테스트 인증 건을 포함할지 여부입니다. 미입력 시 `true`입니다.",
+      ),
   },
 };
 
@@ -62,81 +92,63 @@ export function init(
     from_time,
     until_time,
     timestamp_type,
+    store_id,
     status,
     pg_provider,
     carrier,
     customer_name,
-    customer_phone_number,
-    store_id,
-    cursor,
-    limit,
+    version,
+    pg_merchant_id,
+    is_test,
   }) => {
-    const params = filterOutNone({
+    const searchFilter = filterOutNone({
       from: from_time,
       until: until_time,
-      timestampType: timestamp_type,
-      status,
-      pgProvider: pg_provider,
-      carrier,
-      customerName: customer_name,
-      customerPhoneNumber: customer_phone_number,
+      timeRangeField: timestamp_type,
       storeId: store_id,
-      cursor,
-      limit: Math.min(limit || 10, 10),
+      statuses: status,
+      pgProviders: pg_provider,
+      version: version,
+      carriers: carrier,
+      pgMerchantId: pg_merchant_id,
+      isTest: is_test,
+      customer: filterOutNone({
+        name: customer_name,
+      }),
     });
 
-    const searchParams = new URLSearchParams();
-    for (const [key, value] of Object.entries(params)) {
-      searchParams.set(key, String(value));
+    const response = await httpClient.get(
+      `/identity-verifications?requestBody=${encodeURIComponent(
+        JSON.stringify({
+          filter: searchFilter,
+          page: {
+            number: 0,
+            size: 10,
+          },
+        }),
+      )}`,
+    );
+
+    if (!response.ok) {
+      const text = await response.text();
+      return { content: [{ type: "text", text }], isError: true };
     }
 
-    const url = `/identity-verifications?${searchParams.toString()}`;
-
     try {
-      const response = await httpClient.get(url);
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        return {
-          content: [
-            {
-              type: "text",
-              text: `Error searching identity verifications: ${response.status} ${response.statusText}\n${errorText}`,
-            },
-          ],
-        };
-      }
-
-      const data = (await response.json()) as {
-        items?: any[];
-        hasNext?: boolean;
-        cursor?: string;
-      };
-      const verifications = data.items || [];
-      const maskedVerifications = verifications.map(maskIdentityVerification);
-
-      const result = {
-        items: maskedVerifications,
-        hasNext: data.hasNext,
-        cursor: data.cursor,
-      };
-
+      const data = (await response.json()) as GetIdentityVerificationsResponse;
+      const maskedItems = data.items.map(maskIdentityVerification);
       return {
         content: [
           {
             type: "text",
-            text: JSON.stringify(result, null, 2),
+            text: JSON.stringify(maskedItems, null, 2),
           },
         ],
       };
-    } catch (error) {
+    } catch {
       return {
-        content: [
-          {
-            type: "text",
-            text: `Error searching identity verifications: ${error}`,
-          },
-        ],
+        content: [{ type: "text", text: "서버로부터 잘못된 응답 수신" }],
+        isError: true,
       };
     }
   };

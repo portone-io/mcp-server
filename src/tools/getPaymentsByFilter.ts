@@ -1,9 +1,9 @@
 import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
 import z from "zod";
-import { filterOutNone, maskPayment } from "./utils/portone.js";
+import { filterOutNone, maskPayment } from "./utils/portoneRest.js";
 
 interface HttpClient {
-  get: (url: string, options?: any) => Promise<Response>;
+  get: (url: string) => Promise<Response>;
 }
 
 export const name = "get_portone_payments_by_filter";

@@ -1,6 +1,6 @@
 import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
 import z from "zod";
-import { maskPayment } from "./utils/portone.js";
+import { maskPayment } from "./utils/portoneRest.js";
 
 export const name = "get_portone_payment";
 
@@ -22,7 +22,7 @@ Returns:
 };
 
 export function init(httpClient: {
-  get: (url: string, options?: any) => Promise<Response>;
+  get: (url: string) => Promise<Response>;
 }): ToolCallback<typeof config.inputSchema> {
   return async ({ payment_id, store_id }) => {
     const params = new URLSearchParams();

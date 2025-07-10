@@ -1,6 +1,9 @@
 import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
 import type { ToolAnnotations } from "@modelcontextprotocol/sdk/types.js";
 import type { ZodRawShape } from "zod";
+import type { PgProvider } from "@portone/server-sdk/common";
+import { IsNever, UnknownArray } from "type-fest";
+import { IfNotAnyOrNever } from "type-fest/source/internal/type.js";
 
 export interface Frontmatter {
   title?: string;
@@ -92,3 +95,7 @@ export type InitTool<
   config: Config,
   handler: ToolCallback<Config["inputSchema"]>,
 ];
+
+export interface HttpClient {
+  get: (url: string) => Promise<Response>;
+}
