@@ -17,7 +17,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Code Style Guidelines
 
-- Node.js 18+ and TypeScript 5+ required
+- Node.js 22+ and TypeScript 5+ required
 - Use type annotations for all function parameters and return values
 - Follow TypeScript/JavaScript conventions
 - Use interfaces and types for data structures
