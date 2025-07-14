@@ -32,7 +32,7 @@ async function runDocsForLlms(
   try {
     const pkgPath = path.join(repoPath, "package.json");
     await fs.access(pkgPath);
-  } catch (error) {
+  } catch (_error) {
     throw new Error(
       `The provided path '${repoPath}' does not appear to be a valid repository (no package.json found)`,
     );
@@ -62,7 +62,7 @@ async function runDocsForLlms(
     if (!stats.isDirectory()) {
       throw new Error();
     }
-  } catch (error) {
+  } catch (_error) {
     throw new Error(
       `Expected generated docs at ${generatedDocsPath}, but directory was not found`,
     );
@@ -180,7 +180,6 @@ async function updateMcpDocs(
   const targetDocsDir = path.join(
     scriptDir,
     "src",
-    "portone_mcp_server",
     "resources",
     "docs",
   );

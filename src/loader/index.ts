@@ -1,5 +1,5 @@
-import { dirname, join } from "path";
-import { fileURLToPath } from "url";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import type { Resources } from "../types.js";
 import { loadDocuments } from "./documents.js";
 
@@ -27,7 +27,7 @@ export async function loadResources(): Promise<Resources> {
 
 async function loadInstructions(path: string): Promise<string> {
   try {
-    const { readFileSync } = await import("fs");
+    const { readFileSync } = await import("node:fs");
     return readFileSync(path, "utf-8");
   } catch (error) {
     console.error(`Failed to load instructions from ${path}:`, error);

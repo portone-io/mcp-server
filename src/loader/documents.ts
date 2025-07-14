@@ -1,5 +1,5 @@
-import { readdirSync, readFileSync, statSync } from "fs";
-import { join, relative } from "path";
+import { readdirSync, readFileSync, statSync } from "node:fs";
+import { join, relative } from "node:path";
 import type { Documents, MarkdownDocument } from "../types.js";
 import { parseMarkdown } from "./markdown.js";
 import { loadSchema } from "./schema.js";

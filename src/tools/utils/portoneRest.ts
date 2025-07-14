@@ -2,10 +2,7 @@ import type {
   ChannelGroupSummary,
   SelectedChannel,
 } from "@portone/server-sdk/common";
-import {
-  type IdentityVerification,
-  isUnrecognizedIdentityVerification,
-} from "@portone/server-sdk/identityVerification";
+import type { IdentityVerification } from "@portone/server-sdk/identityVerification";
 import type {
   Dispute,
   Payment,

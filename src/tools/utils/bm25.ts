@@ -28,7 +28,7 @@ export function calculateBm25Scores(
     // Combine content and frontmatter for search
     let searchableText = doc.content;
     if (doc.frontmatter?.rawString) {
-      searchableText = doc.frontmatter.rawString + "\n" + searchableText;
+      searchableText = `${doc.frontmatter.rawString}\n${searchableText}`;
     }
 
     const wordCount = searchableText.split(/\s+/).length;
@@ -46,7 +46,7 @@ export function calculateBm25Scores(
     // Combine content and frontmatter for search
     let searchableText = doc.content;
     if (doc.frontmatter?.rawString) {
-      searchableText = doc.frontmatter.rawString + "\n" + searchableText;
+      searchableText = `${doc.frontmatter.rawString}\n${searchableText}`;
     }
 
     // Find all matches of the regex pattern
