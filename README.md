@@ -4,9 +4,7 @@
 
 ## MCP 서버 등록하기
 
-1. [uv](https://docs.astral.sh/uv/getting-started/installation/)가 설치되어 있어야 합니다.
-
-   Mac 환경에서는 `brew install uv`로 설치하는 것을 권장합니다.
+1. Node.js 22.6.0 이상이 설치되어 있어야 합니다.
 
 1. 사용하는 AI 도구의 MCP 설정에서 아래 내용을 추가합니다. (Cursor, Windsurf, Claude Desktop, etc...)
 
@@ -16,9 +14,10 @@
      // 기존 설정
 
      "portone-mcp-server": {
-       "command": "uvx",
+       "command": "npx",
        "args": [
-         "portone-mcp-server@latest"
+         "-y",
+         "@portone/mcp-server@latest"
        ]
      }
    }
@@ -43,8 +42,11 @@ MCP 서버에 포트원 기능을 연동하면, AI가 아래와 같은 작업을
     // ...
 
     "portone-mcp-server": {
-      "command": "uvx",
-      "args": ["portone-mcp-server@latest"],
+      "command": "npx",
+      "args": [
+         "-y",
+         "@portone/mcp-server@latest"
+       ],
       // 아래 env 블록을 추가하여 API 시크릿을 설정합니다.
       "env": {
         "API_SECRET": "<YOUR_PORTONE_API_SECRET>"
@@ -74,44 +76,48 @@ MCP 서버에 포트원 기능을 연동하면, AI가 아래와 같은 작업을
 
 ### 요구사항
 
-- Python 3.12 이상
-- [uv (Python 패키지 관리 도구)](https://docs.astral.sh/uv/getting-started/installation/)
-
-  Mac 환경에서는 `brew install uv`로 설치하는 것을 권장합니다.
+- Node.js 22.6.0 이상
+- pnpm (권장) 또는 npm
 
 1. 저장소를 클론한 후 필요한 패키지 설치하기
 
    ```bash
-   uv sync
+   pnpm install
    ```
 
-1. MCP 서버 실행
+1. MCP 서버 실행 (개발 모드)
 
    ```bash
-   uv run portone-mcp-server
+   pnpm dev
    ```
 
 1. 테스트
 
    ```bash
-   uv run pytest
+   pnpm test
    ```
 
-1. 코드 린팅
+1. 코드 린팅 및 포맷팅
 
    ```bash
-   uv run ruff check .
-   uv run ruff format .
+   pnpm lint
+   pnpm format
    ```
 
-1. 퍼블리싱
+1. 타입 체크
 
    ```bash
-   # 먼저 pyproject.toml의 version을 변경합니다.
+   pnpm typecheck
+   ```
+
+1. 빌드 및 퍼블리싱
+
+   ```bash
+   # 먼저 package.json의 version을 변경합니다.
    rm -rf dist
-   uv sync
-   uv build
-   uv publish
+   pnpm install
+   pnpm build
+   pnpm publish
    ```
 
 1. 로컬 환경의 MCP 서버 등록하기
@@ -119,13 +125,10 @@ MCP 서버에 포트원 기능을 연동하면, AI가 아래와 같은 작업을
    ```json
    "mcpServers": {
       "portone-mcp-server": {
-      "command": "uv",
-      "args": [
-         "--directory",
-         "/your/absolute/path/to/portone-mcp-server",
-         "run",
-         "portone-mcp-server"
-      ]
+        "command": "node",
+        "args": [
+          "/your/absolute/path/to/portone-mcp-server/dist/index.js"
+        ]
       }
    }
    ```
@@ -144,10 +147,10 @@ MCP 서버에 포트원 기능을 연동하면, AI가 아래와 같은 작업을
    # 환경 변수를 사용하는 방법
    export DEVELOPERS_PORTONE_IO_PATH="/path/to/developers.portone.io"
    export HELP_PORTONE_IO_PATH="/path/to/help.portone.io"
-   uv run update_docs.py
+   pnpm update-docs
 
    # 또는 대화형으로 실행
-   uv run update_docs.py
+   pnpm update-docs
    # 프롬프트가 표시되면 developers.portone.io, help.portone.io 저장소 경로 입력
    ```
 
