@@ -11,6 +11,7 @@
     "test": "vitest",
     "update-docs": "node --experimental-strip-types update-docs.ts",
     "build": "tsup src/index.ts --outDir server --format esm",
+    "build:dxt": "node --experimental-strip-types scripts/build-dxt.ts",
     "dev": "node --experimental-strip-types src/index.ts",
     "start": "node server/index.js",
     "lint": "biome check .",
