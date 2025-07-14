@@ -54,7 +54,10 @@
   "files": [
     "server",
     "assets",
-    "manifest.json"
+    "manifest.json",
+    "LICENSE-APACHE",
+    "LICENSE-MIT",
+    "README.md"
   ],
   "repository": {
     "type": "git",
