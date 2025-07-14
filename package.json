@@ -1,5 +1,5 @@
 {
-  "name": "portone-mcp-server",
+  "name": "@portone/mcp-server",
   "version": "0.12.1",
   "description": "포트원 사용자를 위한 MCP (Model Context Protocol) 서버입니다. 포트원 개발자센터, 헬프센터 등 공식 문서 내용을 LLM(Large Language Model)에 제공해 정확한 정보를 바탕으로 사용자의 연동 및 질의를 돕도록 합니다.",
   "main": "server/index.js",
@@ -29,8 +29,8 @@
   },
   "license": "MIT OR Apache-2.0",
   "dependencies": {
-    "@portone/server-sdk": "^0.15.0",
     "@modelcontextprotocol/sdk": "^1.15.0",
+    "@portone/server-sdk": "^0.15.0",
     "axios": "^1.7.2",
     "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.0",
@@ -40,6 +40,7 @@
   "packageManager": "pnpm@10.12.4+sha512.5ea8b0deed94ed68691c9bad4c955492705c5eeb8a87ef86bc62c74a26b037b08ff9570f108b2e4dbd1dd1a9186fea925e527f141c648e85af45631074680184",
   "devDependencies": {
     "@biomejs/biome": "2.0.6",
+    "@changesets/cli": "^2.29.5",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^24.0.10",
     "tsup": "^8.5.0",
