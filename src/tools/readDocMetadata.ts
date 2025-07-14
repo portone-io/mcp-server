@@ -1,7 +1,7 @@
 import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
 import z from "zod";
-import type { Documents } from "../types.js";
-import { formatDocumentMetadata } from "./utils/markdown.js";
+import type { Documents } from "../types.ts";
+import { formatDocumentMetadata } from "./utils/markdown.ts";
 
 export const name = "read_portone_doc_metadata";
 

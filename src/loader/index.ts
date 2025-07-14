@@ -1,6 +1,6 @@
 import { join } from "node:path";
-import type { Resources } from "../types.js";
-import { loadDocuments } from "./documents.js";
+import type { Resources } from "../types.ts";
+import { loadDocuments } from "./documents.ts";
 
 export async function loadResources(assetsPath: string): Promise<Resources> {
   // Load instructions

@@ -1,4 +1,4 @@
-import type { MarkdownDocument } from "../../types.js";
+import type { MarkdownDocument } from "../../types.ts";
 
 export function calculateBm25Scores(
   query: string,

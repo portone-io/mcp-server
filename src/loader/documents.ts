@@ -1,8 +1,8 @@
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
-import type { Documents, MarkdownDocument } from "../types.js";
-import { parseMarkdown } from "./markdown.js";
-import { loadSchema } from "./schema.js";
+import type { Documents, MarkdownDocument } from "../types.ts";
+import { parseMarkdown } from "./markdown.ts";
+import { loadSchema } from "./schema.ts";
 
 export async function loadDocuments(assetsPath: string): Promise<Documents> {
   const docsPath = join(assetsPath, "docs");

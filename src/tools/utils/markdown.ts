@@ -1,4 +1,4 @@
-import type { MarkdownDocument, SearchOccurrence } from "../../types.js";
+import type { MarkdownDocument, SearchOccurrence } from "../../types.ts";
 
 export function formatDocumentMetadata(doc: MarkdownDocument): string {
   const lines: string[] = [];

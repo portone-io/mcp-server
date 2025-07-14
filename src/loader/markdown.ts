@@ -1,5 +1,5 @@
 import matter from "gray-matter";
-import type { Frontmatter } from "../types.js";
+import type { Frontmatter } from "../types.ts";
 
 interface ParsedMarkdown {
   content: string;

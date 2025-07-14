@@ -1,6 +1,6 @@
 import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
 import z from "zod";
-import type { Documents } from "../types.js";
+import type { Documents } from "../types.ts";
 
 export const name = "read_portone_doc";
 

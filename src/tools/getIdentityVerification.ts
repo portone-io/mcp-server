@@ -1,8 +1,8 @@
 import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
 import type { IdentityVerification } from "@portone/server-sdk/identityVerification";
 import z from "zod";
-import type { HttpClient } from "../types.js";
-import { maskIdentityVerification } from "./utils/portoneRest.js";
+import type { HttpClient } from "../types.ts";
+import { maskIdentityVerification } from "./utils/portoneRest.ts";
 
 export const name = "getIdentityVerification";
 

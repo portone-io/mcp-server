@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { load } from "js-yaml";
-import type { Schema } from "../types.js";
+import type { Schema } from "../types.ts";
 
 export async function loadSchema(schemaPath: string): Promise<Schema> {
   return {

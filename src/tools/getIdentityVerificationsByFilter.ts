@@ -1,12 +1,12 @@
 import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
 import type { GetIdentityVerificationsResponse } from "@portone/server-sdk/identityVerification";
 import z from "zod";
-import type { HttpClient } from "../types.js";
-import { filterOutNone } from "./utils/mapping.js";
+import type { HttpClient } from "../types.ts";
+import { filterOutNone } from "./utils/mapping.ts";
 import {
   maskIdentityVerification,
   PgProviderSchema,
-} from "./utils/portoneRest.js";
+} from "./utils/portoneRest.ts";
 
 const IdentityVerificationTimeStamp = z.enum([
   "REQUESTED_AT",

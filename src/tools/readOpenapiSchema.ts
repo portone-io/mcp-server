@@ -1,7 +1,7 @@
 import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
 import z from "zod";
-import type { Schema } from "../types.js";
-import { getFromYamlPath, stringifyYaml } from "./utils/yaml.js";
+import type { Schema } from "../types.ts";
+import { getFromYamlPath, stringifyYaml } from "./utils/yaml.ts";
 
 export const name = "read_portone_openapi_schema";
 

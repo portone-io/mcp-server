@@ -1,8 +1,8 @@
 import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
 import type { Payment } from "@portone/server-sdk/payment";
 import z from "zod";
-import type { HttpClient } from "../types.js";
-import { maskPayment } from "./utils/portoneRest.js";
+import type { HttpClient } from "../types.ts";
+import { maskPayment } from "./utils/portoneRest.ts";
 
 export const name = "getPayment";
 

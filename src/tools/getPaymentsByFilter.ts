@@ -1,9 +1,9 @@
 import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
 import type { GetPaymentsResponse } from "@portone/server-sdk/payment";
 import z from "zod";
-import type { HttpClient } from "../types.js";
-import { filterOutNone } from "./utils/mapping.js";
-import { maskPayment, PgProviderSchema } from "./utils/portoneRest.js";
+import type { HttpClient } from "../types.ts";
+import { filterOutNone } from "./utils/mapping.ts";
+import { maskPayment, PgProviderSchema } from "./utils/portoneRest.ts";
 
 const PaymentTimeRangeField = z.enum(["CREATED_AT", "STATUS_CHANGED_AT"]);
 const PaymentStatus = z.enum([

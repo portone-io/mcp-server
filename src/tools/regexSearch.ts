@@ -1,8 +1,8 @@
 import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
 import z from "zod";
-import type { Documents } from "../types.js";
-import { calculateBm25Scores } from "./utils/bm25.js";
-import { formatDocumentMetadata } from "./utils/markdown.js";
+import type { Documents } from "../types.ts";
+import { calculateBm25Scores } from "./utils/bm25.ts";
+import { formatDocumentMetadata } from "./utils/markdown.ts";
 
 interface SearchOccurrence {
   startIndex: number;

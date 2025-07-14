@@ -11,7 +11,7 @@
     "test": "vitest",
     "update-docs": "node --experimental-strip-types update-docs.ts",
     "build": "tsup src/index.ts --outDir server --format esm",
-    "dev": "tsx src/index.ts",
+    "dev": "node --experimental-strip-types src/index.ts",
     "start": "node server/index.js",
     "lint": "biome check .",
     "format": "biome format --write .",
@@ -42,7 +42,6 @@
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^24.0.10",
     "tsup": "^8.5.0",
-    "tsx": "^4.7.0",
     "type-fest": "^4.41.0",
     "typescript": "^5.8.3",
     "vitest": "^1.6.0"
