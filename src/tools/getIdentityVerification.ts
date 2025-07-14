@@ -1,8 +1,10 @@
 import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
-import type { IdentityVerification } from "@portone/server-sdk/identityVerification";
 import z from "zod";
 import type { HttpClient } from "../types.ts";
-import { maskIdentityVerification } from "./utils/portoneRest.ts";
+import {
+  filterFields,
+  IDENTITY_VERIFICATION_FIELDS,
+} from "./utils/portoneRest.ts";
 
 export const name = "getIdentityVerification";
 
@@ -58,8 +60,8 @@ export function init(
         };
       }
 
-      const data = (await response.json()) as IdentityVerification;
-      const maskedData = maskIdentityVerification(data);
+      const data = await response.json();
+      const maskedData = filterFields(IDENTITY_VERIFICATION_FIELDS, data);
       const structuredContent = {
         result: maskedData,
       };

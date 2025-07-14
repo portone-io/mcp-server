@@ -1,10 +1,11 @@
 import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
-import type { GetIdentityVerificationsResponse } from "@portone/server-sdk/identityVerification";
+import { GetIdentityVerificationsResponse } from "@portone/server-sdk/identityVerification";
 import z from "zod";
 import type { HttpClient } from "../types.ts";
 import { filterOutNone } from "./utils/mapping.ts";
 import {
-  maskIdentityVerification,
+  filterFields,
+  IdentityVerificationField,
   PgProviderSchema,
 } from "./utils/portoneRest.ts";
 
@@ -36,6 +37,18 @@ Note:
       .string()
       .datetime({ offset: true })
       .describe("조회 종료 시간 (ISO 8601 형식)"),
+    pageIndex: z
+      .number()
+      .min(0)
+      .describe("검색할 페이지 위치입니다. 0부터 시작합니다."),
+    pageSize: z
+      .number()
+      .min(1)
+      .default(10)
+      .describe("한 페이지에 반환할 결과의 수입니다."),
+    fields: z
+      .array(IdentityVerificationField)
+      .describe("검색 결과로 받을 필드 목록입니다."),
     timestampType: IdentityVerificationTimeStamp.default(
       "STATUS_UPDATED_AT",
     ).describe(`조회 범위의 기준이 본인인증을 처음 시도한 시각이면 "REQUESTED_AT",
@@ -79,7 +92,7 @@ Note:
     items: z
       .array(z.object({}).passthrough())
       .describe("조회된 본인인증 건의 목록"),
-    totalCount: z.number().describe("조회된 본인인증 건의 총 개수"),
+    totalCount: z.number().describe("조건에 맞는 본인인증 건의 총 개수"),
   },
 };
 
@@ -89,6 +102,9 @@ export function init(
   return async ({
     fromTime,
     untilTime,
+    pageIndex,
+    pageSize,
+    fields,
     timestampType,
     storeId,
     status,
@@ -120,8 +136,8 @@ export function init(
         JSON.stringify({
           filter: searchFilter,
           page: {
-            number: 0,
-            size: 10,
+            number: pageIndex,
+            size: pageSize,
           },
         }),
       )}`,
@@ -134,7 +150,7 @@ export function init(
 
     try {
       const data = (await response.json()) as GetIdentityVerificationsResponse;
-      const maskedItems = data.items.map(maskIdentityVerification);
+      const maskedItems = filterFields(fields, data.items);
       const structuredContent = {
         items: maskedItems,
         totalCount: data.page.totalCount,
