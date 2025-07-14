@@ -10,27 +10,34 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.12"]
+        node-version: ["22"]
     
     steps:
     - uses: actions/checkout@v4
     
-    - name: Install uv
-      uses: astral-sh/setup-uv@v4
-      with:
-        enable-cache: true
-        cache-dependency-glob: "uv.lock"
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
     
-    - name: Set up Python ${{ matrix.python-version }}
-      run: uv python install ${{ matrix.python-version }}
+    - name: Set up Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'pnpm'
     
     - name: Install dependencies
-      run: uv sync
+      run: pnpm install
     
-    - name: Lint with ruff
-      run: |
-        uv run ruff check .
-        uv run ruff format --check .
+    - name: Type check
+      run: pnpm typecheck
+    
+    - name: Lint
+      run: pnpm lint
+    
+    - name: Format check
+      run: pnpm format --check
+    
+    - name: Build
+      run: pnpm build
     
     - name: Run tests
-      run: uv run pytest
+      run: pnpm test
