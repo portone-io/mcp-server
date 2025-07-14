@@ -177,11 +177,7 @@ async function updateMcpDocs(
   helpRepoPath: string,
 ): Promise<void> {
   const scriptDir = path.dirname(fileURLToPath(import.meta.url));
-  const targetDocsDir = path.join(
-    scriptDir,
-    "assets",
-    "docs",
-  );
+  const targetDocsDir = path.join(scriptDir, "assets", "docs");
 
   console.log(`Removing existing docs directory at ${targetDocsDir}...`);
   await fs.rm(targetDocsDir, { recursive: true, force: true });

@@ -1,17 +1,8 @@
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { join } from "node:path";
 import type { Resources } from "../types.js";
 import { loadDocuments } from "./documents.js";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-export async function loadResources(): Promise<Resources> {
-  const assetsPath = join(
-    __dirname,
-    "../../assets",
-  );
-
+export async function loadResources(assetsPath: string): Promise<Resources> {
   // Load instructions
   const instructionsPath = join(assetsPath, "instructions.md");
   const instructions = await loadInstructions(instructionsPath);

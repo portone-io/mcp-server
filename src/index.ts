@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { loadResources } from "./loader/index.js";
@@ -18,9 +20,13 @@ import {
   regexSearch,
 } from "./tools/index.js";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 export async function runServer() {
   // Load documents
-  const resources = await loadResources();
+  const assetsPath = join(__dirname, "../../assets");
+  const resources = await loadResources(assetsPath);
   const documents = resources.documents;
 
   // Initialize the MCP server
@@ -110,10 +116,7 @@ export async function runServer() {
   await mcp.connect(transport);
 }
 
-// Main entry point
-if (import.meta.url === `file://${process.argv[1]}`) {
-  await runServer().catch((error) => {
-    console.error("Server error:", error);
-    process.exit(1);
-  });
-}
+await runServer().catch((error) => {
+  console.error("Server error:", error);
+  process.exit(1);
+});
