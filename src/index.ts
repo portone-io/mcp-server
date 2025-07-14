@@ -25,7 +25,7 @@ const __dirname = dirname(__filename);
 
 export async function runServer() {
   // Load documents
-  const assetsPath = join(__dirname, "../../assets");
+  const assetsPath = join(__dirname, "../assets");
   const resources = await loadResources(assetsPath);
   const documents = resources.documents;
 
