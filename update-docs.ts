@@ -179,8 +179,7 @@ async function updateMcpDocs(
   const scriptDir = path.dirname(fileURLToPath(import.meta.url));
   const targetDocsDir = path.join(
     scriptDir,
-    "src",
-    "resources",
+    "assets",
     "docs",
   );
 
