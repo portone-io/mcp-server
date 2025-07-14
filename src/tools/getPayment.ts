@@ -1,8 +1,7 @@
 import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
-import type { Payment } from "@portone/server-sdk/payment";
 import z from "zod";
 import type { HttpClient } from "../types.ts";
-import { maskPayment } from "./utils/portoneRest.ts";
+import { filterFields, PAYMENT_FIELDS } from "./utils/portoneRest.ts";
 
 export const name = "getPayment";
 
@@ -50,8 +49,8 @@ export function init(
         };
       }
 
-      const data = (await response.json()) as Payment;
-      const maskedData = maskPayment(data);
+      const data = await response.json();
+      const maskedData = filterFields(PAYMENT_FIELDS, data);
       const structuredContent = {
         result: maskedData,
       };
