@@ -151,6 +151,7 @@ export function init(
               text: `Document with query '${query}' not found.`,
             },
           ],
+          isError: true,
         };
       } else {
         let fullResult = `${docCount} documents and ${occurrenceCount} occurrences found with query '${query}'\n\n${result}`;
@@ -165,6 +166,7 @@ export function init(
                   text: `No more results. Total result length: ${fullResult.length}`,
                 },
               ],
+              isError: true,
             };
           }
           fullResult = fullResult.substring(start_index);
@@ -173,23 +175,32 @@ export function init(
         // Truncate if exceeds limit
         if (fullResult.length > limit) {
           const truncationMsg = `\n\n... (output truncated due to length limit. Use start_index=${start_index + limit} for next page)`;
+          const structuredContent = {
+            result: fullResult.substring(0, limit) + truncationMsg,
+          };
           return {
             content: [
               {
                 type: "text",
-                text: fullResult.substring(0, limit) + truncationMsg,
+                text: JSON.stringify(structuredContent, null, 2),
               },
             ],
+            structuredContent,
           };
         }
+
+        const structuredContent = {
+          result: fullResult,
+        };
 
         return {
           content: [
             {
               type: "text",
-              text: fullResult,
+              text: JSON.stringify(structuredContent, null, 2),
             },
           ],
+          structuredContent,
         };
       }
     } catch (error) {
@@ -200,6 +211,7 @@ export function init(
             text: `Error: Invalid regular expression pattern: ${error}`,
           },
         ],
+        isError: true,
       };
     }
   };

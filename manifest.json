@@ -18,7 +18,7 @@
     "entry_point": "server/index.js",
     "mcp_config": {
       "command": "node",
-      "args": ["server/index.js"],
+      "args": ["${__dirname}/server/index.js"],
       "env": {
         "API_SECRET": "${user_config.api_secret}"
       }
