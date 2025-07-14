@@ -4,6 +4,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import packageJson from "../package.json" with { type: "json" };
 import { loadResources } from "./loader/index.js";
 import {
   getIdentityVerification,
@@ -33,7 +34,7 @@ export async function runServer() {
   const mcp = new McpServer(
     {
       name: "portone-mcp-server",
-      version: "0.12.1",
+      version: packageJson.version,
     },
     {
       instructions: `${resources.instructions}\n${documents.readme}`,
@@ -83,7 +84,7 @@ export async function runServer() {
         return fetch(`https://api.portone.io${url}`, {
           headers: {
             Authorization: `PortOne ${apiSecret}`,
-            "User-Agent": `portone-mcp-server 0.12.1`,
+            "User-Agent": `portone-mcp-server ${packageJson.version}`,
           },
         });
       },
