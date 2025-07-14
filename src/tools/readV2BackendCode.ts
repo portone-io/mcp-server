@@ -11,19 +11,16 @@ framework를 제외한 모든 Args는 선택사항이며, 특정되지 않은 �
   inputSchema: {
     framework: z
       .string()
-      .optional()
       .describe(
         "사용할 프레임워크. 일치하지 않더라도 현재 맥락에서 가장 유사한 프레임워크를 명시합니다. 옵션: express, fastapi, flask, spring-kotlin",
       ),
     pg: z
       .string()
-      .optional()
       .describe(
         "사용할 결제 게이트웨이. 옵션: toss, nice, smartro, kpn, inicis, ksnet, kcp, kakao, naver, tosspay, hyphen, eximbay",
       ),
     pay_method: z
       .string()
-      .optional()
       .describe(
         "사용할 결제 방법. 옵션: card, virtualAccount, easyPay, transfer, mobile, giftCertificate",
       ),
@@ -44,9 +41,9 @@ export function init(
     const url = new URL(
       `${apiBasePath}/opi/ko/quick-guide/payment/backend-code`,
     );
-    if (framework) url.searchParams.set("framework", framework);
-    if (pg) url.searchParams.set("pg", pg);
-    if (pay_method) url.searchParams.set("payMethod", pay_method);
+    url.searchParams.set("framework", framework);
+    url.searchParams.set("pg", pg);
+    url.searchParams.set("payMethod", pay_method);
     if (smart_routing)
       url.searchParams.set("smartRouting", String(smart_routing));
 
