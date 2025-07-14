@@ -26,7 +26,7 @@
     "name": "PortOne",
     "email": "tech.support@portone.io"
   },
-  "license": "MIT",
+  "license": "MIT OR Apache-2.0",
   "dependencies": {
     "@portone/server-sdk": "^0.15.0",
     "@modelcontextprotocol/sdk": "^1.15.0",

@@ -162,4 +162,4 @@ MCP 서버에 포트원 기능을 연동하면, AI가 아래와 같은 작업을
 
 ## 라이선스
 
-[Apache License 2.0](LICENSE)
+[Apache License 2.0](LICENSE-APACHE) OR [MIT License](LICENSE-MIT)
