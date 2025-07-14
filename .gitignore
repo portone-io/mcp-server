@@ -8,7 +8,7 @@ dist-python/
 
 # Node.js
 node_modules/
-dist/
+server/
 *.tsbuildinfo
 
 # Environment variables

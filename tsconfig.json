@@ -5,7 +5,7 @@
     "moduleResolution": "node16",
     "lib": ["es2022"],
     "rootDir": "./src",
-    "outDir": "./dist",
+    "outDir": "./server",
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
@@ -20,5 +20,5 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "tests"]
+  "exclude": ["node_modules", "server", "tests"]
 }

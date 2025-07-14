@@ -34,7 +34,7 @@ This is an MCP (Model Context Protocol) server that provides AI tools for access
 ### Resource Loading System
 - `loader/` module handles document parsing and resource loading
 - Markdown documents are parsed with YAML frontmatter support
-- Schema files (OpenAPI, GraphQL) are loaded from the `resources/docs/schema/` directory
+- Schema files (OpenAPI, GraphQL) are loaded from the `assets/docs/schema/` directory
 - All resources are loaded at server startup via `load_resources()`
 
 ### MCP Tools
@@ -57,7 +57,7 @@ Available tools:
 - `get_identity_verifications_by_filter`: Searches identity verifications with filters (requires API_SECRET)
 
 ### Document Structure
-- Documentation is stored in `src/portone_mcp_server/resources/docs/`
+- Documentation is stored in `assets/docs/`
 - Contains both developer docs (`opi/`, `sdk/`, etc.) and help center docs (`help/`)
 - Documents can have YAML frontmatter with title, description, and targetVersions
 

@@ -4,8 +4,8 @@ import type { Documents, MarkdownDocument } from "../types.js";
 import { parseMarkdown } from "./markdown.js";
 import { loadSchema } from "./schema.js";
 
-export async function loadDocuments(resourcesPath: string): Promise<Documents> {
-  const docsPath = join(resourcesPath, "docs");
+export async function loadDocuments(assetsPath: string): Promise<Documents> {
+  const docsPath = join(assetsPath, "docs");
 
   // Load README
   const readmePath = join(docsPath, "README.md");
