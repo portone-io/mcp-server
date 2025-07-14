@@ -7,17 +7,19 @@ export const name = "read_portone_openapi_schema";
 
 export const config = {
   title: "포트원 OpenAPI 스키마 읽기",
-  description: `포트원 OpenAPI 스키마의 특정 부분을 읽습니다.
-
-Args:
-  version: API 버전 (V1 또는 V2)
-  yaml_path: 읽을 스키마의 YAML 경로 (예: components.schemas.Payment)
-
-Returns:
-  지정된 경로의 스키마 데이터 (YAML 형식)`,
+  description: `요청된 포트원 버전에서 제공하는 OpenAPI 스키마 내 특정 path의 데이터를 반환합니다.`,
   inputSchema: {
-    version: z.enum(["V1", "V2"]).describe("API 버전"),
-    yaml_path: z.string().describe("YAML 경로"),
+    version: z.enum(["V1", "V2"]).describe("포트원 버전"),
+    yaml_path: z
+      .array(z.string())
+      .describe(
+        "OpenAPI 스키마 내의 yaml path (list of strings)\n키 또는 인덱스(0부터 시작)를 포함할 수 있습니다.",
+      ),
+  },
+  outputSchema: {
+    result: z
+      .string()
+      .describe(" OpenAPI 스키마를 최대 depth 3으로 요약한 YAML 형식의 문자열"),
   },
 };
 
@@ -37,6 +39,7 @@ export function init(schema: Schema): ToolCallback<typeof config.inputSchema> {
             text: `Invalid version: ${version}. Must be V1 or V2.`,
           },
         ],
+        isError: true,
       };
     }
 
@@ -50,18 +53,24 @@ export function init(schema: Schema): ToolCallback<typeof config.inputSchema> {
             text: `Path not found in ${version} OpenAPI schema: ${yaml_path}`,
           },
         ],
+        isError: true,
       };
     }
 
     try {
       const yamlOutput = stringifyYaml(result);
+      const structuredContent = {
+        result: yamlOutput,
+      };
+
       return {
         content: [
           {
             type: "text",
-            text: yamlOutput,
+            text: JSON.stringify(structuredContent, null, 2),
           },
         ],
+        structuredContent,
       };
     } catch (error) {
       return {
@@ -71,6 +80,7 @@ export function init(schema: Schema): ToolCallback<typeof config.inputSchema> {
             text: `Error formatting output: ${error}`,
           },
         ],
+        isError: true,
       };
     }
   };

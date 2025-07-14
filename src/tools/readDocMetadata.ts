@@ -7,15 +7,12 @@ export const name = "read_portone_doc_metadata";
 
 export const config = {
   title: "포트원 문서 메타데이터 읽기",
-  description: `지정된 경로의 포트원 문서 메타데이터를 읽습니다.
-
-Args:
-  path: 문서의 경로 (예: opi/ko/readme, api/rest-v2/payment)
-
-Returns:
-  문서의 메타데이터 (제목, 설명, 대상 버전 등)`,
+  description: `지정된 경로의 포트원 문서 메타데이터를 읽습니다.`,
   inputSchema: {
-    path: z.string().describe("문서의 경로"),
+    path: z.string().describe("읽을 포트원 문서의 경로"),
+  },
+  outputSchema: {
+    result: z.string().describe("찾은 포트원 문서의 메타데이터"),
   },
 };
 
@@ -34,16 +31,22 @@ export function init(
             text: `Document not found at path: ${path}`,
           },
         ],
+        isError: true,
       };
     }
+
+    const structuredContent = {
+      result: formatDocumentMetadata(doc),
+    };
 
     return {
       content: [
         {
           type: "text",
-          text: formatDocumentMetadata(doc),
+          text: JSON.stringify(structuredContent, null, 2),
         },
       ],
+      structuredContent,
     };
   };
 }

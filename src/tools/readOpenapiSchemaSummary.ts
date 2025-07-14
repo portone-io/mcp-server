@@ -1,22 +1,21 @@
 import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
 import z from "zod";
 import type { Schema } from "../types.js";
-import { stringifyYaml, summarizeYaml } from "./utils/yaml.js";
+import { pruneYaml, stringifyYaml } from "./utils/yaml.js";
 
 export const name = "read_portone_openapi_schema_summary";
 
 export const config = {
   title: "포트원 OpenAPI 스키마 요약",
-  description: `포트원 OpenAPI 스키마의 요약을 조회합니다.
-깊이 3까지의 구조만 표시하여 전체 구조를 파악하기 쉽게 합니다.
-
-Args:
-  version: API 버전 (V1 또는 V2)
-
-Returns:
-  OpenAPI 스키마의 요약 (최대 깊이 3)`,
+  description: `요청된 포트원 버전에서 제공하는 OpenAPI 스키마를 요약해 문자열로 반환합니다.
+해당 요약에는 요청된 포트원 버전에서 제공하는 모든 REST API가 포함되어 있습니다.`,
   inputSchema: {
-    version: z.enum(["V1", "V2"]).describe("API 버전"),
+    version: z.enum(["V1", "V2"]).describe("포트원 버전"),
+  },
+  outputSchema: {
+    result: z
+      .string()
+      .describe("OpenAPI 스키마를 최대 depth 3으로 요약한 YAML 형식의 문자열"),
   },
 };
 
@@ -36,6 +35,7 @@ export function init(schema: Schema): ToolCallback<typeof config.inputSchema> {
             text: `Invalid version: ${version}. Must be V1 or V2.`,
           },
         ],
+        isError: true,
       };
     }
 
@@ -47,20 +47,26 @@ export function init(schema: Schema): ToolCallback<typeof config.inputSchema> {
             text: `${version} OpenAPI schema not available.`,
           },
         ],
+        isError: true,
       };
     }
 
     try {
-      const summary = summarizeYaml(schemaData, 3);
-      const yamlOutput = stringifyYaml(summary);
+      const pruned_data = pruneYaml(schemaData, 3);
+      const yamlOutput = stringifyYaml(pruned_data);
+
+      const structuredContent = {
+        result: yamlOutput,
+      };
 
       return {
         content: [
           {
             type: "text",
-            text: `${version} OpenAPI Schema Summary (depth 3):\n\n${yamlOutput}`,
+            text: JSON.stringify(structuredContent, null, 2),
           },
         ],
+        structuredContent,
       };
     } catch (error) {
       return {
@@ -70,6 +76,7 @@ export function init(schema: Schema): ToolCallback<typeof config.inputSchema> {
             text: `Error generating summary: ${error}`,
           },
         ],
+        isError: true,
       };
     }
   };
