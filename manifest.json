@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1",
   "name": "portone-mcp-server",
-  "version": "0.12.1",
+  "version": "0.13.0",
   "description": "PortOne MCP Server for Developers",
   "author": {
     "name": "PortOne",
@@ -24,7 +24,12 @@
       }
     }
   },
-  "tools": [{ "name": "search", "description": "Search functionality" }],
+  "tools": [
+    {
+      "name": "search",
+      "description": "Search functionality"
+    }
+  ],
   "tools_generated": true,
   "user_config": {
     "api_secret": {
