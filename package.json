@@ -16,7 +16,8 @@
     "start": "node server/index.js",
     "lint": "biome check .",
     "format": "biome format --write .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "changeset:version": "changeset version && node scripts/sync-manifest-version.js && biome format --write manifest.json"
   },
   "keywords": [
     "mcp",
