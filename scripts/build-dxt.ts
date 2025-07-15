@@ -16,7 +16,7 @@ const log = {
 
 const projectRoot = join(import.meta.dirname, "..");
 const deployDir = join(projectRoot, "deploy");
-const outputFile = join(projectRoot, "portone-mcp.dxt");
+const outputFile = join(projectRoot, "portone-mcp-server.dxt");
 
 async function buildDxt() {
   try {

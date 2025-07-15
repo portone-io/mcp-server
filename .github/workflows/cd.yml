@@ -38,3 +38,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Build DXT file
+        if: steps.changesets.outputs.published == 'true'
+        run: pnpm build:dxt
+
+      - name: Create GitHub Release
+        if: steps.changesets.outputs.published == 'true'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ fromJson(steps.changesets.outputs.publishedPackages)[0].version }}
+          name: v${{ fromJson(steps.changesets.outputs.publishedPackages)[0].version }}
+          files: |
+            portone-mcp-server.dxt
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
