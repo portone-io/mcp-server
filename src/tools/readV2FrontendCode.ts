@@ -1,7 +1,7 @@
 import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
 import z from "zod";
 
-export const name = "read_portone_v2_frontend_code";
+export const name = "readPortoneV2FrontendCode";
 
 export const config = {
   title: "포트원 V2 프론트엔드 코드 예제 읽기",

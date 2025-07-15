@@ -7,7 +7,13 @@ export const name = "getPayment";
 
 export const config = {
   title: "포트원 결제 정보 조회",
-  description: `고객사 거래번호로 포트원 서버에서 결제 내역을 검색합니다. 고객사 거래번호는 포트원 V1에서는 merchant_uid이며, V2에서는 paymentId에 해당합니다.`,
+  description: `고객사 거래번호로 포트원 서버에서 결제 내역을 검색합니다.
+고객사 거래번호는 포트원 V1에서는 merchant_uid이며, V2에서는 paymentId에 해당합니다.
+
+Note:
+  UNAUTHORIZED 에러의 경우 MCP 서버의 API_SECRET 환경변수 설정이 잘못되었을 가능성이 있습니다.
+  소문자 imp_ 혹은 imps_ 로 시작하는 거래번호는 고객사 거래번호가 아닌 V1 포트원 거래번호(imp_uid)일 가능성이 있습니다.
+  날짜 및 시간 정보 해석에는 타임존에 유의하세요. 포트원에서는 RFC 3339를 사용하며, Z는 Zulu Time을 의미합니다.`,
   inputSchema: {
     paymentId: z.string().describe("고객사에서 발급한 거래번호입니다."),
     storeId: z

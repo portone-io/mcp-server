@@ -25,8 +25,8 @@ export const config = {
   description: `포트원 서버에서 주어진 조건을 모두 만족하는 본인인증 정보를 검색합니다.
 
 Note:
-  최대 10개의 결과만 반환됩니다.
   UNAUTHORIZED 에러의 경우 MCP 서버의 API_SECRET 환경변수 설정이 잘못되었을 가능성이 있습니다.
+  소문자 imp_ 혹은 imps_ 로 시작하는 거래번호는 고객사 거래번호가 아닌 V1 포트원 거래번호(imp_uid)일 가능성이 있습니다.
   날짜 및 시간 정보 입출력 시에는 반드시 타임존을 명시합니다.`,
   inputSchema: {
     fromTime: z
