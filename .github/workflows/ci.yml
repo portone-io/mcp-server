@@ -11,33 +11,30 @@ jobs:
     strategy:
       matrix:
         node-version: ["22"]
-    
+
     steps:
-    - uses: actions/checkout@v4
-    
-    - name: Install pnpm
-      uses: pnpm/action-setup@v4
-    
-    - name: Set up Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'pnpm'
-    
-    - name: Install dependencies
-      run: pnpm install
-    
-    - name: Type check
-      run: pnpm typecheck
-    
-    - name: Lint
-      run: pnpm lint
-    
-    - name: Format check
-      run: pnpm format --check
-    
-    - name: Build
-      run: pnpm build
-    
-    - name: Run tests
-      run: pnpm test
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Type check
+        run: pnpm typecheck
+
+      - name: Biome check
+        run: pnpm biome ci
+
+      - name: Build
+        run: pnpm build
+
+      - name: Run tests
+        run: pnpm test
