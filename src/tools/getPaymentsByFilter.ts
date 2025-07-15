@@ -1,5 +1,5 @@
 import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { GetPaymentsResponse } from "@portone/server-sdk/payment";
+import type { GetPaymentsResponse } from "@portone/server-sdk/payment";
 import z from "zod";
 import type { HttpClient } from "../types.ts";
 import { filterOutNone } from "./utils/mapping.ts";

@@ -1,5 +1,5 @@
 import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { GetIdentityVerificationsResponse } from "@portone/server-sdk/identityVerification";
+import type { GetIdentityVerificationsResponse } from "@portone/server-sdk/identityVerification";
 import z from "zod";
 import type { HttpClient } from "../types.ts";
 import { filterOutNone } from "./utils/mapping.ts";
