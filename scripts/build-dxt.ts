@@ -14,9 +14,11 @@ const log = {
   error: (msg: string) => console.error(`${RED}${msg}${RESET}`),
 };
 
+const fileName = "portone-mcp-server.dxt";
+
 const projectRoot = join(import.meta.dirname, "..");
 const deployDir = join(projectRoot, "deploy");
-const outputFile = join(projectRoot, "portone-mcp-server.dxt");
+const outputFile = join(projectRoot, fileName);
 
 async function buildDxt() {
   try {
@@ -46,11 +48,11 @@ async function buildDxt() {
 
     // 5. dxt 파일 생성
     log.info("🗜️  dxt 파일 생성 중...");
-    execSync("zip -r ../portone-mcp.dxt * -D", { cwd: deployDir });
+    execSync(`zip -r ../${fileName} * -D`, { cwd: deployDir });
 
     // 6. 파일 크기 확인
     const stats = execSync(`ls -lh ${outputFile}`, { encoding: "utf-8" });
-    log.success("✅ portone-mcp.dxt 파일이 생성되었습니다!");
+    log.success(`✅ ${fileName} 파일이 생성되었습니다!`);
     console.log(stats.trim());
 
     // 7. deploy 디렉토리 삭제 (옵션)
