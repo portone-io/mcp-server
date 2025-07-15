@@ -60,10 +60,7 @@ MCP 서버에 포트원 기능을 연동하면, AI가 아래와 같은 작업을
 
     "portone-mcp-server": {
       "command": "npx",
-      "args": [
-         "-y",
-         "@portone/mcp-server@latest"
-       ],
+      "args": ["-y", "@portone/mcp-server@latest"],
       // 아래 env 블록을 추가하여 API 시크릿을 설정합니다.
       "env": {
         "API_SECRET": "<YOUR_PORTONE_API_SECRET>"
@@ -170,6 +167,42 @@ MCP 서버에 포트원 기능을 연동하면, AI가 아래와 같은 작업을
    1. developers.portone.io, help.portone.io 저장소에서 `pnpm docs-for-llms` 명령을 실행 (로컬에 설정된 브랜치 기준으로 문서 생성)
    2. MCP 서버의 docs 디렉토리를 새로 생성된 내용으로 교체
    3. 개발자센터, 헬프센터 외 일부 문서 다운로드 및 교체
+
+## Python 버전에서 마이그레이션
+
+기존에 Python 버전(<0.13.0)의 MCP 서버를 사용하고 계셨다면 TypeScript 버전으로 마이그레이션하는 것을 권장합니다.
+
+### 마이그레이션 방법
+
+1. **MCP 설정 변경**
+
+   기존 파이썬 버전 설정:
+
+   ```json
+   "mcpServers": {
+     "portone-mcp-server": {
+       "command": "uvx",
+       "args": ["portone-mcp-server@latest"]
+     }
+   }
+   ```
+
+   새로운 TypeScript 버전 설정:
+
+   ```json
+   "mcpServers": {
+     "portone-mcp-server": {
+       "command": "npx",
+       "args": ["-y", "@portone/mcp-server@latest"]
+     }
+   }
+   ```
+
+2. **환경 변수 및 API 시크릿 설정은 동일**하게 유지됩니다.
+
+3. **Node.js 설치**: Node.js 22.6.0 이상이 필요합니다.
+
+4. **AI 도구 재시작**: 설정 변경 후 사용 중인 AI 도구를 재시작합니다.
 
 ## 라이선스
 
