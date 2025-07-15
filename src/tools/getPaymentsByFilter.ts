@@ -33,7 +33,7 @@ export const name = "getPaymentsByFilter";
 
 export const config = {
   title: "포트원 결제 내역 검색",
-  description: `포트원 서버에서 주어진 조건을 모두 만족하는 결제 내역을 최대 10개까지 검색합니다.
+  description: `포트원 서버에서 주어진 조건을 모두 만족하는 결제 내역을 검색합니다.
 
 Note:
   UNAUTHORIZED 에러의 경우 MCP 서버의 API_SECRET 환경변수 설정이 잘못되었을 가능성이 있습니다.

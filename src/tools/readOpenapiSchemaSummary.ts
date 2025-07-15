@@ -3,12 +3,11 @@ import z from "zod";
 import type { Schema } from "../types.ts";
 import { pruneYaml, stringifyYaml } from "./utils/yaml.ts";
 
-export const name = "read_portone_openapi_schema_summary";
+export const name = "readPortoneOpenapiSchemaSummary";
 
 export const config = {
   title: "포트원 OpenAPI 스키마 요약",
-  description: `요청된 포트원 버전에서 제공하는 OpenAPI 스키마를 요약해 문자열로 반환합니다.
-해당 요약에는 요청된 포트원 버전에서 제공하는 모든 REST API가 포함되어 있습니다.`,
+  description: `요청된 포트원 버전에서 제공하는 OpenAPI 스키마를 요약해 문자열로 반환합니다. 해당 요약에는 요청된 포트원 버전에서 제공하는 모든 REST API가 포함되어 있습니다.`,
   inputSchema: {
     version: z.enum(["V1", "V2"]).describe("포트원 버전"),
   },

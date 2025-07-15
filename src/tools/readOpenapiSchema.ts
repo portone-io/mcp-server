@@ -3,7 +3,7 @@ import z from "zod";
 import type { Schema } from "../types.ts";
 import { getFromYamlPath, stringifyYaml } from "./utils/yaml.ts";
 
-export const name = "read_portone_openapi_schema";
+export const name = "readPortoneOpenapiSchema";
 
 export const config = {
   title: "포트원 OpenAPI 스키마 읽기",
