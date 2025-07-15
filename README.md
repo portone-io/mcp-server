@@ -2,6 +2,23 @@
 
 포트원 사용자를 위한 MCP (Model Context Protocol) 서버입니다. 포트원 개발자센터, 헬프센터 등 공식 문서 내용을 LLM(Large Language Model)에 제공해 정확한 정보를 바탕으로 사용자의 연동 및 질의를 돕도록 합니다.
 
+## DXT를 이용한 설치
+
+[DXT (Desktop Extensions)](https://github.com/anthropics/dxt)를 이용해 MCP 서버를 원클릭으로 설치할 수 있습니다.
+
+1. [GitHub Releases](https://github.com/portone-io/mcp-server/releases)에서 최신 `portone-mcp-server.dxt` 파일을 다운로드합니다.
+
+2. 지원하는 AI 도구(Claude Desktop 등)에서 다운로드한 `.dxt` 파일을 드래그 앤 드롭하거나 열기를 통해 설치합니다.
+
+3. 설치 후 도구를 재시작하여 MCP 서버가 정상적으로 등록되었는지 확인합니다.
+
+> [!WARNING]
+> **Claude Desktop에서 DXT 파일 사용 시 주의사항**
+>
+> 현재 [알려진 이슈](https://github.com/anthropics/dxt/issues/45)로 인해 Claude Desktop에서 DXT 설치 후 MCP 서버가 정상적으로 작동하지 않을 수 있습니다.
+>
+> 이 경우 Node.js 22.6.0 이상을 설치하고 Claude Desktop 설정에서 **"MCP용 내장 Node.js 사용"** 옵션을 비활성화한 후 재시작하면 정상적으로 작동합니다.
+
 ## MCP 서버 등록하기
 
 1. Node.js 22.6.0 이상이 설치되어 있어야 합니다.
@@ -89,12 +106,6 @@ MCP 서버에 포트원 기능을 연동하면, AI가 아래와 같은 작업을
 
    ```bash
    pnpm dev
-   ```
-
-1. 테스트
-
-   ```bash
-   pnpm test
    ```
 
 1. 코드 린팅 및 포맷팅
