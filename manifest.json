@@ -1,0 +1,45 @@
+{
+  "dxt_version": "0.1",
+  "name": "portone-mcp-server",
+  "version": "0.12.1",
+  "description": "PortOne MCP Server for Developers",
+  "author": {
+    "name": "PortOne",
+    "email": "tech.support@portone.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/portone-io/mcp-server"
+  },
+  "support": "https://github.com/portone-io/mcp-server/issues",
+  "icon": "icon.png",
+  "server": {
+    "type": "node",
+    "entry_point": "server/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/server/index.js"],
+      "env": {
+        "API_SECRET": "${user_config.api_secret}"
+      }
+    }
+  },
+  "tools": [{ "name": "search", "description": "Search functionality" }],
+  "tools_generated": true,
+  "user_config": {
+    "api_secret": {
+      "type": "string",
+      "title": "포트원 API 시크릿",
+      "description": "포트원 기능을 연동하기 위해 콘솔에서 발급받을 수 있는 API 시크릿입니다.",
+      "required": false,
+      "sensitive": true
+    }
+  },
+  "compatibility": {
+    "claude_desktop": ">=0.10.0",
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": {
+      "node": ">=22.6.0"
+    }
+  }
+}

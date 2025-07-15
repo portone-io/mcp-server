@@ -6,24 +6,26 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Build & Test Commands
 
-- Setup: `uv sync`
-- Run server: `uv run portone-mcp-server`
-- Run all tests: `uv run pytest`
-- Run single test: `uv run pytest tests/test_loader.py::TestParseMarkdownContent::test_parse_markdown_without_frontmatter -v`
-- Lint code: `uv run ruff check .`
-- Format code: `uv run ruff format .`
+- Setup: `pnpm install`
+- Run server: `pnpm dev`
+- Run all tests: `pnpm test`
+- Run single test: `pnpm test tests/loader.test.ts`
+- Lint code: `pnpm lint`
+- Format code: `pnpm format`
+- Build: `pnpm build`
+- Type check: `pnpm typecheck`
 
 ## Code Style Guidelines
 
-- Python 3.12+ required
-- Use type hints for all function parameters and return values
-- Follow PEP 8 conventions
-- Use dataclasses for data containers
-- Organize imports: standard library first, then third-party, then local
-- Error handling: use descriptive exception messages
-- Naming: snake_case for functions/variables, PascalCase for classes
-- Documentation: document classes and functions with docstrings
-- Tests: write unit tests for critical functions
+- Node.js 22+ and TypeScript 5+ required
+- Use type annotations for all function parameters and return values
+- Follow TypeScript/JavaScript conventions
+- Use interfaces and types for data structures
+- Organize imports: Node.js built-ins first, then third-party, then local
+- Error handling: use descriptive error messages
+- Naming: camelCase for functions/variables, PascalCase for classes/interfaces
+- Documentation: document classes and functions with JSDoc comments
+- Tests: write unit tests using Vitest for critical functions
 
 ## Architecture Overview
 
@@ -32,7 +34,7 @@ This is an MCP (Model Context Protocol) server that provides AI tools for access
 ### Resource Loading System
 - `loader/` module handles document parsing and resource loading
 - Markdown documents are parsed with YAML frontmatter support
-- Schema files (OpenAPI, GraphQL) are loaded from the `resources/docs/schema/` directory
+- Schema files (OpenAPI, GraphQL) are loaded from the `assets/docs/schema/` directory
 - All resources are loaded at server startup via `load_resources()`
 
 ### MCP Tools
@@ -55,16 +57,16 @@ Available tools:
 - `get_identity_verifications_by_filter`: Searches identity verifications with filters (requires API_SECRET)
 
 ### Document Structure
-- Documentation is stored in `src/portone_mcp_server/resources/docs/`
+- Documentation is stored in `assets/docs/`
 - Contains both developer docs (`opi/`, `sdk/`, etc.) and help center docs (`help/`)
 - Documents can have YAML frontmatter with title, description, and targetVersions
 
 ### Publishing Process
-1. Update version in `pyproject.toml`
+1. Update version in `package.json`
 2. Clean build directory: `rm -rf dist`
-3. Install dependencies: `uv sync`
-4. Build package: `uv build`
-5. Publish to PyPI: `uv publish`
+3. Install dependencies: `pnpm install`
+4. Build package: `pnpm build`
+5. Publish to npm: `pnpm publish`
 
 ### Document Updates
 The `update_docs.py` script updates documentation from external repositories:
