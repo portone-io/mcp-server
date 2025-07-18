@@ -2,6 +2,23 @@
 
 포트원 사용자를 위한 MCP (Model Context Protocol) 서버입니다. 포트원 개발자센터, 헬프센터 등 공식 문서 내용을 LLM(Large Language Model)에 제공해 정확한 정보를 바탕으로 사용자의 연동 및 질의를 돕도록 합니다.
 
+## DXT를 이용한 설치
+
+[DXT (Desktop Extensions)](https://github.com/anthropics/dxt)를 이용해 MCP 서버를 원클릭으로 설치할 수 있습니다.
+
+1. [GitHub Releases](https://github.com/portone-io/mcp-server/releases)에서 최신 `portone-mcp-server.dxt` 파일을 다운로드합니다.
+
+2. 지원하는 AI 도구(Claude Desktop 등)에서 다운로드한 `.dxt` 파일을 드래그 앤 드롭하거나 열기를 통해 설치합니다.
+
+3. 설치 후 도구를 재시작하여 MCP 서버가 정상적으로 등록되었는지 확인합니다.
+
+> [!WARNING]
+> **Claude Desktop에서 DXT 파일 사용 시 주의사항**
+>
+> 현재 [알려진 이슈](https://github.com/anthropics/dxt/issues/45)로 인해 Claude Desktop에서 DXT 설치 후 MCP 서버가 정상적으로 작동하지 않을 수 있습니다.
+>
+> 이 경우 Node.js 22.6.0 이상을 설치하고 Claude Desktop 설정에서 **"MCP용 내장 Node.js 사용"** 옵션을 비활성화한 후 재시작하면 정상적으로 작동합니다.
+
 ## MCP 서버 등록하기
 
 1. Node.js 22.6.0 이상이 설치되어 있어야 합니다.
@@ -43,10 +60,7 @@ MCP 서버에 포트원 API 시크릿을 설정하면, AI가 지식 활용 외�
 
     "portone-mcp-server": {
       "command": "npx",
-      "args": [
-         "-y",
-         "@portone/mcp-server@latest"
-       ],
+      "args": ["-y", "@portone/mcp-server@latest"],
       // 아래 env 블록을 추가하여 API 시크릿을 설정합니다.
       "env": {
         "API_SECRET": "<YOUR_PORTONE_API_SECRET>"
@@ -85,12 +99,6 @@ MCP 서버에 포트원 API 시크릿을 설정하면, AI가 지식 활용 외�
 
    ```bash
    pnpm dev
-   ```
-
-1. 테스트
-
-   ```bash
-   pnpm test
    ```
 
 1. 코드 린팅 및 포맷팅
@@ -155,6 +163,42 @@ MCP 서버에 포트원 API 시크릿을 설정하면, AI가 지식 활용 외�
    1. developers.portone.io, help.portone.io 저장소에서 `pnpm docs-for-llms` 명령을 실행 (로컬에 설정된 브랜치 기준으로 문서 생성)
    2. MCP 서버의 docs 디렉토리를 새로 생성된 내용으로 교체
    3. 개발자센터, 헬프센터 외 일부 문서 다운로드 및 교체
+
+## Python 버전에서 마이그레이션
+
+기존에 Python 버전(<0.13.0)의 MCP 서버를 사용하고 계셨다면 TypeScript 버전으로 마이그레이션하는 것을 권장합니다.
+
+### 마이그레이션 방법
+
+1. **MCP 설정 변경**
+
+   기존 파이썬 버전 설정:
+
+   ```json
+   "mcpServers": {
+     "portone-mcp-server": {
+       "command": "uvx",
+       "args": ["portone-mcp-server@latest"]
+     }
+   }
+   ```
+
+   새로운 TypeScript 버전 설정:
+
+   ```json
+   "mcpServers": {
+     "portone-mcp-server": {
+       "command": "npx",
+       "args": ["-y", "@portone/mcp-server@latest"]
+     }
+   }
+   ```
+
+2. **환경 변수 및 API 시크릿 설정은 동일**하게 유지됩니다.
+
+3. **Node.js 설치**: Node.js 22.6.0 이상이 필요합니다.
+
+4. **AI 도구 재시작**: 설정 변경 후 사용 중인 AI 도구를 재시작합니다.
 
 ## 라이선스
 
