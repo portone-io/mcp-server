@@ -1,8 +1,10 @@
-export * as getIdentityVerification from "./getIdentityVerification.ts";
-export * as getIdentityVerificationsByFilter from "./getIdentityVerificationsByFilter.ts";
+export * as addTestChannel from "./addTestChannel.ts";
+export * as getChannelsOfStore from "./getChannelsOfStore.ts";
 export * as getPayment from "./getPayment.ts";
 export * as getPaymentsByFilter from "./getPaymentsByFilter.ts";
 export * as listDocs from "./listDocs.ts";
+export * as listSharedTestChannels from "./listSharedTestChannels.ts";
+export * as listStores from "./listStores.ts";
 export * as readDoc from "./readDoc.ts";
 export * as readDocMetadata from "./readDocMetadata.ts";
 export * as readOpenapiSchema from "./readOpenapiSchema.ts";

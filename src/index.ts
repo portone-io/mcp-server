@@ -4,14 +4,17 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { GraphQLClient } from "graphql-request";
 import packageJson from "../package.json" with { type: "json" };
 import { loadResources } from "./loader/index.ts";
 import {
-  getIdentityVerification,
-  getIdentityVerificationsByFilter,
+  addTestChannel,
+  getChannelsOfStore,
   getPayment,
   getPaymentsByFilter,
   listDocs,
+  listSharedTestChannels,
+  listStores,
   readDoc,
   readDocMetadata,
   readOpenapiSchema,
@@ -20,6 +23,7 @@ import {
   readV2FrontendCode,
   regexSearch,
 } from "./tools/index.ts";
+import { TokenProvider } from "./tools/utils/key.ts";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -77,6 +81,30 @@ export async function runServer() {
     readV2FrontendCode.init(apiBaseUrl),
   );
 
+  const graphClient = new GraphQLClient("https://api.portone.io/graphql");
+  const tokenProvider = new TokenProvider();
+  tokenProvider.serveListener();
+  mcp.registerTool(
+    listStores.name,
+    listStores.config,
+    listStores.init(tokenProvider, graphClient),
+  );
+  mcp.registerTool(
+    listSharedTestChannels.name,
+    listSharedTestChannels.config,
+    listSharedTestChannels.init(tokenProvider),
+  );
+  mcp.registerTool(
+    getChannelsOfStore.name,
+    getChannelsOfStore.config,
+    getChannelsOfStore.init(tokenProvider),
+  );
+  mcp.registerTool(
+    addTestChannel.name,
+    addTestChannel.config,
+    addTestChannel.init(tokenProvider),
+  );
+
   const apiSecret = process.env.API_SECRET;
   if (apiSecret) {
     const httpClient = {
@@ -99,16 +127,6 @@ export async function runServer() {
       getPaymentsByFilter.name,
       getPaymentsByFilter.config,
       getPaymentsByFilter.init(httpClient),
-    );
-    mcp.registerTool(
-      getIdentityVerification.name,
-      getIdentityVerification.config,
-      getIdentityVerification.init(httpClient),
-    );
-    mcp.registerTool(
-      getIdentityVerificationsByFilter.name,
-      getIdentityVerificationsByFilter.config,
-      getIdentityVerificationsByFilter.init(httpClient),
     );
   }
 

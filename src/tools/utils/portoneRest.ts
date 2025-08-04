@@ -1,5 +1,9 @@
 import z from "zod";
 
+export const CONSOLE_URL = "https://admin.portone.io";
+export const MERCHANT_SERVICE_URL = "https://merchant-service.prod.iamport.co";
+export const CHANNEL_SERVICE_URL = "https://channel-service.prod.iamport.co";
+
 export const PgProviderSchema = z.enum([
   "HTML5_INICIS",
   "PAYPAL",
@@ -178,4 +182,13 @@ export function filterFields(
       return data;
     }
   }
+}
+
+export function filterFieldsV2<T extends object>(
+  fields: Set<string>,
+  value: T,
+): Partial<T> {
+  return Object.fromEntries(
+    Object.entries(value).filter(([key]) => fields.has(key)),
+  ) as Partial<T>;
 }
