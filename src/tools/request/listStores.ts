@@ -136,13 +136,15 @@ export async function listStores({
     if (error instanceof Error) {
       return {
         type: "error",
-        data: error,
+        data: {
+          ...error,
+        },
       };
     } else {
       return {
         type: "error",
         data: {
-          message: `알 수 없는 오류가 발생했습니다.`,
+          message: "알 수 없는 오류가 발생했습니다.",
           cause: error,
         },
       };

@@ -73,10 +73,10 @@ export class TokenProvider {
       port: 1270,
       silent: true,
     });
-    setInterval(() => {
+    setInterval(async () => {
       if (this.token !== null && Date.now() >= this.token.refreshAt) {
         try {
-          this.refresh(this.token.refresh);
+          this.token = await this.refresh(this.token.refresh);
         } catch (e) {
           console.error(e);
           this.token = null;

@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { GraphQLClient } from "graphql-request";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
 import packageJson from "../package.json" with { type: "json" };
 import { loadResources } from "./loader/index.ts";
 import {
@@ -23,6 +23,7 @@ import {
   regexSearch,
 } from "./tools/index.ts";
 import { TokenProvider } from "./tools/utils/key.ts";
+import { GRAPHQL_URL } from "./tools/utils/url.ts";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -80,7 +81,7 @@ export async function runServer() {
     readV2FrontendCode.init(apiBaseUrl),
   );
 
-  const graphClient = new GraphQLClient("https://api.portone.io/graphql");
+  const graphClient = new GraphQLClient(GRAPHQL_URL);
   const tokenProvider = new TokenProvider();
   tokenProvider.serveListener();
   mcp.registerTool(
