@@ -6,7 +6,7 @@ import type { Result } from "../utils/result.ts";
 
 const ErrorResponse = z.object({
   __typename: z.string(),
-  message: z.string().optional(),
+  message: z.string().nullable(),
 });
 
 const StoreResponse = z
@@ -19,15 +19,16 @@ const StoreResponse = z
       .object({
         v1UserId: z.number(),
         userCode: z.string(),
-        tierCode: z.string().optional(),
+        tierCode: z.string().nullable(),
       })
       .or(ErrorResponse),
   })
   .transform(({ v1Info, ...store }) => ({
     ...match(v1Info)
       .with({ __typename: P.nonNullable }, () => ({}))
-      .otherwise(({ v1UserId, ...rest }) => ({
+      .otherwise(({ v1UserId, tierCode, ...rest }) => ({
         userId: v1UserId,
+        tierCode: tierCode ?? undefined,
         ...rest,
       })),
     ...store,
@@ -51,10 +52,7 @@ const ListStoresResponse = z
   })
   .transform(({ merchant }) =>
     match(merchant)
-      .with({ __typename: P.nonNullable }, ({ __typename, ...rest }) => ({
-        error: __typename,
-        ...rest,
-      }))
+      .with({ __typename: P.nonNullable }, (error) => error)
       .otherwise(({ items }) => {
         const main = items.find(({ isRepresentative }) => isRepresentative);
         return {
@@ -66,14 +64,16 @@ const ListStoresResponse = z
 
 export type ListStoresResponse = Exclude<
   z.infer<typeof ListStoresResponse>,
-  { error: string }
+  { __typename: string }
 >;
 
 const listStoresQuery = parse(gql`
 query ListStores {
   merchant {
+    ...ErrorFragment
     ... on Merchant {
       stores {
+        ...ErrorFragment
         ... on StoresPayload {
           items {
             ... on Store {
@@ -82,29 +82,24 @@ query ListStores {
               name
               isRepresentative
               v1Info {
+                ...ErrorFragment
                 ... on StoreV1Info {
                   v1UserId
                   userCode
-                }
-                ... on Error {
-                  __typename
-                  message
+                  tierCode
                 }
               }
             }
           }
         }
-        ... on Error {
-          __typename
-          message
-        }
       }
     }
-    ... on Error {
-      __typename
-      message
-    }
   }
+}
+
+fragment ErrorFragment on Error {
+  __typename
+  message
 }
 `);
 
@@ -126,11 +121,11 @@ export async function listStores({
 
     return match(parsed)
       .returnType<Result<ListStoresResponse>>()
-      .with({ error: P.nonNullable }, ({ error, message }) => ({
+      .with({ __typename: P.nonNullable }, ({ __typename, message }) => ({
         type: "error",
         data: {
           message,
-          type: error,
+          type: __typename,
         },
       }))
       .otherwise((stores) => ({

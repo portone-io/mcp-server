@@ -1,0 +1,3 @@
+export const CONSOLE_URL = "https://admin.portone.io";
+export const MERCHANT_SERVICE_URL = "https://merchant-service.prod.iamport.co";
+export const CHANNEL_SERVICE_URL = "https://channel-service.prod.iamport.co";

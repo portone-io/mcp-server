@@ -1,16 +1,15 @@
 #!/usr/bin/env node
 
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { GraphQLClient } from "graphql-request";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import packageJson from "../package.json" with { type: "json" };
 import { loadResources } from "./loader/index.ts";
 import {
   addTestChannel,
   getChannelsOfStore,
-  getPayment,
   getPaymentsByFilter,
   listDocs,
   listSharedTestChannels,
@@ -104,31 +103,11 @@ export async function runServer() {
     addTestChannel.config,
     addTestChannel.init(tokenProvider),
   );
-
-  const apiSecret = process.env.API_SECRET;
-  if (apiSecret) {
-    const httpClient = {
-      get: async (url: string) => {
-        return fetch(`https://api.portone.io${url}`, {
-          headers: {
-            Authorization: `PortOne ${apiSecret}`,
-            "User-Agent": `portone-mcp-server ${packageJson.version}`,
-          },
-        });
-      },
-    };
-
-    mcp.registerTool(
-      getPayment.name,
-      getPayment.config,
-      getPayment.init(httpClient),
-    );
-    mcp.registerTool(
-      getPaymentsByFilter.name,
-      getPaymentsByFilter.config,
-      getPaymentsByFilter.init(httpClient),
-    );
-  }
+  mcp.registerTool(
+    getPaymentsByFilter.name,
+    getPaymentsByFilter.config,
+    getPaymentsByFilter.init(tokenProvider, graphClient),
+  );
 
   // Run the server
   const transport = new StdioServerTransport();

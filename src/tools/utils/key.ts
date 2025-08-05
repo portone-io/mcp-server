@@ -2,8 +2,8 @@ import { getQuery, H3, serve } from "h3";
 import open from "open";
 import { match } from "ts-pattern";
 import { z } from "zod";
-import { CONSOLE_URL, MERCHANT_SERVICE_URL } from "./portoneRest.ts";
 import type { Result } from "./result.ts";
+import { CONSOLE_URL, MERCHANT_SERVICE_URL } from "./url.ts";
 
 const OAUTH_CLIENT_ID = "MCP";
 
@@ -79,6 +79,7 @@ export class TokenProvider {
           this.refresh(this.token.refresh);
         } catch (e) {
           console.error(e);
+          this.token = null;
         }
       }
     }, 10 * 1000);
@@ -165,7 +166,16 @@ export class TokenProvider {
       url.searchParams.set("client_id", OAUTH_CLIENT_ID);
       url.searchParams.set("redirect_uri", "http://127.0.0.1:1270/oauth/mcp");
       url.searchParams.set("response_type", "code");
-      url.searchParams.set("scope", "HOME_AND_REPORT");
+      url.searchParams.set(
+        "scope",
+        [
+          "HOME_AND_REPORT",
+          "CHANNEL_READ",
+          "CHANNEL_UPDATE",
+          "STORE_READ",
+          "MERCHANT_READ",
+        ].join(" "),
+      );
       url.searchParams.set("code_challenge", codeChallenge);
       url.searchParams.set("code_challenge_method", "S256");
 

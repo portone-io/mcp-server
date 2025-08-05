@@ -1,10 +1,10 @@
 import { match, P } from "ts-pattern";
 import z from "zod";
-import { CHANNEL_SERVICE_URL } from "../utils/portoneRest.ts";
 import type { Result } from "../utils/result.ts";
+import { CHANNEL_SERVICE_URL } from "../utils/url.ts";
 
 const StatusResponse = z.object({
-  code: z.number().optional(),
+  code: z.number(),
   message: z.string().optional(),
   details: z.array(z.object({}).passthrough()).optional(),
 });
@@ -33,7 +33,7 @@ const ChannelResponse = z.object({
   deleted: z.boolean(),
   boundAt: z.string(),
   modifiedAt: z.string(),
-  taxType: z.string(),
+  taxType: z.string().optional(),
   channelKey: z.string(),
   pgCompany: z.string(),
   isSupportingV2: z.boolean(),
@@ -54,7 +54,7 @@ export async function listChannels({
   authorization: string;
 }): Promise<Result<ListChannelsResponse>> {
   try {
-    const url = new URL("/v2/shared-test-channels", CHANNEL_SERVICE_URL);
+    const url = new URL("/v2/channels", CHANNEL_SERVICE_URL);
     url.searchParams.set("storeId", storeId);
     const response = await fetch(url, {
       method: "GET",
@@ -76,9 +76,10 @@ export async function listChannels({
         .otherwise(({ code, message, details }) => ({
           type: "error",
           data: {
-            message: message ?? "테스트 채널 정보를 가져오지 못했습니다.",
+            message: message ?? "상점의 채널 정보를 가져오지 못했습니다.",
             code,
             details,
+            status: response.status,
           },
         }));
     } catch (parseError) {
@@ -86,7 +87,6 @@ export async function listChannels({
         type: "error",
         data: {
           message: "올바르지 않은 형식의 서버 응답",
-          text,
           cause: parseError,
         },
       };
@@ -101,7 +101,7 @@ export async function listChannels({
       return {
         type: "error",
         data: {
-          message: `알 수 없는 오류가 발생했습니다.`,
+          message: "알 수 없는 오류가 발생했습니다.",
           cause: error,
         },
       };

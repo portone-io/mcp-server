@@ -1,8 +1,8 @@
 import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
 import z from "zod";
+import { PgProvider } from "./request/getPaymentsByFilter.ts";
 import { listV2SharedTestChannel } from "./request/listV2SharedTestChannel.ts";
 import { getToken, type TokenProvider } from "./utils/key.ts";
-import { PgProviderSchema } from "./utils/portoneRest.ts";
 import { toolErrorResult } from "./utils/result.ts";
 
 export const name = "listSharedTestChannels";
@@ -31,7 +31,7 @@ export const config = {
   description: "포트원에서 테스트 용도로 제공하는 채널의 목록을 가져옵니다.",
   inputSchema: {
     pgProviders: z
-      .array(PgProviderSchema)
+      .array(PgProvider)
       .optional()
       .describe("목록에 있는 PG사(미설정 시 모든 PG사)만 보여줍니다."),
   },

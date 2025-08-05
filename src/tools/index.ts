@@ -1,6 +1,5 @@
 export * as addTestChannel from "./addTestChannel.ts";
 export * as getChannelsOfStore from "./getChannelsOfStore.ts";
-export * as getPayment from "./getPayment.ts";
 export * as getPaymentsByFilter from "./getPaymentsByFilter.ts";
 export * as listDocs from "./listDocs.ts";
 export * as listSharedTestChannels from "./listSharedTestChannels.ts";

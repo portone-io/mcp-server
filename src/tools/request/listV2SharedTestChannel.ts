@@ -1,7 +1,7 @@
 import { match, P } from "ts-pattern";
 import z from "zod";
-import { CHANNEL_SERVICE_URL } from "../utils/portoneRest.ts";
 import type { Result } from "../utils/result.ts";
+import { CHANNEL_SERVICE_URL } from "../utils/url.ts";
 
 const StatusResponse = z.object({
   code: z.number().optional(),
@@ -58,6 +58,7 @@ export async function listV2SharedTestChannel({
             message: message ?? "테스트 채널 정보를 가져오지 못했습니다.",
             code,
             details,
+            status: response.status,
           },
         }));
     } catch (parseError) {
@@ -65,7 +66,6 @@ export async function listV2SharedTestChannel({
         type: "error",
         data: {
           message: "올바르지 않은 형식의 서버 응답",
-          text,
           cause: parseError,
         },
       };
