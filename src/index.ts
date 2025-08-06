@@ -15,7 +15,6 @@ import {
   listSharedTestChannels,
   listStores,
   readDoc,
-  readDocMetadata,
   readOpenapiSchema,
   readOpenapiSchemaSummary,
   readV2BackendCode,
@@ -49,11 +48,6 @@ export async function runServer() {
   // Initialize tools
   mcp.registerTool(listDocs.name, listDocs.config, listDocs.init(documents));
   mcp.registerTool(readDoc.name, readDoc.config, readDoc.init(documents));
-  mcp.registerTool(
-    readDocMetadata.name,
-    readDocMetadata.config,
-    readDocMetadata.init(documents),
-  );
   mcp.registerTool(
     regexSearch.name,
     regexSearch.config,

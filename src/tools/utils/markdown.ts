@@ -4,7 +4,7 @@ export function formatDocumentMetadata(doc: MarkdownDocument): string {
   const lines: string[] = [];
 
   lines.push(`파일: ${doc.path}`);
-
+  lines.push(`URL: ${docPathToUrl(doc.path)}`);
   if (doc.frontmatter) {
     if (doc.frontmatter.title) {
       lines.push(`제목: ${doc.frontmatter.title}`);
@@ -77,4 +77,11 @@ export function getContextAroundMatches(
     content: contentLines.join("\n"),
     lineNumbers: matchedLineNumbers.map((n) => n + 1),
   };
+}
+
+function docPathToUrl(path: string): string {
+  if (path.startsWith("help/")) {
+    return `https://help.portone.io/category/${path.slice(5)}`;
+  }
+  return `https://developers.portone.io/${path}`;
 }
