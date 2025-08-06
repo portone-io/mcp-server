@@ -2,6 +2,7 @@ import { match, P } from "ts-pattern";
 import z from "zod";
 import type { Result } from "../utils/result.ts";
 import { CHANNEL_SERVICE_URL } from "../utils/url.ts";
+import { USER_AGENT } from "../utils/userAgent.ts";
 
 const StatusResponse = z.object({
   code: z.number().optional(),
@@ -64,8 +65,9 @@ export async function addChannel({
     const response = await fetch(new URL("/v2/channels", CHANNEL_SERVICE_URL), {
       method: "POST",
       headers: {
-        authorization,
+        Authorization: authorization,
         "Content-Type": "application/json",
+        "User-Agent": USER_AGENT,
       },
       body: JSON.stringify(request),
     });

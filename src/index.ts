@@ -24,6 +24,7 @@ import {
 } from "./tools/index.ts";
 import { TokenProvider } from "./tools/utils/key.ts";
 import { GRAPHQL_URL } from "./tools/utils/url.ts";
+import { USER_AGENT } from "./tools/utils/userAgent.ts";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -81,7 +82,9 @@ export async function runServer() {
     readV2FrontendCode.init(apiBaseUrl),
   );
 
-  const graphClient = new GraphQLClient(GRAPHQL_URL);
+  const graphClient = new GraphQLClient(GRAPHQL_URL, {
+    headers: { "User-Agent": USER_AGENT },
+  });
   const tokenProvider = new TokenProvider();
   tokenProvider.serveListener();
   mcp.registerTool(

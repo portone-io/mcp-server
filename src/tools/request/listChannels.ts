@@ -2,6 +2,7 @@ import { match, P } from "ts-pattern";
 import z from "zod";
 import type { Result } from "../utils/result.ts";
 import { CHANNEL_SERVICE_URL } from "../utils/url.ts";
+import { USER_AGENT } from "../utils/userAgent.ts";
 
 const StatusResponse = z.object({
   code: z.number(),
@@ -59,7 +60,8 @@ export async function listChannels({
     const response = await fetch(url, {
       method: "GET",
       headers: {
-        authorization,
+        Authorization: authorization,
+        "User-Agent": USER_AGENT,
       },
     });
     const text = await response.text();
