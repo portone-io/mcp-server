@@ -1,7 +1,7 @@
 import { match, P } from "ts-pattern";
 import z from "zod";
+import { CHANNEL_SERVICE_URL } from "../../url.ts";
 import type { Result } from "../utils/result.ts";
-import { CHANNEL_SERVICE_URL } from "../utils/url.ts";
 import { USER_AGENT } from "../utils/userAgent.ts";
 
 const StatusResponse = z

@@ -10,12 +10,12 @@ import { loadResources } from "./loader/index.ts";
 import {
   addTestChannel,
   getChannelsOfStore,
+  getDocsUrl,
   getPaymentsByFilter,
   listDocs,
   listSharedTestChannels,
   listStores,
   readDoc,
-  readDocMetadata,
   readOpenapiSchema,
   readOpenapiSchemaSummary,
   readV2BackendCode,
@@ -23,8 +23,8 @@ import {
   regexSearch,
 } from "./tools/index.ts";
 import { TokenProvider } from "./tools/utils/key.ts";
-import { GRAPHQL_URL } from "./tools/utils/url.ts";
 import { USER_AGENT } from "./tools/utils/userAgent.ts";
+import { DEVELOPERS_URL, GRAPHQL_URL } from "./url.ts";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -50,14 +50,14 @@ export async function runServer() {
   mcp.registerTool(listDocs.name, listDocs.config, listDocs.init(documents));
   mcp.registerTool(readDoc.name, readDoc.config, readDoc.init(documents));
   mcp.registerTool(
-    readDocMetadata.name,
-    readDocMetadata.config,
-    readDocMetadata.init(documents),
-  );
-  mcp.registerTool(
     regexSearch.name,
     regexSearch.config,
     regexSearch.init(documents),
+  );
+  mcp.registerTool(
+    getDocsUrl.name,
+    getDocsUrl.config,
+    getDocsUrl.init(documents),
   );
   mcp.registerTool(
     readOpenapiSchema.name,
@@ -70,16 +70,15 @@ export async function runServer() {
     readOpenapiSchemaSummary.init(documents.schema),
   );
 
-  const apiBaseUrl = "https://developers.portone.io";
   mcp.registerTool(
     readV2BackendCode.name,
     readV2BackendCode.config,
-    readV2BackendCode.init(apiBaseUrl),
+    readV2BackendCode.init(DEVELOPERS_URL),
   );
   mcp.registerTool(
     readV2FrontendCode.name,
     readV2FrontendCode.config,
-    readV2FrontendCode.init(apiBaseUrl),
+    readV2FrontendCode.init(DEVELOPERS_URL),
   );
 
   const graphClient = new GraphQLClient(GRAPHQL_URL, {

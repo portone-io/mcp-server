@@ -4,7 +4,6 @@ export function formatDocumentMetadata(doc: MarkdownDocument): string {
   const lines: string[] = [];
 
   lines.push(`파일: ${doc.path}`);
-
   if (doc.frontmatter) {
     if (doc.frontmatter.title) {
       lines.push(`제목: ${doc.frontmatter.title}`);

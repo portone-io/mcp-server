@@ -34,9 +34,6 @@ Returns:
         "개발과 무관하게 서비스 관련 내용을 일반적으로 담는 헬프센터 문서 (help/) 포함 여부",
       ),
   },
-  outputSchema: {
-    items: z.array(z.object({}).passthrough()).describe("문서 목록"),
-  },
 };
 
 export function init(

@@ -1,11 +1,11 @@
 export * as addTestChannel from "./addTestChannel.ts";
 export * as getChannelsOfStore from "./getChannelsOfStore.ts";
+export * as getDocsUrl from "./getDocsUrl.ts";
 export * as getPaymentsByFilter from "./getPaymentsByFilter.ts";
 export * as listDocs from "./listDocs.ts";
 export * as listSharedTestChannels from "./listSharedTestChannels.ts";
 export * as listStores from "./listStores.ts";
 export * as readDoc from "./readDoc.ts";
-export * as readDocMetadata from "./readDocMetadata.ts";
 export * as readOpenapiSchema from "./readOpenapiSchema.ts";
 export * as readOpenapiSchemaSummary from "./readOpenapiSchemaSummary.ts";
 export * as readV2BackendCode from "./readV2BackendCode.ts";
