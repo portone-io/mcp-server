@@ -26,6 +26,20 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Naming: camelCase for functions/variables, PascalCase for classes/interfaces
 - Documentation: document classes and functions with JSDoc comments
 - Tests: write unit tests using Vitest for critical functions
+- Code formatting and linting excludes: `dist/`, `assets/`, and `server/` directories
+
+## Dependencies
+
+Key dependencies include:
+- `@modelcontextprotocol/sdk`: MCP server framework
+- `@portone/server-sdk`: PortOne SDK for server-side operations
+- `graphql` & `graphql-request`: GraphQL client for API communication
+- `h3`: HTTP server for OAuth callback handling
+- `open`: Cross-platform library for opening URLs in browser
+- `gray-matter`: YAML frontmatter parsing
+- `js-yaml`: YAML processing
+- `zod`: Schema validation
+- `ts-pattern`: Pattern matching for TypeScript
 
 ## Architecture Overview
 
@@ -51,10 +65,19 @@ Available tools:
 - `read_openapi_schema`: Reads OpenAPI specifications
 - `read_v2_backend_code`: Fetches backend code examples
 - `read_v2_frontend_code`: Fetches frontend code examples
-- `get_payment`: Retrieves payment information (requires API_SECRET)
-- `get_payments_by_filter`: Searches payments with filters (requires API_SECRET)
-- `get_identity_verification`: Retrieves identity verification information (requires API_SECRET)
-- `get_identity_verifications_by_filter`: Searches identity verifications with filters (requires API_SECRET)
+- `list_stores`: Lists available stores (requires OAuth authentication)
+- `list_shared_test_channels`: Lists available shared test channels (requires OAuth authentication)
+- `get_channels_of_store`: Gets all channels for a specific store (requires OAuth authentication)
+- `add_test_channel`: Adds a test channel to a store (requires OAuth authentication)
+- `get_payments_by_filter`: Searches payments with filters (requires OAuth authentication)
+
+### OAuth Authentication System
+The server now uses OAuth authentication for accessing PortOne APIs:
+- `TokenProvider` class handles OAuth token management and refresh
+- Automatically opens a browser window for OAuth consent flow when needed
+- Tokens are securely stored and refreshed as needed
+- GraphQL client integration for API communication
+- No longer requires API_SECRET environment variable for most operations
 
 ### Document Structure
 - Documentation is stored in `assets/docs/`

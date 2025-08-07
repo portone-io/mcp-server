@@ -4,14 +4,16 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { GraphQLClient } from "graphql-request";
 import packageJson from "../package.json" with { type: "json" };
 import { loadResources } from "./loader/index.ts";
 import {
-  getIdentityVerification,
-  getIdentityVerificationsByFilter,
-  getPayment,
+  addTestChannel,
+  getChannelsOfStore,
   getPaymentsByFilter,
   listDocs,
+  listSharedTestChannels,
+  listStores,
   readDoc,
   readDocMetadata,
   readOpenapiSchema,
@@ -20,6 +22,9 @@ import {
   readV2FrontendCode,
   regexSearch,
 } from "./tools/index.ts";
+import { TokenProvider } from "./tools/utils/key.ts";
+import { GRAPHQL_URL } from "./tools/utils/url.ts";
+import { USER_AGENT } from "./tools/utils/userAgent.ts";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -77,40 +82,36 @@ export async function runServer() {
     readV2FrontendCode.init(apiBaseUrl),
   );
 
-  const apiSecret = process.env.API_SECRET;
-  if (apiSecret) {
-    const httpClient = {
-      get: async (url: string) => {
-        return fetch(`https://api.portone.io${url}`, {
-          headers: {
-            Authorization: `PortOne ${apiSecret}`,
-            "User-Agent": `portone-mcp-server ${packageJson.version}`,
-          },
-        });
-      },
-    };
-
-    mcp.registerTool(
-      getPayment.name,
-      getPayment.config,
-      getPayment.init(httpClient),
-    );
-    mcp.registerTool(
-      getPaymentsByFilter.name,
-      getPaymentsByFilter.config,
-      getPaymentsByFilter.init(httpClient),
-    );
-    mcp.registerTool(
-      getIdentityVerification.name,
-      getIdentityVerification.config,
-      getIdentityVerification.init(httpClient),
-    );
-    mcp.registerTool(
-      getIdentityVerificationsByFilter.name,
-      getIdentityVerificationsByFilter.config,
-      getIdentityVerificationsByFilter.init(httpClient),
-    );
-  }
+  const graphClient = new GraphQLClient(GRAPHQL_URL, {
+    headers: { "User-Agent": USER_AGENT },
+  });
+  const tokenProvider = new TokenProvider();
+  tokenProvider.launchRefresher();
+  mcp.registerTool(
+    listStores.name,
+    listStores.config,
+    listStores.init(tokenProvider, graphClient),
+  );
+  mcp.registerTool(
+    listSharedTestChannels.name,
+    listSharedTestChannels.config,
+    listSharedTestChannels.init(tokenProvider),
+  );
+  mcp.registerTool(
+    getChannelsOfStore.name,
+    getChannelsOfStore.config,
+    getChannelsOfStore.init(tokenProvider),
+  );
+  mcp.registerTool(
+    addTestChannel.name,
+    addTestChannel.config,
+    addTestChannel.init(tokenProvider, graphClient),
+  );
+  mcp.registerTool(
+    getPaymentsByFilter.name,
+    getPaymentsByFilter.config,
+    getPaymentsByFilter.init(tokenProvider, graphClient),
+  );
 
   // Run the server
   const transport = new StdioServerTransport();
