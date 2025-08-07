@@ -4,14 +4,18 @@ import type { Result } from "../utils/result.ts";
 import { CHANNEL_SERVICE_URL } from "../utils/url.ts";
 import { USER_AGENT } from "../utils/userAgent.ts";
 
-const StatusResponse = z.object({
-  code: z.number().optional(),
-  message: z.string().optional(),
-  details: z.array(z.object({}).passthrough()).optional(),
-});
+const StatusResponse = z
+  .object({
+    code: z.unknown(),
+    message: z.string(),
+    details: z.unknown(),
+  })
+  .partial();
 
 const AddChannelResponse = z.object({
-  channelKey: z.string(),
+  channel: z.object({
+    channelKey: z.string(),
+  }),
 });
 
 type AddChannelResponse = z.infer<typeof AddChannelResponse>;
@@ -78,7 +82,7 @@ export async function addChannel({
       );
       return match(parsed)
         .returnType<Result<AddChannelResponse>>()
-        .with({ channelKey: P.nonNullable }, (success) => ({
+        .with({ channel: P.nonNullable }, (success) => ({
           type: "success",
           data: success,
         }))

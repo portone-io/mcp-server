@@ -4,11 +4,13 @@ import type { Result } from "../utils/result.ts";
 import { CHANNEL_SERVICE_URL } from "../utils/url.ts";
 import { USER_AGENT } from "../utils/userAgent.ts";
 
-const StatusResponse = z.object({
-  code: z.number(),
-  message: z.string().optional(),
-  details: z.array(z.object({}).passthrough()).optional(),
-});
+const StatusResponse = z
+  .object({
+    code: z.unknown(),
+    message: z.string(),
+    details: z.unknown(),
+  })
+  .partial();
 
 const ChannelResponse = z.object({
   channelId: z.string(),

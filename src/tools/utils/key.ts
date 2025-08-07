@@ -6,6 +6,7 @@ import type { Result } from "./result.ts";
 import { CONSOLE_URL, MERCHANT_SERVICE_URL } from "./url.ts";
 
 const OAUTH_CLIENT_ID = "MCP";
+const OAUTH_TIMEOUT_MILLIS = 5 * 60 * 1000; // 5분
 
 type Token = {
   access: string;
@@ -38,41 +39,34 @@ const OAuthTokenResponse = z.object({
 export class OAuthError extends Error {}
 
 export class TokenProvider {
-  private server: H3;
-  token: Token | null = null;
-  codeVerifier: string | null = null;
-
-  constructor() {
-    this.server = new H3().get("/oauth/mcp", async (event) => {
-      const query = getQuery(event);
-      const { code, error, error_description: errorDescription } = query;
-      if (code == null) {
-        const message = errorDescription == null ? error : errorDescription;
-        return `OAuth Error: ${message}`;
-      }
-      try {
-        this.token = await this.exchangeAuthorizationCode(code);
-      } catch (error) {
-        const message =
-          error instanceof Error ? error.message : "Internal Server Error";
-        return new Response(message, {
-          status: 500,
-        });
-      }
-      return `<!DOCTYPE html>
+  private readonly app = new H3().get("/oauth/mcp", async (event) => {
+    const query = getQuery(event);
+    const { code, error, error_description: errorDescription } = query;
+    if (code == null) {
+      const message = errorDescription == null ? error : errorDescription;
+      return `OAuth Error: ${message}`;
+    }
+    try {
+      this.token = await this.exchangeAuthorizationCode(code);
+    } catch (error) {
+      const message =
+        error instanceof Error ? error.message : "Internal Server Error";
+      return new Response(message, {
+        status: 500,
+      });
+    }
+    return `<!DOCTYPE html>
 <html lang="en">
   <head><meta charset='utf-8'><script>window.close()</script></head>
   <body>Authorization complete. You may close this window.</body>
 </html>
 `;
-    });
-  }
+  });
+  serverController: AbortController | null = null;
+  token: Token | null = null;
+  codeVerifier: string | null = null;
 
-  serveListener() {
-    serve(this.server, {
-      port: 1270,
-      silent: true,
-    });
+  launchRefresher() {
     setInterval(async () => {
       if (this.token !== null && Date.now() >= this.token.refreshAt) {
         try {
@@ -107,6 +101,8 @@ export class TokenProvider {
       const text = await res.text();
       const response = await OAuthTokenResponse.parseAsync(JSON.parse(text));
       const now = Date.now();
+      this.serverController?.abort();
+      this.serverController = null;
       return {
         access: response.access_token,
         refresh: response.refresh_token,
@@ -152,6 +148,22 @@ export class TokenProvider {
 
   async getToken(): Promise<TokenState> {
     if (this.token === null || Date.now() >= this.token.expiresAt) {
+      this.serverController?.abort();
+      this.serverController = new AbortController();
+      const serverTimeout = setTimeout(() => {
+        this.serverController?.abort();
+        this.serverController = null;
+      }, OAUTH_TIMEOUT_MILLIS);
+      this.serverController.signal.addEventListener("abort", () => {
+        clearTimeout(serverTimeout);
+      });
+      serve(this.app, {
+        port: 1270,
+        silent: true,
+        node: {
+          signal: this.serverController.signal,
+        },
+      });
       this.codeVerifier = crypto
         .getRandomValues(Buffer.alloc(32))
         .toString("base64url");

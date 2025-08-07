@@ -86,7 +86,7 @@ export async function runServer() {
     headers: { "User-Agent": USER_AGENT },
   });
   const tokenProvider = new TokenProvider();
-  tokenProvider.serveListener();
+  tokenProvider.launchRefresher();
   mcp.registerTool(
     listStores.name,
     listStores.config,
@@ -105,7 +105,7 @@ export async function runServer() {
   mcp.registerTool(
     addTestChannel.name,
     addTestChannel.config,
-    addTestChannel.init(tokenProvider),
+    addTestChannel.init(tokenProvider, graphClient),
   );
   mcp.registerTool(
     getPaymentsByFilter.name,
