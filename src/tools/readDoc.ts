@@ -1,8 +1,8 @@
 import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
 import z from "zod";
 import type { Documents } from "../types.ts";
+import { filterFields } from "./utils/filterFields.ts";
 import { formatDocumentMetadata } from "./utils/markdown.ts";
-import { filterFields } from "./utils/portoneRest.ts";
 
 export const name = "readPortoneDoc";
 
@@ -44,10 +44,13 @@ export function init(
       };
     }
 
-    const structuredContent = filterFields(fields, {
-      content: doc.content,
-      metadata: formatDocumentMetadata(doc),
-    }) as z.infer<typeof OutputSchema>;
+    const structuredContent: z.infer<typeof OutputSchema> = filterFields(
+      fields,
+      {
+        content: doc.content,
+        metadata: formatDocumentMetadata(doc),
+      },
+    );
 
     return {
       content: [

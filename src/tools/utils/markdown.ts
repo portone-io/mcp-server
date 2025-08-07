@@ -1,4 +1,5 @@
 import type { MarkdownDocument, SearchOccurrence } from "../../types.ts";
+import { DEVELOPERS_URL, HELP_CENTER_URL } from "../../url.ts";
 
 export function formatDocumentMetadata(doc: MarkdownDocument): string {
   const lines: string[] = [];
@@ -81,7 +82,7 @@ export function getContextAroundMatches(
 
 function docPathToUrl(path: string): string {
   if (path.startsWith("help/")) {
-    return `https://help.portone.io/category/${path.slice(5)}`;
+    return `${HELP_CENTER_URL}/category/${path.slice(5)}`;
   }
-  return `https://developers.portone.io/${path}`;
+  return `${DEVELOPERS_URL}/${path}`;
 }

@@ -2,8 +2,8 @@ import { getQuery, H3, serve } from "h3";
 import open from "open";
 import { match } from "ts-pattern";
 import { z } from "zod";
+import { CONSOLE_URL, MERCHANT_SERVICE_URL } from "../../url.ts";
 import type { Result } from "./result.ts";
-import { CONSOLE_URL, MERCHANT_SERVICE_URL } from "./url.ts";
 
 const OAUTH_CLIENT_ID = "MCP";
 const OAUTH_TIMEOUT_MILLIS = 5 * 60 * 1000; // 5분
