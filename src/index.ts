@@ -10,6 +10,7 @@ import { loadResources } from "./loader/index.ts";
 import {
   addTestChannel,
   getChannelsOfStore,
+  getDocsUrl,
   getPaymentsByFilter,
   listDocs,
   listSharedTestChannels,
@@ -52,6 +53,11 @@ export async function runServer() {
     regexSearch.name,
     regexSearch.config,
     regexSearch.init(documents),
+  );
+  mcp.registerTool(
+    getDocsUrl.name,
+    getDocsUrl.config,
+    getDocsUrl.init(documents),
   );
   mcp.registerTool(
     readOpenapiSchema.name,
