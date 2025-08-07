@@ -18,10 +18,7 @@
     "entry_point": "server/index.js",
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/server/index.js"],
-      "env": {
-        "API_SECRET": "${user_config.api_secret}"
-      }
+      "args": ["${__dirname}/server/index.js"]
     }
   },
   "tools": [
@@ -31,15 +28,7 @@
     }
   ],
   "tools_generated": true,
-  "user_config": {
-    "api_secret": {
-      "type": "string",
-      "title": "포트원 API 시크릿",
-      "description": "포트원 기능을 연동하기 위해 콘솔에서 발급받을 수 있는 API 시크릿입니다.",
-      "required": false,
-      "sensitive": true
-    }
-  },
+  "user_config": {},
   "compatibility": {
     "claude_desktop": ">=0.10.0",
     "platforms": ["darwin", "win32", "linux"],
