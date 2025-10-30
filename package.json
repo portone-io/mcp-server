@@ -9,10 +9,10 @@
   },
   "scripts": {
     "test": "vitest",
-    "update-docs": "node --experimental-strip-types update-docs.ts",
+    "update-docs": "node update-docs.ts",
     "build": "tsup src/index.ts --outDir server --format esm",
-    "build:dxt": "node --experimental-strip-types scripts/build-dxt.ts",
-    "dev": "node --experimental-strip-types src/index.ts",
+    "build:dxt": "node scripts/build-dxt.ts",
+    "dev": "node src/index.ts",
     "start": "node server/index.js",
     "lint": "biome check .",
     "format": "biome format --write .",
@@ -30,31 +30,31 @@
   },
   "license": "MIT OR Apache-2.0",
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.15.0",
-    "@portone/server-sdk": "^0.15.0",
-    "axios": "^1.7.2",
+    "@modelcontextprotocol/sdk": "^1.20.0",
+    "@portone/server-sdk": "^0.17.0",
+    "axios": "^1.12.2",
     "graphql": "^16.11.0",
     "graphql-request": "^7.2.0",
     "gray-matter": "^4.0.3",
-    "h3": "2.0.0-beta.1",
+    "h3": "2.0.1-rc.2",
     "js-yaml": "^4.1.0",
     "open": "^10.2.0",
-    "ts-pattern": "^5.7.1",
+    "ts-pattern": "^5.8.0",
     "zod": "^3.25.75"
   },
-  "packageManager": "pnpm@10.13.1+sha512.37ebf1a5c7a30d5fabe0c5df44ee8da4c965ca0c5af3dbab28c3a1681b70a256218d05c81c9c0dcf767ef6b8551eb5b960042b9ed4300c59242336377e01cfad",
+  "packageManager": "pnpm@10.20.0+sha512.cf9998222162dd85864d0a8102e7892e7ba4ceadebbf5a31f9c2fce48dfce317a9c53b9f6464d1ef9042cba2e02ae02a9f7c143a2b438cd93c91840f0192b9dd",
   "devDependencies": {
-    "@biomejs/biome": "2.0.6",
-    "@changesets/cli": "^2.29.5",
+    "@biomejs/biome": "2.2.6",
+    "@changesets/cli": "^2.29.7",
     "@types/js-yaml": "^4.0.9",
-    "@types/node": "^24.0.10",
+    "@types/node": "^22.18.10",
     "tsup": "^8.5.0",
-    "type-fest": "^4.41.0",
-    "typescript": "^5.8.3",
-    "vitest": "^1.6.0"
+    "type-fest": "^5.1.0",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
   },
   "engines": {
-    "node": ">=22.6.0"
+    "node": ">=22.18.0"
   },
   "files": [
     "server",
