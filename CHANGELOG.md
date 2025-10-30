@@ -1,5 +1,15 @@
 # @portone/mcp-server
 
+## 0.15.0
+
+### Minor Changes
+
+- c16b2d8: node 버전 업데이트
+
+### Patch Changes
+
+- dd98a91: 문서 업데이트
+
 ## 0.14.0
 
 ### Minor Changes
