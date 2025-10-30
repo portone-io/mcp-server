@@ -1,20 +1,20 @@
 ---
-title: (구) 나이스페이먼츠
-description: (구) 나이스페이먼츠 결제창 연동 가이드를 안내합니다.
+title: (구) 나이스정보통신
+description: (구) 나이스정보통신 결제창 연동 가이드를 안내합니다.
 targetVersions:
   - v1
 ---
 
 <div class="hint" data-style="warning">
 
-**나이스페이먼츠(구모듈) 연동 방법에 관한 매뉴얼**입니다.
+**나이스정보통신(구모듈) 연동 방법에 관한 매뉴얼**입니다.
 
-신규 연동 고객사이시거나 나이스페이먼츠 신모듈로 업그레이드를 원하신다면 [나이스페이먼츠(신모듈) 연동 가이드](https://developers.portone.io/opi/ko/integration/pg/v1/nice-v2/readme)를 참고하여 진행해주세요.
+신규 연동 고객사이시거나 나이스정보통신 신모듈로 업그레이드를 원하신다면 [나이스정보통신(신모듈) 연동 가이드](https://developers.portone.io/opi/ko/integration/pg/v1/nice-v2/readme)를 참고하여 진행해주세요.
 구모듈에 비해 신모듈에서 다양한 기능 및 결제수단을 지원하고 있습니다. 신규 고객사의 경우 가급적 신모듈로 연동하는 것을 권장드립니다.
 
 </div>
 
-## 1. 나이스페이먼츠 채널 설정하기
+## 1. 나이스정보통신 채널 설정하기
 
 [결제대행사 채널 설정하기](https://developers.portone.io/opi/ko/integration/ready/readme#3-결제대행사-채널-설정하기) 페이지의 내용을 참고하여 채널 설정을 진행합니다.
 
@@ -179,7 +179,7 @@ curl -H "Content-Type: application/json" \
 
 <div class="hint" data-style="info">
 
-**나이스페이먼츠는 비인증 결제는 API 방식으로만 지원됩니다.**
+**나이스정보통신은 비인증 결제는 API 방식으로만 지원됩니다.**
 
 비인증 결제를 연동하기 위해서는 카드정보를 획득할수 있는 UI를 구성해 주셔야 하며
 해당 가이드는 [**비인증결제 연동하기**](https://developers.portone.io/opi/ko/integration/start/v1/non-auth)에서 확인해주시면 됩니다.

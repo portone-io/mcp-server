@@ -10,7 +10,9 @@ targetVersions:
 JVM 서버 환경에서 포트원 V2 결제 시스템에 연동하기 위한 SDK입니다. 코틀린,
 스칼라, 자바 등의 언어에서 사용할 수 있습니다.
 
-[API 색인](https://javadoc.io/doc/io.portone/server-sdk/latest/index.html)
+[API 색인]
+
+[API 색인]: https://javadoc.io/doc/io.portone/server-sdk/latest/index.html
 
 ## 의존성
 
@@ -32,7 +34,7 @@ classifier을 적용하여 shading 버전을 사용합니다.
 ```Gradle Kotlin DSL
 dependencies {
     implementation("io.portone:server-sdk:x.y.z")
-    
+
     // shading 버전의 경우
     implementation("io.portone:server-sdk:x.y.z:all")
 }
@@ -139,12 +141,17 @@ val webhook = webhookVerifier.verify(
 )
 ```
 
-`WebhookVerifier.verify` 메서드는 body를 Webhook 타입으로 변환하여 반환합니다.
+`WebhookVerifier.verify` 메서드는 body를 `Webhook` 타입으로 변환하여 반환합니다.
+
+수신한 웹훅이 어떤 이벤트에 대한 것인지는 타입을 체크하여 확인할 수 있습니다.
+가능한 타입의 목록은 [API 색인]에서 확인할 수 있습니다.
 
 ```kotlin
 println(webhook.data.paymentId) // Error: Unresolved reference 'data'.
-if (webhook is WebhookTransaction) {
-    println(webhook.data.paymentId)
+when (webhook) {
+    is WebhookTransaction -> println(webhook.data.paymentId)
+    is WebhookBillingKey -> println(webhook.data.billingKey)
+    else -> /* ... */
 }
 ```
 

@@ -21,7 +21,7 @@ datetime: 2021-08-02T15:00:00.000Z
 - 배포 일정 : 2021-08-04(수) 15:00 \~ 15:30
 - 목적 : 포트원 API Response 필드 추가
 - 상세내용
-  - emb\_pg\_provider : 허브형 결제 PG사 정보
+  - emb\_pg\_provider : PG 제휴 결제 PG사 정보
     - ex) \
       카카오페이 : kakaopay\
       네이버페이 : naverpay\

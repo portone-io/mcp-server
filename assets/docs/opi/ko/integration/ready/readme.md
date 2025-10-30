@@ -132,7 +132,7 @@ targetVersions:
 
 <details>
 
-<summary>나이스페이먼츠</summary>
+<summary>나이스정보통신</summary>
 
 <div class="hint" data-style="info">
 
@@ -140,16 +140,16 @@ targetVersions:
 
 </div>
 
-1. [나이스페이먼츠 가맹점 관리자](http://npg.nicepay.co.kr/merchant/mkeyMngForm.do) 접속 후 로그인을 합니다.
+1. [나이스정보통신 가맹점 관리자](http://npg.nicepay.co.kr/merchant/mkeyMngForm.do) 접속 후 로그인을 합니다.
 2. \[가맹점정보]→\[KEY관리]를 클릭합니다.
 3. MID 및 Key 값을 확인할 수 있습니다.
 
-(이미지 첨부: 나이스페이먼츠 가맹점 관리자 내 KEY 조회 화면)
+(이미지 첨부: 나이스정보통신 가맹점 관리자 내 KEY 조회 화면)
 
 4. \[가맹점정보]→\[비밀번호관리]→\[거래취소비밀번호]를 클릭합니다.
 5. 비밀번호를 설정합니다. 비밀번호는 최대 10자리까지 가능합니다.
 
-(이미지 첨부: 나이스페이먼츠 가맹점 관리자 내 거래취소비밀번호 설정 화면)
+(이미지 첨부: 나이스정보통신 가맹점 관리자 내 거래취소비밀번호 설정 화면)
 
 6. 포트원 콘솔에서 채널 추가 시 \[MID], \[Key], \[결제취소 비밀번호]를 입력한 후 `저장`을 클릭합니다.
 
@@ -468,7 +468,17 @@ targetVersions:
 
 <div class="tabs-content" data-title="통합 본인인증">
 
-포트원 콘솔에서 채널 추가 시 계약 완료 후 KG이니시스로부터 전달받은 \[MID]와\[apikey]를 입력한 후 `저장`을 클릭합니다.
+1. [KG이니시스 가맹점관리자](https://iniweb.inicis.com/security/login.do) 접속 후 로그인을 합니다.
+2. \[상점정보]→\[계약정보]→\[KEY 정보]를 클릭합니다.
+3. \[부가서비스 연동 Key 정보]→\[통합인증 서비스] 항목에서 \[도메인 등록] 버튼을 클릭 후 아래 3개의 도메인을 등록합니다.
+
+- 본인인증 서비스를 이용하는 고객사 서비스 도메인
+- iamport.co
+- iamport.kr
+
+(이미지 첨부: KG이니시스 가맹점관리자 내 도메인 등록화면)
+
+4. 포트원 콘솔에서 채널 추가 시 계약 완료 후 KG이니시스로부터 전달받은 \[MID]와 \[apikey]를 입력한 후 `저장`을 클릭합니다.
 
 </div>
 
@@ -564,7 +574,17 @@ DI\_CODE는 12자리로 고객사에서 자체적으로 사이트(서비스)를 
 
 <div class="tabs-content" data-title="통합 본인인증">
 
-포트원 콘솔에서 채널 추가 시 계약 완료 후 KG이니시스로부터 전달받은 \[MID]와 \[apikey]를 입력한 후 `저장`을 클릭합니다.
+1. [KG이니시스 가맹점관리자](https://iniweb.inicis.com/security/login.do) 접속 후 로그인을 합니다.
+2. \[상점정보]→\[계약정보]→\[KEY 정보]를 클릭합니다.
+3. \[부가서비스 연동 Key 정보]→\[통합인증 서비스] 항목에서 \[도메인 등록] 버튼을 클릭 후 아래 3개의 도메인을 등록합니다.
+
+- 본인인증 서비스를 이용하는 고객사 서비스 도메인
+- iamport.co
+- iamport.kr
+
+(이미지 첨부: KG이니시스 가맹점관리자 내 도메인 등록화면)
+
+4. 포트원 콘솔에서 채널 추가 시 계약 완료 후 KG이니시스로부터 전달받은 \[MID]와 \[apikey]를 입력한 후 `저장`을 클릭합니다.
 
 </div>
 
@@ -994,8 +1014,6 @@ PG 거래대사 메뉴를 사용하시는 경우 \[대사 시크릿 키] 항목�
 
 </details>
 
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
-
 <details>
 
 <summary>페이레터 해외결제</summary>
@@ -1004,8 +1022,6 @@ PG 거래대사 메뉴를 사용하시는 경우 \[대사 시크릿 키] 항목�
    `[StoreID]`, `[API Key]` 항목에 입력한 후 저장을 클릭합니다.
 
 </details>
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
 
 ## <span id="integration-identifiers">4. 포트원 연동정보 확인하기</span>
 

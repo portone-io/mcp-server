@@ -275,33 +275,34 @@ STC 기능을 사용하시기 위해 다음 정보를 확인하셔야 합니다.
 // 해당 파라미터들은 산업군 별로 추가가 필요하거나 제외해도 되는 파라미터들이 있습니다.
 {
   "additional_data": [
+    // 상점의 구매자 계정 기준으로 정보 입력
     {
-      "key": "sender_account_id", // 고객사 account ID(merchant-id)
+      "key": "sender_account_id", // 구매자 계정 ID
       "value": "A12345N343"
     },
     {
-      "key": "sender_first_name", // 고객사의 account에 등록 된 구매자의 이름
+      "key": "sender_first_name", // 구매자 이름
       "value": "John"
     },
     {
-      "key": "sender_last_name", // 고객사의 account에 등록 된 구매자의 이름
+      "key": "sender_last_name", // 구매자 성
       "value": "Doe"
     },
     {
-      "key": "sender_email", // 고객사의 account에 등록 된 구매자의 이메일 주소
+      "key": "sender_email", // 구매자 이메일 주소
       "value": "example@example.com"
     },
     {
-      "key": "sender_phone", // 고객사의 account에 등록 된 구매자의 연락처
+      "key": "sender_phone", // 구매자 휴대전화 번호
       "value": "(02)16705176"
     },
     {
-      "key": "sender_country_code", // 고객사의 account에 등록 된 국가 코드
+      "key": "sender_country_code", // 구매자 국가 코드
       "value": "KR" // ISO Alpha-2 형식 국가 코드
     },
     {
-      "key": "sender_create_date", // 고객사의 account에 등록 된 국가 코드
-      "value": "2023-10-10T23:59:59+09:00" // IOS8601 형식
+      "key": "sender_create_date", // 구매자 계정 생성 시각
+      "value": "2023-10-10T23:59:59+09:00" // RFC 3339 형식
     }
   ]
 }
@@ -397,7 +398,7 @@ STC 기능을 사용하시기 위해 다음 정보를 확인하셔야 합니다.
 
 ### Alternative Methods
 
-페이팔은 간편 결제를 Alternative Methods라고 부르고 있습니다. Alternative Methods도 Pay Later 처럼 결제가 가능한 국가와 통화는 매우 제한적입니다.
+페이팔은 간편 결제를 Alternative Methods라고 부르고 있습니다. Alternative Methods도 Pay Later처럼 결제가 가능한 국가와 화폐는 매우 제한적입니다.
 
 - Bancontact
   - 구매자: BE / EUR

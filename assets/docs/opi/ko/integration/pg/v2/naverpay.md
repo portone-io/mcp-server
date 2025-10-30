@@ -139,7 +139,7 @@ versionVariants:
 - `easyPay.availableCards`
   - 네이버페이는 지원하지 않습니다.
 
-### 빌링키 발급 (`requestBillingKeyIssue`)
+### 빌링키 발급 (`requestIssueBillingKey`)
 
 - `billingKeyMethod`
   - `EASY_PAY` 로 설정해야 합니다

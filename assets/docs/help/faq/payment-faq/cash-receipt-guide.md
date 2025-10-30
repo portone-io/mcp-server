@@ -52,13 +52,13 @@ searchTags:
 - 발행 API : [POST `/receipts/{imp_uid}`↗](https://developers.portone.io/api/rest-v1/receipt#post%20%2Freceipts%2F%7Bimp_uid%7D)
 - 삭제 API : [DELETE `/receipts/{imp_uid}`↗](https://developers.portone.io/api/rest-v1/receipt#delete%20%2Freceipts%2F%7Bimp_uid%7D)
 - 조회 API : [GET `/receipts/{imp_uid}`↗](https://developers.portone.io/api/rest-v1/receipt#get%20%2Freceipts%2F%7Bimp_uid%7D)
-- 지원 가능한 PG : <Tag text="KG이니시스" /> <Tag text="NHN KCP" /> <Tag text="나이스페이먼츠" /> <Tag text="KICC" /> <Tag text="헥토파이낸셜" /> <Tag text="토스페이먼츠(신모듈)" /> <Tag text="KSPAY" /> <Tag text="페이조아" />
+- 지원 가능한 PG : <Tag text="KG이니시스" /> <Tag text="NHN KCP" /> <Tag text="나이스정보통신" /> <Tag text="KICC" /> <Tag text="헥토파이낸셜" /> <Tag text="토스페이먼츠(신모듈)" /> <Tag text="KSPAY" /> <Tag text="페이조아" />
 
 2\. 포트원과 별개의 현금결제 (포트원 관리자콘솔>현금영수증 발급내역>고객사 자체거래분)
 
 - 발행 API : [POST `/receipts/external/{merchant_uid}`↗](https://developers.portone.io/api/rest-v1/receipt#post%20%2Freceipts%2Fexternal%2F%7Bmerchant_uid%7D)
 - 삭제 API : [DELETE `/receipts/external/{merchant_uid}`↗](https://developers.portone.io/api/rest-v1/receipt#delete%20%2Freceipts%2Fexternal%2F%7Bmerchant_uid%7D)
 - 조회 API : [GET `/receipts/external/{merchant_uid}`↗](https://developers.portone.io/api/rest-v1/receipt#get%20%2Freceipts%2Fexternal%2F%7Bmerchant_uid%7D)
-- 지원 가능한 PG : <Tag text="KG이니시스" /> <Tag text="NHN KCP" /> <Tag text="나이스페이먼츠" /> <Tag text="KICC" /> <Tag text="헥토파이낸셜" /> <Tag text="토스페이먼츠(신모듈)" /> <Tag text="KSPAY" />
+- 지원 가능한 PG : <Tag text="KG이니시스" /> <Tag text="NHN KCP" /> <Tag text="나이스정보통신" /> <Tag text="KICC" /> <Tag text="헥토파이낸셜" /> <Tag text="토스페이먼츠(신모듈)" /> <Tag text="KSPAY" />
 
 <Callout title="영수증 API 가이드 보러가기↗" />

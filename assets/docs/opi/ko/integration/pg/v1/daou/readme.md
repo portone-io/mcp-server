@@ -93,6 +93,9 @@ IMP.request_pay(
   - payco (페이코)
   - samsung (삼성페이)
   - applepay (애플페이)
+  - cultureland (문화상품권)
+  - smartculture (스마트문화상품권)
+  - booknlife (도서문화상품권)
 
 - merchant\_uid: string
 
@@ -125,6 +128,12 @@ IMP.request_pay(
   - 카카오페이인 경우
     - `Y`: 허용
     - `N`: 차단
+
+- bypass.daou.DIRECT\_YN?: string
+
+  **카드, 간편결제 다이렉트 호출 시 키움페이 페이지 노출여부**
+
+  'Y'로 입력하는 경우 키움페이 화면이 노출되지 않고 바로 카드사, 간편결제 결제창이 호출됩니다.
 
 - app\_scheme?: string
 

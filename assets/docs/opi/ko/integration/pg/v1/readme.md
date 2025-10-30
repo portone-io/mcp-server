@@ -12,11 +12,11 @@ versionVariants:
 
 ## 국내결제
 
-[나이스페이먼츠 (신모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/nice-v2/readme)
+[나이스정보통신 (신모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/nice-v2/readme)
 
-[(구) 나이스페이먼츠](https://developers.portone.io/opi/ko/integration/pg/v1/nice)
+[(구) 나이스정보통신](https://developers.portone.io/opi/ko/integration/pg/v1/nice)
 
-[NHN KCP](https://developers.portone.io/opi/ko/integration/pg/v1/nhn-kcp)
+[NHN KCP](https://developers.portone.io/opi/ko/integration/pg/v1/nhn-kcp/readme)
 
 [KG이니시스](https://developers.portone.io/opi/ko/integration/pg/v1/inicis)
 
@@ -71,3 +71,5 @@ versionVariants:
 [페이팔(Reference Transaction) 정기결제](https://developers.portone.io/opi/ko/integration/pg/v1/rt/readme)
 
 [페이팔(Express Checkout)](https://developers.portone.io/opi/ko/integration/pg/v1/paypal)
+
+[페이레터 해외결제](https://developers.portone.io/opi/ko/integration/pg/v1/payletter-global)

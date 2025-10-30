@@ -185,9 +185,20 @@ curl -H "Content-Type: application/json" \
 
 </div>
 
-<div class="hint" data-style="info">
+## 유의사항
+
+<details>
+
+<summary> 부가세 지정 미지원</summary>
+
+- 카카오페이 결제 시 부가세 지정은 지원하지 않습니다.
+- 카카오페이 결제 취소 시 부가세 지정은 지원하지 않습니다.
+
+</details>
 
 ## 참고사항
+
+<div class="hint" data-style="info">
 
 - 카카오페이 결제버튼이 노출되는 것을 권장 합니다.
 - 카카오페이 고객사 사이니지 이미지를 [다운받아](http://biz.kakaopay.com/online/guide) 활용할 수 있습니다.

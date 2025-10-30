@@ -209,7 +209,7 @@ function requestPayment() {
             "Ini_SSGPAY_MDN": "01012341234",
             "acceptmethod": ["SKIN(#C1272C)", "below1000", "ocb"],
             "P_CARD_OPTION": "selcode=14",
-            "P_NMANE": "포트원",
+            "P_MNAME": "포트원",
             "P_RESERVED": ["below1000=Y", "noeasypay=Y"]
           }
         }
@@ -335,6 +335,18 @@ function requestPayment() {
 ### 유의사항
 
 #### 공통
+
+<details>
+
+<summary>계약 사항에 따라 결제 정보에서 카드 정보가 누락될 수 있습니다.</summary>
+
+KG이니시스와의 계약에서 결제 결과에 카드번호를 전송하지 않도록 설정된 경우, 결제 조회 시 다음 카드 관련 필드들이 누락될 수 있습니다.
+
+- `card.issuer`: 카드 발급사
+- `card.publisher`: 카드 발행사
+- `card.name`: 카드명
+
+</details>
 
 <details>
 

@@ -12,6 +12,6 @@ targetVersions:
 이용하거나 사용자 본인이 가입된 간편인증을 통해 인증요청을 보내고 간편인증 페이지에서 인증처리를
 하는 방식으로 이루어 집니다.
 
-> **이용가능 수단 : 네이버 / PASS / 페이코 / TOSS / 금융인증서 / 카카오 / 신한 / KB모바일 / 삼성패스**
+> **이용가능 수단 : 네이버 / PASS / TOSS / 금융인증서 / 카카오 / 신한 / KB모바일 / 삼성패스**
 
 [이미지 링크](<https://developers.portone.io/gitbook-assets/ko/image (24) (2).png>)

@@ -21,8 +21,8 @@ targetVersions:
 |키움페이              |daou                |<ul><li>발행 통지 URL: [https://service.iamport.kr/daou\_payments/result](http://service.iamport.kr/daou_payments/result)</li> <li>결과 통지 URL: [https://service.iamport.kr/daou\_payments/notice\_vbank](http://service.iamport.kr/daou_payments/notice_vbank)</li></ul>|
 |토스페이먼츠(신모듈)  |tosspayments        |[https://tx-gateway-service.prod.iamport.co/virtual-account/webhook-event/tosspayments](http://tx-gateway-service.prod.iamport.co/virtual-account/webhook-event/tosspayments)                                                                                              |
 |스마트로(신모듈)      |smartro\_v2         |입금 통보, 환불이체 URL 동일: [https://tx-gateway-service.prod.iamport.co/smartro-v2](http://tx-gateway-service.prod.iamport.co/smartro-v2)                                                                                                                                |
-|나이스페이먼츠(구모듈)|nice                |[https://service.iamport.kr/nice\_payments/notice\_vbank](http://service.iamport.kr/nice_payments/notice_vbank)                                                                                                                                                            |
-|나이스페이먼츠(신모듈)|nice\_v2            |[https://tx-gateway-service.prod.iamport.co/nicepay-v2](http://tx-gateway-service.prod.iamport.co/nicepay-v2)                                                                                                                                                              |
+|나이스정보통신(구모듈)|nice                |[https://service.iamport.kr/nice\_payments/notice\_vbank](http://service.iamport.kr/nice_payments/notice_vbank)                                                                                                                                                            |
+|나이스정보통신(신모듈)|nice\_v2            |[https://tx-gateway-service.prod.iamport.co/nicepay-v2](http://tx-gateway-service.prod.iamport.co/nicepay-v2)                                                                                                                                                              |
 |웰컴페이먼츠          |welcome             |[https://tx-gateway-service.prod.iamport.co/welcome](http://tx-gateway-service.prod.iamport.co/welcome)                                                                                                                                                                    |
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
@@ -33,7 +33,7 @@ targetVersions:
 |----------------|--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-|
 |토스페이먼츠    |tosspayments        |[https://tx-gateway-service.prod.iamport.co/virtual-account/webhook-event/tosspayments](http://tx-gateway-service.prod.iamport.co/virtual-account/webhook-event/tosspayments)| |
 |스마트로        |smartro\_v2         |입금 통보, 환불이체 URL 동일: [https://tx-gateway-service.prod.iamport.co/smartro-v2](http://tx-gateway-service.prod.iamport.co/smartro-v2)                                  | |
-|나이스페이먼츠  |nice\_v2            |[https://tx-gateway-service.prod.iamport.co/nicepay-v2](http://tx-gateway-service.prod.iamport.co/nicepay-v2)                                                                | |
+|나이스정보통신  |nice\_v2            |[https://tx-gateway-service.prod.iamport.co/nicepay-v2](http://tx-gateway-service.prod.iamport.co/nicepay-v2)                                                                | |
 |KG이니시스      |inicis\_v2          |[https://tx-gateway-service.prod.iamport.co/inicis-v2](http://tx-gateway-service.prod.iamport.co/inicis-v2)                                                                  | |
 |한국결제네트웍스|kpn                 |[https://tx-gateway-service.prod.iamport.co/kpn/virtual-account](http://tx-gateway-service.prod.iamport.co/kpn/virtual-account)                                              | |
 |NHN KCP         |kcp\_v2             |[https://tx-gateway-service.prod.iamport.co/kcp-v2](http://tx-gateway-service.prod.iamport.co/kcp-v2)                                                                        | |
@@ -74,9 +74,9 @@ targetVersions:
 
 <details>
 
-<summary>나이스페이먼츠(구모듈) 설정 방법</summary>
+<summary>나이스정보통신(구모듈) 설정 방법</summary>
 
-1. [나이스페이먼츠 가맹점 관리자](http://npg.nicepay.co.kr/merchant/mkeyMngForm.do) 접속 후 로그인을 합니다.
+1. [나이스정보통신 가맹점 관리자](http://npg.nicepay.co.kr/merchant/mkeyMngForm.do) 접속 후 로그인을 합니다.
 2. \[가맹점정보]→\[기본정보]를 클릭합니다.
 3. \[결제데이터통보] 항목에서 **가상계좌**의 \[URL/IP]를 `https://service.iamport.kr/nice_payments/notice_vbank` 로 설정해주세요.
 4. \[재전송 간격]은 1분, \[재전송 횟수]는 3회로 설정해주세요.
@@ -86,7 +86,7 @@ targetVersions:
 - 재전송 간격: 최소 1분 \~ 최대 10분까지만 입력 가능합니다.
 - 재전송 횟수: 최소 1회 \~ 최대 10회까지 재전송 가능합니다.(전송 실패 건에 대해 자동 재전송)
 
-(이미지 첨부: 나이스페이먼츠 가맹점 관리자 내 입금통보 URL 설정 화면)
+(이미지 첨부: 나이스정보통신 가맹점 관리자 내 입금통보 URL 설정 화면)
 
 </details>
 
@@ -179,9 +179,9 @@ KSNET은 포트원을 통해 발급된 MID에 대해 자동으로 입금통보 U
 
 <details>
 
-<summary>나이스페이먼츠(신모듈) 설정 방법</summary>
+<summary>나이스정보통신(신모듈) 설정 방법</summary>
 
-1. [나이스페이먼츠 가맹점 관리자](http://npg.nicepay.co.kr/merchant/mkeyMngForm.do) 접속 후 로그인을 합니다.
+1. [나이스정보통신 가맹점 관리자](http://npg.nicepay.co.kr/merchant/mkeyMngForm.do) 접속 후 로그인을 합니다.
 2. \[가맹점정보]→\[기본정보]를 클릭합니다.
 3. \[결제데이터통보] 항목에서 **가상계좌**의 \[URL/IP]를 `https://tx-gateway-service.prod.iamport.co/nicepay-v2` 로 설정해주세요.
 4. \[재전송 간격]은 1분, \[재전송 횟수]는 3회로 설정해주세요.
@@ -191,7 +191,7 @@ KSNET은 포트원을 통해 발급된 MID에 대해 자동으로 입금통보 U
 - 재전송 간격: 최소 1분 \~ 최대 10분까지만 입력 가능합니다.
 - 재전송 횟수: 최소 1회 \~ 최대 10회까지 재전송 가능합니다.(전송 실패 건에 대해 자동 재전송)
 
-(이미지 첨부: 나이스페이먼츠 가맹점 관리자 내 입금통보 URL 설정 화면 )
+(이미지 첨부: 나이스정보통신 가맹점 관리자 내 입금통보 URL 설정 화면 )
 
 </details>
 

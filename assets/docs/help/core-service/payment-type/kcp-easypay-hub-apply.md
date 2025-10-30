@@ -1,8 +1,8 @@
 ---
-title: NHN KCP 허브형 간편결제 신청방법
+title: NHN KCP 제휴 간편결제 신청방법
 category: 결제서비스 (채널설정 및 이용안내) > 결제유형 > 간편결제
 seo:
-  title: KCP 허브형 간편결제 신청방법
+  title: KCP 제휴 간편결제 신청방법
   description: >-
     KCP는 다양한 간편결제사가 제휴되어 있어 KCP를 통해 간편결제 서비스 이용이 가능합니다. 간편결제사별로 심사 절차가 필요하므로 아래
     경로로 신청주시면 KCP 담당 부서 확인 후 심사 및 설정이 가능합니다.
@@ -18,17 +18,16 @@ searchTags:
   - kcp간편결제신청
   - kcp 추가신청
   - kcp 간편결제
-  - kcp허브형
 datetime: 2024-01-25T15:00:00.000Z
 ---
 
 <Callout content="NHN KCP에서는 다양한 간편결제사가 제휴되어 있어 NHN KCP를 통해 간편결제서비스 이용이 가능합니다." />
 
-### **NHN KCP 허브형 간편결제**
+### **NHN KCP 제휴 간편결제**
 
 NHN KCP의 경우 이용하시는 간편결제마다 상점아이디(사이트코드)가 추가됩니다. 추가하는 간편결제사별로 심사가 필요하므로 아래 신청절차 경로를 통해 신청해주시기 바랍니다.  NHN KCP 담당 부서에서 확인 후 심사 및 설정 안내가 발송됩니다.
 
-<Callout icon="" content=" " title="NHN KCP 지원 허브형 간편결제 보러가기 ↗" />
+<Callout icon="" content=" " title="NHN KCP 지원 제휴 간편결제 보러가기 ↗" />
 
 ### **NHN KCP 간편결제 추가 절차**
 

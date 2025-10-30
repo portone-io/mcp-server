@@ -184,13 +184,13 @@ async function updateMcpDocs(
 
   await fs.mkdir(path.dirname(targetDocsDir), { recursive: true });
 
-  const generatedDevDocsPath = await runDocsForLlms(developersRepoPath, 23);
+  const generatedDevDocsPath = await runDocsForLlms(developersRepoPath, 22);
   console.log(
     `Copying new docs from ${generatedDevDocsPath} to ${targetDocsDir}...`,
   );
   await fs.cp(generatedDevDocsPath, targetDocsDir, { recursive: true });
 
-  const generatedHelpDocsPath = await runDocsForLlms(helpRepoPath, 20);
+  const generatedHelpDocsPath = await runDocsForLlms(helpRepoPath, 22);
   const helpTargetDir = path.join(targetDocsDir, "help");
   console.log(
     `Copying new docs from ${generatedHelpDocsPath} to ${helpTargetDir}...`,

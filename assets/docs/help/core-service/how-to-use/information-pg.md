@@ -37,17 +37,17 @@ datetime: 2024-01-25T15:00:00.000Z
 - 그 외 문의채널(메일) : <ch@kggroup.co.kr> 혹은 홈페이지 내 톡 문의 가능
 - 홈페이지 : <https://www.inicis.com/>
 
-#### **나이스페이먼츠(나이스페이)**
+#### **나이스정보통신(나이스페이)**
 
 - 유선문의처 : 1661-7335 - 3 (신규 계약 부서)
 - 그 외 문의채널(메일)
-  - 계약부서 : <pghelp@nicepay.co.kr>
-  - 기술지원 : <it@nicepay.co.kr>
+  - 계약부서 : [pghelp@nicevan.co.kr](mailto:pghelp@nicepay.co.kr)
+  - 기술지원 : [it@nicevan.co.kr](mailto:it@nicepay.co.kr)
 - 홈페이지 : [https://www.nicepay.co.kr/](https://www.nicepay.co.kr/home/main.do)
 
 #### **토스페이먼츠**
 
-- 유선문의처 : 1544-7772 - 2 - 4 (계약 여부 및 심사 관련) , 1544-7772 - 2 - 5 (기술지원 및 결제 오류)
+- 유선문의처 : 1544-7772 - 2 - 2 (계약 여부 및 심사 관련) , 1544-7772 - 2 - 4 (기술지원 및 결제 오류)
 - 그 외 문의채널(메일) : <support@tosspayments.com>
 - 홈페이지 : <https://www.tosspayments.com/>
 

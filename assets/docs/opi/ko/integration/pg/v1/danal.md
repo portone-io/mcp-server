@@ -33,6 +33,7 @@ IMP.request_pay(
     buyer_tel: "010-1234-5678",
     buyer_addr: "서울특별시 강남구 삼성동",
     buyer_postcode: "123-456",
+    company: "고객사",
   },
   function (rsp) {
     // callback 로직
@@ -101,6 +102,10 @@ IMP.request_pay(
   **사업자등록번호**
 
   가상계좌 결제창 호출 시 `사업자등록번호 10자리` 필수 입력 (미설정 시 다날 결제창에서 오류 발생 가능)
+
+- company?: string
+
+  휴대폰 결제시 결제창에 표시될 표시될 상호명. 입력하지 않으면 포트원 대표상점명으로 표시됩니다.
 
 </div>
 

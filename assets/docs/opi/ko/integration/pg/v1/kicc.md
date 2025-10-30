@@ -255,7 +255,8 @@ KICC는 **현금성 결제수단** (실시간 계좌이체, 가상계좌)에 한
       "code": "367",
       "quota": 3
     }
-  }
+  },
+  "company": "고객사" //해당 파라미터를 설정하지 않으면 카드사 모듈 창에 iamport 로 표기
 }
 ```
 
@@ -263,6 +264,7 @@ KICC는 **현금성 결제수단** (실시간 계좌이체, 가상계좌)에 한
 
 - **`code`** : 카드사 금융결제원 표준 코드. [**링크**](https://developers.portone.io/opi/ko/support/code-info/card-code) 참조 (**string**)
 - **`quota`** : 할부 개월 수. 일시불일 시 0 으로 지정. (**number**)
+- **`company`** : 카드사 모듈 바로 호출 시 결제창에 표시될 상호명. 입력하지 않으면 iamport로 표시됩니다.
 
 <div class="hint" data-style="danger">
 

@@ -39,7 +39,7 @@ versionVariants:
 브라우저에서 포트원 SDK를 호출하여 빌링키를 발급하고, 서버로 빌링키를 전달합니다.
 
 ```ts
-const issueResponse = PortOne.requestIssueBillingKey({
+const issueResponse = await PortOne.requestIssueBillingKey({
   storeId: "store-9bf6076d-beef-4729-9521-ae66c14e0569",
   channelKey: "channel-key-3b37819a-1c72-4deb-a245-8c810af5403d",
   billingKeyMethod: "CARD",

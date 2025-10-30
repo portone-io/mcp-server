@@ -184,7 +184,7 @@ ni @portone/browser-sdk
 
   <div class="hint" data-style="warning">
 
-  나이스페이먼츠의 경우 최대 40바이트까지 입력할 수 있으며, 사용 가능한 특수문자는 아래와 같습니다.
+  나이스정보통신의 경우 최대 40바이트까지 입력할 수 있으며, 사용 가능한 특수문자는 아래와 같습니다.
 
   - 사용 가능: `_`
   - 사용 불가: `% & | $ - + = [ ]`
@@ -288,7 +288,7 @@ ni @portone/browser-sdk
 
   <div class="hint" data-style="warning">
 
-  나이스페이먼츠는 `KRW`만을 지원합니다.
+  나이스정보통신은 `KRW`만을 지원합니다.
 
   </div>
 
@@ -526,7 +526,7 @@ ni @portone/browser-sdk
 
     <div class="hint" data-style="warning">
 
-    나이스페이먼츠의 경우 카드사 단독 노출 시 `card.installment.monthOption.fixedMonth`를 필수로 지정해야 합니다.
+    나이스정보통신의 경우 카드사 단독 노출 시 `card.installment.monthOption.fixedMonth`를 필수로 지정해야 합니다.
     결제 금액이 할부 지원 금액 미만인 경우 할부 개월 수를 `0`으로 전달해야 합니다.
 
     </div>
@@ -824,7 +824,7 @@ ni @portone/browser-sdk
 
     <div class="hint" data-style="warning">
 
-    나이스페이먼츠의 경우 카드사 포인트 사용 시 별도 계약이 필요합니다.
+    나이스정보통신의 경우 카드사 포인트 사용 시 별도 계약이 필요합니다.
 
     </div>
 
@@ -1047,7 +1047,7 @@ ni @portone/browser-sdk
 
     <div class="hint" data-style="warning">
 
-    나이스페이먼츠의 경우 입금 만료기한을 필수로 입력해야 합니다.
+    나이스정보통신의 경우 입금 만료기한을 필수로 입력해야 합니다.
 
     </div>
 
@@ -1214,7 +1214,7 @@ ni @portone/browser-sdk
 
     <div class="hint" data-style="warning">
 
-    나이스페이먼츠의 경우 상품권 유형을 필수로 지정해야 합니다.s
+    나이스정보통신의 경우 상품권 유형을 필수로 지정해야 합니다.s
 
     </div>
 
@@ -1410,7 +1410,7 @@ ni @portone/browser-sdk
 
     <div class="hint" data-style="warning">
 
-    나이스페이먼츠의 경우 카카오페이, 네이버페이, 애플페이, LPAY 사용 시 상점분담 무이자를 사용하실 수 없습니다.
+    나이스정보통신의 경우 카카오페이, 네이버페이, 애플페이, LPAY 사용 시 상점분담 무이자를 사용하실 수 없습니다.
 
     </div>
 
@@ -1547,7 +1547,7 @@ ni @portone/browser-sdk
 
     <div class="hint" data-style="warning">
 
-    나이스페이먼츠의 경우 할부 사용 시 별도 계약이 필요합니다.
+    나이스정보통신의 경우 할부 사용 시 별도 계약이 필요합니다.
 
     </div>
 
@@ -1670,7 +1670,7 @@ ni @portone/browser-sdk
 
     <div class="hint" data-style="warning">
 
-    나이스페이먼츠의 경우 일부 간편결제 수단에 대해 `availablePayMethods`가 필수입니다.
+    나이스정보통신의 경우 일부 간편결제 수단에 대해 `availablePayMethods`가 필수입니다.
 
     - 네이버페이: 카드 결제인 경우 `CARD`, 포인트 혹은 머니 결제인 경우 `CHARGE`를 입력합니다.
     - SSG페이: 계좌 결제를 노출하는 `TRANSFER`만 유효하며, 카드 혹은 머니 결제인 경우 `availablePayMethods`를 생략해야 합니다.
@@ -1706,7 +1706,7 @@ ni @portone/browser-sdk
 
   <div class="hint" data-style="warning">
 
-  나이스페이먼츠와 계약 시 지정된 면세금액을 반드시 입력해야 합니다.
+  나이스정보통신와 계약 시 지정된 면세금액을 반드시 입력해야 합니다.
 
   </div>
 
@@ -1990,7 +1990,7 @@ ni @portone/browser-sdk
 
       <div class="hint" data-style="warning">
 
-      나이스페이먼츠와 별도 계약이 필요합니다.
+      나이스정보통신와 별도 계약이 필요합니다.
 
       </div>
 
@@ -2015,7 +2015,7 @@ ni @portone/browser-sdk
 
       <div class="hint" data-style="warning">
 
-      나이스페이먼츠와 별도 계약이 필요합니다.
+      나이스정보통신와 별도 계약이 필요합니다.
 
       </div>
 
@@ -2056,7 +2056,7 @@ ni @portone/browser-sdk
 
       <div class="hint" data-style="warning">
 
-      나이스페이먼츠와 별도 계약이 필요합니다.
+      나이스정보통신와 별도 계약이 필요합니다.
 
       </div>
 
@@ -2068,7 +2068,7 @@ ni @portone/browser-sdk
 
       <div class="hint" data-style="warning">
 
-      나이스페이먼츠와 별도 계약이 필요합니다.
+      나이스정보통신와 별도 계약이 필요합니다.
 
       </div>
 
@@ -2083,7 +2083,7 @@ ni @portone/browser-sdk
 
       <div class="hint" data-style="warning">
 
-      나이스페이먼츠와 별도 계약이 필요합니다.
+      나이스정보통신와 별도 계약이 필요합니다.
 
       </div>
 
@@ -2774,7 +2774,7 @@ ni @portone/browser-sdk
 
   <div class="hint" data-style="warning">
 
-  나이스페이먼츠의 경우 에스크로 사용 시 별도 계약이 필요합니다.
+  나이스정보통신의 경우 에스크로 사용 시 별도 계약이 필요합니다.
 
   </div>
 

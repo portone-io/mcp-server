@@ -61,7 +61,7 @@ targetVersions:
 
 - 결제대행사 필터는 하나의 결제대행사에 모든 `pg_provider`가 포함됩니다.
   - KG이니시스 : inicis, html5\_inicis, inicis\_v2
-  - 나이스페이먼츠 : nice, nice\_v2
+  - 나이스정보통신 : nice, nice\_v2
   - 페이팔 : paypal, paypal\_v2
   - 스마트로 : smartro, smartro\_v2
   - 토스페이 : tosspay, tosspay\_v2

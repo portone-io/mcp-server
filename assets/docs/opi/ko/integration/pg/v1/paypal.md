@@ -141,7 +141,7 @@ IMP.request_pay({
 <div class="hint" data-style="info">
 
 STC API를 사용하기 위해서는 **Paypal과의 STC 데이터 협의**가 필요하며,
-**포트원 지원팀(<support@portone.io>)을 통해 요청**해주시면 협의 프로세스를 안내해드리고 있습니다.
+**포트원 지원팀(<tech.support@portone.io>)을 통해 요청**해주시면 협의 프로세스를 안내해드리고 있습니다.
 
 연동을 원하시는 경우 원활한 연동절차를 위해 요청 전 **아래 pdf의 Create REST API Application 섹션을 완료**해주세요.
 

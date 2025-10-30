@@ -1,17 +1,17 @@
 ---
-title: 나이스페이먼츠 (신모듈)
-description: 나이스페이먼츠 연동 방법을 안내합니다.
+title: 나이스정보통신 (신모듈)
+description: 나이스정보통신 연동 방법을 안내합니다.
 targetVersions:
   - v1
 versionVariants:
   v2: /opi/ko/integration/pg/v2/nice-v2
 ---
 
-## 1. 나이스페이먼츠(신모듈) 채널 설정하기
+## 1. 나이스정보통신(신모듈) 채널 설정하기
 
 [결제대행사 채널 설정하기](https://developers.portone.io/opi/ko/integration/ready/readme#3-결제대행사-채널-설정하기) 페이지의 내용을 참고하여 채널 설정을 진행합니다.
 
-아래 기능을 사용하시려면 나이스페이먼츠에 사전 신청 후 계약이 완료되어야 합니다.
+아래 기능을 사용하시려면 나이스정보통신에 사전 신청 후 계약이 완료되어야 합니다.
 그렇지 않은 상태에서 해당 기능 이용시 PG창 호출에 실패하거나, 승인에 실패하거나,
 승인에 성공하더라도 의도한 바와는 다른 응답을 얻게 될 수 있으니 주의 해주시기 바랍니다.
 
@@ -42,7 +42,7 @@ versionVariants:
 
 ## 2. 최신 JavaScript SDK로 업데이트하기 <a href="#2." id="2." />
 
-나이스페이먼츠(신모듈) 결제는 최신 SDK에서만 지원되는 기능입니다.
+나이스정보통신(신모듈) 결제는 최신 SDK에서만 지원되는 기능입니다.
 
 ```html title="JS SDK"
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
@@ -50,7 +50,7 @@ versionVariants:
 
 <div class="hint" data-style="info">
 
-**(신) 나이스페이먼츠를 연동하기 위해서는 위에 안내된 JS SDK를 이용하셔야 합니다**
+**(신) 나이스정보통신를 연동하기 위해서는 위에 안내된 JS SDK를 이용하셔야 합니다**
 
 </div>
 
@@ -76,7 +76,7 @@ versionVariants:
 ## 3.결제 요청하기
 
 [JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/readme) `IMP.request_pay(param, callback)`을 호출하여
-(신) 나이스페이먼츠 결제창을 호출할 수 있습니다. **결제 결과**는 PC의 경우 `IMP.request_pay(param,
+(신) 나이스정보통신 결제창을 호출할 수 있습니다. **결제 결과**는 PC의 경우 `IMP.request_pay(param,
 callback)` 호출 후 **callback**으로 수신되고 모바일의 경우
 **m\_redirect\_url** 로 리디렉션됩니다.
 
@@ -189,7 +189,7 @@ IMP.request_pay(
 
   **가상계좌 입금기한 (YYYY-MM-DD)**
 
-  (신) 나이스페이먼츠의 경우 필수 입력이며 날짜는 무조건 23:59:59로 설정 됨
+  (신) 나이스정보통신의 경우 필수 입력이며 날짜는 무조건 23:59:59로 설정 됨
 
 - escrow: boolean
 
@@ -240,6 +240,8 @@ IMP.request_pay(
 </div>
 
 <div class="tabs-content" data-title="비인증 결제창 요청">
+
+(신) 나이스정보통신의 경우 비인증 결제창 방식은 간편결제(네이버페이 / 카카오페이)만 지원합니다.
 
 ```ts title="Javascript SDK"
 IMP.request_pay(

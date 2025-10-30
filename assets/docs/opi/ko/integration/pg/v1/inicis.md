@@ -441,4 +441,62 @@ KG이니시스 설정이 완료되었으면 아래와 같이 파라미터 설정
 
 </div>
 
+<div class="tabs-content" data-title="이니시스 에스크로 상태변경 웹훅">
+
+에스크로 상태 변경이 이뤄지면 고객사의 웹훅을 호출하여 통해 아래와 같은 데이터가 전송됩니다.
+
+```json
+{
+  "event": "Inicis.Escrow.Changed",
+  "imp_uid": "imp_123412341234",
+  "merchant_uid": "asdfasdfasdf",
+  "status": "paid",
+  "extra": {
+    "escrow_status": "4",
+    "changed_at": 112312323,
+    "denied_reason": "구매 거절 사유"
+  }
+}
+```
+
+웹훅 데이터 필드 설명
+
+|필드명               |타입  |설명                                                                                                                                                                            |
+|---------------------|------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`event`              |string|이벤트 타입 (항상 `Inicis.Escrow.Changed`)                                                                                                                                      |
+|`imp_uid`            |string|포트원 거래 고유번호                                                                                                                                                            |
+|`merchant_uid`       |string|고객사 주문번호                                                                                                                                                                 |
+|`status`             |string|결제 상태                                                                                                                                                                       |
+|`extra.escrow_status`|string|에스크로 상태구분 <br />- `2`: 배송등록<br />- `3`: 구매확인<br />- `31`: 자동구매확인<br />- `32`: 강제구매확인<br />- `4`: 구매거절<br />- `8`: 거래취소<br />- `10`: 거절확인|
+|`extra.changed_at`   |number|상태 변경 시각 (Unix Timestamp)                                                                                                                                                 |
+|`extra.denied_reason`|string|구매 거절 사유 (구매거절시 전달)                                                                                                                                                |
+
+<div class="hint" data-style="warning">
+
+이니시스 에스크로 웹훅 기능을 사용하려면 별도 설정이 필요합니다.
+<cs@portone.io>로 아래와 같이 설정 요청 메일을 보내주세요.
+
+```text
+제목: [에스크로 상태 변화에 따른 통보 수신 URL 설정 요청]
+
+안녕하세요, 포트원 담당자님
+
+에스크로 상태 변화에 따른 통보 수신 URL 설정 요청드립니다.
+
+■ 고객사 정보
+- 상호명: [상호명 입력]
+- 사업자번호: [사업자번호 입력]
+- 이니시스 MID: [MID 입력]
+
+■ 이니시스 에스크로 상태변화 수신 URL
+-URL : https://service.iamport.kr/inicis_payments/escrow/changed
+-한글 인코딩 : UTF-8
+
+감사합니다.
+```
+
+</div>
+
+</div>
+
 </div>

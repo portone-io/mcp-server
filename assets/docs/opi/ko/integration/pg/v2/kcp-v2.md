@@ -4,7 +4,7 @@ description: NHN KCP 연동 방법을 안내합니다.
 targetVersions:
   - v2
 versionVariants:
-  v1: /opi/ko/integration/pg/v1/nhn-kcp
+  v1: /opi/ko/integration/pg/v1/nhn-kcp/readme
 ---
 
 ## 채널 설정하기
@@ -203,8 +203,10 @@ function requestPayment() {
 
     - shop\_user\_id?: string
 
-      **기관에 따라 리스크 관리 조치를 위한 쇼핑몰 관리 ID**
+      **리스크 관리 조치를 위한 고객사 회원 ID**
 
+      - KCP에서 부정거래를 신속하게 탐지하기 위한 파라미터입니다.
+      - 고객사에서 관리하는 구매자의 회원 ID를 입력합니다.
       - 상품권, 휴대폰 결제 시 필수로 입력해야 합니다.
 
     - site\_name?: string

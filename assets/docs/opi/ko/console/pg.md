@@ -25,8 +25,8 @@ targetVersions:
 
 |          PG사         |상점아이디 (예시)|       용도      |                     채널키                     |
 |:---------------------:|:---------------:|:---------------:|:----------------------------------------------:|
-|**(신) 나이스페이먼츠**|      MID-a      | **인증 결제용** |channel-key-12345678-1234-5678-9012-123456789012|
-|**(신) 나이스페이먼츠**|      MID-b      |**비인증 결제용**|channel-key-abcdefgh-abcd-efgh-ijkl-abcdefghijkl|
+|**(신) 나이스정보통신**|      MID-a      | **인증 결제용** |channel-key-12345678-1234-5678-9012-123456789012|
+|**(신) 나이스정보통신**|      MID-b      |**비인증 결제용**|channel-key-abcdefgh-abcd-efgh-ijkl-abcdefghijkl|
 |       카카오페이      |      MID-c      |   인증 결제용   |channel-key-98765432-9876-5432-1098-987654321098|
 
 다음과 같이 `channelKey` 속성에 `channel-key-98765432-9876-5432-1098-987654321098`를 지정하면 등록한 카카오페이 설정으로 결제창이 호출됩니다
@@ -49,15 +49,15 @@ IMP.request_pay({
 
 </div>
 
-위에서 등록한 PG 설정 중 **(신) 나이스페이먼츠 (인증 결제용)** 와 **(신) 나이스페이먼츠 (비인증 결제용)** 의 경우 **PG사 코드값이 동일**하지만, `channelKey` 파라미터를 통해 구분이 가능합니다.
+위에서 등록한 PG 설정 중 **(신) 나이스정보통신 (인증 결제용)** 와 **(신) 나이스정보통신 (비인증 결제용)** 의 경우 **PG사 코드값이 동일**하지만, `channelKey` 파라미터를 통해 구분이 가능합니다.
 
 <div class="tabs-container">
 
-<div class="tabs-content" data-title="(신) 나이스페이먼츠 인증 결제용 호출">
+<div class="tabs-content" data-title="(신) 나이스정보통신 인증 결제용 호출">
 
 ```ts
 IMP.request_pay({
-  channelKey: "channel-key-12345678-1234-5678-9012-123456789012", // (신) 나이스페이먼츠 인증 결제용 채널키
+  channelKey: "channel-key-12345678-1234-5678-9012-123456789012", // (신) 나이스정보통신 인증 결제용 채널키
   amount: 1000,
   name: "테스트 주문",
   buyer_name: "구매자",
@@ -67,11 +67,11 @@ IMP.request_pay({
 
 </div>
 
-<div class="tabs-content" data-title="(신) 나이스페이먼츠 비인증 결제용 호출">
+<div class="tabs-content" data-title="(신) 나이스정보통신 비인증 결제용 호출">
 
 ```ts
 IMP.request_pay({
-  channelKey: "channel-key-abcdefgh-abcd-efgh-ijkl-abcdefghijkl", // (신) 나이스페이먼츠 비인증 결제용 채널키
+  channelKey: "channel-key-abcdefgh-abcd-efgh-ijkl-abcdefghijkl", // (신) 나이스정보통신 비인증 결제용 채널키
   amount: 1000,
   name: "테스트 주문",
   buyer_name: "구매자",

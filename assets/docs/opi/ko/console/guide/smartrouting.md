@@ -9,8 +9,6 @@ targetVersions:
 
 스마트 라우팅 기능이 궁금하다면 [스마트 라우팅 기능 소개](https://developers.portone.io/opi/ko/extra/smart-routing/intro)를 확인해 보세요!
 
-스마트 라우팅은 **V2 결제 서비스 이용시**에만 사용이 가능합니다.
-
 </div>
 
 ## 스마트 라우팅 그룹 생성하기

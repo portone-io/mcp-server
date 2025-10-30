@@ -7,8 +7,6 @@ versionVariants:
   v1: /opi/ko/integration/webhook/readme-v1
 ---
 
-(관련 이미지 첨부)
-
 ## 웹훅(Webhook) 이란?
 
 특정 이벤트가 발생하였을 때 타 서비스나 응용프로그램으로 알림을 보내는 기능입니다.
@@ -584,7 +582,7 @@ Connection Timeout 및 Read Timeout 모두 30초 입니다.
 
 **웹훅 처리 전에 브라우저 결제 완료 처리가 진행되는 경우**
 
-기본적으로 포트원 서버는 웹훅을 호출한 뒤 고객사 응답을 기다리지 않고 브라우저에 302 redirect 응답을 보내기 때문에 결과 도달에 대한 순서를 보장하지 않습니다. 다만 고객사 요청이 있을 경우 webhook 호출 이후에 브라우저에 302 redirect 또는 callback 응답을 보내어 순서를 보장해 드리고 있습니다. 웹훅 우선순위 요청은 <support@portone.io> 로 고객사 식별코드를 기재하여 요청해 주시면 됩니다.
+기본적으로 포트원 서버는 웹훅을 호출한 뒤 고객사 응답을 기다리지 않고 브라우저에 302 redirect 응답을 보내기 때문에 결과 도달에 대한 순서를 보장하지 않습니다. 다만 고객사 요청이 있을 경우 webhook 호출 이후에 브라우저에 302 redirect 또는 callback 응답을 보내어 순서를 보장해 드리고 있습니다. 웹훅 우선순위 요청은 <tech.support@portone.io> 로 상점 아이디(storeId)를 기재하여 요청해 주시면 됩니다.
 
 </div>
 

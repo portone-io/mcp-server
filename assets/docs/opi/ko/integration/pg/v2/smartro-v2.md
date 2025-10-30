@@ -207,7 +207,7 @@ function requestPayment() {
 
 ## SDK 빌링키 발급 요청하기
 
-빌링키 발급 요청 시에는 `requestBillingKeyIssue` 함수를 호출해야 합니다.
+빌링키 발급 요청 시에는 `requestIssueBillingKey` 함수를 호출해야 합니다.
 `channelKey`파라미터에 결제 채널 연동 후 생성된 채널 키값을 지정하여 스마트로 채널 사용을 명시해주세요.
 
 스마트로 기준으로 작성한 예시 코드는 아래와 같습니다.

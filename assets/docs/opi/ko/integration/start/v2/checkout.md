@@ -158,7 +158,8 @@ async function requestPayment() {
 }
 ```
 
-결과값에 들어 있는 필드는 다음과 같습니다.
+결과값에 들어 있는 주요 필드는 다음과 같습니다.
+전체 필드 목록은 [requestPayment 응답 형식](https://developers.portone.io/sdk/ko/v2-sdk/payment-response)을 참조해 주시기 바랍니다.
 
 |필드명   |설명               |비고                        |
 |---------|-------------------|----------------------------|
@@ -181,7 +182,8 @@ PortOne.requestPayment({
 });
 ```
 
-쿼리 문자열로 전달되는 내용은 다음과 같습니다.
+쿼리 문자열로 전달되는 주요 필드는 다음과 같습니다.
+전체 필드 목록은 [requestPayment 응답 형식](https://developers.portone.io/sdk/ko/v2-sdk/payment-response)을 참조해 주시기 바랍니다.
 
 |키       |설명               |비고                        |
 |---------|-------------------|----------------------------|

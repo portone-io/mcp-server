@@ -183,3 +183,83 @@ curl -H "Content-Type: application/json" \
 </div>
 
 </div>
+
+## 3. 고정식 가상계좌 연동하기
+
+헥토파이낸셜의 고정식 가상계좌 연동 방법을 안내합니다.
+
+### 입금통보 설정
+
+헥토파이낸셜 MID 발급 후 `settle_pgdev@settlebank.co.kr`에 아래 입금통보 주소로 설정 요청해야합니다.
+
+요청 입금통보 주소: <https://service.iamport.kr/settle_payments/notice_vbank>
+
+<div class="hint" data-style="info">
+
+자세한 내용은 [가상계좌 입금통보 설정](https://developers.portone.io/opi/ko/integration/virtual-account/readme?v=v1)을 참고하세요.
+
+</div>
+
+### 가상계좌 발급 API
+
+**주요 파라미터**
+
+- `merchant_uid`: 고객사 거래 고유번호 (필수)
+- `amount`: 결제 금액 (고정식 가상계좌 시 필수)
+- `vbank_num`: PG사로부터 받은 가상계좌 번호 (필수)
+- `vbank_holder`: 가상계좌 예금주명 (필수)
+- `fixed_unlimited_vbank`: 고정식 무제한 가상계좌 여부
+- `pg`: PG사 구분자 `{PG사}.{PG상점 아이디}` (필수)
+
+**에스크로 결제시 추가 파라미터**
+
+- `escrow_password`: 에스크로 비밀번호 (필수)
+- `buyer_email`: 구매자 이메일 (필수)
+
+<div class="hint" data-style="warning">
+
+고정식 무제한 가상계좌 발급 유의사항
+
+- `amount`는 생략 가능하며, 지정 시 0원으로 발급됩니다.
+- `tax_free`, `vat_amount` 파라미터를 사용할 수 없습니다.
+- 에스크로 결제를 지원하지 않습니다.
+
+</div>
+
+### 발급 정보 변경 API
+
+입금 전 가상계좌의 입금기한이나 금액을 수정할 수 있습니다.
+
+- `imp_uid`: 포트원 거래고유번호 (필수)
+- `amount`: 수정할 결제금액 (선택)
+- `vbank_due`: 수정할 입금기한 UNIX TIMESTAMP (필수)
+
+<div class="hint" data-style="warning">
+
+- 면세, 복합과세로 발급된 가상계좌의 경우 발급 정보 변경 기능이 제공되지 않습니다.
+- 고정식 무제한 가상계좌의 경우 amount 파라미터를 전달하여도 적용되지 않습니다.
+
+</div>
+
+### 입금 내역 확인
+
+#### 결제건 조회 API
+
+고정식 무제한 가상계좌의 경우 `deposit_history` 필드로 입금 내역을 확인할 수 있습니다.
+
+**응답 필드 (주요)**
+
+- `deposit_history`: 입금 내역 배열
+  - `pg_tid`: PG사 승인번호
+  - `amount`: 입금 금액
+  - `depositor_name`: 입금자명
+  - `deposited_at`: 입금 시각
+
+<div class="hint" data-style="warning">
+
+**유의 사항**
+
+- **무제한 가상계좌**: 웹훅 수신 후 반드시 결제건 조회 API로 `deposit_history`를 확인하여 정확한 입금 내역을 검증하세요.
+- **취소 후 입금**: 취소된 무제한 가상계좌로 입금이 발생하면 status가 `cancelled`로 유지되므로, `deposit_history`와 `cancel_history`를 모두 확인해야 합니다.
+
+</div>

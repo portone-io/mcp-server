@@ -117,20 +117,6 @@ IMP.request_pay(
   - HKD
   - CAD
   - AUD
-  - CNY
-  - TWD
-  - MYR
-  - VND
-  - PHP
-  - MNT
-  - NZD
-  - AED
-  - MOP
-  - BRL
-  - KZT
-  - NOK
-  - SAR
-  - TRY
 
 - language?: string
 

@@ -9,7 +9,9 @@ targetVersions:
 
 Python 서버 환경에서 포트원 V2 결제 시스템에 연동하기 위한 SDK입니다.
 
-[API 색인](https://portone-io.github.io/server-sdk/py/)
+[API 색인]
+
+[API 색인]: https://portone-io.github.io/server-sdk/py/
 
 ## 의존성
 
@@ -111,13 +113,20 @@ headers = {
 webhook = portone.webhook.verify(PORTONE_WEBHOOK_SECRET, payload, headers)
 ```
 
-`webhook.verify` 함수는 웹훅 내용을 Webhook 타입으로 변환하여 반환합니다. 웹훅도
+`webhook.verify` 함수는 웹훅 내용을 `Webhook` 타입으로 변환하여 반환합니다. 웹훅도
 현재 SDK 버전에서 지원하지 않는 응답을 받을 수 있으며, 이 경우에는 웹훅을 그대로
 JSON 형식으로 파싱한 `dict` 값을 반환합니다.
 
+수신한 웹훅이 어떤 이벤트에 대한 것인지는 타입을 체크하여 확인할 수 있습니다.
+가능한 타입의 목록은 [API 색인]에서 확인할 수 있습니다.
+
 ```python
+# Transaction.Paid 웹훅인 경우
 if isinstance(webhook, portone.webhook.WebhookTransactionPaid):
-    print(webhook.data.paymentId)
+    print(f'Paid: {webhook.data.payment_id}')
+# BillingKey.Issued 웹훅인 경우
+if isinstance(webhook, portone.webhook.WebhookBillingKeyIssued):
+    print(f'Issued: {webhook.data.billing_key}')
 ```
 
 ## 버전

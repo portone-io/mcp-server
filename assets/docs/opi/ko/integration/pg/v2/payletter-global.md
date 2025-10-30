@@ -23,9 +23,16 @@ targetVersions:
     - 해외카드 비인증 : `PLCreditCard`
     - 해외카드 인증(3DS) : `PLCreditCardMpi`
     - 유니온페이 : `PLUnionPay_HC`
-    - 위챗페이 PC결제: `WeChatPayQRCodePayment`
+    - 위챗페이 PC결제 : `WeChatPayQRCodePayment`
     - 위챗페이 모바일결제 : `WeChatPayH5Payment`
     - 알리페이 : `ICBAlipay`
+    - 알리페이 HK (알리페이+) : `AlipayPlusAlipayHK`
+    - BPI (알리페이+) : `AlipayPlusBPI`
+    - Dana (알리페이+) : `AlipayPlusDana`
+    - GCash (알리페이+) : `AlipayPlusGcash`
+    - Rabbit LINE Pay (알리페이+) : `AlipayPlusRabbitLinePay`
+    - Touch 'n Go (알리페이+) : `AlipayPlusTNG`
+    - TrueMoney (알리페이+) : `AlipayPlusTrueMoney`
 
 ## SDK 결제 요청하기
 
@@ -59,4 +66,4 @@ targetVersions:
 - `paymentId` 에는 영문, 숫자만으로 이루어진 문자열만 입력할 수 있습니다.
 - 페이레터의 경우 구매자 이메일을 필수로 받고있어,`customer.email`을 필수로 입력하셔야 합니다.
 - 해외결제시 카드는 `KRW`, `USD`, `JPY`, 알리페이⋅위챗페이는 `CNY`를 지원합니다.
-- WeChatPay, Alipay 결제 시 `bypass.payletter_global.servicename` 파라미터를 필수로 입력하셔야 합니다.
+- WeChatPay, Alipay, Alipay+ 결제 시 `bypass.payletter_global.servicename` 파라미터를 필수로 입력하셔야 합니다.

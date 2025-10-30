@@ -289,33 +289,34 @@ STC 기능을 사용하기 위해 다음 정보를 확인해 주세요.
 // 해당 파라미터들은 예시로 산업군에 따라 추가 또는 제외 가능한 파라미터들이 있습니다.
 _({
   additional_data: [
+    // 상점의 구매자 계정 기준으로 정보 입력
     {
-      key: "sender_account_id", // 고객사 account ID(merchant-id)
+      key: "sender_account_id", // 구매자 계정 ID
       value: "A12345N343",
     },
     {
-      key: "sender_first_name", // 고객사의 account에 등록된 구매자의 이름
+      key: "sender_first_name", // 구매자 이름
       value: "John",
     },
     {
-      key: "sender_last_name", // 고객사의 account에 등록된 구매자의 이름
+      key: "sender_last_name", // 구매자 성
       value: "Doe",
     },
     {
-      key: "sender_email", // 고객사의 account에 등록된 구매자의 이메일 주소
+      key: "sender_email", // 구매자 이메일 주소
       value: "example@example.com",
     },
     {
-      key: "sender_phone", // 고객사의 account에 등록된 구매자의 연락처
+      key: "sender_phone", // 구매자 휴대전화 번호
       value: "(02)16705176",
     },
     {
-      key: "sender_country_code", // 고객사의 account에 등록된 국가 코드
-      value: "KR", // ISO Alpha-2 형식 국가 코드
+      key: "sender_country_code", // 구매자 국가 코드
+      value: "KR", // ISO 3166-2 alpha-2 코드
     },
     {
-      key: "sender_create_date", // 고객사의 account에 등록된 국가 코드
-      value: "2023-10-10T23:59:59+09:00", // IOS8601 형식
+      key: "sender_create_date", // 구매자 계정 생성 시각
+      value: "2023-10-10T23:59:59+09:00", // RFC 3339 형식
     },
   ],
 });
@@ -1824,7 +1825,7 @@ Pay Later(할부) 기능을 여러 국가에 제공하기 위해서는 **페이�
 
 - 안드로이드
 
-  [**Android Integration of Magnes**](http://developer.paypal.com/limited-release/magnes/integrate/android/) 가이드 문서에 따라 아래와 같이 collectAndSubmit 메소드 호출을 통해 페이팔로 디바이스 정보를 보내야 합니다. 이때 두 번째 파라미터(`paypalClientMetaDataId`)로는 주문번호(`paymentId`)를 전달해야 합니다.
+  [**Android Integration of Magnes**](http://developer.paypal.com/limited-release/magnes/integrate/android/) 가이드 문서에 따라 아래와 같이 collectAndSubmit 메서드 호출을 통해 페이팔로 디바이스 정보를 보내야 합니다. 이때 두 번째 파라미터(`paypalClientMetaDataId`)로는 주문번호(`paymentId`)를 전달해야 합니다.
 
   ```java title="코드 예시"
   MagnesResult magnesResult = MagnesSDK.getInstance()
@@ -1837,7 +1838,7 @@ Pay Later(할부) 기능을 여러 국가에 제공하기 위해서는 **페이�
 
 - iOS Switft
 
-  [**iOS Swift SDK Integration**](http://developer.paypal.com/limited-release/magnes/integrate/ios-swift/) 가이드 문서에 따라 아래와 같이 collectAndSubmit 메소드 호출을 통해 페이팔로 디바이스 정보를 보내야합니다. 이때 첫번째 파라미터(withPayPalClientMetadataId)로는 주문번호(paymentId)를 전달해야 합니다.
+  [**iOS Swift SDK Integration**](http://developer.paypal.com/limited-release/magnes/integrate/ios-swift/) 가이드 문서에 따라 아래와 같이 collectAndSubmit 메서드 호출을 통해 페이팔로 디바이스 정보를 보내야합니다. 이때 첫번째 파라미터(withPayPalClientMetadataId)로는 주문번호(paymentId)를 전달해야 합니다.
 
   ```swift title="코드 예시"
   let magnesResult: MagnesResult =
@@ -1849,7 +1850,7 @@ Pay Later(할부) 기능을 여러 국가에 제공하기 위해서는 **페이�
 
 - iOS Objective-C
 
-  [**iOS Objective-C SDK Integration of Magnes**](http://developer.paypal.com/limited-release/magnes/integrate/ios-objective-c/) 가이드 문서에 따라 아래와 같이 collectAndSubmitWithPayPalClientMetadataId 메소드 호출을 통해 페이팔로 디바이스 정보를 보내야합니다. 이때 첫번째 파라미터(YOUR-PAYPAL-CLIENT-METADATA-ID)로는 주문번호(paymentId)를 전달해주시면 됩니다.
+  [**iOS Objective-C SDK Integration of Magnes**](http://developer.paypal.com/limited-release/magnes/integrate/ios-objective-c/) 가이드 문서에 따라 아래와 같이 collectAndSubmitWithPayPalClientMetadataId 메서드 호출을 통해 페이팔로 디바이스 정보를 보내야 합니다. 이때 첫번째 파라미터(YOUR-PAYPAL-CLIENT-METADATA-ID)로는 주문번호(paymentId)를 전달해주시면 됩니다.
 
   ```objc title="코드 예시"
   //PPRMOCMagnesSDK *magnesSDK = [PPRMOCMagnesSDK shared];

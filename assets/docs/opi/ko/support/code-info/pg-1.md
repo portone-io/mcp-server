@@ -95,7 +95,7 @@ targetVersions:
 
 <details>
 
-<summary>토스페이먼츠 & 다날 & 나이스페이먼츠 & KICC & 스마트로 & 헥토파이낸셜</summary>
+<summary>토스페이먼츠 & 다날 & 나이스정보통신 & KICC & 스마트로 & 헥토파이낸셜</summary>
 
 - KB국민은행: `004`
 - SC제일은행: `023`

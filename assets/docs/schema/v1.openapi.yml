@@ -1794,6 +1794,80 @@ paths:
       x-portone-supported-pgs:
         - kcp_quick
       x-portone-category: pg.kcpquick
+  /kcpquick/payment/money:
+    post:
+      tags:
+        - kcpquick
+      summary: KCP 선불머니 결제 API
+      description: ''
+      operationId: payWithMoney
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: member_id
+          in: formData
+          description: KCP 간편결제 유저 아이디
+          required: true
+          type: string
+          default: member_id
+          maxLength: '16'
+          x-portone-name: 'KCP 퀵페이, 선불머니 서비스 유저 아이디'
+          x-portone-description: |
+            <p>결제를 진행할 KCP 선불머니 결제서비스 유저 아이디</p>
+        - name: channel_key
+          in: formData
+          description: KCP 선불머니 결제 시 사용할 채널의 채널키
+          required: true
+          type: string
+          x-portone-name: 채널키
+          x-portone-description: |
+            <p>KCP 선불머니 결제 시 사용할 채널의 채널키</p>
+        - name: merchant_uid
+          in: formData
+          description: 결제 요청할 거래의 고객사 주문번호
+          required: true
+          type: string
+          maxLength: 40
+          x-portone-name: 고객사 주문번호
+          x-portone-description: |
+            <p>결제 요청할 거래의 고객사 주문번호</p>
+        - name: name
+          in: formData
+          description: 결제 요청할 거래의 주문명
+          required: true
+          type: string
+          maxLength: 40
+          x-portone-name: 주문명
+          x-portone-description: |
+            <p>결제 요청할 거래의 주문명</p>
+        - name: amount
+          in: formData
+          description: 결제 요청할 금액
+          required: true
+          type: integer
+          x-portone-name: 결제금액
+          x-portone-description: |
+            <p>결제 요청할 금액</p>
+        - name: notice_url
+          in: formData
+          description: 결제 승인 성공 후 결과를 수신할 웹훅 URL
+          required: false
+          type: string
+          x-portone-name: 결제 결과 수신 웹훅 URL
+          x-portone-description: |
+            <p>결제 승인 성공 후 결과를 수신할 웹훅 URL</p>
+      responses:
+        '200':
+          description: 응답
+          schema:
+            $ref: '#/definitions/PaymentResponse'
+        '401':
+          description: 인증 Token이 전달되지 않았거나 유효하지 않은 경우
+      x-portone-supported-pgs:
+        - kcp_quick
+      x-portone-category: pg.kcpquick
   '/payments/{imp_uid}/naver/cancel':
     post:
       tags:
@@ -7409,126 +7483,6 @@ paths:
         '404':
           description: 등록되지 않았거나 이미 삭제된 tier_code를 사용한 경우
       x-portone-category: user.tier
-    put:
-      tags:
-        - tiers
-      summary: 하위 상점 정보 수정 API
-      description: 하위 상점(Tier)정보 수정. 수정된 하위 상점(Tier) 정보를 반환합니다.
-      operationId: UpdateTier
-      consumes:
-        - application/json
-        - application/x-www-form-urlencoded
-      produces:
-        - application/json
-      parameters:
-        - name: tier_code
-          in: path
-          description: 하위 상점(Tier) 고유코드. 알파벳 대문자 또는 숫자만 사용(반드시 3자리)
-          required: true
-          type: string
-          default: XYZ
-          x-portone-name: Tier code
-          x-portone-description: >
-            <p>하위 상점의 고유 코드로 알파벳 대문자 또는 숫자만 사용 가능합니다.(<strong>반드시
-            3자리</strong>)</p>
-        - name: tier_name
-          in: formData
-          description: 상점 명칭(내부 관리용)
-          required: true
-          type: string
-          x-portone-name: 하위 상점 명칭
-          x-portone-description: |
-            <p>내부 관리용으로 사용되는 하위 상점의 명칭</p>
-      responses:
-        '200':
-          description: 정상 등록
-          schema:
-            $ref: '#/definitions/TierResponse'
-        '400':
-          description: 필수 파라메터(tier_name)가 누락된 경우
-        '401':
-          description: 인증 Token이 전달되지 않았거나 유효하지 않은 경우
-        '404':
-          description: 등록되지 않았거나 이미 삭제된 tier_code를 사용한 경우
-        '500':
-          description: 저장에 실패한 경우
-      x-portone-category: user.tier
-    post:
-      tags:
-        - tiers
-      summary: 하위 상점 정보 등록 API
-      description: 하위 상점(Tier)정보 등록. 등록된 하위 상점(Tier) 정보를 반환합니다.
-      operationId: AddTier
-      consumes:
-        - application/json
-        - application/x-www-form-urlencoded
-      produces:
-        - application/json
-      parameters:
-        - name: tier_code
-          in: path
-          description: 하위 상점(Tier) 고유코드. 알파벳 대문자 또는 숫자만 사용(반드시 3자리)
-          required: true
-          type: string
-          default: XYZ
-          x-portone-name: Tier 코드
-          x-portone-description: >
-            <p>하위 상점의 고유 코드로 알파벳 대문자 또는 숫자만 사용 가능합니다.(<strong>반드시
-            3자리</strong>)</p>
-        - name: tier_name
-          in: formData
-          description: 상점 명칭(내부 관리용)
-          required: true
-          type: string
-          x-portone-name: 하위 상점 명칭
-          x-portone-description: |
-            <p>내부 관리용으로 사용되는 하위 상점의 명칭</p>
-      responses:
-        '200':
-          description: 정상 등록
-          schema:
-            $ref: '#/definitions/TierResponse'
-        '400':
-          description: '필수 파라메터(tier_name)가 누락된 경우, 이미 등록된 tier_code에 대해 시도하는 경우'
-        '401':
-          description: 인증 Token이 전달되지 않았거나 유효하지 않은 경우
-        '500':
-          description: 저장에 실패한 경우
-      x-portone-category: user.tier
-    delete:
-      tags:
-        - tiers
-      summary: 하위 상점 정보 삭제 API
-      description: 하위 상점(Tier)정보 삭제. 삭제된 하위 상점(Tier) 정보를 반환합니다.
-      operationId: DeleteTier
-      consumes:
-        - application/json
-        - application/x-www-form-urlencoded
-      produces:
-        - application/json
-      parameters:
-        - name: tier_code
-          in: path
-          description: 하위 상점(Tier) 고유코드. 알파벳 대문자 또는 숫자만 사용(반드시 3자리)
-          required: true
-          type: string
-          default: XYZ
-          x-portone-name: Tier code
-          x-portone-description: >
-            <p>하위 상점의 고유 코드로 알파벳 대문자 또는 숫자만 사용 가능합니다.(<strong>반드시
-            3자리</strong>)</p>
-      responses:
-        '200':
-          description: 정상 등록
-          schema:
-            $ref: '#/definitions/TierResponse'
-        '401':
-          description: 인증 Token이 전달되지 않았거나 유효하지 않은 경우
-        '404':
-          description: 등록되지 않았거나 이미 삭제된 tier_code를 사용한 경우
-        '500':
-          description: 삭제에 실패한 경우
-      x-portone-category: user.tier
   /users/pg:
     get:
       tags:
@@ -7618,8 +7572,8 @@ paths:
         - name: vbank_num
           in: formData
           description: >-
-            고정식 가상계좌 발급 시, pg사로부터 전달받은 가상계좌 번호 <br> (필수 : 스마트로 - 신모듈) (**사용을 위해
-            PG사와 협의 필요**) 
+            고정식 가상계좌 발급 시, pg사로부터 전달받은 가상계좌 번호 <br> (필수 : 스마트로 - 신모듈, 헥토파이낸셜)
+            (**사용을 위해 PG사와 협의 필요**) 
           required: false
           type: string
           x-portone-name: 고정 가상 계좌 번호
@@ -7628,8 +7582,12 @@ paths:
             필요</strong>) </p>
           x-portone-supported-pgs:
             - smartro_v2
+            - settle
           x-portone-per-pg:
             smartro_v2:
+              description: |
+                <p>고정식 가상계좌를 발급 하시는 경우, <strong>필수</strong>로 입력해야합니다.</p>
+            settle:
               description: |
                 <p>고정식 가상계좌를 발급 하시는 경우, <strong>필수</strong>로 입력해야합니다.</p>
         - name: vbank_code
@@ -7739,7 +7697,7 @@ paths:
               required: true
         - name: buyer_email
           in: formData
-          description: '주문자 Email주소 <br>(필수 : 이니시스,스마트로 - 신모듈)'
+          description: '주문자 Email주소 <br>(필수 : 이니시스,스마트로 - 신모듈, 헥토파이낸셜 (고정식 가상계좌 에스크로 결제시)'
           required: false
           type: string
           maxLength: 64
@@ -7867,13 +7825,21 @@ paths:
                 <p>상점아이디의 과세설정이 <strong>지정금액방식</strong>(복합과세)으로 설정되어 있는 경우
                 <strong>필수값</strong> 입니다.</p>
 
-                <p>과세 혹은 면세로 설정된 상점아이디에서 파라미터 전달 시 가상계좌 생성이 불가능합니다.</p>
+                <ul>
+
+                <li>과세 혹은 면세로 설정된 상점아이디에서 파라미터 전달 시 가상계좌 생성이 불가능합니다.</li>
+
+                </ul>
             nice_v2:
               description: >
                 <p>상점아이디의 과세설정이 <strong>지정금액방식</strong>(복합과세)으로 설정되어 있는 경우
                 <strong>필수값</strong> 입니다.</p>
 
-                <p>과세 혹은 면세로 설정된 상점아이디에서 파라미터 전달 시 가상계좌 생성이 불가능합니다.</p>
+                <ul>
+
+                <li>과세 혹은 면세로 설정된 상점아이디에서 파라미터 전달 시 가상계좌 생성이 불가능합니다.</li>
+
+                </ul>
             welcome:
               description: |
                 <p><code>현금영수증 부가세업체정함</code> 설정 고객사에 한해 사용이 가능합니다</p>
@@ -7927,6 +7893,23 @@ paths:
           x-portone-name: 결제 상품의 개수
           x-portone-description: |
             <p>가상계좌 발급을 위한 결제 상품의 개수로 기본값은 1입니다</p>
+        - name: escrow_password
+          in: formData
+          description: 헥토파이낸셜 고정식 가상계좌 에스크로 결제 시 필수로 입력해야합니다.
+          required: false
+          type: string
+          x-portone-name: 에스크로 비밀번호
+          x-portone-description: |
+            <p>헥토파이낸셜 고정식 가상계좌 에스크로 결제 시 필수로 입력해야합니다.</p>
+        - name: fixed_unlimited_vbank
+          in: formData
+          description: 헥토파이낸셜 고정식 무제한 가상계좌 발급 시 필수로 입력해야합니다.
+          required: false
+          type: boolean
+          default: false
+          x-portone-name: 고정식 무제한 가상계좌 여부
+          x-portone-description: |
+            <p>헥토파이낸셜 고정식 무제한 가상계좌 발급시 필수로 입력해야합니다.</p>
       responses:
         '200':
           description: 가상계좌 생성 완료
@@ -8083,94 +8066,6 @@ paths:
         - smartro_v2
         - nice_v2
         - welcome
-      x-portone-category: vbank
-  /vbanks/holder:
-    get:
-      tags:
-        - vbanks
-      summary: 예금주 조회 API
-      description: |-
-        가상계좌 환불 전, 확인차원에서 예금주를 조회하는 API <br>
-              은행코드, 계좌번호를 이용해 해당 계좌의 예금주 명을 조회합니다.<br>
-              <table><tbody><tr><td>KB국민은행</td><td>004
-              </td></tr><tr><td>SC제일은행</td><td>023
-              </td></tr><tr><td>경남은행</td><td>039
-              </td></tr><tr><td>광주은행</td><td>034
-              </td></tr><tr><td>기업은행</td><td>003
-              </td></tr><tr><td>농협</td><td>011
-              </td></tr><tr><td>대구은행</td><td>031
-              </td></tr><tr><td>부산은행</td><td>032
-              </td></tr><tr><td>산업은행</td><td>002
-              </td></tr><tr><td>수협</td><td>007
-              </td></tr><tr><td>신한은행</td><td>088
-              </td></tr><tr><td>신협</td><td>048
-              </td></tr><tr><td>외환은행</td><td>005
-              </td></tr><tr><td>우리은행</td><td>020
-              </td></tr><tr><td>우체국</td><td>071
-              </td></tr><tr><td>전북은행</td><td>037
-              </td></tr><tr><td>제주은행</td><td>035
-              </td></tr><tr><td>축협</td><td>012
-              </td></tr><tr><td>하나은행(서울은행)</td><td>081
-              </td></tr><tr><td>한국씨티은행(한미은행)</td><td>027
-              </td></tr><tr><td>K뱅크</td><td>089
-              </td></tr><tr><td>카카오뱅크</td><td>090
-              </td></tr><tr><td>유안타증권</td><td>209
-              </td></tr><tr><td>현대증권</td><td>218
-              </td></tr><tr><td>미래에셋증권</td><td>230
-              </td></tr><tr><td>대우증권</td><td>238
-              </td></tr><tr><td>삼성증권</td><td>240
-              </td></tr><tr><td>한국투자증권</td><td>243
-              </td></tr><tr><td>우리투자증권</td><td>247
-              </td></tr><tr><td>교보증권</td><td>261
-              </td></tr><tr><td>하이투자증권</td><td>262
-              </td></tr><tr><td>에이치엠씨투자증권</td><td>263
-              </td></tr><tr><td>키움증권</td><td>264
-              </td></tr><tr><td>이트레이드증권</td><td>265
-              </td></tr><tr><td>에스케이증권</td><td>266
-              </td></tr><tr><td>대신증권</td><td>267
-              </td></tr><tr><td>솔로몬투자증권</td><td>268
-              </td></tr><tr><td>한화증권</td><td>269
-              </td></tr><tr><td>하나대투증권</td><td>270
-              </td></tr><tr><td>굿모닝신한증권</td><td>278
-              </td></tr><tr><td>동부증권</td><td>279
-              </td></tr><tr><td>유진투자증권</td><td>280
-              </td></tr><tr><td>메리츠증권</td><td>287
-              </td></tr><tr><td>엔에이치투자증권</td><td>289
-              </td></tr><tr><td>부국증권</td><td>290</td></tr></tbody></table>
-      operationId: queryBankHolder
-      consumes:
-        - application/json
-        - application/x-www-form-urlencoded
-      produces:
-        - application/json
-      parameters:
-        - name: bank_code
-          in: query
-          description: 은행코드(금융결제원 표준코드3자리)
-          required: true
-          type: string
-          x-portone-name: 은행코드
-          x-portone-description: |
-            <p>조회할 은행코드(금융결제원 표준코드3자리)</p>
-        - name: bank_num
-          in: query
-          description: 계좌번호(숫자외 기호 포함 가능)
-          required: true
-          type: string
-          x-portone-name: 계좌번호
-          x-portone-description: |
-            <p>조회할 계좌번호(숫자외 기호 포함 가능)</p>
-      responses:
-        '200':
-          description: 예금주 조회 성공
-          schema:
-            $ref: '#/definitions/VbankHolderResponse'
-        '400':
-          description: bank_code가 누락된 경우/ bank_num이 누락된 경우
-        '401':
-          description: 인증 Token이 전달되지 않았거나 유효하지 않은 경우
-        '404':
-          description: 계좌정보 조회 실패
       x-portone-category: vbank
 definitions:
   AuthAnnotation:
@@ -9861,6 +9756,14 @@ definitions:
         x-portone-name: 취소 내역
         x-portone-description: |
           <p>결제건의 취소/부분취소 내역</p>
+      deposit_history:
+        description: 고정식 무제한 가상계좌 입금 내역
+        type: array
+        items:
+          $ref: '#/definitions/VbankDepositAnnotation'
+        x-portone-name: 고정식 무제한 가상계좌 입금 내역
+        x-portone-description: |
+          <p>고정식 무제한 가상계좌 입금 내역</p>
       cancel_receipt_urls:
         description: >-
           (Deprecated : cancel_history 사용 권장) 취소/부분취소 시 생성되는 취소 매출전표 확인 URL.
@@ -11369,6 +11272,38 @@ definitions:
         properties:
           response:
             $ref: '#/definitions/VbankHolderAnnotation'
+  VbankDepositAnnotation:
+    required:
+      - pg_tid
+      - amount
+      - reason
+      - depositor_name
+      - deposited_at
+    properties:
+      pg_tid:
+        description: PG사 승인번호
+        type: string
+        x-portone-name: PG사 승인번호
+        x-portone-description: |
+          <p>입금건의 PG사 승인번호</p>
+      amount:
+        description: 입금건의 거래 금액
+        type: number
+        x-portone-name: 입금 금액
+        x-portone-description: |
+          <p>입금건의 거래 금액</p>
+      depositor_name:
+        description: 가상계좌에 실제 입금한 사람의 이름
+        type: string
+        x-portone-name: 입금자명
+        x-portone-description: |
+          <p>가상계좌에 실제 입금한 사람의 이름</p>
+      deposited_at:
+        description: 입금된 시각 UNIX timestamp
+        type: integer
+        x-portone-name: 입금 시각
+        x-portone-description: |
+          <p>입금된 시각 UNIX timestamp</p>
   KcpQuickControllerAnnotation: {}
   UserControllerAnnotation: {}
 tags:

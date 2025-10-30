@@ -21,7 +21,7 @@ PG사 또는 결제수단에 따라서 반환되는 속성들이 상이합니다
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 ```
 
-위 JS SDK 버전을 사용하면서 (신) 토스페이먼츠, (신) 스마트로, (신) 나이스페이먼츠, (신) 페이팔, KSNET, 웰컴페이먼츠 연동시에는
+위 JS SDK 버전을 사용하면서 (신) 토스페이먼츠, (신) 스마트로, (신) 나이스정보통신, (신) 페이팔, KSNET, 웰컴페이먼츠 연동시에는
 `imp_uid`, `merchant_uid`, `error_code`, `error_msg`만 제공됩니다.
 
 결제 실패 사유와 코드 확인을 위해서는 `error_code`, `error_msg` 파라미터를 참고해주세요.
@@ -132,7 +132,7 @@ PG사 또는 결제수단에 따라서 반환되는 속성들이 상이합니다
   - `kcp`(NHN KCP)
   - `kcp_billing`(NHN KCP 정기결제)
   - `uplus`((구) 토스페이먼츠(구 LG U+))
-  - `nice`((구) 나이스페이먼츠)
+  - `nice`((구) 나이스정보통신)
   - `kicc`(한국정보통신)
   - `kakaopay`(카카오페이)
   - `danal`(다날 휴대폰 소액결제)
@@ -153,7 +153,7 @@ PG사 또는 결제수단에 따라서 반환되는 속성들이 상이합니다
   - `daou`(키움페이 (구. 페이조아))
   - `tosspayments` ((신) 토스페이먼츠)
   - `paypal_v2`((신) 페이팔)
-  - `nice_v2`((신) 나이스페이먼츠)
+  - `nice_v2`((신) 나이스정보통신)
   - `smartro_v2`((신) 스마트로)
   - `toss_brandpay`(토스페이먼츠 브랜드페이)
   - `welcome` (웰컴페이먼츠)

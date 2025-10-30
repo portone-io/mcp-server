@@ -13,78 +13,54 @@ targetVersions:
 포트원 MCP 서버는 개발자센터 문서 내용을 AI에게 제공하여,
 AI가 보다 정확하고 구체적인 정보를 바탕으로 사용자의 연동 및 질의를 돕도록 합니다.
 
-### 1. MCP 서버 등록하기
+이외에도 포트원 콘솔에서 제공하는 기능 중 일부를 수행할 수 있습니다.
+아래 기능을 AI에게 요청하면 MCP 서버가 브라우저를 열어 포트원 콘솔 로그인을 요청하며, 로그인 후 기능이 수행됩니다.
 
-포트원 MCP 서버를 사용하기 위해서는 먼저 사용하는 AI 도구에 서버를 등록해야 합니다.
+- 채널 목록 조회
+- 테스트 채널 추가
+- 하위 상점 조회
+- 결제 내역 조회
 
-Cursor, Windsurf, Claude Code, Claude for Desktop 등 다양한 AI 도구의 설정 파일에서 아래 내용을 추가하여 MCP 서버를 등록할 수 있습니다.
+### DXT를 이용한 설치
 
-```json
-{
-  // ...
+[DXT (Desktop Extensions)](https://github.com/anthropics/dxt)를 이용해 MCP 서버를 원클릭으로 설치할 수 있습니다.
 
-  "mcpServers": {
-    // ...
-
-    "portone-mcp-server": {
-      "command": "uvx",
-      "args": ["portone-mcp-server@latest"]
-    }
-  }
-}
-```
-
-<div class="hint" data-style="info">
-
-사용 환경에 [uv](https://docs.astral.sh/uv/getting-started/installation/)가 설치되어 있어야 합니다.
-
-</div>
-
-설정 파일 수정이 완료된 후 AI 도구를 재시작하면 MCP 서버가 적용됩니다.
-
-#### 포트원 기능 사용하기
-
-MCP 서버에 포트원 기능을 연동하면, AI가 아래와 같은 작업을 수행할 수 있습니다.
-
-- 결제 내역 단건/다건 조회
-- 본인인증 내역 단건/다건 조회
-
-연동을 활성화하려면, MCP 설정 파일의 env 블록에 포트원 관리자 콘솔에서 발급받은 API\_SECRET을 추가합니다.
-
-```json
-{
-  // ...
-
-  "mcpServers": {
-    // ...
-
-    "portone-mcp-server": {
-      "command": "uvx",
-      "args": ["portone-mcp-server@latest"],
-      // 아래 env 블록을 추가하여 API 시크릿을 설정합니다.
-      "env": {
-        "API_SECRET": "<YOUR_PORTONE_API_SECRET>"
-      }
-    }
-  }
-}
-```
+1. [GitHub Releases](https://github.com/portone-io/mcp-server/releases)에서 최신 `portone-mcp-server.dxt` 파일을 다운로드합니다.
+2. 지원하는 AI 도구(Claude Desktop 등)에서 다운로드한 `.dxt` 파일을 드래그 앤 드롭하거나 열기를 통해 설치합니다.
+3. 설치 후 도구를 재시작하여 MCP 서버가 정상적으로 등록되었는지 확인합니다.
 
 <div class="hint" data-style="warning">
 
-**API 시크릿은 MCP 서버에서 제공하는 기능 외에도 포트원 REST API의 모든 권한을 가집니다.**
+**Claude Desktop에서 DXT 파일 사용 시 주의사항**
 
-내부의 인가된 인원만이 MCP 서버를 사용할 수 있도록 통제해야 합니다.
+현재 [알려진 이슈](https://github.com/anthropics/dxt/issues/45)로 인해 Claude Desktop에서 DXT 설치 후 MCP 서버가 정상적으로 작동하지 않을 수 있습니다.
 
-</div>
-
-<div class="hint" data-style="warning">
-
-**MCP 서버는 포트원의 공개된 API 기능만을 사용하며, 인증을 위해 사용자가 제공한 API 시크릿을 활용합니다.**
-
-이 인증 과정은 전적으로 MCP 서버 내부에서 일어나므로, 언어 모델의 문제로 인해 비인가 사용자에게 기밀 정보가 유출되지는 않습니다.
+이 경우 Node.js 22.6.0 이상을 설치하고 Claude Desktop 설정에서 **"MCP용 내장 Node.js 사용"** 옵션을 비활성화한 후 재시작하면 정상적으로 작동합니다.
 
 </div>
+
+### MCP 서버 등록하기
+
+1. Node.js 22.6.0 이상이 설치되어 있어야 합니다.
+
+2. 사용하는 AI 도구의 MCP 설정에서 아래 내용을 추가합니다. (Cursor, Windsurf, Claude Desktop, etc...)
+
+   ```jsonc
+   "mcpServers": {
+
+     // 기존 설정
+
+     "portone-mcp-server": {
+       "command": "npx",
+       "args": [
+         "-y",
+         "@portone/mcp-server@latest"
+       ]
+     }
+   }
+   ```
+
+3. 도구를 재시작해 portone-mcp-server 및 해당 서버가 제공하는 도구들이 잘 등록되었는지 확인합니다.
 
 <div class="hint" data-style="warning">
 
@@ -95,7 +71,7 @@ MCP 서버는 API 응답에 포함된 개인정보가 외부로 전달되지 않
 
 </div>
 
-### 2. MCP 서버 활용하기
+### MCP 서버 활용하기
 
 사용 중인 AI 도구에 포트원 MCP 서버가 적용되었다면, 아래 예시들과 같이 질의하여 사용할 수 있습니다.
 

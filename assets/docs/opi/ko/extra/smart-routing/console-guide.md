@@ -1,6 +1,6 @@
 ---
 title: 스마트 라우팅 - 콘솔 가이드
-description: 멀티PG 환경을 클릭 한 번으로 쉽게 만들 수 있는 결제 트래픽 분산 자동화 서비스 입니다.
+description: 멀티PG 환경을 클릭 한 번으로 쉽게 만들 수 있는 결제 트래픽 분산 자동화 서비스입니다.
 targetVersions:
   - v1
   - v2

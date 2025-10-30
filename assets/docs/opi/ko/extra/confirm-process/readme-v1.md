@@ -1,6 +1,6 @@
 ---
 title: 컨펌 프로세스
-description: 결제요청의 주체를 고객사 서버로 가져갈수 있는 서비스 입니다.
+description: 결제요청의 주체를 고객사 서버로 가져갈수 있는 서비스입니다.
 targetVersions:
   - v1
 versionVariants:
@@ -53,7 +53,7 @@ versionVariants:
 
 **컨펌 프로세스 신청 방법**
 
-기술지원 메일(<support@portone.io>)로 **고객사 식별코드**를 기재하여 메일 발송
+기술지원 메일(<tech.support@portone.io>)로 **고객사 식별코드**를 기재하여 메일 발송
 
 (이미지 첨부: 포트원 콘솔 내 고객사 식별코드 확인 예시)
 

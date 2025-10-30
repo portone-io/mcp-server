@@ -8,7 +8,7 @@ targetVersions:
 <div class="hint" data-style="warning">
 
 해당 플러그인은 현재 유지보수 되지 않으며, 신규 워드프레스 버전에서는 정상작동을 보장하지 않습니다.\
-연동과 관련하여 기술지원이 필요하신 경우 <support@portone.io>로 문의바랍니다.
+연동과 관련하여 기술지원이 필요하신 경우 <tech.support@portone.io>로 문의바랍니다.
 
 </div>
 

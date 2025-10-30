@@ -46,7 +46,7 @@ searchTags:
 
 - [KG이니시스 카드사 심사현황 바로가기↗︎](https://www.inicis.com/check_card)
 - [NHN KCP 카드사 심사현황 바로가기↗︎](https://www.kcp.co.kr/viewApplicationParent/viewApplication/00)
-- [나이스페이먼츠 카드사 심사현황 바로가기↗︎](https://www.nicepay.co.kr/apply/progress/card.do)
+- [나이스정보통신 카드사 심사현황 바로가기↗︎](https://www.nicepay.co.kr/apply/progress/card.do)
 - [다날 계약현황 바로가기↗︎](https://contract.danalpay.com/std/search)
 - [KICC(한국정보통신) 계약현황 바로가기↗︎](https://www.easypay.co.kr/application/ApplyProgressAction.do)
 - [헥토파이낸셜 심사현황 바로가기↗︎](https://pg.sbsvc.online/pgmemsvc/MemberMultiAction.do?_method=serviceReqState)

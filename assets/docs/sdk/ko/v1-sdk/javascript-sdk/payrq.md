@@ -44,7 +44,7 @@ versionVariants:
   - `kicc`(이지페이(한국정보통신) 결제창 일반/정기결제)
   - `ksnet`(KSNET 결제창 일반결제 및 API 수기/정기결제)
   - `mobilians`(모빌리언스 결제창 일반/정기결제)
-  - `nice`(나이스페이먼츠(구모듈) 결제창 일반결제 및 API 수기/정기결제)
+  - `nice`(나이스정보통신(구모듈) 결제창 일반결제 및 API 수기/정기결제)
   - `nice_v2`(나이스페이(신모듈) 결제창 일반결제 및 API 수기/정기결제)
   - `settle`(헥토파이낸셜 결제창 일반결제 및 API 수기/정기결제)
   - `settle_acc` (헥토파이낸셜 내통장결제)
@@ -213,7 +213,7 @@ versionVariants:
 
   <summary>지원되는 PG사</summary>
 
-  - 나이스페이먼츠
+  - 나이스정보통신
   - (신) 토스페이
 
   </details>
@@ -289,7 +289,7 @@ versionVariants:
 
   [**confirm\_process**](https://developers.portone.io/opi/ko/extra/confirm-process/readme-v1) **에 사용할 고객사 endpoint URL**
 
-  - 사용 시 기술지원 메일로 별도 요청이 필요합니다. (<support@portone.io>)
+  - 사용 시 기술지원 메일로 별도 요청이 필요합니다. (<tech.support@portone.io>)
 
 - notice\_url?: string
 

@@ -38,16 +38,16 @@ datetime: 2025-02-28T01:25:51.798Z
    \- 결제수단 : 간편결제 일체
 4. KG INICIS\
    \- 이용가능지역 : Korea \
-   \- 결제수단 : 카드결제, NAVERPAY(허브형), KAKAOPAY(허브형), PAYCO(허브형), TOSSPAY(허브형)
+   \- 결제수단 : 카드결제, NAVERPAY(제휴), KAKAOPAY(제휴), PAYCO(제휴), TOSSPAY(제휴)
 5. NHN KCP \
    \- 이용가능지역 : Korea\
-   \- 결제수단 : 카드결제, NAVERPAY(허브형), KAKAOPAY(허브형)
+   \- 결제수단 : 카드결제, NAVERPAY(제휴), KAKAOPAY(제휴)
 6. TOSS PAYMENTS\
    \- 이용가능지역 : Korea\
-   \- 결제수단 : 카드결제, NAVERPAY(허브형), KAKAOPAY(허브형), 계좌이체
+   \- 결제수단 : 카드결제, NAVERPAY(제휴), KAKAOPAY(제휴), 계좌이체
 7. NICE PAYMENTS\
    \- 이용가능지역 : Korea\
-   \- 결제수단 : 카드결제, NAVERPAY(허브형), KAKAOPAY(허브형),
+   \- 결제수단 : 카드결제, NAVERPAY(제휴), KAKAOPAY(제휴),
 8. PAYMENTWALL\
    \- 이용가능지역 : Global\
    \- 결제수단 : 카드결제, 간편결제

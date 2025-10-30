@@ -65,7 +65,6 @@ PortOne.requestIdentityVerification({
 
 <summary>인증 업체 코드 확인하기</summary>
 
-- PAYCO(페이코)
 - PASS(패스 (통신사))
 - TOSS(토스)
 - KFTC(금융결제원)

@@ -2,7 +2,7 @@
 title: '[공지] 나이스페이 자체 장애 대응 완료(종결)'
 category: 공지사항
 tags:
-  - 나이스페이먼츠
+  - 나이스정보통신
   - 공지사항
 pgCompanies:
   - null

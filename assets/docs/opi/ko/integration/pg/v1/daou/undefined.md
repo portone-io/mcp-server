@@ -212,3 +212,11 @@ GET http://api.iamport.kr/payments/{포트원 번호}?**extension=true**
 초당 50건 이상의 비인증 결제 API가 호출될 경우 오류가 발생할 수 있습니다.
 
 </details>
+
+<details>
+
+<summary>도서문화상품권, 스마트문화상품권 거래는 부분취소 불가능</summary>
+
+도서문화상품권, 스마트문화상품권 거래는 부분취소가 불가능하며 전체취소만 가능합니다.
+
+</details>

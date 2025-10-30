@@ -155,5 +155,5 @@ description: 결제대행사 및 결제수단을 선택하고 전자결제를 �
 
 - [V2 연동 매뉴얼 바로가기](https://developers.portone.io/opi/ko/integration/ready/readme?v=v2)
 
-- 연동과 관련하여 궁금하신 사항은 **포트원 기술지원 이메일 <support@portone.io>**
+- 연동과 관련하여 궁금하신 사항은 **포트원 기술지원 이메일 <tech.support@portone.io>**
   또는 채널톡으로 문의 주시기 바랍니다.

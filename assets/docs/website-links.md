@@ -4,7 +4,7 @@ description: PortOne 개발자센터 웹사이트 내 존재하는 문서들의 
 targetVersions:
   - v1
   - v2
-date: 2025-07-14
+date: 2025-10-30
 author: PortOne
 ---
 
@@ -41,14 +41,15 @@ author: PortOne
 - [프로모션 결제 연동하기](https://developers.portone.io/opi/ko/extra/promotion/integration): 프로모션 할인금액을 적용하는 방법을 안내합니다.
 - [프로모션](https://developers.portone.io/opi/ko/extra/promotion/intro): 카드 즉시 할인을 쉽게 운영 및 관리할 수 있는 서비스입니다.
 - [프로모션 결제 취소하기](https://developers.portone.io/opi/ko/extra/promotion/refund): 프로모션을 적용하여 승인된 결제건들에 대하여 취소/환불하는 방법을 안내합니다.
-- [스마트 라우팅 - 콘솔 가이드](https://developers.portone.io/opi/ko/extra/smart-routing/console-guide): 멀티PG 환경을 클릭 한 번으로 쉽게 만들 수 있는 결제 트래픽 분산 자동화 서비스 입니다.
-- [스마트 라우팅 - 연동하기](https://developers.portone.io/opi/ko/extra/smart-routing/integration): 멀티PG 환경을 클릭 한 번으로 쉽게 만들 수 있는 결제 트래픽 분산 자동화 서비스 입니다.
-- [스마트 라우팅](https://developers.portone.io/opi/ko/extra/smart-routing/intro): 멀티PG 환경을 클릭 한 번으로 쉽게 만들 수 있는 결제 트래픽 분산 자동화 서비스 입니다.
+- [스마트 라우팅 - 콘솔 가이드](https://developers.portone.io/opi/ko/extra/smart-routing/console-guide): 멀티PG 환경을 클릭 한 번으로 쉽게 만들 수 있는 결제 트래픽 분산 자동화 서비스입니다.
+- [스마트 라우팅 - 연동하기](https://developers.portone.io/opi/ko/extra/smart-routing/integration): 멀티PG 환경을 클릭 한 번으로 쉽게 만들 수 있는 결제 트래픽 분산 자동화 서비스입니다.
+- [스마트 라우팅](https://developers.portone.io/opi/ko/extra/smart-routing/intro): 멀티PG 환경을 클릭 한 번으로 쉽게 만들 수 있는 결제 트래픽 분산 자동화 서비스입니다.
 - [결제 연동 준비하기](https://developers.portone.io/opi/ko/integration/ready/readme): 포트원을 이용한 연동 개발이 처음이시라면 아래 안내 사항에 따라 진행하세요.
 - [AI 도구 활용하기](https://developers.portone.io/opi/ko/integration/using-ai-tools): AI 도구를 활용하여 쉽고 빠르게 포트원을 연동하세요. 연동 코드 작성은 물론, 24시간 언제나 관련 질의에 대한 답변을 받을 수 있습니다.
 - [가상계좌 입금통보 설정](https://developers.portone.io/opi/ko/integration/virtual-account/readme): 결제대행사별 입금통보 URL을 안내합니다.
 - [포트원 결제 연동 Doc](https://developers.portone.io/opi/ko/readme): 포트원 결제 연동 가이드입니다. 빠른 시간 안에 결제를 연동할 수 있게 도와드립니다.
 - [직접 문의하기](https://developers.portone.io/opi/ko/support/contact): 기술지원 문의를 위한 연락처 정보입니다.
+- [용어 사전](https://developers.portone.io/opi/ko/support/pg-terms): 온라인 결제 시스템에서 자주 사용되는 용어들을 설명합니다.
 - [TLS 지원 범위](https://developers.portone.io/opi/ko/support/tls-support): 포트원 v1 API의 TLS 지원 범위 및 설정 가이드를 확인할 수 있습니다.
 
 ## V2 문서
@@ -77,8 +78,9 @@ author: PortOne
 ### V2 문서 통합 가이드
 
 - [스마트 라우팅](https://developers.portone.io/opi/ko/console/guide/smartrouting): 포트원 스마트 라우팅을 사용하기 위한 그룹 설정을 관리할 수 있습니다. 관리자콘솔 내 스마트 라우팅 그룹 설정 방법을 안내합니다.
-- [컨펌 프로세스](https://developers.portone.io/opi/ko/extra/confirm-process/readme-v2): 결제승인의 주체를 고객사 서버로 가져갈수 있는 서비스 입니다.
+- [컨펌 프로세스](https://developers.portone.io/opi/ko/extra/confirm-process/readme-v2): 결제 승인의 주체를 고객사 서버로 가져갈 수 있는 서비스입니다.
 - [본인인증 연동하기](https://developers.portone.io/opi/ko/extra/identity-verification/readme-v2): 포트원을 이용하여 간편하게 본인인증을 연동하는 방법을 확인합니다.
+- [수동 승인](https://developers.portone.io/opi/ko/extra/manual-confirm/readme-v2): 고객사 서버에서 API를 호출하여 결제를 승인하는 연동 방식입니다.
 - [결제취소(환불) 연동하기](https://developers.portone.io/opi/ko/integration/cancel/v2/readme): 포트원 V2 결제취소 API를 이용한 결제취소 방법을 안내합니다.
 - [다날 본인인증](https://developers.portone.io/opi/ko/integration/pg/v2/danal-identity-verification): 다날 본인인증 연동 방법을 안내합니다.
 - [엑심베이](https://developers.portone.io/opi/ko/integration/pg/v2/eximbay-v2): 엑심베이 결제 연동 방법을 안내합니다.
@@ -92,7 +94,7 @@ author: PortOne
 - [한국결제네트웍스(KPN)](https://developers.portone.io/opi/ko/integration/pg/v2/kpn): 한국결제네트웍스(KPN) 결제 연동 방법을 안내합니다.
 - [KSNET](https://developers.portone.io/opi/ko/integration/pg/v2/ksnet): KSNET 결제 연동 방법을 안내합니다.
 - [네이버페이 (결제형)](https://developers.portone.io/opi/ko/integration/pg/v2/naverpay): 네이버페이 간편결제 연동 방법을 안내합니다.
-- [나이스페이먼츠](https://developers.portone.io/opi/ko/integration/pg/v2/nice-v2): 나이스페이먼츠 결제 연동 방법을 안내합니다.
+- [나이스정보통신](https://developers.portone.io/opi/ko/integration/pg/v2/nice-v2): 나이스정보통신 결제 연동 방법을 안내합니다.
 - [페이레터 해외결제](https://developers.portone.io/opi/ko/integration/pg/v2/payletter-global): 페이레터 해외결제 연동 방법을 안내합니다.
 - [페이팔](https://developers.portone.io/opi/ko/integration/pg/v2/paypal-v2): 페이팔 결제 연동 방법을 안내합니다.
 - [결제대행사 선택하여 연동하기](https://developers.portone.io/opi/ko/integration/pg/v2/readme): 각 PG사별 결제 연동 방법을 확인할 수 있습니다.
@@ -130,7 +132,7 @@ author: PortOne
 - [결제 연동 하기](https://developers.portone.io/opi/ko/console/guide/connect)
 - [결제 내역](https://developers.portone.io/opi/ko/console/guide/list): 결제가 이루어진 거래내역을 조회할 수 있는 메뉴입니다.
 - [복수 PG설정 및 사용하기](https://developers.portone.io/opi/ko/console/pg): 복수 PG를 사용하는 경우 설정방법을 확인할 수 있습니다.
-- [컨펌 프로세스](https://developers.portone.io/opi/ko/extra/confirm-process/readme-v1): 결제요청의 주체를 고객사 서버로 가져갈수 있는 서비스 입니다.
+- [컨펌 프로세스](https://developers.portone.io/opi/ko/extra/confirm-process/readme-v1): 결제요청의 주체를 고객사 서버로 가져갈수 있는 서비스입니다.
 - [통합인증 준비하기](https://developers.portone.io/opi/ko/extra/identity-verification/v1/all/0): 통합인증 연동을 시작하기 위한 준비작업을 소개합니다.
 - [통합인증 요청하기](https://developers.portone.io/opi/ko/extra/identity-verification/v1/all/1): 통합인증 페이지를 호출하는 방법을 확인합니다.
 - [인증 완료정보 전달하기](https://developers.portone.io/opi/ko/extra/identity-verification/v1/all/2): 통합인증 이후 획득된 정보를 처리하는 방법을 안내합니다.
@@ -181,12 +183,14 @@ author: PortOne
 - [네이버페이(결제형)](https://developers.portone.io/opi/ko/integration/pg/v1/naver): 네이버페이 결제형 연동 방법을 안내합니다.
 - [토스페이먼츠(신모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/newtoss/readme): 토스페이먼츠 (신모듈 / 2022-07-27 버전) 연동 방법을 확인합니다.
 - [연동 유의사항](https://developers.portone.io/opi/ko/integration/pg/v1/newtoss/warning): 토스페이먼츠 (신 모듈) 연동 유의사항을 소개합니다.
-- [NHN KCP](https://developers.portone.io/opi/ko/integration/pg/v1/nhn-kcp): NHN KCP 결제 연동 방법을 안내합니다.
-- [빌링키 발급 / API 연동 유의사항](https://developers.portone.io/opi/ko/integration/pg/v1/nice-v2/billing-api-caution): (신)나이스페이먼츠 비인증 결제 연동 유의사항을 소개합니다.
-- [일반결제 연동 유의사항](https://developers.portone.io/opi/ko/integration/pg/v1/nice-v2/payment-caution): 나이스페이먼츠(신모듈) 일반결제 연동 유의사항을 소개합니다.
-- [나이스페이먼츠 (신모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/nice-v2/readme): 나이스페이먼츠 연동 방법을 안내합니다.
-- [(구) 나이스페이먼츠](https://developers.portone.io/opi/ko/integration/pg/v1/nice): (구) 나이스페이먼츠 결제창 연동 가이드를 안내합니다.
+- [KCP 퀵페이 (자체 간편결제)](https://developers.portone.io/opi/ko/integration/pg/v1/nhn-kcp/kcp-quickpay): NHN KCP 퀵페이 결제 연동 방법을 안내합니다.
+- [NHN KCP](https://developers.portone.io/opi/ko/integration/pg/v1/nhn-kcp/readme): NHN KCP 결제 연동 방법을 안내합니다.
+- [빌링키 발급 / API 연동 유의사항](https://developers.portone.io/opi/ko/integration/pg/v1/nice-v2/billing-api-caution): (신)나이스정보통신 비인증 결제 연동 유의사항을 소개합니다.
+- [일반결제 연동 유의사항](https://developers.portone.io/opi/ko/integration/pg/v1/nice-v2/payment-caution): 나이스정보통신(신모듈) 일반결제 연동 유의사항을 소개합니다.
+- [나이스정보통신 (신모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/nice-v2/readme): 나이스정보통신 연동 방법을 안내합니다.
+- [(구) 나이스정보통신](https://developers.portone.io/opi/ko/integration/pg/v1/nice): (구) 나이스정보통신 결제창 연동 가이드를 안내합니다.
 - [페이코](https://developers.portone.io/opi/ko/integration/pg/v1/payco): 페이코 결제 연동방법을 안내합니다.
+- [페이레터 해외결제](https://developers.portone.io/opi/ko/integration/pg/v1/payletter-global): 페이레터 해외결제 연동 방법을 안내합니다.
 - [페이먼트월](https://developers.portone.io/opi/ko/integration/pg/v1/paymentwall): 페이먼트월 결제창 연동가이드를 확인 합니다.
 - [페이팔(Express Checkout)](https://developers.portone.io/opi/ko/integration/pg/v1/paypal): 페이팔(Express Checkout) 결제연동 방법을 안내합니다.
 - [결제대행사 선택하여 연동하기](https://developers.portone.io/opi/ko/integration/pg/v1/readme): 각 결제대행사(PG)사별 결제 연동 방법 및 유의사항을 확인할 수 있습니다.
@@ -233,7 +237,7 @@ author: PortOne
 
 ## 파트너정산
 
-- [용어 사전](https://developers.portone.io/platform/ko/guides/dictionary)
+- [용어 사전](https://developers.portone.io/platform/ko/guides/dictionary): 파트너 정산 자동화 솔루션에서 자주 사용되는 용어를 설명합니다.
 - [서비스 프로세스](https://developers.portone.io/platform/ko/guides/process)
 - [세금계산서 웹훅 가이드](https://developers.portone.io/platform/ko/guides/webhook): 세금계산서 상태 변화 웹훅의 사용 방법과 설정 가이드입니다.
 - [파트너 정산 자동화 서비스 가이드](https://developers.portone.io/platform/ko/readme)
@@ -293,6 +297,7 @@ author: PortOne
 - [관리자콘솔 2023-09-12](https://developers.portone.io/release-notes/console/2023-09-12)
 - [관리자콘솔 2023-12-27](https://developers.portone.io/release-notes/console/2023-12-27)
 - [관리자콘솔 2024-09-05](https://developers.portone.io/release-notes/console/2024-09-05)
+- [관리자콘솔 2025-10-17](https://developers.portone.io/release-notes/console/2025-10-17)
 - [파트너 정산 자동화 2023-08-31](https://developers.portone.io/release-notes/platform/2023-08-31)
 - [파트너 정산 자동화 2023-11-08](https://developers.portone.io/release-notes/platform/2023-11-08)
 - [파트너 정산 자동화 2023-11-14](https://developers.portone.io/release-notes/platform/2023-11-14)
@@ -319,6 +324,11 @@ author: PortOne
 - [파트너 정산 자동화 2025-05-14](https://developers.portone.io/release-notes/platform/2025-05-14)
 - [파트너 정산 자동화 2025-07-02](https://developers.portone.io/release-notes/platform/2025-07-02)
 - [파트너 정산 자동화 2025-07-07](https://developers.portone.io/release-notes/platform/2025-07-07)
+- [파트너 정산 자동화 2025-07-23](https://developers.portone.io/release-notes/platform/2025-07-23)
+- [파트너 정산 자동화 2025-08-13](https://developers.portone.io/release-notes/platform/2025-08-13)
+- [파트너 정산 자동화 2025-08-21](https://developers.portone.io/release-notes/platform/2025-08-21)
+- [파트너 정산 자동화 2025-08-28](https://developers.portone.io/release-notes/platform/2025-08-28)
+- [파트너 정산 자동화 2025-10-02](https://developers.portone.io/release-notes/platform/2025-10-02)
 
 ## 블로그
 

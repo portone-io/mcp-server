@@ -15,8 +15,8 @@ targetVersions:
 |     NHN KCP 퀵페이    |   `kcp_quick`  |
 |   (구) 토스페이먼츠   |     `uplus`    |
 |   (신) 토스페이먼츠   | `tosspayments` |
-|  (구) 나이스페이먼츠  |     `nice`     |
-|  (신) 나이스페이먼츠  |    `nice_v2`   |
+|  (구) 나이스정보통신  |     `nice`     |
+|  (신) 나이스정보통신  |    `nice_v2`   |
 |     이지페이(KICC)    |     `kicc`     |
 |       카카오페이      |   `kakaopay`   |
 |다날휴대폰결제/본인인증|     `danal`    |

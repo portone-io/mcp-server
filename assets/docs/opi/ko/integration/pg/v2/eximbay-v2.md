@@ -17,19 +17,13 @@ targetVersions:
 
 ## 가능한 결제수단
 
-- **결제창 일반결제**
+엑심베이의 경우 포트원의 결제수단 구분과 상관없이 MID에 설정된 여러 결제수단을 표시할 수 있습니다.
+`payMethod`를 생략하고, 특정 결제수단만을 노출할 경우 `bypass.eximbay_v2`를 사용해야 합니다.
 
-  엑심베이의 경우 포트원의 결제수단 구분과 상관없이 여러 결제수단을 표시할 수 있습니다.
-  `payMethod`를 생략하고, 특정 결제수단만을 노출할 경우 `bypass.eximbay_v2`를 사용해야 합니다.
-
-  - MID에 설정된 기본 결제수단을 전부 표시하려면 `bypass.eximbay_v2.payment`를 생략해야 합니다.
-  - 특정 결제수단을 단독으로 표시하려면 `bypass.eximbay_v2.payment.payment_method`를 설정합니다.
-  - 일부 결제수단만을 표시하려면 `bypass.eximbay_v2.payment.multi_payment_method`에 결제수단 목록을 전달합니다.
-  - 엑심베이의 결제수단 코드는 포트원 코드와 상이하므로, [EXIMBAY Docs](https://developer.eximbay.com/eximbay/api_sdk/code-organization.html#paymentCode)에서 확인 후 입력해야 합니다.
-
-- **결제창 빌링키 발급 및 결제**
-
-  현재 신용카드 결제만 지원하며, `billingKeyAndPayMethod` 파라미터를 `CARD`로 설정해야 합니다.
+- MID에 설정된 기본 결제수단을 전부 표시하려면 `bypass.eximbay_v2.payment`를 생략해야 합니다.
+- 특정 결제수단을 단독으로 표시하려면 `bypass.eximbay_v2.payment.payment_method`를 설정합니다.
+- 일부 결제수단만을 표시하려면 `bypass.eximbay_v2.payment.multi_payment_method`에 결제수단 목록을 전달합니다.
+- 엑심베이의 결제수단 코드는 포트원 코드와 상이하므로, [EXIMBAY Docs](https://developer.eximbay.com/eximbay/api_sdk/code-organization.html#paymentCode)에서 확인 후 입력해야 합니다.
 
 ## SDK 결제 요청하기
 
@@ -153,6 +147,35 @@ function requestPayment() {
     **구매자 이메일 주소**
 
     결제 완료 메일이 발송됩니다.
+
+- products?: object\[]
+
+  **구매 상품 정보**
+
+  - 해외카드 결제를 제외하고 필수 입력입니다.
+  - 해외카드의 경우에도 위험 거래 관리가 필요한 경우 요구될 수 있습니다.
+
+  * id: string
+
+    **상품 ID**
+
+  * name: string
+
+    **상품명**
+
+  * amount: number
+
+    **상품 단위 가격**
+
+    결제 금액과 동일하게 scale factor가 적용된 값을 입력합니다.
+
+  * quantity: number
+
+    **상품 수량**
+
+  * link: string
+
+    **상품 판매 URL**
 
 - bypass?: oneof object
 
@@ -317,7 +340,6 @@ function issueBillingKeyAndPay() {
     orderName: "PortOne Recurring Payment",
     totalAmount: 100, // 1 USD
     currency: "USD",
-    billingKeyAndPayMethod: "CARD",
     customer: {
       fullName: "PortOne",
       email: "test@example.com",
@@ -370,12 +392,6 @@ function issueBillingKeyAndPay() {
   - ISO 4217 통화 코드
   - [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217)
 
-- billingKeyAndPayMethod: string
-
-  **빌링키 발급 및 결제 방법**
-
-  - `CARD`: 신용카드 결제
-
 - locale?: Locale
 
   **결제창 언어**
@@ -427,11 +443,54 @@ function issueBillingKeyAndPay() {
 
     결제 완료 메일이 발송됩니다.
 
+- products?: object\[]
+
+  **구매 상품 정보**
+
+  - 해외카드 결제를 제외하고 필수 입력입니다.
+  - 해외카드의 경우에도 위험 거래 관리가 필요한 경우 요구될 수 있습니다.
+
+  * id: string
+
+    **상품 ID**
+
+  * name: string
+
+    **상품명**
+
+  * amount: number
+
+    **상품 단위 가격**
+
+    결제 금액과 동일하게 scale factor가 적용된 값을 입력합니다.
+
+  * quantity: number
+
+    **상품 수량**
+
+  * link: string
+
+    **상품 판매 URL**
+
 - bypass?: oneof object
 
   - eximbay\_v2?: object
 
     **엑심베이 특수 파라미터**
+
+    - payment?: object
+
+      - payment\_method?: string
+
+        **결제수단 단독 노출**
+
+        엑심베이의 결제수단 코드는 포트원 코드와 상이하므로, [EXIMBAY Docs](https://developer.eximbay.com/eximbay/api_sdk/code-organization.html#paymentCode)에서 확인 후 입력해야 합니다.
+
+      - multi\_payment\_method?: string\[]
+
+        **결제수단 노출 목록**
+
+        여러 결제수단을 노출합니다.
 
     - merchant?: object
 
@@ -629,6 +688,35 @@ const response = await axios({
   - email: string
 
     **구매자 이메일**
+
+- products?: object\[]
+
+  **구매 상품 정보**
+
+  - 해외카드 결제를 제외하고 필수 입력입니다.
+  - 해외카드의 경우에도 위험 거래 관리가 필요한 경우 요구될 수 있습니다.
+
+  * id: string
+
+    **상품 ID**
+
+  * name: string
+
+    **상품명**
+
+  * amount: number
+
+    **상품 단위 가격**
+
+    결제 금액과 동일하게 scale factor가 적용된 값을 입력합니다.
+
+  * quantity: number
+
+    **상품 수량**
+
+  * link: string
+
+    **상품 판매 URL**
 
 - bypass?: oneof object
 
@@ -840,6 +928,35 @@ const response = await axios({
 
       **구매자 이메일**
 
+  - products?: object\[]
+
+    **구매 상품 정보**
+
+    - 해외카드 결제를 제외하고 필수 입력입니다.
+    - 해외카드의 경우에도 위험 거래 관리가 필요한 경우 요구될 수 있습니다.
+
+    * id: string
+
+      **상품 ID**
+
+    * name: string
+
+      **상품명**
+
+    * amount: number
+
+      **상품 단위 가격**
+
+      결제 금액과 동일하게 scale factor가 적용된 값을 입력합니다.
+
+    * quantity: number
+
+      **상품 수량**
+
+    * link: string
+
+      **상품 판매 URL**
+
   - bypass?: oneof object
 
     - eximbayV2?: object
@@ -945,17 +1062,16 @@ const response = await axios({
 ### 공통
 
 - `customer.name` 및 `customer.email`은 필수 입력 항목입니다.
+- 해외카드 결제를 제외하고 `products`를 필수로 입력해야 합니다. 해외카드의 경우에도 위험 거래 관리가 필요한 경우 요구될 수 있습니다.
 - `products` 입력 시 `link`를 필수로 입력해야 합니다.
 
-### SDK 결제 요청
+### SDK 결제 / 빌링키 발급 및 결제 요청
 
 - 네이버페이 포인트로 결제할 경우에는 `bypass.eximbay_v2.tax` 내용을 모두 입력해야 합니다.
 
 - 계좌이체 사용 시에는 현금영수증 발급을 위해 반드시 `bypass.eximbay_v2.tax.receipt_status`를 `Y`로 입력해야 합니다.
 
 - `bypass.eximbay_v2.payment_method`에 일본 편의점 결제를 지정할 경우 `customer.phoneNumber`을 필수로 입력해야 합니다.
-
-- 간편결제 사용 시 `products`를 필수로 입력해야 합니다.
 
 - 아래 결제수단의 경우 사용이 제한되므로 결제 연동 시 유의해 주시기 바랍니다.
   - 가상계좌(`P305`) : 호환성 이슈로 추후 지원 예정
