@@ -1,4 +1,4 @@
-import type { CallToolResult } from "@modelcontextprotocol/sdk/types.ts";
+import type { CallToolResult } from "@modelcontextprotocol/sdk/types.d.ts";
 
 export type Result<T> =
   | {
