@@ -7,11 +7,13 @@ import { formatDocumentMetadata } from "./utils/markdown.ts";
 
 export const name = "readPortoneDoc";
 
-const OutputSchema = z.object({
-  content: z.string().describe("찾은 포트원 문서의 내용"),
-  metadata: z.string().describe("찾은 포트원 문서의 메타 정보"),
-  url: z.string().describe("문서를 웹으로 접근 가능한 링크"),
-}).partial();
+const OutputSchema = z
+  .object({
+    content: z.string().describe("찾은 포트원 문서의 내용"),
+    metadata: z.string().describe("찾은 포트원 문서의 메타 정보"),
+    url: z.string().describe("문서를 웹으로 접근 가능한 링크"),
+  })
+  .partial();
 
 export const config = {
   title: "포트원 문서 읽기",
@@ -23,8 +25,14 @@ Note:
   inputSchema: {
     path: z.string().describe("읽을 포트원 문서의 경로"),
     fields: OutputSchema.keyof().array().describe("받을 필드 목록"),
-    startIndex: z.number().optional().describe('읽어올 범위 시작 인덱스. 미설정 시 처음부터 읽어옵니다.'),
-    endIndex: z.number().optional().describe('읽어올 범위 끝 인덱스. 미설정 시 끝까지 읽어옵니다.'),
+    startIndex: z
+      .number()
+      .optional()
+      .describe("읽어올 범위 시작 인덱스. 미설정 시 처음부터 읽어옵니다."),
+    endIndex: z
+      .number()
+      .optional()
+      .describe("읽어올 범위 끝 인덱스. 미설정 시 끝까지 읽어옵니다."),
   },
   outputSchema: OutputSchema.shape,
 };
