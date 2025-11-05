@@ -7,31 +7,27 @@ export const name = "listPortoneDocs";
 
 export const config = {
   title: "포트원 문서 목록 조회",
-  description: `포트원 문서 목록을 카테고리별로 필터링하여 조회합니다.
+  description: `특정 경로 하위에 있는 모든 포트원 문서 목록을 트리 형태로 조회합니다.
 목록에는 문서 경로, 제목, 설명, 대상 버전 등 축약된 문서 정보가 포함되어 있습니다.
 
 Returns:
-  필터링된 문서 목록 (각 문의 경로, 길이, 제목, 설명, 대상 버전 등)`,
+  필터링된 문서 목록 (각 문서의 파일명, 길이, 제목, 설명, 대상 버전 등)
+
+Note:
+  문서 목록은 대량의 데이터이므로 상위 디렉토리를 조회할 경우 omitFiles를 true로 설정합니다.`,
   inputSchema: {
-    dev_docs: z
-      .boolean()
-      .default(true)
+    paths: z
+      .string()
+      .array()
+      .default([])
       .describe(
-        "개발자를 위한 문서 포함 여부 (blog/, release-notes/, help/로 시작하지 않는 모든 문서)",
+        "하위 목록을 조회할 경로들입니다. 미입력 시 전체 목록을 조회합니다.",
       ),
-    tech_blog: z
+    onlyPaths: z
       .boolean()
       .default(false)
-      .describe("기술 블로그 포스트 (blog/) 포함 여부"),
-    release_notes: z
-      .boolean()
-      .default(false)
-      .describe("개발자센터 릴리즈 노트 (release-notes/) 포함 여부"),
-    help_docs: z
-      .boolean()
-      .default(true)
       .describe(
-        "개발과 무관하게 서비스 관련 내용을 일반적으로 담는 헬프센터 문서 (help/) 포함 여부",
+        "true인 경우 문서를 제외한 디렉토리 목록만 표시하고, 디렉토리 하위에 readme.md가 있는 경우 해당 파일의 설명을 표시합니다.",
       ),
   },
 };
@@ -39,28 +35,31 @@ Returns:
 export function init(
   documents: Documents,
 ): ToolCallback<typeof config.inputSchema> {
-  return ({ dev_docs, help_docs, tech_blog, release_notes }) => {
+  return ({ paths, onlyPaths }) => {
     const { markdownDocs } = documents;
 
     const filteredDocs = [];
+    type DocTree = Map<string, DocTree>;
+    const docTree: DocTree = new Map();
 
     for (const [path, doc] of Object.entries(markdownDocs)) {
-      if (tech_blog && path.startsWith("blog/")) {
-        filteredDocs.push(doc);
-      }
-      if (release_notes && path.startsWith("release-notes/")) {
-        filteredDocs.push(doc);
-      }
-      if (help_docs && path.startsWith("help/")) {
-        filteredDocs.push(doc);
-      }
-      if (
-        dev_docs &&
-        !["blog/", "release-notes/", "help/"].some((prefix) =>
-          path.startsWith(prefix),
-        )
-      ) {
-        filteredDocs.push(doc);
+      const isSubpath =
+        paths.length === 0 ||
+        paths.some((searchPath) => path.startsWith(searchPath));
+      if (!isSubpath) continue;
+      filteredDocs.push(doc);
+      let treeNode = docTree;
+      const components = path.split("/");
+      if (onlyPaths) components.pop();
+      for (const pathComp of components) {
+        const child = treeNode.get(pathComp);
+        if (child) {
+          treeNode = child;
+        } else {
+          const newChild = new Map();
+          treeNode.set(pathComp, newChild);
+          treeNode = newChild;
+        }
       }
     }
 
@@ -75,15 +74,48 @@ export function init(
       };
     }
 
-    const formattedResult = filteredDocs
-      .map((doc) => formatDocumentMetadata(doc))
-      .join("\n---\n");
+    const treeLines: string[] = [];
+    for (const rootPath of Array.from(docTree.keys()).sort()) {
+      const rootNode = docTree.get(rootPath);
+      if (rootNode) formatTree(0, rootPath, rootPath, rootNode);
+    }
+
+    function formatTree(
+      level: number,
+      path: string,
+      filename: string,
+      node: DocTree,
+    ) {
+      const indent = "  ".repeat(level);
+      treeLines.push(`${indent}${filename}`);
+      const docs = markdownDocs[path];
+      if (docs) {
+        const metadata = formatDocumentMetadata(docs).trim();
+        if (metadata.length > 0) {
+          treeLines.push(metadata);
+        }
+      }
+      if (onlyPaths) {
+        const readme = markdownDocs[`${path}/readme.md`];
+        if (readme) {
+          const metadata = formatDocumentMetadata(readme).trim();
+          if (metadata.length > 0) {
+            treeLines.push(metadata);
+          }
+        }
+      }
+      for (const child of Array.from(node.keys()).sort()) {
+        const childNode = node.get(child);
+        if (childNode)
+          formatTree(level + 1, `${path}/${child}`, child, childNode);
+      }
+    }
 
     return {
       content: [
         {
           type: "text",
-          text: formattedResult,
+          text: treeLines.join("\n"),
         },
       ],
     };
