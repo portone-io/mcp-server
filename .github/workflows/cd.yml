@@ -16,6 +16,7 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    environment: npm
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -23,7 +24,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          # Release only, for provenance
+          node-version: 24
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
