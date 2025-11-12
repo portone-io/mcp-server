@@ -64,8 +64,5 @@
     "LICENSE-MIT",
     "README.md"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/portone-io/portone-mcp-server.git"
-  }
+  "repository": "github:portone-io/mcp-server"
 }
