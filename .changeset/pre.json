@@ -4,5 +4,10 @@
   "initialVersions": {
     "@portone/mcp-server": "0.14.0"
   },
-  "changesets": ["bumpy-monkeys-like", "fiery-drinks-wear", "new-tools-divide"]
+  "changesets": [
+    "bumpy-monkeys-like",
+    "fiery-drinks-wear",
+    "new-tools-divide",
+    "six-hairs-do"
+  ]
 }
