@@ -93,7 +93,7 @@ IMP.request_pay(
   - payco (페이코)
   - samsung (삼성페이)
   - applepay (애플페이)
-  - cultureland (문화상품권)
+  - cultureland (컬쳐랜드 문화상품권)
   - smartculture (스마트문화상품권)
   - booknlife (도서문화상품권)
 
@@ -193,7 +193,7 @@ curl -H "Content-Type: application/json" \
 
 **빌링키로 결제 요청하기**
 
-빌링키 발급과 최초 결제가 성공하면 빌링키는 전달된 `customer_uid` 와 1:1 매칭되어 포트원에 저장됩니다. 보안상의 이유로 서버는 빌링키에 직접 접근할 수 없기 때문에 `customer_uid`를 이용해서 재결제([**POST /subscribe/payments/again**](https://developers.portone.io/api/rest-v1/nonAuthPayment?v=v1#post%20%2Fsubscribe%2Fpayments%2Fagain)) REST API를 다음과 같이 호출합니다.
+빌링키 발급과 최초 결제가 성공하면 빌링키는 전달된 `customer_uid` 와 1:1 매칭되어 포트원에 저장됩니다. 보안상의 이유로 서버는 빌링키에 직접 접근할 수 없기 때문에 `customer_uid`를 이용해서 빌링키 결제([**POST /subscribe/payments/again**](https://developers.portone.io/api/rest-v1/nonAuthPayment?v=v1#post%20%2Fsubscribe%2Fpayments%2Fagain)) REST API를 다음과 같이 호출합니다.
 
 ```sh
 curl -H "Content-Type: application/json" \

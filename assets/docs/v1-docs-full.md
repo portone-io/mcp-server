@@ -96,7 +96,6 @@
 - [키움페이 (다우데이타/페이조아)](https://developers.portone.io/opi/ko/integration/pg/v1/daou/readme): 키움페이 연동 방법을 안내합니다.
 - [키움페이 유의사항](https://developers.portone.io/opi/ko/integration/pg/v1/daou/undefined): 결제 연동시 유의사항을 안내합니다.
 - [엑심베이](https://developers.portone.io/opi/ko/integration/pg/v1/eximbay): 엑심베이 결제 연동 방법을 안내합니다.
-- [하이픈](https://developers.portone.io/opi/ko/integration/pg/v1/hyphen): 하이픈 결제 연동 방법을 안내합니다.
 - [KG이니시스](https://developers.portone.io/opi/ko/integration/pg/v1/inicis): KG이니시스 결제창 연동 가이드입니다.
 - [카카오페이](https://developers.portone.io/opi/ko/integration/pg/v1/kakaopay): 카카오페이 연동 방법을 안내합니다.
 - [NHN KCP(신모듈) 본인인증 연동하기](https://developers.portone.io/opi/ko/integration/pg/v1/kcp-v2-identity-verification): NHN KCP(신모듈) 본인인증 연동 방법을 안내합니다.
@@ -3517,7 +3516,7 @@ IMP.request_pay(
   - trans (실시간 계좌이체)
   - vbank(가상계좌)
   - phone(휴대폰 소액결제) : 휴대폰 결제인 경우 pg 파라미터는 **`danal`** 로 지정하면 됩니다.
-  - cultureland (문화상품권)
+  - cultureland (컬쳐랜드 문화상품권)
   - booknlife (도서문화상품권)
 
 - merchant\_uid: string
@@ -3952,7 +3951,7 @@ IMP.request_pay(
   - payco (페이코)
   - samsung (삼성페이)
   - applepay (애플페이)
-  - cultureland (문화상품권)
+  - cultureland (컬쳐랜드 문화상품권)
   - smartculture (스마트문화상품권)
   - booknlife (도서문화상품권)
 
@@ -4052,7 +4051,7 @@ curl -H "Content-Type: application/json" \
 
 **빌링키로 결제 요청하기**
 
-빌링키 발급과 최초 결제가 성공하면 빌링키는 전달된 `customer_uid` 와 1:1 매칭되어 포트원에 저장됩니다. 보안상의 이유로 서버는 빌링키에 직접 접근할 수 없기 때문에 `customer_uid`를 이용해서 재결제([**POST /subscribe/payments/again**](https://developers.portone.io/api/rest-v1/nonAuthPayment?v=v1#post%20%2Fsubscribe%2Fpayments%2Fagain)) REST API를 다음과 같이 호출합니다.
+빌링키 발급과 최초 결제가 성공하면 빌링키는 전달된 `customer_uid` 와 1:1 매칭되어 포트원에 저장됩니다. 보안상의 이유로 서버는 빌링키에 직접 접근할 수 없기 때문에 `customer_uid`를 이용해서 빌링키 결제([**POST /subscribe/payments/again**](https://developers.portone.io/api/rest-v1/nonAuthPayment?v=v1#post%20%2Fsubscribe%2Fpayments%2Fagain)) REST API를 다음과 같이 호출합니다.
 
 ```sh
 curl -H "Content-Type: application/json" \
@@ -4631,206 +4630,6 @@ IMP.request_pay({
 </div>
 
 
-# https://developers.portone.io/opi/ko/integration/pg/v1/hyphen
-
----
-title: 하이픈
-description: 하이픈 결제 연동 방법을 안내합니다.
-targetVersions:
-  - v1
-versionVariants:
-  v2: /opi/ko/integration/pg/v2/hyphen
----
-
-## 채널 설정하기
-
-- [결제대행사 채널 설정하기](https://developers.portone.io/opi/ko/integration/ready/readme#3-결제대행사-채널-설정하기)의 내용을 참고하여 PG 설정을 진행합니다.
-
-## 가능한 결제 수단
-
-- 간편 결제
-
-  하이픈은 계좌 간편 결제를 전용으로 지원하는 PG사로, 등록한 계좌를 이용한 결제만 가능하며 다른 결제 수단은 지원하지 않습니다.
-
-  따라서 `pay_method` 파라미터를 아래와 같이 설정해야 합니다.
-
-  - 계좌이체 : `trans`
-
-### 계좌 간편 결제란?
-
-고객이 PG사에서 제공하는 결제 페이지에서 본인 명의의 계좌를 등록하고, 상품 구매 시 비밀번호 인증 등을 통해 등록된 계좌에서 출금하여 결제하는 서비스를 의미합니다.
-
-### 계좌 간편 결제의 장점
-
-계좌 간편 결제는 아래와 같은 장점을 제공합니다.
-
-1. **우수한 사용성**
-
-   보안 프로그램이나 추가 앱 설치 과정이 필요하지 않습니다.
-   또한 복잡한 계좌 입력이나 인증 과정 없이 최초 한 번만 계좌를 등록하고 이후에는 비밀번호를 통해 간편하게 인증할 수 있습니다.
-
-2. **낮은 수수료**
-
-   바로 계좌 결제는 오픈 뱅킹 기반의 계좌 이체 서비스로, 신용카드 결제에 비해 낮은 수수료로 해당 서비스를 이용할 수 있습니다.
-
-3. **빠른 정산 주기**
-
-   하이픈의 계좌 간편 결제 서비스는 통상 D+2일 주기로 정산을 해드리고 있습니다. 빠른 정산을 통해 현금 흐름을 효율적으로 관리할 수 있습니다.
-
-## SDK 결제 요청하기
-
-하이픈 결제는 최신 SDK에서만 지원됩니다.
-
-```html title="JS SDK"
-<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
-```
-
-[JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/readme) `IMP.request_pay(param, callback)`을 호출하여
-결제창을 호출할 수 있습니다. **결제결과**는 PC의 경우 `IMP.request_pay(param, callback)` 호출 후
-**callback**으로 수신되고
-모바일의 경우 **m\_redirect\_url** 로 리디렉션됩니다.
-
-하이픈 기준으로 작성한 예시 코드는 아래와 같습니다.
-
-<div class="tabs-container">
-
-<div class="tabs-content" data-title="SDK 결제 요청">
-
-```ts
-IMP.request_pay(
-  {
-    channelKey: "{콘솔 내 연동 정보의 채널키}",
-    pay_method: "trans",
-    merchant_uid: "orderMonthly0001", // 상점에서 관리하는 주문 번호
-    name: "테스트결제",
-    buyer_email: "test@portone.io",
-    buyer_name: "포트원",
-    buyer_tel: "02-1234-1234",
-    m_redirect_url: "{모바일에서 결제 완료 후 리디렉션 될 URL}",
-    amount: 1004,
-    storeDetails: {
-      businessName: "상호명",
-    },
-    bypass: {
-      hyphen: {
-        designCd: "#C1272C",
-      },
-    },
-  },
-  function (rsp) {
-    // callback 로직
-  },
-);
-```
-
-</div>
-
-</div>
-
-### 주요 파라미터
-
-- channelKey: string
-
-  **채널키**
-
-  결제를 진행할 채널을 지정합니다.
-
-  포트원 콘솔 내 \[결제 연동] - \[연동 정보] - \[채널 관리] 에서 확인 가능합니다.
-
-  (최신 JavaScript SDK 버전부터 사용 가능합니다.)
-
-- pg?: string
-
-  **PG사 구분코드**
-
-  `hyphen.{MID}` 형태로 지정하여 사용해야 합니다.
-
-  <div class="hint" data-style="warning">
-
-  `pg` 파라미터는 지원 중단 예정입니다.
-
-  JS SDK를 가장 최신 버전으로 업그레이드 후 `channelKey` 파라미터로 채널 설정(PG사 구분)을 대체해주세요.
-
-  </div>
-
-- pay\_method: string
-
-  **결제수단 구분코드**
-
-  하이픈의 경우 `trans`만 지원됩니다.
-
-- merchant\_uid: string
-
-  **고객사 주문 고유 번호**
-
-  고객사에서 채번하는 주문 고유 번호로 매번 고유하게 채번되어야 합니다.
-  이미 승인 완료된 `merchant_uid`로 결제를 시도하는 경우 에러가 발생합니다.
-
-- name: string
-
-  **주문명**
-
-  주문명으로 고객사에서 자유롭게 입력합니다.
-
-- amount: number
-
-  **결제 금액**
-
-  결제 금액으로 number 형식만 허용됩니다.
-
-- buyer\_name: string
-
-  **구매자 이름**
-
-  하이픈의 경우 필수로 입력해야 합니다.
-
-- storeDetails?: object
-
-  **상점 정보**
-
-  - businessName?: string
-
-    **상호명**
-
-    - 결제창에 표시될 상호명입니다. 입력하지 않으면 포트원 대표상점명으로 표시됩니다.
-
-- bypass?: oneof object
-
-  **PG사 결제창 호출 시 PG사로 그대로 bypass할 파라미터들의 모음**
-
-  - hyphen?: object
-
-    **하이픈에서 제공하는 파라미터 모음**
-
-    - designCd?: string
-
-      **결제창 디자인 색상 코드**
-
-      - `#`으로 시작하는 여섯자리 Hex 값을 입력합니다. (ex. `#C1272C`)
-
-### 유의사항
-
-<details>
-
-<summary>`merchant_uid` 허용 문자 및 길이 제한</summary>
-
-`merchant_uid` 에는 영문, 숫자, `_`(underscore) 만으로 이루어진 문자열만 입력할 수 있습니다.
-
-여기에 포함되지 않는 한글이나 `♤`, `♡`, `♧` 등의 특수 문자는 허용되지 않습니다.
-
-또한 `merchant_uid`의 최대 길이는 40자이므로, 해당 길이를 넘지 않는 값으로 결제를 요청해주세요.
-
-</details>
-
-<details>
-
-<summary>`name` 길이 제한</summary>
-
-`name`의 최대 길이는 40자입니다.
-
-</details>
-
-
 # https://developers.portone.io/opi/ko/integration/pg/v1/inicis
 
 ---
@@ -4945,7 +4744,7 @@ IMP.request_pay(
   - `trans` (실시간 계좌이체)
   - `vbank`(가상계좌)
   - `phone` (휴대폰소액결제)
-  - `cultureland` (문화상품권)
+  - `cultureland` (컬쳐랜드 문화상품권)
   - `smartculture` (스마트문상)
   - `booknlife`(도서문화상품권)
 
@@ -5110,7 +4909,7 @@ curl -H "Content-Type: application/json" \
 
 **빌링키로 결제 요청하기**
 
-빌링키 발급과 최초 결제가 성공하면 빌링키는 전달된 `customer_uid` 와 1:1 매칭되어 포트원에 저장됩니다. 보안상의 이유로 서버는 빌링키에 직접 접근할 수 없기 때문에 `customer_uid`를 이용해서 재결제([**POST /subscribe/payments/again**](https://developers.portone.io/api/rest-v1/nonAuthPayment?v=v1#post%20%2Fsubscribe%2Fpayments%2Fagain)) REST API를 다음과 같이 호출합니다.
+빌링키 발급과 최초 결제가 성공하면 빌링키는 전달된 `customer_uid` 와 1:1 매칭되어 포트원에 저장됩니다. 보안상의 이유로 서버는 빌링키에 직접 접근할 수 없기 때문에 `customer_uid`를 이용해서 빌링키 결제([**POST /subscribe/payments/again**](https://developers.portone.io/api/rest-v1/nonAuthPayment?v=v1#post%20%2Fsubscribe%2Fpayments%2Fagain)) REST API를 다음과 같이 호출합니다.
 
 ```sh
 curl -H "Content-Type: application/json" \
@@ -6539,7 +6338,7 @@ curl -H "Content-Type: application/json" \
 
 빌링키 발급과 최초 결제가 성공하면 빌링키는 전달된 `customer_uid` 와 1:1 매칭되어 포트원에 저장됩니다.
 보안상의 이유로 서버는 빌링키에 직접 접근할 수 없기 때문에 `customer_uid`를 이용해서
-재결제([**POST /subscribe/payments/again**](https://developers.portone.io/api/rest-v1/nonAuthPayment#post%20%2Fsubscribe%2Fpayments%2Fagain)) REST API를 다음과 같이 호출합니다.
+빌링키 결제([**POST /subscribe/payments/again**](https://developers.portone.io/api/rest-v1/nonAuthPayment#post%20%2Fsubscribe%2Fpayments%2Fagain)) REST API를 다음과 같이 호출합니다.
 
 ```sh
 curl -H "Content-Type: application/json" \
@@ -7862,7 +7661,7 @@ curl -H "Content-Type: application/json" \
 
 **빌링키로 결제 요청하기**
 
-빌링키 발급과 최초 결제가 성공하면 빌링키는 전달된 `customer_uid` 와 1:1 매칭되어 포트원에 저장됩니다. 보안상의 이유로 서버는 빌링키에 직접 접근할 수 없기 때문에 `customer_uid`를 이용해서 재결제([**POST /subscribe/payments/again**](https://developers.portone.io/api/rest-v1/nonAuthPayment?v=v1#post%20%2Fsubscribe%2Fpayments%2Fagain)) REST API를 다음과 같이 호출합니다.
+빌링키 발급과 최초 결제가 성공하면 빌링키는 전달된 `customer_uid` 와 1:1 매칭되어 포트원에 저장됩니다. 보안상의 이유로 서버는 빌링키에 직접 접근할 수 없기 때문에 `customer_uid`를 이용해서 빌링키 결제([**POST /subscribe/payments/again**](https://developers.portone.io/api/rest-v1/nonAuthPayment?v=v1#post%20%2Fsubscribe%2Fpayments%2Fagain)) REST API를 다음과 같이 호출합니다.
 
 ```sh
 curl -H "Content-Type: application/json" \
@@ -9804,7 +9603,7 @@ targetVersions:
 
 ## 비인증 결제
 
-(신) 나이스정보통신은 발급 된 빌링키로 재결제(`POST /subscribe/payemnts/again`),
+(신) 나이스정보통신은 발급 된 빌링키로 결제(`POST /subscribe/payments/again`),
 키인 결제(`POST /subscribe/payments/onetime`) 그리고 스케줄 결제(`POST /subscribe/payments/schedule`)를
 모두 지원하며 기본 파라미터 외에 아래 3개의 파라미터를 추가로 지원합니다.
 
@@ -10908,7 +10707,7 @@ curl -H "Content-Type: application/json" \
 
 빌링키 발급과 최초 결제가 성공하면 빌링키는 전달된 `customer_uid` 와 1:1 매칭되어 포트원에 저장됩니다.
 보안상의 이유로 서버는 빌링키에 직접 접근할 수 없기 때문에 `customer_uid`를 이용해서
-재결제([**POST /subscribe/payments/again**](https://developers.portone.io/api/rest-v1/nonAuthPayment?v=v1#post%20%2Fsubscribe%2Fpayments%2Fagain)) REST API를 다음과 같이 호출합니다.
+빌링키 결제([**POST /subscribe/payments/again**](https://developers.portone.io/api/rest-v1/nonAuthPayment?v=v1#post%20%2Fsubscribe%2Fpayments%2Fagain)) REST API를 다음과 같이 호출합니다.
 
 ```sh
 curl -H "Content-Type: application/json" \
@@ -11345,11 +11144,16 @@ SDK 스크립트의 주소가 `https://cdn.iamport.kr/v1/iamport.js` 인지 확�
 
 </div>
 
+## 결제수단별 승인 가능 통화
+
+- 카드: `KRW`, `USD`, `JPY`
+- Alipay: `USD`, `CNY`
+- WeChatPay: `KRW`, `USD`, `CNY`
+
 ## 유의사항
 
 - `merchant_uid` 에는 영문, 숫자만으로 이루어진 문자열만 입력할 수 있습니다.
-- 페이레터의 경우 구매자 이메일을 필수로 받고있어,`buyer_email`을 필수로 입력하셔야 합니다.
-- 해외결제시 카드는 `KRW`, `USD`, `JPY`, 알리페이⋅위챗페이는 `CNY`를 지원합니다.
+- 페이레터의 경우 구매자 이메일을 필수로 받고 있어,`buyer_email`을 필수로 입력하셔야 합니다.
 - WeChatPay, Alipay 결제 시 `bypass.payletter_global.servicename` 파라미터를 필수로 입력하셔야 합니다.
 
 
@@ -11864,8 +11668,6 @@ versionVariants:
 
 [토스페이먼츠 브랜드페이](https://developers.portone.io/opi/ko/integration/pg/v1/toss-brandpay/readme)
 
-[하이픈](https://developers.portone.io/opi/ko/integration/pg/v1/hyphen)
-
 ## 해외결제
 
 [엑심베이](https://developers.portone.io/opi/ko/integration/pg/v1/eximbay)
@@ -12125,10 +11927,10 @@ status가 cancelled 이고 cancel\_history에 취소 요청 내역이 있는 경
 
 페이팔은 이상 거래를 줄이기 위해 Risk Data Acquisition 정책을 시행하고 있습니다.
 일반 결제나 빌링키 발급은 페이팔 버튼을 통해 진행되기 때문에 페이팔이 이상 거래 판단을 위한 구매자 접속 정보를 얻을 수 있지만,
-발급 된 빌링키로 재결제 (again API 호출) 할때는 고객사 서버에서 포트원 API를 통해 페이팔 API가 호출되는 구조이기 때문에
+발급 된 빌링키로 결제 (again API 호출) 할때는 고객사 서버에서 포트원 API를 통해 페이팔 API가 호출되는 구조이기 때문에
 이상 거래 판단을 위한 구매자 접속 정보를 얻을 수 없습니다.
 
-따라서 발급 된 빌링키로 재결제를 할때는 구매자의 브라우저/디바이스 접속 정보를 페이팔에 전달할 수 있도록
+따라서 발급 된 빌링키로 결제를 할때는 구매자의 브라우저/디바이스 접속 정보를 페이팔에 전달할 수 있도록
 **again API가 호출되는 고객사 클라이언트 페이지에 반드시 페이팔 Fraudnet 스크립트/Magnes SDK를 아래와 같이 추가해야** 합니다.
 
 **페이팔 정기결제를 통한 again API 호출시에는 Magnes & Fraudnet 조치가
@@ -12218,7 +12020,7 @@ STC 기능을 사용하시기 위해 다음 정보를 확인하셔야 합니다.
 
 1. 페이팔 Business 계정 가입시 산업 종류(Industry)를 결정하는데, 계정의 산업 종류를 확인해야 합니다.
 
-2. 계정의 산업 종류를 확인하신 뒤, loadUI 호출 해 빌링키를 발급 받을때 그리고 발급 된 빌링키로 재결제(again API 호출)할 때
+2. 계정의 산업 종류를 확인하신 뒤, loadUI 호출 해 빌링키를 발급 받을때 그리고 발급 된 빌링키로 결제(again API 호출)할 때
    모두 bypass.paypal\_v2 객체에 아래와 같은 형식으로 전달해주셔야 합니다.
 
 <details>
@@ -12426,10 +12228,10 @@ GET /subscribe/customers/{customer_uid}
 페이팔은 이상 거래를 줄이기 위해 Risk Data Acquisition 정책을 시행하고 있습니다.
 일반 결제나 빌링키 발급은 페이팔 버튼을 통해 진행되기 때문에
 페이팔이 이상 거래 판단을 위한 구매자 접속 정보를 얻을 수 있지만,
-브라우저에서 발급 된 빌링키로 재결제 (again API 호출) 할때는 고객사 브라우저에서 포트원 API를 통해
+브라우저에서 발급 된 빌링키로 결제 (again API 호출) 할때는 고객사 브라우저에서 포트원 API를 통해
 페이팔 API가 호출되는 구조이기 때문에 이상 거래 판단을 위한 구매자 접속 정보를 얻을 수 없습니다.
 
-따라서 발급 된 빌링키로 재결제를 할때는 구매자의 브라우저/디바이스 접속 정보를
+따라서 발급 된 빌링키로 결제를 할때는 구매자의 브라우저/디바이스 접속 정보를
 페이팔에 전달할 수 있도록 **again API가 호출되는 고객사 클라이언트 페이지에
 반드시 페이팔 Fraudnet 스크립트/Magnes SDK를 아래와 같이 추가해야** 합니다.
 
@@ -13167,7 +12969,7 @@ curl -H "Content-Type: application/json" \
 
 **빌링키로 결제 요청하기**
 
-빌링키 발급과 최초 결제가 성공하면 빌링키는 전달된 `customer_uid` 와 1:1 매칭되어 포트원에 저장됩니다. 보안상의 이유로 서버는 빌링키에 직접 접근할 수 없기 때문에 `customer_uid`를 이용해서 재결제([**POST /subscribe/payments/again**](https://developers.portone.io/api/rest-v1/nonAuthPayment?v=v1#post%20%2Fsubscribe%2Fpayments%2Fagain)) REST API를 다음과 같이 호출합니다.
+빌링키 발급과 최초 결제가 성공하면 빌링키는 전달된 `customer_uid` 와 1:1 매칭되어 포트원에 저장됩니다. 보안상의 이유로 서버는 빌링키에 직접 접근할 수 없기 때문에 `customer_uid`를 이용해서 빌링키 결제([**POST /subscribe/payments/again**](https://developers.portone.io/api/rest-v1/nonAuthPayment?v=v1#post%20%2Fsubscribe%2Fpayments%2Fagain)) REST API를 다음과 같이 호출합니다.
 
 ```sh
 curl -H "Content-Type: application/json" \
@@ -13778,7 +13580,7 @@ PortOne.requestPayment({
 ### 주문 번호에 특수문자 입력 불가능
 
 스마트로는 주문 번호(`merchant_uid`)에 특수문자를 허용하고 있지 않습니다.
-따라서 결제창에서 일반결제를 할 때와 발급된 빌링키로 API를 통해 재결제를 하는 경우
+따라서 결제창에서 일반결제를 할 때와 발급된 빌링키로 API를 통해 결제를 하는 경우
 숫자, 문자(알파벳 소문자와 대문자) 또는 그 조합으로 이루어진 주문 번호를 사용해주세요.
 
 ### 주문 번호 40자 길이 제한
@@ -17097,7 +16899,7 @@ IMP.request_pay(
 
 **빌링키로 결제 요청하기**
 
-빌링키 발급 시 전달한 `customer_uid`를 이용해서 재결제([**POST /subscribe/payments/again**](https://developers.portone.io/api/rest-v1/nonAuthPayment?v=v1#post%20%2Fsubscribe%2Fpayments%2Fagain)) REST API를 다음과 같이 호출합니다.
+빌링키 발급 시 전달한 `customer_uid`를 이용해서 빌링키 결제([**POST /subscribe/payments/again**](https://developers.portone.io/api/rest-v1/nonAuthPayment?v=v1#post%20%2Fsubscribe%2Fpayments%2Fagain)) REST API를 다음과 같이 호출합니다.
 
 ```ts
 await fetch("https://api.iamport.kr/subscribe/payments/again", {
@@ -23369,7 +23171,7 @@ description: >-
 - 포트원을 통해 연동된 아래 12개의 PG사 내역을 조회할 수 있습니다.
   - 지원 PG : **KCP, KG이니시스, 나이스정보통신, 토스페이, 네이버페이, 다날, 페이코, (구)토스페이먼츠, 토스페이먼츠, 카카오페이, 엑심베이, 헥토파이낸셜**
   - 고객사가 포트원을 통하지 않고 PG 직연동한 경우 지원 불가
-  - 9/26 이후 지원 예정 PG사 : KPN, 하이픈, KSNET
+  - 9/26 이후 지원 예정 PG사 : KPN, KSNET
 
 - 고객사 주문번호를 정확하게 확인하기 위해서는 **실제 사용하시는 주문번호의 연동**이 필요합니다.
 
@@ -26381,7 +26183,6 @@ API 빌링키 발급 요청 시 스마트 라우팅 그룹 아이디를 지정�
 - **이지페이(KICC)** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
 - **웰컴페이먼츠** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
 - **엑심베이** : 카드
-- **하이픈** : 실시간 계좌이체
 
 ### API 수기(키인)결제
 
@@ -27333,38 +27134,6 @@ DI\_CODE는 12자리로 고객사에서 자체적으로 사이트(서비스)를 
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
 
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
-
-<details>
-
-<summary>하이픈</summary>
-
-1. [HYPHEN PAY & 바로계좌결제 운영 백오피스](http://payadmin.hyphen.im/) 접속 후 **바로계좌결제** 선택 후
-   로그인을 합니다.
-
-   (이미지 첨부: HYPHEN 백오피스 로그인 화면)
-
-2. \[상점관리]→\[바로계좌결제 상점정보관리]를 클릭합니다.
-
-3. 상점명을 클릭합니다.
-
-   (이미지 첨부: HYPHEN \[상점관리] - \[상점정보관리] 예시 화면)
-
-4. \[상점 기본정보]에서 \[상점번호]를 확인합니다.
-
-   (이미지 첨부: HYPHEN \[상점 기본정보] 예시 화면)
-
-5. \[암호화 키, 토큰]에서 \[암호화 키]와 \[암호화 토큰]을 확인합니다.
-
-   (이미지 첨부: HYPHEN \[암호화 키, 토큰] 예시 화면)
-
-6. 포트원 콘솔에서 채널 추가 시 \[PG상점아이디(상점 번호)], \[암호화 키], \[암호화 토큰]을
-   입력한 후 \[저장]을 클릭합니다.
-
-</details>
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
-
 #### 해외 결제대행사
 
 <details>
@@ -27401,6 +27170,24 @@ PG 거래대사 메뉴를 사용하시는 경우 \[대사 시크릿 키] 항목�
 (이미지 첨부: 페이먼트월 페이지 내 Key 조회 화면)
 
 3. 포트원 콘솔에서 채널 추가 시 \[Project Key], \[Secret Key]를 입력한 후 `저장`을 클릭합니다.
+
+#### 핑백(Pingback) URL 설정하기
+
+페이먼트월에서 포트원으로 결제 결과를 전달받기 위해 핑백 URL을 설정해야 합니다.
+
+1. [페이먼트월](https://api.paymentwall.com/developers/applications) 페이지에서 \[My Projects]를 클릭합니다.
+
+(이미지 첨부: 페이먼트월 My Projects 메뉴)
+
+2. 사용할 프로젝트의 \[Settings] 탭을 클릭합니다.
+
+(이미지 첨부: 페이먼트월 프로젝트 setting 탭)
+
+3. \[Pingback type]을 `URL`로 선택합니다.
+4. \[Pingback URL]에 `https://service.iamport.kr/paymentwall/webhook`를 입력합니다.
+5. \[Pingback signature version]을 `3`으로 설정합니다.
+
+(이미지 첨부: 페이먼트월 Pingback 설정 화면)
 
 </details>
 
@@ -32649,11 +32436,11 @@ writtenAt: 2024-09-30T00:00:00.000Z
 PG 거래대사 내의 **거래 정산 내역** 메뉴에서 정산일 또는 거래일을 기준으로,
 **거래 건별 조회** 메뉴에서는 정산일을 기준으로 최대 3개월 분량의 데이터를 엑셀로 다운로드할 수 있습니다.
 
-### **PG 거래대사**✔️ KSNET, KPN, 하이픈에서 발생한 거래 건도 PG 거래대사에서 데이터 확인이 가능해집니다.
+### **PG 거래대사**✔️ KSNET, KPN에서 발생한 거래 건도 PG 거래대사에서 데이터 확인이 가능해집니다.
 
 기존에 12개 PG사 (KCP, KG이니시스, 나이스정보통신, 토스페이, 네이버페이, 다날, 페이코, (구)토스페이먼츠,
-토스페이먼츠, 카카오페이, 엑심베이, 헥토파이낸셜) 에서만 지원하던 **PG 거래대사**가 KSNET, KPN, 하이픈까지 확장하여
-총 15개 PG사 데이터에 한하여 제공됩니다.
+토스페이먼츠, 카카오페이, 엑심베이, 헥토파이낸셜) 에서만 지원하던 **PG 거래대사**가 KSNET, KPN까지 확장하여
+총 14개 PG사 데이터에 한하여 제공됩니다.
 
 (참고 : PG 거래대사 메뉴의 경우 클로즈 베타로 운영되고 있으며,
 사용을 원하시는 고객께서는 [PG거래대사 베타서비스 신청 바로가기](https://forms.gle/cZAqJLGqovC1STrS8)에서 신청해 주시길 바랍니다.)

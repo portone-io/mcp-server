@@ -1,0 +1,510 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Schema",
+  "type": "object",
+  "required": [
+    "methods",
+    "pgProviders",
+    "resources"
+  ],
+  "properties": {
+    "pgProviders": {
+      "description": "PG사 식별자 목록",
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/PgProvider"
+      }
+    },
+    "resources": {
+      "description": "리소스 목록",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ]
+    },
+    "methods": {
+      "description": "메소드 목록",
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/Method"
+      }
+    }
+  },
+  "definitions": {
+    "PgProvider": {
+      "type": "object",
+      "required": [
+        "description"
+      ],
+      "properties": {
+        "description": {
+          "description": "PG사 설명",
+          "type": "string"
+        }
+      }
+    },
+    "Resource": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/Resource"
+          }
+        },
+        {
+          "$ref": "#/definitions/Parameter"
+        }
+      ]
+    },
+    "Parameter": {
+      "description": "파라미터 타입",
+      "type": "object",
+      "oneOf": [
+        {
+          "title": "string",
+          "type": "object",
+          "required": [
+            "type"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "string"
+              ]
+            }
+          }
+        },
+        {
+          "title": "stringLiteral",
+          "type": "object",
+          "required": [
+            "type",
+            "value"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "stringLiteral"
+              ]
+            },
+            "value": {
+              "description": "StringLiteral의 값",
+              "type": "string"
+            }
+          }
+        },
+        {
+          "title": "integer",
+          "type": "object",
+          "required": [
+            "type"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "integer"
+              ]
+            }
+          }
+        },
+        {
+          "title": "boolean",
+          "type": "object",
+          "required": [
+            "type"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "boolean"
+              ]
+            }
+          }
+        },
+        {
+          "title": "array",
+          "type": "object",
+          "required": [
+            "items",
+            "type"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "array"
+              ]
+            },
+            "items": {
+              "description": "Array의 item 타입",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Parameter"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "title": "object",
+          "type": "object",
+          "required": [
+            "properties",
+            "type"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "object"
+              ]
+            },
+            "properties": {
+              "description": "Object의 프로퍼티 목록",
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/Parameter"
+              }
+            }
+          }
+        },
+        {
+          "title": "emptyObject",
+          "type": "object",
+          "required": [
+            "type"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "emptyObject"
+              ]
+            }
+          }
+        },
+        {
+          "title": "enum",
+          "type": "object",
+          "required": [
+            "type",
+            "variants"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "enum"
+              ]
+            },
+            "variants": {
+              "description": "Enum의 variant 목록",
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/EnumVariant"
+              }
+            },
+            "valuePrefix": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        {
+          "title": "oneOf",
+          "type": "object",
+          "required": [
+            "properties",
+            "type"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "oneOf"
+              ]
+            },
+            "properties": {
+              "description": "OneOf의 타입 목록",
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/Parameter"
+              }
+            }
+          }
+        },
+        {
+          "title": "union",
+          "type": "object",
+          "required": [
+            "type",
+            "types"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "union"
+              ]
+            },
+            "types": {
+              "description": "Union의 타입 목록",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Parameter"
+              }
+            }
+          }
+        },
+        {
+          "title": "intersection",
+          "type": "object",
+          "required": [
+            "type",
+            "types"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "intersection"
+              ]
+            },
+            "types": {
+              "description": "Intersection의 타입 목록",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Parameter"
+              }
+            }
+          }
+        },
+        {
+          "title": "discriminatedUnion",
+          "type": "object",
+          "required": [
+            "discriminator",
+            "type",
+            "types"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "discriminatedUnion"
+              ]
+            },
+            "types": {
+              "description": "DiscriminatedUnion의 타입 목록",
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/Parameter"
+              }
+            },
+            "discriminator": {
+              "description": "Discriminator 프로퍼티 이름",
+              "type": "string"
+            }
+          }
+        },
+        {
+          "title": "resourceRef",
+          "type": "object",
+          "required": [
+            "$ref",
+            "type"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "resourceRef"
+              ]
+            },
+            "$ref": {
+              "type": "string"
+            }
+          }
+        },
+        {
+          "title": "error",
+          "type": "object",
+          "required": [
+            "properties",
+            "type"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "error"
+              ]
+            },
+            "transactionType": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "properties": {
+              "description": "Error의 프로퍼티 목록",
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/Parameter"
+              }
+            }
+          }
+        },
+        {
+          "title": "json",
+          "type": "object",
+          "required": [
+            "type"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "json"
+              ]
+            }
+          }
+        }
+      ],
+      "properties": {
+        "name": {
+          "description": "파라미터 이름",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "description": "파라미터 설명",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "optional": {
+          "description": "Optional 여부",
+          "type": "boolean"
+        },
+        "pgSpecific": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "$ref": "#/definitions/PgSpecific"
+          }
+        },
+        "deprecated": {
+          "description": "Deprecated 여부",
+          "type": "boolean"
+        }
+      }
+    },
+    "PgSpecific": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "description": "PG사 파라미터 설명",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "optional": {
+          "description": "Optional 여부",
+          "type": "boolean"
+        }
+      }
+    },
+    "EnumVariant": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "description": "Enum variant 설명",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "Method": {
+      "type": "object",
+      "required": [
+        "input"
+      ],
+      "properties": {
+        "description": {
+          "description": "메소드 설명",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "input": {
+          "description": "메소드 입력 파라미터",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Parameter"
+            }
+          ]
+        },
+        "callbacks": {
+          "description": "메소드 콜백 목록",
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "$ref": "#/definitions/Callback"
+          }
+        },
+        "output": {
+          "description": "메소드 출력 파라미터",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Parameter"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "Callback": {
+      "type": "object",
+      "required": [
+        "input"
+      ],
+      "properties": {
+        "description": {
+          "description": "콜백 설명",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "input": {
+          "description": "콜백 입력 파라미터",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/Parameter"
+          }
+        }
+      }
+    }
+  }
+}

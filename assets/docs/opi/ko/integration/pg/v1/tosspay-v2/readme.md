@@ -257,7 +257,7 @@ IMP.request_pay(
 
 **빌링키로 결제 요청하기**
 
-빌링키 발급 시 전달한 `customer_uid`를 이용해서 재결제([**POST /subscribe/payments/again**](https://developers.portone.io/api/rest-v1/nonAuthPayment?v=v1#post%20%2Fsubscribe%2Fpayments%2Fagain)) REST API를 다음과 같이 호출합니다.
+빌링키 발급 시 전달한 `customer_uid`를 이용해서 빌링키 결제([**POST /subscribe/payments/again**](https://developers.portone.io/api/rest-v1/nonAuthPayment?v=v1#post%20%2Fsubscribe%2Fpayments%2Fagain)) REST API를 다음과 같이 호출합니다.
 
 ```ts
 await fetch("https://api.iamport.kr/subscribe/payments/again", {

@@ -57,7 +57,7 @@ searchTags:
 **매달 반복되는 모든 파트너(하위셀러) 정산을 한 번에 처리하는 원스톱 정산 솔루션입니다.**
 
 - 고정 요금과 서비스 기능별 이용 요금으로 구성되어 있습니다.
-- 도입문의를 남겨주시면 상세 요금을 안내해 드리겠습니다.  (**[도입문의 링크](https://go.portone.io/platform-inquiry2)**)
+- 도입문의를 남겨주시면 상세 요금을 안내해 드리겠습니다.  ([도입문의 링크](https://go.portone.io/inquiry-opi?_gl=1*dbs4dm*_gcl_aw*R0NMLjE3NjMxMDIzODYuQ2p3S0NBaUF1YUtmQmhCdEVpd0FodDZINzZnaDQ4VFZTMXRkRjBzOEdZaWVuM05aY3k0YXR4Yl9YY0lKRE1TS3VqQ1lsSnZ4cUtFYkZSb0NNMHdRQXZEX0J3RQ..*_gcl_au*MTMyODQzMjE5NS4xNzU1ODI1MTI3LjY0ODI5Mjc4LjE3NjMwOTY5NjMuMTc2MzA5Nzk5MA..*_ga*OTM2MzY4NTU2LjE3NDY3NzgzODU.*_ga_PD0FDL16NZ*czE3NjMxMDA1OTEkbzE4NiRnMSR0MTc2MzEwMjM4NSRqMzAkbDAkaDA.*_ga_PYBVTM79EJ*czE3NjMxMDIzODUkbzEkZzAkdDE3NjMxMDIzODUkajYwJGwwJGgw))
 
 <Callout title="파트너 정산 자동화 연동가이드 보러가기 ↗" />
 

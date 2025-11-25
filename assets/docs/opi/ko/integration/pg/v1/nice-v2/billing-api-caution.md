@@ -22,7 +22,7 @@ targetVersions:
 
 ## 비인증 결제
 
-(신) 나이스정보통신은 발급 된 빌링키로 재결제(`POST /subscribe/payemnts/again`),
+(신) 나이스정보통신은 발급 된 빌링키로 결제(`POST /subscribe/payments/again`),
 키인 결제(`POST /subscribe/payments/onetime`) 그리고 스케줄 결제(`POST /subscribe/payments/schedule`)를
 모두 지원하며 기본 파라미터 외에 아래 3개의 파라미터를 추가로 지원합니다.
 

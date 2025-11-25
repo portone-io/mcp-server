@@ -164,16 +164,6 @@ ni @portone/browser-sdk
 
   <!-- CONDITIONAL CONTENT pgName=(name) => name === 'inicis' END -->
 
-  <!-- CONDITIONAL CONTENT pgName=(name) => name === 'hyphen' START -->
-
-  <div class="hint" data-style="warning">
-
-  하이픈의 경우 영문 대소문자, 숫자, `_`만 허용되며, 50자 이하로 입력합니다.
-
-  </div>
-
-  <!-- CONDITIONAL CONTENT pgName=(name) => name === 'hyphen' END -->
-
 - orderName: string
 
   **주문명**
@@ -244,16 +234,6 @@ ni @portone/browser-sdk
   </div>
 
   <!-- CONDITIONAL CONTENT pgName=(name) => name === 'naver' END -->
-
-  <!-- CONDITIONAL CONTENT pgName=(name) => name === 'hyphen' START -->
-
-  <div class="hint" data-style="warning">
-
-  하이픈의 경우 최대 1000바이트까지 입력할 수 있습니다.
-
-  </div>
-
-  <!-- CONDITIONAL CONTENT pgName=(name) => name === 'hyphen' END -->
 
 - totalAmount: number
 
@@ -484,11 +464,11 @@ ni @portone/browser-sdk
 
   <!-- CONDITIONAL CONTENT pgName=(name) => name === 'kcp' END -->
 
-  <!-- CONDITIONAL CONTENT pgName=(name) => ['kakao', 'naver', 'tosspay', 'hyphen'].includes(name) START -->
+  <!-- CONDITIONAL CONTENT pgName=(name) => ['kakao', 'naver', 'tosspay'].includes(name) START -->
 
   - 간편결제: `EASY_PAY`
 
-  <!-- CONDITIONAL CONTENT pgName=(name) => ['kakao', 'naver', 'tosspay', 'hyphen'].includes(name) END -->
+  <!-- CONDITIONAL CONTENT pgName=(name) => ['kakao', 'naver', 'tosspay'].includes(name) END -->
 
   <!-- CONDITIONAL CONTENT pgName=(name) => name === 'eximbay' START -->
 
@@ -1238,19 +1218,19 @@ ni @portone/browser-sdk
 
     - `BOOKNLIFE` (도서문화상품권)
     - `SMART_MUNSANG` (스마트문상, (구)게임문화상품권)
-    - `CULTURELAND` (문화상품권)
+    - `CULTURELAND` (컬쳐랜드 문화상품권)
 
     <!-- CONDITIONAL CONTENT pgName=(name) => ['toss', 'inicis'].includes(name) END -->
 
     <!-- CONDITIONAL CONTENT pgName=(name) => name === "nice" START -->
 
-    - `CULTURELAND` (문화상품권)
+    - `CULTURELAND` (컬쳐랜드 문화상품권)
 
     <!-- CONDITIONAL CONTENT pgName=(name) => name === "nice" END -->
 
     <!-- CONDITIONAL CONTENT pgName=(name) => name === 'kcp' START -->
 
-    - `CULTURELAND` (문화상품권)
+    - `CULTURELAND` (컬쳐랜드 문화상품권)
     - `BOOKNLIFE` (도서문화상품권)
 
     <!-- CONDITIONAL CONTENT pgName=(name) => name === 'kcp' END -->
@@ -1267,7 +1247,7 @@ ni @portone/browser-sdk
 
   `payMethod`가 `EASY_PAY`인 경우 간편결제와 관련한 추가 정보를 입력할 수 있습니다.
 
-  <!-- CONDITIONAL CONTENT pgName=(name) => !['kakao', 'naver', 'tosspay', 'hyphen'].includes(name) START -->
+  <!-- CONDITIONAL CONTENT pgName=(name) => !['kakao', 'naver', 'tosspay'].includes(name) START -->
 
   - easyPayProvider?: string
 
@@ -1398,7 +1378,7 @@ ni @portone/browser-sdk
 
     </details>
 
-  <!-- CONDITIONAL CONTENT pgName=(name) => !['kakao', 'naver', 'tosspay', 'hyphen'].includes(name) END -->
+  <!-- CONDITIONAL CONTENT pgName=(name) => !['kakao', 'naver', 'tosspay'].includes(name) END -->
 
   <!-- CONDITIONAL CONTENT pgName=(name) => !['kpn', 'inicis', 'ksnet'].includes(name) START -->
 
@@ -1426,7 +1406,7 @@ ni @portone/browser-sdk
 
   <!-- CONDITIONAL CONTENT pgName=(name) => !['kpn', 'inicis'].includes(name) END -->
 
-  <!-- CONDITIONAL CONTENT pgName=(name) => !['kpn', 'inicis', 'naver', 'tosspay', 'hyphen'].includes(name) START -->
+  <!-- CONDITIONAL CONTENT pgName=(name) => !['kpn', 'inicis', 'naver', 'tosspay'].includes(name) START -->
 
   - availableCards?: string\[]
 
@@ -1535,7 +1515,7 @@ ni @portone/browser-sdk
 
     </details>
 
-  <!-- CONDITIONAL CONTENT pgName=(name) => !['kpn', 'inicis', 'naver', 'tosspay', 'hyphen'].includes(name) END -->
+  <!-- CONDITIONAL CONTENT pgName=(name) => !['kpn', 'inicis', 'naver', 'tosspay'].includes(name) END -->
 
   <!-- CONDITIONAL CONTENT pgName=(name) => !['kpn', 'naverpay'].includes(name) START -->
 
@@ -1818,16 +1798,6 @@ ni @portone/browser-sdk
   </div>
 
   <!-- CONDITIONAL CONTENT pgName=(name) => name === 'naver' END -->
-
-  <!-- CONDITIONAL CONTENT pgName=(name) => name === 'hyphen' START -->
-
-  <div class="hint" data-style="warning">
-
-  하이픈의 경우 구매자 이름을 필수로 입력해야 합니다.
-
-  </div>
-
-  <!-- CONDITIONAL CONTENT pgName=(name) => name === 'hyphen' END -->
 
   <!-- CONDITIONAL CONTENT pgName=(name) => name === 'eximbay' START -->
 
@@ -2361,18 +2331,6 @@ ni @portone/browser-sdk
 
   <!-- CONDITIONAL CONTENT pgName=(name) => name === "tosspay" END -->
 
-  <!-- CONDITIONAL CONTENT pgName=(name) => name === "hyphen" START -->
-
-  - hyphen?: object
-
-    - designCd?: string
-
-      **결제창 디자인 코드**
-
-      `#`으로 시작하는 여섯 자리 16진수 코드입니다.
-
-  <!-- CONDITIONAL CONTENT pgName=(name) => name === "hyphen" END -->
-
   <!-- CONDITIONAL CONTENT pgName=(name) => name === "eximbay" START -->
 
   - eximbay?: object
@@ -2723,16 +2681,6 @@ ni @portone/browser-sdk
   - businessName?: string
 
     **상점 사업자명**
-
-    <!-- CONDITIONAL CONTENT pgName=(name) => name === 'hyphen' START -->
-
-    <div class="hint" data-style="warning">
-
-    하이픈의 경우 미입력 시 대표상점명으로 설정됩니다.
-
-    </div>
-
-    <!-- CONDITIONAL CONTENT pgName=(name) => name === 'hyphen' END -->
 
   - businessRegistrationNumber?: string
 

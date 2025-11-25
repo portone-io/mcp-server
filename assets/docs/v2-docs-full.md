@@ -70,7 +70,6 @@
 - [결제취소(환불) 연동하기](https://developers.portone.io/opi/ko/integration/cancel/v2/readme): 포트원 V2 결제취소 API를 이용한 결제취소 방법을 안내합니다.
 - [다날 본인인증](https://developers.portone.io/opi/ko/integration/pg/v2/danal-identity-verification): 다날 본인인증 연동 방법을 안내합니다.
 - [엑심베이](https://developers.portone.io/opi/ko/integration/pg/v2/eximbay-v2): 엑심베이 결제 연동 방법을 안내합니다.
-- [하이픈](https://developers.portone.io/opi/ko/integration/pg/v2/hyphen): 하이픈 결제 연동 방법을 안내합니다.
 - [KG이니시스 일본결제](https://developers.portone.io/opi/ko/integration/pg/v2/inicis-jp): KG이니시스 일본결제 연동 방법을 안내합니다.
 - [KG이니시스 통합인증](https://developers.portone.io/opi/ko/integration/pg/v2/inicis-unified-identity-verification): KG이니시스 통합인증 연동 방법을 안내합니다.
 - [KG이니시스](https://developers.portone.io/opi/ko/integration/pg/v2/inicis-v2): KG이니시스 결제 연동 방법을 안내합니다.
@@ -2401,214 +2400,7 @@ const response = await axios({
 
 - 모바일 앱 내에서 결제를 연동할 경우 `appScheme` 파라미터를 설정하고 `bypass.eximbay_v2.settings.call_from_app` 파라미터를 "Y"로 설정해야 합니다.
 
-
-# https://developers.portone.io/opi/ko/integration/pg/v2/hyphen
-
----
-title: 하이픈
-description: 하이픈 결제 연동 방법을 안내합니다.
-targetVersions:
-  - v2
-versionVariants:
-  v1: /opi/ko/integration/pg/v1/hyphen
----
-
-## 채널 설정하기
-
-- [결제대행사 채널 설정하기](https://developers.portone.io/opi/ko/integration/ready/readme#3-결제대행사-채널-설정하기)의 내용을 참고하여 PG 설정을 진행합니다.
-
-## 가능한 결제 수단
-
-- 간편 결제
-
-  하이픈은 계좌 간편 결제를 전용으로 지원하는 PG사로, 등록한 계좌를 이용한 결제만 가능하며 다른 결제 수단은 지원하지 않습니다.
-
-  따라서 `payMethod` 파라미터를 아래와 같이 설정해야 합니다.
-
-  - 간편결제 : `EASY_PAY`
-
-### 계좌 간편 결제란?
-
-고객이 PG사에서 제공하는 결제 페이지에서 본인 명의의 계좌를 등록하고, 상품 구매 시 비밀번호 인증 등을 통해 등록된 계좌에서 출금하여 결제하는 서비스를 의미합니다.
-
-### 계좌 간편 결제의 장점
-
-계좌 간편 결제는 아래와 같은 장점을 제공합니다.
-
-1. **우수한 사용성**
-
-   보안 프로그램이나 추가 앱 설치 과정이 필요하지 않습니다.
-   또한 복잡한 계좌 입력이나 인증 과정 없이 최초 한 번만 계좌를 등록하고 이후에는 비밀번호를 통해 간편하게 인증할 수 있습니다.
-
-2. **낮은 수수료**
-
-   바로 계좌 결제는 오픈 뱅킹 기반의 계좌 이체 서비스로, 신용카드 결제에 비해 낮은 수수료로 해당 서비스를 이용할 수 있습니다.
-
-3. **빠른 정산 주기**
-
-   하이픈의 계좌 간편 결제 서비스는 통상 D+2일 주기로 정산을 해드리고 있습니다. 빠른 정산을 통해 현금 흐름을 효율적으로 관리할 수 있습니다.
-
-## SDK 결제 요청하기
-
-결제 요청 시에는 `requestPayment` 함수를 호출해야 합니다.
-`channelKey` 파라미터에 결제 채널 연동 후 생성된 채널 키값을 지정하여 하이픈 채널 사용을 명시해주세요.
-
-하이픈 기준으로 작성한 예시 코드는 아래와 같습니다.
-
-<div class="tabs-container">
-
-<div class="tabs-content" data-title="SDK 결제 요청">
-
-```javascript
-import * as PortOne from "@portone/browser-sdk/v2";
-function requestPayment() {
-  PortOne.requestPayment({
-    storeId: "store-4ff4af41-85e3-4559-8eb8-0d08a2c6ceec", // 고객사 storeId로 변경해주세요.
-    channelKey: "channel-key-9987cb87-6458-4888-b94e-68d9a2da896d", // 콘솔 결제 연동 화면에서 채널 연동 시 생성된 채널 키를 입력해주세요.
-    paymentId: `payment${crypto.randomUUID()}`,
-    orderName: "나이키 와플 트레이너 2 SD",
-    totalAmount: 1000,
-    currency: "CURRENCY_KRW",
-    payMethod: "EASY_PAY",
-    storeDetails: {
-      businessName: "상호명",
-    },
-    customer: {
-      fullName: "포트원",
-      phoneNumber: "010-0000-1234",
-      email: "test@portone.io",
-    },
-  });
-}
-```
-
-</div>
-
-</div>
-
-### 주요 파라미터
-
-- storeId: string
-
-  **상점 아이디**
-
-  포트원 계정에 생성된 상점을 식별하는 고유한 값으로 관리자 콘솔에서 확인할 수 있습니다.
-
-- paymentId: string
-
-  **고객사 주문 고유 번호**
-
-  고객사에서 채번하는 주문 고유 번호로 매번 고유하게 채번되어야 합니다. 이미 승인 완료된 `paymentId`로 결제를 시도하는 경우 에러가 발생합니다.
-
-- orderName: string
-
-  **주문명**
-
-  주문명으로 고객사에서 자유롭게 입력합니다.
-
-- channelKey: string
-
-  **채널 키**
-
-  포트원 콘솔 내 \[연동 관리] > \[연동 정보] > \[채널 관리] 화면에서 채널 추가 시 생성되는 값입니다. 결제 호출 시 채널을 지정할 때 사용됩니다.
-
-- totalAmount: number
-
-  **결제 금액**
-
-  결제 금액으로 결제를 원하는 통화(currency)별 scale factor(소수점 몇번째 자리까지 유효한지)를 고려한 number 형식만 허용됩니다.
-
-- currency: string
-
-  **결제 통화**
-
-  결제통화로 원화 결제 시 `KRW`로 입력해야 합니다.
-
-- payMethod: string
-
-  **결제수단 구분코드**
-
-  결제 호출 시 결제수단을 지정할 때 사용됩니다. 하이픈의 경우 해당 값은 `EASY_PAY`로 고정해주세요.
-
-- customer?: object
-
-  **고객 정보**
-
-  - fullName?: string
-
-    **구매자 전체 이름**
-
-    - 하이픈의 경우 fullName 혹은 (firstName + lastName)을 필수로 입력해야 합니다.
-
-  - firstName?: string
-
-    **구매자 이름**
-
-    - 하이픈의 경우 fullName 혹은 (firstName + lastName)을 필수로 입력해야 합니다.
-
-  - lastName?: string
-
-    **구매자 성**
-
-    - 하이픈의 경우 fullName 혹은 (firstName + lastName)을 필수로 입력해야 합니다.
-
-- storeDetails?: object
-
-  **상점 정보**
-
-  - businessName?: string
-
-    **상호명**
-
-    - 결제창에 표시될 상호명입니다. 입력하지 않으면 포트원 대표상점명으로 표시됩니다.
-
-- bypass?: oneof object
-
-  **PG사 결제창 호출 시 PG사로 그대로 bypass할 파라미터들의 모음**
-
-  - hyphen?: object
-
-    **하이픈에서 제공하는 파라미터 모음**
-
-    - designCd?: string
-
-      **결제창 디자인 색상 코드**
-
-      - `#`으로 시작하는 여섯자리 Hex 값을 입력합니다. (ex. `#C1272C`)
-
-#### 예시 코드
-
-```json title="bypass 예시 코드"
-{
-  "bypass": {
-    "hyphen": {
-      "designCd": "#C1272C"
-    }
-  }
-}
-```
-
-### 유의사항
-
-<details>
-
-<summary>`paymentId` 허용 문자 및 길이 제한</summary>
-
-`paymentId` 에는 영문, 숫자, `_`(underscore) 만으로 이루어진 문자열만 입력할 수 있습니다.
-
-여기에 포함되지 않는 한글이나 `♤`, `♡`, `♧` 등의 특수 문자는 허용되지 않습니다.
-
-또한 `paymentId`의 최대 길이는 50자이므로, 해당 길이를 넘지 않는 값으로 결제를 요청해주세요.
-
-</details>
-
-<details>
-
-<summary>`orderName` 길이 제한</summary>
-
-`orderName`의 최대 길이는 100byte 입니다. (UTF-8 인코딩 기준)
-
-</details>
+- 엑심베이의 경우 결제창을 닫은 이후에 결제가 성공 처리될 수 있습니다. 웹훅을 연동하여 결제 실패 상태에서 결제 성공 상태로 바뀌는 경우를 처리해야 합니다.
 
 
 # https://developers.portone.io/opi/ko/integration/pg/v2/inicis-jp
@@ -9204,12 +8996,19 @@ targetVersions:
 빌링키 발급 및 결제 요청 시에는 [requestIssueBillingKeyAndPay](https://developers.portone.io/sdk/ko/v2-sdk/billing-key-and-pay-request?v=v2) 함수를 호출해야 합니다.
 `channelKey` 파라미터에 결제 채널 연동 후 생성된 채널 키값을 지정하여 페이레터 해외결제 채널 사용을 명시해주세요.
 
+## 결제수단별 승인 가능 통화
+
+- 카드: `KRW`, `USD`, `JPY`
+- Alipay: `USD`, `CNY`
+- Alipay+: `USD`
+- WeChatPay: `KRW`, `USD`, `CNY`
+
 ## 유의사항
 
 - `paymentId` 에는 영문, 숫자만으로 이루어진 문자열만 입력할 수 있습니다.
 - 페이레터의 경우 구매자 이메일을 필수로 받고있어,`customer.email`을 필수로 입력하셔야 합니다.
-- 해외결제시 카드는 `KRW`, `USD`, `JPY`, 알리페이⋅위챗페이는 `CNY`를 지원합니다.
 - WeChatPay, Alipay, Alipay+ 결제 시 `bypass.payletter_global.servicename` 파라미터를 필수로 입력하셔야 합니다.
+- 페이레터의 경우 결제창을 닫은 이후에 결제가 성공 처리될 수 있습니다. 웹훅을 연동하여 결제 실패 상태에서 결제 성공 상태로 바뀌는 경우를 처리해야 합니다.
 
 
 # https://developers.portone.io/opi/ko/integration/pg/v2/paypal-v2
@@ -10976,7 +10775,7 @@ Pay Later(할부) 기능을 여러 국가에 제공하기 위해서는 **페이�
 페이팔은 이상 거래를 줄이기 위해 Risk Data Acquisition 정책을 시행하고 있습니다.
 일반적으로 페이팔 창에서 진행되는 결제나 빌링키 발급은 페이팔이 구매자 접속 정보를 직접 확인하여 이상 거래를 판단합니다.
 
-하지만 발급된 빌링키로 브라우저에서 재결제하는 경우 \[고객사 브라우저]에서 \[포트원 API]를 통해 \[페이팔 API]가 호출되는 구조로 페이팔이 구매자 접속 정보를 직접 확인할 수 없어 이상거래를 판단하기 어렵습니다.
+하지만 발급된 빌링키로 브라우저에서 결제하는 경우 \[고객사 브라우저]에서 \[포트원 API]를 통해 \[페이팔 API]가 호출되는 구조로 페이팔이 구매자 접속 정보를 직접 확인할 수 없어 이상거래를 판단하기 어렵습니다.
 따라서 구매자의 브라우저/디바이스 접속 정보를 페이팔에 전달해야 합니다.
 때문에 브라우저에서 발급된 빌링키를 이용하여 결제를 호출하는 경우 **고객사 클라이언트 페이지에 페이팔 Fraudnet 스크립트/Magnes SDK를 반드시 추가해야** 합니다.
 
@@ -11232,14 +11031,6 @@ versionVariants:
   - 결제 수단
 
     - 간편결제 : 토스페이
-
-- **하이픈**
-
-  - 연동 기능 : 간편결제(결제창)
-
-  - 결제 수단
-
-    - 간편결제 : 바로계좌결제
 
 #### 해외결제
 
@@ -12995,7 +12786,7 @@ async function schedulePayment() {
   - 상품권 결제 요청 시, 사용하고자 하는 상품권 종류에 따라 아래 목록을 참고하여 `giftCertificateType` 파라미터를 입력해야 합니다.
     - 도서문화상품권 : `BOOKNLIFE`
     - 스마트문상 ((구)게임문화상품권) : `SMART_MUNSANG`
-    - 문화상품권 : `CULTURELAND`
+    - 컬쳐랜드 문화상품권 : `CULTURELAND`
 
 - `paymentId`
   - 토스페이먼츠를 사용하는 경우 영문 대소문자, 숫자, 특수문자(-,\_)만 허용되며, 6자 이상 64자 이하만 가능합니다.
@@ -15455,7 +15246,6 @@ V2는 최신 결제 기능을 가장 빠르게 제공합니다.
 - **한국결제네트웍스(KPN)**
 - **NHN KCP**
 - **토스페이**
-- **하이픈 바로계좌결제**
 
 ### 본인인증
 
@@ -15527,7 +15317,7 @@ Webhook을 활용하면 커스텀 기능이나 다른 애플리케이션과 연�
     - `Transaction.PartialCancelled`: **결제가 부분 취소**되었을 때
     - `Transaction.Cancelled`: **결제가 완전 취소**되었을 때
     - `Transaction.Failed`: **결제(예약 결제 포함)가 실패**했을 때
-    - `Transaction.PayPending`: **결제 승인 대기** 상태가 되었을 때 (해외 결제시 발생 가능)
+    - `Transaction.PayPending`: **결제 승인 대기** 상태가 되었을 때 (페이팔에서 발생 가능)
     - `Transaction.CancelPending`: (결제 취소가 비동기로 수행되는 경우) **결제 취소를 요청**했을 때
     - `Transaction.DisputeCreated`: **분쟁이 발생**되었을 때
     - `Transaction.DisputeResolved`: **분쟁이 해소**되었을 때
@@ -15608,7 +15398,7 @@ Webhook을 활용하면 커스텀 기능이나 다른 애플리케이션과 연�
   - `PartialCancelled`: **결제가 부분 취소**되었을 때
   - `Cancelled`: **결제가 완전 취소**되었을 때
   - `Failed`: **결제(예약 결제 포함)가 실패**했을 때
-  - `PayPending`: **결제 승인 대기** 상태가 되었을 때 (해외 결제시 발생 가능)
+  - `PayPending`: **결제 승인 대기** 상태가 되었을 때 (페이팔에서 발생 가능)
   - `CancelPending`: (결제 취소가 비동기로 수행되는 경우) **결제 취소를 요청**했을 때
 
 웹훅 payload 예시:
@@ -16246,16 +16036,6 @@ ni @portone/browser-sdk
 
   <!-- CONDITIONAL CONTENT pgName=(name) => name === 'inicis' END -->
 
-  <!-- CONDITIONAL CONTENT pgName=(name) => name === 'hyphen' START -->
-
-  <div class="hint" data-style="warning">
-
-  하이픈의 경우 영문 대소문자, 숫자, `_`만 허용되며, 50자 이하로 입력합니다.
-
-  </div>
-
-  <!-- CONDITIONAL CONTENT pgName=(name) => name === 'hyphen' END -->
-
 - orderName: string
 
   **주문명**
@@ -16326,16 +16106,6 @@ ni @portone/browser-sdk
   </div>
 
   <!-- CONDITIONAL CONTENT pgName=(name) => name === 'naver' END -->
-
-  <!-- CONDITIONAL CONTENT pgName=(name) => name === 'hyphen' START -->
-
-  <div class="hint" data-style="warning">
-
-  하이픈의 경우 최대 1000바이트까지 입력할 수 있습니다.
-
-  </div>
-
-  <!-- CONDITIONAL CONTENT pgName=(name) => name === 'hyphen' END -->
 
 - totalAmount: number
 
@@ -16566,11 +16336,11 @@ ni @portone/browser-sdk
 
   <!-- CONDITIONAL CONTENT pgName=(name) => name === 'kcp' END -->
 
-  <!-- CONDITIONAL CONTENT pgName=(name) => ['kakao', 'naver', 'tosspay', 'hyphen'].includes(name) START -->
+  <!-- CONDITIONAL CONTENT pgName=(name) => ['kakao', 'naver', 'tosspay'].includes(name) START -->
 
   - 간편결제: `EASY_PAY`
 
-  <!-- CONDITIONAL CONTENT pgName=(name) => ['kakao', 'naver', 'tosspay', 'hyphen'].includes(name) END -->
+  <!-- CONDITIONAL CONTENT pgName=(name) => ['kakao', 'naver', 'tosspay'].includes(name) END -->
 
   <!-- CONDITIONAL CONTENT pgName=(name) => name === 'eximbay' START -->
 
@@ -17320,19 +17090,19 @@ ni @portone/browser-sdk
 
     - `BOOKNLIFE` (도서문화상품권)
     - `SMART_MUNSANG` (스마트문상, (구)게임문화상품권)
-    - `CULTURELAND` (문화상품권)
+    - `CULTURELAND` (컬쳐랜드 문화상품권)
 
     <!-- CONDITIONAL CONTENT pgName=(name) => ['toss', 'inicis'].includes(name) END -->
 
     <!-- CONDITIONAL CONTENT pgName=(name) => name === "nice" START -->
 
-    - `CULTURELAND` (문화상품권)
+    - `CULTURELAND` (컬쳐랜드 문화상품권)
 
     <!-- CONDITIONAL CONTENT pgName=(name) => name === "nice" END -->
 
     <!-- CONDITIONAL CONTENT pgName=(name) => name === 'kcp' START -->
 
-    - `CULTURELAND` (문화상품권)
+    - `CULTURELAND` (컬쳐랜드 문화상품권)
     - `BOOKNLIFE` (도서문화상품권)
 
     <!-- CONDITIONAL CONTENT pgName=(name) => name === 'kcp' END -->
@@ -17349,7 +17119,7 @@ ni @portone/browser-sdk
 
   `payMethod`가 `EASY_PAY`인 경우 간편결제와 관련한 추가 정보를 입력할 수 있습니다.
 
-  <!-- CONDITIONAL CONTENT pgName=(name) => !['kakao', 'naver', 'tosspay', 'hyphen'].includes(name) START -->
+  <!-- CONDITIONAL CONTENT pgName=(name) => !['kakao', 'naver', 'tosspay'].includes(name) START -->
 
   - easyPayProvider?: string
 
@@ -17480,7 +17250,7 @@ ni @portone/browser-sdk
 
     </details>
 
-  <!-- CONDITIONAL CONTENT pgName=(name) => !['kakao', 'naver', 'tosspay', 'hyphen'].includes(name) END -->
+  <!-- CONDITIONAL CONTENT pgName=(name) => !['kakao', 'naver', 'tosspay'].includes(name) END -->
 
   <!-- CONDITIONAL CONTENT pgName=(name) => !['kpn', 'inicis', 'ksnet'].includes(name) START -->
 
@@ -17508,7 +17278,7 @@ ni @portone/browser-sdk
 
   <!-- CONDITIONAL CONTENT pgName=(name) => !['kpn', 'inicis'].includes(name) END -->
 
-  <!-- CONDITIONAL CONTENT pgName=(name) => !['kpn', 'inicis', 'naver', 'tosspay', 'hyphen'].includes(name) START -->
+  <!-- CONDITIONAL CONTENT pgName=(name) => !['kpn', 'inicis', 'naver', 'tosspay'].includes(name) START -->
 
   - availableCards?: string\[]
 
@@ -17617,7 +17387,7 @@ ni @portone/browser-sdk
 
     </details>
 
-  <!-- CONDITIONAL CONTENT pgName=(name) => !['kpn', 'inicis', 'naver', 'tosspay', 'hyphen'].includes(name) END -->
+  <!-- CONDITIONAL CONTENT pgName=(name) => !['kpn', 'inicis', 'naver', 'tosspay'].includes(name) END -->
 
   <!-- CONDITIONAL CONTENT pgName=(name) => !['kpn', 'naverpay'].includes(name) START -->
 
@@ -17900,16 +17670,6 @@ ni @portone/browser-sdk
   </div>
 
   <!-- CONDITIONAL CONTENT pgName=(name) => name === 'naver' END -->
-
-  <!-- CONDITIONAL CONTENT pgName=(name) => name === 'hyphen' START -->
-
-  <div class="hint" data-style="warning">
-
-  하이픈의 경우 구매자 이름을 필수로 입력해야 합니다.
-
-  </div>
-
-  <!-- CONDITIONAL CONTENT pgName=(name) => name === 'hyphen' END -->
 
   <!-- CONDITIONAL CONTENT pgName=(name) => name === 'eximbay' START -->
 
@@ -18443,18 +18203,6 @@ ni @portone/browser-sdk
 
   <!-- CONDITIONAL CONTENT pgName=(name) => name === "tosspay" END -->
 
-  <!-- CONDITIONAL CONTENT pgName=(name) => name === "hyphen" START -->
-
-  - hyphen?: object
-
-    - designCd?: string
-
-      **결제창 디자인 코드**
-
-      `#`으로 시작하는 여섯 자리 16진수 코드입니다.
-
-  <!-- CONDITIONAL CONTENT pgName=(name) => name === "hyphen" END -->
-
   <!-- CONDITIONAL CONTENT pgName=(name) => name === "eximbay" START -->
 
   - eximbay?: object
@@ -18805,16 +18553,6 @@ ni @portone/browser-sdk
   - businessName?: string
 
     **상점 사업자명**
-
-    <!-- CONDITIONAL CONTENT pgName=(name) => name === 'hyphen' START -->
-
-    <div class="hint" data-style="warning">
-
-    하이픈의 경우 미입력 시 대표상점명으로 설정됩니다.
-
-    </div>
-
-    <!-- CONDITIONAL CONTENT pgName=(name) => name === 'hyphen' END -->
 
   - businessRegistrationNumber?: string
 
@@ -21587,7 +21325,7 @@ description: >-
 - 포트원을 통해 연동된 아래 12개의 PG사 내역을 조회할 수 있습니다.
   - 지원 PG : **KCP, KG이니시스, 나이스정보통신, 토스페이, 네이버페이, 다날, 페이코, (구)토스페이먼츠, 토스페이먼츠, 카카오페이, 엑심베이, 헥토파이낸셜**
   - 고객사가 포트원을 통하지 않고 PG 직연동한 경우 지원 불가
-  - 9/26 이후 지원 예정 PG사 : KPN, 하이픈, KSNET
+  - 9/26 이후 지원 예정 PG사 : KPN, KSNET
 
 - 고객사 주문번호를 정확하게 확인하기 위해서는 **실제 사용하시는 주문번호의 연동**이 필요합니다.
 
@@ -24599,7 +24337,6 @@ API 빌링키 발급 요청 시 스마트 라우팅 그룹 아이디를 지정�
 - **이지페이(KICC)** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
 - **웰컴페이먼츠** : 카드 / 실시간 계좌이체 / 가상계좌 / 휴대폰 소액결제
 - **엑심베이** : 카드
-- **하이픈** : 실시간 계좌이체
 
 ### API 수기(키인)결제
 
@@ -25551,38 +25288,6 @@ DI\_CODE는 12자리로 고객사에서 자체적으로 사이트(서비스)를 
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
 
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
-
-<details>
-
-<summary>하이픈</summary>
-
-1. [HYPHEN PAY & 바로계좌결제 운영 백오피스](http://payadmin.hyphen.im/) 접속 후 **바로계좌결제** 선택 후
-   로그인을 합니다.
-
-   (이미지 첨부: HYPHEN 백오피스 로그인 화면)
-
-2. \[상점관리]→\[바로계좌결제 상점정보관리]를 클릭합니다.
-
-3. 상점명을 클릭합니다.
-
-   (이미지 첨부: HYPHEN \[상점관리] - \[상점정보관리] 예시 화면)
-
-4. \[상점 기본정보]에서 \[상점번호]를 확인합니다.
-
-   (이미지 첨부: HYPHEN \[상점 기본정보] 예시 화면)
-
-5. \[암호화 키, 토큰]에서 \[암호화 키]와 \[암호화 토큰]을 확인합니다.
-
-   (이미지 첨부: HYPHEN \[암호화 키, 토큰] 예시 화면)
-
-6. 포트원 콘솔에서 채널 추가 시 \[PG상점아이디(상점 번호)], \[암호화 키], \[암호화 토큰]을
-   입력한 후 \[저장]을 클릭합니다.
-
-</details>
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
-
 #### 해외 결제대행사
 
 <details>
@@ -25619,6 +25324,24 @@ PG 거래대사 메뉴를 사용하시는 경우 \[대사 시크릿 키] 항목�
 (이미지 첨부: 페이먼트월 페이지 내 Key 조회 화면)
 
 3. 포트원 콘솔에서 채널 추가 시 \[Project Key], \[Secret Key]를 입력한 후 `저장`을 클릭합니다.
+
+#### 핑백(Pingback) URL 설정하기
+
+페이먼트월에서 포트원으로 결제 결과를 전달받기 위해 핑백 URL을 설정해야 합니다.
+
+1. [페이먼트월](https://api.paymentwall.com/developers/applications) 페이지에서 \[My Projects]를 클릭합니다.
+
+(이미지 첨부: 페이먼트월 My Projects 메뉴)
+
+2. 사용할 프로젝트의 \[Settings] 탭을 클릭합니다.
+
+(이미지 첨부: 페이먼트월 프로젝트 setting 탭)
+
+3. \[Pingback type]을 `URL`로 선택합니다.
+4. \[Pingback URL]에 `https://service.iamport.kr/paymentwall/webhook`를 입력합니다.
+5. \[Pingback signature version]을 `3`으로 설정합니다.
+
+(이미지 첨부: 페이먼트월 Pingback 설정 화면)
 
 </details>
 
@@ -30867,11 +30590,11 @@ writtenAt: 2024-09-30T00:00:00.000Z
 PG 거래대사 내의 **거래 정산 내역** 메뉴에서 정산일 또는 거래일을 기준으로,
 **거래 건별 조회** 메뉴에서는 정산일을 기준으로 최대 3개월 분량의 데이터를 엑셀로 다운로드할 수 있습니다.
 
-### **PG 거래대사**✔️ KSNET, KPN, 하이픈에서 발생한 거래 건도 PG 거래대사에서 데이터 확인이 가능해집니다.
+### **PG 거래대사**✔️ KSNET, KPN에서 발생한 거래 건도 PG 거래대사에서 데이터 확인이 가능해집니다.
 
 기존에 12개 PG사 (KCP, KG이니시스, 나이스정보통신, 토스페이, 네이버페이, 다날, 페이코, (구)토스페이먼츠,
-토스페이먼츠, 카카오페이, 엑심베이, 헥토파이낸셜) 에서만 지원하던 **PG 거래대사**가 KSNET, KPN, 하이픈까지 확장하여
-총 15개 PG사 데이터에 한하여 제공됩니다.
+토스페이먼츠, 카카오페이, 엑심베이, 헥토파이낸셜) 에서만 지원하던 **PG 거래대사**가 KSNET, KPN까지 확장하여
+총 14개 PG사 데이터에 한하여 제공됩니다.
 
 (참고 : PG 거래대사 메뉴의 경우 클로즈 베타로 운영되고 있으며,
 사용을 원하시는 고객께서는 [PG거래대사 베타서비스 신청 바로가기](https://forms.gle/cZAqJLGqovC1STrS8)에서 신청해 주시길 바랍니다.)

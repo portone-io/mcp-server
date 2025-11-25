@@ -61,9 +61,16 @@ targetVersions:
 빌링키 발급 및 결제 요청 시에는 [requestIssueBillingKeyAndPay](https://developers.portone.io/sdk/ko/v2-sdk/billing-key-and-pay-request?v=v2) 함수를 호출해야 합니다.
 `channelKey` 파라미터에 결제 채널 연동 후 생성된 채널 키값을 지정하여 페이레터 해외결제 채널 사용을 명시해주세요.
 
+## 결제수단별 승인 가능 통화
+
+- 카드: `KRW`, `USD`, `JPY`
+- Alipay: `USD`, `CNY`
+- Alipay+: `USD`
+- WeChatPay: `KRW`, `USD`, `CNY`
+
 ## 유의사항
 
 - `paymentId` 에는 영문, 숫자만으로 이루어진 문자열만 입력할 수 있습니다.
 - 페이레터의 경우 구매자 이메일을 필수로 받고있어,`customer.email`을 필수로 입력하셔야 합니다.
-- 해외결제시 카드는 `KRW`, `USD`, `JPY`, 알리페이⋅위챗페이는 `CNY`를 지원합니다.
 - WeChatPay, Alipay, Alipay+ 결제 시 `bypass.payletter_global.servicename` 파라미터를 필수로 입력하셔야 합니다.
+- 페이레터의 경우 결제창을 닫은 이후에 결제가 성공 처리될 수 있습니다. 웹훅을 연동하여 결제 실패 상태에서 결제 성공 상태로 바뀌는 경우를 처리해야 합니다.

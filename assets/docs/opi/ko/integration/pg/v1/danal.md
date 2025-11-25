@@ -76,7 +76,7 @@ IMP.request_pay(
   - trans (실시간 계좌이체)
   - vbank(가상계좌)
   - phone(휴대폰 소액결제) : 휴대폰 결제인 경우 pg 파라미터는 **`danal`** 로 지정하면 됩니다.
-  - cultureland (문화상품권)
+  - cultureland (컬쳐랜드 문화상품권)
   - booknlife (도서문화상품권)
 
 - merchant\_uid: string

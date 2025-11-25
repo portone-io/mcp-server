@@ -3790,6 +3790,80 @@ paths:
       x-portone-description: 결제 취소를 요청합니다.
       x-portone-error:
         $ref: '#/components/schemas/CancelPaymentError'
+  '/payments/{paymentId}/capture':
+    post:
+      summary: 수동 매입
+      description: |-
+        수동 매입
+
+        수동 매입을 요청합니다. PG 및 포트원과의 사전 협의가 필요합니다.
+      operationId: capturePayment
+      parameters:
+        - name: paymentId
+          in: path
+          description: 결제 건 아이디
+          required: true
+          schema:
+            type: string
+          x-portone-title: 결제 건 아이디
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CapturePaymentBody'
+        required: true
+      responses:
+        '200':
+          description: 성공 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CapturePaymentResponse'
+          x-portone-title: 성공 응답
+        '400':
+          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CapturePaymentError'
+        '401':
+          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CapturePaymentError'
+        '403':
+          description: '* `ForbiddenError`: 요청이 거절된 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CapturePaymentError'
+        '404':
+          description: '* `PaymentNotFoundError`: 결제 건이 존재하지 않는 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CapturePaymentError'
+        '409':
+          description: '* `PaymentNotPaidError`: 결제가 완료되지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CapturePaymentError'
+        '502':
+          description: '* `PgProviderError`: PG사에서 오류를 전달한 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CapturePaymentError'
+      security:
+        - bearerJwt: []
+        - portOne: []
+      x-portone-category: payment
+      x-portone-title: 수동 매입
+      x-portone-description: 수동 매입을 요청합니다. PG 및 포트원과의 사전 협의가 필요합니다.
+      x-portone-error:
+        $ref: '#/components/schemas/CapturePaymentError'
   '/payments/{paymentId}/cash-receipt/cancel':
     post:
       summary: 현금 영수증 취소
@@ -4876,46 +4950,6 @@ paths:
       x-portone-description: 주어진 조건에 맞는 결제 건들을 페이지 기반으로 조회합니다.
       x-portone-error:
         $ref: '#/components/schemas/GetPaymentsError'
-  /platform:
-    get:
-      description: |-
-        고객사의 플랫폼 정보를 조회합니다.
-        요청된 Authorization header 를 통해 자동으로 요청자의 고객사를 특정합니다.
-      operationId: getPlatform
-      responses:
-        '200':
-          description: 성공 응답으로 플랫폼 객체를 반환합니다.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Platform'
-          x-portone-description: 성공 응답으로 플랫폼 객체를 반환합니다.
-        '400':
-          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformError'
-        '401':
-          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformError'
-        '403':
-          description: '* `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformError'
-      security:
-        - bearerJwt: []
-        - portOne: []
-      x-portone-description: |-
-        고객사의 플랫폼 정보를 조회합니다.
-        요청된 Authorization header 를 통해 자동으로 요청자의 고객사를 특정합니다.
-      x-portone-error:
-        $ref: '#/components/schemas/GetPlatformError'
   /platform/account-transfers:
     get:
       summary: 이체 내역 다건 조회
@@ -4925,6 +4959,25 @@ paths:
         여러 이체 내역을 조회합니다.
       operationId: getPlatformAccountTransfers
       parameters:
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
         - name: requestBody
           in: query
           required: false
@@ -4978,251 +5031,6 @@ paths:
       x-portone-error:
         $ref: '#/components/schemas/GetPlatformAccountTransfersError'
       x-portone-unstable: true
-  /platform/additional-fee-policies:
-    get:
-      summary: 추가 수수료 정책 다건 조회
-      description: |-
-        추가 수수료 정책 다건 조회
-
-        여러 추가 수수료 정책을 조회합니다.
-      operationId: getPlatformAdditionalFeePolicies
-      parameters:
-        - name: requestBody
-          in: query
-          required: false
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformAdditionalFeePoliciesBody'
-          x-portone-query-or-body:
-            enabled: true
-            required: false
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/GetPlatformAdditionalFeePoliciesBody'
-        required: false
-      responses:
-        '200':
-          description: 성공 응답으로 조회된 추가 수수료 정책 리스트와 페이지 정보를 반환합니다.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformAdditionalFeePoliciesResponse'
-          x-portone-description: 성공 응답으로 조회된 추가 수수료 정책 리스트와 페이지 정보를 반환합니다.
-        '400':
-          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformAdditionalFeePoliciesError'
-        '401':
-          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformAdditionalFeePoliciesError'
-        '403':
-          description: |-
-            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
-            * `ForbiddenError`: 요청이 거절된 경우
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformAdditionalFeePoliciesError'
-      security:
-        - bearerJwt: []
-        - portOne: []
-      x-portone-category: platform.policy
-      x-portone-title: 추가 수수료 정책 다건 조회
-      x-portone-description: 여러 추가 수수료 정책을 조회합니다.
-      x-portone-error:
-        $ref: '#/components/schemas/GetPlatformAdditionalFeePoliciesError'
-    post:
-      summary: 추가 수수료 정책 생성
-      description: |-
-        추가 수수료 정책 생성
-
-        새로운 추가 수수료 정책을 생성합니다.
-      operationId: createPlatformAdditionalFeePolicy
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreatePlatformAdditionalFeePolicyBody'
-        required: true
-      responses:
-        '200':
-          description: 성공 응답
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformAdditionalFeePolicyResponse'
-          x-portone-title: 성공 응답
-        '400':
-          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformAdditionalFeePolicyError'
-        '401':
-          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformAdditionalFeePolicyError'
-        '403':
-          description: |-
-            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
-            * `ForbiddenError`: 요청이 거절된 경우
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformAdditionalFeePolicyError'
-        '409':
-          description: '* `PlatformAdditionalFeePolicyAlreadyExistsError`'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformAdditionalFeePolicyError'
-      security:
-        - bearerJwt: []
-        - portOne: []
-      x-portone-category: platform.policy
-      x-portone-title: 추가 수수료 정책 생성
-      x-portone-description: 새로운 추가 수수료 정책을 생성합니다.
-      x-portone-error:
-        $ref: '#/components/schemas/CreatePlatformAdditionalFeePolicyError'
-  '/platform/additional-fee-policies/{id}':
-    get:
-      summary: 추가 수수료 정책 조회
-      description: |-
-        추가 수수료 정책 조회
-
-        주어진 아이디에 대응되는 추가 수수료 정책을 조회합니다.
-      operationId: getPlatformAdditionalFeePolicy
-      parameters:
-        - name: id
-          in: path
-          description: 조회할 추가 수수료 정책 아이디
-          required: true
-          schema:
-            type: string
-          x-portone-title: 조회할 추가 수수료 정책 아이디
-      responses:
-        '200':
-          description: 성공 응답으로 추가 수수료 정책을 반환합니다.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PlatformAdditionalFeePolicy'
-          x-portone-description: 성공 응답으로 추가 수수료 정책을 반환합니다.
-        '400':
-          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformAdditionalFeePolicyError'
-        '401':
-          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformAdditionalFeePolicyError'
-        '403':
-          description: |-
-            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
-            * `ForbiddenError`: 요청이 거절된 경우
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformAdditionalFeePolicyError'
-        '404':
-          description: '* `PlatformAdditionalFeePolicyNotFoundError`'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformAdditionalFeePolicyError'
-      security:
-        - bearerJwt: []
-        - portOne: []
-      x-portone-category: platform.policy
-      x-portone-title: 추가 수수료 정책 조회
-      x-portone-description: 주어진 아이디에 대응되는 추가 수수료 정책을 조회합니다.
-      x-portone-error:
-        $ref: '#/components/schemas/GetPlatformAdditionalFeePolicyError'
-    patch:
-      summary: 추가 수수료 정책 수정
-      description: |-
-        추가 수수료 정책 수정
-
-        주어진 아이디에 대응되는 추가 수수료 정책을 업데이트합니다.
-      operationId: updatePlatformAdditionalFeePolicy
-      parameters:
-        - name: id
-          in: path
-          description: 업데이트할 추가 수수료 정책 아이디
-          required: true
-          schema:
-            type: string
-          x-portone-title: 업데이트할 추가 수수료 정책 아이디
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdatePlatformAdditionalFeePolicyBody'
-        required: true
-      responses:
-        '200':
-          description: 성공 응답으로 업데이트된 추가 수수료 정책이 반환됩니다.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePlatformAdditionalFeePolicyResponse'
-          x-portone-description: 성공 응답으로 업데이트된 추가 수수료 정책이 반환됩니다.
-        '400':
-          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePlatformAdditionalFeePolicyError'
-        '401':
-          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePlatformAdditionalFeePolicyError'
-        '403':
-          description: |-
-            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
-            * `ForbiddenError`: 요청이 거절된 경우
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePlatformAdditionalFeePolicyError'
-        '404':
-          description: '* `PlatformAdditionalFeePolicyNotFoundError`'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePlatformAdditionalFeePolicyError'
-        '409':
-          description: >-
-            * `PlatformArchivedAdditionalFeePolicyError`: 보관된 추가 수수료 정책을 업데이트하려고
-            하는 경우
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePlatformAdditionalFeePolicyError'
-      security:
-        - bearerJwt: []
-        - portOne: []
-      x-portone-category: platform.policy
-      x-portone-title: 추가 수수료 정책 수정
-      x-portone-description: 주어진 아이디에 대응되는 추가 수수료 정책을 업데이트합니다.
-      x-portone-error:
-        $ref: '#/components/schemas/UpdatePlatformAdditionalFeePolicyError'
   '/platform/additional-fee-policies/{id}/archive':
     post:
       summary: 추가 수수료 정책 보관
@@ -5239,6 +5047,25 @@ paths:
           schema:
             type: string
           x-portone-title: 추가 수수료 정책 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       responses:
         '200':
           description: 성공 응답으로 보관된 추가 수수료 정책 객체를 반환합니다.
@@ -5306,6 +5133,25 @@ paths:
           schema:
             type: string
           x-portone-title: 추가 수수료 정책 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       responses:
         '200':
           description: 성공 응답으로 복원된 추가 수수료 정책 객체를 반환합니다.
@@ -5361,6 +5207,25 @@ paths:
           schema:
             type: string
           x-portone-title: 추가 수수료 정책 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       responses:
         '200':
           description: 성공 응답으로 예약된 추가 수수료 정책을 반환합니다.
@@ -5416,6 +5281,25 @@ paths:
           schema:
             type: string
           x-portone-title: 추가 수수료 정책 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       requestBody:
         content:
           application/json:
@@ -5474,6 +5358,25 @@ paths:
           schema:
             type: string
           x-portone-title: 추가 수수료 정책 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       requestBody:
         content:
           application/json:
@@ -5543,6 +5446,25 @@ paths:
           schema:
             type: string
           x-portone-title: 추가 수수료 정책 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       responses:
         '200':
           description: 성공 응답
@@ -5589,6 +5511,328 @@ paths:
       x-portone-error:
         $ref: '#/components/schemas/CancelPlatformAdditionalFeePolicyScheduleError'
       x-portone-unstable: true
+  '/platform/additional-fee-policies/{id}':
+    get:
+      summary: 추가 수수료 정책 조회
+      description: |-
+        추가 수수료 정책 조회
+
+        주어진 아이디에 대응되는 추가 수수료 정책을 조회합니다.
+      operationId: getPlatformAdditionalFeePolicy
+      parameters:
+        - name: id
+          in: path
+          description: 조회할 추가 수수료 정책 아이디
+          required: true
+          schema:
+            type: string
+          x-portone-title: 조회할 추가 수수료 정책 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+      responses:
+        '200':
+          description: 성공 응답으로 추가 수수료 정책을 반환합니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlatformAdditionalFeePolicy'
+          x-portone-description: 성공 응답으로 추가 수수료 정책을 반환합니다.
+        '400':
+          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformAdditionalFeePolicyError'
+        '401':
+          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformAdditionalFeePolicyError'
+        '403':
+          description: |-
+            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
+            * `ForbiddenError`: 요청이 거절된 경우
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformAdditionalFeePolicyError'
+        '404':
+          description: '* `PlatformAdditionalFeePolicyNotFoundError`'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformAdditionalFeePolicyError'
+      security:
+        - bearerJwt: []
+        - portOne: []
+      x-portone-category: platform.policy
+      x-portone-title: 추가 수수료 정책 조회
+      x-portone-description: 주어진 아이디에 대응되는 추가 수수료 정책을 조회합니다.
+      x-portone-error:
+        $ref: '#/components/schemas/GetPlatformAdditionalFeePolicyError'
+    patch:
+      summary: 추가 수수료 정책 수정
+      description: |-
+        추가 수수료 정책 수정
+
+        주어진 아이디에 대응되는 추가 수수료 정책을 업데이트합니다.
+      operationId: updatePlatformAdditionalFeePolicy
+      parameters:
+        - name: id
+          in: path
+          description: 업데이트할 추가 수수료 정책 아이디
+          required: true
+          schema:
+            type: string
+          x-portone-title: 업데이트할 추가 수수료 정책 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePlatformAdditionalFeePolicyBody'
+        required: true
+      responses:
+        '200':
+          description: 성공 응답으로 업데이트된 추가 수수료 정책이 반환됩니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePlatformAdditionalFeePolicyResponse'
+          x-portone-description: 성공 응답으로 업데이트된 추가 수수료 정책이 반환됩니다.
+        '400':
+          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePlatformAdditionalFeePolicyError'
+        '401':
+          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePlatformAdditionalFeePolicyError'
+        '403':
+          description: |-
+            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
+            * `ForbiddenError`: 요청이 거절된 경우
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePlatformAdditionalFeePolicyError'
+        '404':
+          description: '* `PlatformAdditionalFeePolicyNotFoundError`'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePlatformAdditionalFeePolicyError'
+        '409':
+          description: >-
+            * `PlatformArchivedAdditionalFeePolicyError`: 보관된 추가 수수료 정책을 업데이트하려고
+            하는 경우
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePlatformAdditionalFeePolicyError'
+      security:
+        - bearerJwt: []
+        - portOne: []
+      x-portone-category: platform.policy
+      x-portone-title: 추가 수수료 정책 수정
+      x-portone-description: 주어진 아이디에 대응되는 추가 수수료 정책을 업데이트합니다.
+      x-portone-error:
+        $ref: '#/components/schemas/UpdatePlatformAdditionalFeePolicyError'
+  /platform/additional-fee-policies:
+    get:
+      summary: 추가 수수료 정책 다건 조회
+      description: |-
+        추가 수수료 정책 다건 조회
+
+        여러 추가 수수료 정책을 조회합니다.
+      operationId: getPlatformAdditionalFeePolicies
+      parameters:
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+        - name: requestBody
+          in: query
+          required: false
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformAdditionalFeePoliciesBody'
+          x-portone-query-or-body:
+            enabled: true
+            required: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetPlatformAdditionalFeePoliciesBody'
+        required: false
+      responses:
+        '200':
+          description: 성공 응답으로 조회된 추가 수수료 정책 리스트와 페이지 정보를 반환합니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformAdditionalFeePoliciesResponse'
+          x-portone-description: 성공 응답으로 조회된 추가 수수료 정책 리스트와 페이지 정보를 반환합니다.
+        '400':
+          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformAdditionalFeePoliciesError'
+        '401':
+          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformAdditionalFeePoliciesError'
+        '403':
+          description: |-
+            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
+            * `ForbiddenError`: 요청이 거절된 경우
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformAdditionalFeePoliciesError'
+      security:
+        - bearerJwt: []
+        - portOne: []
+      x-portone-category: platform.policy
+      x-portone-title: 추가 수수료 정책 다건 조회
+      x-portone-description: 여러 추가 수수료 정책을 조회합니다.
+      x-portone-error:
+        $ref: '#/components/schemas/GetPlatformAdditionalFeePoliciesError'
+    post:
+      summary: 추가 수수료 정책 생성
+      description: |-
+        추가 수수료 정책 생성
+
+        새로운 추가 수수료 정책을 생성합니다.
+      operationId: createPlatformAdditionalFeePolicy
+      parameters:
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePlatformAdditionalFeePolicyBody'
+        required: true
+      responses:
+        '200':
+          description: 성공 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePlatformAdditionalFeePolicyResponse'
+          x-portone-title: 성공 응답
+        '400':
+          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePlatformAdditionalFeePolicyError'
+        '401':
+          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePlatformAdditionalFeePolicyError'
+        '403':
+          description: |-
+            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
+            * `ForbiddenError`: 요청이 거절된 경우
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePlatformAdditionalFeePolicyError'
+        '409':
+          description: '* `PlatformAdditionalFeePolicyAlreadyExistsError`'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePlatformAdditionalFeePolicyError'
+      security:
+        - bearerJwt: []
+        - portOne: []
+      x-portone-category: platform.policy
+      x-portone-title: 추가 수수료 정책 생성
+      x-portone-description: 새로운 추가 수수료 정책을 생성합니다.
+      x-portone-error:
+        $ref: '#/components/schemas/CreatePlatformAdditionalFeePolicyError'
   '/platform/bank-accounts/{bank}/{accountNumber}/holder':
     get:
       summary: 예금주 조회
@@ -5612,6 +5856,25 @@ paths:
           schema:
             type: string
           x-portone-title: '''-''를 제외한 계좌 번호'
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
         - name: birthdate
           in: query
           description: >-
@@ -5697,6 +5960,25 @@ paths:
         성공 응답으로 조회된 일괄 이체 내역 리스트와 페이지 정보 및 상태 별 개수 정보를 반환합니다.
       operationId: getPlatformBulkAccountTransfers
       parameters:
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
         - name: requestBody
           in: query
           required: false
@@ -5757,6 +6039,25 @@ paths:
         성공 응답으로 조회된 일괄 지급 내역 리스트와 페이지 정보 및 상태 별 개수 정보를 반환합니다.
       operationId: getPlatformBulkPayouts
       parameters:
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
         - name: requestBody
           in: query
           required: false
@@ -5824,6 +6125,25 @@ paths:
           schema:
             type: string
           x-portone-title: 사업자등록번호
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       responses:
         '200':
           description: 성공 응답으로 조회된 사업자 상태가 반환됩니다.
@@ -5872,249 +6192,6 @@ paths:
       x-portone-description: 사업자 정보를 조회합니다. 포트원 서비스에 연동 및 등록되지 않은 사업자도 조회 가능합니다.
       x-portone-error:
         $ref: '#/components/schemas/GetPlatformCompanyStateError'
-  /platform/contracts:
-    get:
-      summary: 계약 다건 조회
-      description: |-
-        계약 다건 조회
-
-        여러 계약을 조회합니다.
-      operationId: getPlatformContracts
-      parameters:
-        - name: requestBody
-          in: query
-          required: false
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformContractsBody'
-          x-portone-query-or-body:
-            enabled: true
-            required: false
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/GetPlatformContractsBody'
-        required: false
-      responses:
-        '200':
-          description: 성공 응답으로 조회된 계약 리스트와 페이지 정보를 반환합니다.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformContractsResponse'
-          x-portone-description: 성공 응답으로 조회된 계약 리스트와 페이지 정보를 반환합니다.
-        '400':
-          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformContractsError'
-        '401':
-          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformContractsError'
-        '403':
-          description: |-
-            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
-            * `ForbiddenError`: 요청이 거절된 경우
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformContractsError'
-      security:
-        - bearerJwt: []
-        - portOne: []
-      x-portone-category: platform.policy
-      x-portone-title: 계약 다건 조회
-      x-portone-description: 여러 계약을 조회합니다.
-      x-portone-error:
-        $ref: '#/components/schemas/GetPlatformContractsError'
-    post:
-      summary: 계약 생성
-      description: |-
-        계약 생성
-
-        새로운 계약을 생성합니다.
-      operationId: createPlatformContract
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreatePlatformContractBody'
-        required: true
-      responses:
-        '200':
-          description: 성공 응답으로 생성된 계약 객체가 반환됩니다.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformContractResponse'
-          x-portone-description: 성공 응답으로 생성된 계약 객체가 반환됩니다.
-        '400':
-          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformContractError'
-        '401':
-          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformContractError'
-        '403':
-          description: |-
-            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
-            * `ForbiddenError`: 요청이 거절된 경우
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformContractError'
-        '409':
-          description: '* `PlatformContractAlreadyExistsError`'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformContractError'
-      security:
-        - bearerJwt: []
-        - portOne: []
-      x-portone-category: platform.policy
-      x-portone-title: 계약 생성
-      x-portone-description: 새로운 계약을 생성합니다.
-      x-portone-error:
-        $ref: '#/components/schemas/CreatePlatformContractError'
-  '/platform/contracts/{id}':
-    get:
-      summary: 계약 조회
-      description: |-
-        계약 조회
-
-        주어진 아이디에 대응되는 계약을 조회합니다.
-      operationId: getPlatformContract
-      parameters:
-        - name: id
-          in: path
-          description: 조회할 계약 아이디
-          required: true
-          schema:
-            type: string
-          x-portone-title: 조회할 계약 아이디
-      responses:
-        '200':
-          description: 성공 응답으로 계약 객체를 반환합니다.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PlatformContract'
-          x-portone-description: 성공 응답으로 계약 객체를 반환합니다.
-        '400':
-          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformContractError'
-        '401':
-          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformContractError'
-        '403':
-          description: |-
-            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
-            * `ForbiddenError`: 요청이 거절된 경우
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformContractError'
-        '404':
-          description: '* `PlatformContractNotFoundError`'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformContractError'
-      security:
-        - bearerJwt: []
-        - portOne: []
-      x-portone-category: platform.policy
-      x-portone-title: 계약 조회
-      x-portone-description: 주어진 아이디에 대응되는 계약을 조회합니다.
-      x-portone-error:
-        $ref: '#/components/schemas/GetPlatformContractError'
-    patch:
-      summary: 계약 수정
-      description: |-
-        계약 수정
-
-        주어진 아이디에 대응되는 계약을 업데이트합니다.
-      operationId: updatePlatformContract
-      parameters:
-        - name: id
-          in: path
-          description: 업데이트할 계약 아이디
-          required: true
-          schema:
-            type: string
-          x-portone-title: 업데이트할 계약 아이디
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdatePlatformContractBody'
-        required: true
-      responses:
-        '200':
-          description: 성공 응답으로 업데이트된 계약 객체가 반환됩니다.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePlatformContractResponse'
-          x-portone-description: 성공 응답으로 업데이트된 계약 객체가 반환됩니다.
-        '400':
-          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePlatformContractError'
-        '401':
-          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePlatformContractError'
-        '403':
-          description: |-
-            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
-            * `ForbiddenError`: 요청이 거절된 경우
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePlatformContractError'
-        '404':
-          description: '* `PlatformContractNotFoundError`'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePlatformContractError'
-        '409':
-          description: '* `PlatformArchivedContractError`: 보관된 계약을 업데이트하려고 하는 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePlatformContractError'
-      security:
-        - bearerJwt: []
-        - portOne: []
-      x-portone-category: platform.policy
-      x-portone-title: 계약 수정
-      x-portone-description: 주어진 아이디에 대응되는 계약을 업데이트합니다.
-      x-portone-error:
-        $ref: '#/components/schemas/UpdatePlatformContractError'
   '/platform/contracts/{id}/archive':
     post:
       summary: 계약 보관
@@ -6131,6 +6208,25 @@ paths:
           schema:
             type: string
           x-portone-title: 계약 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       responses:
         '200':
           description: 성공 응답으로 보관된 계약 객체를 반환합니다.
@@ -6197,6 +6293,25 @@ paths:
           schema:
             type: string
           x-portone-title: 계약 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       responses:
         '200':
           description: 성공 응답으로 복원된 계약 객체를 반환합니다.
@@ -6251,6 +6366,25 @@ paths:
           schema:
             type: string
           x-portone-title: 계약 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       responses:
         '200':
           description: 성공 응답으로 예약된 계약 객체를 반환합니다.
@@ -6303,6 +6437,25 @@ paths:
           schema:
             type: string
           x-portone-title: 계약 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       requestBody:
         content:
           application/json:
@@ -6361,6 +6514,25 @@ paths:
           schema:
             type: string
           x-portone-title: 계약 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       requestBody:
         content:
           application/json:
@@ -6427,6 +6599,25 @@ paths:
           schema:
             type: string
           x-portone-title: 계약 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       responses:
         '200':
           description: 성공 응답
@@ -6468,22 +6659,206 @@ paths:
       x-portone-error:
         $ref: '#/components/schemas/CancelPlatformContractScheduleError'
       x-portone-unstable: true
-  /platform/discount-share-policies:
+  '/platform/contracts/{id}':
     get:
-      summary: 할인 분담 정책 다건 조회
+      summary: 계약 조회
       description: |-
-        할인 분담 정책 다건 조회
+        계약 조회
 
-        여러 할인 분담을 조회합니다.
-      operationId: getPlatformDiscountSharePolicies
+        주어진 아이디에 대응되는 계약을 조회합니다.
+      operationId: getPlatformContract
       parameters:
+        - name: id
+          in: path
+          description: 조회할 계약 아이디
+          required: true
+          schema:
+            type: string
+          x-portone-title: 조회할 계약 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+      responses:
+        '200':
+          description: 성공 응답으로 계약 객체를 반환합니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlatformContract'
+          x-portone-description: 성공 응답으로 계약 객체를 반환합니다.
+        '400':
+          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformContractError'
+        '401':
+          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformContractError'
+        '403':
+          description: |-
+            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
+            * `ForbiddenError`: 요청이 거절된 경우
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformContractError'
+        '404':
+          description: '* `PlatformContractNotFoundError`'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformContractError'
+      security:
+        - bearerJwt: []
+        - portOne: []
+      x-portone-category: platform.policy
+      x-portone-title: 계약 조회
+      x-portone-description: 주어진 아이디에 대응되는 계약을 조회합니다.
+      x-portone-error:
+        $ref: '#/components/schemas/GetPlatformContractError'
+    patch:
+      summary: 계약 수정
+      description: |-
+        계약 수정
+
+        주어진 아이디에 대응되는 계약을 업데이트합니다.
+      operationId: updatePlatformContract
+      parameters:
+        - name: id
+          in: path
+          description: 업데이트할 계약 아이디
+          required: true
+          schema:
+            type: string
+          x-portone-title: 업데이트할 계약 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePlatformContractBody'
+        required: true
+      responses:
+        '200':
+          description: 성공 응답으로 업데이트된 계약 객체가 반환됩니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePlatformContractResponse'
+          x-portone-description: 성공 응답으로 업데이트된 계약 객체가 반환됩니다.
+        '400':
+          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePlatformContractError'
+        '401':
+          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePlatformContractError'
+        '403':
+          description: |-
+            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
+            * `ForbiddenError`: 요청이 거절된 경우
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePlatformContractError'
+        '404':
+          description: '* `PlatformContractNotFoundError`'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePlatformContractError'
+        '409':
+          description: '* `PlatformArchivedContractError`: 보관된 계약을 업데이트하려고 하는 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePlatformContractError'
+      security:
+        - bearerJwt: []
+        - portOne: []
+      x-portone-category: platform.policy
+      x-portone-title: 계약 수정
+      x-portone-description: 주어진 아이디에 대응되는 계약을 업데이트합니다.
+      x-portone-error:
+        $ref: '#/components/schemas/UpdatePlatformContractError'
+  /platform/contracts:
+    get:
+      summary: 계약 다건 조회
+      description: |-
+        계약 다건 조회
+
+        여러 계약을 조회합니다.
+      operationId: getPlatformContracts
+      parameters:
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
         - name: requestBody
           in: query
           required: false
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetPlatformDiscountSharePoliciesBody'
+                $ref: '#/components/schemas/GetPlatformContractsBody'
           x-portone-query-or-body:
             enabled: true
             required: false
@@ -6491,28 +6866,28 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/GetPlatformDiscountSharePoliciesBody'
+              $ref: '#/components/schemas/GetPlatformContractsBody'
         required: false
       responses:
         '200':
-          description: 성공 응답으로 조회된 할인 분담 정책 리스트와 페이지 정보가 반환됩니다.
+          description: 성공 응답으로 조회된 계약 리스트와 페이지 정보를 반환합니다.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetPlatformDiscountSharePoliciesResponse'
-          x-portone-description: 성공 응답으로 조회된 할인 분담 정책 리스트와 페이지 정보가 반환됩니다.
+                $ref: '#/components/schemas/GetPlatformContractsResponse'
+          x-portone-description: 성공 응답으로 조회된 계약 리스트와 페이지 정보를 반환합니다.
         '400':
           description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetPlatformDiscountSharePoliciesError'
+                $ref: '#/components/schemas/GetPlatformContractsError'
         '401':
           description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetPlatformDiscountSharePoliciesError'
+                $ref: '#/components/schemas/GetPlatformContractsError'
         '403':
           description: |-
             * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
@@ -6520,199 +6895,90 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetPlatformDiscountSharePoliciesError'
+                $ref: '#/components/schemas/GetPlatformContractsError'
       security:
         - bearerJwt: []
         - portOne: []
       x-portone-category: platform.policy
-      x-portone-title: 할인 분담 정책 다건 조회
-      x-portone-description: 여러 할인 분담을 조회합니다.
+      x-portone-title: 계약 다건 조회
+      x-portone-description: 여러 계약을 조회합니다.
       x-portone-error:
-        $ref: '#/components/schemas/GetPlatformDiscountSharePoliciesError'
+        $ref: '#/components/schemas/GetPlatformContractsError'
     post:
-      summary: 할인 분담 정책 생성
+      summary: 계약 생성
       description: |-
-        할인 분담 정책 생성
+        계약 생성
 
-        새로운 할인 분담을 생성합니다.
-      operationId: createPlatformDiscountSharePolicy
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreatePlatformDiscountSharePolicyBody'
-        required: true
-      responses:
-        '200':
-          description: 성공 응답으로 생성된 할인 분담 정책이 반환됩니다.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformDiscountSharePolicyResponse'
-          x-portone-description: 성공 응답으로 생성된 할인 분담 정책이 반환됩니다.
-        '400':
-          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformDiscountSharePolicyError'
-        '401':
-          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformDiscountSharePolicyError'
-        '403':
-          description: |-
-            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
-            * `ForbiddenError`: 요청이 거절된 경우
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformDiscountSharePolicyError'
-        '409':
-          description: '* `PlatformDiscountSharePolicyAlreadyExistsError`'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformDiscountSharePolicyError'
-      security:
-        - bearerJwt: []
-        - portOne: []
-      x-portone-category: platform.policy
-      x-portone-title: 할인 분담 정책 생성
-      x-portone-description: 새로운 할인 분담을 생성합니다.
-      x-portone-error:
-        $ref: '#/components/schemas/CreatePlatformDiscountSharePolicyError'
-  '/platform/discount-share-policies/{id}':
-    get:
-      summary: 할인 분담 정책 조회
-      description: |-
-        할인 분담 정책 조회
-
-        주어진 아이디에 대응되는 할인 분담을 조회합니다.
-      operationId: getPlatformDiscountSharePolicy
+        새로운 계약을 생성합니다.
+      operationId: createPlatformContract
       parameters:
-        - name: id
-          in: path
-          description: 조회할 할인 분담 정책 아이디
-          required: true
-          schema:
-            type: string
-          x-portone-title: 조회할 할인 분담 정책 아이디
-      responses:
-        '200':
-          description: 성공 응답으로 할인 분담 정책을 반환합니다.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PlatformDiscountSharePolicy'
-          x-portone-description: 성공 응답으로 할인 분담 정책을 반환합니다.
-        '400':
-          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformDiscountSharePolicyError'
-        '401':
-          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformDiscountSharePolicyError'
-        '403':
-          description: |-
-            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
-            * `ForbiddenError`: 요청이 거절된 경우
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformDiscountSharePolicyError'
-        '404':
-          description: '* `PlatformDiscountSharePolicyNotFoundError`'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformDiscountSharePolicyError'
-      security:
-        - bearerJwt: []
-        - portOne: []
-      x-portone-category: platform.policy
-      x-portone-title: 할인 분담 정책 조회
-      x-portone-description: 주어진 아이디에 대응되는 할인 분담을 조회합니다.
-      x-portone-error:
-        $ref: '#/components/schemas/GetPlatformDiscountSharePolicyError'
-    patch:
-      summary: 할인 분담 정책 수정
-      description: |-
-        할인 분담 정책 수정
-
-        주어진 아이디에 대응되는 할인 분담을 업데이트합니다.
-      operationId: updatePlatformDiscountSharePolicy
-      parameters:
-        - name: id
-          in: path
-          description: 업데이트할 할인 분담 정책 아이디
-          required: true
-          schema:
-            type: string
-          x-portone-title: 업데이트할 할인 분담 정책 아이디
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdatePlatformDiscountSharePolicyBody'
-        required: true
-      responses:
-        '200':
-          description: 성공 응답으로 업데이트된 할인 분담 정책을 반환합니다.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePlatformDiscountSharePolicyResponse'
-          x-portone-description: 성공 응답으로 업데이트된 할인 분담 정책을 반환합니다.
-        '400':
-          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePlatformDiscountSharePolicyError'
-        '401':
-          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePlatformDiscountSharePolicyError'
-        '403':
-          description: |-
-            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
-            * `ForbiddenError`: 요청이 거절된 경우
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePlatformDiscountSharePolicyError'
-        '404':
-          description: '* `PlatformDiscountSharePolicyNotFoundError`'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePlatformDiscountSharePolicyError'
-        '409':
+        - name: test
+          in: query
           description: >-
-            * `PlatformArchivedDiscountSharePolicyError`: 보관된 할인 분담 정책을 업데이트하려고
-            하는 경우
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePlatformContractBody'
+        required: true
+      responses:
+        '200':
+          description: 성공 응답으로 생성된 계약 객체가 반환됩니다.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UpdatePlatformDiscountSharePolicyError'
+                $ref: '#/components/schemas/CreatePlatformContractResponse'
+          x-portone-description: 성공 응답으로 생성된 계약 객체가 반환됩니다.
+        '400':
+          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePlatformContractError'
+        '401':
+          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePlatformContractError'
+        '403':
+          description: |-
+            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
+            * `ForbiddenError`: 요청이 거절된 경우
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePlatformContractError'
+        '409':
+          description: '* `PlatformContractAlreadyExistsError`'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePlatformContractError'
       security:
         - bearerJwt: []
         - portOne: []
       x-portone-category: platform.policy
-      x-portone-title: 할인 분담 정책 수정
-      x-portone-description: 주어진 아이디에 대응되는 할인 분담을 업데이트합니다.
+      x-portone-title: 계약 생성
+      x-portone-description: 새로운 계약을 생성합니다.
       x-portone-error:
-        $ref: '#/components/schemas/UpdatePlatformDiscountSharePolicyError'
+        $ref: '#/components/schemas/CreatePlatformContractError'
   '/platform/discount-share-policies/{id}/archive':
     post:
       summary: 할인 분담 정책 보관
@@ -6729,6 +6995,25 @@ paths:
           schema:
             type: string
           x-portone-title: 할인 분담 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       responses:
         '200':
           description: 성공 응답으로 보관된 할인 분담 객체를 반환합니다.
@@ -6796,6 +7081,25 @@ paths:
           schema:
             type: string
           x-portone-title: 할인 분담 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       responses:
         '200':
           description: 성공 응답으로 복원된 할인 분담 객체를 반환합니다.
@@ -6851,6 +7155,25 @@ paths:
           schema:
             type: string
           x-portone-title: 할인 분담 정책 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       responses:
         '200':
           description: 성공 응답으로 예약된 할인 분담 정책을 반환합니다.
@@ -6907,6 +7230,25 @@ paths:
           schema:
             type: string
           x-portone-title: 할인 분담 정책 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       requestBody:
         content:
           application/json:
@@ -6966,6 +7308,25 @@ paths:
           schema:
             type: string
           x-portone-title: 할인 분담 정책 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       requestBody:
         content:
           application/json:
@@ -7035,6 +7396,25 @@ paths:
           schema:
             type: string
           x-portone-title: 할인 분담 정책 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       responses:
         '200':
           description: 성공 응답
@@ -7081,11 +7461,352 @@ paths:
       x-portone-error:
         $ref: '#/components/schemas/CancelPlatformDiscountSharePolicyScheduleError'
       x-portone-unstable: true
+  '/platform/discount-share-policies/{id}':
+    get:
+      summary: 할인 분담 정책 조회
+      description: |-
+        할인 분담 정책 조회
+
+        주어진 아이디에 대응되는 할인 분담을 조회합니다.
+      operationId: getPlatformDiscountSharePolicy
+      parameters:
+        - name: id
+          in: path
+          description: 조회할 할인 분담 정책 아이디
+          required: true
+          schema:
+            type: string
+          x-portone-title: 조회할 할인 분담 정책 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+      responses:
+        '200':
+          description: 성공 응답으로 할인 분담 정책을 반환합니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlatformDiscountSharePolicy'
+          x-portone-description: 성공 응답으로 할인 분담 정책을 반환합니다.
+        '400':
+          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformDiscountSharePolicyError'
+        '401':
+          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformDiscountSharePolicyError'
+        '403':
+          description: |-
+            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
+            * `ForbiddenError`: 요청이 거절된 경우
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformDiscountSharePolicyError'
+        '404':
+          description: '* `PlatformDiscountSharePolicyNotFoundError`'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformDiscountSharePolicyError'
+      security:
+        - bearerJwt: []
+        - portOne: []
+      x-portone-category: platform.policy
+      x-portone-title: 할인 분담 정책 조회
+      x-portone-description: 주어진 아이디에 대응되는 할인 분담을 조회합니다.
+      x-portone-error:
+        $ref: '#/components/schemas/GetPlatformDiscountSharePolicyError'
+    patch:
+      summary: 할인 분담 정책 수정
+      description: |-
+        할인 분담 정책 수정
+
+        주어진 아이디에 대응되는 할인 분담을 업데이트합니다.
+      operationId: updatePlatformDiscountSharePolicy
+      parameters:
+        - name: id
+          in: path
+          description: 업데이트할 할인 분담 정책 아이디
+          required: true
+          schema:
+            type: string
+          x-portone-title: 업데이트할 할인 분담 정책 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePlatformDiscountSharePolicyBody'
+        required: true
+      responses:
+        '200':
+          description: 성공 응답으로 업데이트된 할인 분담 정책을 반환합니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePlatformDiscountSharePolicyResponse'
+          x-portone-description: 성공 응답으로 업데이트된 할인 분담 정책을 반환합니다.
+        '400':
+          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePlatformDiscountSharePolicyError'
+        '401':
+          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePlatformDiscountSharePolicyError'
+        '403':
+          description: |-
+            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
+            * `ForbiddenError`: 요청이 거절된 경우
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePlatformDiscountSharePolicyError'
+        '404':
+          description: '* `PlatformDiscountSharePolicyNotFoundError`'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePlatformDiscountSharePolicyError'
+        '409':
+          description: >-
+            * `PlatformArchivedDiscountSharePolicyError`: 보관된 할인 분담 정책을 업데이트하려고
+            하는 경우
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePlatformDiscountSharePolicyError'
+      security:
+        - bearerJwt: []
+        - portOne: []
+      x-portone-category: platform.policy
+      x-portone-title: 할인 분담 정책 수정
+      x-portone-description: 주어진 아이디에 대응되는 할인 분담을 업데이트합니다.
+      x-portone-error:
+        $ref: '#/components/schemas/UpdatePlatformDiscountSharePolicyError'
+  /platform/discount-share-policies:
+    get:
+      summary: 할인 분담 정책 다건 조회
+      description: |-
+        할인 분담 정책 다건 조회
+
+        여러 할인 분담을 조회합니다.
+      operationId: getPlatformDiscountSharePolicies
+      parameters:
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+        - name: requestBody
+          in: query
+          required: false
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformDiscountSharePoliciesBody'
+          x-portone-query-or-body:
+            enabled: true
+            required: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetPlatformDiscountSharePoliciesBody'
+        required: false
+      responses:
+        '200':
+          description: 성공 응답으로 조회된 할인 분담 정책 리스트와 페이지 정보가 반환됩니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformDiscountSharePoliciesResponse'
+          x-portone-description: 성공 응답으로 조회된 할인 분담 정책 리스트와 페이지 정보가 반환됩니다.
+        '400':
+          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformDiscountSharePoliciesError'
+        '401':
+          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformDiscountSharePoliciesError'
+        '403':
+          description: |-
+            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
+            * `ForbiddenError`: 요청이 거절된 경우
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformDiscountSharePoliciesError'
+      security:
+        - bearerJwt: []
+        - portOne: []
+      x-portone-category: platform.policy
+      x-portone-title: 할인 분담 정책 다건 조회
+      x-portone-description: 여러 할인 분담을 조회합니다.
+      x-portone-error:
+        $ref: '#/components/schemas/GetPlatformDiscountSharePoliciesError'
+    post:
+      summary: 할인 분담 정책 생성
+      description: |-
+        할인 분담 정책 생성
+
+        새로운 할인 분담을 생성합니다.
+      operationId: createPlatformDiscountSharePolicy
+      parameters:
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePlatformDiscountSharePolicyBody'
+        required: true
+      responses:
+        '200':
+          description: 성공 응답으로 생성된 할인 분담 정책이 반환됩니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePlatformDiscountSharePolicyResponse'
+          x-portone-description: 성공 응답으로 생성된 할인 분담 정책이 반환됩니다.
+        '400':
+          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePlatformDiscountSharePolicyError'
+        '401':
+          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePlatformDiscountSharePolicyError'
+        '403':
+          description: |-
+            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
+            * `ForbiddenError`: 요청이 거절된 경우
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePlatformDiscountSharePolicyError'
+        '409':
+          description: '* `PlatformDiscountSharePolicyAlreadyExistsError`'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePlatformDiscountSharePolicyError'
+      security:
+        - bearerJwt: []
+        - portOne: []
+      x-portone-category: platform.policy
+      x-portone-title: 할인 분담 정책 생성
+      x-portone-description: 새로운 할인 분담을 생성합니다.
+      x-portone-error:
+        $ref: '#/components/schemas/CreatePlatformDiscountSharePolicyError'
   /platform/discount-share-policy-filter-options:
     get:
       description: 할인 분담 정책 다건 조회 시 필요한 필터 옵션을 조회합니다.
       operationId: getPlatformDiscountSharePolicyFilterOptions
       parameters:
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
         - name: isArchived
           in: query
           description: >-
@@ -7144,6 +7865,25 @@ paths:
       description: 파트너 다건 조회 시 필요한 필터 옵션을 조회합니다.
       operationId: getPlatformPartnerFilterOptions
       parameters:
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
         - name: isArchived
           in: query
           description: >-
@@ -7203,6 +7943,25 @@ paths:
         여러 정산 내역을 조회합니다.
       operationId: getPlatformPartnerSettlements
       parameters:
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
         - name: requestBody
           in: query
           required: false
@@ -7255,144 +8014,6 @@ paths:
       x-portone-description: 여러 정산 내역을 조회합니다.
       x-portone-error:
         $ref: '#/components/schemas/GetPlatformPartnerSettlementsError'
-  /platform/partners:
-    get:
-      summary: 파트너 다건 조회
-      description: |-
-        파트너 다건 조회
-
-        여러 파트너를 조회합니다.
-      operationId: getPlatformPartners
-      parameters:
-        - name: requestBody
-          in: query
-          required: false
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformPartnersBody'
-          x-portone-query-or-body:
-            enabled: true
-            required: false
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/GetPlatformPartnersBody'
-        required: false
-      responses:
-        '200':
-          description: 성공 응답으로 조회된 파트너 리스트와 페이지 정보가 반환됩니다.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformPartnersResponse'
-          x-portone-description: 성공 응답으로 조회된 파트너 리스트와 페이지 정보가 반환됩니다.
-        '400':
-          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformPartnersError'
-        '401':
-          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformPartnersError'
-        '403':
-          description: |-
-            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
-            * `ForbiddenError`: 요청이 거절된 경우
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformPartnersError'
-      security:
-        - bearerJwt: []
-        - portOne: []
-      x-portone-category: platform.partner
-      x-portone-title: 파트너 다건 조회
-      x-portone-description: 여러 파트너를 조회합니다.
-      x-portone-error:
-        $ref: '#/components/schemas/GetPlatformPartnersError'
-    post:
-      summary: 파트너 생성
-      description: |-
-        파트너 생성
-
-        새로운 파트너를 생성합니다.
-      operationId: createPlatformPartner
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreatePlatformPartnerBody'
-        required: true
-      responses:
-        '200':
-          description: 성공 응답으로 생성된 파트너 객체가 반환됩니다.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformPartnerResponse'
-          x-portone-description: 성공 응답으로 생성된 파트너 객체가 반환됩니다.
-        '400':
-          description: |-
-            * `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우
-            * `PlatformAccountVerificationFailedError`: 파트너 계좌 인증이 실패한 경우
-            * `PlatformCurrencyNotSupportedError`: 지원 되지 않는 통화를 선택한 경우
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformPartnerError'
-        '401':
-          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformPartnerError'
-        '403':
-          description: |-
-            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
-            * `ForbiddenError`: 요청이 거절된 경우
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformPartnerError'
-        '404':
-          description: >-
-            * `PlatformContractNotFoundError`
-
-            * `PlatformAccountVerificationNotFoundError`: 파트너 계좌 검증 아이디를 찾을 수 없는
-            경우
-
-            * `PlatformUserDefinedPropertyNotFoundError`: 사용자 정의 속성이 존재 하지 않는 경우
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformPartnerError'
-        '409':
-          description: >-
-            * `PlatformPartnerIdAlreadyExistsError`
-
-            * `PlatformAccountVerificationAlreadyUsedError`: 파트너 계좌 검증 아이디를 이미
-            사용한 경우
-
-            * `PlatformCompanyVerificationAlreadyUsedError`: 파트너 사업자 검증 아이디를 이미
-            사용한 경우
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformPartnerError'
-      security:
-        - bearerJwt: []
-        - portOne: []
-      x-portone-category: platform.partner
-      x-portone-title: 파트너 생성
-      x-portone-description: 새로운 파트너를 생성합니다.
-      x-portone-error:
-        $ref: '#/components/schemas/CreatePlatformPartnerError'
   /platform/partners/batch:
     post:
       summary: 파트너 다건 생성
@@ -7401,6 +8022,26 @@ paths:
 
         새로운 파트너를 다건 생성합니다.
       operationId: createPlatformPartners
+      parameters:
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       requestBody:
         content:
           application/json:
@@ -7460,71 +8101,6 @@ paths:
       x-portone-description: 새로운 파트너를 다건 생성합니다.
       x-portone-error:
         $ref: '#/components/schemas/CreatePlatformPartnersError'
-  /platform/partners/member-company-connect:
-    post:
-      summary: 파트너 일괄 국세청 연동
-      description: |-
-        파트너 일괄 국세청 연동
-
-        파트너들을 일괄 국세청 연동합니다.
-      operationId: connectBulkPartnerMemberCompany
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ConnectBulkPartnerMemberCompanyBody'
-        required: true
-      responses:
-        '200':
-          description: 성공 응답으로 일괄 작업 객체를 반환합니다.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ConnectBulkPartnerMemberCompanyResponse'
-          x-portone-description: 성공 응답으로 일괄 작업 객체를 반환합니다.
-        '400':
-          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ConnectBulkPartnerMemberCompanyError'
-        '401':
-          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ConnectBulkPartnerMemberCompanyError'
-        '403':
-          description: |-
-            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
-            * `ForbiddenError`: 요청이 거절된 경우
-            * `PlatformBtxNotEnabledError`: BTX 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ConnectBulkPartnerMemberCompanyError'
-        '404':
-          description: |-
-            * `PlatformPartnerNotFoundError`
-            * `PlatformTargetPartnerNotFoundError`: 처리 대상 파트너가 존재하지 않는 경우
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ConnectBulkPartnerMemberCompanyError'
-        '503':
-          description: '* `PlatformExternalApiFailedError`: 외부 api 오류'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ConnectBulkPartnerMemberCompanyError'
-      security:
-        - bearerJwt: []
-        - portOne: []
-      x-portone-category: platform.partner
-      x-portone-title: 파트너 일괄 국세청 연동
-      x-portone-description: 파트너들을 일괄 국세청 연동합니다.
-      x-portone-error:
-        $ref: '#/components/schemas/ConnectBulkPartnerMemberCompanyError'
   '/platform/partners/member-company-connect/{id}':
     post:
       summary: 파트너 국세청 연동
@@ -7541,6 +8117,25 @@ paths:
           schema:
             type: string
           x-portone-title: 파트너 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       responses:
         '200':
           description: 성공 응답으로 파트너 객체를 반환합니다.
@@ -7605,19 +8200,39 @@ paths:
       x-portone-description: 파트너를 국세청 연동합니다.
       x-portone-error:
         $ref: '#/components/schemas/ConnectPartnerMemberCompanyError'
-  /platform/partners/member-company-disconnect:
+  /platform/partners/member-company-connect:
     post:
-      summary: 파트너 일괄 국세청 연동 해제
+      summary: 파트너 일괄 국세청 연동
       description: |-
-        파트너 일괄 국세청 연동 해제
+        파트너 일괄 국세청 연동
 
-        파트너들을 일괄 국세청 연동 해제합니다.
-      operationId: disconnectBulkPartnerMemberCompany
+        파트너들을 일괄 국세청 연동합니다.
+      operationId: connectBulkPartnerMemberCompany
+      parameters:
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DisconnectBulkPartnerMemberCompanyBody'
+              $ref: '#/components/schemas/ConnectBulkPartnerMemberCompanyBody'
         required: true
       responses:
         '200':
@@ -7625,21 +8240,20 @@ paths:
           content:
             application/json:
               schema:
-                $ref: >-
-                  #/components/schemas/DisconnectBulkPartnerMemberCompanyResponse
+                $ref: '#/components/schemas/ConnectBulkPartnerMemberCompanyResponse'
           x-portone-description: 성공 응답으로 일괄 작업 객체를 반환합니다.
         '400':
           description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DisconnectBulkPartnerMemberCompanyError'
+                $ref: '#/components/schemas/ConnectBulkPartnerMemberCompanyError'
         '401':
           description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DisconnectBulkPartnerMemberCompanyError'
+                $ref: '#/components/schemas/ConnectBulkPartnerMemberCompanyError'
         '403':
           description: |-
             * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
@@ -7648,7 +8262,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DisconnectBulkPartnerMemberCompanyError'
+                $ref: '#/components/schemas/ConnectBulkPartnerMemberCompanyError'
         '404':
           description: |-
             * `PlatformPartnerNotFoundError`
@@ -7656,21 +8270,21 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DisconnectBulkPartnerMemberCompanyError'
+                $ref: '#/components/schemas/ConnectBulkPartnerMemberCompanyError'
         '503':
           description: '* `PlatformExternalApiFailedError`: 외부 api 오류'
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DisconnectBulkPartnerMemberCompanyError'
+                $ref: '#/components/schemas/ConnectBulkPartnerMemberCompanyError'
       security:
         - bearerJwt: []
         - portOne: []
       x-portone-category: platform.partner
-      x-portone-title: 파트너 일괄 국세청 연동 해제
-      x-portone-description: 파트너들을 일괄 국세청 연동 해제합니다.
+      x-portone-title: 파트너 일괄 국세청 연동
+      x-portone-description: 파트너들을 일괄 국세청 연동합니다.
       x-portone-error:
-        $ref: '#/components/schemas/DisconnectBulkPartnerMemberCompanyError'
+        $ref: '#/components/schemas/ConnectBulkPartnerMemberCompanyError'
   '/platform/partners/member-company-disconnect/{id}':
     post:
       summary: 파트너 국세청 연동 해제
@@ -7687,6 +8301,25 @@ paths:
           schema:
             type: string
           x-portone-title: 파트너 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       responses:
         '200':
           description: 성공 응답으로 파트너 객체를 반환합니다.
@@ -7751,9 +8384,115 @@ paths:
       x-portone-description: 파트너를 국세청 연동 해제합니다.
       x-portone-error:
         $ref: '#/components/schemas/DisconnectPartnerMemberCompanyError'
+  /platform/partners/member-company-disconnect:
+    post:
+      summary: 파트너 일괄 국세청 연동 해제
+      description: |-
+        파트너 일괄 국세청 연동 해제
+
+        파트너들을 일괄 국세청 연동 해제합니다.
+      operationId: disconnectBulkPartnerMemberCompany
+      parameters:
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DisconnectBulkPartnerMemberCompanyBody'
+        required: true
+      responses:
+        '200':
+          description: 성공 응답으로 일괄 작업 객체를 반환합니다.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/DisconnectBulkPartnerMemberCompanyResponse
+          x-portone-description: 성공 응답으로 일괄 작업 객체를 반환합니다.
+        '400':
+          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DisconnectBulkPartnerMemberCompanyError'
+        '401':
+          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DisconnectBulkPartnerMemberCompanyError'
+        '403':
+          description: |-
+            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
+            * `ForbiddenError`: 요청이 거절된 경우
+            * `PlatformBtxNotEnabledError`: BTX 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DisconnectBulkPartnerMemberCompanyError'
+        '404':
+          description: |-
+            * `PlatformPartnerNotFoundError`
+            * `PlatformTargetPartnerNotFoundError`: 처리 대상 파트너가 존재하지 않는 경우
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DisconnectBulkPartnerMemberCompanyError'
+        '503':
+          description: '* `PlatformExternalApiFailedError`: 외부 api 오류'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DisconnectBulkPartnerMemberCompanyError'
+      security:
+        - bearerJwt: []
+        - portOne: []
+      x-portone-category: platform.partner
+      x-portone-title: 파트너 일괄 국세청 연동 해제
+      x-portone-description: 파트너들을 일괄 국세청 연동 해제합니다.
+      x-portone-error:
+        $ref: '#/components/schemas/DisconnectBulkPartnerMemberCompanyError'
   /platform/partners/schedule:
     post:
       operationId: schedulePlatformPartners
+      parameters:
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       requestBody:
         content:
           application/json:
@@ -7814,160 +8553,6 @@ paths:
       x-portone-error:
         $ref: '#/components/schemas/SchedulePlatformPartnersError'
       x-portone-unstable: true
-  '/platform/partners/{id}':
-    get:
-      summary: 파트너 조회
-      description: |-
-        파트너 조회
-
-        파트너 객체를 조회합니다.
-      operationId: getPlatformPartner
-      parameters:
-        - name: id
-          in: path
-          description: 조회하고 싶은 파트너 아이디
-          required: true
-          schema:
-            type: string
-          x-portone-title: 조회하고 싶은 파트너 아이디
-      responses:
-        '200':
-          description: 성공 응답으로 파트너 객체가 반환됩니다.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PlatformPartner'
-          x-portone-description: 성공 응답으로 파트너 객체가 반환됩니다.
-        '400':
-          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformPartnerError'
-        '401':
-          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformPartnerError'
-        '403':
-          description: |-
-            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
-            * `ForbiddenError`: 요청이 거절된 경우
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformPartnerError'
-        '404':
-          description: '* `PlatformPartnerNotFoundError`'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPlatformPartnerError'
-      security:
-        - bearerJwt: []
-        - portOne: []
-      x-portone-category: platform.partner
-      x-portone-title: 파트너 조회
-      x-portone-description: 파트너 객체를 조회합니다.
-      x-portone-error:
-        $ref: '#/components/schemas/GetPlatformPartnerError'
-    patch:
-      summary: 파트너 수정
-      description: |-
-        파트너 수정
-
-        주어진 아이디에 대응되는 파트너 정보를 업데이트합니다.
-      operationId: updatePlatformPartner
-      parameters:
-        - name: id
-          in: path
-          description: 업데이트할 파트너 아이디
-          required: true
-          schema:
-            type: string
-          x-portone-title: 업데이트할 파트너 아이디
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdatePlatformPartnerBody'
-        required: true
-      responses:
-        '200':
-          description: 성공 응답으로 업데이트된 파트너 객체가 반환됩니다.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePlatformPartnerResponse'
-          x-portone-description: 성공 응답으로 업데이트된 파트너 객체가 반환됩니다.
-        '400':
-          description: >-
-            * `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우
-
-            * `PlatformAccountVerificationFailedError`: 파트너 계좌 인증이 실패한 경우
-
-            * `PlatformInsufficientDataToChangePartnerTypeError`: 파트너 타입 수정에 필요한
-            데이터가 부족한 경우
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePlatformPartnerError'
-        '401':
-          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePlatformPartnerError'
-        '403':
-          description: |-
-            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
-            * `ForbiddenError`: 요청이 거절된 경우
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePlatformPartnerError'
-        '404':
-          description: >-
-            * `PlatformPartnerNotFoundError`
-
-            * `PlatformContractNotFoundError`
-
-            * `PlatformAccountVerificationNotFoundError`: 파트너 계좌 검증 아이디를 찾을 수 없는
-            경우
-
-            * `PlatformUserDefinedPropertyNotFoundError`: 사용자 정의 속성이 존재 하지 않는 경우
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePlatformPartnerError'
-        '409':
-          description: >-
-            * `PlatformArchivedPartnerError`: 보관된 파트너를 업데이트하려고 하는 경우
-
-            * `PlatformAccountVerificationAlreadyUsedError`: 파트너 계좌 검증 아이디를 이미
-            사용한 경우
-
-            * `PlatformMemberCompanyConnectedPartnerBrnUnchangeableError`: 연동
-            사업자로 연동된 파트너의 사업자등록번호를 변경하려고 시도한 경우
-
-            * `PlatformCompanyVerificationAlreadyUsedError`: 파트너 사업자 검증 아이디를 이미
-            사용한 경우
-
-            * `PlatformMemberCompanyConnectedPartnerTypeUnchangeableError`: 연동
-            사업자로 연동된 파트너의 파트너 유형을 변경하려고 시도한 경우
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePlatformPartnerError'
-      security:
-        - bearerJwt: []
-        - portOne: []
-      x-portone-category: platform.partner
-      x-portone-title: 파트너 수정
-      x-portone-description: 주어진 아이디에 대응되는 파트너 정보를 업데이트합니다.
-      x-portone-error:
-        $ref: '#/components/schemas/UpdatePlatformPartnerError'
   '/platform/partners/{id}/archive':
     post:
       summary: 파트너 보관
@@ -7984,6 +8569,25 @@ paths:
           schema:
             type: string
           x-portone-title: 파트너 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       responses:
         '200':
           description: 성공 응답으로 보관된 파트너 객체를 반환합니다.
@@ -8050,6 +8654,25 @@ paths:
           schema:
             type: string
           x-portone-title: 파트너 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       responses:
         '200':
           description: 성공 응답으로 복원된 파트너 객체를 반환합니다.
@@ -8104,6 +8727,25 @@ paths:
           schema:
             type: string
           x-portone-title: 파트너 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       responses:
         '200':
           description: 성공 응답으로 예약된 파트너 객체를 반환합니다.
@@ -8156,6 +8798,25 @@ paths:
           schema:
             type: string
           x-portone-title: 파트너 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       requestBody:
         content:
           application/json:
@@ -8224,6 +8885,25 @@ paths:
           schema:
             type: string
           x-portone-title: 파트너 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       requestBody:
         content:
           application/json:
@@ -8320,6 +9000,25 @@ paths:
           schema:
             type: string
           x-portone-title: 파트너 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       responses:
         '200':
           description: 성공 응답
@@ -8361,6 +9060,375 @@ paths:
       x-portone-error:
         $ref: '#/components/schemas/CancelPlatformPartnerScheduleError'
       x-portone-unstable: true
+  '/platform/partners/{id}':
+    get:
+      summary: 파트너 조회
+      description: |-
+        파트너 조회
+
+        파트너 객체를 조회합니다.
+      operationId: getPlatformPartner
+      parameters:
+        - name: id
+          in: path
+          description: 조회하고 싶은 파트너 아이디
+          required: true
+          schema:
+            type: string
+          x-portone-title: 조회하고 싶은 파트너 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+      responses:
+        '200':
+          description: 성공 응답으로 파트너 객체가 반환됩니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlatformPartner'
+          x-portone-description: 성공 응답으로 파트너 객체가 반환됩니다.
+        '400':
+          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformPartnerError'
+        '401':
+          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformPartnerError'
+        '403':
+          description: |-
+            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
+            * `ForbiddenError`: 요청이 거절된 경우
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformPartnerError'
+        '404':
+          description: '* `PlatformPartnerNotFoundError`'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformPartnerError'
+      security:
+        - bearerJwt: []
+        - portOne: []
+      x-portone-category: platform.partner
+      x-portone-title: 파트너 조회
+      x-portone-description: 파트너 객체를 조회합니다.
+      x-portone-error:
+        $ref: '#/components/schemas/GetPlatformPartnerError'
+    patch:
+      summary: 파트너 수정
+      description: |-
+        파트너 수정
+
+        주어진 아이디에 대응되는 파트너 정보를 업데이트합니다.
+      operationId: updatePlatformPartner
+      parameters:
+        - name: id
+          in: path
+          description: 업데이트할 파트너 아이디
+          required: true
+          schema:
+            type: string
+          x-portone-title: 업데이트할 파트너 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePlatformPartnerBody'
+        required: true
+      responses:
+        '200':
+          description: 성공 응답으로 업데이트된 파트너 객체가 반환됩니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePlatformPartnerResponse'
+          x-portone-description: 성공 응답으로 업데이트된 파트너 객체가 반환됩니다.
+        '400':
+          description: >-
+            * `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우
+
+            * `PlatformAccountVerificationFailedError`: 파트너 계좌 인증이 실패한 경우
+
+            * `PlatformInsufficientDataToChangePartnerTypeError`: 파트너 타입 수정에 필요한
+            데이터가 부족한 경우
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePlatformPartnerError'
+        '401':
+          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePlatformPartnerError'
+        '403':
+          description: |-
+            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
+            * `ForbiddenError`: 요청이 거절된 경우
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePlatformPartnerError'
+        '404':
+          description: >-
+            * `PlatformPartnerNotFoundError`
+
+            * `PlatformContractNotFoundError`
+
+            * `PlatformAccountVerificationNotFoundError`: 파트너 계좌 검증 아이디를 찾을 수 없는
+            경우
+
+            * `PlatformUserDefinedPropertyNotFoundError`: 사용자 정의 속성이 존재 하지 않는 경우
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePlatformPartnerError'
+        '409':
+          description: >-
+            * `PlatformArchivedPartnerError`: 보관된 파트너를 업데이트하려고 하는 경우
+
+            * `PlatformAccountVerificationAlreadyUsedError`: 파트너 계좌 검증 아이디를 이미
+            사용한 경우
+
+            * `PlatformMemberCompanyConnectedPartnerBrnUnchangeableError`: 연동
+            사업자로 연동된 파트너의 사업자등록번호를 변경하려고 시도한 경우
+
+            * `PlatformCompanyVerificationAlreadyUsedError`: 파트너 사업자 검증 아이디를 이미
+            사용한 경우
+
+            * `PlatformMemberCompanyConnectedPartnerTypeUnchangeableError`: 연동
+            사업자로 연동된 파트너의 파트너 유형을 변경하려고 시도한 경우
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePlatformPartnerError'
+      security:
+        - bearerJwt: []
+        - portOne: []
+      x-portone-category: platform.partner
+      x-portone-title: 파트너 수정
+      x-portone-description: 주어진 아이디에 대응되는 파트너 정보를 업데이트합니다.
+      x-portone-error:
+        $ref: '#/components/schemas/UpdatePlatformPartnerError'
+  /platform/partners:
+    get:
+      summary: 파트너 다건 조회
+      description: |-
+        파트너 다건 조회
+
+        여러 파트너를 조회합니다.
+      operationId: getPlatformPartners
+      parameters:
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+        - name: requestBody
+          in: query
+          required: false
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformPartnersBody'
+          x-portone-query-or-body:
+            enabled: true
+            required: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetPlatformPartnersBody'
+        required: false
+      responses:
+        '200':
+          description: 성공 응답으로 조회된 파트너 리스트와 페이지 정보가 반환됩니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformPartnersResponse'
+          x-portone-description: 성공 응답으로 조회된 파트너 리스트와 페이지 정보가 반환됩니다.
+        '400':
+          description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformPartnersError'
+        '401':
+          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformPartnersError'
+        '403':
+          description: |-
+            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
+            * `ForbiddenError`: 요청이 거절된 경우
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPlatformPartnersError'
+      security:
+        - bearerJwt: []
+        - portOne: []
+      x-portone-category: platform.partner
+      x-portone-title: 파트너 다건 조회
+      x-portone-description: 여러 파트너를 조회합니다.
+      x-portone-error:
+        $ref: '#/components/schemas/GetPlatformPartnersError'
+    post:
+      summary: 파트너 생성
+      description: |-
+        파트너 생성
+
+        새로운 파트너를 생성합니다.
+      operationId: createPlatformPartner
+      parameters:
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePlatformPartnerBody'
+        required: true
+      responses:
+        '200':
+          description: 성공 응답으로 생성된 파트너 객체가 반환됩니다.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePlatformPartnerResponse'
+          x-portone-description: 성공 응답으로 생성된 파트너 객체가 반환됩니다.
+        '400':
+          description: |-
+            * `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우
+            * `PlatformAccountVerificationFailedError`: 파트너 계좌 인증이 실패한 경우
+            * `PlatformCurrencyNotSupportedError`: 지원 되지 않는 통화를 선택한 경우
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePlatformPartnerError'
+        '401':
+          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePlatformPartnerError'
+        '403':
+          description: |-
+            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
+            * `ForbiddenError`: 요청이 거절된 경우
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePlatformPartnerError'
+        '404':
+          description: >-
+            * `PlatformContractNotFoundError`
+
+            * `PlatformAccountVerificationNotFoundError`: 파트너 계좌 검증 아이디를 찾을 수 없는
+            경우
+
+            * `PlatformUserDefinedPropertyNotFoundError`: 사용자 정의 속성이 존재 하지 않는 경우
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePlatformPartnerError'
+        '409':
+          description: >-
+            * `PlatformPartnerIdAlreadyExistsError`
+
+            * `PlatformAccountVerificationAlreadyUsedError`: 파트너 계좌 검증 아이디를 이미
+            사용한 경우
+
+            * `PlatformCompanyVerificationAlreadyUsedError`: 파트너 사업자 검증 아이디를 이미
+            사용한 경우
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePlatformPartnerError'
+      security:
+        - bearerJwt: []
+        - portOne: []
+      x-portone-category: platform.partner
+      x-portone-title: 파트너 생성
+      x-portone-description: 새로운 파트너를 생성합니다.
+      x-portone-error:
+        $ref: '#/components/schemas/CreatePlatformPartnerError'
   /platform/payouts:
     get:
       summary: 지급 내역 다건 조회
@@ -8370,6 +9438,25 @@ paths:
         여러 지급 내역을 조회합니다.
       operationId: getPlatformPayouts
       parameters:
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
         - name: requestBody
           in: query
           required: false
@@ -8430,14 +9517,34 @@ paths:
 
         설정 정보를 조회합니다.
       operationId: getPlatformSetting
+      parameters:
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       responses:
         '200':
-          description: 성곰 응답으로 플랫폼 설정 정보를 반환합니다.
+          description: 성공 응답으로 플랫폼 설정 정보를 반환합니다.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/PlatformSetting'
-          x-portone-description: 성곰 응답으로 플랫폼 설정 정보를 반환합니다.
+          x-portone-description: 성공 응답으로 플랫폼 설정 정보를 반환합니다.
         '400':
           description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
           content:
@@ -8472,6 +9579,26 @@ paths:
 
         설정 정보를 업데이트합니다.
       operationId: updatePlatformSetting
+      parameters:
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       requestBody:
         content:
           application/json:
@@ -8480,12 +9607,12 @@ paths:
         required: true
       responses:
         '200':
-          description: 성곰 응답으로 플랫폼 설정 정보를 반환합니다.
+          description: 성공 응답으로 플랫폼 설정 정보를 반환합니다.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdatePlatformSettingResponse'
-          x-portone-description: 성곰 응답으로 플랫폼 설정 정보를 반환합니다.
+          x-portone-description: 성공 응답으로 플랫폼 설정 정보를 반환합니다.
         '400':
           description: '* `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우'
           content:
@@ -8522,6 +9649,25 @@ paths:
         정산 상세 내역을 csv 파일로 다운로드 합니다.
       operationId: downloadPlatformTransferSheet
       parameters:
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
         - name: requestBody
           in: query
           required: false
@@ -8575,6 +9721,25 @@ paths:
         성공 응답으로 조회된 정산건 요약 리스트와 페이지 정보가 반환됩니다.
       operationId: getPlatformTransferSummaries
       parameters:
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
         - name: requestBody
           in: query
           required: false
@@ -8634,6 +9799,26 @@ paths:
 
         성공 응답으로 생성된 수기 정산건 객체가 반환됩니다.
       operationId: createPlatformManualTransfer
+      parameters:
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       requestBody:
         content:
           application/json:
@@ -8683,100 +9868,6 @@ paths:
       x-portone-description: 성공 응답으로 생성된 수기 정산건 객체가 반환됩니다.
       x-portone-error:
         $ref: '#/components/schemas/CreatePlatformManualTransferError'
-  /platform/transfers/order:
-    post:
-      summary: 주문 정산건 생성
-      description: |-
-        주문 정산건 생성
-
-        성공 응답으로 생성된 주문 정산건 객체가 반환됩니다.
-      operationId: createPlatformOrderTransfer
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreatePlatformOrderTransferBody'
-        required: true
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateOrderTransferResponse'
-        '400':
-          description: >-
-            * `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우
-
-            * `PlatformProductIdDuplicatedError`
-
-            * `PlatformSettlementPaymentAmountExceededPortOnePaymentError`: 정산
-            요청 결제 금액이 포트원 결제 내역의 결제 금액을 초과한 경우
-
-            * `PlatformSettlementTaxFreeAmountExceededPortOnePaymentError`: 정산
-            요청 면세 금액이 포트원 결제 내역의 면세 금액을 초과한 경우
-
-            *
-            `PlatformSettlementSupplyWithVatAmountExceededPortOnePaymentError`:
-            정산 요청 공급대가가 포트원 결제 내역의 공급대가를 초과한 경우
-
-            * `PlatformSettlementAmountExceededError`: 정산 가능한 금액을 초과한 경우
-
-            *
-            `PlatformContractPlatformFixedAmountFeeCurrencyAndSettlementCurrencyMismatchedError`
-
-            *
-            `PlatformAdditionalFixedAmountFeeCurrencyAndSettlementCurrencyMismatchedError`
-
-            * `PlatformCurrencyNotSupportedError`: 지원 되지 않는 통화를 선택한 경우
-
-            * `PlatformSettlementDateEarlierThanSettlementStartDateError`: 정산일이
-            정산 시작일보다 빠른 경우
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformOrderTransferError'
-        '401':
-          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformOrderTransferError'
-        '403':
-          description: |-
-            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
-            * `ForbiddenError`: 요청이 거절된 경우
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformOrderTransferError'
-        '404':
-          description: |-
-            * `PlatformPartnerNotFoundError`
-            * `PlatformContractNotFoundError`
-            * `PlatformAdditionalFeePoliciesNotFoundError`
-            * `PlatformDiscountSharePoliciesNotFoundError`
-            * `PlatformPaymentNotFoundError`
-            * `PlatformUserDefinedPropertyNotFoundError`: 사용자 정의 속성이 존재 하지 않는 경우
-            * `PlatformSettlementParameterNotFoundError`: 정산 파라미터가 존재하지 않는 경우
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformOrderTransferError'
-        '409':
-          description: '* `PlatformTransferAlreadyExistsError`'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformOrderTransferError'
-      security:
-        - bearerJwt: []
-        - portOne: []
-      x-portone-category: platform.transfer
-      x-portone-title: 주문 정산건 생성
-      x-portone-description: 성공 응답으로 생성된 주문 정산건 객체가 반환됩니다.
-      x-portone-error:
-        $ref: '#/components/schemas/CreatePlatformOrderTransferError'
   /platform/transfers/order-cancel:
     post:
       summary: 주문 취소 정산건 생성
@@ -8785,6 +9876,26 @@ paths:
 
         성공 응답으로 생성된 주문 취소 정산건 객체가 반환됩니다.
       operationId: createPlatformOrderCancelTransfer
+      parameters:
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       requestBody:
         content:
           application/json:
@@ -8873,6 +9984,120 @@ paths:
       x-portone-description: 성공 응답으로 생성된 주문 취소 정산건 객체가 반환됩니다.
       x-portone-error:
         $ref: '#/components/schemas/CreatePlatformOrderCancelTransferError'
+  /platform/transfers/order:
+    post:
+      summary: 주문 정산건 생성
+      description: |-
+        주문 정산건 생성
+
+        성공 응답으로 생성된 주문 정산건 객체가 반환됩니다.
+      operationId: createPlatformOrderTransfer
+      parameters:
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePlatformOrderTransferBody'
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateOrderTransferResponse'
+        '400':
+          description: >-
+            * `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우
+
+            * `PlatformProductIdDuplicatedError`
+
+            * `PlatformSettlementPaymentAmountExceededPortOnePaymentError`: 정산
+            요청 결제 금액이 포트원 결제 내역의 결제 금액을 초과한 경우
+
+            * `PlatformSettlementTaxFreeAmountExceededPortOnePaymentError`: 정산
+            요청 면세 금액이 포트원 결제 내역의 면세 금액을 초과한 경우
+
+            *
+            `PlatformSettlementSupplyWithVatAmountExceededPortOnePaymentError`:
+            정산 요청 공급대가가 포트원 결제 내역의 공급대가를 초과한 경우
+
+            * `PlatformSettlementAmountExceededError`: 정산 가능한 금액을 초과한 경우
+
+            *
+            `PlatformContractPlatformFixedAmountFeeCurrencyAndSettlementCurrencyMismatchedError`
+
+            *
+            `PlatformAdditionalFixedAmountFeeCurrencyAndSettlementCurrencyMismatchedError`
+
+            * `PlatformCurrencyNotSupportedError`: 지원 되지 않는 통화를 선택한 경우
+
+            * `PlatformSettlementDateEarlierThanSettlementStartDateError`: 정산일이
+            정산 시작일보다 빠른 경우
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePlatformOrderTransferError'
+        '401':
+          description: '* `UnauthorizedError`: 인증 정보가 올바르지 않은 경우'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePlatformOrderTransferError'
+        '403':
+          description: |-
+            * `PlatformNotEnabledError`: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우
+            * `ForbiddenError`: 요청이 거절된 경우
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePlatformOrderTransferError'
+        '404':
+          description: |-
+            * `PlatformPartnerNotFoundError`
+            * `PlatformContractNotFoundError`
+            * `PlatformAdditionalFeePoliciesNotFoundError`
+            * `PlatformDiscountSharePoliciesNotFoundError`
+            * `PlatformPaymentNotFoundError`
+            * `PlatformUserDefinedPropertyNotFoundError`: 사용자 정의 속성이 존재 하지 않는 경우
+            * `PlatformSettlementParameterNotFoundError`: 정산 파라미터가 존재하지 않는 경우
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePlatformOrderTransferError'
+        '409':
+          description: '* `PlatformTransferAlreadyExistsError`'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePlatformOrderTransferError'
+      security:
+        - bearerJwt: []
+        - portOne: []
+      x-portone-category: platform.transfer
+      x-portone-title: 주문 정산건 생성
+      x-portone-description: 성공 응답으로 생성된 주문 정산건 객체가 반환됩니다.
+      x-portone-error:
+        $ref: '#/components/schemas/CreatePlatformOrderTransferError'
   '/platform/transfers/{id}':
     get:
       summary: 정산건 조회
@@ -8889,6 +10114,25 @@ paths:
           schema:
             type: string
           x-portone-title: 조회하고 싶은 정산건 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       responses:
         '200':
           description: 성공 응답으로 정산건 객체가 반환됩니다.
@@ -8946,6 +10190,25 @@ paths:
           schema:
             type: string
           x-portone-title: 정산건 아이디
+        - name: test
+          in: query
+          description: >-
+            테스트 모드 여부
+
+
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
+          required: false
+          schema:
+            type: boolean
+          x-portone-title: 테스트 모드 여부
+          x-portone-description: >-
+            테스트 모드 여부를 결정합니다. true 이면 테스트 모드로 실행됩니다. Request Body에도 isForTest가
+            있을 수 있으나, 둘 다 제공되면 Query Parameter의 test 값을 사용하고, Request Body의
+            isForTest는 무시됩니다. Query Parameter의 test와 Request Body의 isForTest에 모두
+            값이 제공되지 않으면 기본값인 false로 적용됩니다.
       responses:
         '200':
           description: ''
@@ -8955,9 +10218,9 @@ paths:
                 $ref: '#/components/schemas/DeletePlatformTransferResponse'
         '400':
           description: |-
+            * `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우
             * `PlatformCancelOrderTransfersExistsError`
             * `PlatformTransferNonDeletableStatusError`
-            * `InvalidRequestError`: 요청된 입력 정보가 유효하지 않은 경우
           content:
             application/json:
               schema:
@@ -11852,6 +13115,7 @@ components:
         - WOORI
         - STANDARD_CHARTERED
         - CITI
+        - SUHYUP_FEDERATION
         - DAEGU
         - BUSAN
         - KWANGJU
@@ -11981,6 +13245,8 @@ components:
           title: 신한투자증권
         HANHWA_SECURITIES:
           title: 한화투자증권
+        SUHYUP_FEDERATION:
+          title: 수협중앙회
         LOCAL_NONGHYUP:
           title: 지역농축협
         WOORI:
@@ -13604,6 +14870,39 @@ components:
           format: date-time
           title: 결제 취소 시점
       x-portone-title: 결제 취소 상태 건
+    CapturePaymentBody:
+      title: 수동 매입 입력 정보
+      description: 수동 매입 입력 정보
+      type: object
+      properties:
+        storeId:
+          type: string
+          title: 상점 아이디
+          description: '접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 인증 정보의 상점 아이디를 사용합니다.'
+      x-portone-title: 수동 매입 입력 정보
+    CapturePaymentError:
+      title: CapturePaymentError
+      oneOf:
+        - $ref: '#/components/schemas/ForbiddenError'
+        - $ref: '#/components/schemas/InvalidRequestError'
+        - $ref: '#/components/schemas/PaymentNotFoundError'
+        - $ref: '#/components/schemas/PaymentNotPaidError'
+        - $ref: '#/components/schemas/PgProviderError'
+        - $ref: '#/components/schemas/UnauthorizedError'
+      discriminator:
+        propertyName: type
+        mapping:
+          FORBIDDEN: '#/components/schemas/ForbiddenError'
+          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+          PAYMENT_NOT_FOUND: '#/components/schemas/PaymentNotFoundError'
+          PAYMENT_NOT_PAID: '#/components/schemas/PaymentNotPaidError'
+          PG_PROVIDER: '#/components/schemas/PgProviderError'
+          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
+    CapturePaymentResponse:
+      title: 수동 매입 성공 응답
+      description: 수동 매입 성공 응답
+      type: object
+      x-portone-title: 수동 매입 성공 응답
     Card:
       title: 카드 상세 정보
       description: 카드 상세 정보
@@ -13661,6 +14960,7 @@ components:
       type: string
       enum:
         - KOREA_DEVELOPMENT_BANK
+        - SUHYUP_BANK
         - KFCC
         - SHINHYUP
         - EPOST
@@ -13799,6 +15099,8 @@ components:
           title: 네이버페이
         BC_CARD:
           title: BC카드
+        SUHYUP_BANK:
+          title: 수협은행
         K_BANK:
           title: 케이뱅크
         DB_SECURITIES:
@@ -16029,7 +17331,12 @@ components:
         isForTest:
           type: boolean
           title: 테스트 모드 여부
-          description: 기본값은 false 입니다.
+          description: >-
+            Query Parameter의 test에 값이 제공된 경우 Query Parameter의 test를 사용하고 해당 값은
+            무시됩니다.
+
+            Query Parameter의 test와 Request Body의 isForTest에 모두 값이 제공되지 않으면 기본값인
+            false로 적용됩니다.
         userDefinedProperties:
           title: 사용자 정의 속성
           type: array
@@ -16122,7 +17429,12 @@ components:
         isForTest:
           type: boolean
           title: 테스트 모드 여부
-          description: 기본값은 false 입니다.
+          description: >-
+            Query Parameter의 test에 값이 제공된 경우 Query Parameter의 test를 사용하고 해당 값은
+            무시됩니다.
+
+            Query Parameter의 test와 Request Body의 isForTest에 모두 값이 제공되지 않으면 기본값인
+            false로 적용됩니다.
         userDefinedProperties:
           title: 사용자 정의 속성
           type: array
@@ -16345,7 +17657,12 @@ components:
         isForTest:
           type: boolean
           title: 테스트 모드 여부
-          description: 기본값은 false 입니다.
+          description: >-
+            Query Parameter의 test에 값이 제공된 경우 Query Parameter의 test를 사용하고 해당 값은
+            무시됩니다.
+
+            Query Parameter의 test와 Request Body의 isForTest에 모두 값이 제공되지 않으면 기본값인
+            false로 적용됩니다.
         parameters:
           $ref: '#/components/schemas/TransferParameters'
           title: 정산 파라미터 (실험기능)
@@ -19038,6 +20355,12 @@ components:
             - BULK_ACCOUNT_TRANSFER_UPDATED_AT: 최종 업데이트 일시
         isForTest:
           type: boolean
+          description: >-
+            Query Parameter의 test에 값이 제공된 경우 Query Parameter의 test를 사용하고 해당 값은
+            무시됩니다.
+
+            Query Parameter의 test와 Request Body의 isForTest에 모두 값이 제공되지 않으면 기본값인
+            false로 적용됩니다.
     DownloadPlatformBulkAccountTransfersSheetError:
       title: DownloadPlatformBulkAccountTransfersSheetError
       oneOf:
@@ -19088,6 +20411,12 @@ components:
             - BULK_PAYOUT_UPDATED_AT: 최종 업데이트 일시
         isForTest:
           type: boolean
+          description: >-
+            Query Parameter의 test에 값이 제공된 경우 Query Parameter의 test를 사용하고 해당 값은
+            무시됩니다.
+
+            Query Parameter의 test와 Request Body의 isForTest에 모두 값이 제공되지 않으면 기본값인
+            false로 적용됩니다.
     DownloadPlatformBulkPayoutsSheetError:
       title: DownloadPlatformBulkPayoutsSheetError
       oneOf:
@@ -19171,6 +20500,12 @@ components:
             type: string
         isForTest:
           type: boolean
+          description: >-
+            Query Parameter의 test에 값이 제공된 경우 Query Parameter의 test를 사용하고 해당 값은
+            무시됩니다.
+
+            Query Parameter의 test와 Request Body의 isForTest에 모두 값이 제공되지 않으면 기본값인
+            false로 적용됩니다.
     DownloadPlatformPartnerSettlementSheetError:
       title: DownloadPlatformPartnerSettlementSheetError
       oneOf:
@@ -19283,6 +20618,12 @@ components:
             - PARTNER_* : 파트너 컬럼 키 사용 가능(w/o PARTNER_STATUS_UPDATED_AT)
         isForTest:
           type: boolean
+          description: >-
+            Query Parameter의 test에 값이 제공된 경우 Query Parameter의 test를 사용하고 해당 값은
+            무시됩니다.
+
+            Query Parameter의 test와 Request Body의 isForTest에 모두 값이 제공되지 않으면 기본값인
+            false로 적용됩니다.
     DownloadPlatformPayoutsSheetError:
       title: DownloadPlatformPayoutsSheetError
       oneOf:
@@ -20067,12 +21408,24 @@ components:
             - ACCOUNT_TRANSFER_SCHEDULED_AT: 이체 예정 일시
         isForTest:
           type: boolean
+          description: >-
+            Query Parameter의 test에 값이 제공된 경우 Query Parameter의 test를 사용하고 해당 값은
+            무시됩니다.
+
+            Query Parameter의 test와 Request Body의 isForTest에 모두 값이 제공되지 않으면 기본값인
+            false로 적용됩니다.
     GetAccountTransfersBody1:
       title: GetAccountTransfersBody
       type: object
       properties:
         isForTest:
           type: boolean
+          description: >-
+            Query Parameter의 test에 값이 제공된 경우 Query Parameter의 test를 사용하고 해당 값은
+            무시됩니다.
+
+            Query Parameter의 test와 Request Body의 isForTest에 모두 값이 제공되지 않으면 기본값인
+            false로 적용됩니다.
         page:
           $ref: '#/components/schemas/PageInput'
         filter:
@@ -22361,6 +23714,12 @@ components:
       properties:
         isForTest:
           type: boolean
+          description: >-
+            Query Parameter의 test에 값이 제공된 경우 Query Parameter의 test를 사용하고 해당 값은
+            무시됩니다.
+
+            Query Parameter의 test와 Request Body의 isForTest에 모두 값이 제공되지 않으면 기본값인
+            false로 적용됩니다.
         page:
           $ref: '#/components/schemas/PageInput'
         filter:
@@ -22421,6 +23780,12 @@ components:
           $ref: '#/components/schemas/PageInput'
         isForTest:
           type: boolean
+          description: >-
+            Query Parameter의 test에 값이 제공된 경우 Query Parameter의 test를 사용하고 해당 값은
+            무시됩니다.
+
+            Query Parameter의 test와 Request Body의 isForTest에 모두 값이 제공되지 않으면 기본값인
+            false로 적용됩니다.
     GetPlatformBulkPayoutPartnerSettlementsError:
       title: GetPlatformBulkPayoutPartnerSettlementsError
       oneOf:
@@ -22459,6 +23824,12 @@ components:
       properties:
         isForTest:
           type: boolean
+          description: >-
+            Query Parameter의 test에 값이 제공된 경우 Query Parameter의 test를 사용하고 해당 값은
+            무시됩니다.
+
+            Query Parameter의 test와 Request Body의 isForTest에 모두 값이 제공되지 않으면 기본값인
+            false로 적용됩니다.
         page:
           $ref: '#/components/schemas/PageInput'
         filter:
@@ -22690,18 +24061,6 @@ components:
           PLATFORM_DISCOUNT_SHARE_POLICY_NOT_FOUND: '#/components/schemas/PlatformDiscountSharePolicyNotFoundError'
           PLATFORM_NOT_ENABLED: '#/components/schemas/PlatformNotEnabledError'
           UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
-    GetPlatformError:
-      title: GetPlatformError
-      oneOf:
-        - $ref: '#/components/schemas/InvalidRequestError'
-        - $ref: '#/components/schemas/PlatformNotEnabledError'
-        - $ref: '#/components/schemas/UnauthorizedError'
-      discriminator:
-        propertyName: type
-        mapping:
-          INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
-          PLATFORM_NOT_ENABLED: '#/components/schemas/PlatformNotEnabledError'
-          UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
     GetPlatformHolidaysError:
       title: GetPlatformHolidaysError
       oneOf:
@@ -22798,11 +24157,15 @@ components:
     GetPlatformPartnerSettlementCurrenciesBody:
       title: GetPlatformPartnerSettlementCurrenciesBody
       type: object
-      required:
-        - isForTest
       properties:
         isForTest:
           type: boolean
+          description: >-
+            Query Parameter의 test에 값이 제공된 경우 Query Parameter의 test를 사용하고 해당 값은
+            무시됩니다.
+
+            Query Parameter의 test와 Request Body의 isForTest에 모두 값이 제공되지 않으면 기본값인
+            false로 적용됩니다.
     GetPlatformPartnerSettlementCurrenciesError:
       title: GetPlatformPartnerSettlementCurrenciesError
       oneOf:
@@ -22835,12 +24198,9 @@ components:
       type: object
       required:
         - filter
-        - isForTest
       properties:
         filter:
           $ref: '#/components/schemas/PlatformPartnerSettlementFilterInput'
-        isForTest:
-          type: boolean
     GetPlatformPartnerSettlementDashboardError:
       title: GetPlatformPartnerSettlementDashboardError
       oneOf:
@@ -22858,11 +24218,15 @@ components:
     GetPlatformPartnerSettlementDatesBody:
       title: GetPlatformPartnerSettlementDatesBody
       type: object
-      required:
-        - isForTest
       properties:
         isForTest:
           type: boolean
+          description: >-
+            Query Parameter의 test에 값이 제공된 경우 Query Parameter의 test를 사용하고 해당 값은
+            무시됩니다.
+
+            Query Parameter의 test와 Request Body의 isForTest에 모두 값이 제공되지 않으면 기본값인
+            false로 적용됩니다.
     GetPlatformPartnerSettlementDatesError:
       title: GetPlatformPartnerSettlementDatesError
       oneOf:
@@ -22898,7 +24262,6 @@ components:
       type: object
       required:
         - filter
-        - isForTest
       properties:
         page:
           $ref: '#/components/schemas/PageInput'
@@ -22908,6 +24271,13 @@ components:
           title: 조회할 정산내역 조건 필터
         isForTest:
           type: boolean
+          title: 테스트 모드 여부
+          description: >-
+            Query Parameter의 test에 값이 제공된 경우 Query Parameter의 test를 사용하고 해당 값은
+            무시됩니다.
+
+            Query Parameter의 test와 Request Body의 isForTest에 모두 값이 제공되지 않으면 기본값인
+            false로 적용됩니다.
       x-portone-title: 정산내역 다건 조회를 위한 입력 정보
     GetPlatformPartnerSettlementsError:
       title: GetPlatformPartnerSettlementsError
@@ -23039,6 +24409,12 @@ components:
       properties:
         isForTest:
           type: boolean
+          description: >-
+            Query Parameter의 test에 값이 제공된 경우 Query Parameter의 test를 사용하고 해당 값은
+            무시됩니다.
+
+            Query Parameter의 test와 Request Body의 isForTest에 모두 값이 제공되지 않으면 기본값인
+            false로 적용됩니다.
         page:
           $ref: '#/components/schemas/PageInput'
         filter:
@@ -23098,8 +24474,6 @@ components:
           type: string
           format: date
           x-portone-description: '날짜를 나타내는 문자열로, `yyyy-MM-dd` 형식을 따릅니다.'
-        isForTest:
-          type: boolean
     GetPlatformTransferDashboardError:
       title: GetPlatformTransferDashboardError
       oneOf:
@@ -27157,6 +28531,7 @@ components:
         - $ref: '#/components/schemas/PaymentReconciliationKcpCredential'
         - $ref: '#/components/schemas/PaymentReconciliationKpnCredential'
         - $ref: '#/components/schemas/PaymentReconciliationKsnetCredential'
+        - $ref: '#/components/schemas/PaymentReconciliationMobiliansCredential'
         - $ref: '#/components/schemas/PaymentReconciliationNaverpayCredential'
         - $ref: '#/components/schemas/PaymentReconciliationNicepayHttpCredential'
         - $ref: '#/components/schemas/PaymentReconciliationNicepaySftpCredential'
@@ -27176,6 +28551,7 @@ components:
           KCP: '#/components/schemas/PaymentReconciliationKcpCredential'
           KPN: '#/components/schemas/PaymentReconciliationKpnCredential'
           KSNET: '#/components/schemas/PaymentReconciliationKsnetCredential'
+          MOBILIANS: '#/components/schemas/PaymentReconciliationMobiliansCredential'
           NAVERPAY: '#/components/schemas/PaymentReconciliationNaverpayCredential'
           NICEPAY_HTTP: '#/components/schemas/PaymentReconciliationNicepayHttpCredential'
           NICEPAY_SFTP: '#/components/schemas/PaymentReconciliationNicepaySftpCredential'
@@ -27195,6 +28571,7 @@ components:
         TOSSPAYMENTS: {}
         KAKAOPAY: {}
         EXIMBAY: {}
+        MOBILIANS: {}
         UPLUS: {}
         HYPHEN: {}
         NICEPAY_HTTP: {}
@@ -27396,10 +28773,13 @@ components:
       type: object
       required:
         - type
+        - cppwd
       properties:
         type:
           type: string
           title: 크레덴셜 종류
+        cppwd:
+          type: string
     PaymentReconciliationExcelFileFilterInput:
       title: 거래대사 엑셀 파일 다운로드 필터 목록
       description: |-
@@ -27780,6 +29160,23 @@ components:
           title: 하위 가맹점 아이디
         storeGraphqlId:
           type: string
+    PaymentReconciliationMobiliansCredential:
+      title: PaymentReconciliationMobiliansCredential
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+          title: 크레덴셜 종류
+        transactionDkey:
+          type: string
+        transactionNo:
+          type: string
+        settlementDkey:
+          type: string
+        settlementNo:
+          type: string
     PaymentReconciliationNaverpayCredential:
       title: PaymentReconciliationNaverpayCredential
       type: object
@@ -28098,10 +29495,16 @@ components:
       type: object
       required:
         - type
+        - sellerKey
+        - token
       properties:
         type:
           type: string
           title: 크레덴셜 종류
+        sellerKey:
+          type: string
+        token:
+          type: string
     PaymentReconciliationPostCorrection:
       title: PaymentReconciliationPostCorrection
       type: object
@@ -29671,20 +31074,6 @@ components:
           type: string
       x-portone-title: PG사에서 오류를 전달한 경우
       x-portone-status-code: 502
-    Platform:
-      title: 고객사의 플랫폼 기능 관련 정보
-      description: 고객사의 플랫폼 기능 관련 정보
-      type: object
-      required:
-        - merchantId
-        - graphqlId
-      properties:
-        merchantId:
-          type: string
-          title: 해당 플랫폼의 고객사 아이디
-        graphqlId:
-          type: string
-      x-portone-title: 고객사의 플랫폼 기능 관련 정보
     PlatformAccount:
       title: 플랫폼 정산 계좌
       description: >-
@@ -29989,6 +31378,7 @@ components:
         - vatPayer
         - isArchived
         - appliedAt
+        - isForTest
       properties:
         id:
           type: string
@@ -30014,6 +31404,8 @@ components:
           type: string
           format: date-time
           title: 변경 적용 시점
+        isForTest:
+          type: boolean
       x-portone-title: 추가 수수료 정책
       x-portone-description: >-
         추가 수수료 정책는 고객사의 주문건에 대한 중개수수료에 별도로 추가로 부여되는 수수료입니다. 대표적인 사용 예시로 풀필먼트
@@ -30956,6 +32348,7 @@ components:
         - subtractPaymentVatAmount
         - isArchived
         - appliedAt
+        - isForTest
       properties:
         id:
           type: string
@@ -30988,6 +32381,8 @@ components:
           type: string
           format: date-time
           title: 변경 적용 시점
+        isForTest:
+          type: boolean
       x-portone-title: 계약
       x-portone-description: |-
         계약은 플랫폼 고객사가 파트너에게 정산해줄 대금과 정산일을 계산하는 데 적용되는 정보입니다.
@@ -31232,6 +32627,7 @@ components:
         - partnerShareRate
         - isArchived
         - appliedAt
+        - isForTest
       properties:
         id:
           type: string
@@ -31257,6 +32653,8 @@ components:
           type: string
           format: date-time
           title: 변경 적용 시점
+        isForTest:
+          type: boolean
       x-portone-title: 할인 분담 정책
       x-portone-description: >-
         할인 분담은 고객사의 주문건에 쿠폰 및 포인트와 같은 할인금액이 적용될 때, 파트너 정산 시 할인금액에 대한 분담 정책을 가지는
@@ -32389,6 +33787,7 @@ components:
         - isArchived
         - appliedAt
         - userDefinedProperties
+        - isForTest
       properties:
         id:
           type: string
@@ -32431,6 +33830,8 @@ components:
         userDefinedProperties:
           $ref: '#/components/schemas/PlatformProperties'
           title: 사용자 정의 속성
+        isForTest:
+          type: boolean
       x-portone-title: 파트너
       x-portone-description: |-
         파트너는 고객사가 정산해주어야 할 대상입니다.
@@ -32481,20 +33882,14 @@ components:
       type: object
       required:
         - totalPartner
-        - upcomingSettledPartner
+        - activePartner
       properties:
         totalPartner:
           $ref: '#/components/schemas/PlatformPartnerDashboardCount'
           title: 전체 파트너 현황
-        upcomingSettledPartner:
+        activePartner:
           $ref: '#/components/schemas/PlatformPartnerDashboardCount'
-          title: 정산 예정인 파트너 현황
-        upcomingSettlementDate:
-          description: 정산이 예정되어 있지 않은 경우 값이 주어지지 않습니다.
-          type: string
-          format: date
-          x-portone-description: '날짜를 나타내는 문자열로, `yyyy-MM-dd` 형식을 따릅니다.'
-          title: 예정된 정산일
+          title: 이번달 활성 파트너 현황
       x-portone-title: 파트너 현황 조회 성공 응답
     PlatformPartnerDashboardCount:
       title: 파트너 현황 정보
@@ -33997,6 +35392,7 @@ components:
         - adjustSettlementDateAfterHolidayIfEarlier
         - deductWht
         - settlementAmountType
+        - isForTest
       properties:
         defaultWithdrawalMemo:
           type: string
@@ -34016,6 +35412,8 @@ components:
         settlementAmountType:
           $ref: '#/components/schemas/SettlementAmountType'
           title: 정산 금액 취급 기준
+        isForTest:
+          type: boolean
       x-portone-title: 플랫폼 설정
     PlatformSettlementAmountExceededError:
       title: 정산 가능한 금액을 초과한 경우
@@ -34620,6 +36018,12 @@ components:
         isForTest:
           type: boolean
           title: 테스트 모드 여부
+          description: >-
+            Query Parameter의 test에 값이 제공된 경우 Query Parameter의 test를 사용하고 해당 값은
+            무시됩니다.
+
+            Query Parameter의 test와 Filter의 isForTest에 모두 값이 제공되지 않으면 기본값인 false로
+            적용됩니다.
       x-portone-title: 정산건 필터 입력 정보
       x-portone-description: 정산 시작일 범위와 정산 일 범위는 둘 중 하나만 입력 가능합니다.
     PlatformTransferFilterInputKeyword:
@@ -35729,10 +37133,12 @@ components:
         - HYPHEN
         - OK_CASHBAG
         - BENEPIA
+        - KLARNA
       x-portone-title: 대사용 간편 결제 PG사
       x-portone-enum:
         KB_APP: {}
         BENEPIA: {}
+        KLARNA: {}
         NAVERPAY: {}
         CHAI: {}
         PINPAY: {}
@@ -35958,6 +37364,7 @@ components:
         - EASY_PAY_HYPHEN
         - EASY_PAY_OK_CASHBAG
         - EASY_PAY_BENEPIA
+        - EASY_PAY_KLARNA
       x-portone-title: 대사용 결제수단 목록
       x-portone-enum:
         EASY_PAY_ETC:
@@ -35982,6 +37389,8 @@ components:
           title: 하이픈 간편결제
         EASY_PAY_SAMSUNGPAY:
           title: 삼성페이 간편결제
+        EASY_PAY_KLARNA:
+          title: 클라나 간편결제
         EASY_PAY_CHAI:
           title: 차이페이 간편결제
         EASY_PAY_WECHATPAY:
@@ -36060,6 +37469,7 @@ components:
         - HYPHEN
         - PAYPAL
         - HECTO_EASY
+        - MOBILIANS
       x-portone-enum:
         PAYCO: {}
         NAVERPAY: {}
@@ -36072,6 +37482,7 @@ components:
         NICEPAY: {}
         TOSSPAYMENTS: {}
         EXIMBAY: {}
+        MOBILIANS: {}
         UPLUS: {}
         HYPHEN: {}
         HECTO_EASY: {}
@@ -38286,10 +39697,12 @@ components:
         - CONSOLE
         - API
         - PORTONE_ADMIN
+        - CHARGEBACK
       x-portone-enum:
         CONSOLE: {}
         API: {}
         PORTONE_ADMIN: {}
+        CHARGEBACK: {}
     Type:
       title: Type
       type: string
@@ -38843,11 +40256,8 @@ components:
       title: UpdatePlatformPartnerSettlementStatusBody
       type: object
       required:
-        - partnerSettlementId
         - status
       properties:
-        partnerSettlementId:
-          type: string
         status:
           $ref: '#/components/schemas/PlatformPartnerSettlementStatus'
         memo:

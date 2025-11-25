@@ -84,7 +84,7 @@ function requestPayment() {
 
 - storeId: string
 
-  **상점 아이디**
+  **스토어 아이디**
 
   포트원 계정에 생성된 상점을 식별하는 고유한 값으로 관리자 콘솔에서 확인할 수 있습니다.
 

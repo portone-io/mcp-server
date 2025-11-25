@@ -840,38 +840,6 @@ DI\_CODE는 12자리로 고객사에서 자체적으로 사이트(서비스)를 
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
 
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
-
-<details>
-
-<summary>하이픈</summary>
-
-1. [HYPHEN PAY & 바로계좌결제 운영 백오피스](http://payadmin.hyphen.im/) 접속 후 **바로계좌결제** 선택 후
-   로그인을 합니다.
-
-   (이미지 첨부: HYPHEN 백오피스 로그인 화면)
-
-2. \[상점관리]→\[바로계좌결제 상점정보관리]를 클릭합니다.
-
-3. 상점명을 클릭합니다.
-
-   (이미지 첨부: HYPHEN \[상점관리] - \[상점정보관리] 예시 화면)
-
-4. \[상점 기본정보]에서 \[상점번호]를 확인합니다.
-
-   (이미지 첨부: HYPHEN \[상점 기본정보] 예시 화면)
-
-5. \[암호화 키, 토큰]에서 \[암호화 키]와 \[암호화 토큰]을 확인합니다.
-
-   (이미지 첨부: HYPHEN \[암호화 키, 토큰] 예시 화면)
-
-6. 포트원 콘솔에서 채널 추가 시 \[PG상점아이디(상점 번호)], \[암호화 키], \[암호화 토큰]을
-   입력한 후 \[저장]을 클릭합니다.
-
-</details>
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
-
 #### 해외 결제대행사
 
 <details>
@@ -908,6 +876,24 @@ PG 거래대사 메뉴를 사용하시는 경우 \[대사 시크릿 키] 항목�
 (이미지 첨부: 페이먼트월 페이지 내 Key 조회 화면)
 
 3. 포트원 콘솔에서 채널 추가 시 \[Project Key], \[Secret Key]를 입력한 후 `저장`을 클릭합니다.
+
+#### 핑백(Pingback) URL 설정하기
+
+페이먼트월에서 포트원으로 결제 결과를 전달받기 위해 핑백 URL을 설정해야 합니다.
+
+1. [페이먼트월](https://api.paymentwall.com/developers/applications) 페이지에서 \[My Projects]를 클릭합니다.
+
+(이미지 첨부: 페이먼트월 My Projects 메뉴)
+
+2. 사용할 프로젝트의 \[Settings] 탭을 클릭합니다.
+
+(이미지 첨부: 페이먼트월 프로젝트 setting 탭)
+
+3. \[Pingback type]을 `URL`로 선택합니다.
+4. \[Pingback URL]에 `https://service.iamport.kr/paymentwall/webhook`를 입력합니다.
+5. \[Pingback signature version]을 `3`으로 설정합니다.
+
+(이미지 첨부: 페이먼트월 Pingback 설정 화면)
 
 </details>
 

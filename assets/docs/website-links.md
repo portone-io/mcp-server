@@ -4,7 +4,7 @@ description: PortOne 개발자센터 웹사이트 내 존재하는 문서들의 
 targetVersions:
   - v1
   - v2
-date: 2025-10-30
+date: 2025-11-25
 author: PortOne
 ---
 
@@ -84,7 +84,6 @@ author: PortOne
 - [결제취소(환불) 연동하기](https://developers.portone.io/opi/ko/integration/cancel/v2/readme): 포트원 V2 결제취소 API를 이용한 결제취소 방법을 안내합니다.
 - [다날 본인인증](https://developers.portone.io/opi/ko/integration/pg/v2/danal-identity-verification): 다날 본인인증 연동 방법을 안내합니다.
 - [엑심베이](https://developers.portone.io/opi/ko/integration/pg/v2/eximbay-v2): 엑심베이 결제 연동 방법을 안내합니다.
-- [하이픈](https://developers.portone.io/opi/ko/integration/pg/v2/hyphen): 하이픈 결제 연동 방법을 안내합니다.
 - [KG이니시스 일본결제](https://developers.portone.io/opi/ko/integration/pg/v2/inicis-jp): KG이니시스 일본결제 연동 방법을 안내합니다.
 - [KG이니시스 통합인증](https://developers.portone.io/opi/ko/integration/pg/v2/inicis-unified-identity-verification): KG이니시스 통합인증 연동 방법을 안내합니다.
 - [KG이니시스](https://developers.portone.io/opi/ko/integration/pg/v2/inicis-v2): KG이니시스 결제 연동 방법을 안내합니다.
@@ -172,7 +171,6 @@ author: PortOne
 - [키움페이 (다우데이타/페이조아)](https://developers.portone.io/opi/ko/integration/pg/v1/daou/readme): 키움페이 연동 방법을 안내합니다.
 - [키움페이 유의사항](https://developers.portone.io/opi/ko/integration/pg/v1/daou/undefined): 결제 연동시 유의사항을 안내합니다.
 - [엑심베이](https://developers.portone.io/opi/ko/integration/pg/v1/eximbay): 엑심베이 결제 연동 방법을 안내합니다.
-- [하이픈](https://developers.portone.io/opi/ko/integration/pg/v1/hyphen): 하이픈 결제 연동 방법을 안내합니다.
 - [KG이니시스](https://developers.portone.io/opi/ko/integration/pg/v1/inicis): KG이니시스 결제창 연동 가이드입니다.
 - [카카오페이](https://developers.portone.io/opi/ko/integration/pg/v1/kakaopay): 카카오페이 연동 방법을 안내합니다.
 - [NHN KCP(신모듈) 본인인증 연동하기](https://developers.portone.io/opi/ko/integration/pg/v1/kcp-v2-identity-verification): NHN KCP(신모듈) 본인인증 연동 방법을 안내합니다.

@@ -47,7 +47,7 @@ Shopify(쇼피파이)는 쇼피파이페이먼츠를 이용하지 않는 타사 
 
 ### 신청 방법
 
-- 포트원 해외결제서비스 [도입문의](https://go.portone.io/l/1047343/2023-11-27/6rv/?_gl=1*19xamm*_gcl_au*MTk3NzM1MTQzMC4xNzE3NzMwMDU0*_ga*OTE5ODY1NzY1LjE3MDY3Nzk5MDA.*_ga_PD0FDL16NZ*MTcxODE4MDYwMy4xNDEuMS4xNzE4MTgyOTkzLjAuMC4w) 신청 해주시면 담당 매니저가 연락 드립니다.
+- 포트원 해외결제서비스 [도입문의](https://go.portone.io/inquiry-opi?_gl=1*1j62p9a*_gcl_au*MTAyNjQxMzcwNS4xNzU3OTAxNDMwLjE0OTAxODM5NjkuMTc2Mjc1MTQxMS4xNzYyNzUzMDYx*_ga*MjA2MjM4NTY2Mi4xNzQyMTk3NzYx*_ga_PD0FDL16NZ*czE3NjI3NTE0MTAkbzY5OCRnMSR0MTc2Mjc1MzIyNiRqMzkkbDAkaDA.*_ga_PYBVTM79EJ*czE3NjI3NTI5NjQkbzE1JGcxJHQxNzYyNzUzMjIxJGo2MCRsMCRoMA..) 신청 해주시면 담당 매니저가 연락 드립니다.
 
 <Callout icon="💡" title="참고사항" content="**KYC** **전** **운영** **사이트** **내** **필수** **요건**
 

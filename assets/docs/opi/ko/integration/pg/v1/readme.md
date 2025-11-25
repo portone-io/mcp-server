@@ -58,8 +58,6 @@ versionVariants:
 
 [토스페이먼츠 브랜드페이](https://developers.portone.io/opi/ko/integration/pg/v1/toss-brandpay/readme)
 
-[하이픈](https://developers.portone.io/opi/ko/integration/pg/v1/hyphen)
-
 ## 해외결제
 
 [엑심베이](https://developers.portone.io/opi/ko/integration/pg/v1/eximbay)

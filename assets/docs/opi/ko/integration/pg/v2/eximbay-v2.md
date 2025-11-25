@@ -1078,3 +1078,5 @@ const response = await axios({
   - Klarna(`P197`) : 엑심베이 정책에 따라 신규 결제 사용 불가
 
 - 모바일 앱 내에서 결제를 연동할 경우 `appScheme` 파라미터를 설정하고 `bypass.eximbay_v2.settings.call_from_app` 파라미터를 "Y"로 설정해야 합니다.
+
+- 엑심베이의 경우 결제창을 닫은 이후에 결제가 성공 처리될 수 있습니다. 웹훅을 연동하여 결제 실패 상태에서 결제 성공 상태로 바뀌는 경우를 처리해야 합니다.

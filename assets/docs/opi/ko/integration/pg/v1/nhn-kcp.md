@@ -667,7 +667,7 @@ IMP.request_pay(
       kcpQuick: {
         //KCP퀵페이 설정 정보
         actionType: "Register", //결제수단 등록
-        memberCI: "djkDFJ45dFndkl", //본인인증 후 전달된 CI 값
+        encryptedCI: "encrypted_ci", // 본인인증 후 전달받은 CI를 암호화한 값
         memeberID: "use_your_unique_id", //사용자에 대한 고유 식별값
       },
     },
@@ -702,7 +702,7 @@ IMP.request_pay(
       kcpQuick: {
         //KCP퀵페이 설정 정보
         actionType: "Deregister", //결제수단 삭제
-        memberCI: "djkDFJ45dFndkl", //결제수단 등록시 입력한 CI 값
+        encryptedCI: "encrypted_ci", // 본인인증 후 전달받은 CI를 암호화한 값
         memeberID: "use_your_unique_id", //사용자에 대한 고유 식별값
       },
     },
@@ -741,7 +741,7 @@ IMP.request_pay(
       kcpQuick: {
         //KCP퀵페이 설정 정보
         actionType: "Pay", //결제 요청
-        memberCI: "djkDFJ45dFndkl", //결제수단 등록시 입력한 CI 값
+        encryptedCI: "encrypted_ci", // 본인인증 후 전달받은 CI를 암호화한 값
         memeberID: "use_your_unique_id", //사용자에 대한 고유 식별값
       },
     },
@@ -780,7 +780,7 @@ IMP.request_pay(
       kcpQuick: {
         //KCP퀵페이 설정 정보
         actionType: "PinChange", //PIN번호 변경
-        memberCI: "djkDFJ45dFndkl", //결제수단 등록시 입력한 CI 값
+        encryptedCI: "encrypted_ci", // 본인인증 후 전달받은 CI를 암호화한 값
         memeberID: "use_your_unique_id", //사용자에 대한 고유 식별값
       },
     },
@@ -815,7 +815,7 @@ IMP.request_pay(
       kcpQuick: {
         //KCP퀵페이 설정 정보
         actionType: "PinReset", //PIN번호 초기화
-        memberCI: "djkDFJ45dFndkl", //결제수단 등록시 입력한 CI 값
+        encryptedCI: "encrypted_ci", // 본인인증 후 전달받은 CI를 암호화한 값
         memeberID: "use_your_unique_id", //사용자에 대한 고유 식별값
       },
     },
@@ -854,7 +854,7 @@ IMP.request_pay(
       kcpQuick: {
         //KCP퀵페이 설정 정보
         actionType: "PhoneChange", //등록된 휴대폰 번호 변경
-        memberCI: "djkDFJ45dFndkl", //본인인증 후 전달된 CI 값
+        encryptedCI: "encrypted_ci", // 본인인증 후 전달받은 CI를 암호화한 값
         memeberID: "use_your_unique_id", //사용자에 대한 고유 식별값
       },
     },
@@ -893,7 +893,7 @@ IMP.request_pay(
       kcpQuick: {
         //KCP퀵페이 설정 정보
         actionType: "Terminate", //유저 및 결제수단 삭제
-        memberCI: "djkDFJ45dFndkl", //본인인증 후 전달된 CI 값
+        encryptedCI: "encrypted_ci", // 본인인증 후 전달받은 CI를 암호화한 값
         memeberID: "use_your_unique_id", //사용자에 대한 고유 식별값
       },
     },
@@ -997,9 +997,9 @@ IMP.request_pay(
       - PhoneChange : 전화번호 변경
       - Terminate : 결제 수단 해지
 
-    - memberCI: string
+    - encryptedCI: string
 
-      **본인인증 CI값**
+      **암호화된 본인인증 CI**
 
     - memberID: string
 
@@ -1051,6 +1051,33 @@ IMP.request_pay(
 
 <details>
 
+<summary>`encryptedCI` 파라미터 안내</summary>
+
+본인인증 후 전달받은 CI 값을 아래 방법으로 암호화하여 입력해야합니다.
+
+포트원 계정의 [REST API Secret](https://developers.portone.io/api/rest-v1/auth?v=v1) 을 SHA-256 해시 알고리즘으로 처리하여 암호화 키를 생성한 후, 해당 키를 사용해 CI 데이터를 AES-256-ECB 방식으로 암호화해야 합니다.
+암호화된 결과는 Base64로 인코딩하여 encryptedCI 파라미터 값으로 전달합니다.
+
+```pseudo
+FUNCTION encryptCi(ci, apiSecret):
+# Step 1: SHA-256으로 API Secret을 해시하여 암호화 키 생성
+key = SHA256(apiSecret)
+
+# Step 2: AES-256-ECB 알고리즘으로 CI 데이터를 암호화
+encryptedData = AES256Encrypt(data = ci, key = key, mode = ECB)
+
+# Step 3: 암호화된 데이터를 Base64로 인코딩
+base64EncodedData = Base64Encode(encryptedData)
+
+# Step 4: Base64 인코딩된 결과 반환
+RETURN base64EncodedData
+END FUNCTION
+```
+
+</details>
+
+<details>
+
 <summary>결제수단을 여러개 등록할 수 있습니다.</summary>
 
 한 고객에게 여러개의 결제수단을 등록할 수 있습니다.
@@ -1063,7 +1090,7 @@ IMP.request_pay(
 
 <summary>결제수단 삭제 요청시 등록할 때 입력한 정보를 동일하게 입력해야 합니다.</summary>
 
-결제수단 삭제(actionType:Deregister) 요청시 결제수단 등록할 때 사용된 `customer_uid` + `memberCI` + `memberID` + `deviceID` + `noAuth` 조합을
+결제수단 삭제(actionType:Deregister) 요청시 결제수단 등록할 때 사용된 `customer_uid` + `encryptedCI` + `memberID` + `deviceID` + `noAuth` 조합을
 동일하게 전송해야 합니다.
 
 </details>

@@ -46,7 +46,7 @@ Webhook을 활용하면 커스텀 기능이나 다른 애플리케이션과 연�
     - `Transaction.PartialCancelled`: **결제가 부분 취소**되었을 때
     - `Transaction.Cancelled`: **결제가 완전 취소**되었을 때
     - `Transaction.Failed`: **결제(예약 결제 포함)가 실패**했을 때
-    - `Transaction.PayPending`: **결제 승인 대기** 상태가 되었을 때 (해외 결제시 발생 가능)
+    - `Transaction.PayPending`: **결제 승인 대기** 상태가 되었을 때 (페이팔에서 발생 가능)
     - `Transaction.CancelPending`: (결제 취소가 비동기로 수행되는 경우) **결제 취소를 요청**했을 때
     - `Transaction.DisputeCreated`: **분쟁이 발생**되었을 때
     - `Transaction.DisputeResolved`: **분쟁이 해소**되었을 때
@@ -127,7 +127,7 @@ Webhook을 활용하면 커스텀 기능이나 다른 애플리케이션과 연�
   - `PartialCancelled`: **결제가 부분 취소**되었을 때
   - `Cancelled`: **결제가 완전 취소**되었을 때
   - `Failed`: **결제(예약 결제 포함)가 실패**했을 때
-  - `PayPending`: **결제 승인 대기** 상태가 되었을 때 (해외 결제시 발생 가능)
+  - `PayPending`: **결제 승인 대기** 상태가 되었을 때 (페이팔에서 발생 가능)
   - `CancelPending`: (결제 취소가 비동기로 수행되는 경우) **결제 취소를 요청**했을 때
 
 웹훅 payload 예시:

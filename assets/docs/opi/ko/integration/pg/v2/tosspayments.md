@@ -218,7 +218,7 @@ async function schedulePayment() {
   - 상품권 결제 요청 시, 사용하고자 하는 상품권 종류에 따라 아래 목록을 참고하여 `giftCertificateType` 파라미터를 입력해야 합니다.
     - 도서문화상품권 : `BOOKNLIFE`
     - 스마트문상 ((구)게임문화상품권) : `SMART_MUNSANG`
-    - 문화상품권 : `CULTURELAND`
+    - 컬쳐랜드 문화상품권 : `CULTURELAND`
 
 - `paymentId`
   - 토스페이먼츠를 사용하는 경우 영문 대소문자, 숫자, 특수문자(-,\_)만 허용되며, 6자 이상 64자 이하만 가능합니다.
