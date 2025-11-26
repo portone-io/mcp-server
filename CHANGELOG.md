@@ -1,5 +1,11 @@
 # @portone/mcp-server
 
+## 0.15.0-alpha.2
+
+### Patch Changes
+
+- 8ef6983: 헬프센터 URL 수정
+
 ## 0.15.0-alpha.1
 
 ### Patch Changes
