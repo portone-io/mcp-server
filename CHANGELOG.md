@@ -1,5 +1,11 @@
 # @portone/mcp-server
 
+## 0.15.0-alpha.4
+
+### Patch Changes
+
+- db94d0d: regex search, 스키마, 코드 관련 tool의schema 제거
+
 ## 0.15.0-alpha.3
 
 ### Patch Changes

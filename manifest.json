@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1",
   "name": "portone-mcp-server",
-  "version": "0.15.0-alpha.3",
+  "version": "0.15.0-alpha.4",
   "description": "PortOne MCP Server for Developers",
   "author": {
     "name": "PortOne",
