@@ -53,14 +53,18 @@ export function init(schema: Schema): ToolCallback<typeof config.inputSchema> {
     try {
       const pruned_data = pruneYaml(schemaData, 3);
       const yamlOutput = stringifyYaml(pruned_data);
+      const structuredContent = {
+        result: yamlOutput,
+      };
 
       return {
         content: [
           {
             type: "text",
-            text: yamlOutput,
+            text: JSON.stringify(structuredContent, null, 2),
           },
         ],
+        structuredContent,
       };
     } catch (error) {
       return {

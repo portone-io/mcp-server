@@ -29,9 +29,6 @@ framework를 제외한 모든 Args는 선택사항이며, 특정되지 않은 �
       .optional()
       .describe("스마트 라우팅 사용 여부. 옵션: true 또는 false"),
   },
-  outputSchema: {
-    result: z.string().describe("마크다운 형식의 프론트엔드 코드 예제"),
-  },
 };
 
 export function init(
@@ -66,18 +63,13 @@ export function init(
       const data = await response.text();
 
       if (data) {
-        const structuredContent = {
-          result: data,
-        };
-
         return {
           content: [
             {
               type: "text",
-              text: JSON.stringify(structuredContent, null, 2),
+              text: data,
             },
           ],
-          structuredContent,
         };
       } else {
         return {

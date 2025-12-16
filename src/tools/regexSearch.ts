@@ -55,13 +55,6 @@ max(0, idx - contextSize)부터 min(contentLength, idx + len(query) + contextSiz
         "true이면 문서의 메타데이터(제목, 설명, 대상 버전)을 결과에 포함합니다.",
       ),
   },
-  outputSchema: {
-    result: z
-      .string()
-      .describe(
-        `포트원 문서를 찾으면 해당 문서의 경로와 길이, 메타데이터, query가 매칭된 주변 컨텍스트를 반환합니다.`,
-      ),
-  },
 };
 
 function formatOccurrence(occurrence: SearchOccurrence): string {
@@ -207,17 +200,15 @@ export function init(
         // Truncate if exceeds limit
         if (fullResult.length > limit) {
           const truncationMsg = `\n\n... (output truncated due to length limit. Use page: ${page + 1} for next page)`;
-          const structuredContent = {
-            result: fullResult.substring(0, limit) + truncationMsg,
-          };
+          const truncatedResult =
+            fullResult.substring(0, limit) + truncationMsg;
           return {
             content: [
               {
                 type: "text",
-                text: JSON.stringify(structuredContent, null, 2),
+                text: truncatedResult,
               },
             ],
-            structuredContent,
           };
         }
 
