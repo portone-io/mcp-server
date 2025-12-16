@@ -1,5 +1,11 @@
 # @portone/mcp-server
 
+## 0.15.0-alpha.3
+
+### Patch Changes
+
+- 1edf2a5: 문서 업데이트
+
 ## 0.15.0-alpha.2
 
 ### Patch Changes
