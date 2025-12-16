@@ -52,6 +52,27 @@ jobs:
         if: steps.changesets.outputs.published == 'true'
         run: pnpm build:dxt
 
+      - name: Setup DXT certificates
+        if: steps.changesets.outputs.published == 'true'
+        run: |
+          mkdir -p ./certs
+          echo "${{ secrets.DXT_CA_PEM }}" > ./certs/ca.pem
+          echo "${{ secrets.DXT_CERT_PEM }}" > ./certs/cert.pem
+          echo "${{ secrets.DXT_KEY_PEM }}" > ./certs/key.pem
+          chmod 600 ./certs/*.pem
+
+      - name: Sign DXT file
+        if: steps.changesets.outputs.published == 'true'
+        run: dxt sign portone-mcp-server.dxt --cert ./certs/cert.pem --key ./certs/key.pem --intermediate ./certs/ca.pem
+
+      - name: Verify DXT signature
+        if: steps.changesets.outputs.published == 'true'
+        run: dxt verify portone-mcp-server.dxt
+
+      - name: Cleanup certificates
+        if: steps.changesets.outputs.published == 'true'
+        run: rm -rf ./certs
+
       - name: Create GitHub Release
         if: steps.changesets.outputs.published == 'true'
         uses: softprops/action-gh-release@v1
