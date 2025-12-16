@@ -11,7 +11,7 @@ targetVersions:
 
 Woocommerce Subscriptions 플러그인
 
-플러그인의 정기결제 기능을 사용하기 위해서는 우커머스에서 제공하는 [WooCommerce Subscriptions](https://woocommerce.com/products/woocommerce-subscriptions/) 플러그인(유료, $199)이 반드시 설치되어 있어야 합니다.
+플러그인의 정기결제 기능을 사용하기 위해서는 우커머스에서 제공하는 [WooCommerce Subscriptions](https://woocommerce.com/products/woocommerce-subscriptions/) 플러그인(유료 구독, 연간 $279)이 반드시 설치되어 있어야 합니다.
 
 </div>
 

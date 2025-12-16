@@ -29,7 +29,14 @@ Shopify(쇼피파이) 온라인 커머스 플랫폼 서비스로 포트원에서
 
 ### **서비스 특징**
 
-서비스 사용을 위해 포트원의 글로벌 관리자콘솔과 한국 관리자콘솔을 모두 이용해 주셔야 하며, Shopify(쇼피파이) 플러그인 이용 시 코리아 포트원과 계약을 맺으신 후 서비스 사용이 가능합니다.
+<Highlight text="Shopify(쇼피파이) 포트원과 제휴된 공식 구축사를 통해서만 이용할 수 있습니다." />
+
+아래 구축사로 직접 문의 부탁드립니다.
+
+- [루쿠쿠 ↗](https://lukuku.co/)
+- [300씨비티↗](https://300cbt.com/)
+- [브레스커뮤니케이션즈↗](https://b-works.link/)
+- [어바닉랩스↗](https://urbaniclabsinc.com/)
 
 ### **비용 안내**
 
@@ -44,17 +51,6 @@ Shopify(쇼피파이)는 쇼피파이페이먼츠를 이용하지 않는 타사 
 - **요금 지급**
   - 고객사는 세금계산서 발행 당월 말일까지 해당 대금을 주식회사 코리아포트원으로 지급합니다. \
     (계좌 정보는 이용 계약서 참고)
-
-### 신청 방법
-
-- 포트원 해외결제서비스 [도입문의](https://go.portone.io/inquiry-opi?_gl=1*1j62p9a*_gcl_au*MTAyNjQxMzcwNS4xNzU3OTAxNDMwLjE0OTAxODM5NjkuMTc2Mjc1MTQxMS4xNzYyNzUzMDYx*_ga*MjA2MjM4NTY2Mi4xNzQyMTk3NzYx*_ga_PD0FDL16NZ*czE3NjI3NTE0MTAkbzY5OCRnMSR0MTc2Mjc1MzIyNiRqMzkkbDAkaDA.*_ga_PYBVTM79EJ*czE3NjI3NTI5NjQkbzE1JGcxJHQxNzYyNzUzMjIxJGo2MCRsMCRoMA..) 신청 해주시면 담당 매니저가 연락 드립니다.
-
-<Callout icon="💡" title="참고사항" content="**KYC** **전** **운영** **사이트** **내** **필수** **요건**
-
-1. 상품 등록 필수
-2. 배송 정책 명시
-3. 취소 및 환불 정책 명시
-4. 주문(결제)페이지와 결제 기능 구현" />
 
 ### **연동가이드**
 

@@ -39,7 +39,7 @@ datetime: 2024-01-25T15:00:00.000Z
 
 - **지원 결제수단**
   - VISA/MASTER/JCB/Amex/Diners/Discovery(해외 발행 글로벌 카드)
-  - 해외 간편결제 : PayPay(JP), Alipay , Wechat(PC) , eContext ,Unionpay
+  - 해외 간편결제 : PayPay(JP), Alipay , Wechat , eContext ,Unionpay
 
 * **통화**
   - 결제 통화
@@ -51,7 +51,7 @@ datetime: 2024-01-25T15:00:00.000Z
 - **수수료**
   - VISA/MASTER/JCB/Amex/ Diners/Discovery : 4.50% (해외 발행 글로벌 카드)
   - Alipay : 2.90%
-  - Wechat (PC) : 2.80%
+  - Wechat : 2.80%
   - Unionpay : 3.60%
   - eContext (일본) : 4.50%
   - PayPay(Jp) : 심사 후 결정

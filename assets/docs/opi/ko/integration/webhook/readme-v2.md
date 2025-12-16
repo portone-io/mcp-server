@@ -175,6 +175,12 @@ Webhook을 활용하면 커스텀 기능이나 다른 애플리케이션과 연�
 
 </div>
 
+<div class="hint" data-style="info">
+
+웹훅 URL 삭제는 [기술지원 메일](mailto:tech.support@portone.io)로 요청해 주세요.
+
+</div>
+
 ### 2. 결제 파라미터 설정
 
 포트원 SDK의 `PortOne.requestPayment()` 혹은 `PortOne.requestIssueBillingKey()` 함수 파라미터 중

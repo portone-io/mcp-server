@@ -28,7 +28,7 @@ datetime: 2025-02-13T06:02:32.259Z
 
 #### **서비스 이용절차**
 
-- 포트원 해외결제서비스 [도입문의](https://go.portone.io/l/1047343/2023-11-27/6rv/?_gl=1*19xamm*_gcl_au*MTk3NzM1MTQzMC4xNzE3NzMwMDU0*_ga*OTE5ODY1NzY1LjE3MDY3Nzk5MDA.*_ga_PD0FDL16NZ*MTcxODE4MDYwMy4xNDEuMS4xNzE4MTgyOTkzLjAuMC4w) 신청
+- 포트원 해외결제서비스 [도입문의](https://go.portone.io/) 신청
 - KG이니시스 사전 심사 진행
 - 포트원 서비스 이용 계약 진행
 - KG이니시스 계약 진행 (가입신청/카드사 심사)

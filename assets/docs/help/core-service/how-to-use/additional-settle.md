@@ -51,7 +51,7 @@ datetime: 2024-01-25T15:00:00.000Z
 
 아래 작성 내용을 참고하여 관련 내용을 포트원 고객지원팀으로 전달주시면 헥토파이낸셜측으로 전달드리겠습니다. 헥토파이낸셜 계약부서에서 내용 확인 후 필요한 절차를 2\~3영업일 내 담당자님께 직접 메일 안내드릴 예정입니다.
 
-- 포트원 고객지원팀 문의하기 : [cs@portone.io↗](mailto:cs@portone.io) , [채널톡↗](https://x06k7.channel.io/home) , [카카오톡↗](http://pf.kakao.com/_nlHxcu/chat)
+- 포트원 고객지원팀 : [cs@portone.io↗](mailto:cs@portone.io)
 
 #### **전달 내용**
 

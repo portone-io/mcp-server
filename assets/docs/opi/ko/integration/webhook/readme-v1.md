@@ -74,6 +74,12 @@ URL은 관리자 콘솔에서 두 가지 형태로 지원하고 있습니다.
 
 </div>
 
+<div class="hint" data-style="info">
+
+웹훅 URL 삭제는 [기술지원 메일](mailto:tech.support@portone.io)로 요청해 주세요.
+
+</div>
+
 ### 2. 결제 파라미터 설정
 
 포트원 SDK의 `IMP.request_pay()` 함수 파라미터 중 `notice_url`를 통해 관리자콘솔에서 설정한 웹훅 수신 URL을 덮어쓸 수 있습니다.

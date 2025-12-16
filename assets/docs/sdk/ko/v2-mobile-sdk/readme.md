@@ -13,18 +13,24 @@ versionVariants:
 
 ## Android SDK
 
-Android 네이티브 환경에서 사용 가능한 SDK 입니다. 해당 Git 레포지토리의 README.md 파일을 참고하여 사용하실 수 있습니다.
+Android 네이티브 환경에서 사용 가능한 SDK입니다. 해당 Git 레포지토리의 README.md 파일을 참고하여 사용하실 수 있습니다.
 
 - [GitHub 링크](https://github.com/portone-io/android-sdk)
 
 ## iOS SDK
 
-iOS 네이티브 환경에서 사용 가능한 SDK 입니다. SwiftUI와 UIKit을 지원하며, 해당 Git 레포지토리의 README.md 파일을 참고하여 사용하실 수 있습니다.
+iOS 네이티브 환경에서 사용 가능한 SDK입니다. SwiftUI와 UIKit을 지원하며, 해당 Git 레포지토리의 README.md 파일을 참고하여 사용하실 수 있습니다.
 
 - [GitHub 링크](https://github.com/portone-io/ios-sdk)
 
 ## React Native
 
-React Native 환경에서 사용 가능한 SDK 입니다. 해당 Git 레포지토리의 README.md 파일을 참고하여 사용하실 수 있습니다.
+React Native 환경에서 사용 가능한 SDK입니다. 해당 Git 레포지토리의 README.md 파일을 참고하여 사용하실 수 있습니다.
 
 - [GitHub 링크](https://github.com/portone-io/react-native-sdk)
+
+## Flutter
+
+Flutter 환경에서 사용 가능한 SDK는 제공하고 있지 않으나, Flutter을 사용하여 직접 연동하는 방법에 참고가 되도록 샘플 프로젝트를 제공하고 있습니다.
+
+- [GitHub 링크](https://github.com/portone-io/portone-sample/tree/main/flutter)

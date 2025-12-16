@@ -4,7 +4,7 @@ description: PortOne 개발자센터 웹사이트 내 존재하는 문서들의 
 targetVersions:
   - v1
   - v2
-date: 2025-11-25
+date: 2025-12-16
 author: PortOne
 ---
 
@@ -174,7 +174,8 @@ author: PortOne
 - [KG이니시스](https://developers.portone.io/opi/ko/integration/pg/v1/inicis): KG이니시스 결제창 연동 가이드입니다.
 - [카카오페이](https://developers.portone.io/opi/ko/integration/pg/v1/kakaopay): 카카오페이 연동 방법을 안내합니다.
 - [NHN KCP(신모듈) 본인인증 연동하기](https://developers.portone.io/opi/ko/integration/pg/v1/kcp-v2-identity-verification): NHN KCP(신모듈) 본인인증 연동 방법을 안내합니다.
-- [KG모빌리언스](https://developers.portone.io/opi/ko/integration/pg/v1/kg): KG모빌리언스 결제 연동 방법을 안내합니다.
+- [KG모빌리언스 (신모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/kg-mobilians-v2): KG모빌리언스 (신모듈) 결제 연동 방법을 안내합니다.
+- [KG모빌리언스 (구모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/kg): KG모빌리언스 (구모듈) 결제 연동 방법을 안내합니다.
 - [이지페이(KICC)](https://developers.portone.io/opi/ko/integration/pg/v1/kicc): 이지페이(KICC) 결제창 연동 방법을 안내합니다.
 - [KSNET](https://developers.portone.io/opi/ko/integration/pg/v1/ksnet/readme): KSNET 결제창 연동 가이드입니다.
 - [연동 주의사항](https://developers.portone.io/opi/ko/integration/pg/v1/ksnet/warning): KSNET 연동 시 주의사항을 확인할 수 있습니다.

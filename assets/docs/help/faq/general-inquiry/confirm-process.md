@@ -115,4 +115,4 @@ IMP.request_pay({
 }
 ```
 
-<Callout content="이용을 원하시면 포트원 기술지원팀(support@portone.io)로 포트원 계정과 함께 confirm process 설정요청을 주시기 바랍니다." title="참고사항" icon="💡" />
+<Callout content="이용을 원하시면 포트원 기술지원팀(tech.support@portone.io)로 포트원 계정과 함께 confirm process 설정요청을 주시기 바랍니다." title="참고사항" icon="💡" />

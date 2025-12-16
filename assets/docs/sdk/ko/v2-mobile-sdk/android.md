@@ -26,7 +26,7 @@ targetVersions:
             maven {
                 url = uri("https://jitpack.io")
             }
-        }
+        } 
     }
 
 // build.gradle.kts

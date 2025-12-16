@@ -1,6 +1,6 @@
 ---
-title: KG모빌리언스
-description: KG모빌리언스 결제 연동 방법을 안내합니다.
+title: KG모빌리언스 (구모듈)
+description: KG모빌리언스 (구모듈) 결제 연동 방법을 안내합니다.
 targetVersions:
   - v1
 ---

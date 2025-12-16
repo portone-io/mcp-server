@@ -34,7 +34,7 @@ versionVariants:
 
 [헥토파이낸셜](https://developers.portone.io/opi/ko/integration/pg/v1/settle/readme)
 
-[KG모빌리언스](https://developers.portone.io/opi/ko/integration/pg/v1/kg)
+[KG모빌리언스 (구모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/kg)
 
 [KSNET](https://developers.portone.io/opi/ko/integration/pg/v1/ksnet/readme)
 

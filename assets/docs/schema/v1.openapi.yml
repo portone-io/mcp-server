@@ -3254,6 +3254,16 @@ paths:
           default: imp_448280090638
           x-portone-name: 포트원 거래고유번호
           x-portone-description: 결제내역을 확인할 결제건의 포트원 거래고유번호
+        - name: include_sandbox
+          in: query
+          description: '테스트 채널을 통해 발생한 결제건을 조회 결과에 포함할지 여부 (default: false)'
+          required: false
+          type: boolean
+          x-portone-name: 테스트 결제건 포함 여부
+          x-portone-description: |-
+            테스트 채널을 통해 발생한 결제건을 조회 결과에 포함할지 여부 (기본값: `false`)
+
+            (본 파라미터는 `2026년 1월 26일`부터 추가 예정입니다.)
       responses:
         '200':
           description: 정상 조회
@@ -7902,6 +7912,7 @@ definitions:
       - card_name
       - inserted
       - updated
+      - sandbox
     properties:
       customer_uid:
         description: 빌링키와 매핑되며 고객사에서 채번하는 구매자의 결제 수단 식별 고유번호
@@ -7921,6 +7932,14 @@ definitions:
         maxLength: '80'
         x-portone-name: 상점아이디(MID)
         x-portone-description: 빌링키가 등록된 PG사 상점아이디(MID)
+      sandbox:
+        description: 빌링키 발급 시 이용한 포트원 채널의 테스트 채널 여부
+        type: boolean
+        x-portone-name: 테스트 빌링키 여부
+        x-portone-description: |-
+          빌링키 발급 시 이용한 포트원 채널의 테스트 채널 여부
+
+          (본 필드는 `2026년 1월 26일`부터 추가 예정입니다.)
       customer_id:
         description: 구매자 ID
         type: string
@@ -8799,6 +8818,7 @@ definitions:
       - cancel_amount
       - currency
       - status
+      - sandbox
     properties:
       imp_uid:
         description: 포트원 거래고유번호
@@ -8900,6 +8920,14 @@ definitions:
         maxLength: '80'
         x-portone-name: PG사 상점아이디
         x-portone-description: 결제건의 PG사 상점아이디
+      sandbox:
+        description: 결제가 발생한 포트원 채널의 테스트 채널 여부
+        type: boolean
+        x-portone-name: 테스트 결제 여부
+        x-portone-description: |-
+          결제가 발생한 포트원 채널의 테스트 채널 여부
+
+          (본 필드는 `2026년 1월 26일`부터 추가 예정입니다.)
       escrow:
         description: 에스크로결제 여부
         type: boolean

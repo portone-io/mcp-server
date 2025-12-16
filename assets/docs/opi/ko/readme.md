@@ -8,18 +8,6 @@ targetVersions:
 
 
 
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
-
-<div class="hint" data-style="danger">
-
-2024년 9월 1일부로 포트원 V1 API에 대해 일부 보안 규격이 지원 종료됩니다.
-
-자세한 사항은 [TLS 지원 범위](https://developers.portone.io/opi/ko/support/tls-support?v=v1)를 참고해주세요.
-
-</div>
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
-
 ## 연동 준비하기
 
 결제 연동 전 회원 가입부터 채널 연동 방법까지 확인할 수 있습니다.

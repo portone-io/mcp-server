@@ -9,10 +9,7 @@ import * as yaml from "js-yaml";
 
 const exec = promisify(execCallback);
 
-async function runDocsForLlms(
-  repoPath: string,
-  nodeVersion: number,
-): Promise<string> {
+async function runDocsForLlms(repoPath: string): Promise<string> {
   console.log(`Running 'pnpm docs-for-llms' in ${repoPath}...`);
 
   try {
@@ -39,7 +36,7 @@ async function runDocsForLlms(
   }
 
   try {
-    const shellCommand = `. "$NVM_DIR/nvm.sh" && nvm use ${nodeVersion} && corepack enable && pnpm install && pnpm docs-for-llms`;
+    const shellCommand = `pnpm install && pnpm docs-for-llms`;
 
     const { stdout, stderr } = await exec(shellCommand, {
       cwd: repoPath,
@@ -184,13 +181,13 @@ async function updateMcpDocs(
 
   await fs.mkdir(path.dirname(targetDocsDir), { recursive: true });
 
-  const generatedDevDocsPath = await runDocsForLlms(developersRepoPath, 22);
+  const generatedDevDocsPath = await runDocsForLlms(developersRepoPath);
   console.log(
     `Copying new docs from ${generatedDevDocsPath} to ${targetDocsDir}...`,
   );
   await fs.cp(generatedDevDocsPath, targetDocsDir, { recursive: true });
 
-  const generatedHelpDocsPath = await runDocsForLlms(helpRepoPath, 22);
+  const generatedHelpDocsPath = await runDocsForLlms(helpRepoPath);
   const helpTargetDir = path.join(targetDocsDir, "help");
   console.log(
     `Copying new docs from ${generatedHelpDocsPath} to ${helpTargetDir}...`,

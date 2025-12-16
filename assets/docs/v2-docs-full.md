@@ -15446,6 +15446,12 @@ Webhook을 활용하면 커스텀 기능이나 다른 애플리케이션과 연�
 
 </div>
 
+<div class="hint" data-style="info">
+
+웹훅 URL 삭제는 [기술지원 메일](mailto:tech.support@portone.io)로 요청해 주세요.
+
+</div>
+
 ### 2. 결제 파라미터 설정
 
 포트원 SDK의 `PortOne.requestPayment()` 혹은 `PortOne.requestIssueBillingKey()` 함수 파라미터 중
@@ -19142,21 +19148,27 @@ versionVariants:
 
 ## Android SDK
 
-Android 네이티브 환경에서 사용 가능한 SDK 입니다. 해당 Git 레포지토리의 README.md 파일을 참고하여 사용하실 수 있습니다.
+Android 네이티브 환경에서 사용 가능한 SDK입니다. 해당 Git 레포지토리의 README.md 파일을 참고하여 사용하실 수 있습니다.
 
 - [GitHub 링크](https://github.com/portone-io/android-sdk)
 
 ## iOS SDK
 
-iOS 네이티브 환경에서 사용 가능한 SDK 입니다. SwiftUI와 UIKit을 지원하며, 해당 Git 레포지토리의 README.md 파일을 참고하여 사용하실 수 있습니다.
+iOS 네이티브 환경에서 사용 가능한 SDK입니다. SwiftUI와 UIKit을 지원하며, 해당 Git 레포지토리의 README.md 파일을 참고하여 사용하실 수 있습니다.
 
 - [GitHub 링크](https://github.com/portone-io/ios-sdk)
 
 ## React Native
 
-React Native 환경에서 사용 가능한 SDK 입니다. 해당 Git 레포지토리의 README.md 파일을 참고하여 사용하실 수 있습니다.
+React Native 환경에서 사용 가능한 SDK입니다. 해당 Git 레포지토리의 README.md 파일을 참고하여 사용하실 수 있습니다.
 
 - [GitHub 링크](https://github.com/portone-io/react-native-sdk)
+
+## Flutter
+
+Flutter 환경에서 사용 가능한 SDK는 제공하고 있지 않으나, Flutter을 사용하여 직접 연동하는 방법에 참고가 되도록 샘플 프로젝트를 제공하고 있습니다.
+
+- [GitHub 링크](https://github.com/portone-io/portone-sample/tree/main/flutter)
 
 
 # https://developers.portone.io/sdk/ko/v2-sdk/billing-key-and-pay-request
@@ -25922,18 +25934,6 @@ targetVersions:
 ---
 
 
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
-
-<div class="hint" data-style="danger">
-
-2024년 9월 1일부로 포트원 V1 API에 대해 일부 보안 규격이 지원 종료됩니다.
-
-자세한 사항은 [TLS 지원 범위](https://developers.portone.io/opi/ko/support/tls-support?v=v1)를 참고해주세요.
-
-</div>
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
 
 ## 연동 준비하기
 
