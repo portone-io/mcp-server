@@ -291,7 +291,7 @@ datetime: 2025-03-03T15:00:00.000Z
     - 인증창 호출 시 업체 측에서 전달하는 Ret\_URL(본인확인 인증 결과 리턴 페이지 설정)이 해당 메뉴에 등록되어 있지 않으면 서비스 이용이 불가합니다.
 
 * 인증결과를 받을 URL을 설정 방법
-  - 인증결과 경로 등록 URL :  <https://channel-service.prod.iamport.co/>
+  - 인증결과 경로 등록 URL :  <https://checkout-service.prod.iamport.co/>
 
 <Accordion title="▶KCP 관리자페이지>URL설정 경로 이미지 참고" image="https://help.portone.io/uploads/KCP_본인인증3333.png" />
 
