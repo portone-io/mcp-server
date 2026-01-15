@@ -1,5 +1,11 @@
 # @portone/mcp-server
 
+## 0.15.0-alpha.5
+
+### Patch Changes
+
+- 06a7794: server 및 mobile sdk 문서 url 수정
+
 ## 0.15.0-alpha.4
 
 ### Patch Changes
