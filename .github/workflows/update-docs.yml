@@ -1,0 +1,109 @@
+name: Update Docs
+
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  update-docs:
+    name: Update Docs
+    runs-on: ubuntu-latest
+    environment: update-docs
+    permissions:
+      contents: write # push automated/update-docs branch
+      pull-requests: write # create/update PR
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
+
+      - name: Clone developers.portone.io
+        run: git clone --depth 1 https://github.com/portone-io/developers.portone.io.git "$RUNNER_TEMP/developers"
+
+      - name: Clone help repo
+        run: git clone --depth 1 "https://x-access-token:${HELP_REPO_PAT}@github.com/${HELP_REPO}.git" "$RUNNER_TEMP/help"
+        env:
+          HELP_REPO: ${{ secrets.HELP_REPO }}
+          HELP_REPO_PAT: ${{ secrets.HELP_REPO_PAT }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Update docs
+        run: pnpm update-docs
+        env:
+          DEVELOPERS_PORTONE_IO_PATH: ${{ runner.temp }}/developers
+          HELP_PORTONE_IO_PATH: ${{ runner.temp }}/help
+
+      - name: Build
+        run: pnpm build
+
+      - name: Build DXT
+        run: pnpm build:dxt
+
+      - name: Upload DXT artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: portone-mcp-server-dxt
+          path: portone-mcp-server.dxt
+
+      - name: Create or update PR
+        run: |
+          BRANCH="chore/update-docs"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+
+          ARTIFACT_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          PR_BODY="Automated documentation update from latest sources.
+
+          [DXT artifact for testing](${ARTIFACT_URL})"
+
+          git checkout -B "$BRANCH"
+          git add assets/docs/
+
+          if git diff --cached --quiet; then
+            echo "No documentation changes detected"
+            exit 0
+          fi
+
+          CHANGESET_FILE=".changeset/update-docs-$(date +%Y%m%d%H%M%S).md"
+          cat > "$CHANGESET_FILE" <<'CHANGESET'
+          ---
+          "@portone/mcp-server": minor
+          ---
+
+          문서 업데이트
+          CHANGESET
+          git add "$CHANGESET_FILE"
+
+          git commit -m "chore: update documentation"
+          git push -f origin "$BRANCH"
+
+          EXISTING_PR=$(gh pr list --head "$BRANCH" --state open --json number --jq '.[0].number')
+          if [ -n "$EXISTING_PR" ]; then
+            gh pr edit "$EXISTING_PR" --body "$PR_BODY"
+            echo "Updated existing PR #$EXISTING_PR"
+          else
+            gh pr create \
+              --title "chore: update documentation" \
+              --body "$PR_BODY" \
+              --head "$BRANCH"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
