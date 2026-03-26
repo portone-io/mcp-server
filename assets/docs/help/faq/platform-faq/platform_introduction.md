@@ -12,4 +12,4 @@ datetime: 2025-07-04T02:28:39.473Z
 \
 [파트너 정산 더 알아보기](https://developers.portone.io/platform/ko/readme?v=v2)
 
-[파트너 정산 도입문의하기](https://go.portone.io/platform-inquiry2?_gl=1*1og5g8r*_gcl_aw*R0NMLjE3NDk0NTc0NzEuQ2owS0NRandqSnJDQmhDWEFSSXNBSTV4NjZVN1VESVphb2NQVldJeGZDbUxvWmJCcWdqQnhoeHB5Mlk2U0xxT19xRzc3bGVCWVU5X0g4a2FBdERqRUFMd193Y0I.*_gcl_au*NTIyMDIxMDYwLjE3NDkwMjMzNTAuNDQzMjk4NjQ5LjE3NTA3MzQzOTIuMTc1MDczNDM5Mg)
+[파트너 정산 도입문의하기](https://inquiry.portone.io/fs)

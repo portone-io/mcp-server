@@ -73,12 +73,10 @@ datetime: 2025-03-03T15:00:00.000Z
 
 - [테스트 연동 특징 보러가기↗](https://help.portone.io/category/procedure/payment-integration/test?page=1)
 
-<Callout content="1. NHN KCP 테스트 모드의 경우 결제시 실제 출금이 이루어지지 않습니다.
+<Callout content="1. NHN KCP 테스트 모드의 경우 결제 시 실제 출금이 이루어지지 않습니다.
 2. NHN KCP 제휴 카카오페이, 네이버페이는 테스트 모드를 지원하지 않습니다.
-(NHN KCP와 계약 후 서비스 이용가능)
-3. 카드사 심사 완료 후에는 NHN KCP에서 발급받은 실상점 정보로 설정 해야 합니다." icon="💡" title="참고사항" />
-
-
+(NHN KCP와 계약 후 서비스 이용 가능)
+3. 카드사 심사 시 NHN KCP에서 발급받은 실상점 정보로 실연동 설정해야 합니다." icon="💡" title="참고사항" />
 
 #### **설정경로**
 
@@ -101,10 +99,8 @@ datetime: 2025-03-03T15:00:00.000Z
 
 <Callout content="1. 발급된 상점아이디의 **카드사 심사가 완료**되지 않았을 경우 결제가 실패 되오니 꼭! 확인 해주셔야 합니다.
 2. NHN KCP는 간편결제별로 사이트코드가 별도로 발급 되므로 채널을 여러 개 생성해 주셔야 합니다.
-3. 여러 개의 상점아이디를 설정한 경우 결제창 호출(IMP.request_pay) 시 pg파라미터로 상점아이디를 구분할 수 있습니다. 
+3. 여러 개의 상점아이디를 설정한 경우 결제창 호출(IMP.request_pay) 시 pg파라미터로 상점아이디를 구분할 수 있습니다.
 - pg: {pg 정의 값}.{상점 아이디}" title="참고사항" icon="💡" />
-
-
 
 #### **설정경로**
 
@@ -123,9 +119,7 @@ datetime: 2025-03-03T15:00:00.000Z
   - 인증서 발급 경로 : [KCP 상점 관리자페이지↗](https://partner.kcp.co.kr/) > 접속 > 기술관리센터 > 인증센터 > KCP PG API 발급 버튼 클릭
   - 그룹 등록 경로 : [KCP 상점 관리자페이지↗](https://partner.kcp.co.kr/) > 결제관리 > 자동결제 > 그룹관리 > 그룹등록
 
-<Accordion title="▶KCP 관리자페이지>인증키 설정경로 이미지 참고" content="<>
-
-</>" image="https://help.portone.io/uploads/image (12).png" />
+<Accordion title="▶KCP 관리자페이지>인증키 설정경로 이미지 참고" image="https://help.portone.io/uploads/image (12).png" />
 
 - 과세설정 : [포트원 결제사정산 서비스↗ ](https://admin.portone.io/reconciliation/summary)이용시 단순 과세계산을 위해 사용되는 항목으로 미 이용시 설정하지 않으셔도 무방합니다. 거래의 과세/면세 여부와는 관계없습니다.
 
@@ -141,10 +135,8 @@ datetime: 2025-03-03T15:00:00.000Z
 
 - [테스트 연동 특징 보러가기↗](https://help.portone.io/category/procedure/payment-integration/test?page=1)
 
-<Callout content="1. NHN KCP 테스트 모드의 경우 결제시 실제 출금이 이루어지지 않습니다.
-2. 카드사 심사 완료 후에는 NHN KCP에서 발급받은 실상점 정보로 설정 해야 합니다." icon="💡" title="참고사항" />
-
-
+<Callout content="1. NHN KCP 테스트 모드의 경우 결제 시 실제 출금이 이루어지지 않습니다.
+2. 카드사 심사 시 NHN KCP에서 발급받은 실상점 정보로 실연동 설정해야 합니다.." icon="💡" title="참고사항" />
 
 #### **설정경로**
 
@@ -166,8 +158,6 @@ datetime: 2025-03-03T15:00:00.000Z
 <Callout content="1. 발급된 상점아이디의 **카드사 심사가 완료**되지 않았을 경우 결제가 실패 되오니 꼭! 확인 해주셔야 합니다.
 2. 여러 개의 상점아이디를 설정한 경우 결제창 호출(IMP.request_pay) 시 pg파라미터로 상점아이디를 구분할 수 있습니다.
 **※pg : {pg 정의 값}.{상점 아이디}**" title="참고사항" icon="💡" />
-
-
 
 #### **설정경로**
 
@@ -200,8 +190,6 @@ datetime: 2025-03-03T15:00:00.000Z
 (NHN KCP와 계약 후 서비스 이용가능)
 3. 카드사 심사 완료 후에는 NHN KCP에서 발급받은 실상점 정보로 설정 해야 합니다." icon="💡" title="참고사항" />
 
-
-
 #### **설정경로**
 
 - [포트원 관리자콘솔↗](https://admin.portone.io/) > 결제 연동 > 채널관리 > + 채널 추가
@@ -214,8 +202,8 @@ datetime: 2025-03-03T15:00:00.000Z
 - 채널 이름 : 상점 정보만으로는 채널(PG)의 성격을 파악하기 어려워 채널(PG)의 이름을 설정하는 용도로 구분하기 위한 필수 설정값으로 임의값으로 설정이 가능합니다(단, 숫자, 공백, 글자, \_, - 만 가능)
 - 채널 속성 : 결제
 - PG상점아이디 (사이트코드) 클릭
-  - KCP 결제창 일반결제 : \*\*T0000 \*\*선택
-  - KCP API 정기결제 :  \*\*A52Q7  \*\*선택
+  - KCP 결제창 일반결제 : T0000 선택
+  - KCP API 정기결제 :  A52Q7 선택
   - KCP 결제창 일반결제 (페이코 허브형) : **AO0Q9** 선택
 - 과세설정 : [포트원 결제사정산 서비스↗ ](https://admin.portone.io/reconciliation/summary)이용시 단순 과세계산을 위해 사용되는 항목으로 미 이용시 설정하지 않으셔도 무방합니다. 거래의 과세/면세 여부와는 관계없습니다.
 
@@ -225,8 +213,6 @@ datetime: 2025-03-03T15:00:00.000Z
 2. NHN KCP는 간편결제별로 사이트코드가 별도로 발급 되므로 채널을 여러 개 생성해 주셔야 합니다.
 3. 여러 개의 상점아이디를 설정한 경우 결제창 호출(IMP.request_pay) 시 pg파라미터로 상점아이디를 구분할 수 있습니다. 
 - pg: {pg 정의 값}.{상점 아이디}" title="참고사항" icon="💡" />
-
-
 
 #### **설정경로**
 
@@ -238,24 +224,45 @@ datetime: 2025-03-03T15:00:00.000Z
 #### **설정방법**
 
 - 채널 속성 : 결제
-- PG상점아이디 (사이트코드) : PG상점아이디(사이트코드) : NHN KCP에서 계약완료 후 메일로 안내드립니다.
+- PG상점아이디 (사이트코드) : NHN KCP에서 계약완료 후 메일로 안내드립니다.
 - 인증서 발급 경로 : [KCP 상점 관리자페이지↗](https://partner.kcp.co.kr/) > 접속 > 기술관리센터 > 인증센터 > KCP PG API 발급 버튼 클릭
 - 인증키 설정 경로 : [KCP 상점관리자페이지↗](https://partner.kcp.co.kr "KCP 상점관리자페이지↗")> 기술관리센터 > 인증센터 > 가맹점 인증키관리
   -  [KCP 상점관리자페이지↗](https://partner.kcp.co.kr "KCP 상점관리자페이지↗") 에서 직접 암복호화키를 발급해 주셔야 하며, 암호화키 미발급 시 서비스 이용이 불가합니다.
 
-<Accordion title="▶KCP 관리자페이지>인증키 설정경로 이미지 참고" content="<>
-
-</>" image="https://help.portone.io/uploads/image_KCP_인증서.png" />
+<Accordion title="▶KCP 관리자페이지>인증키 설정경로 이미지 참고" image="https://help.portone.io/uploads/image_KCP_인증서.png" />
 
 - 정기자동결제 그룹아이디 확인 경로 : [KCP 상점관리자페이지↗](https://partner.kcp.co.kr "KCP 상점관리자페이지↗") > 자동결제 > 그룹관리 > 그룹등록 생성 > 생성된 그룹 ID 입력
 
-<Accordion title="▶KCP 관리자페이지>정기결제 그룹아이디 설정 경로 참고" content="<>
-
-</>" image="https://help.portone.io/uploads/image_KCP_정기결제 그룹아이디11.png" />
+<Accordion title="▶KCP 관리자페이지>정기결제 그룹아이디 설정 경로 참고" image="https://help.portone.io/uploads/image_KCP_정기결제 그룹아이디11.png" />
 
 - 과세설정 : [포트원 결제사정산 서비스↗ ](https://admin.portone.io/reconciliation/summary)이용시 단순 과세계산을 위해 사용되는 항목으로 미 이용시 설정하지 않으셔도 무방합니다. 거래의 과세/면세 여부와는 관계없습니다.
 
 ## <Highlight text="휴대폰 본인인증" />
+
+### 테스트\*\* 연동\*\*
+
+결제대행사와 계약 전에 미리 연동/개발이 가능한 테스트 연동환경입니다. 테스트 연동은 기본적인 결제 로직을 구현하실 수 있도록 미리 제공되는 범용적인 Key 입니다. 보다 자세한 테스트 연동 환경의 특징은 아래 가이드를 자세히 참조해주세요.
+
+- [테스트 연동 특징 보러가기↗](https://help.portone.io/category/procedure/payment-integration/test?page=1)
+
+<Callout content="1. SMS 문자 인증은 임의의 6자리 숫자를 입력하여 인증을 진행합니다.
+2. QR 인증은 QR 스캔 없이 ‘확인’을 눌러 즉시 인증을 진행합니다." title="체크사항" icon="💡" />
+
+
+
+#### **설정경로**
+
+- [포트원 관리자콘솔↗](https://admin.portone.io/) > 결제 연동 > 채널관리 > + 채널 추가
+  - 연동 모드 : 테스트 연동
+  - 결제대행사 : NHN KCP
+  - 결제모듈 :  휴대폰 본인인증
+
+#### **설정방법**
+
+- 채널 이름 : 상점 정보만으로는 채널(PG)의 성격을 파악하기 어려워 채널(PG)의 이름을 설정하는 용도로 구분하기 위한 필수 설정값으로 임의값으로 설정이 가능합니다(단, 숫자, 공백, 글자, \_, - 만 가능)
+- 채널 속성 : 본인인증
+- PG상점아이디 (MID) 클릭 : KCP V2 본인인증 AO6R1 선택
+- 과세설정 : [포트원 결제사정산 서비스↗](https://admin.portone.io/reconciliation/summary) 이용시 단순 과세계산을 위해 사용되는 항목으로 실제 거래의 과세/면세 여부와는 관계없으며 본인인증 채널의 경우 미설정으로 체크해주시기 바랍니다.
 
 ### **실 연동**
 
@@ -275,7 +282,7 @@ datetime: 2025-03-03T15:00:00.000Z
 #### **설정방법**
 
 - 채널 속성 : 본인인증
-- PG상점아이디 (사이트코드) : PG상점아이디(사이트코드) : NHN KCP에서 계약완료 후 메일로 안내드립니다.
+- PG상점아이디 (사이트코드) : NHN KCP에서 계약완료 후 메일로 안내드립니다.
 - 인증서 발급 경로 : [KCP 상점 관리자페이지↗](https://partner.kcp.co.kr/) > 접속 > 기술관리센터 > 인증센터 > KCP PG API 발급 버튼 클릭
 - 인증키 설정 경로 : [KCP 상점관리자페이지↗](https://partner.kcp.co.kr "KCP 상점관리자페이지↗")> 기술관리센터 > 인증센터 > 가맹점 인증키관리
   -  [KCP 상점관리자페이지↗](https://partner.kcp.co.kr "KCP 상점관리자페이지↗") 에서 직접 암복호화키를 발급해 주셔야 하며, 암호화키 미발급 시 서비스 이용이 불가합니다.
@@ -291,7 +298,7 @@ datetime: 2025-03-03T15:00:00.000Z
     - 인증창 호출 시 업체 측에서 전달하는 Ret\_URL(본인확인 인증 결과 리턴 페이지 설정)이 해당 메뉴에 등록되어 있지 않으면 서비스 이용이 불가합니다.
 
 * 인증결과를 받을 URL을 설정 방법
-  - 인증결과 경로 등록 URL :  <https://checkout-service.prod.iamport.co/>
+  - 인증결과 경로 등록 URL : [checkout-service.prod.iamport.co](http://checkout-service.prod.iamport.co/)
 
 <Accordion title="▶KCP 관리자페이지>URL설정 경로 이미지 참고" image="https://help.portone.io/uploads/KCP_본인인증3333.png" />
 

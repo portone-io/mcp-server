@@ -28,7 +28,7 @@ datetime: 2025-02-13T06:02:32.259Z
 
 #### **서비스 이용절차**
 
-- 포트원 해외결제서비스 [도입문의](https://go.portone.io/) 신청
+- 포트원 해외결제서비스 [도입문의](https://inquiry.portone.io/) 신청
 - KG이니시스 사전 심사 진행
 - 포트원 서비스 이용 계약 진행
 - KG이니시스 계약 진행 (가입신청/카드사 심사)
@@ -37,7 +37,7 @@ datetime: 2025-02-13T06:02:32.259Z
 
 - 해외 발행 글로벌 카드 : VISA, Master, JCB, AMEX, Diners Club
 - 편의점결제 : 7Eleven, LAWSON, FamilyMart, MINISTOP, SEICO MART
-- 간편결제 : RPay, AmazonPay, D barai, AU Pay,  MerPay
+- 간편결제 : RPay, AmazonPay, D barai, AU Pay,  MerPay, PayPay
 
 #### **지원 결제 방식**
 
@@ -57,7 +57,7 @@ datetime: 2025-02-13T06:02:32.259Z
 
 <Indent level="1">
 
-- 정산 가능 통화 : KRW
+- 정산 가능 통화 : KRW, JPY
 
 </Indent>
 
@@ -75,22 +75,6 @@ datetime: 2025-02-13T06:02:32.259Z
 
 </Indent>
 
-### **사전심사**
-
-- KG이니시스JP의 경우, 사전심사가 필수이며, 사전 심사를 완료 후, 본 심사가 가능합니다
-- <Highlight text="아래 사전 심사 항목을 반드시 cs@portone.io 메일로 보내주셔야 접수가 가능합니다. " />
-
-**\[사전심사 항목]**
-
-- 상호명 :
-- 국내사업자번호 :
-- 사이트명 :
-- 월 거래액 (엔화 기준):
-- 객단가 :
-- 사이트 URL :
-- 서비스 제공 및 배송기간 :
-- 쇼피파이 호스팅 사용 여부 :
-
 #### **웹사이트 필수 구축 요건**
 
 **\[PG사 심사를 위한 서비스 구축 요건]**
@@ -98,11 +82,11 @@ datetime: 2025-02-13T06:02:32.259Z
 - 첨부된 링크 참고해주시면 감사하겠습니다.
 - 일본 결제 관련 사이트 필수 요건 안내
   - \[이용규약 관련]이용규약의 경우 국내법이 아닌 현지법 기준으로 기재 필요(한국 청소년보호법 등 기재 X)
-    - 예시: <https://www.tixply.io/footer/clause/view> 의 第10条準拠法
+    - 예시: <https://www.waug.com/ja/terms/service>의 第10条準拠法
   - \[특정상거래법 적용 필요]
-    - 예시: <https://www.tixply.io/footer/specifiedCommercialTransaction/view>
+    - 예시: <https://www.waug.com/ja/terms/mailorder>
     - 販売業者 \~ 電話番号 까지는 이니시스 재팬 정보 입력 필요 (나머지는 고객사 정보로 입력해두기)
-      - 예시) 電話番号 : 03-3508-2070
+      - 예시) 電話番号 : 03-6825-5531
 
 #### **📌 결제대행사별 위험 업종유형을 참고 하세요!**
 
@@ -121,23 +105,26 @@ datetime: 2025-02-13T06:02:32.259Z
 
 - 신용카드 : VISA/MASTER/JCB/AMEX/DINERS\
   정산주기 : 월 3회 또는 6회 \
-  수수료 : 4.5%
+  수수료 : 4.50%
 - 편의점결제 : 7Eleven/LAWSON/FamilyMart/MINISTOP/SEICO MART\
   정산주기 : 월 3회 \
   수수료 : 4.0%
-- 간편결제 : RPay/AmazonPay/D barai/AU Pay/ MerPay\
-  정산주기 : 월3회 \
+- 간편결제 : RPay/AmazonPay/D barai/AU Pay/MerPay
+  정산주기 : 월3회
   수수료 : 7.0%
+- 간편결제 : PayPay
+  정산주기 : 월3회
+  수수료 : 4.80%
 
 2\. 비실물
 
 - 신용카드 : VISA/MASTER/JCB/AMEX/DINERS\
   정산주기 : 월 3회 또는 6회 \
-  수수료 : 6.8%
+  수수료 : 6.80%
 - 편의점결제 : 7Eleven/LAWSON/FamilyMart/MINISTOP/SEICO MART\
   정산주기 : 월 3회 \
   수수료 : 4.0%
-- 간편결제 : RPay/AmazonPay/D barai/AU Pay/ MerPay\
+- 간편결제 :  RPay/AmazonPay/D barai/AU Pay/MerPay/PayPay \
   정산주기 : 월3회 \
   수수료 : 14.0%
 
@@ -151,25 +138,28 @@ datetime: 2025-02-13T06:02:32.259Z
 
 - 신용카드 : VISA/MASTER/JCB/AMEX/DINERS\
   정산주기 : 월 3회 또는 6회 \
-  수수료 : 3.9% +0.5%(포트원 이용요금)
+  수수료 : 3.90%+0.5%(포트원 이용요금)
 - 편의점결제 : 7Eleven/LAWSON/FamilyMart/MINISTOP/SEICO MART\
   정산주기 : 월 3회 \
-  수수료 : 3.7% +0.5%(포트원 이용요금)
+  수수료 : 3.70%+0.5%(포트원 이용요금)
 - 간편결제 : RPay/AmazonPay/D barai/AU Pay/ MerPay\
   정산주기 : 월3회 \
-  수수료 : 6.7% +0.5% (포트원 이용요금)\\
+  수수료 : 6.70%+0.5% (포트원 이용요금)
+- 간편결제 :  PayPay\
+  정산주기 : 월3회 \
+  수수료 :  4.50%+0.5% (포트원 이용요금)
 
 **2. 비실물**
 
 - 신용카드 : VISA/MASTER/JCB/AMEX/DINERS\
   정산주기 : 월 3회 또는 6회 \
-  수수료 : 6.5% +0.5%(포트원 이용요금)
+  수수료 : 6.50%+0.5%(포트원 이용요금)
 - 편의점결제 : 7Eleven/LAWSON/FamilyMart/MINISTOP/SEICO MART\
   정산주기 : 월 3회 \
-  수수료 : 3.7% +0.5%(포트원 이용요금)
-- 간편결제 : RPay/AmazonPay/D barai/AU Pay/ MerPay\
+  수수료 : 3.70%+0.5%(포트원 이용요금)
+- 간편결제 : RPay/AmazonPay/D barai/AU Pay/ MerPay / PayPay \
   정산주기 : 월3회 \
-  수수료 : 13.7% +0.5% (포트원 이용요금)
+  수수료 : 13.7%+0.5% (포트원 이용요금)
 
 </Indent>
 
@@ -184,19 +174,13 @@ datetime: 2025-02-13T06:02:32.259Z
 
 </Indent>
 
+<Callout title="쇼피파이(Shopify) 서비스 이용방법 ↗" />
+
 ### KG이니시스 일본결제 연동방법
 
 - 자체개발\_ 일본결제 연동 시 해당가이드 참고해주세요.
 
 <Callout title="KG이니시스 일본결제 연동 매뉴얼 보러가기 ↗" />
-
-### 글로벌 포트원\_쇼피파이 연동방법
-
-- 쇼피파이 이용 시 글로벌 포트원으로 연동 진행 해야 합니다.
-- [글로벌 포트원 가입 ↗](https://admin.portone.cloud/register) > 가입 후 테스트 연동을 위한 \[[글로벌 포트원 콘솔 ↗](https://admin.portone.cloud/)] 채널(PSP)정보 설정 및 결제 테스트 진행
-- [글로벌 포트원 결제 연동 메뉴얼 보러가기↗](https://www.docs.portone.cloud/docs/cross_border/cross_border_integration)
-- [글로벌 포트원\_이니시스 테스트 연동정보 보러가기↗](https://www.docs.portone.cloud/docs/cross_border/cross_border_integration)
-- [글로벌 포트원\_통합 콘솔 가이드 보러가기↗](https://docs-v2.portone.cloud/docs/getting-started-2)
 
 <Callout title="참고사항" content="카드사/서비스 원천사 심사시 일본어 사이트와 일본 결제서비스 연동이 되어 있어야 심사가 가능한 부분 참고 부탁드립니다." icon="💡" />
 

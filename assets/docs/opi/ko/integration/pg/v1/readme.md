@@ -14,7 +14,7 @@ versionVariants:
 
 [나이스정보통신 (신모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/nice-v2/readme)
 
-[(구) 나이스정보통신](https://developers.portone.io/opi/ko/integration/pg/v1/nice)
+[나이스정보통신 (구모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/nice)
 
 [NHN KCP](https://developers.portone.io/opi/ko/integration/pg/v1/nhn-kcp/readme)
 
@@ -38,9 +38,11 @@ versionVariants:
 
 [KSNET](https://developers.portone.io/opi/ko/integration/pg/v1/ksnet/readme)
 
-[이지페이(KICC)](https://developers.portone.io/opi/ko/integration/pg/v1/kicc)
+[이지페이(KICC) (구모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/kicc)
 
 [웰컴페이먼츠](https://developers.portone.io/opi/ko/integration/pg/v1/welcome/readme)
+
+[갤럭시아머니트리](https://developers.portone.io/opi/ko/integration/pg/v1/galaxia)
 
 ## 국내 간편결제
 
@@ -71,3 +73,7 @@ versionVariants:
 [페이팔(Express Checkout)](https://developers.portone.io/opi/ko/integration/pg/v1/paypal)
 
 [페이레터 해외결제](https://developers.portone.io/opi/ko/integration/pg/v1/payletter-global)
+
+[이지페이(KICC) 해외결제](https://developers.portone.io/opi/ko/integration/pg/v1/kicc-v2)
+
+[KG이니시스 일본결제](https://developers.portone.io/opi/ko/integration/pg/v1/inicis-jp)

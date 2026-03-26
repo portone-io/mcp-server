@@ -31,4 +31,4 @@ datetime: 2025-07-04T04:49:26.343Z
 
 이처럼 ‘파트너’ 는 업종 및 플랫폼 별로 상이한 명칭으로 불릴 수 있으며, 포트원에서는 이를 정산의 수취 주체로 통일하여 ‘파트너’ 라는 용어로 사용하고 있습니다.\
 \
-[파트너 정산 도입문의하기](https://go.portone.io/platform-inquiry2?_gl=1*1og5g8r*_gcl_aw*R0NMLjE3NDk0NTc0NzEuQ2owS0NRandqSnJDQmhDWEFSSXNBSTV4NjZVN1VESVphb2NQVldJeGZDbUxvWmJCcWdqQnhoeHB5Mlk2U0xxT19xRzc3bGVCWVU5X0g4a2FBdERqRUFMd193Y0I.*_gcl_au*NTIyMDIxMDYwLjE3NDkwMjMzNTAuNDQzMjk4NjQ5LjE3NTA3MzQzOTIuMTc1MDczNDM5Mg)
+[파트너 정산 도입문의하기](https://inquiry.portone.io/fs)

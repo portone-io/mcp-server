@@ -4,7 +4,7 @@ description: PortOne 개발자센터 웹사이트 내 존재하는 문서들의 
 targetVersions:
   - v1
   - v2
-date: 2025-12-16
+date: 2026-03-26
 author: PortOne
 ---
 
@@ -78,28 +78,32 @@ author: PortOne
 ### V2 문서 통합 가이드
 
 - [스마트 라우팅](https://developers.portone.io/opi/ko/console/guide/smartrouting): 포트원 스마트 라우팅을 사용하기 위한 그룹 설정을 관리할 수 있습니다. 관리자콘솔 내 스마트 라우팅 그룹 설정 방법을 안내합니다.
-- [컨펌 프로세스](https://developers.portone.io/opi/ko/extra/confirm-process/readme-v2): 결제 승인의 주체를 고객사 서버로 가져갈 수 있는 서비스입니다.
+- [컨펌 프로세스](https://developers.portone.io/opi/ko/extra/confirm-process/readme-v2): 결제 승인 직전에 고객사 측에 결제 의사를 최종적으로 확인하는 기능입니다.
 - [본인인증 연동하기](https://developers.portone.io/opi/ko/extra/identity-verification/readme-v2): 포트원을 이용하여 간편하게 본인인증을 연동하는 방법을 확인합니다.
 - [수동 승인](https://developers.portone.io/opi/ko/extra/manual-confirm/readme-v2): 고객사 서버에서 API를 호출하여 결제를 승인하는 연동 방식입니다.
 - [결제취소(환불) 연동하기](https://developers.portone.io/opi/ko/integration/cancel/v2/readme): 포트원 V2 결제취소 API를 이용한 결제취소 방법을 안내합니다.
 - [다날 본인인증](https://developers.portone.io/opi/ko/integration/pg/v2/danal-identity-verification): 다날 본인인증 연동 방법을 안내합니다.
 - [엑심베이](https://developers.portone.io/opi/ko/integration/pg/v2/eximbay-v2): 엑심베이 결제 연동 방법을 안내합니다.
+- [갤럭시아머니트리](https://developers.portone.io/opi/ko/integration/pg/v2/galaxia): 갤럭시아머니트리 결제 연동 방법을 안내합니다.
 - [KG이니시스 일본결제](https://developers.portone.io/opi/ko/integration/pg/v2/inicis-jp): KG이니시스 일본결제 연동 방법을 안내합니다.
 - [KG이니시스 통합인증](https://developers.portone.io/opi/ko/integration/pg/v2/inicis-unified-identity-verification): KG이니시스 통합인증 연동 방법을 안내합니다.
 - [KG이니시스](https://developers.portone.io/opi/ko/integration/pg/v2/inicis-v2): KG이니시스 결제 연동 방법을 안내합니다.
 - [카카오페이](https://developers.portone.io/opi/ko/integration/pg/v2/kakaopay): 카카오페이 간편결제 연동 방법을 안내합니다.
 - [KCP 본인인증](https://developers.portone.io/opi/ko/integration/pg/v2/kcp-v2-identity-verification): KCP 본인인증 연동 방법을 안내합니다.
 - [NHN KCP](https://developers.portone.io/opi/ko/integration/pg/v2/kcp-v2): NHN KCP 연동 방법을 안내합니다.
+- [이지페이(KICC) 해외결제](https://developers.portone.io/opi/ko/integration/pg/v2/kicc-v2): 이지페이(KICC) 해외결제 연동 방법을 안내합니다.
 - [한국결제네트웍스(KPN)](https://developers.portone.io/opi/ko/integration/pg/v2/kpn): 한국결제네트웍스(KPN) 결제 연동 방법을 안내합니다.
 - [KSNET](https://developers.portone.io/opi/ko/integration/pg/v2/ksnet): KSNET 결제 연동 방법을 안내합니다.
 - [네이버페이 (결제형)](https://developers.portone.io/opi/ko/integration/pg/v2/naverpay): 네이버페이 간편결제 연동 방법을 안내합니다.
 - [나이스정보통신](https://developers.portone.io/opi/ko/integration/pg/v2/nice-v2): 나이스정보통신 결제 연동 방법을 안내합니다.
 - [페이레터 해외결제](https://developers.portone.io/opi/ko/integration/pg/v2/payletter-global): 페이레터 해외결제 연동 방법을 안내합니다.
+- [페이먼트월](https://developers.portone.io/opi/ko/integration/pg/v2/paymentwall): 페이먼트월 결제 연동 방법을 안내합니다.
 - [페이팔](https://developers.portone.io/opi/ko/integration/pg/v2/paypal-v2): 페이팔 결제 연동 방법을 안내합니다.
 - [결제대행사 선택하여 연동하기](https://developers.portone.io/opi/ko/integration/pg/v2/readme): 각 PG사별 결제 연동 방법을 확인할 수 있습니다.
 - [스마트로](https://developers.portone.io/opi/ko/integration/pg/v2/smartro-v2): 스마트로 결제 연동 방법을 안내합니다.
 - [토스페이](https://developers.portone.io/opi/ko/integration/pg/v2/tosspay-v2): 토스페이 간편결제 연동 방법을 안내합니다.
 - [토스페이먼츠](https://developers.portone.io/opi/ko/integration/pg/v2/tosspayments): 토스페이먼츠 결제 연동 방법을 안내합니다.
+- [Triple-A](https://developers.portone.io/opi/ko/integration/pg/v2/triple-a): Triple-A 결제 연동 방법을 안내합니다.
 - [웰컴페이먼츠](https://developers.portone.io/opi/ko/integration/pg/v2/welcome): 웰컴페이먼츠 결제 연동 방법을 안내합니다.
 - [1. 빌링키 발급하기](https://developers.portone.io/opi/ko/integration/start/v2/billing/issue): 결제창 또는 API를 이용하여 빌링키를 발급할 수 있습니다.
 - [2. 결제 요청하기](https://developers.portone.io/opi/ko/integration/start/v2/billing/payment): 포트원 빌링키 결제 API를 사용해 바로 결제를 요청합니다.
@@ -131,7 +135,7 @@ author: PortOne
 - [결제 연동 하기](https://developers.portone.io/opi/ko/console/guide/connect)
 - [결제 내역](https://developers.portone.io/opi/ko/console/guide/list): 결제가 이루어진 거래내역을 조회할 수 있는 메뉴입니다.
 - [복수 PG설정 및 사용하기](https://developers.portone.io/opi/ko/console/pg): 복수 PG를 사용하는 경우 설정방법을 확인할 수 있습니다.
-- [컨펌 프로세스](https://developers.portone.io/opi/ko/extra/confirm-process/readme-v1): 결제요청의 주체를 고객사 서버로 가져갈수 있는 서비스입니다.
+- [컨펌 프로세스](https://developers.portone.io/opi/ko/extra/confirm-process/readme-v1): 결제 승인 직전에 고객사 측에 결제 의사를 최종적으로 확인하는 기능입니다.
 - [통합인증 준비하기](https://developers.portone.io/opi/ko/extra/identity-verification/v1/all/0): 통합인증 연동을 시작하기 위한 준비작업을 소개합니다.
 - [통합인증 요청하기](https://developers.portone.io/opi/ko/extra/identity-verification/v1/all/1): 통합인증 페이지를 호출하는 방법을 확인합니다.
 - [인증 완료정보 전달하기](https://developers.portone.io/opi/ko/extra/identity-verification/v1/all/2): 통합인증 이후 획득된 정보를 처리하는 방법을 안내합니다.
@@ -171,12 +175,15 @@ author: PortOne
 - [키움페이 (다우데이타/페이조아)](https://developers.portone.io/opi/ko/integration/pg/v1/daou/readme): 키움페이 연동 방법을 안내합니다.
 - [키움페이 유의사항](https://developers.portone.io/opi/ko/integration/pg/v1/daou/undefined): 결제 연동시 유의사항을 안내합니다.
 - [엑심베이](https://developers.portone.io/opi/ko/integration/pg/v1/eximbay): 엑심베이 결제 연동 방법을 안내합니다.
+- [갤럭시아머니트리](https://developers.portone.io/opi/ko/integration/pg/v1/galaxia): 갤럭시아머니트리 연동 방법을 안내합니다.
+- [KG이니시스 일본결제](https://developers.portone.io/opi/ko/integration/pg/v1/inicis-jp): KG이니시스 일본결제 연동 방법을 안내합니다.
 - [KG이니시스](https://developers.portone.io/opi/ko/integration/pg/v1/inicis): KG이니시스 결제창 연동 가이드입니다.
 - [카카오페이](https://developers.portone.io/opi/ko/integration/pg/v1/kakaopay): 카카오페이 연동 방법을 안내합니다.
 - [NHN KCP(신모듈) 본인인증 연동하기](https://developers.portone.io/opi/ko/integration/pg/v1/kcp-v2-identity-verification): NHN KCP(신모듈) 본인인증 연동 방법을 안내합니다.
 - [KG모빌리언스 (신모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/kg-mobilians-v2): KG모빌리언스 (신모듈) 결제 연동 방법을 안내합니다.
 - [KG모빌리언스 (구모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/kg): KG모빌리언스 (구모듈) 결제 연동 방법을 안내합니다.
-- [이지페이(KICC)](https://developers.portone.io/opi/ko/integration/pg/v1/kicc): 이지페이(KICC) 결제창 연동 방법을 안내합니다.
+- [이지페이(KICC) 해외결제](https://developers.portone.io/opi/ko/integration/pg/v1/kicc-v2): 이지페이(KICC) 해외결제 결제 연동 방법을 안내합니다.
+- [이지페이(KICC) (구모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/kicc): 이지페이(KICC) (구모듈) 결제창 연동 방법을 안내합니다.
 - [KSNET](https://developers.portone.io/opi/ko/integration/pg/v1/ksnet/readme): KSNET 결제창 연동 가이드입니다.
 - [연동 주의사항](https://developers.portone.io/opi/ko/integration/pg/v1/ksnet/warning): KSNET 연동 시 주의사항을 확인할 수 있습니다.
 - [네이버페이(결제형)](https://developers.portone.io/opi/ko/integration/pg/v1/naver): 네이버페이 결제형 연동 방법을 안내합니다.
@@ -187,7 +194,7 @@ author: PortOne
 - [빌링키 발급 / API 연동 유의사항](https://developers.portone.io/opi/ko/integration/pg/v1/nice-v2/billing-api-caution): (신)나이스정보통신 비인증 결제 연동 유의사항을 소개합니다.
 - [일반결제 연동 유의사항](https://developers.portone.io/opi/ko/integration/pg/v1/nice-v2/payment-caution): 나이스정보통신(신모듈) 일반결제 연동 유의사항을 소개합니다.
 - [나이스정보통신 (신모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/nice-v2/readme): 나이스정보통신 연동 방법을 안내합니다.
-- [(구) 나이스정보통신](https://developers.portone.io/opi/ko/integration/pg/v1/nice): (구) 나이스정보통신 결제창 연동 가이드를 안내합니다.
+- [나이스정보통신 (구모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/nice): 나이스정보통신 (구모듈) 결제창 연동 가이드를 안내합니다.
 - [페이코](https://developers.portone.io/opi/ko/integration/pg/v1/payco): 페이코 결제 연동방법을 안내합니다.
 - [페이레터 해외결제](https://developers.portone.io/opi/ko/integration/pg/v1/payletter-global): 페이레터 해외결제 연동 방법을 안내합니다.
 - [페이먼트월](https://developers.portone.io/opi/ko/integration/pg/v1/paymentwall): 페이먼트월 결제창 연동가이드를 확인 합니다.
@@ -328,6 +335,8 @@ author: PortOne
 - [파트너 정산 자동화 2025-08-21](https://developers.portone.io/release-notes/platform/2025-08-21)
 - [파트너 정산 자동화 2025-08-28](https://developers.portone.io/release-notes/platform/2025-08-28)
 - [파트너 정산 자동화 2025-10-02](https://developers.portone.io/release-notes/platform/2025-10-02)
+- [파트너 정산 자동화 2026-02-19](https://developers.portone.io/release-notes/platform/2026-02-19)
+- [파트너 정산 자동화 2026-03-06](https://developers.portone.io/release-notes/platform/2026-03-06)
 
 ## 블로그
 
@@ -338,3 +347,4 @@ author: PortOne
 - [Data Evolution: The Shift from AWS DMS to GCP Datastream](https://developers.portone.io/blog/posts/2024-04/gcp-datastream): Gives an overview of the PortOne Data Infrastructure and the migration story from AWS DMS to GCP Datastream.
 - [Solid로 간결하게 고성능 웹앱 만들기](https://developers.portone.io/blog/posts/2024-04/solid): 포트원에서 사용하는 프론트엔드 웹 프레임워크 중 하나인 Solid에 대해 소개하고, 포트원 내에서의 활용 사례를 다룹니다.
 - [포트원 V2 이야기 - Event Sourcing으로 결제 시스템 만들기 (기본편)](https://developers.portone.io/blog/posts/2024-07/v2-event-sourcing-basic): 포트원 V2 시스템의 근간을 이루고 있는 기술 중 하나인 Event Sourcing에 대해 소개합니다.
+- [포트원 AI 챗봇이 반복되는 기술 문의를 획기적으로 단축한 비결](https://developers.portone.io/blog/posts/2025-12/portone-chatbot): 잘 만든 AI 서비스 하나로 1000개의 기술 문의를 대신한 이야기

@@ -508,6 +508,8 @@ IMP.request_pay(
       - Leave : 간편결제+선불머니 서비스 해지 (사전 협의 필요)
       - PrepaidRefundAccount: 선불머니 환급계좌 등록 및 변경 (사전 협의 필요)
       - PrepaidRefund: 선불머니 환급 요청 (사전 협의 필요)
+      - PrepaidLimitRaise: 선불머니 보유한도 상향 요청 (사전 협의 필요)
+      - PrepaidKYC: 선불머니 고객 확인 재이행 (사전 협의 필요)
 
     - encryptedCI: string
 
@@ -676,6 +678,7 @@ PIN 초기화 이후 [빌링키 삭제 API](https://developers.portone.io/api/re
 - `Leave`: 간편결제+선불머니 서비스 해지 (선불머니 환급 완료 후 진행 가능)
 - `PrepaidRefundAccount`: 선불머니 환급계좌 등록 및 변경
 - `PrepaidRefund`: 선불머니 환급 요청
+- `PrepaidLimitRaise`: 선불머니 보유한도 상향 요청
 
 </details>
 

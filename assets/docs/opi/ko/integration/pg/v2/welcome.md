@@ -942,7 +942,7 @@ const issueResponse = await axios({
       **발급 은행**
 
       - 은행코드는 ENUM으로 정의되어 있습니다.
-      - [BANK ENUM 바로가기](https://developers.portone.io/api/rest-v2/type-def#Bank)
+      - [BANK ENUM 바로가기](https://developers.portone.io/api/rest-v2/payment#Bank)
 
     - expiry: object
 

@@ -1,6 +1,6 @@
 ---
-title: (구) 나이스정보통신
-description: (구) 나이스정보통신 결제창 연동 가이드를 안내합니다.
+title: 나이스정보통신 (구모듈)
+description: 나이스정보통신 (구모듈) 결제창 연동 가이드를 안내합니다.
 targetVersions:
   - v1
 ---

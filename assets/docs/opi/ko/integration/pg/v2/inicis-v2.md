@@ -453,7 +453,7 @@ KG이니시스의 경우 아래 간편결제사를 지원합니다. `easyPay.eas
 
 - 카카오페이: `KAKAOPAY`
 - 네이버페이: `NAVERPAY`
-- 삼성페이: `SAUMSUNGPAY`
+- 삼성페이: `SAMSUNGPAY`
 - ssg페이: `SSGPAY`
 - 애플페이: `APPLEPAY`
 - lpay: `LPAY`
@@ -1025,7 +1025,7 @@ const issueResponse = await axios({
       **발급 은행**
 
       - 은행코드는 ENUM으로 정의되어 있습니다.
-      - [BANK ENUM 바로가기](https://developers.portone.io/api/rest-v2/type-def#Bank)
+      - [BANK ENUM 바로가기](https://developers.portone.io/api/rest-v2/payment#Bank)
 
     - expiry: object
 

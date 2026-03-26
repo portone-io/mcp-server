@@ -25,4 +25,4 @@ datetime: 2025-07-04T02:28:41.897Z
 
 단, 주문 내역 기반 자동 정산금 계산이 필요한 경우에는 API 연동이 필요합니다.
 
-[노코드로 도입문의하기](https://go.portone.io/platform-inquiry2?_gl=1*1og5g8r*_gcl_aw*R0NMLjE3NDk0NTc0NzEuQ2owS0NRandqSnJDQmhDWEFSSXNBSTV4NjZVN1VESVphb2NQVldJeGZDbUxvWmJCcWdqQnhoeHB5Mlk2U0xxT19xRzc3bGVCWVU5X0g4a2FBdERqRUFMd193Y0I.*_gcl_au*NTIyMDIxMDYwLjE3NDkwMjMzNTAuNDQzMjk4NjQ5LjE3NTA3MzQzOTIuMTc1MDczNDM5Mg)
+[노코드로 도입문의하기](https://inquiry.portone.io/fs)

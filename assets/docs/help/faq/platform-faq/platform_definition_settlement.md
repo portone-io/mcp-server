@@ -26,4 +26,4 @@ datetime: 2025-07-04T04:49:26.343Z
 - 주체: 플랫폼 사업자 → 파트너(하위셀러)
 - 성격: 플랫폼의 비즈니스 정책에 따라 중개수수료, 할인 정책, 정산 주기 등을 자유롭게 설정하여 파트너 별 수익금을 산정합니다.
 
-[파트너 정산 도입문의하기](https://go.portone.io/platform-inquiry2?_gl=1*1og5g8r*_gcl_aw*R0NMLjE3NDk0NTc0NzEuQ2owS0NRandqSnJDQmhDWEFSSXNBSTV4NjZVN1VESVphb2NQVldJeGZDbUxvWmJCcWdqQnhoeHB5Mlk2U0xxT19xRzc3bGVCWVU5X0g4a2FBdERqRUFMd193Y0I.*_gcl_au*NTIyMDIxMDYwLjE3NDkwMjMzNTAuNDQzMjk4NjQ5LjE3NTA3MzQzOTIuMTc1MDczNDM5Mg)
+[파트너 정산 도입문의하기](https://inquiry.portone.io/fs)

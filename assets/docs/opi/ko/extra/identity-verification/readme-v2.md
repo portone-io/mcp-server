@@ -162,7 +162,7 @@ app.post("/identity-verifications", async (req, res) => {
 - `ci`: 연계 정보(Connecting Information).
   - 사람마다 고유하고 서비스별로 달라지지 않기 때문에, 서비스 간 연계에 사용할 수 있음.
   - 다날의 경우 항상 제공.
-  - KCP의 경우 항상 제공.
+  - KCP의 경우 가맹점 설정에 따라 제공.
   - KG이니시스의 경우 카카오를 제외한 인증 업체에서 항상 제공. 카카오의 경우 별도 서류 작성이 필요합니다.
 
 - `di`: 중복 가입 확인 정보(Duplication Information).

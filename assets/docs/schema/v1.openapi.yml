@@ -92,15 +92,11 @@ paths:
           type: string
           x-portone-name: 계정 비밀번호
           x-portone-description: 베네피아 계정 비밀번호
-        - name: pg
+        - name: channel_key
           in: formData
-          description: |-
-            KCP PG설정이 2개 이상인 경우, 조회가 진행되길 원하는 KCP사이트코드를 지정하실 수 있습니다.
-                 pg 파라메터는 <b>kcp.{KCP사이트코드}</b> 형식의 문자열입니다. pg 파라메터가 누락되는 경우 PG설정 내 KCP설정을 자동 탐색하여 처리하게 됩니다.
-          required: false
+          description: 베네피아 포인트 조회 시 사용할 채널의 채널키
+          required: true
           type: string
-          x-portone-name: PG 구분코드
-          x-portone-description: 사용하고자 하는 PG사 구분코드
       responses:
         '200':
           description: 베네피아 포인트 조회 완료
@@ -215,16 +211,11 @@ paths:
           maxLength: 8
           x-portone-name: 주문자 우편번호
           x-portone-description: 주문자 우편번호
-        - name: pg
+        - name: channel_key
           in: formData
-          description: |-
-            PG 구분코드<br>
-                 KCP PG설정이 2개 이상인 경우, 결제가 진행되길 원하는 KCP사이트코드를 지정하실 수 있습니다.
-                 pg 파라메터는 <b>kcp.{KCP사이트코드}</b> 형식의 문자열입니다. pg 파라메터가 누락되는 경우 PG설정 내 KCP설정을 자동 탐색하여 처리하게 됩니다.
-          required: false
+          description: 베네피아 포인트 결제 시 사용할 채널의 채널키
+          required: true
           type: string
-          x-portone-name: PG 구분코드
-          x-portone-description: 사용하고자 하는 PG사 구분코드
         - name: notice_url
           in: formData
           description: 선언되지 않으면 포트원 관리자 페이지에 정의된 Notification URL값을 사용
@@ -455,7 +446,7 @@ paths:
           in: formData
           description: >-
             PG사 구분자<br>다날 상점아이디를 2개 이상 동시에 사용하시려는 경우 설정하시면 됩니다.
-            <b>danal.{상점아이디}</b> 형태로 지정. Deprecated 되었으므로 channelKey 파라미터를
+            <b>danal.{상점아이디}</b> 형태로 지정. Deprecated 되었으므로 channel_key 파라미터를
             사용해주세요.
           required: false
           type: string
@@ -464,18 +455,18 @@ paths:
             <p>본인인증을 요청하고자 하는 PG사 구분자</p>
           x-portone-description: >-
             다날 상점아이디를 2개 이상 동시에 사용하시려는 경우 설정하시면 됩니다. **danal.{상점아이디}** 형태로 지정.
-            Deprecated 되었으므로 channelKey 파라미터를 사용해주세요.
-        - name: channelKey
+            Deprecated 되었으므로 channel_key 파라미터를 사용해주세요.
+        - name: channel_key
           in: formData
           description: >-
-            본인인증을 요청하고자 하는 PG사의 채널키로 kcp(신모듈) 본인인증을 사용하시려는 경우 반드시 channelKey를
+            본인인증을 요청하고자 하는 PG사의 채널키로 kcp(신모듈) 본인인증을 사용하시려는 경우 반드시 channel_key를
             입력해야합니다.
           required: true
           type: string
           x-portone-name: 채널키
           x-portone-summary: |
             <p>본인인증을 요청하고자 하는 PG사의 채널키</p>
-          x-portone-description: kcp(신모듈) 본인인증을 사용하시려는 경우 반드시 channelKey를 입력해야합니다.
+          x-portone-description: kcp(신모듈) 본인인증을 사용하시려는 경우 반드시 channel_key를 입력해야합니다.
         - name: verification_method
           in: formData
           description: |-
@@ -906,7 +897,7 @@ paths:
           maxLength: 8
           x-portone-name: 카드소유자 우편번호
           x-portone-description: 고객(카드소지자) 우편번호
-        - name: channelGroupId
+        - name: channel_group_id
           in: formData
           description: >-
             <ul><li>관리자 콘솔의 [연동관리] -> [스마트 라우팅] 메뉴에서 확인할 수 있습니다.</li> <li> 스마트
@@ -920,7 +911,7 @@ paths:
       responses:
         '200':
           description: >-
-            정상 등록 시, 일반 빌링키 발급은 CustomerResponse를 반환하며, channelGroupId를 이용한 슈퍼
+            정상 등록 시, 일반 빌링키 발급은 CustomerResponse를 반환하며, channel_group_id를 이용한 슈퍼
             빌링키 발급은 SuperBillingKeyResponse를 반환합니다.
           schema:
             properties:
@@ -1196,6 +1187,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - name: channel_key
+          in: formData
+          description: 편의점결제 수납번호 발급 시 사용할 채널의 채널키
+          required: true
+          type: string
         - name: merchant_uid
           in: formData
           description: |-
@@ -1283,15 +1279,6 @@ paths:
           maxLength: 8
           x-portone-name: 주문자 우편번호
           x-portone-description: 주문자의 우편번호
-        - name: pg
-          in: formData
-          description: >-
-            PG 구분코드. 갤럭시아컴즈 상점아이디를 2개 이상 동시에 사용하시려는 경우 설정하시면 됩니다.
-            <b>galaxia.{상점아이디}</b> 형태로 지정
-          required: false
-          type: string
-          x-portone-name: PG 구분코드
-          x-portone-description: 결제 하고자 하는 PG사 구분코드
         - name: confirm_url
           in: formData
           description: |-
@@ -3012,6 +2999,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - name: channel_key
+          in: formData
+          description: 구매평 조회 시 사용할 네이버페이 주문형 채널의 채널키
+          required: true
+          type: string
         - name: from
           in: query
           description: 조회기간 시작 unix timestamp
@@ -4765,6 +4757,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - name: channel_key
+          in: formData
+          description: 현금영수증 발급 시 사용할 채널의 채널키
+          required: true
+          type: string
         - name: merchant_uid
           in: path
           description: >-
@@ -4939,19 +4936,6 @@ paths:
           x-portone-summary: |
             <p>현금영수증 발행금액 중 면세금액으로 지정하지 않으면 0원으로 적용</p>
           x-portone-description: '발행금액의 1/11 이 부가세로 자동 적용되므로, 부가세금액 조정을 위해서는 tax_free 파라메터를 활용해주세요.'
-        - name: pg
-          in: formData
-          description: |-
-            PG설정이 2개 이상인 경우, 현금영수증 발행처리를 원하는 PG사를 지정하실 수 있습니다.
-                 pg 파라메터는 <b>{PG사}</b> 혹은 <b>{PG사}.{PG상점아이디}</b> 형태의 문자열입니다. <br>
-                 지정하지 않거나 유효하지 않은 값이 전달되면 기본PG설정된 값을 이용해 결제하게 됩니다. <br>
-                 <ul><li>나이스페이먼츠, KCP 2가지 PG설정이 되어있다면, pg 파라메터로 <b>nice</b> 또는 <b>kcp</b>로 구분 가능</li>
-                 <li>나이스페이먼츠로부터 2개 이상의 상점아이디를 발급받았다면, <b>nice.MID1</b> 또는 <b>nice.MID2</b>로 구분 가능</li></ul>
-          required: false
-          type: string
-          maxLength: 80
-          x-portone-name: PG 구분코드
-          x-portone-description: 현금영수증을 발행할 PG사 구분코드
         - name: vat_amount
           in: formData
           description: 부가세 지정 고객사에 한해 현금영수증 발행 금액 중 부가세 금액으로 부가세를 지정할 수 있습니다.
@@ -5587,6 +5571,17 @@ paths:
           x-portone-description: >-
             `promotion-id-`로 시작하며, 프로모션 아이디에 설정된 할인 내용을 적용하여 결제합니다. 비인증 결제 경우
             빌링키 발급시 저장된 마스킹된 카드번호를 통해 프로모션 적용 여부가 결정됩니다.
+        - name: bypass
+          in: formData
+          description: >-
+            JSON string 형식의 PG사별로 특화된 파라미터. <br>전달 한 값은 가공 없이 그대로 PG사로 전달 됩니다.
+            <br>각 PG사별 스펙은 PG사별 연동 문서 참고해주세요
+          required: false
+          type: string
+          x-portone-name: bypass 데이터
+          x-portone-summary: |
+            <p>JSON string 형식의 PG사별로 특화된 파라미터</p>
+          x-portone-description: 전달 한 값은 가공 없이 그대로 PG사로 전달 됩니다. 각 PG사별 스펙은 PG사별 연동 문서 참고해주세요
       responses:
         '200':
           description: 정상 결제
@@ -5939,7 +5934,7 @@ paths:
           x-portone-description: >-
             `promotion-id-`로 시작하며, 프로모션 아이디에 설정된 할인 내용을 적용하여 결제합니다. 비인증 결제 경우
             빌링키 발급시 저장된 마스킹된 카드번호를 통해 프로모션 적용 여부가 결정됩니다.
-        - name: channelKey
+        - name: channel_key
           in: formData
           description: >-
             <ul><li>관리자 콘솔의 [연동관리] -> [연동 정보] 메뉴에서 확인할 수 있습니다.</li><li>슈퍼 빌링키
@@ -6421,7 +6416,7 @@ paths:
              <li>schedules의 상세정보(선택정보) <b> buyer_name, buyer_email, buyer_tel, buyer_addr, buyer_postcode</b> 누락시,<br>
              <b>customer_uid</b>에 해당되는 <b>customer_name, customer_email, customer_tel, customer_addr, customer_postcode</b> 정보로 대체됩니다.(둘 다 입력시 buyer_* 정보를 우선합니다)</li>
              <li>슈퍼빌링키의 customer_uid로 요청하는 경우, 결제 시점 해당 스마트 라우팅 그룹 내 채널 비율 설정에 따라 결제를 요청합니다.
-             특정 빌링키로 결제를 요청하려면 channelKey에 결제를 희망하는 빌링키의 채널 키를 입력해 주세요.</li></ul>
+             특정 빌링키로 결제를 요청하려면 channel_key에 결제를 희망하는 빌링키의 채널 키를 입력해 주세요.</li></ul>
       operationId: schedule
       consumes:
         - application/json
@@ -6542,47 +6537,20 @@ paths:
           x-portone-per-pg:
             paymentwall:
               required: true
-        - name: pg
+        - name: channel_key
           in: formData
           description: >-
-            신규 customer_uid를 등록하는 경우에만 유효합니다.(기존에 등록된 customer_uid로만 schedule 하는
-            경우에는 pg파라메터 적용되지 않습니다.)<br><br>API 방식 비인증 PG설정이 2개 이상인 경우, 결제가 진행되길
-            원하는 PG사를 지정하실 수 있습니다. pg 파라메터는 <b>{PG사}</b> 혹은
-            <b>{PG사}.{PG상점아이디}</b> 형태의 문자열입니다. <br>지정하지 않거나 유효하지 않은 값이 전달되면
-            기본PG설정된 값을 이용해 결제하게 됩니다. <br><ul><li>나이스페이먼츠, KCP 2가지 PG설정이 되어있다면,
-            pg 파라메터로 <b>nice</b> 또는 <b>kcp</b>로 구분 가능</li><li>나이스페이먼츠로부터 2개 이상의
-            상점아이디를 발급받았다면, <b>nice.MID1</b> 또는 <b>nice.MID2</b>로 구분 가능</li></ul>
-          required: false
-          type: string
-          maxLength: 80
-          x-portone-name: pg 구분코드
-          x-portone-summary: |
-            <p>결제 예약을 요청할 PG사 구분코드</p>
-          x-portone-description: >-
-            신규 customer_uid를 등록하는 경우에만 유효합니다.(기존에 등록된 customer_uid로만 schedule 하는
-            경우에는 pg파라메터 적용되지 않습니다.)
-
-
-            API 방식 비인증 PG설정이 2개 이상인 경우, 결제가 진행되길 원하는 PG사를 지정하실 수 있습니다. pg 파라메터는
-            **{PG사}** 혹은 **{PG사}.{PG상점아이디}** 형태의 문자열입니다.
-
-
-            지정하지 않거나 유효하지 않은 값이 전달되면 기본PG설정된 값을 이용해 결제하게 됩니다.
-
-            - 나이스페이먼츠, KCP 2가지 PG설정이 되어있다면, pg 파라메터로 **nice** 또는 **kcp**로 구분 가능
-
-            - 나이스페이먼츠로부터 2개 이상의 상점아이디를 발급받았다면, **nice.MID1** 또는 **nice.MID2**로
-            구분 가능
-        - name: channelKey
-          in: formData
-          description: >-
-            <ul><li>관리자 콘솔의 [연동관리] -> [연동 정보] 메뉴에서 확인할 수 있습니다.</li><li>슈퍼 빌링키
-            결제시, 결제 채널을 특정하고 싶을 때 명시할 수 있습니다.</li></ul>
+            <ul><li>관리자 콘솔의 [연동관리] -> [연동 정보] 메뉴에서 확인할 수 있습니다.</li><li>이미 발급된
+            빌링키가 존재하고 해당 빌링키가 슈퍼 빌링키인 경우 특정 채널에서 발급된 빌링키를 선택하려는 경우
+            사용합니다.</li><li>발급된 빌링키가 없는 경우 빌링키 발급 시 사용할 채널을 지정할 때
+            사용합니다.</li></ul>
           required: false
           type: string
           maxLength: 55
           x-portone-name: 채널 키
-          x-portone-description: '다수 채널에 대해 발급된 빌링키에 대해, 결제 채널을 특정하고 싶을 때 명시'
+          x-portone-description: >-
+            발급된 빌링키가 없는 경우 빌링키를 발급 시 사용할 채널 지정, 이미 발급된 빌링키가 있고 해당 빌링키가 슈퍼 빌링키인
+            경우 특정 채널에서 발급된 빌링키를 지정
         - name: schedules
           in: formData
           description: >-
@@ -7178,6 +7146,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - name: channel_key
+          in: formData
+          description: 가상계좌 발급 시 사용할 채널의 채널키
+          required: true
+          type: string
         - name: merchant_uid
           in: formData
           description: >-
@@ -7399,25 +7372,6 @@ paths:
           maxLength: 8
           x-portone-name: 주문자 우편번호
           x-portone-description: 가상계좌 발급을 위한 결제건의 주문자 우편번호
-        - name: pg
-          in: formData
-          description: |-
-            PG사 구분자.<br>
-                 관리자콘솔 API 방식 비인증 PG설정이 2개 이상인 경우 필수적으로 기재해야 하는 항목입니다.
-                 동일 PG사에 두개의 MID 를 설정한 경우 아래 양식으로 기재 합니다.
-                 <b>{PG사}.{PG상점아이디}</b>
-                 <ul><li>나이스페이먼츠, KCP 2가지 PG설정이 되어있다면, pg 파라미터로 nice 또는 kcp로 구분 가능
-                 </li><li>나이스페이먼츠로부터 2개 이상의 상점아이디를 발급받았다면, nice.MID1 또는 nice.MID2로 구분 가능</li></ul>
-                 (단, **이니시스 경우 필수값임** `inicis.{상점아이디}` 형태로 지정)
-          required: false
-          type: string
-          x-portone-name: PG사 구분코드
-          x-portone-description: 가상계좌 발급 할 PG사 구분코드
-          x-portone-per-pg:
-            html5_inicis:
-              required: true
-              description: |
-                <p><strong>inicis.{상점아이디}</strong> 형태로 지정 바랍니다.</p>
         - name: notice_url
           in: formData
           description: |-

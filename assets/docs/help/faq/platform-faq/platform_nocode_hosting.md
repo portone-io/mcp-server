@@ -17,4 +17,4 @@ datetime: 2025-07-04T02:28:39.473Z
 
 그러나, 관리자 콘솔을 통해 파트너 관리, 정산 처리, 송금 등 대부분의 기능을 노코드 방식으로 이용할 수 있어 개발 리소스 없이도 솔루션을 도입하고 운영할 수 있습니다.
 
-[노코드 도입문의하기](https://go.portone.io/platform-inquiry2?_gl=1*1og5g8r*_gcl_aw*R0NMLjE3NDk0NTc0NzEuQ2owS0NRandqSnJDQmhDWEFSSXNBSTV4NjZVN1VESVphb2NQVldJeGZDbUxvWmJCcWdqQnhoeHB5Mlk2U0xxT19xRzc3bGVCWVU5X0g4a2FBdERqRUFMd193Y0I.*_gcl_au*NTIyMDIxMDYwLjE3NDkwMjMzNTAuNDQzMjk4NjQ5LjE3NTA3MzQzOTIuMTc1MDczNDM5Mg)
+[노코드 도입문의하기](https://inquiry.portone.io/fs)
