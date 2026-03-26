@@ -1,5 +1,19 @@
 # @portone/mcp-server
 
+## 0.15.0
+
+### Minor Changes
+
+- c16b2d8: node 버전 업데이트
+- 2a445e3: 문서 검색 도구 토큰 사용량 최적화
+
+### Patch Changes
+
+- dd98a91: 문서 업데이트
+- 8ef6983: 헬프센터 URL 수정
+- db94d0d: regex search, 스키마, 코드 관련 tool의 schema 제거
+- 06a7794: server 및 mobile sdk 문서 url 수정
+
 ## 0.15.0-alpha.5
 
 ### Patch Changes
