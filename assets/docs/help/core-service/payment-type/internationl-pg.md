@@ -16,6 +16,7 @@ pgCompanies:
   - KG이니시스
   - NHN KCP
   - 페이레터
+  - KICC
 searchTags:
   - 해외카드
   - 해외결제지원
@@ -31,12 +32,13 @@ datetime: 2024-03-18T06:45:29.257Z
 
 ### **해외결제 지원 결제대행사 목록**
 
-1. **해외카드 + 현지결제 지원 결제대행사 : 페이먼트월, 페이팔, 엑심베이, 페이레터**
+1. **해외카드 + 현지결제 지원 결제대행사 : 페이먼트월, 페이팔, 엑심베이, 페이레터, 이지페이(KICC)**
 
 - [페이먼트월 해외결제 서비스 이용안내 보러가기↗](/content/paymentwall-international)
 - [페이팔 해외결제 서비스 이용안내 보러가기↗](/content/paypal-international)
 - [엑심베이 해외결제 서비스 이용안내 보러가기↗](/content/eximbay-international)
 - [페이레터 해외결제 서비스 이용안내 보러가기 ↗](https://help.portone.io/content/payletter-international)
+- [이지페이(KICC) 해외결제 서비스 이용안내 보러가기 ↗](/content/kicc-international)
 
 **2. 해외카드 지원 국내 결제대행사 :  KG이니시스, NHN KCP, 나이스정보통신, 토스페이먼츠, KSNET**
 

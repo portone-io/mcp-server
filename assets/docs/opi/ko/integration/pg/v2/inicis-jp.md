@@ -148,13 +148,13 @@ function requestPayment() {
 
     - validHours?: integer
 
-    **유효 시간**
+      **유효 시간**
 
     - dueDate?: string
 
-    **만료 시점**
+      **만료 시점**
 
-    시간은 ISO8601 형식으로 입력해야 합니다.
+      시간은 ISO8601 형식으로 입력해야 합니다.
 
 - easyPay?: object
 

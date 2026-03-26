@@ -240,7 +240,7 @@ function requestPayment() {
 {
   "bypass": {
     "kcp_v2": {
-      "site_logo": "https://portone.io/assets/portone.jpg",
+      "site_logo": "https://developers.portone.io/assets/portone.jpg",
       "skin_indx": 6,
       "shop_user_id": "user_id1",
       "site_name": "포트원 고객사"
@@ -777,7 +777,7 @@ const issueResponse = await axios({
       **발급 은행**
 
       - 은행코드는 ENUM으로 정의되어 있습니다.
-      - [BANK ENUM 바로가기](https://developers.portone.io/api/rest-v2/type-def#Bank)
+      - [BANK ENUM 바로가기](https://developers.portone.io/api/rest-v2/payment#Bank)
 
     - expiry: object
 

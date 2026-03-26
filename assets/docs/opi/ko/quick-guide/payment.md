@@ -1773,7 +1773,7 @@ ni @portone/browser-sdk
 
   <div class="hint" data-style="warning">
 
-  KG이니시스 결제 시 PC 환경에서는 구매자 이름, 연락처, 이메일을 필수로 입력해야 합니다.
+  KG이니시스 결제 시 구매자 이름, 전화번호, 이메일을 필수로 입력해야 합니다.
 
   </div>
 
@@ -1783,7 +1783,7 @@ ni @portone/browser-sdk
 
   <div class="hint" data-style="warning">
 
-  스마트로 결제 시 구매자 연락처를 필수로 입력해야 합니다.
+  스마트로 결제 시 구매자 전화번호를 필수로 입력해야 합니다.
 
   </div>
 
@@ -1804,7 +1804,7 @@ ni @portone/browser-sdk
   <div class="hint" data-style="warning">
 
   엑심베이의 경우 구매자 이름과 이메일을 필수로 입력해야 합니다.
-  일본 편의점 결제 사용 시 구매자 연락처를 필수로 입력해야 합니다.
+  일본 편의점 결제 사용 시 구매자 전화번호를 필수로 입력해야 합니다.
 
   </div>
 
@@ -1836,7 +1836,7 @@ ni @portone/browser-sdk
 
   - phoneNumber?: string
 
-    **구매자 연락처**
+    **구매자 전화번호**
 
   - email?: string
 
@@ -2668,7 +2668,7 @@ ni @portone/browser-sdk
 
   - phoneNumber?: string
 
-    **상점 연락처**
+    **상점 전화번호**
 
   - address?: string
 

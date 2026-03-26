@@ -92,6 +92,23 @@ IMP.request_pay(
 
   **string** 이 아닌점에 유의하세요
 
+- bypass?: object
+
+  **PG사 전용 파라미터**
+
+  - kakaopay?: object
+
+    **카카오페이 전용 파라미터**
+
+    - payment\_method\_type?: string
+
+      **사용 허용할 결제수단 지정**
+
+      - `CARD`: 카드결제만 허용
+      - `MONEY`: 포인트결제만 허용
+
+      미입력 시 사용 가능한 전체 결제수단 허용
+
 </div>
 
 <div class="tabs-content" data-title="정기결제창 요청">

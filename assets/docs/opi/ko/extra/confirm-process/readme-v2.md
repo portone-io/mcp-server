@@ -1,13 +1,13 @@
 ---
 title: 컨펌 프로세스
-description: 결제 승인의 주체를 고객사 서버로 가져갈 수 있는 서비스입니다.
+description: 결제 승인 직전에 고객사 측에 결제 의사를 최종적으로 확인하는 기능입니다.
 targetVersions:
   - v2
 versionVariants:
   v1: /opi/ko/extra/confirm-process/readme-v1
 ---
 
-**해당 서비스는 결제 승인 직전에 고객사에서 결제 의사를 최종적으로 확인하는 서비스입니다.**
+결제 승인 직전에 고객사 측에 결제 의사를 최종적으로 확인하는 기능입니다.
 
 <div class="hint" data-style="info">
 

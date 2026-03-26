@@ -6,6 +6,48 @@ targetVersions:
   - v2
 ---
 
+## AI Codemate
+
+AI Codemate 는 Claude Code를 사용하여 작업자의 프로젝트 환경을 AI를 통해 분석해 맞춤형 결제 연동 코드를 생성하고,
+기존 연동 코드를 검토하는 기능을 제공합니다.
+[(GitHub 저장소 바로가기)](https://github.com/portone-io/portone-cli)
+
+플러그인은 포트원 MCP 서버를 기반으로 공식 문서와 API 스펙을 활용하여 정확한 코드를 생성합니다.
+
+### 설치 방법
+
+Node.js 22.6.0 이상이 설치된 환경에서 다음 명령어를 실행합니다:
+
+```bash
+npx @portone/cli@latest setup
+```
+
+<div class="hint" data-style="info">
+
+명령어 실행 시 사용자의 Claude Code에 포트원 Claude 플러그인이 자동으로 등록됩니다.
+
+</div>
+
+### 사용 방법
+
+#### 결제 연동 코드 생성
+
+Claude Code에서 `/portone-integration:start` 명령어를 입력하면 대화형으로 결제 연동 코드를 생성할 수 있습니다.
+
+```bash
+/portone-integration:start                    # 대화형으로 모든 옵션 선택
+```
+
+### 지원 범위
+
+Claude Code에서 사용하는 모델이 지원하는 모든 프레임워크와 언어를 지원합니다.
+
+<div class="hint" data-style="warning">
+
+신규 프로젝트의 경우 V2 사용을 권장합니다. V1은 레거시 프로젝트 유지보수 용도로 지원됩니다.
+
+</div>
+
 ## 포트원 MCP (Model Context Protocol) 서버
 
 포트원은 쉬운 연동과 빠른 개발을 위해 MCP 서버를 제공합니다. [(GitHub 저장소 바로가기)](https://github.com/portone-io/mcp-server)

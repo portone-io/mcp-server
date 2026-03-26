@@ -1,6 +1,6 @@
 ---
-title: 이지페이(KICC)
-description: 이지페이(KICC) 결제창 연동 방법을 안내합니다.
+title: 이지페이(KICC) (구모듈)
+description: 이지페이(KICC) (구모듈) 결제창 연동 방법을 안내합니다.
 targetVersions:
   - v1
 ---

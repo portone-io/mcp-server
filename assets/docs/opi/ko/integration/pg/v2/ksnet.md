@@ -279,6 +279,14 @@ async function schedulePayment() {
       - `0` : 간편결제 수단 표시 하지 않음
       - `1` : 간편결제 수단 표시함
 
+    - sndKakaopayType?: string
+
+      카카오페이 결제시 허용할 결제수단
+
+      - `CARD`: 카드 결제만 허용
+      - `MONEY`: 카카오머니 결제만 허용
+      - 미입력시 모든 결제수단 허용
+
 ### 카드 다이렉트 호출
 
 - customer?: object

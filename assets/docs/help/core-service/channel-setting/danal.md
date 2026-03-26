@@ -45,7 +45,7 @@ datetime: 2024-02-22T15:00:00.000Z
 결제 연동을 위해서 채널 설정은 필수이며 결제대행사와 연동방식별로 설정하는 정보는 상이할 수 있습니다.
 또한 채널 설정 없이 결제 연동을 하실 경우 정상적인 호출이 불가하며, 오류가 발생됩니다." />
 
-<Highlight url="#7_결제창-휴대폰결제-및-휴대폰-본인인증" text="다날 휴대폰 결제 및 본인인증 설정 바로가기 ↓" />
+<Highlight url="https://help.portone.io/content/danal#7_%EA%B2%B0%EC%A0%9C%EC%B0%BD-%ED%9C%B4%EB%8C%80%ED%8F%B0-%EA%B2%B0%EC%A0%9C-%EB%B0%8F-%ED%9C%B4%EB%8C%80%ED%8F%B0-%EB%B3%B8%EC%9D%B8%EC%9D%B8%EC%A6%9D" text="다날 휴대폰 결제 및 본인인증 설정 바로가기 ↓" />
 
 ## <Highlight text="결제창 일반/정기결제" />
 

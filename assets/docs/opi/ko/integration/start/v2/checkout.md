@@ -128,7 +128,64 @@ const response = await PortOne.requestPayment({
 
 ## 3. 결제 완료 처리 (브라우저)
 
-`PortOne.requestPayment()` 함수의 반환값을 통해 결제 요청의 결과를 확인합니다.
+결제창에서의 작업이 끝나면 완료/실패 여부를 포함한 결과가 전달됩니다. (가상계좌 결제의 경우 완료는 가상계좌 발급 완료를 의미합니다.)
+
+결과는 리다이렉트 방식 또는 반환값 방식 중 하나로 확인할 수 있습니다.
+
+- `redirectUrl`이 설정되어 있고 `forceRedirect: true`인 경우 (리다이렉트 방식)
+  - 완료/실패시 `redirectUrl`로 리다이렉트되고, 쿼리 문자열로 결과를 확인합니다.
+  - 하나의 흐름으로 PC와 모바일 결제를 모두 지원할 수 있는 가장 간단한 방식입니다.
+
+- `redirectUrl`이 설정되지 않은 경우 (반환값 방식)
+  - 완료/실패시 함수의 반환값인 Promise가 리졸브되고, await하여 결과를 확인합니다.
+  - **모바일 결제 UI가 제대로 표시되지 않을 수 있습니다.** PC 결제 UI로 충분할 때에만 사용하십시오.
+  - KG이니시스 일본 결제 등 몇몇 결제 수단의 경우 PC에서도 리다이렉트가 강제되어 이 흐름을 사용할 수 없습니다.
+
+- `redirectUrl`이 설정되어 있고 `forceRedirect: true`가 아닌 경우 (리다이렉트 또는 반환값 방식)
+  - 환경에 따라 리다이렉트가 일어나는지 반환값이 리졸브되는지가 자동으로 결정됩니다. 코드는 두 흐름 모두 지원해야 합니다.
+  - PC 환경에서는 반환값으로, 모바일 환경에서는 리다이렉트로 결과를 확인하여 최적화된 경험을 제공하고 싶을 때 사용하십시오.
+
+리다이렉트 방식과 반환값 방식에 대한 자세한 설명은 아래를 참고하세요.
+
+### 3-1. 리다이렉트 방식의 경우
+
+결제창에서의 작업이 끝나면 지정한 `redirectUrl`로 리다이렉트됩니다. 이 경우에는 함수 호출 결과를 이용할 수 없고,
+결제 성공 여부 등은 [쿼리 문자열](http://en.wikipedia.org/wiki/Query_string)로 전달받게 됩니다.
+
+리다이렉트 방식 결제 지원을 위해, 모바일 환경을 지원해야 하는 경우 **`redirectUrl`을 꼭 지정하여** 호출하여야 합니다.
+지정하지 않은 경우 모바일 결제 UI가 표시되지 않을 수 있습니다.
+
+<div class="hint" data-style="warning">
+
+`redirectUrl`은 `https://` 또는 `http://`로 시작해야 합니다.
+
+</div>
+
+```ts
+PortOne.requestPayment({
+  /* 파라미터 생략 */
+  redirectUrl: `${BASE_URL}/payment-redirect`,
+  forceRedirect: true, // 리다이렉트 방식만 사용하기 위한 설정
+});
+```
+
+쿼리 문자열로 전달되는 주요 필드는 다음과 같습니다.
+전체 필드 목록은 [requestPayment 응답 형식](https://developers.portone.io/sdk/ko/v2-sdk/payment-response)을 참조해 주시기 바랍니다.
+
+|키       |설명               |비고                        |
+|---------|-------------------|----------------------------|
+|paymentId|결제 건 ID         |공통                        |
+|code     |오류 코드          |실패 시                     |
+|message  |오류 문구          |실패 시                     |
+|pgCode   |PG 오류 코드 그대로|실패 및 PG 오류 코드 존재 시|
+|pgMessage|PG 오류 문구 그대로|실패 및 PG 오류 문구 존재 시|
+
+예를 들어 paymentId가 `payment-39ecfa97`, redirectUrl이 `https://example.com/payment-redirect`인 경우,
+결제 성공 시에 `https://example.com/payment-redirect?paymentId=payment-39ecfa97`로 리다이렉트됩니다.
+
+### 3-2. 반환값 방식의 경우
+
+`PortOne.requestPayment()` 함수의 반환값인 프로미스를 통해 결제 요청의 결과를 확인합니다.
 
 `code`가 있으면 결제 과정에서 오류가 발생한 것이므로 적절히 처리하여야 합니다.
 
@@ -169,36 +226,9 @@ async function requestPayment() {
 |pgCode   |PG 오류 코드 그대로|실패 및 PG 오류 코드 존재 시|
 |pgMessage|PG 오류 문구 그대로|실패 및 PG 오류 문구 존재 시|
 
-### 3-1. redirect 방식의 경우
-
-모바일 환경에서의 결제는 대부분 redirect 방식으로 이루어집니다. redirect 방식에서는 브라우저가 결제창으로 리다이렉트되었다가, 결제창에서의 작업이 끝나면
-지정한 `redirectUrl`로 다시 리다이렉트됩니다. 이 경우에는 함수 호출 결과를 이용할 수 없고,
-결제 성공 여부 등은 [쿼리 문자열](http://en.wikipedia.org/wiki/Query_string)로 전달받게 됩니다.
-
-```ts
-PortOne.requestPayment({
-  /* 파라미터 생략 */
-  redirectUrl: `${BASE_URL}/payment-redirect`,
-});
-```
-
-쿼리 문자열로 전달되는 주요 필드는 다음과 같습니다.
-전체 필드 목록은 [requestPayment 응답 형식](https://developers.portone.io/sdk/ko/v2-sdk/payment-response)을 참조해 주시기 바랍니다.
-
-|키       |설명               |비고                        |
-|---------|-------------------|----------------------------|
-|paymentId|결제 건 ID         |공통                        |
-|code     |오류 코드          |실패 시                     |
-|message  |오류 문구          |실패 시                     |
-|pgCode   |PG 오류 코드 그대로|실패 및 PG 오류 코드 존재 시|
-|pgMessage|PG 오류 문구 그대로|실패 및 PG 오류 문구 존재 시|
-
-예를 들어 paymentId가 `payment-39ecfa97`, redirectUrl이 `https://example.com/payment-redirect`인 경우,
-결제 성공 시에 `https://example.com/payment-redirect?paymentId=payment-39ecfa97`로 리다이렉트됩니다.
-
 ## 4. 결제 완료 처리 (서버)
 
-paymentId를 서버에 전달하면, 서버는 포트원의 [결제 조회 API](https://developers.portone.io/api/rest-v2/payment#get%20%2Fpayments%2F%7BpaymentId%7D)를
+서버는 포트원의 [결제 조회 API](https://developers.portone.io/api/rest-v2/payment#get%20%2Fpayments%2F%7BpaymentId%7D)를
 호출하여 해당 결제 건의 상태를 확인하고 결제 완료 처리를 하여야 합니다.
 
 <div class="hint" data-style="info">

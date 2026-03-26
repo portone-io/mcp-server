@@ -11,10 +11,6 @@ versionVariants:
 
 - [결제대행사 채널 설정하기](https://developers.portone.io/opi/ko/integration/ready/readme#3-결제대행사-채널-설정하기) 페이지의 내용을 참고하여 채널 설정을 진행합니다.
 
-## 사전 계약 안내
-
-SMS를 통한 본인인증을 진행하기 위해서는 KG이니시스와 별도 계약이 필요합니다.
-
 ## SDK를 통해 본인인증하기
 
 - [본인인증 연동하기](https://developers.portone.io/opi/ko/extra/identity-verification/readme-v2) 페이지의 내용을 참고하여 연동을 진행합니다.

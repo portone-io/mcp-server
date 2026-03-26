@@ -131,25 +131,34 @@ targetVersions:
 
 ### 일반 결제(PortOne.requestPayment)
 
-결제 요청 시 필요한 자세한 파라미터에 대한 내용은 PaymentRequest.kt 파일에 기술되어 있습니다.
+결제 요청 시 필요한 자세한 파라미터에 대한 내용은 `PaymentRequest.kt` 파일에 기술되어 있습니다.
 
 ```kotlin
+import io.portone.sdk.android.PortOne
+import io.portone.sdk.android.payment.PaymentCallback
+import io.portone.sdk.android.type.request.PaymentRequest
+import io.portone.sdk.android.type.response.PaymentResponse
+import io.portone.sdk.android.type.entity.Currency
+import io.portone.sdk.android.type.entity.PaymentPayMethod
+
 class MainActivity : AppCompatActivity() {
     // 결제 완료/실패 이후 응답을 처리 하기 위한 ResultLauncher 생성
     private val paymentActivityResultLauncher =
         PortOne.registerForPaymentActivity(this, callback = object :
             PaymentCallback {
-            override fun onSuccess(response: PaymentResponse.Success) {
+            override fun onSuccess(response: PaymentResponse) {
+                // code가 null이면 결제 성공
                 AlertDialog.Builder(this@MainActivity)
                     .setTitle("결제 성공")
-                    .setMessage(response.toString())
+                    .setMessage("결제 ID: ${response.paymentId}")
                     .show()
             }
 
-            override fun onFail(response: PaymentResponse.Fail) {
+            override fun onFail(response: PaymentResponse) {
+                // code가 null이 아니면 결제 실패
                 AlertDialog.Builder(this@MainActivity)
                     .setTitle("결제 실패")
-                    .setMessage(response.toString())
+                    .setMessage("오류 코드: ${response.code}\n오류 메시지: ${response.message}")
                     .show()
             }
 
@@ -162,11 +171,12 @@ class MainActivity : AppCompatActivity() {
             this,
             request = PaymentRequest(
                 storeId = "상점 아이디",
-                channelKey = "채널 키",
                 paymentId = "결제 건 ID",
                 orderName = "주문 명",
-                amount = Amount(total = 1000, currency = Currency.KRW), // 금액
-                method = PaymentMethod.Card() // 결제수단 관련 정보
+                channelKey = "채널 키",
+                totalAmount = 1000, // 결제 금액 (Long)
+                currency = Currency.KRW, // 화폐 단위
+                payMethod = PaymentPayMethod.CARD, // 결제수단 (enum)
             ),
             resultLauncher = paymentActivityResultLauncher
         )
@@ -175,25 +185,33 @@ class MainActivity : AppCompatActivity() {
 
 ### 빌링키 발급(PortOne.requestIssueBillingKey)
 
-빌링키 발급 시 필요한 자세한 파라미터에 대한 내용은 IssueBillingKeyRequest.kt 파일에 기술되어 있습니다.
+빌링키 발급 시 필요한 자세한 파라미터에 대한 내용은 `IssueBillingKeyRequest.kt` 파일에 기술되어 있습니다.
 
 ```kotlin
+import io.portone.sdk.android.PortOne
+import io.portone.sdk.android.issuebillingkey.IssueBillingKeyCallback
+import io.portone.sdk.android.type.request.IssueBillingKeyRequest
+import io.portone.sdk.android.type.response.IssueBillingKeyResponse
+import io.portone.sdk.android.type.entity.BillingKeyMethod
+
 class MainActivity : AppCompatActivity() {
     // 빌링키 발급 완료/실패 이후 응답을 처리 하기 위한 ResultLauncher 생성
     private val issueBillingKeyActivityResultLauncher =
         PortOne.registerForIssueBillingKeyActivity(this, callback = object :
             IssueBillingKeyCallback {
-            override fun onSuccess(response: IssueBillingKeyResponse.Success) {
-                AlertDialog.Builder(this@IssueBillingKeyTestActivity)
+            override fun onSuccess(response: IssueBillingKeyResponse) {
+                // code가 null이면 빌링키 발급 성공
+                AlertDialog.Builder(this@MainActivity)
                     .setTitle("빌링키 발급 성공")
-                    .setMessage(response.toString())
+                    .setMessage("빌링키: ${response.billingKey}")
                     .show()
             }
 
-            override fun onFail(response: IssueBillingKeyResponse.Fail) {
-                AlertDialog.Builder(this@IssueBillingKeyTestActivity)
+            override fun onFail(response: IssueBillingKeyResponse) {
+                // code가 null이 아니면 빌링키 발급 실패
+                AlertDialog.Builder(this@MainActivity)
                     .setTitle("빌링키 발급 실패")
-                    .setMessage(response.toString())
+                    .setMessage("오류 코드: ${response.code}\n오류 메시지: ${response.message}")
                     .show()
             }
 
@@ -208,7 +226,7 @@ class MainActivity : AppCompatActivity() {
                     request = IssueBillingKeyRequest(
                         storeId = "상점 아이디",
                         channelKey = "채널 키",
-                        method = BillingKeyMethod.Card() // 빌링키 발급 수단
+                        billingKeyMethod = BillingKeyMethod.CARD // 빌링키 발급 수단 (enum)
                     ),
                     resultLauncher = issueBillingKeyActivityResultLauncher
                 )
@@ -217,25 +235,32 @@ class MainActivity : AppCompatActivity() {
 
 ### 본인인증 (PortOne.requestIdentityVerification)
 
-본인인증 시 필요한 자세한 파라미터에 대한 내용은 IdentityVerificationRequest.kt 파일에 기술되어 있습니다.
+본인인증 시 필요한 자세한 파라미터에 대한 내용은 `IdentityVerificationRequest.kt` 파일에 기술되어 있습니다.
 
 ```kotlin
+import io.portone.sdk.android.PortOne
+import io.portone.sdk.android.identityverification.IdentityVerificationCallback
+import io.portone.sdk.android.type.request.IdentityVerificationRequest
+import io.portone.sdk.android.type.response.IdentityVerificationResponse
+
 class MainActivity : AppCompatActivity() {
     // 본인인증 완료/실패 이후 응답을 처리 하기 위한 ResultLauncher 생성
     private val identityVerificationActivityResultLauncher =
         PortOne.registerForIdentityVerificationActivity(this, callback = object :
             IdentityVerificationCallback {
-            override fun onSuccess(response: IdentityVerificationResponse.Success) {
-                AlertDialog.Builder(this@IdentityVerificationTestActivity)
+            override fun onSuccess(response: IdentityVerificationResponse) {
+                // code가 null이면 본인인증 성공
+                AlertDialog.Builder(this@MainActivity)
                     .setTitle("본인인증 성공")
-                    .setMessage(response.toString())
+                    .setMessage("본인인증 ID: ${response.identityVerificationId}")
                     .show()
             }
 
-            override fun onFail(response: IdentityVerificationResponse.Fail) {
-                AlertDialog.Builder(this@IdentityVerificationTestActivity)
+            override fun onFail(response: IdentityVerificationResponse) {
+                // code가 null이 아니면 본인인증 실패
+                AlertDialog.Builder(this@MainActivity)
                     .setTitle("본인인증 실패")
-                    .setMessage(response.toString())
+                    .setMessage("오류 코드: ${response.code}\n오류 메시지: ${response.message}")
                     .show()
             }
 
@@ -248,7 +273,7 @@ class MainActivity : AppCompatActivity() {
          PortOne.requestIdentityVerification(
                     this,
                     request = IdentityVerificationRequest(
-                        storeId = "상정 아이디",
+                        storeId = "상점 아이디",
                         identityVerificationId = "본인인증 요청 ID",
                         channelKey = "채널 키"
                     ),
@@ -256,6 +281,19 @@ class MainActivity : AppCompatActivity() {
                 )
 
 ```
+
+### 응답 처리
+
+모든 응답(PaymentResponse, IssueBillingKeyResponse, IdentityVerificationResponse)은 `code` 필드를 통해 성공/실패를 판단합니다.
+
+- `code == null`: 성공
+- `code != null`: 실패 (오류 코드와 메시지 포함)
+
+실패 시 응답에 포함되는 필드:
+- `code`: 오류 코드
+- `message`: 오류 메시지
+- `pgCode`: PG사에서 전달한 원본 오류 코드 (있는 경우)
+- `pgMessage`: PG사에서 전달한 원본 오류 메시지 (있는 경우)
 
 ## 버전
 

@@ -37,5 +37,5 @@ targetVersions:
 |      헥토파이낸셜     |    `settle`    |
 |헥토파이낸셜 내통장결제|  `settle_acc`  |
 |         KSNET         |     `ksnet`    |
-|        갤럭시아       |    `galaxia`   |
+|    갤럭시아머니트리   |    `galaxia`   |
 |      웰컴페이먼츠     |    `welcome`   |

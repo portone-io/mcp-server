@@ -279,7 +279,7 @@ function requestPayment() {
 
 - 카카오페이: `KAKAOPAY`
 - 네이버페이: `NAVERPAY`
-- 삼성페이: `SAUMSUNGPAY`
+- 삼성페이: `SAMSUNGPAY`
 - 토스페이: `TOSSPAY`
 - 페이코: `PAYCO`
 
@@ -366,7 +366,7 @@ function requestPayment() {
 
 한국결제네트웍스(KPN)에서 가상계좌 발급이 가능한 은행은 아래와 같습니다.
 
-은행코드는 [BANK ENUM](https://developers.portone.io/api/rest-v2/type-def#Bank)으로 정의되어 있으며
+은행코드는 [BANK ENUM](https://developers.portone.io/api/rest-v2/payment#Bank)으로 정의되어 있으며
 아래 목록에 대한 ENUM 코드를 매핑하여 API에 사용하실 수 있습니다.
 
 - 기업은행
@@ -624,7 +624,7 @@ const issueResponse = await axios({
       **발급 은행**
 
       - 은행코드는 ENUM으로 정의되어 있습니다.
-      - [BANK ENUM 바로가기](https://developers.portone.io/api/rest-v2/type-def#Bank)
+      - [BANK ENUM 바로가기](https://developers.portone.io/api/rest-v2/payment#Bank)
 
     - expiry: object
 

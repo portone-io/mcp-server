@@ -254,6 +254,14 @@ IMP.request_pay(
 
       - 결제를 요청하는 사이트의 url을 입력하여야 합니다.
 
+    - sndKakaopayType?: string
+
+      **카카오페이 결제시 허용할 결제수단**
+
+      - `CARD`: 카드 결제만 허용
+      - `MONEY`: 카카오머니 결제만 허용
+      - 미입력시 모든 결제수단 허용
+
 </div>
 
 <div class="tabs-content" data-title="비인증 결제창 요청">

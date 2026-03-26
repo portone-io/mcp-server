@@ -15,12 +15,6 @@ targetVersions:
 
 [JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk-old/readme) `IMP.request_pay(param, callback)`을 호출하여 키움페이 결제창을 호출할 수 있습니다. **결제 결과**는 PC의 경우 `IMP.request_pay(param, callback)` 호출 후 **callback**으로 수신되고 모바일의 경우 **m\_redirect\_url**로 리디렉션됩니다.
 
-<div class="hint" data-style="warning">
-
-**키움페이 결제창 연동을 위해서는 ****JS SDK Version 1.2.0**** 이상을 사용하셔야 합니다.**
-
-</div>
-
 <div class="tabs-container">
 
 <div class="tabs-content" data-title="인증결제창 요청">
@@ -96,6 +90,7 @@ IMP.request_pay(
   - cultureland (컬쳐랜드 문화상품권)
   - smartculture (스마트문화상품권)
   - booknlife (도서문화상품권)
+  - phone (휴대폰결제)
 
 - merchant\_uid: string
 
@@ -134,6 +129,43 @@ IMP.request_pay(
   **카드, 간편결제 다이렉트 호출 시 키움페이 페이지 노출여부**
 
   'Y'로 입력하는 경우 키움페이 화면이 노출되지 않고 바로 카드사, 간편결제 결제창이 호출됩니다.
+
+- bypass.daou.CARDQUOTA?: string
+
+  **카드사별 할부개월 수 설정**
+
+  ^ 로 구분된 다수의 카드 할부 설정 그룹으로 구성되며, 각 그룹은 `{키움페이_카드사_코드}-{할부_개월수_옵션1}:{할부_개월수_옵션2}:...` 형식으로 구성하여 카드사별 할부 개월 수를 지정합니다.
+
+  예시로 `CCBC-0:2:3:4:5:6^CCNH-0:2:3^CCKM-0:2:3:4` 를 입력하는 경우 BC카드는 일시불, 2, 3, 4, 5, 6개월, 농협카드는 일시불, 2, 3개월, 국민카드는 일시불, 2, 3, 4개월 할부가 선택 가능하도록 표시됩니다.
+
+  카드사 코드
+
+  |카드사 명   |코드|
+  |------------|----|
+  |비씨카드    |CCBC|
+  |국민카드    |CCKM|
+  |제주은행    |CCCJ|
+  |신한카드    |CCLG|
+  |씨티은행    |CCCT|
+  |롯데카드    |CCLO|
+  |신협카드    |CCCU|
+  |새마을금고  |CCMG|
+  |현대카드    |CCDI|
+  |NH카드      |CCNH|
+  |현대증권    |CCHD|
+  |우리카드    |CCPH|
+  |하나SK카드  |CCHN|
+  |우체국카드  |CCPO|
+  |전북은행    |CCJB|
+  |저축은행카드|CCSB|
+  |카카오뱅크  |CCKA|
+  |삼성카드    |CCSS|
+  |산은카드    |CCKD|
+  |수협        |CCSU|
+  |하나은행    |CCKE|
+  |토스뱅크    |CCTS|
+  |광주은행    |CCKJ|
+  |K뱅크       |CKBK|
 
 - app\_scheme?: string
 
@@ -306,6 +338,99 @@ curl -H "Content-Type: application/json" \
 **주의사항**
 
 - 에스크로 배송정보 등록/수정 시 고객사가 전달한 배송정보(운송장 번호, 택배사 이름 등)에 대해 키움페이 측에서 유효성 체크를 하지 않습니다.
+
+</div>
+
+</div>
+
+<div class="tabs-content" data-title="통신사 노출 제어">
+
+```json title="모든 통신사 노출"
+{
+  "phone": {
+    "detail": [
+      {
+        "carrier": "*", // 모두 활성화
+        "enabled": true
+      }
+    ]
+  }
+}
+```
+
+```json title="특정 통신사만 노출"
+{
+  "phone": {
+    "detail": [
+      {
+        "carrier": "SKT", // SKT만 활성화
+        "enabled": true
+      }
+    ]
+  }
+}
+```
+
+```json title="2개 이상 통신사 노출"
+{
+  "phone": {
+    "detail": [
+      {
+        "carrier": "SKT",
+        "enabled": true
+      },
+      {
+        "carrier": "KTF",
+        "enabled": true
+      },
+      {
+        "carrier": "LGT",
+        "enabled": false
+      },
+      {
+        "carrier": "CJH",
+        "enabled": false
+      }
+    ]
+  }
+}
+// SKT, KTF 을 제외한 나머지 통신사는 비활성화 됩니다.
+```
+
+```json title="특정 통신사만 비노출"
+{
+  "phone": {
+    "detail": [
+      {
+        "carrier": "SKT",
+        "enabled": false
+      }
+    ]
+  }
+}
+```
+
+<div class="hint" data-style="info">
+
+`phone 파라미터 미 설정시`(기본값) 모든 통신사 노출됨
+
+</div>
+
+</div>
+
+<div class="tabs-content" data-title="휴대폰 번호 고정">
+
+```json
+{
+  "prefill": {
+    "phoneNumber": "휴대폰번호" // 휴대폰번호 입력(하이픈 제거)
+  }
+}
+```
+
+<div class="hint" data-style="info">
+
+휴대폰 결제시 해당 파라미터를 설정하면 휴대폰번호를 고정시킬수 있습니다.
 
 </div>
 

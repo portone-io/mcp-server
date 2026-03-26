@@ -121,6 +121,8 @@ const data = await response.json();
 
   본인인증을 식별하기 위한 고객사의 주문 고유 번호로 매번 고유하게 채번되어야 합니다.
 
+  영어 대소문자와 숫자만 사용 가능하며 40자 이하로 입력해야 합니다.
+
 - bypass.kcpV2.web\_siteid: string
 
   **KCP 사이트 식별코드**
