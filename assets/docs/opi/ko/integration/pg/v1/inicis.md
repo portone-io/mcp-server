@@ -112,6 +112,7 @@ IMP.request_pay(
   - `phone` (휴대폰소액결제)
   - `cultureland` (컬쳐랜드 문화상품권)
   - `smartculture` (스마트문상)
+  - `happymoney` (해피머니 문화상품권)
   - `booknlife`(도서문화상품권)
 
   </details>
@@ -122,11 +123,23 @@ IMP.request_pay(
 
   매번 고유하게 채번되어야 합니다.
 
+- name: string
+
+  **주문명**
+
 - amount: number
 
   **결제금액**
 
   **string** 이 아닌점에 유의하세요
+
+- buyer\_name?: string
+
+  **구매자 이름**
+
+- buyer\_email?: string
+
+  **구매자 이메일**
 
 - buyer\_tel: string
 
@@ -134,9 +147,68 @@ IMP.request_pay(
 
   필수 파라미터 입니다.
 
+- buyer\_addr?: string
+
+  **구매자 주소**
+
+- buyer\_postcode?: string
+
+  **구매자 우편번호**
+
+- escrow?: boolean
+
+  **에스크로 결제 여부**
+
+- tax\_free?: number
+
+  **면세금액**
+
 - vbank\_due?: string
 
   가상계좌 입금마감일시를 지정할수 있습니다.(미 지정시 Default 30일)
+
+- m\_redirect\_url?: string
+
+  **모바일 결제 후 리디렉션 될 URL**
+
+- app\_scheme?: string
+
+  **모바일 앱 URL scheme** (모바일 전용)
+
+  모바일 앱에서 결제 시 ISP/앱카드 등에서 결제 완료 후 가맹점 앱으로 돌아올 때 사용됩니다.
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+  포트원 관리자 콘솔에 설정한 웹훅 URL 대신 사용할 URL을 지정합니다.
+
+- confirm\_url?: string
+
+  **Confirm process URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
+
+  결제 정보와 함께 저장할 커스텀 데이터입니다. 결제 조회 시 반환됩니다.
+
+- customer\_id?: string
+
+  **구매자 고유 ID**
+
+- digital?: boolean
+
+  **디지털 컨텐츠 여부**
+
+  휴대폰 소액결제 시 디지털 컨텐츠(`true`)인지 실물 상품(`false`)인지 구분합니다.
+
+- language?: string
+
+  **결제창 언어**
+
+  - `ko`: 한국어 (기본값)
+  - `en`: 영어
 
 - period?: object
 
@@ -149,6 +221,58 @@ IMP.request_pay(
   - to: string
 
     **YYYYMMDD**
+
+- bypass?: object
+
+  **KG이니시스 전용 파라미터**
+
+  PC와 모바일에서 사용하는 파라미터가 다릅니다.
+
+  - acceptmethod?: string
+
+    **PC 전용 옵션** (콜론 `:` 구분자로 여러 값 연결)
+
+    - `noeasypay`: 간편결제 버튼을 통합결제창에서 제외
+    - `CARDPOINT`: 카드사 포인트 사용
+    - `no_receipt`: 현금영수증 미발행
+    - `SKIN(색상)`: 결제창 배경색상 변경. 색상표 값으로 설정 가능 (예: `SKIN(BLUE)`). 미설정 시 기본값 `#c1272c`
+    - `cardshowopt(카드코드-호출옵션)`: 신용카드 ACS 창에서 앱카드/안심클릭/간편결제 UI 표시 옵션. 카드코드와 호출옵션은 `-`로 구분 (예: `cardshowopt(04-6)`)
+    - `disablepoint`: 현대카드 M포인트 강제 미사용
+    - `usespcp`: 현대카드 M포인트 사용
+    - `cd_ps(카드코드-할부개월)`: 신한카드 제휴 옵션 (배송비 혜택)
+
+    예시: `"acceptmethod": "noeasypay:CARDPOINT:SKIN(BLUE)"`
+
+  - P\_RESERVED?: string
+
+    **모바일 전용 옵션** (`&` 구분자로 여러 값 연결)
+
+    - `noeasypay=Y`: 간편결제 버튼을 통합결제창에서 제외
+    - `cp_yn=Y`: 신용카드 포인트 사용
+    - `dcp_yn=Y`: 카드사 다이렉트 호출 시 카드 포인트 사용
+    - `vbank_receipt=Y`: 가상계좌 현금영수증 입력란 표시 (기본적으로 미표시)
+    - `bank_receipt=N`: 계좌이체 현금영수증 입력란 숨김 (기본적으로 표시)
+    - `twotrs_bank=Y`: 계좌이체 거래 시 필수 입력 값
+    - `apprun_check=Y`: 앱 호출 시 Intent 방식으로 호출 (Android 전용, `app_scheme`과 같이 사용 불가)
+    - `app_scheme=스키마명://`: 가맹점 앱 scheme 설정 (iOS 지원, ISP/뱅크월렛/은련카드/LPAY/페이코 등)
+    - `iosapp=Y`: iOS 앱에서 결제 시 설정
+    - `cardshowopt=카드코드:호출옵션`: 신용카드 ACS 창 표시 옵션
+
+    예시: `"P_RESERVED": "noeasypay=Y&twotrs_bank=Y&apprun_check=Y"`
+
+  - ini\_PAYSHOT\_KEY?: string
+
+    **현대카드 Payshot 고객 Key** (PC 전용)
+
+    현대카드 Payshot 사용 시 필수 입력합니다.
+    형식: `{가맹점구분}{YYYYMMDDHHMMSSmsec}{고객id}`
+
+  - P\_PAYSHOT\_KEY?: string
+
+    **현대카드 Payshot 고객 Key** (모바일 전용)
+
+    현대카드 Payshot 사용 시 필수 입력합니다.
+    형식: `{가맹점구분}{YYYYMMDDHHMMSSmsec}{고객id}`
 
 </div>
 
@@ -218,11 +342,64 @@ IMP.request_pay(
 
   비 인증 결제창에서 고객이 입력한 카드정보와 1:1로 매칭될 빌링키를 지정합니다.
 
+- merchant\_uid: string
+
+  **주문번호**
+
+- name: string
+
+  **주문명**
+
 - amount: number
 
   **결제금액**
 
   결제창에 표시될 금액으로 실제 승인은 이루어지지 않습니다.(실 결제를 발생시키기 위해서는 **customer\_uid** 로 **REST API 를 이용하여 결제요청**을 해주셔야 합니다.)
+
+- buyer\_name?: string
+
+  **구매자 이름**
+
+- buyer\_email?: string
+
+  **구매자 이메일**
+
+- buyer\_tel?: string
+
+  **구매자 연락처**
+
+- m\_redirect\_url?: string
+
+  **모바일 결제 후 리디렉션 될 URL**
+
+- app\_scheme?: string
+
+  **모바일 앱 URL scheme** (모바일 전용)
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
+
+- customer\_id?: string
+
+  **구매자 고유 ID**
+
+- bypass?: object
+
+  **빌링키 발급 전용 파라미터**
+
+  - inicis?: object
+
+    - authtype?: string
+
+      **빌링키 발급 결제창 표시 구분** (모바일 전용)
+
+      - `01`: 카드번호, 유효기간, 생일 입력 부분만 표시
+      - 미전달: 카드번호, 유효기간, 주민번호, 비밀번호 입력 부분 표시
 
 **빌링키(customer\_uid)로 결제 요청하기**
 

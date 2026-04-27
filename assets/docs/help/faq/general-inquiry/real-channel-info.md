@@ -54,7 +54,7 @@ datetime: 2024-01-25T15:00:00.000Z
 - 카카오페이 : CID
 - 네이버페이(주문형) : 파트너ID / 가맹점 인증키
 - 네이버페이(결제형) : 파트너 ID / ClientID / Client Secret
-- KG모빌리언스 : 서비스ID / 정기결제용 서비스ID (정기결제 이용시 발급)
+- KG파이낸셜 : 서비스ID / 정기결제용 서비스ID (정기결제 이용시 발급)
 - 블루월넛 : MID / KEY / 결제취소 비밀번호
 - 페이코 : CPID / ProductID / SellerKey
 - 스마일페이 : MID / merchantEncKey / merchantHashKey 서명키

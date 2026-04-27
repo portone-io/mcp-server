@@ -82,6 +82,7 @@ PortOne.requestPayment({
 
   - ISO 4217 통화 코드
   - [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217)
+  - Triple-A에서 사용 가능한 통화 목록은 [Triple-A 공식 문서](https://developers.triple-a.io/docs/triplea-api-doc/8974dfffa9418-presentment-currencies-for-crypto-payments)에서 확인할 수 있습니다.
 
 - locale?: Locale
 

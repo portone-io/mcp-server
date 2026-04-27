@@ -98,11 +98,75 @@ IMP.request_pay(
 
   매번 고유하게 채번되어야 합니다.
 
+- name: string
+
+  **주문명**
+
 - amount: number
 
   **결제금액**
 
   **string** 이 아닌점에 유의하세요
+
+- buyer\_name?: string
+
+  **구매자 이름**
+
+- buyer\_email?: string
+
+  **구매자 이메일**
+
+- buyer\_tel?: string
+
+  **구매자 연락처**
+
+- buyer\_addr?: string
+
+  **구매자 주소**
+
+- buyer\_postcode?: string
+
+  **구매자 우편번호**
+
+- tax\_free?: number
+
+  **면세금액**
+
+- vat\_amount?: number
+
+  **부가세**
+
+- vbank\_due?: string
+
+  **가상계좌 입금마감일시**
+
+  `YYYYMMDD` 또는 `YYYYMMDDHHmm` 형식으로 지정합니다. 미지정 시 기본 30일입니다.
+
+- m\_redirect\_url?: string
+
+  **모바일 결제 후 리디렉션 될 URL**
+
+- app\_scheme?: string
+
+  **모바일 앱 URL scheme** (모바일 전용)
+
+  모바일 앱에서 결제 시 ISP/앱카드 등에서 결제 완료 후 가맹점 앱으로 돌아올 때 사용됩니다.
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+  포트원 관리자 콘솔에 설정한 웹훅 URL 대신 사용할 URL을 지정합니다.
+
+- confirm\_url?: string
+
+  **Confirm process URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
+
+  결제 정보와 함께 저장할 커스텀 데이터입니다. 결제 조회 시 반환됩니다.
 
 - niceMobileV2?: boolean
 
@@ -112,12 +176,65 @@ IMP.request_pay(
 
   **에스크로 설정여부**
 
+- digital?: boolean
+
+  **디지털 컨텐츠 여부**
+
+  휴대폰 소액결제 시 디지털 컨텐츠(`true`)인지 실물 상품(`false`)인지 구분합니다.
+
+- language?: string
+
+  **결제창 언어**
+
+  - `ko`: 한국어 (기본값)
+  - `en`: 영어
+  - `zh`: 중국어
+
 - currency?: string
 
   **결제 통화(기본 값: KRW)**
 
   - KRW(한국 원)
-  - USD(미국 달러)(모바일의 경우 `niceMobileV2` 파라미터가 `true`일 경우에만 사용 가능)
+  - USD(미국 달러)
+
+- period?: object
+
+  **서비스 제공기간**
+
+  고객이 구매하는 제품에 대한 제공기간을 명시합니다.
+
+  - from?: string
+
+    **시작일 (YYYYMMDD)**
+
+  - to?: string
+
+    **종료일 (YYYYMMDD)**
+
+  - interval?: string
+
+    **정기결제 간격**
+
+    `from`/`to` 대신 사용할 수 있습니다.
+
+    - `month`: 월간
+    - `year`: 연간
+
+- appCard?: boolean
+
+  **앱카드 전용 모드**
+
+  `true` 설정 시 앱카드 결제만 활성화됩니다.
+
+- bypass?: object
+
+  **나이스정보통신(구모듈) 전용 파라미터**
+
+  - CardShowOpt?: string
+
+    **카드사별 호출 방식** (모바일 전용, `niceMobileV2: true` 시에만 동작)
+
+    형식: `카드코드:노출유형|카드코드:노출유형`
 
 </div>
 
@@ -217,8 +334,10 @@ curl -H "Content-Type: application/json" \
     예시
 
     - `[]`: 일시불만 결제 가능
-    - `2,3,4,5,6`: 일시불을 포함한 2, 3, 4, 5, 6개월까지 할부개월 선택 가능
-    - `3`: 일시불을 포함한 2,3개월까지 할부개월 선택 가능
+    - `[2, 3, 4, 5, 6]`: 일시불을 포함한 2, 3, 4, 5, 6개월 할부 선택 가능
+    - `[3]`: 일시불과 3개월 할부만 선택 가능
+
+    배열에 포함된 개월수만 개별적으로 활성화됩니다.
 
 <div class="hint" data-style="info">
 

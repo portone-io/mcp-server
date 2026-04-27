@@ -60,7 +60,7 @@ IMP.request_pay(
     name: "나이키 와플 트레이너 2 SD",
     pay_method: "card",
     escrow: false,
-    amount: "109000",
+    amount: 109000,
     tax_free: 3000,
     buyer_name: "홍길동",
     buyer_email: "buyer@example.com",
@@ -160,9 +160,21 @@ IMP.request_pay(
 
   **구매자명**
 
+- buyer\_email?: string
+
+  **구매자 이메일**
+
 - buyer\_tel?: string
 
   **구매자 전화번호**
+
+- buyer\_addr?: string
+
+  **구매자 주소**
+
+- buyer\_postcode?: string
+
+  **구매자 우편번호**
 
 - currency: string
 
@@ -245,7 +257,7 @@ IMP.request_pay(
 
       **통신사 구분**
 
-      통신사에 따라 LG는 `lgt`, KT는 `kgf`, SKT는 `skt`로 입력해야 하며, 통신사 구분이 어려우신 경우
+      통신사에 따라 LG는 `lgt`, KT는 `ktf`, SKT는 `skt`로 입력해야 하며, 통신사 구분이 어려우신 경우
       임의의 값을 입력하여 요청해도 무방합니다.
 
     - url?: string

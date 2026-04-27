@@ -67,7 +67,7 @@ await IMP.loadModule(
   브랜드페이의 모듈 로딩에 필요한 추가 파라미터입니다.
   `moduleType`을 `toss-brandpay`로 설정하는 경우 필요합니다.
 
-- loadBrandpayOptions.customer\_id: string
+- customerKey: string
 
   **구매자 ID**
 

@@ -122,7 +122,7 @@ targetVersions:
 
 <span>API 문서 바로가기</span>
 
-<i class="i-ic-baseline-chevron-right inline-block text-2xl" />
+<i class="icon-[ic--baseline-chevron-right] inline-block text-2xl" />
 
 </a>
 
@@ -134,7 +134,7 @@ targetVersions:
 
 <span>API 문서 바로가기</span>
 
-<i class="i-ic-baseline-chevron-right inline-block text-2xl" />
+<i class="icon-[ic--baseline-chevron-right] inline-block text-2xl" />
 
 </a>
 

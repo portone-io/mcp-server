@@ -52,7 +52,7 @@ IMP.request_pay(
     name: "나이키 와플 트레이너 2 SD",
     pay_method: "card",
     escrow: false,
-    amount: "109000",
+    amount: 109000,
     tax_free: 3000,
     buyer_name: "홍길동",
     buyer_email: "buyer@example.com",
@@ -124,7 +124,7 @@ IMP.request_pay(
   - 카카오페이 (kakaopay)
   - 네이버페이 (naverpay)
   - 엘페이 (lpay)
-  - 삼성페이(samsung)
+  - 삼성페이(samsungpay)
   - SSGpay (ssgpay)
   - 애플페이 (applepay)
   - 페이코 (payco)
@@ -135,6 +135,10 @@ IMP.request_pay(
   **주문번호**
 
   매번 고유하게 채번되어야 합니다.
+
+- name: string
+
+  **주문명**
 
 - amount: number
 
@@ -150,9 +154,51 @@ IMP.request_pay(
 
   **구매자 email 주소**
 
+- buyer\_tel?: string
+
+  **구매자 연락처**
+
+- buyer\_addr?: string
+
+  **구매자 주소**
+
+- buyer\_postcode?: string
+
+  **구매자 우편번호**
+
+- escrow?: boolean
+
+  **에스크로 결제 여부**
+
+- tax\_free?: number
+
+  **면세금액**
+
 - currency?: string
 
   **통화구분코드**
+
+- m\_redirect\_url?: string
+
+  **모바일 결제 후 리디렉션 될 URL**
+
+  모바일 환경에서 필수 입력합니다.
+
+- app\_scheme?: string
+
+  **모바일 앱 URL scheme** (모바일 전용)
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- confirm\_url?: string
+
+  **Confirm process URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
 
 - appCard?: boolean
 
@@ -172,19 +218,31 @@ IMP.request_pay(
 
   - isCulturalExpense?: boolean
 
-    문화비 지출여부
+    **문화비 지출 여부** (bypass 루트 레벨, 계좌이체/가상계좌 전용)
 
-  - useInternationalCardOnly?: boolean
-
-    해외카드(Visa, MasterCard, UnionPay) 결제 여부입니다. 값이 `true`면 해외카드 결제가 가능한 영문 결제창이 열립니다.
+    `pay_method`가 `trans` 또는 `vbank`일 때만 토스페이먼츠에 전달됩니다.
 
   - cashReceiptType?: string
 
-    현금성 결제(계좌이체, 가상계좌)창에서 선택할 수 있는 현금영수증 발급 유형 (기본값: 결제창에서 선택 가능)
+    **현금영수증 발급 유형** (bypass 루트 레벨, 계좌이체/가상계좌 전용)
+
+    `pay_method`가 `trans` 또는 `vbank`일 때만 토스페이먼츠에 전달됩니다. 미지정 시 결제창에서 선택 가능합니다.
 
     - anonymous (미발행, 자진발급)
     - personal (소득공제)
     - corporate (지출증빙)
+
+  - tosspayments?: object
+
+    **토스페이먼츠 전용 파라미터** (카드 결제 전용)
+
+    - useInternationalCardOnly?: boolean
+
+      해외카드(Visa, MasterCard, UnionPay) 결제 여부입니다. 값이 `true`면 해외카드 결제가 가능한 영문 결제창이 열립니다.
+
+    - discountCode?: string
+
+      **카드사 할인코드**
 
 ```json
 {
@@ -192,6 +250,18 @@ IMP.request_pay(
   "bypass": {
     "isCulturalExpense": true,
     "cashReceiptType": "personal"
+  }
+}
+```
+
+```json
+{
+  "pay_method": "card",
+  "bypass": {
+    "tosspayments": {
+      "useInternationalCardOnly": true,
+      "discountCode": "카드사 할인코드"
+    }
   }
 }
 ```
@@ -264,11 +334,51 @@ IMP.request_pay(
 
   비 인증 결제창에서 고객이 입력한 카드정보와 1:1로 매칭될 빌링키를 지정합니다.
 
+- name: string
+
+  **주문명**
+
 - amount: number
 
   **결제금액**
 
   결제창에 표시될 금액으로 실제 승인은 이루어지지 않습니다.(실 결제를 발생시키기 위해서는 **customer\_uid** 로 **REST API 를 이용하여 결제요청**을 해주셔야 합니다.)
+
+- buyer\_name?: string
+
+  **구매자 이름**
+
+- buyer\_email?: string
+
+  **구매자 이메일**
+
+- buyer\_tel?: string
+
+  **구매자 연락처**
+
+- buyer\_addr?: string
+
+  **구매자 주소**
+
+- buyer\_postcode?: string
+
+  **구매자 우편번호**
+
+- m\_redirect\_url?: string
+
+  **모바일 결제 후 리디렉션 될 URL**
+
+- app\_scheme?: string
+
+  **모바일 앱 URL scheme** (모바일 전용)
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
 
 - customer\_id?: string
 

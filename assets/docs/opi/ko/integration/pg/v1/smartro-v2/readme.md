@@ -127,11 +127,31 @@ IMP.request_pay(
 
   소수점 두번째 자리까지 허용합니다.
 
+- buyer\_name?: string
+
+  **구매자 이름**
+
+- buyer\_email?: string
+
+  **구매자 이메일**
+
 - buyer\_tel: string
 
   **구매자 전화번호**
 
   주의: 스마트로 일반 결제시 필수 입력
+
+- buyer\_addr?: string
+
+  **구매자 주소**
+
+- buyer\_postcode?: string
+
+  **구매자 우편번호**
+
+- tax\_free?: number
+
+  **면세금액**
 
 - vbank\_due: string
 
@@ -142,6 +162,12 @@ IMP.request_pay(
 - escrow: boolean
 
   **에스크로 결제 여부**
+
+- digital?: boolean
+
+  **디지털 컨텐츠 여부**
+
+  휴대폰 소액결제 시 필수 입력합니다.
 
 - period?: object
 
@@ -156,6 +182,63 @@ IMP.request_pay(
   - to: string
 
     **YYYYMMDD**
+
+- m\_redirect\_url?: string
+
+  **모바일 결제 후 리디렉션 될 URL**
+
+- app\_scheme?: string
+
+  **모바일 앱 URL scheme** (모바일 전용)
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- confirm\_url?: string
+
+  **Confirm process URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
+
+- bypass?: object
+
+  - cashReceiptType?: string
+
+    **현금영수증 발급 유형** (계좌이체/가상계좌 전용)
+
+    - anonymous (미발행, 자진발급)
+    - personal (소득공제)
+    - corporate (지출증빙)
+
+  - customerIdentifier?: string
+
+    **현금영수증 발급 식별번호** (계좌이체/가상계좌 전용)
+
+    휴대폰번호, 사업자등록번호, 현금영수증 카드번호를 입력할 수 있습니다.
+
+  - smartro\_v2?: object
+
+    **스마트로 전용 파라미터**
+
+    - GoodsCnt?: number
+
+      **결제 상품 품목 개수**
+
+    - SkinColor?: string
+
+      **UI 스타일**
+
+      - `RED` (기본값), `GREEN`, `BLUE`, `PURPLE`
+
+    - OpenType?: string
+
+      **결제창 언어**
+
+      - `KR`: 국내 (기본값)
+      - `EN`: 영문 (해외카드 전용 결제창)
 
 </details>
 
@@ -253,6 +336,10 @@ IMP.request_pay(
 
   주의: 스마트로 일반결제시 주문 번호에 특수문자 사용 불가
 
+- name: string
+
+  **주문명**
+
 - customer\_uid: string
 
   **빌링키 발급을 위한 결제 수단을 특정하는 고유 번호**
@@ -265,6 +352,18 @@ IMP.request_pay(
 
   주의: 스마트로 빌링키 발급시 필수 입력으로 입력 길이는 **20자**로 제한됩니다.
 
+- buyer\_name?: string
+
+  **구매자 이름**
+
+- buyer\_email?: string
+
+  **구매자 이메일**
+
+- buyer\_tel?: string
+
+  **구매자 연락처**
+
 - m\_redirect\_url: string
 
   **리다이렉트 URL**
@@ -272,6 +371,33 @@ IMP.request_pay(
   리디렉션 방식으로 진행할 경우, 트랜잭션 종료 이후 302 리디렉션 될 고객사 URL
 
   스마트로의 경우 모바일 환경에서 **리디렉션 방식으로 빌링키 발급창이 렌더링 되기 때문에 필수입력입니다.**
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
+
+- bypass?: object
+
+  - smartro\_v2?: object
+
+    **스마트로 빌링키 발급 전용 파라미터**
+
+    - SkinColor?: string
+
+      **UI 스타일**
+
+      - `RED` (기본값), `GREEN`, `BLUE`, `PURPLE`
+
+    - IsPwdPass?: string
+
+      **결제 비밀번호 등록 Skip 여부**
+
+      - `Y`: 비밀번호 설정 미사용
+      - `N`: 비밀번호 설정 사용 (기본값)
 
 </details>
 

@@ -172,7 +172,7 @@ function requestPayment() {
 
     **구매자 ID**
 
-    CBT 유형이 SBPS인 경우 필수 입력입니다. 입력하지 않은 경우 포트원에서 자동 채번된 식별값이 사용됩니다.
+    CBT 유형이 SBPS인 경우 필수 입력이며 최대 30자로 설정해야합니다.
 
   - fullName?: string
 
@@ -294,21 +294,9 @@ function requestPayment() {
 
 <details>
 
-<summary>`redirectUrl` 은 필수 입력입니다.</summary>
+<summary>`paymentId` 에는 알파벳 대소문자, 숫자 및 일부 특수문자만 허용됩니다.</summary>
 
-이니시스 일본결제의 경우 PC, 모바일 환경을 구분하지 않고 항상 리디렉션 방식으로 결제창이 동작합니다. 따라서 `redirectUrl` 는 항상 입력해야 합니다.
-
-</details>
-
-<details>
-
-<summary>`paymentId` 에는 ASCII 문자만 허용됩니다.</summary>
-
-`paymentId` 에는 ASCII 문자만으로 이루어진 문자열만 입력할 수 있습니다.
-
-ASCII 문자에 포함되지 않는 한글이나 `♤`, `♡`, `♧` 등의 특수 문자는 허용되지 않습니다.
-
-입력 가능한 ASCII 문자의 종류는 [링크](http://www.ascii-code.com/) → `ASCII printable characters` 섹션을 참고하세요.
+지원되지 않는 언어(ex. 한글) 및 특수문자(ex. `()`) 사용 시 결제가 실패할 수 있습니다.
 
 </details>
 

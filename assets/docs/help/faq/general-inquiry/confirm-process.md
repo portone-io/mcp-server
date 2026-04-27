@@ -22,7 +22,7 @@ pgCompanies:
   - KICC
   - KSNET
   - 한국결제네트웍스(KPN)
-  - KG모빌리언스
+  - KG파이낸셜
   - 스마일페이
   - 페이팔
   - 헥토파이낸셜
@@ -52,7 +52,7 @@ datetime: 2024-04-16T08:08:41.539Z
 - 이지페이(KICC)
 - KSNET
 - 한국결제네트웍스(KPN)
-- KG모빌리언스
+- KG파이낸셜
 - 스마일페이
 - 페이팔
 - 헥토파이낸셜 내통장결제
@@ -73,22 +73,16 @@ datetime: 2024-04-16T08:08:41.539Z
 #### **연동 방식**
 
 포트원 서버에서 PG사로 최종 요청 보내기 직전 포트원→ 가맹점으로 HTTP 요청을 보내게 됩니다.\
-(POST)  요청을 받을 URL은 매 결제건마다 confirm\_url 이라는 파라미터로 지정하실 수 있으며, 지정하지 않는 경우 기존처럼 그냥 결제 진행됩니다.
+(POST) 요청을 받을 URL은 매 결제건마다 confirm\_url 이라는 파라미터로 지정하실 수 있으며, 지정하지 않는 경우 기존처럼 그냥 결제 진행됩니다.
 
-POST 요청에 대해서는 5초 내로 응답을 해주셔야 하며(Timeout) 결제진행은 200응답, 거절은 그 외의 응답을 해주시면 됩니다.  (confirm\_url이 요청된 거래에 대해 Timeout 이 발생하면 500응답을 받은 것으로 간주하고 결제는 중단됩니다)
+POST 요청에 대해서는 5초 내로 응답을 해주셔야 하며(Timeout) 결제진행은 200응답, 거절은 그 외의 응답을 해주시면 됩니다. (confirm\_url이 요청된 거래에 대해 Timeout 이 발생하면 500응답을 받은 것으로 간주하고 결제는 중단됩니다)
 
 - **IMP.request\_pay(param) 호출시 confirm\_url 파라미터 지정**
 
 포트원에서 결제진행여부를 확인할 URL을 입력해주세요! \
 결제승인 직전 해당 URL로 아래와 같은 POST요청을 보내게 됩니다. (Content-Type은 application/json 으로 보내게 됩니다)
 
-<Indent level="1">
-
-- imp\_uid
-- merchant\_uid
-- amount
-
-</Indent>
+<Indent level="1">\* imp\_uid \* merchant\_uid \* amount</Indent>
 
 ```javascript
 IMP.request_pay({

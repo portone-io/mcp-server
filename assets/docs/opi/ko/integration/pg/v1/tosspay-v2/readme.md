@@ -63,8 +63,10 @@ IMP.request_pay(
       useInstallment: false,
     },
     bypass: {
-      expiredTime: "2023-12-02 11:00:00", //결제 만료시간
-      cashReceiptTradeOption: "CULTURE", //현금영수증 발급타입
+      tosspay_v2: {
+        expiredTime: "2023-12-02 11:00:00", //결제 만료시간
+        cashReceiptTradeOption: "CULTURE", //현금영수증 발급타입
+      },
     },
   },
   function (rsp) {
@@ -119,11 +121,47 @@ IMP.request_pay(
 
   매번 고유하게 채번되어야 합니다.
 
+- name: string
+
+  **주문명**
+
 - amount: number
 
   **결제금액**
 
   string 이 아닌점에 유의하세요
+
+- buyer\_name?: string
+
+  **구매자 이름**
+
+- buyer\_email?: string
+
+  **구매자 이메일**
+
+- buyer\_tel?: string
+
+  **구매자 연락처**
+
+- m\_redirect\_url?: string
+
+  **모바일 결제 후 리디렉션 될 URL**
+
+- app\_scheme?: string
+
+  **모바일 앱 URL scheme** (모바일 전용)
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- confirm\_url?: string
+
+  **Confirm process URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
 
 - card.useInstallment: boolean
 
@@ -131,23 +169,27 @@ IMP.request_pay(
 
 - bypass?: object
 
-  - expiredTime: string
+  - tosspay\_v2?: object
 
-    **결제 만료 기한**
+    **(신) 토스페이 전용 파라미터**
 
-    `yyyy-MM-dd HH:mm:ss` 의 형식입니다.
+    - expiredTime?: string
 
-    입력하지 않을 경우, 기본값인 15분으로 설정됩니다. 최대 60분까지 설정할 수 있습니다.
+      **결제 만료 기한**
 
-  - cashReceiptTradeOption: string
+      `yyyy-MM-dd HH:mm:ss` 의 형식입니다.
 
-    **현금영수증 발급 대상 타입**
+      입력하지 않을 경우, 기본값인 15분으로 설정됩니다. 최대 60분까지 설정할 수 있습니다.
 
-    전달하지 않을경우, 기본값은 `GENERAL` 입니다.
+    - cashReceiptTradeOption?: string
 
-    - `GENERAL`: 일반 (default)
-    - `CULTURE`: 문화비
-    - `PUBLIC_TP`: 교통비
+      **현금영수증 발급 대상 타입**
+
+      전달하지 않을경우, 기본값은 `GENERAL` 입니다.
+
+      - `GENERAL`: 일반 (default)
+      - `CULTURE`: 문화비
+      - `PUBLIC_TP`: 교통비
 
 </details>
 
@@ -249,6 +291,16 @@ IMP.request_pay(
 
   빌링키 발급이 완료됐을 때 웹훅이 전달될 URL입니다. 해당 파라미터가 전달되지 않은 경우 콘솔에 등록한 웹훅 주소로 웹훅이 발송됩니다. **(신) 토스페이의 경우 SDK 콜백만으로 빌링키 발급여부를 체크하는 경우 정보 유실 가능성이 있기 때문에, 반드시 웹훅으로 빌링키 발급여부를 체크하길 권장합니다**.
 
+- bypass?: object
+
+  - tosspay\_v2?: object
+
+    - encryptedUserCi?: string
+
+      **암호화된 사용자 CI**
+
+      빌링키 발급 시 사용자 CI를 암호화하여 전달할 수 있습니다.
+
 </details>
 
 </div>
@@ -271,10 +323,11 @@ await fetch("https://api.iamport.kr/subscribe/payments/again", {
     merchant_uid: "merchant_uid", // [필수 입력] 주문 번호
     amount: 1000, // [필수 입력] 결제 금액
     name: "주문명", // 주문명
-    cash_recipt_type: "person", // 현금영수증 발급 타입
+    cash_receipt_type: "person", // 현금영수증 발급 타입
     bypass: {
       tosspay_v2: {
-        cashReceiptTradeType: "GENERAL", // 현금영수증 발급 대상 타입
+        cashReceipt: true, // 현금영수증 발급 여부 (default: true)
+        cashReceiptTradeOption: "GENERAL", // 현금영수증 발급 대상 타입
         sendFailPush: false, // 결제 실패 시 토스페이앱 푸시알람 발송 여부
       },
     },
@@ -288,6 +341,12 @@ await fetch("https://api.iamport.kr/subscribe/payments/again", {
 
   - tosspay\_v2?: object
 
+    - cashReceipt?: boolean
+
+      **현금영수증 발급 여부**
+
+      기본값은 `true`입니다.
+
     - cashReceiptTradeOption?: string
 
       **현금영수증 발급 대상 타입**
@@ -296,7 +355,7 @@ await fetch("https://api.iamport.kr/subscribe/payments/again", {
       - `CULTURE`: 문화비
       - `PUBLIC_TP`: 교통비
 
-    - tosspay\_v2.cashReceiptTradeOption?: boolean
+    - sendFailPush?: boolean
 
       **결제실패 푸시알람 사용 여부**
 

@@ -4,7 +4,7 @@ description: PortOne 개발자센터 웹사이트 내 존재하는 문서들의 
 targetVersions:
   - v1
   - v2
-date: 2026-03-26
+date: 2026-04-27
 author: PortOne
 ---
 
@@ -81,6 +81,7 @@ author: PortOne
 - [컨펌 프로세스](https://developers.portone.io/opi/ko/extra/confirm-process/readme-v2): 결제 승인 직전에 고객사 측에 결제 의사를 최종적으로 확인하는 기능입니다.
 - [본인인증 연동하기](https://developers.portone.io/opi/ko/extra/identity-verification/readme-v2): 포트원을 이용하여 간편하게 본인인증을 연동하는 방법을 확인합니다.
 - [수동 승인](https://developers.portone.io/opi/ko/extra/manual-confirm/readme-v2): 고객사 서버에서 API를 호출하여 결제를 승인하는 연동 방식입니다.
+- [모바일 앱에서 결제 연동하기](https://developers.portone.io/opi/ko/extra/mobile-payment/readme-v2): 모바일 앱(Android, iOS, Flutter, React Native)에서 포트원 결제를 연동하는 방법을 안내합니다.
 - [결제취소(환불) 연동하기](https://developers.portone.io/opi/ko/integration/cancel/v2/readme): 포트원 V2 결제취소 API를 이용한 결제취소 방법을 안내합니다.
 - [다날 본인인증](https://developers.portone.io/opi/ko/integration/pg/v2/danal-identity-verification): 다날 본인인증 연동 방법을 안내합니다.
 - [엑심베이](https://developers.portone.io/opi/ko/integration/pg/v2/eximbay-v2): 엑심베이 결제 연동 방법을 안내합니다.
@@ -180,8 +181,8 @@ author: PortOne
 - [KG이니시스](https://developers.portone.io/opi/ko/integration/pg/v1/inicis): KG이니시스 결제창 연동 가이드입니다.
 - [카카오페이](https://developers.portone.io/opi/ko/integration/pg/v1/kakaopay): 카카오페이 연동 방법을 안내합니다.
 - [NHN KCP(신모듈) 본인인증 연동하기](https://developers.portone.io/opi/ko/integration/pg/v1/kcp-v2-identity-verification): NHN KCP(신모듈) 본인인증 연동 방법을 안내합니다.
-- [KG모빌리언스 (신모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/kg-mobilians-v2): KG모빌리언스 (신모듈) 결제 연동 방법을 안내합니다.
-- [KG모빌리언스 (구모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/kg): KG모빌리언스 (구모듈) 결제 연동 방법을 안내합니다.
+- [KG파이낸셜 (신모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/kg-mobilians-v2): KG파이낸셜 (신모듈) 결제 연동 방법을 안내합니다.
+- [KG파이낸셜 (구모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/kg): KG파이낸셜 (구모듈) 결제 연동 방법을 안내합니다.
 - [이지페이(KICC) 해외결제](https://developers.portone.io/opi/ko/integration/pg/v1/kicc-v2): 이지페이(KICC) 해외결제 결제 연동 방법을 안내합니다.
 - [이지페이(KICC) (구모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/kicc): 이지페이(KICC) (구모듈) 결제창 연동 방법을 안내합니다.
 - [KSNET](https://developers.portone.io/opi/ko/integration/pg/v1/ksnet/readme): KSNET 결제창 연동 가이드입니다.

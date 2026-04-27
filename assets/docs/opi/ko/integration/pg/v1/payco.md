@@ -88,17 +88,73 @@ IMP.request_pay(
 
   매번 고유하게 채번되어야 합니다.
 
-- buyer\_tel: string
+- name: string
 
-  **구매자 연락처**
-
-  필수 파라미터 입니다.
+  **주문명**
 
 - amount: number
 
   **결제금액**
 
   **string** 이 아닌점에 유의하세요
+
+- buyer\_name?: string
+
+  **구매자 이름**
+
+- buyer\_email?: string
+
+  **구매자 이메일**
+
+- buyer\_tel: string
+
+  **구매자 연락처**
+
+  필수 파라미터 입니다.
+
+- buyer\_addr?: string
+
+  **구매자 주소**
+
+- buyer\_postcode?: string
+
+  **구매자 우편번호**
+
+- tax\_free?: number
+
+  **면세금액**
+
+- vbank\_due?: string
+
+  **가상계좌 입금마감일시**
+
+- language?: string
+
+  **결제창 언어**
+
+- m\_redirect\_url?: string
+
+  **모바일 결제 후 리디렉션 될 URL**
+
+- app\_scheme?: string
+
+  **모바일 앱 URL scheme** (모바일 전용)
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- confirm\_url?: string
+
+  **Confirm process URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
+
+- customer\_id?: string
+
+  **구매자 고유 ID**
 
 </div>
 
@@ -174,11 +230,39 @@ IMP.request_pay(
 
   비 인증 결제창에서 고객이 입력한 카드정보와 1:1로 매칭될 빌링키를 지정합니다.
 
+- merchant\_uid: string
+
+  **주문번호**
+
+- name: string
+
+  **주문명**
+
 - amount: number
 
   **결제금액**
 
   금액이 설정되어도 실 결제는 발생되지 않습니다.
+
+- buyer\_name?: string
+
+  **구매자 이름**
+
+- buyer\_email?: string
+
+  **구매자 이메일**
+
+- buyer\_tel?: string
+
+  **구매자 연락처**
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
 
 **빌링키(`customer_uid`)로 결제 요청하기**
 

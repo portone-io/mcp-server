@@ -131,9 +131,41 @@ IMP.request_pay(
 
   브랜드페이는 원화 결제만 지원합니다. KRW 기준으로 금액을 입력해주세요.
 
+- buyer\_name?: string
+
+  **구매자 이름**
+
 - buyer\_email?: string
 
   **구매자 email 주소**
+
+- buyer\_tel?: string
+
+  **구매자 연락처**
+
+- buyer\_addr?: string
+
+  **구매자 주소**
+
+- buyer\_postcode?: string
+
+  **구매자 우편번호**
+
+- tax\_free?: number
+
+  **면세금액**
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- confirm\_url?: string
+
+  **Confirm process URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
 
 - customer\_id: string
 
@@ -144,7 +176,7 @@ IMP.request_pay(
 
 - bypass?: object
 
-  - isCulturalExpense: string
+  - isCulturalExpense?: boolean
 
     **도서 문화비 결제 여부**
 
@@ -298,7 +330,7 @@ IMP.request_pay(
 
 아래 파라미터는 브랜드페이 위젯에서는 사용할 수 없습니다.
 
-- **`display.card_quot`**
+- **`display.card_quota`**
 - **`useCardPoint`**
 - **`bypass.cashReceiptType`**
 - **`bypass.customerIdentifier`**

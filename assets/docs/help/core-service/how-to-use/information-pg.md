@@ -126,7 +126,7 @@ datetime: 2024-01-25T15:00:00.000Z
 - 그 외 문의채널(메일) : <support@paymentwall.com>
 - 홈페이지 : <https://www.paymentwall.com/kr/>
 
-#### **KG모빌리언스**
+#### **KG파이낸셜**
 
 - 유선문의처 : 1800-0678
 - 그 외 문의채널(메일) : <mobilpay@kggroup.co.kr>

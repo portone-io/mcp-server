@@ -82,11 +82,47 @@ IMP.request_pay(
 
   고객사에서 매번 고유하게 채번되어야 합니다.
 
+- name: string
+
+  **주문명**
+
 - amount: number
 
   **결제금액**
 
   지정하지 않은 경우 0원입니다.
+
+- buyer\_name?: string
+
+  **구매자 이름**
+
+- buyer\_email?: string
+
+  **구매자 이메일**
+
+- buyer\_tel?: string
+
+  **구매자 연락처**
+
+- buyer\_addr?: string
+
+  **구매자 주소**
+
+- buyer\_postcode?: string
+
+  **구매자 우편번호**
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- confirm\_url?: string
+
+  **Confirm process URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
 
 </div>
 

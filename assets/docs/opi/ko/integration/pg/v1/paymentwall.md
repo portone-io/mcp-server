@@ -140,13 +140,41 @@ IMP.request_pay(
   });
   ```
 
+- buyer\_tel?: string
+
+  **구매자 연락처**
+
+- buyer\_addr?: string
+
+  **구매자 주소**
+
+- buyer\_postcode?: string
+
+  **구매자 우편번호**
+
+- language?: string
+
+  **결제창 언어**
+
+- m\_redirect\_url?: string
+
+  **모바일 결제 후 리디렉션 될 URL**
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
+
 - bypass: object
 
   **페이먼트월 전용 파라미터**
 
   - widget\_code?: string
 
-    터미날3 인 경우 `t3_1`로 파라미터를 설정해야 합니다. 미설정시 Default(일반) 결제창이 활성화됩니다.
+    터미날3 인 경우 `t3_1`로 파라미터를 설정해야 합니다. 미설정시 Default(`pw_1`) 결제창이 활성화됩니다.
 
   - ps?: string
 
@@ -155,6 +183,22 @@ IMP.request_pay(
   - country\_code?: string
 
     지정된 국가에서 지원되는 결제수단이 위젯상에 노출됩니다. 다음 문서를 참고하여 해당하는 국가코드를 입력해야 합니다. [→ 국가코드 바로가기](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+
+  - logo\_url?: string
+
+    **결제창 로고 URL**
+
+  - project\_name?: string
+
+    **프로젝트명**
+
+  - product\_price\_without\_tax?: number
+
+    **세전 가격** (PaymentWall 대시보드 표시용)
+
+  - sales\_tax?: number
+
+    **판매세** (PaymentWall 대시보드 표시용)
 
 </div>
 

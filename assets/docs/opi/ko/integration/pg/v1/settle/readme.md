@@ -110,11 +110,61 @@ IMP.request_pay(
 
   **휴대폰, 가상계좌** 결제 요청인 경우 필수 파라미터
 
+- buyer\_name?: string
+
+  **구매자 이름**
+
+- buyer\_email?: string
+
+  **구매자 이메일**
+
+- buyer\_addr?: string
+
+  **구매자 주소**
+
+- buyer\_postcode?: string
+
+  **구매자 우편번호**
+
 - company\_en?: string
 
   **회사명(영문)**
 
   **휴대폰** 결제 요청인 경우 필수 파라미터
+
+- vbank\_due?: string
+
+  **가상계좌 입금마감일시**
+
+  `YYYYMMDD` 형식으로 지정합니다.
+
+- m\_redirect\_url?: string
+
+  **모바일 결제 후 리디렉션 될 URL**
+
+- app\_scheme?: string
+
+  **모바일 앱 URL scheme** (모바일 전용)
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
+
+- bypass?: object
+
+  **헥토파이낸셜 전용 파라미터**
+
+  - settle?: object
+
+    - vbank010?: boolean
+
+      **010 가상계좌 사용 여부**
+
+      `true`로 설정 시 010 가상계좌 전용 플로우로 진행됩니다. 사전에 헥토파이낸셜과 계약이 필요합니다.
 
 </div>
 

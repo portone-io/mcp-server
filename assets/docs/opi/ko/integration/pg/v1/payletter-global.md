@@ -31,6 +31,83 @@ targetVersions:
 
 결제 요청 시에는 [JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/readme) `IMP.request_pay(param, callback)`을 호출해야 합니다.
 
+### 주요 파라미터 설명
+
+- channelKey: string
+
+  **채널키**
+
+  결제를 진행할 채널을 지정합니다.
+
+  포트원 콘솔 내 \[결제 연동] - \[연동 정보] - \[채널 관리] 에서 확인 가능합니다.
+
+- merchant\_uid: string
+
+  **주문번호**
+
+  매번 고유하게 채번되어야 합니다. 영문, 숫자만 입력 가능합니다.
+
+- name: string
+
+  **주문명**
+
+- amount: number
+
+  **결제금액**
+
+- currency: string
+
+  **결제 통화**
+
+  카드: `KRW`, `USD`, `JPY` / Alipay: `USD`, `CNY` / WeChatPay: `KRW`, `USD`, `CNY`
+
+- buyer\_email: string
+
+  **구매자 이메일** (필수)
+
+- buyer\_name?: string
+
+  **구매자 이름**
+
+- buyer\_tel?: string
+
+  **구매자 연락처**
+
+- m\_redirect\_url?: string
+
+  **모바일 결제 후 리디렉션 될 URL**
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
+
+- bypass?: object
+
+  - payletter\_global?: object
+
+    - pginfo?: string
+
+      **결제 수단 지정**
+
+      특정 결제 수단만 결제창에 노출하고 싶은 경우 설정합니다.
+
+      - `PLCreditCard`: 해외카드 비인증
+      - `PLCreditCardMpi`: 해외카드 인증(3DS)
+      - `PLUnionPay_HC`: 유니온페이
+      - `WeChatPayQRCodePayment`: 위챗페이 PC결제
+      - `WeChatPayH5Payment`: 위챗페이 모바일결제
+      - `ICBAlipay`: 알리페이
+
+    - servicename?: string
+
+      **서비스명**
+
+      WeChatPay, Alipay 결제 시 필수 입력합니다.
+
 ## 가능한 빌링키 발급 및 결제 수단
 
 - **빌링키 발급 및 결제**
@@ -51,13 +128,77 @@ targetVersions:
 
 빌링키 발급 및 결제 요청 시에는 `customer_uid` 파라미터를 포함하여 [JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/readme) `IMP.request_pay(param, callback)`을 호출해야 합니다.
 
+### 주요 파라미터 설명
+
+- channelKey: string
+
+  **채널키**
+
+- merchant\_uid: string
+
+  **주문번호**
+
+- name: string
+
+  **주문명**
+
+- amount: number
+
+  **결제금액**
+
+- currency: string
+
+  **결제 통화**
+
+- customer\_uid: string
+
+  **빌링키**
+
+  빌링키 발급 시 필수 입력입니다.
+
+- buyer\_email: string
+
+  **구매자 이메일** (필수)
+
+- buyer\_name?: string
+
+  **구매자 이름**
+
+- buyer\_tel?: string
+
+  **구매자 연락처**
+
+- m\_redirect\_url?: string
+
+  **모바일 결제 후 리디렉션 될 URL**
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
+
+- bypass?: object
+
+  - payletter\_global?: object
+
+    - pginfo?: string
+
+      **결제 수단 지정**
+
+      - `PLCreditCard`: 해외카드 비인증
+      - `PLCreditCardMpi`: 해외카드 인증(3DS)
+      - `PLUnionPay_HC`: 유니온페이
+
 <div class="hint" data-style="warning">
 
 페이레터 해외결제는 **SDK 1.3.0 부터 사용 가능**합니다.
 
 SDK 스크립트의 주소가 `https://cdn.iamport.kr/v1/iamport.js` 인지 확인해주세요.
 
-위 JS SDK 를 이용하여 페이팔 정기결제 연동시 callback Data는 아래와 같이 두가지 형태로만 내려갑니다.
+위 JS SDK 를 이용하여 페이레터 해외결제 연동시 callback Data는 아래와 같이 두가지 형태로만 내려갑니다.
 
 - `imp_uid`
 - `merchant_uid`

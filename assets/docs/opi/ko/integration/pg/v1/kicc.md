@@ -84,9 +84,9 @@ IMP.request_pay(
 
   고객사에서 매번 고유하게 채번되어야 합니다.
 
-- buyer\_tel: string
+- name: string
 
-  **`주문자 연락처`**
+  **주문명**
 
 - amount: number
 
@@ -94,11 +94,92 @@ IMP.request_pay(
 
   **string** 이 아닌점에 유의하세요
 
+- buyer\_name?: string
+
+  **구매자 이름**
+
+- buyer\_email?: string
+
+  **구매자 이메일**
+
+- buyer\_tel: string
+
+  **주문자 연락처**
+
+- buyer\_addr?: string
+
+  **구매자 주소**
+
+- buyer\_postcode?: string
+
+  **구매자 우편번호**
+
 - escrow?: boolean
 
   **에스크로 설정여부**
 
   계좌이체, 가상계좌만 지원됩니다.
+
+- tax\_free?: number
+
+  **면세금액**
+
+- digital?: boolean
+
+  **디지털 컨텐츠 여부**
+
+  - `true`: 컨텐츠
+  - `false`: 실물 상품
+
+- vbank\_due?: string
+
+  **가상계좌 입금마감일시**
+
+- company?: string
+
+  **상호명**
+
+  카드사 다이렉트 호출 시 설정하지 않으면 `iamport`로 표기됩니다.
+
+- auth\_mode?: string
+
+  **인증 방식**
+
+  - `key-in`: 키인결제 모드
+
+- m\_redirect\_url?: string
+
+  **모바일 결제 후 리디렉션 될 URL**
+
+- app\_scheme?: string
+
+  **모바일 앱 URL scheme** (모바일 전용)
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- confirm\_url?: string
+
+  **Confirm process URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
+
+- customer\_id?: string
+
+  **구매자 고유 ID**
+
+- bypass?: object
+
+  **KICC 전용 파라미터**
+
+  - kicc?: object
+
+    - disp\_cash\_yn?: string
+
+      **현금영수증 표시 여부**
 
 </div>
 
@@ -170,6 +251,14 @@ IMP.request_pay(
 
   비 인증 결제창에서 고객이 입력한 카드정보와 1:1로 매칭될 빌링키를 지정합니다.
 
+- merchant\_uid: string
+
+  **주문번호**
+
+- name: string
+
+  **주문명**
+
 - amount: number
 
   **결제금액**
@@ -177,6 +266,30 @@ IMP.request_pay(
   결제창에 표시될 금액으로 실제 승인은 이루어지지 않습니다.
 
   (실 결제를 발생시키기 위해서는 **`customer_uid`** 로 **REST API 를 이용하여 결제요청**을 해 주셔야 합니다.)
+
+- buyer\_name?: string
+
+  **구매자 이름**
+
+- buyer\_email?: string
+
+  **구매자 이메일**
+
+- buyer\_tel?: string
+
+  **구매자 연락처**
+
+- m\_redirect\_url?: string
+
+  **모바일 결제 후 리디렉션 될 URL**
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
 
 ### 빌링키(`customer_uid`)로 결제 요청하기
 

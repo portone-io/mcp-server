@@ -160,11 +160,23 @@ IMP.request_pay(
 
   **구매자 이메일 주소**
 
+- buyer\_addr?: string
+
+  **구매자 주소**
+
+- buyer\_postcode?: string
+
+  **구매자 우편번호**
+
 - m\_redirect\_url?: string
 
   **모바일 환경에서 트랜잭션 종료 후 302 리디렉션 될 URL**
 
   주의: 갤럭시아머니트리의 경우 **모바일 환경에서 필수 입력**입니다.
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
 
 - notice\_url?: string 또는 **string\[]**
 

@@ -80,17 +80,63 @@ IMP.request_pay(
 
   매번 고유하게 채번되어야 합니다.
 
-- buyer\_tel: string
+- name: string
 
-  **구매자 연락처**
-
-  필수 파라미터 입니다.
+  **주문명**
 
 - amount: number
 
   **결제금액**
 
   **string** 이 아닌점에 유의하세요
+
+- buyer\_name?: string
+
+  **구매자 이름**
+
+- buyer\_email?: string
+
+  **구매자 이메일**
+
+- buyer\_tel: string
+
+  **구매자 연락처**
+
+  필수 파라미터 입니다.
+
+- buyer\_addr?: string
+
+  **구매자 주소**
+
+- buyer\_postcode?: string
+
+  **구매자 우편번호**
+
+- tax\_free?: number
+
+  **면세금액**
+
+- m\_redirect\_url?: string
+
+  **모바일 결제 후 리디렉션 될 URL**
+
+- app\_scheme?: string
+
+  **모바일 앱 URL scheme** (모바일 전용)
+
+  모바일 앱에서 결제 시 설정하면 결제 완료 후 해당 앱으로 돌아옵니다.
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- confirm\_url?: string
+
+  **Confirm process URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
 
 </div>
 

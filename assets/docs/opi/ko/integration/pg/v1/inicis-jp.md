@@ -30,7 +30,7 @@ targetVersions:
 ## SDK 결제 요청하기
 
 [JavaScript SDK (신규)](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/readme)의 `IMP.request_pay(param, callback)`을 호출하여
-KSNET 결제창을 호출할 수 있습니다. **결제결과**는 PC의 경우 `IMP.request_pay(param, callback)` 호출 후
+이니시스 일본결제 결제창을 호출할 수 있습니다. **결제결과**는 PC의 경우 `IMP.request_pay(param, callback)` 호출 후
 **callback**으로 수신되고 모바일의 경우 **m\_redirect\_url**로 리디렉션됩니다.
 
 <div class="hint" data-style="info">
@@ -94,10 +94,8 @@ IMP.request_pay(
         close: "23:00",
       },
     },
-    card: {
-      display: {
-        card_quota: [0, 3, 5, 6, 10, 12],
-      },
+    display: {
+      card_quota: [0, 3, 5, 6, 10, 12],
     },
     cvs: {
       payment_deadline: {
@@ -150,6 +148,8 @@ IMP.request_pay(
 
   고객사에서 매번 고유하게 채번되어야 합니다.
 
+  알파벳 대소문자, 숫자 및 일부 특수문자만 사용이 가능하여 사용에 유의가 필요합니다.
+
 - name: string
 
   **주문명**
@@ -174,7 +174,7 @@ IMP.request_pay(
 
   **결제창 팝업 여부**
 
-  이니시스 일본결제는 팝업 결제창만 지원합니다. (iframe 미지원)
+  이니시스 일본결제는 PC환경에서는 팝업 결제창만 지원합니다. (iframe 미지원)
 
 - buyer\_name: string
 
@@ -260,20 +260,17 @@ IMP.request_pay(
 
       HH:mm 포맷으로 입력해야하며 00:00\~23:59 범위의 값만 허용합니다.
 
-- card?: object
+- display?: object
 
-  **카드 결제 시 파라미터**
+  - card\_quota?: number\[]
 
-  - display?: object
+    **카드 할부 개월수 리스트**
 
-    - card\_quota?: number\[]
+    이니시스 일본결제의 경우 일시불, 3, 5, 6, 10, 12개월만 지정 가능합니다.
 
-      **카드 할부 개월수 리스트**
-
-      이니시스 일본결제의 경우 일시불, 3, 5, 6, 10, 12개월만 지정 가능합니다.
-
-      - `[]`: 할부개월 수로 일시불만 노출
-      - `[3, 5, 6]`: 할부개월 수로 일시불 및 3, 5, 6개월 노출
+    - `[0]`: 일시불만 노출
+    - `[3, 5, 6]`: 할부개월 수로 3, 5, 6개월 노출
+    - `[0, 3, 5, 6]`: 할부개월 수로 일시불 및 3, 5, 6개월 노출
 
 - cvs?: object
 
@@ -287,15 +284,27 @@ IMP.request_pay(
 
     - valid\_hours?: integer
 
-      **유효 시간**
+      **유효 시간 (시간 단위)**
 
-      이니시스 일본결제의 경우 일시불, 3, 5, 6, 10, 12개월만 지정 가능합니다.
+      편의점 결제의 지불기한을 시간 단위로 지정합니다. 현재 시간 기준으로 계산되며 최소 1일\~최대 30일 범위의 일수로 변환됩니다.
 
     - due\_date?: string
 
       **만료 시점**
 
       시간은 ISO8601 형식으로 입력해야 합니다.
+
+- m\_redirect\_url?: string
+
+  **모바일 결제 후 리디렉션 될 URL**
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
 
 - bypass?: object
 
@@ -348,12 +357,11 @@ IMP.request_pay(
     buyer_name: "Port One",
     buyer_email: "buyer@example.com",
     buyer_tel: "0216705176",
+    customer_id: "customer_portone",
     m_redirect_url: "https://helloworld.com/payments/result",
     notice_url: "https://helloworld.com/api/v1/payments/notice",
-    card: {
-      display: {
-        card_quota: [0, 3, 5, 6, 10, 12],
-      },
+    display: {
+      card_quota: [0, 3, 5, 6, 10, 12],
     },
     bypass: {
       inicis_jp: {
@@ -394,6 +402,8 @@ IMP.request_pay(
 
   고객사에서 매번 고유하게 채번되어야 합니다.
 
+  알파벳 대소문자, 숫자 및 일부 특수문자만 사용이 가능하여 사용에 유의가 필요합니다.
+
 - name: string
 
   **주문명**
@@ -418,7 +428,7 @@ IMP.request_pay(
 
   **결제창 팝업 여부**
 
-  이니시스 일본결제는 팝업 결제창만 지원합니다. (iframe 미지원)
+  이니시스 일본결제는 PC환경에서는 팝업 결제창만 지원합니다. (iframe 미지원)
 
 - buyer\_name: string
 
@@ -432,18 +442,35 @@ IMP.request_pay(
 
   **주문자 연락처**
 
-- card?: object
+- customer\_id: string
 
-  - display?: object
+  **구매자 ID**
 
-    - card\_quota?: number\[]
+  CBT 유형이 SBPS인 경우 필수 입력이며 최대 30자로 설정해야합니다.
 
-      **카드 할부 개월수 리스트**
+- display?: object
 
-      이니시스 일본결제의 경우 일시불, 3, 5, 6, 10, 12개월만 지정 가능합니다.
+  - card\_quota?: number\[]
 
-      - `[]`: 할부개월 수로 일시불만 노출
-      - `[3, 5, 6]`: 할부개월 수로 일시불 및 3, 5, 6개월 노출
+    **카드 할부 개월수 리스트**
+
+    이니시스 일본결제의 경우 일시불, 3, 5, 6, 10, 12개월만 지정 가능합니다.
+
+    - `[0]`: 일시불만 노출
+    - `[3, 5, 6]`: 할부개월 수로 3, 5, 6개월 노출
+    - `[0, 3, 5, 6]`: 할부개월 수로 일시불 및 3, 5, 6개월 노출
+
+- m\_redirect\_url?: string
+
+  **모바일 결제 후 리디렉션 될 URL**
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
 
 - bypass?: object
 
