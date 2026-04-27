@@ -1,5 +1,11 @@
 # @portone/mcp-server
 
+## 0.16.0
+
+### Minor Changes
+
+- 62f6d7c: 문서 업데이트
+
 ## 0.15.0
 
 ### Minor Changes
