@@ -126,11 +126,27 @@ Content-Type : Application.json;charset=UTF-8
 
 - pay\_methods: object\[]
 
-  - pg?: string
+  - channelKey?: string
+
+    채널키
+
+    결제를 진행할 채널을 지정합니다.
+
+    포트원 콘솔 내 \[결제 연동] - \[연동 정보] - \[채널 관리] 에서 확인 가능합니다.
+
+  - pg(deprecated)?: string
 
     pg사 구분코드
 
     [pg 파라미터 가이드 바로가기](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/payrq?v=v1#pg-string)
+
+    <div class="hint" data-style="warning">
+
+    pg 파라미터는 지원 중단 예정입니다.
+
+    `channelKey` 파라미터로 채널 설정(PG사 구분)을 대체해주세요.
+
+    </div>
 
   - pay\_method?: string
 
@@ -144,11 +160,27 @@ Content-Type : Application.json;charset=UTF-8
 
 - direct?: object
 
-  - pg?: string
+  - channelKey?: string
+
+    채널키
+
+    결제를 진행할 채널을 지정합니다.
+
+    포트원 콘솔 내 \[결제 연동] - \[연동 정보] - \[채널 관리] 에서 확인 가능합니다.
+
+  - pg(deprecated)?: string
 
     pg사 구분코드 ex. paymentwall.mid
 
     [pg 파라미터 가이드 바로가기](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/payrq?v=v1#pg-string)
+
+    <div class="hint" data-style="warning">
+
+    pg 파라미터는 지원 중단 예정입니다.
+
+    `channelKey` 파라미터로 채널 설정(PG사 구분)을 대체해주세요.
+
+    </div>
 
   - pay\_method?: string
 
@@ -170,14 +202,14 @@ Content-Type : Application.json;charset=UTF-8
 
 ```json title="일반 호출"
 {
-  "payment_info": "{\"title\":\"테스트고객사\",\"user_code\":\"imp68124833\",\"amount\":10000,\"merchant_uid\":\"merchant_1630665784552\",\"name\":\"결제링크 테스트\",\"tax_free\":\"면세공급가액\",\"currency\":\"KRW\",\"language\":\"ko\",\"buyer_name\":\"\",\"buyer_tel\":\"\",\"buyer_addr\":\"\",\"buyer_email\":\"\",\"buyer_postcode\":\"\",\"custom_data\":\"json_object\",\"notice_url\":\"결제 결과를 받을 url\",\"pay_methods\":[{\"pg\":\"INIpayTest\",\"pay_method\":\"card\",\"label\":\"신용/체크카드\"},{\"pg\":\"INIpayTest\",\"pay_method\":\"naverpay\",\"label\":\"네이버페이\"},{\"pg\":\"INIpayTest\",\"pay_method\":\"kakaopay\",\"label\":\"카카오페이\"},{\"pg\":\"INIpayTest\",\"pay_method\":\"phone\",\"label\":\"핸드폰 소액결제\"},{\"pg\":\"INIpayTest\",\"pay_method\":\"trans\",\"label\":\"계좌이체\"},{\"pg\":\"INIpayTest\",\"pay_method\":\"vbank\",\"label\":\"가상계좌\"}]}",
+  "payment_info": "{\"title\":\"테스트고객사\",\"user_code\":\"imp68124833\",\"amount\":10000,\"merchant_uid\":\"merchant_1630665784552\",\"name\":\"결제링크 테스트\",\"tax_free\":\"면세공급가액\",\"currency\":\"KRW\",\"language\":\"ko\",\"buyer_name\":\"\",\"buyer_tel\":\"\",\"buyer_addr\":\"\",\"buyer_email\":\"\",\"buyer_postcode\":\"\",\"custom_data\":\"json_object\",\"notice_url\":\"결제 결과를 받을 url\",\"pay_methods\":[{\"channelKey\":\"channel-key-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"pay_method\":\"card\",\"label\":\"신용/체크카드\"},{\"channelKey\":\"channel-key-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"pay_method\":\"naverpay\",\"label\":\"네이버페이\"},{\"channelKey\":\"channel-key-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"pay_method\":\"kakaopay\",\"label\":\"카카오페이\"},{\"channelKey\":\"channel-key-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"pay_method\":\"phone\",\"label\":\"핸드폰 소액결제\"},{\"channelKey\":\"channel-key-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"pay_method\":\"trans\",\"label\":\"계좌이체\"},{\"channelKey\":\"channel-key-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"pay_method\":\"vbank\",\"label\":\"가상계좌\"}]}",
   "expired_at": 1634324016
 }
 ```
 
 ```json title="PG사 결제창 다이렉트 호출"
 {
-  "payment_info": "{\"title\":\"테스트고객사\",\"user_code\":\"imp68124833\",\"amount\":1000,\"merchant_uid\":\"merchant_16306657845522\",\"name\":\"결제링크 테스트\",\"tax_free\":\"면세공급가액\",\"currency\":\"KRW\",\"language\":\"ko\",\"buyer_name\":\"\",\"buyer_tel\":\"\",\"buyer_addr\":\"\",\"buyer_email\":\"\",\"direct\":{\"pg\":\"tosspayments\",\"pay_method\":\"card\"}}",
+  "payment_info": "{\"title\":\"테스트고객사\",\"user_code\":\"imp68124833\",\"amount\":1000,\"merchant_uid\":\"merchant_16306657845522\",\"name\":\"결제링크 테스트\",\"tax_free\":\"면세공급가액\",\"currency\":\"KRW\",\"language\":\"ko\",\"buyer_name\":\"\",\"buyer_tel\":\"\",\"buyer_addr\":\"\",\"buyer_email\":\"\",\"direct\":{\"channelKey\":\"channel-key-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"pay_method\":\"card\"}}",
   "expired_at": 1634324016
 }
 ```

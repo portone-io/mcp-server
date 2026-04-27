@@ -88,13 +88,33 @@ IMP.request_pay(
 
   매번 고유하게 채번되어야 합니다.
 
-- buyer: string
+- name: string
+
+  **주문명**
+
+- buyer\_name: string
 
   **구매자명**
+
+- buyer\_email?: string
+
+  **구매자 이메일**
 
 - buyer\_tel: string
 
   **구매자 연락처**
+
+- buyer\_addr?: string
+
+  **구매자 주소**
+
+  `bypass.shipTo_street1`의 기본값으로 사용됩니다.
+
+- buyer\_postcode?: string
+
+  **구매자 우편번호**
+
+  `bypass.shipTo_postalCode`의 기본값으로 사용됩니다.
 
 - amount: number
 
@@ -104,26 +124,104 @@ IMP.request_pay(
 
 - currency?: string
 
-  **결제통화코드**
+  **결제통화코드** (기본값: USD)
 
-  - KRW
-  - USD
-  - EUR
-  - GBP
-  - JPY
-  - THB
-  - SGD
-  - RUB
-  - HKD
-  - CAD
-  - AUD
+  KRW, USD, EUR, GBP, JPY, THB, SGD, RUB, HKD, CAD, AUD
 
 - language?: string
 
-  - 한국어 : ko
-  - 영어 : en
-  - 중국어 : zh
-  - 일본어 : jp
+  **결제창 언어**
+
+  - `ko`: 한국어
+  - `en`: 영어
+  - `zh`: 중국어
+  - `jp`: 일본어
+
+- popup?: boolean
+
+  **팝업창 활성화 여부**
+
+- m\_redirect\_url?: string
+
+  **모바일 결제 후 리디렉션 될 URL**
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
+
+- bypass?: object
+
+  **엑심베이 전용 파라미터**
+
+  - eximbay?: object
+
+    - issuercountry?: string
+
+      **국내 결제창 호출 시 `KR`로 설정**
+
+    - shipTo\_city?: string
+
+      **배송지 도시**
+
+    - shipTo\_country?: string
+
+      **배송지 국가코드**
+
+    - shipTo\_firstName?: string
+
+      **수취인 이름**
+
+    - shipTo\_lastName?: string
+
+      **수취인 성**
+
+    - shipTo\_phoneNumber?: string
+
+      **수취인 연락처**
+
+    - shipTo\_state?: string
+
+      **배송지 주/도**
+
+    - billTo\_city?: string
+
+      **청구지 도시**
+
+    - billTo\_country?: string
+
+      **청구지 국가코드**
+
+    - billTo\_firstName?: string
+
+      **청구인 이름**
+
+    - billTo\_lastName?: string
+
+      **청구인 성**
+
+    - billTo\_phoneNumber?: string
+
+      **청구인 연락처**
+
+    - billTo\_postalCode?: string
+
+      **청구지 우편번호**
+
+    - billTo\_state?: string
+
+      **청구지 주/도**
+
+    - billTo\_street1?: string
+
+      **청구지 주소**
+
+    - siteforeigncur?: string
+
+      **외화 표시 통화**
 
 </div>
 
@@ -181,7 +279,9 @@ IMP.request_pay(
 ```json
 {
   "bypass": {
-    "issuercountry": "KR"
+    "eximbay": {
+      "issuercountry": "KR"
+    }
   }
 }
 ```
@@ -218,7 +318,9 @@ IMP.request_pay({
   buyer_postcode: "123-456",
   popup: false,
   bypass: {
-    issuercountry: "KR",
+    eximbay: {
+      issuercountry: "KR",
+    },
   },
 });
 ```

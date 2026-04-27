@@ -74,10 +74,10 @@ IMP.request_pay(
 
   - card (신용카드)
   - trans (실시간 계좌이체)
-  - vbank(가상계좌)
-  - phone(휴대폰 소액결제) : 휴대폰 결제인 경우 pg 파라미터는 **`danal`** 로 지정하면 됩니다.
+  - vbank (가상계좌)
+  - phone (휴대폰 소액결제) : 휴대폰 결제인 경우 pg 파라미터는 **`danal`** 로 지정하면 됩니다.
   - cultureland (컬쳐랜드 문화상품권)
-  - booknlife (도서문화상품권)
+  - happymoney (해피머니 문화상품권)
 
 - merchant\_uid: string
 
@@ -85,11 +85,31 @@ IMP.request_pay(
 
   고객사에서 매번 고유하게 채번되어야 합니다.
 
+- name: string
+
+  **주문명**
+
+- buyer\_name?: string
+
+  **구매자 이름**
+
+- buyer\_email?: string
+
+  **구매자 이메일**
+
 - buyer\_tel: string
 
   **주문자 연락처**
 
   미 설정 시 다날 결제창에서 오류 발생 가능
+
+- buyer\_addr?: string
+
+  **구매자 주소**
+
+- buyer\_postcode?: string
+
+  **구매자 우편번호**
 
 - amount: number
 
@@ -97,15 +117,73 @@ IMP.request_pay(
 
   지정하지 않은 경우 0원입니다.
 
+- tax\_free?: number
+
+  **면세금액** (휴대폰 결제 외)
+
 - biz\_num?: string
 
   **사업자등록번호**
 
   가상계좌 결제창 호출 시 `사업자등록번호 10자리` 필수 입력 (미설정 시 다날 결제창에서 오류 발생 가능)
 
+- vbank\_due?: string
+
+  **가상계좌 입금마감일시**
+
 - company?: string
 
   휴대폰 결제시 결제창에 표시될 표시될 상호명. 입력하지 않으면 포트원 대표상점명으로 표시됩니다.
+
+- appCard?: boolean
+
+  **앱카드 전용 모드** (휴대폰 결제 외)
+
+- auth\_mode?: string
+
+  **인증 방식** (휴대폰 결제 외)
+
+  - `key-in`: 키인 결제 모드로 결제창을 호출합니다.
+
+- m\_redirect\_url?: string
+
+  **모바일 결제 후 리디렉션 될 URL**
+
+- app\_scheme?: string
+
+  **모바일 앱 URL scheme** (모바일 전용, 휴대폰 결제 외)
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- confirm\_url?: string
+
+  **Confirm process URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
+
+- customer\_id?: string
+
+  **구매자 고유 ID**
+
+- bypass?: object
+
+  **다날 전용 파라미터** (휴대폰 결제 외)
+
+  - danal?: object
+
+    - COLOR?: string
+
+      **결제창 색상**
+
+    - ISCASHRECEIPTUI?: string
+
+      **현금영수증 발급 UI 표시 여부** (계좌이체/가상계좌)
+
+      - `N`: 현금영수증 발급 UI를 숨깁니다.
 
 </div>
 
@@ -184,11 +262,39 @@ IMP.request_pay(
 
   비 인증 결제창에서 고객이 입력한 카드정보와 1:1로 매칭될 빌링키를 지정합니다.
 
-- amount: Integer
+- merchant\_uid: string
+
+  **고객사 채번 주문 고유번호**
+
+- name: string
+
+  **주문명**
+
+- amount: integer
 
   **결제금액**
 
   0원으로 설정시 빌링키만 발급되며 **0원 이상 설정시 실결제와 빌링키 발급이 동시**에 이루어 집니다.
+
+- buyer\_name?: string
+
+  **구매자 이름**
+
+- buyer\_email?: string
+
+  **구매자 이메일**
+
+- buyer\_tel?: string
+
+  **구매자 연락처**
+
+- buyer\_addr?: string
+
+  **구매자 주소**
+
+- buyer\_postcode?: string
+
+  **구매자 우편번호**
 
 - period?: object
 
@@ -201,6 +307,30 @@ IMP.request_pay(
   - to: string
 
     **YYYYMMDD**
+
+  - text?: string
+
+    **결제창 표기용 제공기간 문구** (휴대폰 빌링키 발급 시 사용)
+
+- m\_redirect\_url?: string
+
+  **모바일 결제 후 리디렉션 될 URL**
+
+- app\_scheme?: string
+
+  **모바일 앱 URL scheme** (모바일 전용, 휴대폰 결제 외)
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
+
+- customer\_id?: string
+
+  **구매자 고유 ID**
 
 ### 빌링키(customer\_uid)로 결제 요청하기
 

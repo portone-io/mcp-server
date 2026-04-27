@@ -43,7 +43,7 @@ versionVariants:
   - `kcp_billing`(NHN KCP 결제창 정기결제)
   - `kicc`(이지페이(한국정보통신) 결제창 일반/정기결제)
   - `ksnet`(KSNET 결제창 일반결제 및 API 수기/정기결제)
-  - `mobilians`(모빌리언스 결제창 일반/정기결제)
+  - `mobilians`(KG파이낸셜 결제창 일반/정기결제)
   - `nice`(나이스정보통신(구모듈) 결제창 일반결제 및 API 수기/정기결제)
   - `nice_v2`(나이스페이(신모듈) 결제창 일반결제 및 API 수기/정기결제)
   - `settle`(헥토파이낸셜 결제창 일반결제 및 API 수기/정기결제)
@@ -361,7 +361,7 @@ versionVariants:
 ```json
 {
   "display": {
-    "card_quota": [6] // 할부개월 6개월만 활성화
+    "card_quota": [6]
   }
 }
 ```
@@ -381,6 +381,14 @@ versionVariants:
 <div class="hint" data-style="info">
 
 할부결제는 **5만원 이상 결제 요청시**에만 이용 가능합니다.
+
+</div>
+
+<div class="hint" data-style="danger">
+
+PG사 별로 지원 여부 및 이용 방법이 상이할 수 있습니다.
+
+PG사 별 이용 방법은 결제대행사 선택하여 연동하기를 참고해주세요.
 
 </div>
 

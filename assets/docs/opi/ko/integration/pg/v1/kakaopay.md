@@ -86,11 +86,97 @@ IMP.request_pay(
 
   매번 고유하게 채번되어야 합니다.
 
+- name: string
+
+  **주문명**
+
 - amount: number
 
   **결제금액**
 
   **string** 이 아닌점에 유의하세요
+
+- buyer\_name?: string
+
+  **구매자 이름**
+
+- buyer\_email?: string
+
+  **구매자 이메일**
+
+- buyer\_tel?: string
+
+  **구매자 연락처**
+
+- buyer\_addr?: string
+
+  **구매자 주소**
+
+- buyer\_postcode?: string
+
+  **구매자 우편번호**
+
+- tax\_free?: number
+
+  **면세금액**
+
+- m\_redirect\_url?: string
+
+  **모바일 결제 후 리디렉션 될 URL**
+
+- app\_scheme?: string
+
+  **모바일 앱 URL scheme** (모바일 전용, iOS만 지원)
+
+  카카오페이 정책에 따라 iOS에서만 사용 가능합니다.
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- confirm\_url?: string
+
+  **Confirm process URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
+
+- customer\_id?: string
+
+  **구매자 고유 ID**
+
+- display?: object
+
+  **카드 할부 설정**
+
+  - card\_quota?: number\[]
+
+    **할부 개월수**
+
+    단일 값만 지정 가능합니다. 지정 시 해당 개월수로 고정됩니다.
+
+- card?: object
+
+  **카드 필터링**
+
+  - detail?: object\[]
+
+    **사용 가능한 카드사 목록**
+
+    - card\_code?: string
+
+      **카드사 코드**
+
+    - enabled?: boolean
+
+      **활성화 여부**
+
+- kakaopayMobileAsPC?: boolean
+
+  **모바일에서 PC URL 사용 여부** (모바일 전용)
+
+  `true` 설정 시 모바일 환경에서 PC용 결제 URL을 사용합니다.
 
 - bypass?: object
 
@@ -108,6 +194,10 @@ IMP.request_pay(
       - `MONEY`: 포인트결제만 허용
 
       미입력 시 사용 가능한 전체 결제수단 허용
+
+    - custom\_message?: string
+
+      **카카오페이 결제 UI에 표시되는 커스텀 메시지**
 
 </div>
 
@@ -180,6 +270,14 @@ IMP.request_pay(
 
   비 인증 결제창에서 고객이 입력한 카드정보와 1:1로 매칭될 빌링키를 지정합니다.
 
+- merchant\_uid: string
+
+  **주문번호**
+
+- name: string
+
+  **주문명**
+
 - amount: number
 
   **결제금액**
@@ -187,6 +285,34 @@ IMP.request_pay(
   결제창에 표시될 금액으로 0원 이상 설정시 실 결제가 발생됩니다.
 
   (실 결제를 원하지 않은 경우 amount 금액을 0원으로 설정합니다.)
+
+- buyer\_name?: string
+
+  **구매자 이름**
+
+- buyer\_email?: string
+
+  **구매자 이메일**
+
+- buyer\_tel?: string
+
+  **구매자 연락처**
+
+- m\_redirect\_url?: string
+
+  **모바일 결제 후 리디렉션 될 URL**
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
+
+- customer\_id?: string
+
+  **구매자 고유 ID**
 
 **빌링키(customer\_uid)로 결제 요청하기**
 
@@ -206,9 +332,9 @@ curl -H "Content-Type: application/json" \
 
 <details>
 
-<summary> 부가세 지정 미지원</summary>
+<summary> 부가세(`vat_amount`) 지정 미지원</summary>
 
-- 카카오페이 결제 시 부가세 지정은 지원하지 않습니다.
+- 카카오페이 결제 시 `vat_amount`(부가세) 직접 지정은 지원하지 않습니다. `tax_free`(면세금액)는 지원됩니다.
 - 카카오페이 결제 취소 시 부가세 지정은 지원하지 않습니다.
 
 </details>

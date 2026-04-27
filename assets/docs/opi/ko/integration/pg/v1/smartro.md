@@ -93,11 +93,89 @@ IMP.request_pay(
 
   매번 고유하게 채번되어야 합니다.
 
+- name: string
+
+  **주문명**
+
 - amount: number
 
   **결제금액**
 
   **string** 이 아닌점에 유의하세요
+
+- buyer\_name?: string
+
+  **구매자 이름**
+
+- buyer\_email?: string
+
+  **구매자 이메일**
+
+- buyer\_tel?: string
+
+  **구매자 연락처**
+
+- buyer\_addr?: string
+
+  **구매자 주소**
+
+- buyer\_postcode?: string
+
+  **구매자 우편번호**
+
+- escrow?: boolean
+
+  **에스크로 설정여부**
+
+- digital?: boolean
+
+  **디지털 컨텐츠 여부**
+
+  - `true`: 컨텐츠
+  - `false`: 실물 상품
+
+- language?: string
+
+  **결제창 언어**
+
+  - `ko`: 한국어 (기본값)
+  - `en`: 영어
+
+- vbank\_due?: string
+
+  **가상계좌 입금마감일시**
+
+- period?: object
+
+  **서비스 제공기간**
+
+  - from?: string
+
+    **시작일 (YYYYMMDD)**
+
+  - to?: string
+
+    **종료일 (YYYYMMDD)**
+
+- m\_redirect\_url?: string
+
+  **모바일 결제 후 리디렉션 될 URL**
+
+- app\_scheme?: string
+
+  **모바일 앱 URL scheme** (모바일 전용)
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- confirm\_url?: string
+
+  **Confirm process URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
 
 </div>
 

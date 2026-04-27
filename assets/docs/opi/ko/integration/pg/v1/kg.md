@@ -1,11 +1,11 @@
 ---
-title: KG모빌리언스 (구모듈)
-description: KG모빌리언스 (구모듈) 결제 연동 방법을 안내합니다.
+title: KG파이낸셜 (구모듈)
+description: KG파이낸셜 (구모듈) 결제 연동 방법을 안내합니다.
 targetVersions:
   - v1
 ---
 
-## 1. KG모빌리언스 채널 설정하기
+## 1. KG파이낸셜 채널 설정하기
 
 [결제대행사 채널 설정하기](https://developers.portone.io/opi/ko/integration/ready/readme#3-결제대행사-채널-설정하기) 페이지의 내용을 참고하여 채널 설정을 진행합니다.
 
@@ -14,7 +14,7 @@ targetVersions:
 ## 2. 결제 요청하기
 
 [JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/readme) `IMP.request_pay(param, callback)`을 호출하여
-KG 모빌리언스 결제창을 호출할 수 있습니다.
+KG파이낸셜 결제창을 호출할 수 있습니다.
 **결제 결과**는 PC의 경우 `IMP.request_pay(param, callback)` 호출 후
 **callback** 으로 수신되고
 모바일의 경우 **m\_redirect\_url**로 리디렉션됩니다.
@@ -69,11 +69,10 @@ IMP.request_pay(
 
 - pay\_method: string
 
-**결제수단 구분 코드**}
+  **결제수단 구분코드**
 
-- card (신용카드)
-
-  - phone (휴대폰 소액 결제)
+  - card (신용카드)
+  - phone (휴대폰 소액결제)
 
 - merchant\_uid: string
 
@@ -81,11 +80,65 @@ IMP.request_pay(
 
   매번 고유하게 채번되어야 합니다.
 
+- name: string
+
+  **주문명**
+
 - amount: number
 
   **결제금액**
 
   **string** 이 아닌점에 유의하세요
+
+- buyer\_name?: string
+
+  **구매자 이름**
+
+- buyer\_email?: string
+
+  **구매자 이메일**
+
+- buyer\_tel?: string
+
+  **구매자 연락처**
+
+- buyer\_addr?: string
+
+  **구매자 주소**
+
+- buyer\_postcode?: string
+
+  **구매자 우편번호**
+
+- vbank\_due?: string
+
+  **가상계좌 입금마감일시**
+
+  `YYYYMMDD` 형식으로 지정합니다. 미지정 시 5일 후로 자동 설정됩니다.
+
+- m\_redirect\_url?: string
+
+  **모바일 결제 후 리디렉션 될 URL**
+
+- app\_scheme?: string
+
+  **모바일 앱 URL scheme**
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- confirm\_url?: string
+
+  **Confirm process URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
+
+- customer\_id?: string
+
+  **구매자 고유 ID**
 
 인증결제창 호출 파라미터에서 **customer\_uid** 값을 추가하면 비 인증 결제창을 호출할 수 있습니다. 비
 인증 결제창에서 빌링키를 발급받은 후 해당 빌링키로 결제를 요청합니다.
@@ -116,8 +169,8 @@ IMP.request_pay(
 
 <div class="hint" data-style="info">
 
-- 비 인증 결제를 위해서는 **KG모빌리언스와 계약이 완료된 MID 정보를** 관리자콘솔에 설정하셔야 비 인증 결제창을 활성화시킬 수 있습니다.
-- **KG모빌리언스 휴대폰 결제는** 빌링키 발급시 **실 결제가 발생됩니다.**
+- 비 인증 결제를 위해서는 **KG파이낸셜과 계약이 완료된 MID 정보를** 관리자콘솔에 설정하셔야 비 인증 결제창을 활성화시킬 수 있습니다.
+- **KG파이낸셜 휴대폰 결제는** 빌링키 발급시 **실 결제가 발생됩니다.**
 - 최초 승인일자 기준 매월 **동일한 일자에 동일 금액**이 재결제되어야 합니다.
 
 </div>
@@ -138,7 +191,7 @@ IMP.request_pay(
 
   **PG사 구분코드**
 
-  **`mobilians.<KG모빌리언스와 계약이 완료된 MID>`** 로 지정하면 됩니다.
+  **`mobilians.<KG파이낸셜과 계약이 완료된 MID>`** 로 지정하면 됩니다.
 
   <div class="hint" data-style="warning">
 
@@ -174,4 +227,4 @@ curl -H "Content-Type: application/json" \
      https://api.iamport.kr/subscribe/payments/again
 ```
 
-**포트원을 통해 KG 모빌리언스를 사용할 때에는 API 방식 비 인증 결제를 사용할 수 없습니다.**
+**포트원을 통해 KG파이낸셜을 사용할 때에는 API 방식 비 인증 결제를 사용할 수 없습니다.**

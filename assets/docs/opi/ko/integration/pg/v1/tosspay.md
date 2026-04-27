@@ -81,7 +81,7 @@ IMP.request_pay(
 
   **결제수단 구분코드**
 
-  신용카드 : `card` | 계좌이체 : `trans`
+  입력값은 `card` 만 지원합니다. 단, 결제창 호출 이후에는 토스페이 머니 결제와 카드 결제 중 선택하여 진행할 수 있습니다.
 
 - name: string
 
@@ -98,6 +98,46 @@ IMP.request_pay(
   **결제금액**
 
   **string** 이 아닌점에 유의하세요
+
+- buyer\_name?: string
+
+  **구매자 이름**
+
+- buyer\_email?: string
+
+  **구매자 이메일**
+
+- buyer\_tel?: string
+
+  **구매자 연락처**
+
+- buyer\_addr?: string
+
+  **구매자 주소**
+
+- buyer\_postcode?: string
+
+  **구매자 우편번호**
+
+- tax\_free?: number
+
+  **면세금액**
+
+- m\_redirect\_url?: string
+
+  **모바일 결제 후 리디렉션 될 URL**
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- confirm\_url?: string
+
+  **Confirm process URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
 
 </div>
 

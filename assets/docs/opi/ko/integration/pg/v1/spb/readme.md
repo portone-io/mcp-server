@@ -128,7 +128,7 @@ attribute가 `paypal-spb`인 elemente도 2개 이상인 경우, “동일한 dat
   <!-- ...중략 -->
   <label for="amount">결제 금액</label>
   <!-- 4. 구매자가 쿠폰을 적용해 결제 요청 금액이 변경(예) 1000 -> 2000)되었습니다. -->
-  <input id="amount" name="amount" value="1000" onchnage="onChangeAmount()" />
+  <input id="amount" name="amount" value="1000" onchange="onChangeAmount()" />
 </form>
 
 <!--
@@ -177,30 +177,93 @@ attribute가 `paypal-spb`인 elemente도 2개 이상인 경우, “동일한 dat
 
 ## loadUI 요청 객체
 
-|파라미터                                                                                              |데이터타입|필수여부    |의미                                                                                                                                                                                                                                                                                                                                                                                                                              |
-|------------------------------------------------------------------------------------------------------|----------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|merchant\_uid                                                                                         |string    |required    |고객사 채번 주문 고유 번호                                                                                                                                                                                                                                                                                                                                                                                                        |
-|name                                                                                                  |string    |optional    |제품명                                                                                                                                                                                                                                                                                                                                                                                                                            |
-|amount                                                                                                |number    |required    |금액                                                                                                                                                                                                                                                                                                                                                                                                                              |
-|\~\~pg(deprecated)\`\`                                                                                |~~string~~|~~required~~|~~paypal\_v2~~                                                                                                                                                                                                                                                                                                                                                                                                                    |
-|channelKey                                                                                            |string    |required    |<p>paypal\_v2 채널의 채널 키 </p><p>(포트원 콘솔 내 \[결제 연동] - \[연동 정보] - \[채널 관리] 에서 확인 가능합니다.)</p>                                                                                                                                                                                                                                                                                                         |
-|pay\_method                                                                                           |string    |required    |paypal (결제수단)                                                                                                                                                                                                                                                                                                                                                                                                                 |
-|[country](http://chaifinance.notion.site/country-29b79aaa067846cea251a7875b0f6ed4)                    |string    |optional    |<p>국가 코드</p><p>주의: 페이팔 일반결제 테스트 모드시에만 유효</p>                                                                                                                                                                                                                                                                                                                                                               |
-|customer\_id                                                                                          |string    |optional    |고객사가 구매자를 특정하기 위해 채번한 고유 번호                                                                                                                                                                                                                                                                                                                                                                                  |
-|buyer\_name                                                                                           |string    |optional    |구매자 전체 이름                                                                                                                                                                                                                                                                                                                                                                                                                  |
-|[buyer\_first\_name](http://chaifinance.notion.site/buyer_first_name-b40318cbf8e2489385a58cc59ae7ab7e)|string    |optional    |구매자 이름 주의: 페이팔에서만 유효하며 buyer\_name이 아닌 buyer\_first\_name과 buyer\_last\_name 입력을 권장                                                                                                                                                                                                                                                                                                                     |
-|[buyer\_last\_name](http://chaifinance.notion.site/buyer_last_name-0571c7432cf44c0ab6f3fddf34238666)  |string    |optional    |구매자 성 주의: 페이팔에서만 유효하며 buyer\_name이 아닌 buyer\_first\_name과 buyer\_last\_name 입력을 권장                                                                                                                                                                                                                                                                                                                       |
-|buyer\_tel                                                                                            |string    |optional    |구매자 전화번호                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|buyer\_email                                                                                          |string    |optional    |구매자 이메일 주소                                                                                                                                                                                                                                                                                                                                                                                                                |
-|notice\_url                                                                                           |string    |optional    |<p>결제 창에서 결제 승인 완료 또는 가상계좌 발급 완료시 고객사에게 노티 될 웹훅 URL string 또는 string\[]로 N개 설정 가능</p><p>웹훅이 잘 발송 됐는지는 결제 승인 내역에서 아임포트 번호를 눌러봤을때 웹훅 발송 내역을 보고 확인할 수 있음</p>                                                                                                                                                                                    |
-|confirm\_url                                                                                          |string    |optional    |<p>결제창이 호출되고 구매자가 최종 결제 승인을 하기까지 수량 소진 등 모종의 사유로 더이상 결제가 불가능 하게 되는 상황을 대비해, 최종 결제 승인 직전 최종 결제 승인 여부를 질의할 고객사 웹서버 endpoint</p><p>아임포트가 해당 endpoint로 최종 결제 승인 질의시, 200 외의 응답을 받으면 최종 결제 승인을 시키지 않고 결제 실패 상태로 기록함</p><p /><p>
+- channelKey: string
 
-<strong>주의: 아임포트 CS팀으로 해당 기능 사용 신청을 해야 함</strong>
+  **채널키**
 
-</p>|
-|[products](http://chaifinance.notion.site/products-9107dec19480457bbfeb06e9244eb31c)                  |array     |optional    |결제 상품 정보                                                                                                                                                                                                                                                                                                                                                                                                                    |
-|[currency](http://chaifinance.notion.site/currency-196b9c5e6a8543df9059ff20199028fc)                  |string    |optional    |결제 통화 (기본값: USD)                                                                                                                                                                                                                                                                                                                                                                                                           |
-|custom\_data                                                                                          |object    |optional    |결제 정보와 함께 관리하고 싶은 고객사 커스텀 JSON 데이터                                                                                                                                                                                                                                                                                                                                                                          |
+  paypal\_v2 채널의 채널 키입니다. 포트원 콘솔 내 \[결제 연동] - \[연동 정보] - \[채널 관리] 에서 확인 가능합니다.
+
+- pg(deprecated)?: string
+
+  ~~`paypal_v2`로 지정합니다.~~
+
+- pay\_method: string
+
+  **결제수단 구분코드**
+
+  `paypal`로 지정합니다.
+
+- merchant\_uid: string
+
+  **고객사 채번 주문 고유 번호**
+
+- name?: string
+
+  **제품명**
+
+- amount: number
+
+  **금액**
+
+- currency?: string
+
+  **결제 통화** (기본값: USD)
+
+- country?: string
+
+  **국가 코드**
+
+  주의: 페이팔 일반결제 **테스트 모드시에만** 유효합니다.
+
+- customer\_id?: string
+
+  **구매자 고유 ID**
+
+  고객사가 구매자를 특정하기 위해 채번한 고유 번호
+
+- buyer\_name?: string
+
+  **구매자 전체 이름**
+
+- buyer\_first\_name?: string
+
+  **구매자 이름**
+
+  페이팔에서만 유효하며 `buyer_name`이 아닌 `buyer_first_name`과 `buyer_last_name` 입력을 권장합니다.
+
+- buyer\_last\_name?: string
+
+  **구매자 성**
+
+  페이팔에서만 유효하며 `buyer_name`이 아닌 `buyer_first_name`과 `buyer_last_name` 입력을 권장합니다.
+
+- buyer\_tel?: string
+
+  **구매자 전화번호**
+
+- buyer\_email?: string
+
+  **구매자 이메일 주소**
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+  결제 승인 완료 시 고객사에게 웹훅이 발송됩니다.
+
+- confirm\_url?: string
+
+  **Confirm process URL**
+
+  최종 결제 승인 직전 승인 여부를 질의할 고객사 서버 URL입니다. 200 외의 응답을 받으면 결제가 중단됩니다.
+
+- products?: array
+
+  **결제 상품 정보**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
 
 <div class="hint" data-style="warning">
 

@@ -125,7 +125,6 @@ IMP.request_pay(
     channelKey: "{콘솔 내 연동 정보의 채널키}",
     merchant_uid: "order_no_0001",
     name: "PIN 변경",
-    customer_uid: "use_your_unique_id", //`bypass.kcpQuick.memberId`와 동일하게 입력
     bypass: {
       kcpQuick: {
         actionType: "PinChange",
@@ -154,7 +153,6 @@ IMP.request_pay(
     pay_method: "card",
     merchant_uid: "order_no_0001",
     name: "PIN 초기화",
-    customer_uid: "use_your_unique_id", // `bypass.kcpQuick.memberId`와 동일하게 입력
     bypass: {
       kcpQuick: {
         actionType: "PinReset",
@@ -183,7 +181,6 @@ IMP.request_pay(
     pay_method: "card",
     merchant_uid: "order_no_0001",
     name: "PIN 확인",
-    customer_uid: "use_your_unique_id", // `bypass.kcpQuick.memberId`와 동일하게 입력
     bypass: {
       kcpQuick: {
         actionType: "PinCheck",
@@ -215,7 +212,6 @@ IMP.request_pay(
     channelKey: "{콘솔 내 연동 정보의 채널키}",
     merchant_uid: "order_no_0001",
     name: "전화번호 변경",
-    customer_uid: "use_your_unique_id", // `bypass.kcpQuick.memberId`와 동일하게 입력
     bypass: {
       kcpQuick: {
         actionType: "PhoneChange",
@@ -285,7 +281,6 @@ IMP.request_pay(
     channelKey: "{콘솔 내 연동 정보의 채널키}",
     merchant_uid: "order_no_0001",
     name: "간편결제 서비스 해지",
-    customer_uid: "use_your_unique_id", //`bypass.kcpQuick.memberId`와 동일하게 입력
     bypass: {
       kcpQuick: {
         actionType: "Terminate",
@@ -358,7 +353,7 @@ IMP.request_pay(
     name: "선불머니 환급계좌 등록 및 변경",
     bypass: {
       kcpQuick: {
-        actionType: "RefundAccount",
+        actionType: "PrepaidRefundAccount",
         encryptedCI: "encrypted_ci",
         memberID: "use_your_unique_id",
       },
@@ -504,6 +499,7 @@ IMP.request_pay(
       - PinCheck : PIN 확인
       - PhoneChange : 전화번호 변경
       - Terminate : 간편결제 서비스 해지
+      - RegisterFido : 생체인증 등록
       - SignUp : 간편결제+선불머니 서비스 유저 등록 (사전 협의 필요)
       - Leave : 간편결제+선불머니 서비스 해지 (사전 협의 필요)
       - PrepaidRefundAccount: 선불머니 환급계좌 등록 및 변경 (사전 협의 필요)
@@ -538,6 +534,7 @@ IMP.request_pay(
 
       **디바이스 식별값**
 
+      고객 단말기별 고유한 아이디를 전달해주시면 됩니다.
       미 입력시 고객이 사용한 브라우저 정보(User-Agent)가 입력됩니다.
 
     - noAuth?: boolean
@@ -565,16 +562,6 @@ IMP.request_pay(
       - false : 카드사 포인트 미사용
 
 #### 유의사항
-
-<details>
-
-<summary>`customer_uid` 파라미터 안내</summary>
-
-결제수단 등록/삭제, 결제 요청시에는 결제수단을 식별하는 `customer_uid`를 입력한 후 사용해야 합니다.
-이 외의 PIN 변경/확인/초기화, 사용자 등록, 해지 요청시에는 `customer_uid`에 결제수단 등록시 입력한 `memberID`를 입력해야 합니다.
-위의 경우에 `customer_uid` 파라미터에 발급시 입력했던 `customer_uid`를 입력하는 경우 에러가 리턴됩니다.
-
-</details>
 
 <details>
 
@@ -684,6 +671,26 @@ PIN 초기화 이후 [빌링키 삭제 API](https://developers.portone.io/api/re
 
 <details>
 
+<summary>선불머니 기능 이용 시 선불머니 거래사전 등록 API 선행 필요</summary>
+
+선불머니 관련 기능을 이용하기 위해서는
+[**선불머니 거래사전 등록 API**](https://developers.portone.io/api/rest-v1/pg.kcpquick?v=v1#post%20%2Fkcpquick%2Fprepare%2F%7Bmerchant_uid%7D)가 반드시 선행되어야 합니다.
+
+**대상 기능 목록:**
+
+- `SignUp`: 간편결제+선불머니 서비스 유저 등록
+- `Leave`: 간편결제+선불머니 서비스 해지
+- `PrepaidRefundAccount`: 선불머니 환급계좌 등록 및 변경
+- `PrepaidRefund`: 선불머니 환급 요청
+- `PrepaidLimitRaise`: 선불머니 보유한도 상향 요청
+- `PrepaidKYC`: 선불머니 고객 확인 재이행
+
+거래사전 등록 API를 호출하지 않은 상태에서 선불머니 기능을 요청하는 경우 에러가 발생할 수 있으니 유의하시기 바랍니다.
+
+</details>
+
+<details>
+
 <summary>무인증 결제 안내</summary>
 
 결제 수단 등록, PIN 체크시 `noAuth:true` 파라미터를 추가하여 요청한 경우 무인증 등록이 가능합니다.
@@ -691,23 +698,5 @@ PIN 초기화 이후 [빌링키 삭제 API](https://developers.portone.io/api/re
 바로 결제가 진행됩니다.
 
 만약 무인증 등록과정 없이 무인증 결제가 요청되는 경우 PIN 입력 화면이 표시되고, 올바른 PIN 입력시 무인증 등록 및 결제가 진행됩니다.
-
-</details>
-
-<details>
-
-<summary>선불머니 결제의 경우 부분취소 불가</summary>
-
-선불머니 결제는 KCP 정책상 부분취소를 지원하지 않으며 전체취소만 가능합니다.
-
-**대안 방법:**
-
-- 부분 환불이 필요한 경우: 전체 취소 후 차액만큼 재결제 진행
-
-<div class="hint" data-style="info">
-
-KCP에서 선불머니 부분취소 기능 지원 예정이나, 현재로서는 위의 대안 방법을 활용하시기 바랍니다.
-
-</div>
 
 </details>

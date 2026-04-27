@@ -9,7 +9,7 @@ targetVersions:
 
 페이팔 Express checkout 방식으로 신규 가입 및 연동이 불가합니다.
 페이팔 연동을 원하는 경우, [페이팔 일반 결제(Smart Payment Buttons) 연동 가이드](https://developers.portone.io/opi/ko/integration/pg/v1/spb/readme)
-또는 [페이팔 정기 결제(Reference Transaciton) 연동 가이드](https://developers.portone.io/opi/ko/integration/pg/v1/rt/readme)를 참고하여 진행해주세요.
+또는 [페이팔 정기 결제(Reference Transaction) 연동 가이드](https://developers.portone.io/opi/ko/integration/pg/v1/rt/readme)를 참고하여 진행해주세요.
 
 </div>
 
@@ -90,11 +90,35 @@ IMP.request_pay(
 
   매번 고유하게 채번되어야 합니다.
 
+- name: string
+
+  **주문명**
+
 - amount: number
 
   **결제금액**
 
   **string** 이 아닌점에 유의하세요
+
+- buyer\_name?: string
+
+  **구매자 이름**
+
+- buyer\_email?: string
+
+  **구매자 이메일**
+
+- buyer\_tel?: string
+
+  **구매자 연락처**
+
+- buyer\_addr?: string
+
+  **구매자 주소**
+
+- buyer\_postcode?: string
+
+  **구매자 우편번호**
 
 - currency: string
 
@@ -107,6 +131,18 @@ IMP.request_pay(
   **결제결과 수신 URL**
 
   PC환경 모바일 환경 모두 해당 값을 필수로 설정해야 결과를 받아볼수 있습니다.
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- confirm\_url?: string
+
+  **Confirm process URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
 
 </div>
 

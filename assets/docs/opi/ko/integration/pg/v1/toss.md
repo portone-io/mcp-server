@@ -84,9 +84,12 @@ IMP.request_pay(
   **결제수단 구분코드**
 
   - card(신용카드)
-  - transfer(퀵계좌이체)
+  - trans(실시간 계좌이체)
   - vbank(가상계좌)
   - phone(휴대폰소액결제)
+  - cultureland(컬쳐랜드 문화상품권)
+  - smartculture(스마트문상)
+  - booknlife(도서문화상품권)
   - applepay(애플페이)
   - tosspay(토스페이)
   - naverpay(네이버페이)
@@ -101,12 +104,122 @@ IMP.request_pay(
 
   매번 고유하게 채번되어야 합니다.
 
+- name: string
+
+  **주문명**
+
 - amount: number
 
   **결제금액**
 
   **string** 이 아닌점에 유의하세요
 
+- buyer\_name?: string
+
+  **구매자 이름**
+
+- buyer\_email?: string
+
+  **구매자 이메일**
+
+- buyer\_tel?: string
+
+  **구매자 연락처**
+
+- buyer\_addr?: string
+
+  **구매자 주소**
+
+- buyer\_postcode?: string
+
+  **구매자 우편번호**
+
 - escrow?: boolean
 
   **에스크로 설정여부**
+
+- tax\_free?: number
+
+  **면세금액**
+
+- vbank\_due?: string
+
+  **가상계좌 입금마감일시**
+
+  `YYYYMMDD` 또는 `YYYYMMDDHHmmss` 형식으로 지정합니다.
+
+- language?: string
+
+  **결제창 언어**
+
+  - `ko`: 한국어 (기본값)
+  - `en`: 영어
+
+- appCard?: boolean
+
+  **앱카드 전용 모드**
+
+  `true` 설정 시 신용카드 결제모듈에서 앱카드 결제만 활성화됩니다.
+
+- m\_redirect\_url?: string
+
+  **모바일 결제 후 리디렉션 될 URL**
+
+- app\_scheme?: string
+
+  **모바일 앱 URL scheme** (모바일 전용)
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- confirm\_url?: string
+
+  **Confirm process URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
+
+- display?: object
+
+  **결제창에 렌더링될 카드 할부 개월수 리스트 설정값**
+
+  - card\_quota?: number\[]
+
+    **할부 개월수**
+
+    예시
+
+    - `[]`: 일시불만 결제 가능
+    - `[2,3,4,5,6]`: 일시불을 포함한 2, 3, 4, 5, 6개월까지 할부개월 선택 가능
+
+- card?: object
+
+  **카드 결제 옵션**
+
+  - direct?: object
+
+    **카드사 다이렉트 호출 정보**
+
+    - code?: string
+
+      **카드사 금융결제원 표준 코드**
+
+      [카드사 코드](https://developers.portone.io/opi/ko/support/code-info/card-code) 참조
+
+    - quota?: number
+
+      **할부 개월 수**
+
+      일시불일 시 0으로 설정합니다.
+
+- bypass?: object
+
+  **토스페이먼츠 구모듈 전용 파라미터**
+
+  - uplus?: object
+
+    - LGD\_AUTO\_DISCOUNT?: string
+
+      **카드 프로모션 자동 적용 여부**

@@ -1733,6 +1733,13 @@ paths:
           type: integer
           x-portone-name: 결제금액
           x-portone-description: 결제 요청할 금액
+        - name: imp_uid
+          in: formData
+          description: PIN 인증(PinCheck)을 진행한 거래의 포트원 거래번호
+          required: true
+          type: string
+          x-portone-name: 포트원 거래번호
+          x-portone-description: PIN 인증(PinCheck)을 진행한 거래의 포트원 거래번호
         - name: notice_url
           in: formData
           description: 결제 승인 성공 후 결과를 수신할 웹훅 URL
@@ -1747,6 +1754,170 @@ paths:
             $ref: '#/definitions/PaymentResponse'
         '401':
           description: 인증 Token이 전달되지 않았거나 유효하지 않은 경우
+      x-portone-supported-pgs:
+        - kcp_quick
+      x-portone-category: pg.kcpquick
+  '/kcpquick/prepare/{merchant_uid}':
+    put:
+      tags:
+        - kcpquick
+      summary: KCP 선불머니 거래 사전등록 수정 API
+      description: KCP 선불머니 거래 사전등록 정보를 수정합니다.
+      operationId: prepare_update
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: merchant_uid
+          in: path
+          description: 고객사 주문번호
+          required: true
+          type: string
+          maxLength: 40
+          x-portone-name: 고객사 주문번호
+          x-portone-description: 수정할 거래의 고객사 주문번호
+        - name: btid
+          in: formData
+          description: 고객사 생성 거래등록번호(btid). 최대 20자
+          required: true
+          type: string
+          maxLength: 20
+          x-portone-name: 고객사 생성 거래등록번호
+          x-portone-description: 고객사에서 생성한 거래등록번호(btid). 최대 20자
+        - name: cust_ip
+          in: formData
+          description: 고객 IP 주소
+          required: true
+          type: string
+          format: ipv4
+          x-portone-name: 고객 IP
+          x-portone-description: 고객 IP 주소
+        - name: code_verifier
+          in: formData
+          description: 요청자 검증을 위한 랜덤 문자열(code_verifier). 최대 200자
+          required: true
+          type: string
+          maxLength: 200
+          x-portone-name: 요청자 검증 문자열
+          x-portone-description: 요청자 검증을 위한 랜덤 문자열(code_verifier). 최대 200자
+      responses:
+        '200':
+          description: 정상 수정
+        '400':
+          description: 파라미터가 올바르지 않은 경우
+        '401':
+          description: 인증 Token이 전달되지 않았거나 유효하지 않은 경우
+        '404':
+          description: 사전등록 정보를 찾을 수 없는 경우
+      x-portone-supported-pgs:
+        - kcp_quick
+      x-portone-category: pg.kcpquick
+    post:
+      tags:
+        - kcpquick
+      summary: KCP 선불머니 거래 사전등록 API
+      description: KCP 선불머니 거래를 위한 사전등록 정보를 저장합니다.
+      operationId: prepare_create
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: merchant_uid
+          in: path
+          description: 고객사 주문번호
+          required: true
+          type: string
+          maxLength: 40
+          x-portone-name: 고객사 주문번호
+          x-portone-description: 사전등록할 거래의 고객사 주문번호
+        - name: btid
+          in: formData
+          description: 고객사 생성 거래등록번호(btid). 최대 20자
+          required: true
+          type: string
+          maxLength: 20
+          x-portone-name: 고객사 생성 거래등록번호
+          x-portone-description: 고객사에서 생성한 거래등록번호(btid). 최대 20자
+        - name: cust_ip
+          in: formData
+          description: 고객 IP 주소
+          required: true
+          type: string
+          format: ipv4
+          x-portone-name: 고객 IP
+          x-portone-description: 고객 IP 주소
+        - name: code_verifier
+          in: formData
+          description: 요청자 검증을 위한 랜덤 문자열(code_verifier). 최대 200자
+          required: true
+          type: string
+          maxLength: 200
+          x-portone-name: 요청자 검증 문자열
+          x-portone-description: 요청자 검증을 위한 랜덤 문자열(code_verifier). 최대 200자
+      responses:
+        '200':
+          description: 정상 등록
+        '400':
+          description: 파라미터가 올바르지 않은 경우
+        '401':
+          description: 인증 Token이 전달되지 않았거나 유효하지 않은 경우
+        '409':
+          description: 이미 동일한 merchant_uid로 사전등록된 정보가 존재하는 경우
+      x-portone-supported-pgs:
+        - kcp_quick
+      x-portone-category: pg.kcpquick
+  '/kcpquick/members/{member_id}/fido/release':
+    post:
+      tags:
+        - kcpquick
+      summary: (KCP 퀵페이) 생체인증(FIDO) 사용 해제 API
+      description: KCP 퀵페이 회원의 생체인증(FIDO) 사용을 해제합니다.
+      operationId: releaseFido
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: member_id
+          in: path
+          description: 생체인증 해제할 회원 고유 아이디(memberID)
+          required: true
+          type: string
+          x-portone-name: 회원 고유 아이디
+          x-portone-description: 생체인증 해제할 회원 고유 아이디(memberID)
+        - name: channel_key
+          in: formData
+          description: KCP 퀵페이 채널의 채널키
+          required: true
+          type: string
+          x-portone-name: 채널키
+          x-portone-description: KCP 퀵페이 채널의 채널키
+      responses:
+        '200':
+          description: 정상 해제
+          schema:
+            properties:
+              code:
+                type: integer
+                example: 0
+              message:
+                type: string
+                example: 생체인증 사용이 정상적으로 해제되었습니다.
+              response:
+                properties:
+                  member_id:
+                    description: 생체인증 해제된 회원 ID
+                    type: string
+        '400':
+          description: '필수 파라미터 누락, 존재하지 않는 채널, KCP 퀵페이 채널이 아닌 경우'
+        '401':
+          description: 인증 Token이 전달되지 않았거나 유효하지 않은 경우
+        '404':
+          description: 생체인증 해제 대상 회원을 찾을 수 없는 경우
+        '500':
+          description: KCP 생체인증 해제 처리 중 오류가 발생한 경우
       x-portone-supported-pgs:
         - kcp_quick
       x-portone-category: pg.kcpquick
@@ -3252,10 +3423,7 @@ paths:
           required: false
           type: boolean
           x-portone-name: 테스트 결제건 포함 여부
-          x-portone-description: |-
-            테스트 채널을 통해 발생한 결제건을 조회 결과에 포함할지 여부 (기본값: `false`)
-
-            (본 파라미터는 `2026년 1월 26일`부터 추가 예정입니다.)
+          x-portone-description: '테스트 채널을 통해 발생한 결제건을 조회 결과에 포함할지 여부 (기본값: `false`)'
       responses:
         '200':
           description: 정상 조회
@@ -7890,10 +8058,7 @@ definitions:
         description: 빌링키 발급 시 이용한 포트원 채널의 테스트 채널 여부
         type: boolean
         x-portone-name: 테스트 빌링키 여부
-        x-portone-description: |-
-          빌링키 발급 시 이용한 포트원 채널의 테스트 채널 여부
-
-          (본 필드는 `2026년 1월 26일`부터 추가 예정입니다.)
+        x-portone-description: 빌링키 발급 시 이용한 포트원 채널의 테스트 채널 여부
       customer_id:
         description: 구매자 ID
         type: string
@@ -8878,10 +9043,7 @@ definitions:
         description: 결제가 발생한 포트원 채널의 테스트 채널 여부
         type: boolean
         x-portone-name: 테스트 결제 여부
-        x-portone-description: |-
-          결제가 발생한 포트원 채널의 테스트 채널 여부
-
-          (본 필드는 `2026년 1월 26일`부터 추가 예정입니다.)
+        x-portone-description: 결제가 발생한 포트원 채널의 테스트 채널 여부
       escrow:
         description: 에스크로결제 여부
         type: boolean

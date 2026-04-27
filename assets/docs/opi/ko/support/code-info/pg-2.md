@@ -21,7 +21,7 @@ targetVersions:
 |       카카오페이      |   `kakaopay`   |
 |다날휴대폰결제/본인인증|     `danal`    |
 |          다날         |  `danal_tpay`  |
-|       모빌리언스      |   `mobilians`  |
+|       KG파이낸셜      |   `mobilians`  |
 |         페이코        |     `payco`    |
 |      (구) 페이팔      |    `paypal`    |
 |      (신) 페이팔      |   `paypal_v2`  |

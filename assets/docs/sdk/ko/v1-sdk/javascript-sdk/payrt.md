@@ -137,7 +137,7 @@ PG사 또는 결제수단에 따라서 반환되는 속성들이 상이합니다
   - `kakaopay`(카카오페이)
   - `danal`(다날 휴대폰 소액결제)
   - `danal_tpay`(다날 일반결제)
-  - `mobilians`(모빌리언스)
+  - `mobilians`(KG파이낸셜)
   - `payco`(페이코)
   - `paypal`((구) 페이팔)
   - `eximbay`(엑심베이)

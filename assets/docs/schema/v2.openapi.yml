@@ -813,7 +813,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/CreateB2bCounterpartyError'
         '409':
-          description: '* `B2bCounterpartyIdAlreadyExistsError`: 거래처 ID가 이미 사용중인 경우'
+          description: >-
+            * `B2bCounterpartyIdAlreadyExistsError`: 거래처 ID가 이미 사용중인 경우
+
+            * `B2bCounterpartyIdAlreadyExistsByPartnerError`: 파트너 연동으로 생성된 거래처
+            ID가 이미 사용중인 경우
           content:
             application/json:
               schema:
@@ -9407,7 +9411,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ConnectPartnerCounterpartyError'
         '409':
-          description: '* `PlatformPartnerScheduleExistsError`: 파트너 수정 예약 건이 존재하는 경우'
+          description: >-
+            * `PlatformPartnerScheduleExistsError`: 파트너 수정 예약 건이 존재하는 경우
+
+            * `PlatformArchivedPartnerError`: 보관된 파트너를 업데이트하려고 하는 경우
+
+            * `PlatformArchivedPartnerNtsNotAllowedError`: 보관된 파트너는 국세청 연동/연동해제를
+            할 수 없는 경우
           content:
             application/json:
               schema:
@@ -9590,7 +9600,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/DisconnectPartnerCounterpartyError'
         '409':
-          description: '* `PlatformOngoingTaxInvoiceExistsError`: 진행 중인 세금계산서가 존재하는 경우'
+          description: >-
+            * `PlatformOngoingTaxInvoiceExistsError`: 진행 중인 세금계산서가 존재하는 경우
+
+            * `PlatformArchivedPartnerNtsNotAllowedError`: 보관된 파트너는 국세청 연동/연동해제를
+            할 수 없는 경우
           content:
             application/json:
               schema:
@@ -9850,6 +9864,12 @@ paths:
           description: >-
             * `PlatformCannotArchiveScheduledPartnerError`: 예약된 업데이트가 있는 파트너를
             보관하려고 하는 경우
+
+            * `PlatformCounterpartyOngoingTaxInvoiceExistsError`: 연동된 거래처에 진행 중인
+            세금계산서가 있는 경우
+
+            * `PlatformPartnerPendingNtsOperationError`: 파트너의 국세청 연동/해제가 진행 중인
+            경우
           content:
             application/json:
               schema:
@@ -9927,6 +9947,14 @@ paths:
                 $ref: '#/components/schemas/RecoverPlatformPartnerError'
         '404':
           description: '* `PlatformPartnerNotFoundError`'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecoverPlatformPartnerError'
+        '409':
+          description: >-
+            * `PlatformPartnerPendingNtsOperationError`: 파트너의 국세청 연동/해제가 진행 중인
+            경우
           content:
             application/json:
               schema:
@@ -11773,8 +11801,11 @@ components:
         - $ref: '#/components/schemas/ForbiddenError'
         - $ref: '#/components/schemas/InvalidRequestError'
         - $ref: '#/components/schemas/PlatformCannotArchiveScheduledPartnerError'
+        - $ref: >-
+            #/components/schemas/PlatformCounterpartyOngoingTaxInvoiceExistsError
         - $ref: '#/components/schemas/PlatformNotEnabledError'
         - $ref: '#/components/schemas/PlatformPartnerNotFoundError'
+        - $ref: '#/components/schemas/PlatformPartnerPendingNtsOperationError'
         - $ref: '#/components/schemas/UnauthorizedError'
       discriminator:
         propertyName: type
@@ -11782,8 +11813,11 @@ components:
           FORBIDDEN: '#/components/schemas/ForbiddenError'
           INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
           PLATFORM_CANNOT_ARCHIVE_SCHEDULED_PARTNER: '#/components/schemas/PlatformCannotArchiveScheduledPartnerError'
+          PLATFORM_COUNTERPARTY_ONGOING_TAX_INVOICE_EXISTS: >-
+            #/components/schemas/PlatformCounterpartyOngoingTaxInvoiceExistsError
           PLATFORM_NOT_ENABLED: '#/components/schemas/PlatformNotEnabledError'
           PLATFORM_PARTNER_NOT_FOUND: '#/components/schemas/PlatformPartnerNotFoundError'
+          PLATFORM_PARTNER_PENDING_NTS_OPERATION: '#/components/schemas/PlatformPartnerPendingNtsOperationError'
           UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
     ArchivePlatformPartnerResponse:
       title: 파트너 보관 성공 응답
@@ -12403,6 +12437,23 @@ components:
           title: 거래처 ID 목록
           description: 특정 ID 목록으로 필터링
       x-portone-title: 거래처 검색 필터
+    B2bCounterpartyIdAlreadyExistsByPartnerError:
+      title: 파트너 연동으로 생성된 거래처 ID가 이미 사용중인 경우
+      description: |-
+        파트너 연동으로 생성된 거래처 ID가 이미 사용중인 경우
+
+        파트너 연동으로 생성된 거래처 ID는 재사용할 수 없습니다.
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 파트너 연동으로 생성된 거래처 ID가 이미 사용중인 경우
+      x-portone-description: 파트너 연동으로 생성된 거래처 ID는 재사용할 수 없습니다.
+      x-portone-status-code: 409
     B2bCounterpartyIdAlreadyExistsError:
       title: 거래처 ID가 이미 사용중인 경우
       description: 거래처 ID가 이미 사용중인 경우
@@ -15272,6 +15323,7 @@ components:
         - amount
         - currency
         - customer
+        - origin
         - cancellations
         - cancelledAt
       properties:
@@ -15340,6 +15392,9 @@ components:
         customer:
           $ref: '#/components/schemas/Customer'
           title: 구매자 정보
+        origin:
+          $ref: '#/components/schemas/PaymentOrigin'
+          title: 결제 출처 정보
         promotionId:
           type: string
           title: 프로모션 아이디
@@ -15482,6 +15537,7 @@ components:
         - currency
         - customer
         - eventAmount
+        - origin
       properties:
         type:
           type: string
@@ -15584,6 +15640,9 @@ components:
           format: int64
           title: 처리 금액
           description: '해당 이벤트에서 처리된 금액으로, 취소 이벤트인 경우 음수로 표기됩니다.'
+        origin:
+          $ref: '#/components/schemas/PaymentOrigin'
+          title: 결제 출처 정보
       x-portone-title: 결제 취소 상태 이벤트
     CancelledPaymentTransaction:
       title: 결제 취소 상태 건
@@ -16926,6 +16985,8 @@ components:
       oneOf:
         - $ref: '#/components/schemas/ForbiddenError'
         - $ref: '#/components/schemas/InvalidRequestError'
+        - $ref: '#/components/schemas/PlatformArchivedPartnerError'
+        - $ref: '#/components/schemas/PlatformArchivedPartnerNtsNotAllowedError'
         - $ref: '#/components/schemas/PlatformBtxNotEnabledError'
         - $ref: '#/components/schemas/PlatformCounterpartyNotConnectableStatusError'
         - $ref: '#/components/schemas/PlatformExternalApiFailedError'
@@ -16940,6 +17001,8 @@ components:
         mapping:
           FORBIDDEN: '#/components/schemas/ForbiddenError'
           INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+          PLATFORM_ARCHIVED_PARTNER: '#/components/schemas/PlatformArchivedPartnerError'
+          PLATFORM_ARCHIVED_PARTNER_NTS_NOT_ALLOWED: '#/components/schemas/PlatformArchivedPartnerNtsNotAllowedError'
           PLATFORM_BTX_NOT_ENABLED: '#/components/schemas/PlatformBtxNotEnabledError'
           PLATFORM_COUNTERPARTY_NOT_CONNECTABLE_STATUS: '#/components/schemas/PlatformCounterpartyNotConnectableStatusError'
           PLATFORM_EXTERNAL_API_FAILED: '#/components/schemas/PlatformExternalApiFailedError'
@@ -17757,6 +17820,7 @@ components:
       title: CreateB2bCounterpartyError
       oneOf:
         - $ref: '#/components/schemas/B2bCounterpartyBrnInvalidError'
+        - $ref: '#/components/schemas/B2bCounterpartyIdAlreadyExistsByPartnerError'
         - $ref: '#/components/schemas/B2bCounterpartyIdAlreadyExistsError'
         - $ref: '#/components/schemas/B2bCounterpartyMissingRequiredFieldsError'
         - $ref: '#/components/schemas/B2bCounterpartyNtsConnectionFailedError'
@@ -17777,6 +17841,7 @@ components:
         mapping:
           B2B_COUNTERPARTY_BRN_INVALID: '#/components/schemas/B2bCounterpartyBrnInvalidError'
           B2B_COUNTERPARTY_ID_ALREADY_EXISTS: '#/components/schemas/B2bCounterpartyIdAlreadyExistsError'
+          B2B_COUNTERPARTY_ID_ALREADY_EXISTS_BY_PARTNER: '#/components/schemas/B2bCounterpartyIdAlreadyExistsByPartnerError'
           B2B_COUNTERPARTY_MISSING_REQUIRED_FIELDS: '#/components/schemas/B2bCounterpartyMissingRequiredFieldsError'
           B2B_COUNTERPARTY_NTS_CONNECTION_FAILED: '#/components/schemas/B2bCounterpartyNtsConnectionFailedError'
           B2B_COUNTERPARTY_PARTNER_NOT_CONNECTABLE: '#/components/schemas/B2bCounterpartyPartnerNotConnectableError'
@@ -20002,6 +20067,7 @@ components:
       oneOf:
         - $ref: '#/components/schemas/ForbiddenError'
         - $ref: '#/components/schemas/InvalidRequestError'
+        - $ref: '#/components/schemas/PlatformArchivedPartnerNtsNotAllowedError'
         - $ref: '#/components/schemas/PlatformBtxNotEnabledError'
         - $ref: '#/components/schemas/PlatformCounterpartyNotConnectedError'
         - $ref: '#/components/schemas/PlatformExternalApiFailedError'
@@ -20016,6 +20082,7 @@ components:
         mapping:
           FORBIDDEN: '#/components/schemas/ForbiddenError'
           INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
+          PLATFORM_ARCHIVED_PARTNER_NTS_NOT_ALLOWED: '#/components/schemas/PlatformArchivedPartnerNtsNotAllowedError'
           PLATFORM_BTX_NOT_ENABLED: '#/components/schemas/PlatformBtxNotEnabledError'
           PLATFORM_COUNTERPARTY_NOT_CONNECTED: '#/components/schemas/PlatformCounterpartyNotConnectedError'
           PLATFORM_EXTERNAL_API_FAILED: '#/components/schemas/PlatformExternalApiFailedError'
@@ -20447,6 +20514,7 @@ components:
         - amount
         - currency
         - customer
+        - origin
         - failedAt
         - failure
       properties:
@@ -20515,6 +20583,9 @@ components:
         customer:
           $ref: '#/components/schemas/Customer'
           title: 구매자 정보
+        origin:
+          $ref: '#/components/schemas/PaymentOrigin'
+          title: 결제 출처 정보
         promotionId:
           type: string
           title: 프로모션 아이디
@@ -24265,6 +24336,7 @@ components:
         - amount
         - currency
         - customer
+        - origin
         - paidAt
         - disputes
       properties:
@@ -24333,6 +24405,9 @@ components:
         customer:
           $ref: '#/components/schemas/Customer'
           title: 구매자 정보
+        origin:
+          $ref: '#/components/schemas/PaymentOrigin'
+          title: 결제 출처 정보
         promotionId:
           type: string
           title: 프로모션 아이디
@@ -24406,6 +24481,7 @@ components:
         - customer
         - disputes
         - eventAmount
+        - origin
       properties:
         type:
           type: string
@@ -24513,6 +24589,9 @@ components:
           format: int64
           title: 처리 금액
           description: '해당 이벤트에서 처리된 금액으로, 취소 이벤트인 경우 음수로 표기됩니다.'
+        origin:
+          $ref: '#/components/schemas/PaymentOrigin'
+          title: 결제 출처 정보
       x-portone-title: 결제 완료 이벤트
     PaidPaymentTransaction:
       title: 결제 완료 상태 건
@@ -24661,6 +24740,7 @@ components:
         - amount
         - currency
         - customer
+        - origin
         - cancellations
         - cancelledAt
       properties:
@@ -24729,6 +24809,9 @@ components:
         customer:
           $ref: '#/components/schemas/Customer'
           title: 구매자 정보
+        origin:
+          $ref: '#/components/schemas/PaymentOrigin'
+          title: 결제 출처 정보
         promotionId:
           type: string
           title: 프로모션 아이디
@@ -24797,6 +24880,7 @@ components:
         - currency
         - customer
         - eventAmount
+        - origin
       properties:
         type:
           type: string
@@ -24899,6 +24983,9 @@ components:
           format: int64
           title: 처리 금액
           description: '해당 이벤트에서 처리된 금액으로, 취소 이벤트인 경우 음수로 표기됩니다.'
+        origin:
+          $ref: '#/components/schemas/PaymentOrigin'
+          title: 결제 출처 정보
       x-portone-title: 결제 부분 취소 상태 이벤트
     PartialCancelledPaymentTransaction:
       title: 결제 부분 취소 상태 건
@@ -25093,6 +25180,7 @@ components:
         - amount
         - currency
         - customer
+        - origin
       properties:
         status:
           type: string
@@ -25159,6 +25247,9 @@ components:
         customer:
           $ref: '#/components/schemas/Customer'
           title: 구매자 정보
+        origin:
+          $ref: '#/components/schemas/PaymentOrigin'
+          title: 결제 출처 정보
         promotionId:
           type: string
           title: 프로모션 아이디
@@ -25820,6 +25911,10 @@ components:
         isInterestFree:
           type: boolean
           title: 무이자할부 여부
+        isInterestFreeFromMerchant:
+          type: boolean
+          title: 상점 부담 무이자할부 여부
+          description: 정보 필요시 포트원과 협의해 주세요.
       x-portone-title: 할부 정보
     PaymentLogistics:
       title: 배송정보
@@ -26283,6 +26378,40 @@ components:
           type: string
       x-portone-title: 결제 건이 입금 대기 상태가 아닌 경우
       x-portone-status-code: 409
+    PaymentOrigin:
+      title: 결제 출처 정보
+      description: 결제 출처 정보
+      type: object
+      required:
+        - platformType
+        - ipAddress
+      properties:
+        platformType:
+          $ref: '#/components/schemas/PaymentOriginPlatformType'
+          title: 결제를 요청한 플랫폼 타입
+        userAgent:
+          type: string
+          title: 결제를 요청한 user agent 문자열
+        url:
+          type: string
+          title: 결제를 요청한 페이지 URL
+        ipAddress:
+          type: string
+          title: 결제를 요청한 IP 주소
+      x-portone-title: 결제 출처 정보
+    PaymentOriginPlatformType:
+      title: 플랫폼 타입
+      description: 플랫폼 타입
+      type: string
+      enum:
+        - PC
+        - MOBILE
+        - API
+      x-portone-title: 플랫폼 타입
+      x-portone-enum:
+        PC: {}
+        MOBILE: {}
+        API: {}
     PaymentProduct:
       title: 상품 정보
       description: 상품 정보
@@ -27972,6 +28101,19 @@ components:
           type: string
       x-portone-title: 보관된 파트너를 업데이트하려고 하는 경우
       x-portone-status-code: 409
+    PlatformArchivedPartnerNtsNotAllowedError:
+      title: 보관된 파트너는 국세청 연동/연동해제를 할 수 없는 경우
+      description: 보관된 파트너는 국세청 연동/연동해제를 할 수 없는 경우
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 보관된 파트너는 국세청 연동/연동해제를 할 수 없는 경우
+      x-portone-status-code: 409
     PlatformArchivedPartnersCannotBeScheduledError:
       title: 보관된 파트너들을 예약 업데이트하려고 하는 경우
       description: 보관된 파트너들을 예약 업데이트하려고 하는 경우
@@ -28902,6 +29044,19 @@ components:
           type: string
       x-portone-title: 파트너가 거래처로 연동 되어있지 않은 경우
       x-portone-status-code: 400
+    PlatformCounterpartyOngoingTaxInvoiceExistsError:
+      title: 연동된 거래처에 진행 중인 세금계산서가 있는 경우
+      description: 연동된 거래처에 진행 중인 세금계산서가 있는 경우
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 연동된 거래처에 진행 중인 세금계산서가 있는 경우
+      x-portone-status-code: 409
     PlatformCurrencyNotSupportedError:
       title: 지원 되지 않는 통화를 선택한 경우
       description: 지원 되지 않는 통화를 선택한 경우
@@ -30679,6 +30834,19 @@ components:
         isForTest:
           type: boolean
           title: 테스트 모드 여부
+    PlatformPartnerPendingNtsOperationError:
+      title: 파트너의 국세청 연동/해제가 진행 중인 경우
+      description: 파트너의 국세청 연동/해제가 진행 중인 경우
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      x-portone-title: 파트너의 국세청 연동/해제가 진행 중인 경우
+      x-portone-status-code: 409
     PlatformPartnerScheduleAlreadyExistsError:
       title: PlatformPartnerScheduleAlreadyExistsError
       type: object
@@ -33171,6 +33339,7 @@ components:
         - amount
         - currency
         - customer
+        - origin
       properties:
         status:
           type: string
@@ -33237,6 +33406,9 @@ components:
         customer:
           $ref: '#/components/schemas/Customer'
           title: 구매자 정보
+        origin:
+          $ref: '#/components/schemas/PaymentOrigin'
+          title: 결제 출처 정보
         promotionId:
           type: string
           title: 프로모션 아이디
@@ -33396,7 +33568,10 @@ components:
         - HECTO_EASY
         - MOBILIANS
         - PAYLETTER_GLOBAL
+        - KIWOOMPAY
+        - PAYMENTWALL
       x-portone-enum:
+        PAYMENTWALL: {}
         NAVERPAY: {}
         HECTO: {}
         TOSSPAY: {}
@@ -33407,6 +33582,7 @@ components:
         NICEPAY: {}
         TOSSPAYMENTS: {}
         EXIMBAY: {}
+        KIWOOMPAY: {}
         PAYLETTER_GLOBAL: {}
         PAYCO: {}
         MOBILIANS: {}
@@ -33519,6 +33695,7 @@ components:
         - $ref: '#/components/schemas/InvalidRequestError'
         - $ref: '#/components/schemas/PlatformNotEnabledError'
         - $ref: '#/components/schemas/PlatformPartnerNotFoundError'
+        - $ref: '#/components/schemas/PlatformPartnerPendingNtsOperationError'
         - $ref: '#/components/schemas/UnauthorizedError'
       discriminator:
         propertyName: type
@@ -33527,6 +33704,7 @@ components:
           INVALID_REQUEST: '#/components/schemas/InvalidRequestError'
           PLATFORM_NOT_ENABLED: '#/components/schemas/PlatformNotEnabledError'
           PLATFORM_PARTNER_NOT_FOUND: '#/components/schemas/PlatformPartnerNotFoundError'
+          PLATFORM_PARTNER_PENDING_NTS_OPERATION: '#/components/schemas/PlatformPartnerPendingNtsOperationError'
           UNAUTHORIZED: '#/components/schemas/UnauthorizedError'
     RecoverPlatformPartnerResponse:
       title: 파트너 복원 성공 응답
@@ -36238,6 +36416,7 @@ components:
         - amount
         - currency
         - customer
+        - origin
       properties:
         status:
           type: string
@@ -36304,6 +36483,9 @@ components:
         customer:
           $ref: '#/components/schemas/Customer'
           title: 구매자 정보
+        origin:
+          $ref: '#/components/schemas/PaymentOrigin'
+          title: 결제 출처 정보
         promotionId:
           type: string
           title: 프로모션 아이디

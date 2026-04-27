@@ -89,63 +89,108 @@ IMP.request_pay(
 
   매번 고유하게 채번되어야 합니다.
 
+- buyer\_name?: string
+
+  **구매자 이름**
+
+- buyer\_email?: string
+
+  **구매자 이메일**
+
 - buyer\_tel: string
 
   **구매자 연락처**
 
   필수 파라미터 입니다.
 
+- buyer\_addr?: string
+
+  **구매자 주소**
+
+- buyer\_postcode?: string
+
+  **구매자 우편번호**
+
 - amount: integer
 
   **결제금액**
 
-- bypass?: oneof object
+- tax\_free?: number
+
+  **면세금액**
+
+- vat\_amount?: number
+
+  **부가세**
+
+- m\_redirect\_url?: string
+
+  **모바일 결제 후 리디렉션 될 URL**
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- confirm\_url?: string
+
+  **Confirm process URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
+
+- bypass?: object
 
   **PG사 결제창 호출 시 PG사로 그대로 bypass할 값들의 모음**
 
-  - custCi: string
+  - settle?: object
 
-    **주문자 CI**
+    - custCi?: string
 
-    <div class="hint" data-style="warning">
+      **주문자 CI**
 
-    본인인증 후 전달받은 CI 값을 AES-256-ECB 방식을 사용해 암호화하여 16진수로 인코딩한 결과를 입력해야합니다.
-    암호화 키(key)는 포트원 관리자콘솔 채널 등록 시 "암호화 키" 항목에 입력한 값을 사용합니다.
+      고객사가 보유한 회원 CI를 설정하면 내통장 결제에 등록한 CI와 비교하여 동일인인지 자동검증되며 일치하지 않은 경우 결제가 중단됩니다.
 
-    ```pseudo
-    INPUT: ci (string), key (string)
-    OUTPUT: custCI (string)
+      <div class="hint" data-style="warning">
 
-    BEGIN
-    # Step 1: CI 데이터를 AES-256-ECB 방식으로 암호화
-    binaryData ← AES256ECB(key, ci)
+      본인인증 후 전달받은 CI 값을 AES-256-ECB 방식을 사용해 암호화하여 16진수로 인코딩한 결과를 입력해야합니다.
+      암호화 키(key)는 포트원 관리자콘솔 채널 등록 시 "암호화 키" 항목에 입력한 값을 사용합니다.
 
-    # Step 2: 암호화된 데이터를 16진수 문자열로 변환
-    custCI ← ConvertToHex(binaryData)
+      ```pseudo
+      INPUT: ci (string), key (string)
+      OUTPUT: custCI (string)
 
-    # Step 3: 결과 반환
-    RETURN custCI
-    END
-    ```
+      BEGIN
+      # Step 1: CI 데이터를 AES-256-ECB 방식으로 암호화
+      binaryData ← AES256ECB(key, ci)
 
-    </div>
+      # Step 2: 암호화된 데이터를 16진수 문자열로 변환
+      custCI ← ConvertToHex(binaryData)
 
-    고객사가 보유한 회원 CI를 설정하면 내통장 결제에 등록한 CI와 비교하여 동일인인지 자동검증되며
-    일치하지 않은 경우 결제가 중단됩니다.
+      # Step 3: 결과 반환
+      RETURN custCI
+      END
+      ```
 
-  - addDeductionYn?: string
+      </div>
 
-    **추가공제구분**
+    - addDeductionYn?: string
 
-    대중교통: Y, 도서 및 공연비: C, 추가공제없음: N
+      **추가공제구분**
 
-    계약 후 사용 가능합니다.
+      대중교통: Y, 도서 및 공연비: C, 추가공제없음: N
 
-  - criPsblYn?: string
+      계약 후 사용 가능합니다.
 
-    **현금영수증 발행가능 여부**
+    - criPsblYn?: string
 
-    Y or N or "", 빈문자열은 Y로 인식
+      **현금영수증 발행가능 여부**
+
+      Y or N or "", 빈문자열은 Y로 인식
+
+    - payLimitCd?: string
+
+      **결제 한도 코드**
 
 <div class="hint" data-style="info">
 
@@ -233,59 +278,96 @@ IMP.request_pay(
 
   등록 계좌정보와 1:1로 매칭될 빌링키를 지정합니다.
 
+- merchant\_uid: string
+
+  **주문번호**
+
+- name: string
+
+  **주문명**
+
 - amount?: integer
 
   **결제금액**
 
   0원으로 입력시 빌링키만 발급됩니다. 금액 설정시 결제와 동시에 빌링키가 발급됩니다.
 
-- bypass?: oneof object
+- buyer\_name?: string
+
+  **구매자 이름**
+
+- buyer\_email?: string
+
+  **구매자 이메일**
+
+- buyer\_tel?: string
+
+  **구매자 연락처**
+
+- m\_redirect\_url?: string
+
+  **모바일 결제 후 리디렉션 될 URL**
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
+
+- bypass?: object
 
   **PG사 결제창 호출 시 PG사로 그대로 bypass할 값들의 모음**
 
-  - custCi: string
+  - settle?: object
 
-    **주문자 CI**
+    - custCi?: string
 
-    <div class="hint" data-style="warning">
+      **주문자 CI**
 
-    본인인증 후 전달받은 CI 값을 AES-256-ECB 방식을 사용해 암호화하여 16진수로 인코딩한 결과를 입력해야합니다.
-    암호화 키(key)는 포트원 관리자콘솔 채널 등록 시 "암호화 키" 항목에 입력한 값을 사용합니다.
+      고객사가 보유한 회원 CI를 설정하면 내통장 결제에 등록한 CI와 비교하여 동일인인지 자동검증되며 일치하지 않은 경우 결제가 중단됩니다.
 
-    ```pseudo
-    INPUT: ci (string), key (string)
-    OUTPUT: custCI (string)
+      <div class="hint" data-style="warning">
 
-    BEGIN
-    # Step 1: CI 데이터를 AES-256-ECB 방식으로 암호화
-    binaryData ← AES256ECB(key, ci)
+      본인인증 후 전달받은 CI 값을 AES-256-ECB 방식을 사용해 암호화하여 16진수로 인코딩한 결과를 입력해야합니다.
+      암호화 키(key)는 포트원 관리자콘솔 채널 등록 시 "암호화 키" 항목에 입력한 값을 사용합니다.
 
-    # Step 2: 암호화된 데이터를 16진수 문자열로 변환
-    custCI ← ConvertToHex(binaryData)
+      ```pseudo
+      INPUT: ci (string), key (string)
+      OUTPUT: custCI (string)
 
-    # Step 3: 결과 반환
-    RETURN custCI
-    END
-    ```
+      BEGIN
+      # Step 1: CI 데이터를 AES-256-ECB 방식으로 암호화
+      binaryData ← AES256ECB(key, ci)
 
-    </div>
+      # Step 2: 암호화된 데이터를 16진수 문자열로 변환
+      custCI ← ConvertToHex(binaryData)
 
-    고객사가 보유한 회원 CI를 설정하면 내통장 결제에 등록한 CI와 비교하여 동일인인지 자동검증되며
-    일치하지 않은 경우 결제가 중단됩니다.
+      # Step 3: 결과 반환
+      RETURN custCI
+      END
+      ```
 
-  - addDeductionYn?: string
+      </div>
 
-    **추가공제구분**
+    - addDeductionYn?: string
 
-    대중교통: Y, 도서 및 공연비: C, 추가공제없음: N
+      **추가공제구분**
 
-    계약 후 사용 가능합니다.
+      대중교통: Y, 도서 및 공연비: C, 추가공제없음: N
 
-  - criPsblYn?: string
+      계약 후 사용 가능합니다.
 
-    **현금영수증 발행가능 여부**
+    - criPsblYn?: string
 
-    Y or N or "", 빈문자열은 Y로 인식
+      **현금영수증 발행가능 여부**
+
+      Y or N or "", 빈문자열은 Y로 인식
+
+    - payLimitCd?: string
+
+      **결제 한도 코드**
 
 #### 빌링키(customer\_uid)로 결제 요청하기
 

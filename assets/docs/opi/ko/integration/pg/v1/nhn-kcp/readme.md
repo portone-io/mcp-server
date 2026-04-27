@@ -39,6 +39,7 @@ targetVersions:
     - 카카오페이 : `kakaopay`
     - 네이버페이 : `naverpay`
     - 애플페이 : `applepay`
+    - 토스페이 : `tosspay`
 
   - 베네피아 포인트 : `point`
 
@@ -143,12 +144,15 @@ IMP.request_pay(
   - `cultureland` (컬쳐랜드 문화상품권)
   - `smartculture` (스마트문상)
   - `booknlife` (도서문화상품권)
+  - `happymoney` (해피머니 문화상품권)
   - `payco` (페이코)
   - `lpay` (L페이)
   - `kakaopay` (카카오페이)
   - `naverpay` (네이버페이)
   - `samsung` (삼성페이)
+  - `ssgpay` (SSG페이)
   - `applepay` (애플페이)
+  - `tosspay` (토스페이)
   - `point` (베네피아 포인트)
 
 - merchant\_uid: string
@@ -157,9 +161,80 @@ IMP.request_pay(
 
   고객사에서 채번하는 주문 고유 번호로 매번 고유하게 채번되어야 합니다.
 
+- name: string
+
+  **주문명**
+
 - amount: integer
 
   **결제금액**
+
+- buyer\_name?: string
+
+  **구매자 이름**
+
+- buyer\_email?: string
+
+  **구매자 이메일**
+
+- buyer\_tel?: string
+
+  **구매자 연락처**
+
+- buyer\_addr?: string
+
+  **구매자 주소**
+
+- buyer\_postcode?: string
+
+  **구매자 우편번호**
+
+- escrow?: boolean
+
+  **에스크로 결제 여부**
+
+- tax\_free?: number
+
+  **면세금액**
+
+- vbank\_due?: string
+
+  **가상계좌 입금마감일시**
+
+  `YYYYMMDD` 또는 `YYYYMMDDHHmmss` 형식으로 지정합니다. 시간 미지정 시 23:59:59로 설정됩니다.
+
+- m\_redirect\_url?: string
+
+  **모바일 결제 후 리디렉션 될 URL**
+
+- app\_scheme?: string
+
+  **모바일 앱 URL scheme** (모바일 전용)
+
+  모바일 앱에서 결제 시 ISP/앱카드 등에서 결제 완료 후 가맹점 앱으로 돌아올 때 사용됩니다.
+
+- notice\_url?: string | string\[]
+
+  **웹훅 수신 URL**
+
+  포트원 관리자 콘솔에 설정한 웹훅 URL 대신 사용할 URL을 지정합니다.
+
+- confirm\_url?: string
+
+  **Confirm process URL**
+
+- custom\_data?: object
+
+  **가맹점 커스텀 데이터**
+
+  결제 정보와 함께 저장할 커스텀 데이터입니다. 결제 조회 시 반환됩니다.
+
+- language?: string
+
+  **결제창 언어**
+
+  - `ko`: 한국어 (기본값)
+  - `en`: 영어
 
 <br />
 
@@ -176,8 +251,10 @@ IMP.request_pay(
     예시
 
     - `[]`: 일시불만 결제 가능
-    - `2,3,4,5,6`: 일시불을 포함한 2, 3, 4, 5, 6개월까지 할부개월 선택 가능
-    - `3`: 일시불을 포함한 2,3개월까지 할부개월 선택 가능
+    - `[2,3,4,5,6]`: 일시불을 포함한 2, 3, 4, 5, 6개월까지 할부개월 선택 가능
+    - `[3]`: 일시불을 포함한 2, 3개월까지 할부개월 선택 가능
+
+    배열 내 최댓값을 기준으로 일시불부터 해당 개월수까지 할부가 활성화됩니다.
 
   예시코드
 
@@ -188,7 +265,7 @@ IMP.request_pay(
   ```json
   {
     "display": {
-      "card_quota": [6] // 할부개월 6개월까지만 활성화
+      "card_quota": [2, 3, 4, 5, 6] // 할부개월 6개월까지만 활성화
     }
   }
   ```
@@ -298,6 +375,76 @@ IMP.request_pay(
   </div>
 
   </div>
+
+- company?: string
+
+  **상호명**
+
+  결제창 및 카드사 모듈에 표시되는 상호명입니다. 카드사 다이렉트 호출 시 설정하지 않으면 `iamport`로 표기됩니다.
+
+- auth\_mode?: string
+
+  **인증 방식**
+
+  키인결제(일회성 결제) 이용 시 설정합니다.
+
+  - `key-in`: 키인결제 모드로 결제창을 호출합니다.
+
+- bypass?: object
+
+  **KCP 전용 파라미터**
+
+  KCP 결제창에 직접 전달되는 파라미터입니다. PC와 모바일에서 지원되는 항목이 다릅니다.
+
+  - shop\_user\_id?: string
+
+    **고객사 회원 ID**
+
+    상품권 결제 및 휴대폰 소액결제 시 필수 입력해야 합니다. (PC, 모바일)
+
+  - coupon\_apply\_yn?: string
+
+    **할인쿠폰 영역 활성/비활성화**
+
+    KCP와 협의 후 사용 가능합니다. (PC, 모바일)
+
+    - `Y`: 활성
+    - `N`: 비활성
+
+  - skin\_indx?: string
+
+    **결제창 스킨 유형** (PC 전용)
+
+    1\~11 사이의 숫자로 지정 가능합니다.
+
+  - site\_logo?: string
+
+    **결제창 로고 URL** (PC 전용)
+
+  - complex\_pnt\_yn?: string
+
+    **포인트 복합결제 시 신용카드 결제 여부** (PC 전용)
+
+    포인트 결제 시 일부 금액을 신용카드로 결제할 수 있는지 여부를 설정합니다.
+
+    - `Y`: 포인트 + 신용카드 복합결제 허용
+    - `N`: 전액 포인트결제
+
+  - pt\_memcorp\_cd?: string
+
+    **베네피아 회원 코드** (PC, 모바일)
+
+    베네피아 포인트 결제 시 필수 입력해야 합니다.
+
+  - app\_flag?: string
+
+    **KB국민카드 다이렉트 호출 시 앱카드 사용 여부** (PC, 모바일)
+
+    `card.direct`로 KB국민카드 다이렉트 호출 시 결제 방식을 지정합니다.
+
+    - `Y`: 앱카드(KB Pay) 사용
+    - `N`: ISP 결제 사용
+    - `S`: 앱카드(KB Pay)와 ISP 선택지 제공 (모바일 전용)
 
 #### 유의사항
 
@@ -526,6 +673,20 @@ IMP.request_pay(
   **결제금액**
 
   결제창에 표시되는 금액입니다.
+
+- bypass?: object
+
+  **KCP 빌링키 발급 전용 파라미터**
+
+  - site\_logo?: string
+
+    **결제창 로고 URL** (PC 전용)
+
+  - batch\_birth\_day\_yn?: string
+
+    **생년월일 입력 박스 항상 표시 여부** (PC 전용)
+
+    - `Y`: 초기 화면에서 생년월일 입력 박스가 항상 표시됩니다.
 
 #### 유의사항
 
