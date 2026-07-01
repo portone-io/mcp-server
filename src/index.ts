@@ -12,6 +12,9 @@ import {
   getChannelsOfStore,
   getDocsUrl,
   getPaymentsByFilter,
+  getReconciliationsByFilter,
+  getSettlementStatistics,
+  getSettlementSummaries,
   listDocs,
   listSharedTestChannels,
   listStores,
@@ -110,6 +113,21 @@ export async function runServer() {
     getPaymentsByFilter.name,
     getPaymentsByFilter.config,
     getPaymentsByFilter.init(tokenProvider, graphClient),
+  );
+  mcp.registerTool(
+    getReconciliationsByFilter.name,
+    getReconciliationsByFilter.config,
+    getReconciliationsByFilter.init(tokenProvider, graphClient),
+  );
+  mcp.registerTool(
+    getSettlementSummaries.name,
+    getSettlementSummaries.config,
+    getSettlementSummaries.init(tokenProvider, graphClient),
+  );
+  mcp.registerTool(
+    getSettlementStatistics.name,
+    getSettlementStatistics.config,
+    getSettlementStatistics.init(tokenProvider, graphClient),
   );
 
   // Run the server
