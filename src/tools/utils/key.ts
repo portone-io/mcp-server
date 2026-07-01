@@ -186,6 +186,9 @@ export class TokenProvider {
           "CHANNEL_UPDATE",
           "STORE_READ",
           "MERCHANT_READ",
+          // 거래대사(getReconciliationsByFilter / getSettlementSummaries /
+          // getSettlementStatistics) 조회는 위 기존 스코프로 게이트웨이 접근이
+          // 가능함을 실환경에서 확인했습니다. 별도 스코프는 필요하지 않습니다.
         ].join(" "),
       );
       url.searchParams.set("code_challenge", codeChallenge);

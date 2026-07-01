@@ -70,6 +70,9 @@ Available tools:
 - `get_channels_of_store`: Gets all channels for a specific store (requires OAuth authentication)
 - `add_test_channel`: Adds a test channel to a store (requires OAuth authentication)
 - `get_payments_by_filter`: Searches payments with filters (requires OAuth authentication)
+- `getReconciliationsByFilter`: Lists per-transaction reconciliation records for a store, including discrepancy reasons (requires OAuth authentication)
+- `getSettlementSummaries`: Gets daily settlement summaries for a store (requires OAuth authentication)
+- `getSettlementStatistics`: Gets settlement statistics (range totals + daily) for a store (requires OAuth authentication)
 
 ### OAuth Authentication System
 The server now uses OAuth authentication for accessing PortOne APIs:
