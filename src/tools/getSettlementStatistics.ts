@@ -49,7 +49,7 @@ export const config = {
 
 검색 구간 내 통화별 합산 통계(정산/정산예정 금액·건수)와 일별 통계를 제공합니다.
 날짜는 반드시 YYYY-MM-DD 형식으로 입력합니다.
-조회 기간 제약: from 은 최근 6개월 이내여야 하고, 한 번에 조회 가능한 구간은 최대 3개월입니다.
+조회 기간 제약: from 은 최근 6개월 이내여야 하고, 한 번에 조회 가능한 구간은 최대 1개월입니다.
 store 아이디는 list_stores 도구로 먼저 조회할 수 있습니다.`,
   inputSchema: InputSchema.shape,
   outputSchema: OutputSchema.shape,
@@ -60,7 +60,9 @@ export function init(
   client: GraphQLClient,
 ): ToolCallback<typeof config.inputSchema> {
   return async ({ store, from, to }) => {
-    const dateRangeError = validateReconciliationDateRange(from, to);
+    const dateRangeError = validateReconciliationDateRange(from, to, {
+      months: 1,
+    });
     if (dateRangeError != null) {
       return toolErrorResult({
         type: "error",
