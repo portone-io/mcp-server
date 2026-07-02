@@ -3,6 +3,7 @@ import { type GraphQLClient, gql } from "graphql-request";
 import { match, P } from "ts-pattern";
 import z from "zod";
 import { nullableObject } from "../utils/nullableObject.ts";
+import { toRequestError } from "../utils/requestError.ts";
 import type { Result } from "../utils/result.ts";
 import { ReconciliationPgProvider } from "./getReconciliations.ts";
 
@@ -338,14 +339,4 @@ export async function getSettlementStatistics({
   } catch (error) {
     return toRequestError(error);
   }
-}
-
-function toRequestError(error: unknown): Result<never> {
-  if (error instanceof Error) {
-    return { type: "error", data: error };
-  }
-  return {
-    type: "error",
-    data: { message: `알 수 없는 오류가 발생했습니다.`, cause: error },
-  };
 }
