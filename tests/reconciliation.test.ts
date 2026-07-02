@@ -8,6 +8,7 @@ import {
   ReconciliationStatus,
 } from "../src/tools/request/getReconciliations.ts";
 import { validateReconciliationDateRange } from "../src/tools/utils/dateRange.ts";
+import { toRequestError } from "../src/tools/utils/requestError.ts";
 
 /** 오늘 기준 개월/일 오프셋의 YYYY-MM-DD 문자열 */
 function offsetDate(months: number, days = 0): string {
@@ -115,5 +116,59 @@ describe("validateReconciliationDateRange", () => {
     expect(validateReconciliationDateRange("2026-13-40", offsetDate(0))).toBe(
       "날짜 형식이 올바르지 않습니다 (YYYY-MM-DD).",
     );
+  });
+});
+
+describe("toRequestError", () => {
+  it("GraphQL 에러의 message 가 비어도 code 로 대체하고 path/code 를 함께 노출한다", () => {
+    const clientError = {
+      response: {
+        errors: [
+          {
+            message: "",
+            path: ["merchant", "reconciliation", "paymentReconciliations"],
+            extensions: { code: "INTERNAL" },
+          },
+        ],
+      },
+    };
+    const result = toRequestError(clientError);
+    expect(result.type).toBe("error");
+    const data = result.data as {
+      message: string;
+      type: string;
+      errors: { code?: string; path?: string }[];
+    };
+    expect(data.message).not.toBe("");
+    expect(data.message).toContain("INTERNAL");
+    expect(data.type).toBe("GraphQLError");
+    expect(data.errors[0].code).toBe("INTERNAL");
+    expect(data.errors[0].path).toBe(
+      "merchant.reconciliation.paymentReconciliations",
+    );
+  });
+
+  it("GraphQL 에러의 message 가 있으면 그대로 사용한다", () => {
+    const result = toRequestError({
+      response: { errors: [{ message: "직렬화 실패" }] },
+    });
+    expect((result.data as { message: string }).message).toBe("직렬화 실패");
+  });
+
+  it("일반 Error 는 message 를 사용하고, 비어 있으면 이름으로 대체한다", () => {
+    expect(
+      (toRequestError(new Error("boom")).data as { message: string }).message,
+    ).toBe("boom");
+    const named = new Error("");
+    named.name = "TypeError";
+    expect((toRequestError(named).data as { message: string }).message).toBe(
+      "TypeError",
+    );
+  });
+
+  it("알 수 없는 값도 비지 않은 message 를 반환한다", () => {
+    expect(
+      (toRequestError("weird").data as { message: string }).message,
+    ).not.toBe("");
   });
 });
