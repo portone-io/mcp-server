@@ -83,18 +83,45 @@ describe("reconciliation tools", () => {
 });
 
 describe("validateReconciliationDateRange", () => {
-  it("최근 6개월 이내 & 3개월 이하 구간은 통과한다", () => {
+  it("정산(1개월): 최근 6개월 이내 & 1개월 이하 구간은 통과한다", () => {
     expect(
-      validateReconciliationDateRange(offsetDate(-1), offsetDate(0)),
+      validateReconciliationDateRange(offsetDate(-1), offsetDate(0), {
+        months: 1,
+      }),
     ).toBeNull();
-    // 2개월 구간(3개월 이하)은 허용
+    // 약 2주 구간도 1개월 이하이므로 허용
     expect(
-      validateReconciliationDateRange(offsetDate(-2), offsetDate(0)),
+      validateReconciliationDateRange(offsetDate(0, -14), offsetDate(0), {
+        months: 1,
+      }),
     ).toBeNull();
   });
 
+  it("정산(1개월): 구간이 1개월을 초과하면 거부한다", () => {
+    const err = validateReconciliationDateRange(offsetDate(-2), offsetDate(0), {
+      months: 1,
+    });
+    expect(err).toContain("1개월");
+  });
+
+  it("건별 대사(2주): 14일 이하 구간은 통과, 초과하면 거부한다", () => {
+    expect(
+      validateReconciliationDateRange(offsetDate(0, -14), offsetDate(0), {
+        days: 14,
+      }),
+    ).toBeNull();
+    const err = validateReconciliationDateRange(
+      offsetDate(0, -20),
+      offsetDate(0),
+      { days: 14 },
+    );
+    expect(err).toContain("2주");
+  });
+
   it("to 가 from 보다 빠르면 거부한다", () => {
-    const err = validateReconciliationDateRange(offsetDate(0), offsetDate(-1));
+    const err = validateReconciliationDateRange(offsetDate(0), offsetDate(-1), {
+      months: 1,
+    });
     expect(err).toContain("빠를 수 없습니다");
   });
 
@@ -102,20 +129,17 @@ describe("validateReconciliationDateRange", () => {
     const err = validateReconciliationDateRange(
       offsetDate(-7),
       offsetDate(-7, 5),
+      { months: 1 },
     );
     expect(err).toContain("6개월");
   });
 
-  it("구간이 3개월을 초과하면 거부한다", () => {
-    const err = validateReconciliationDateRange(offsetDate(-4), offsetDate(0));
-    // from 이 6개월 이내이므로 6개월 제약은 통과하고 3개월 제약에 걸려야 함
-    expect(err).toContain("3개월");
-  });
-
   it("잘못된 날짜 형식이면 거부한다", () => {
-    expect(validateReconciliationDateRange("2026-13-40", offsetDate(0))).toBe(
-      "날짜 형식이 올바르지 않습니다 (YYYY-MM-DD).",
-    );
+    expect(
+      validateReconciliationDateRange("2026-13-40", offsetDate(0), {
+        months: 1,
+      }),
+    ).toBe("날짜 형식이 올바르지 않습니다 (YYYY-MM-DD).");
   });
 });
 

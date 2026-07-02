@@ -136,7 +136,7 @@ export const config = {
 대사 불일치 상세는 statuses=[NOT_MATCHED] 로 조회 후 각 건의 notMatchedReasons 를 확인합니다.
 대사 불가 사유는 INCOMPARABLE 건의 incomparableReason 필드에서 확인합니다.
 날짜는 반드시 YYYY-MM-DD 형식으로 입력하며, dateType 으로 정산일/결제일 기준을 선택합니다.
-조회 기간 제약: from 은 최근 6개월 이내여야 하고, 한 번에 조회 가능한 구간은 최대 3개월입니다.
+조회 기간 제약: from 은 최근 6개월 이내여야 하고, 한 번에 조회 가능한 구간은 최대 2주입니다.
 store 아이디는 list_stores 도구로 먼저 조회할 수 있습니다.`,
   inputSchema: InputSchema.shape,
   outputSchema: OutputSchema.shape,
@@ -210,7 +210,9 @@ export function init(
     first,
     after,
   }) => {
-    const dateRangeError = validateReconciliationDateRange(from, to);
+    const dateRangeError = validateReconciliationDateRange(from, to, {
+      days: 14,
+    });
     if (dateRangeError != null) {
       return toolErrorResult({
         type: "error",

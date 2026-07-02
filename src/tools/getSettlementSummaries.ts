@@ -68,7 +68,7 @@ export const config = {
 
 각 일자별로 정산 금액/건수, PG 수수료, 취소, 후보정 합산치와 상점·PG별 상세 내역을 제공합니다.
 날짜는 반드시 YYYY-MM-DD 형식으로 입력합니다.
-조회 기간 제약: from 은 최근 6개월 이내여야 하고, 한 번에 조회 가능한 구간은 최대 3개월입니다.
+조회 기간 제약: from 은 최근 6개월 이내여야 하고, 한 번에 조회 가능한 구간은 최대 1개월입니다.
 store 아이디는 list_stores 도구로 먼저 조회할 수 있습니다.`,
   inputSchema: InputSchema.shape,
   outputSchema: OutputSchema.shape,
@@ -79,7 +79,9 @@ export function init(
   client: GraphQLClient,
 ): ToolCallback<typeof config.inputSchema> {
   return async ({ store, from, to, first, after }) => {
-    const dateRangeError = validateReconciliationDateRange(from, to);
+    const dateRangeError = validateReconciliationDateRange(from, to, {
+      months: 1,
+    });
     if (dateRangeError != null) {
       return toolErrorResult({
         type: "error",
