@@ -87,7 +87,10 @@ export async function runServer() {
   const graphClient = new GraphQLClient(GRAPHQL_URL, {
     headers: { "User-Agent": USER_AGENT },
   });
-  const tokenProvider = new TokenProvider();
+  const tokenProvider = new TokenProvider({
+    staticAccessToken: process.env.PORTONE_ACCESS_TOKEN,
+    staticTokenType: process.env.PORTONE_TOKEN_TYPE,
+  });
   tokenProvider.launchRefresher();
   mcp.registerTool(
     listStores.name,

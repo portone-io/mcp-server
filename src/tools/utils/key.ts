@@ -8,6 +8,22 @@ import type { Result } from "./result.ts";
 const OAUTH_CLIENT_ID = "MCP";
 const OAUTH_TIMEOUT_MILLIS = 5 * 60 * 1000; // 5분
 
+/** 정적 토큰의 기본 토큰 타입. */
+const DEFAULT_TOKEN_TYPE = "Bearer";
+
+export interface TokenProviderOptions {
+  /**
+   * 외부에서 발급한 정적(비대화형) 액세스 토큰.
+   * 설정되면 브라우저를 통한 OAuth 로그인 플로우를 건너뛰고,
+   * 이 토큰을 그대로 Authorization 헤더로 사용합니다.
+   * 서버 환경 등 브라우저 로그인이 불가능한 곳에서 사용합니다.
+   * 토큰의 발급/갱신/수명 관리는 외부 시스템의 책임입니다.
+   */
+  staticAccessToken?: string | null;
+  /** 정적 토큰의 토큰 타입. 기본값은 "Bearer". */
+  staticTokenType?: string | null;
+}
+
 type Token = {
   access: string;
   refresh: string;
@@ -65,8 +81,28 @@ export class TokenProvider {
   serverController: AbortController | null = null;
   token: Token | null = null;
   codeVerifier: string | null = null;
+  private readonly staticAuthorization: string | null;
+
+  constructor(options: TokenProviderOptions = {}) {
+    const rawToken = options.staticAccessToken?.trim();
+    if (rawToken) {
+      const tokenType = options.staticTokenType?.trim() || DEFAULT_TOKEN_TYPE;
+      this.staticAuthorization = `${tokenType} ${rawToken}`;
+    } else {
+      this.staticAuthorization = null;
+    }
+  }
+
+  /** 정적 토큰 모드 여부. true 이면 대화형 OAuth 로그인을 사용하지 않습니다. */
+  get usesStaticToken(): boolean {
+    return this.staticAuthorization !== null;
+  }
 
   launchRefresher() {
+    // 정적 토큰 모드에서는 외부 시스템이 토큰 수명을 관리하므로 리프레시하지 않습니다.
+    if (this.staticAuthorization !== null) {
+      return;
+    }
     setInterval(async () => {
       if (this.token !== null && Date.now() >= this.token.refreshAt) {
         try {
@@ -147,6 +183,12 @@ export class TokenProvider {
   }
 
   async getToken(): Promise<TokenState> {
+    if (this.staticAuthorization !== null) {
+      return {
+        state: "authorized",
+        authorization: this.staticAuthorization,
+      };
+    }
     if (this.token === null || Date.now() >= this.token.expiresAt) {
       this.serverController?.abort();
       this.serverController = new AbortController();
