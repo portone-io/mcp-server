@@ -89,6 +89,36 @@
 >   별도의 프로세스에 해당 사용자의 토큰을 주입해, 토큰이 공유되지 않도록 하세요.
 > - `PORTONE_ACCESS_TOKEN` 이 없으면 기존과 동일하게 브라우저 로그인 플로우로 동작합니다.
 
+## 엔드포인트 오버라이드
+
+기본적으로 MCP 서버는 PortOne 운영(prod) 환경에 연결됩니다. 아래 환경 변수를
+설정하면 각 서비스 엔드포인트를 개별적으로 다른 환경(예: 내부 테스트 환경)으로
+오버라이드할 수 있습니다. 설정하지 않은 항목은 운영 환경 기본값을 사용합니다.
+
+- `PORTONE_CONSOLE_URL`: 콘솔 (OAuth 브라우저 로그인)
+- `PORTONE_MERCHANT_SERVICE_URL`: 머천트 서비스 (OAuth 토큰 교환·갱신)
+- `PORTONE_CHANNEL_SERVICE_URL`: 채널 서비스 (채널 조회·추가)
+- `PORTONE_GRAPHQL_URL`: GraphQL 게이트웨이 (스토어·결제·거래대사·정산)
+
+```json
+"mcpServers": {
+  "portone-mcp-server": {
+    "command": "npx",
+    "args": ["-y", "@portone/mcp-server@latest"],
+    "env": {
+      "PORTONE_CONSOLE_URL": "<대상 환경 콘솔 URL>",
+      "PORTONE_GRAPHQL_URL": "<대상 환경 GraphQL URL>"
+    }
+  }
+}
+```
+
+> [!NOTE]
+> - 오버라이드는 콘솔 기능(스토어·채널·결제·거래대사·정산 등) 호출 대상만
+>   바꿉니다. 문서/헬프센터 조회는 환경과 무관하게 동일하게 동작합니다.
+> - 브라우저 로그인 대신 `PORTONE_ACCESS_TOKEN` 을 함께 사용하는 경우, 오버라이드한
+>   환경에서 발급한 토큰을 주입해야 합니다.
+
 ## 개발하기
 
 ### 요구사항

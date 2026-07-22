@@ -1,5 +1,11 @@
 # @portone/mcp-server
 
+## 0.19.0
+
+### Minor Changes
+
+- 72877a4: `PORTONE_CONSOLE_URL` / `PORTONE_MERCHANT_SERVICE_URL` / `PORTONE_CHANNEL_SERVICE_URL` / `PORTONE_GRAPHQL_URL` 환경 변수로 각 서비스 엔드포인트를 개별 오버라이드할 수 있으며, 미설정 시 운영 환경 기본값을 사용합니다.
+
 ## 0.18.0
 
 ### Minor Changes
