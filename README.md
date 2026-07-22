@@ -89,10 +89,16 @@
 >   별도의 프로세스에 해당 사용자의 토큰을 주입해, 토큰이 공유되지 않도록 하세요.
 > - `PORTONE_ACCESS_TOKEN` 이 없으면 기존과 동일하게 브라우저 로그인 플로우로 동작합니다.
 
-## 개발(dev) 환경으로 실행하기
+## 엔드포인트 오버라이드
 
-기본적으로 MCP 서버는 PortOne 운영(prod) 환경에 연결됩니다. `PORTONE_ENV`
-환경 변수로 개발(dev) 환경으로 전환할 수 있습니다.
+기본적으로 MCP 서버는 PortOne 운영(prod) 환경에 연결됩니다. 아래 환경 변수를
+설정하면 각 서비스 엔드포인트를 개별적으로 다른 환경(예: 내부 테스트 환경)으로
+오버라이드할 수 있습니다. 설정하지 않은 항목은 운영 환경 기본값을 사용합니다.
+
+- `PORTONE_CONSOLE_URL`: 콘솔 (OAuth 브라우저 로그인)
+- `PORTONE_MERCHANT_SERVICE_URL`: 머천트 서비스 (OAuth 토큰 교환·갱신)
+- `PORTONE_CHANNEL_SERVICE_URL`: 채널 서비스 (채널 조회·추가)
+- `PORTONE_GRAPHQL_URL`: GraphQL 게이트웨이 (스토어·결제·거래대사·정산)
 
 ```json
 "mcpServers": {
@@ -100,22 +106,18 @@
     "command": "npx",
     "args": ["-y", "@portone/mcp-server@latest"],
     "env": {
-      "PORTONE_ENV": "dev"
+      "PORTONE_CONSOLE_URL": "<대상 환경 콘솔 URL>",
+      "PORTONE_GRAPHQL_URL": "<대상 환경 GraphQL URL>"
     }
   }
 }
 ```
 
-- `PORTONE_ENV`: 연결할 환경(선택). `prod`(기본값) 또는 `dev`.
-  - `prod` 또는 미설정: 운영 환경(콘솔·머천트·채널 서비스·GraphQL 게이트웨이)에 연결합니다.
-  - `dev`: 개발 환경에 연결합니다.
-  - 그 외의 값이 들어오면 경고를 출력하고 운영 환경으로 동작합니다.
-
 > [!NOTE]
-> - `PORTONE_ENV` 는 콘솔 기능(스토어·채널·결제·거래대사·정산 등) 호출 대상 환경만
->   전환합니다. 문서/헬프센터 조회는 환경과 무관하게 동일하게 동작합니다.
-> - dev 환경에서는 dev 콘솔 계정으로 로그인해야 하며, `PORTONE_ACCESS_TOKEN` 을
->   함께 사용하는 경우 해당 dev 환경에서 발급한 토큰을 주입해야 합니다.
+> - 오버라이드는 콘솔 기능(스토어·채널·결제·거래대사·정산 등) 호출 대상만
+>   바꿉니다. 문서/헬프센터 조회는 환경과 무관하게 동일하게 동작합니다.
+> - 브라우저 로그인 대신 `PORTONE_ACCESS_TOKEN` 을 함께 사용하는 경우, 오버라이드한
+>   환경에서 발급한 토큰을 주입해야 합니다.
 
 ## 개발하기
 
