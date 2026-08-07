@@ -3,7 +3,6 @@ import * as getPaymentBreakdown from "../src/tools/getPaymentBreakdown.ts";
 import * as getPaymentFailureReasons from "../src/tools/getPaymentFailureReasons.ts";
 import * as getPaymentStatusBreakdownByDimension from "../src/tools/getPaymentStatusBreakdownByDimension.ts";
 import * as getPaymentSummary from "../src/tools/getPaymentSummary.ts";
-import * as getRealtimePaymentPulse from "../src/tools/getRealtimePaymentPulse.ts";
 import {
   collectPaymentsByCursor,
   type PaymentRecord,
@@ -15,7 +14,6 @@ import {
   countCustomers,
   dimensionLabel,
   dimensionValue,
-  formatIsoWithOffset,
   formatUtcOffset,
   normalizePayment,
   parseUtcOffsetMinutes,
@@ -67,23 +65,8 @@ describe("타임존/버킷팅", () => {
     expect(bucketOf("2026-08-01T15:30:00Z", "MONTH", KST)).toBe("2026-08");
   });
 
-  it("분 단위 버킷은 bucketMinutes 로 내림 정렬한다", () => {
-    expect(bucketOf("2026-08-01T10:07:59Z", "MINUTE", 0, 5)).toBe(
-      "2026-08-01T10:05+00:00",
-    );
-    expect(bucketOf("2026-08-01T10:07:59Z", "MINUTE", 0, 1)).toBe(
-      "2026-08-01T10:07+00:00",
-    );
-  });
-
   it("잘못된 일시는 null 을 반환한다", () => {
     expect(bucketOf("not-a-date", "DAY", 0)).toBeNull();
-  });
-
-  it("오프셋을 포함한 ISO 문자열을 만든다", () => {
-    expect(formatIsoWithOffset(new Date("2026-08-01T15:30:00Z"), KST)).toBe(
-      "2026-08-02T00:30:00+09:00",
-    );
   });
 });
 
@@ -384,7 +367,6 @@ describe("도구 설정", () => {
     getPaymentBreakdown,
     getPaymentFailureReasons,
     getPaymentStatusBreakdownByDimension,
-    getRealtimePaymentPulse,
   ];
 
   it("각 도구는 고유한 이름과 입출력 스키마를 노출한다", () => {
@@ -398,26 +380,12 @@ describe("도구 설정", () => {
     }
   });
 
-  it("기간 조회 도구는 from/to 를 받는다", () => {
-    for (const tool of [
-      getPaymentSummary,
-      getPaymentBreakdown,
-      getPaymentFailureReasons,
-      getPaymentStatusBreakdownByDimension,
-    ]) {
+  it("모든 도구가 from/to 와 수집 상한을 받는다", () => {
+    for (const tool of tools) {
       expect(tool.config.inputSchema).toHaveProperty("from");
       expect(tool.config.inputSchema).toHaveProperty("to");
       expect(tool.config.inputSchema).toHaveProperty("maxPayments");
     }
-  });
-
-  it("준실시간 도구는 창 크기를 분 단위로 받는다", () => {
-    expect(getRealtimePaymentPulse.config.inputSchema).toHaveProperty(
-      "windowMinutes",
-    );
-    expect(getRealtimePaymentPulse.config.inputSchema).toHaveProperty(
-      "bucketMinutes",
-    );
   });
 });
 
@@ -650,20 +618,6 @@ describe("도구 실행", () => {
     const result = await tool.init(tokenProviderStub)(args, {} as never);
     expect(result.isError).toBe(true);
     expect(result.content[0].text).toContain("currency");
-  });
-
-  it("준실시간 모니터링은 창과 신선도 정보를 함께 반환한다", async () => {
-    const output = await callTool(getRealtimePaymentPulse, {
-      windowMinutes: 30,
-      bucketMinutes: 5,
-    });
-
-    expect(output.window.windowMinutes).toBe(30);
-    expect(output.window.bucketMinutes).toBe(5);
-    expect(output.totalCount).toBe(4);
-    expect(output.freshness.cached).toBe(false);
-    expect(output.freshness.ttlSeconds).toBeGreaterThan(0);
-    expect(output.notes.join(" ")).toContain("준실시간");
   });
 
   it("여러 집계 도구가 같은 구간을 조회하면 원시 데이터를 재사용한다", async () => {

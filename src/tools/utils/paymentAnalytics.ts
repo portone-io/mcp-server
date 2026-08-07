@@ -294,25 +294,17 @@ export function formatUtcOffset(offsetMinutes: number): string {
   return `${sign}${hours}:${minutes}`;
 }
 
-/** Date 를 지정한 오프셋 기준 ISO 8601 문자열로 표기합니다. */
-export function formatIsoWithOffset(date: Date, offsetMinutes: number): string {
-  const shifted = new Date(date.getTime() + offsetMinutes * 60_000);
-  return `${shifted.toISOString().slice(0, 19)}${formatUtcOffset(offsetMinutes)}`;
-}
-
 /**
  * 기준 시각을 시계열 버킷 라벨로 변환합니다.
  *
  * 버킷 경계는 `offsetMinutes` 로 지정한 타임존 기준으로 계산되므로,
  * KST(+09:00) 로 조회하면 KST 자정 기준으로 일별 집계가 이루어집니다.
  *
- * @param bucketMinutes MINUTE 단위 버킷 크기 (준실시간 모니터링용)
  */
 export function bucketOf(
   iso: string,
-  granularity: Granularity | "MINUTE",
+  granularity: Granularity,
   offsetMinutes: number,
-  bucketMinutes = 1,
 ): string | null {
   const time = Date.parse(iso);
   if (Number.isNaN(time)) return null;
@@ -330,11 +322,6 @@ export function bucketOf(
       return `${year}-${month}-${day}`;
     case "HOUR":
       return `${year}-${month}-${day}T${hour}:00${offset}`;
-    case "MINUTE": {
-      const size = Math.max(1, Math.min(60, Math.trunc(bucketMinutes)));
-      const minute = Math.floor(shifted.getUTCMinutes() / size) * size;
-      return `${year}-${month}-${day}T${hour}:${String(minute).padStart(2, "0")}${offset}`;
-    }
   }
 }
 

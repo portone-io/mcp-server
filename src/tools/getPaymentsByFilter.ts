@@ -165,7 +165,7 @@ export const config = {
 
 거래 현황·결제수단 비중·실패 사유처럼 기간 전체를 집계한 통계가 필요하면 이 도구가 아니라
 결제 내역 다건 조회 도구(getPaymentSummary, getPaymentBreakdown, getPaymentFailureReasons,
-getPaymentStatusBreakdownByDimension, getRealtimePaymentPulse)를 사용하세요.
+getPaymentStatusBreakdownByDimension)를 사용하세요.
 
 Note:
   소문자 imp_ 혹은 imps_ 로 시작하는 거래번호는 고객사 거래번호가 아닌 V1 포트원 거래번호(imp_uid)일 가능성이 있습니다.

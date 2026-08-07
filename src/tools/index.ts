@@ -6,7 +6,6 @@ export * as getPaymentFailureReasons from "./getPaymentFailureReasons.ts";
 export * as getPaymentStatusBreakdownByDimension from "./getPaymentStatusBreakdownByDimension.ts";
 export * as getPaymentSummary from "./getPaymentSummary.ts";
 export * as getPaymentsByFilter from "./getPaymentsByFilter.ts";
-export * as getRealtimePaymentPulse from "./getRealtimePaymentPulse.ts";
 export * as getReconciliationsByFilter from "./getReconciliationsByFilter.ts";
 export * as getSettlementStatistics from "./getSettlementStatistics.ts";
 export * as getSettlementSummaries from "./getSettlementSummaries.ts";

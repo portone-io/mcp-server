@@ -74,7 +74,6 @@ Available tools:
 - `getPaymentBreakdown`: Groups payments by method / PG provider / status / card brand / escrow / channel type / platform type
 - `getPaymentFailureReasons`: Classifies `failure.reason` + `failure.pgMessage` into coarse categories and aggregates them
 - `getPaymentStatusBreakdownByDimension`: Cross-tabulates payment status against a dimension (stacked bar)
-- `getRealtimePaymentPulse`: Near-real-time (polling based) monitoring of the last N minutes
 - `getReconciliationsByFilter`: Lists per-transaction reconciliation records for a store, including discrepancy reasons (requires OAuth authentication)
 - `getSettlementSummaries`: Gets daily settlement summaries for a store (requires OAuth authentication)
 - `getSettlementStatistics`: Gets settlement statistics (range totals + daily) for a store (requires OAuth authentication)

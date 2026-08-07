@@ -16,7 +16,6 @@ import {
   getPaymentStatusBreakdownByDimension,
   getPaymentSummary,
   getPaymentsByFilter,
-  getRealtimePaymentPulse,
   getReconciliationsByFilter,
   getSettlementStatistics,
   getSettlementSummaries,
@@ -141,11 +140,6 @@ export async function runServer() {
     getPaymentStatusBreakdownByDimension.name,
     getPaymentStatusBreakdownByDimension.config,
     getPaymentStatusBreakdownByDimension.init(tokenProvider),
-  );
-  mcp.registerTool(
-    getRealtimePaymentPulse.name,
-    getRealtimePaymentPulse.config,
-    getRealtimePaymentPulse.init(tokenProvider),
   );
   mcp.registerTool(
     getReconciliationsByFilter.name,
