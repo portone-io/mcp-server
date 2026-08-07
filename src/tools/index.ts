@@ -1,7 +1,12 @@
 export * as addTestChannel from "./addTestChannel.ts";
 export * as getChannelsOfStore from "./getChannelsOfStore.ts";
 export * as getDocsUrl from "./getDocsUrl.ts";
+export * as getPaymentBreakdown from "./getPaymentBreakdown.ts";
+export * as getPaymentFailureReasons from "./getPaymentFailureReasons.ts";
+export * as getPaymentStatusBreakdownByDimension from "./getPaymentStatusBreakdownByDimension.ts";
+export * as getPaymentSummary from "./getPaymentSummary.ts";
 export * as getPaymentsByFilter from "./getPaymentsByFilter.ts";
+export * as getRealtimePaymentPulse from "./getRealtimePaymentPulse.ts";
 export * as getReconciliationsByFilter from "./getReconciliationsByFilter.ts";
 export * as getSettlementStatistics from "./getSettlementStatistics.ts";
 export * as getSettlementSummaries from "./getSettlementSummaries.ts";

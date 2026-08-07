@@ -11,7 +11,12 @@ import {
   addTestChannel,
   getChannelsOfStore,
   getDocsUrl,
+  getPaymentBreakdown,
+  getPaymentFailureReasons,
+  getPaymentStatusBreakdownByDimension,
+  getPaymentSummary,
   getPaymentsByFilter,
+  getRealtimePaymentPulse,
   getReconciliationsByFilter,
   getSettlementStatistics,
   getSettlementSummaries,
@@ -116,6 +121,31 @@ export async function runServer() {
     getPaymentsByFilter.name,
     getPaymentsByFilter.config,
     getPaymentsByFilter.init(tokenProvider, graphClient),
+  );
+  mcp.registerTool(
+    getPaymentSummary.name,
+    getPaymentSummary.config,
+    getPaymentSummary.init(tokenProvider),
+  );
+  mcp.registerTool(
+    getPaymentBreakdown.name,
+    getPaymentBreakdown.config,
+    getPaymentBreakdown.init(tokenProvider),
+  );
+  mcp.registerTool(
+    getPaymentFailureReasons.name,
+    getPaymentFailureReasons.config,
+    getPaymentFailureReasons.init(tokenProvider),
+  );
+  mcp.registerTool(
+    getPaymentStatusBreakdownByDimension.name,
+    getPaymentStatusBreakdownByDimension.config,
+    getPaymentStatusBreakdownByDimension.init(tokenProvider),
+  );
+  mcp.registerTool(
+    getRealtimePaymentPulse.name,
+    getRealtimePaymentPulse.config,
+    getRealtimePaymentPulse.init(tokenProvider),
   );
   mcp.registerTool(
     getReconciliationsByFilter.name,

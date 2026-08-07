@@ -7,6 +7,7 @@
  * - `PORTONE_MERCHANT_SERVICE_URL` : 머천트 서비스 (OAuth token 교환·갱신)
  * - `PORTONE_CHANNEL_SERVICE_URL`  : 채널 서비스 (채널 조회·추가)
  * - `PORTONE_GRAPHQL_URL`          : GraphQL 게이트웨이 (스토어·결제·거래대사·정산)
+ * - `PORTONE_API_URL`              : REST V2 API (결제 대용량 다건 조회·집계)
  *
  * 문서/헬프센터 URL은 환경과 무관하므로 오버라이드하지 않습니다.
  */
@@ -37,3 +38,4 @@ export const GRAPHQL_URL = urlFromEnv(
   "PORTONE_GRAPHQL_URL",
   "https://api.portone.io/graphql",
 );
+export const API_URL = urlFromEnv("PORTONE_API_URL", "https://api.portone.io");

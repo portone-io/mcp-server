@@ -5,6 +5,7 @@ const OVERRIDE_VARS = [
   "PORTONE_MERCHANT_SERVICE_URL",
   "PORTONE_CHANNEL_SERVICE_URL",
   "PORTONE_GRAPHQL_URL",
+  "PORTONE_API_URL",
 ] as const;
 
 // url.ts 는 모듈 로드 시점에 환경 변수를 읽으므로,
@@ -36,6 +37,7 @@ describe("엔드포인트 오버라이드", () => {
       "https://channel-service.prod.iamport.co",
     );
     expect(urls.GRAPHQL_URL).toBe("https://api.portone.io/graphql");
+    expect(urls.API_URL).toBe("https://api.portone.io");
   });
 
   it("각 env 변수로 해당 엔드포인트를 오버라이드한다", async () => {
@@ -44,11 +46,13 @@ describe("엔드포인트 오버라이드", () => {
       PORTONE_MERCHANT_SERVICE_URL: "https://merchant.example.test",
       PORTONE_CHANNEL_SERVICE_URL: "https://channel.example.test",
       PORTONE_GRAPHQL_URL: "https://gateway.example.test/graphql",
+      PORTONE_API_URL: "https://api.example.test",
     });
     expect(urls.CONSOLE_URL).toBe("https://console.example.test");
     expect(urls.MERCHANT_SERVICE_URL).toBe("https://merchant.example.test");
     expect(urls.CHANNEL_SERVICE_URL).toBe("https://channel.example.test");
     expect(urls.GRAPHQL_URL).toBe("https://gateway.example.test/graphql");
+    expect(urls.API_URL).toBe("https://api.example.test");
   });
 
   it("일부만 오버라이드하면 나머지는 기본값을 유지한다", async () => {

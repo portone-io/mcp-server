@@ -160,8 +160,12 @@ const InputSchema = z.object({
 });
 
 export const config = {
-  title: "포트원 결제 내역 검색",
-  description: `포트원 서버에서 주어진 조건을 모두 만족하는 결제 내역을 검색합니다.
+  title: "포트원 결제 내역 단건 조회",
+  description: `포트원 서버에서 주어진 조건을 모두 만족하는 개별 결제 건의 상세 내역을 검색합니다. (결제 내역 단건 조회)
+
+거래 현황·결제수단 비중·실패 사유처럼 기간 전체를 집계한 통계가 필요하면 이 도구가 아니라
+결제 내역 다건 조회 도구(getPaymentSummary, getPaymentBreakdown, getPaymentFailureReasons,
+getPaymentStatusBreakdownByDimension, getRealtimePaymentPulse)를 사용하세요.
 
 Note:
   소문자 imp_ 혹은 imps_ 로 시작하는 거래번호는 고객사 거래번호가 아닌 V1 포트원 거래번호(imp_uid)일 가능성이 있습니다.

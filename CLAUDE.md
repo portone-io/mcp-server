@@ -69,7 +69,12 @@ Available tools:
 - `list_shared_test_channels`: Lists available shared test channels (requires OAuth authentication)
 - `get_channels_of_store`: Gets all channels for a specific store (requires OAuth authentication)
 - `add_test_channel`: Adds a test channel to a store (requires OAuth authentication)
-- `get_payments_by_filter`: Searches payments with filters (requires OAuth authentication)
+- `getPaymentsByFilter`: Searches individual payment records with filters — 결제 내역 단건 조회 (requires OAuth authentication)
+- `getPaymentSummary`: Aggregates transaction totals, time series (hour/day/month) and average amounts per payment/customer (requires OAuth authentication or `PORTONE_API_SECRET`)
+- `getPaymentBreakdown`: Groups payments by method / PG provider / status / card brand / escrow / channel type / platform type
+- `getPaymentFailureReasons`: Classifies `failure.reason` + `failure.pgMessage` into coarse categories and aggregates them
+- `getPaymentStatusBreakdownByDimension`: Cross-tabulates payment status against a dimension (stacked bar)
+- `getRealtimePaymentPulse`: Near-real-time (polling based) monitoring of the last N minutes
 - `getReconciliationsByFilter`: Lists per-transaction reconciliation records for a store, including discrepancy reasons (requires OAuth authentication)
 - `getSettlementSummaries`: Gets daily settlement summaries for a store (requires OAuth authentication)
 - `getSettlementStatistics`: Gets settlement statistics (range totals + daily) for a store (requires OAuth authentication)
@@ -81,6 +86,17 @@ The server now uses OAuth authentication for accessing PortOne APIs:
 - Tokens are securely stored and refreshed as needed
 - GraphQL client integration for API communication
 - No longer requires API_SECRET environment variable for most operations
+
+### Payment Aggregation Tools (결제 내역 다건 조회)
+- Raw data comes from REST V2 `GET /payments-by-cursor`, paged to the end via
+  `src/tools/request/getPaymentsByCursor.ts`. That endpoint has no server-side filters and
+  always ranges over the payment creation timestamp, so all filtering, bucketing and
+  grouping happens client-side in `src/tools/utils/paymentAnalytics.ts`.
+- `src/tools/utils/apiAuth.ts` resolves the REST auth header: `PORTONE_API_SECRET`
+  (`Authorization: PortOne <secret>`) if set, otherwise the console OAuth bearer token.
+- `src/tools/utils/paymentCache.ts` caches collected + normalized payments per
+  (auth, store, range, limit) for a short TTL so the five tools don't re-page the same window.
+- Amounts are only ever summed per currency (`byCurrency` in every output).
 
 ### Document Structure
 - Documentation is stored in `assets/docs/`
