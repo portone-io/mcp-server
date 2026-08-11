@@ -50,7 +50,6 @@ jobs:
         with:
           version: pnpm changeset:version
           publish: pnpm changeset publish
-          createGithubReleases: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -58,11 +57,9 @@ jobs:
         if: steps.changesets.outputs.published == 'true'
         run: pnpm build:dxt
 
-      - name: Create GitHub Release
+      - name: Upload DXT to GitHub Release
         if: steps.changesets.outputs.published == 'true'
-        run: |
-          gh release create "v$VERSION" portone-mcp-server.dxt \
-            --title "v$VERSION"
+        run: gh release upload "v$VERSION" portone-mcp-server.dxt --clobber
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERSION: ${{ fromJson(steps.changesets.outputs.publishedPackages)[0].version }}
