@@ -71,6 +71,30 @@ const History = z
 type HistoryField = keyof typeof Amount.shape;
 const HistoryFields = Object.keys(History.shape);
 
+const Failure = z
+  .object({
+    reason: z.string().describe("결제 실패 사유"),
+    pgCode: z.string().describe("PG사 실패 코드"),
+    pgMessage: z.string().describe("PG사 실패 메시지"),
+  })
+  .partial();
+type FailureField = keyof typeof Failure.shape;
+const FailureFields = Object.keys(Failure.shape);
+
+const Cancellation = z
+  .object({
+    reason: z.string().describe("결제 취소 사유"),
+    amount: z.number().describe("취소 금액"),
+    requestAt: z.string().describe("취소 요청 시각"),
+    cancelAt: z.string().describe("취소 완료 시각"),
+    trigger: z
+      .string()
+      .describe("취소 요청 주체 (CONSOLE, API, PORTONE_ADMIN, CHARGEBACK)"),
+  })
+  .partial();
+type CancellationField = keyof typeof Cancellation.shape;
+const CancellationFields = Object.keys(Cancellation.shape);
+
 const Payment = z
   .object({
     amount: Amount.describe("금액 정보"),
@@ -88,6 +112,10 @@ const Payment = z
     requestAt: z.string().describe("결제 요청 시각"),
     paymentId: z.string().describe("고객사 거래번호 (V1에서는 merchant_uid)"),
     method: z.string().array().describe("사용된 결제수단 목록"),
+    failure: Failure.describe("결제 실패 정보. 실패한 결제건에만 존재함."),
+    cancellation: Cancellation.array().describe(
+      "결제 취소 내역. 전체 / 부분 취소된 결제건에만 존재함.",
+    ),
   })
   .partial();
 type PaymentField =
@@ -95,12 +123,16 @@ type PaymentField =
   | `amount.${AmountField}`
   | `channel.${ChannelField}`
   | `group.${ChannelGroupField}`
-  | `history.${HistoryField}`;
+  | `history.${HistoryField}`
+  | `failure.${FailureField}`
+  | `cancellation.${CancellationField}`;
 const PaymentFields = Object.keys(Payment.shape)
   .concat(AmountFields.map((key) => `amount.${key}`))
   .concat(ChannelFields.map((key) => `channel.${key}`))
   .concat(ChannelGroupFields.map((key) => `group.${key}`))
-  .concat(HistoryFields.map((key) => `history.${key}`)) as [
+  .concat(HistoryFields.map((key) => `history.${key}`))
+  .concat(FailureFields.map((key) => `failure.${key}`))
+  .concat(CancellationFields.map((key) => `cancellation.${key}`)) as [
   PaymentField,
   ...PaymentField[],
 ];
@@ -240,6 +272,8 @@ export function init(
         requestedAt,
         plainId,
         methodTypes,
+        failure,
+        cancellations,
       }): z.infer<typeof Payment> => {
         return {
           amount: {
@@ -294,6 +328,23 @@ export function init(
           requestAt: requestedAt ?? undefined,
           paymentId: plainId ?? undefined,
           method: methodTypes ?? undefined,
+          failure: failure
+            ? {
+                reason: failure.reason ?? undefined,
+                pgCode: failure.pgCode ?? undefined,
+                pgMessage: failure.pgMessage ?? undefined,
+              }
+            : undefined,
+          cancellation:
+            cancellations?.map(
+              ({ reason, totalAmount, requestedAt, cancelledAt, trigger }) => ({
+                reason: reason ?? undefined,
+                amount: totalAmount ?? undefined,
+                requestAt: requestedAt ?? undefined,
+                cancelAt: cancelledAt ?? undefined,
+                trigger: trigger ?? undefined,
+              }),
+            ) ?? undefined,
         };
       },
     );
