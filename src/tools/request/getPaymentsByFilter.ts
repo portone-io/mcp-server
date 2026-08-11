@@ -14,8 +14,26 @@ const PageResponse = z.object({
   totalCount: z.number(),
 });
 
-const PaymentResponse = z.object(
+const FailureResponse = z.object(
   nullableObject({
+    reason: z.string(),
+    pgCode: z.string(),
+    pgMessage: z.string(),
+  }),
+);
+
+const CancellationResponse = z.object(
+  nullableObject({
+    reason: z.string(),
+    totalAmount: z.number(),
+    requestedAt: z.string(),
+    cancelledAt: z.string(),
+    trigger: z.string(),
+  }),
+);
+
+const PaymentResponse = z.object({
+  ...nullableObject({
     amount: z.object(
       nullableObject({
         total: z.number(),
@@ -77,7 +95,10 @@ const PaymentResponse = z.object(
     methodTypes: z.array(z.string()),
     storeId: z.string(),
   }),
-);
+  // 실패·취소 사유는 결제 상태별 타입에만 존재하므로 응답에서 아예 누락될 수 있다.
+  failure: FailureResponse.nullish(),
+  cancellations: z.array(CancellationResponse).nullish(),
+});
 
 const PaymentsResponse = z
   .object({
@@ -202,10 +223,35 @@ fragment PaymentFragment on PaymentsPayload {
     requestedAt
     plainId
     methodTypes
+    ... on FailedPayment {
+      failure {
+        reason
+        pgCode
+        pgMessage
+      }
+    }
+    ... on CancelledPayment {
+      cancellations {
+        ...CancellationFragment
+      }
+    }
+    ... on PartialCancelledPayment {
+      cancellations {
+        ...CancellationFragment
+      }
+    }
   }
   page {
     totalCount
   }
+}
+
+fragment CancellationFragment on PaymentCancellation {
+  reason
+  totalAmount
+  requestedAt
+  cancelledAt
+  trigger
 }
 `);
 
