@@ -1,5 +1,11 @@
 # @portone/mcp-server
 
+## 0.20.1
+
+### Patch Changes
+
+- 2165362: MCP 클라이언트가 stdin을 닫아도 서버 프로세스가 종료되지 않던 문제를 수정했습니다. 이제 stdin 종료 시 서버가 명시적으로 종료되며, 토큰 리프레시 인터벌이 프로세스 종료를 막지 않도록 unref 처리했습니다.
+
 ## 0.20.0
 
 ### Minor Changes
