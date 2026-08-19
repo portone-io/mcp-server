@@ -136,6 +136,10 @@ export async function runServer() {
   // Run the server
   const transport = new StdioServerTransport();
   await mcp.connect(transport);
+
+  process.stdin.on("end", () => {
+    mcp.close().finally(() => process.exit(0));
+  });
 }
 
 await runServer().catch((error) => {
