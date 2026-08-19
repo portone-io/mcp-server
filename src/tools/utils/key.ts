@@ -112,7 +112,7 @@ export class TokenProvider {
           this.token = null;
         }
       }
-    }, 10 * 1000);
+    }, 10 * 1000).unref();
   }
 
   async exchangeAuthorizationCode(code: string): Promise<Token> {
