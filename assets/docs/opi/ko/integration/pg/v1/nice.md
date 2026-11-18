@@ -26,7 +26,7 @@ targetVersions:
 NICE페이먼츠 결제창을 호출할 수 있습니다.
 **결제결과**는 PC의 경우 `IMP.request_pay(param, callback)` 호출 후
 **callback** 으로 수신되고
-모바일의 경우 **m\_redirect\_url** 로 리디렉션됩니다.
+모바일의 경우 **m\_redirect_url** 로 리디렉션됩니다.
 
 <div class="tabs-container">
 
@@ -82,7 +82,7 @@ IMP.request_pay(
 
   </div>
 
-- pay\_method: string
+- pay_method: string
 
   **결제수단 구분코드**
 
@@ -92,7 +92,7 @@ IMP.request_pay(
   - phone(휴대폰소액결제)
   - kakaopay(카카오페이)
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
@@ -108,61 +108,61 @@ IMP.request_pay(
 
   **string** 이 아닌점에 유의하세요
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **구매자 연락처**
 
-- buyer\_addr?: string
+- buyer_addr?: string
 
   **구매자 주소**
 
-- buyer\_postcode?: string
+- buyer_postcode?: string
 
   **구매자 우편번호**
 
-- tax\_free?: number
+- tax_free?: number
 
   **면세금액**
 
-- vat\_amount?: number
+- vat_amount?: number
 
   **부가세**
 
-- vbank\_due?: string
+- vbank_due?: string
 
   **가상계좌 입금마감일시**
 
   `YYYYMMDD` 또는 `YYYYMMDDHHmm` 형식으로 지정합니다. 미지정 시 기본 30일입니다.
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 결제 후 리디렉션 될 URL**
 
-- app\_scheme?: string
+- app_scheme?: string
 
   **모바일 앱 URL scheme** (모바일 전용)
 
   모바일 앱에서 결제 시 ISP/앱카드 등에서 결제 완료 후 가맹점 앱으로 돌아올 때 사용됩니다.
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
   포트원 관리자 콘솔에 설정한 웹훅 URL 대신 사용할 URL을 지정합니다.
 
-- confirm\_url?: string
+- confirm_url?: string
 
   **Confirm process URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
@@ -258,7 +258,7 @@ curl -H "Content-Type: application/json" \
 
 **빌링키 발급 요청하기**
 
-REST [**API POST /subscribe/customers/{customer\_uid}**](https://developers.portone.io/api/rest-v1/billingkey?v=v1#post%20%2Fsubscribe%2Fcustomers%2F%7Bcustomer_uid%7D)를 호출하여 빌링키 발급을 요청합니다.
+REST [**API POST /subscribe/customers/{customer_uid}**](https://developers.portone.io/api/rest-v1/billingkey?v=v1#post%20%2Fsubscribe%2Fcustomers%2F%7Bcustomer_uid%7D)를 호출하여 빌링키 발급을 요청합니다.
 
 ```sh
 curl -H "Content-Type: application/json" \
@@ -327,7 +327,7 @@ curl -H "Content-Type: application/json" \
 
   **결제창에 렌더링될 카드 할부 개월수 리스트 설정값**
 
-  - card\_quota: number\[]
+  - card_quota: number\[]
 
     **할부 개월수**
 
@@ -394,7 +394,7 @@ curl -H "Content-Type: application/json" \
 
   **카드사 렌더링 정보**
 
-  - card\_code?: string
+  - card_code?: string
 
     **카드사 코드**
 
@@ -419,7 +419,7 @@ curl -H "Content-Type: application/json" \
 
 **파라미터 설명**
 
-- vat\_amount?: number
+- vat_amount?: number
 
   **부가세 지정**
 

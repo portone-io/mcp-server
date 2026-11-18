@@ -39,12 +39,12 @@ datetime: 2024-01-25T15:00:00.000Z
 
 - **지원 결제수단**
   - VISA/MASTER/JCB/Amex/Diners/Discovery(해외 발행 글로벌 카드)
-  - 해외 간편결제 : PayPay(JP), Alipay , Wechat , eContext ,Unionpay
+  - 해외 간편결제 : PayPay(JP), Alipay , Wechat , eContext ,Unionpay, Applepay, Klarna
 
 * **통화**
   - 결제 통화
     - 엑심베이가 지원하는 통화(화폐 단위) 범위안에서 결제 가능(KRW 가능)
-      - [엑심베이 지원 통화 보러가기↗](https://support.eximbay.com/hc/ko/articles/360052304233-%EC%A7%80%EC%9B%90-%EA%B0%80%EB%8A%A5%ED%95%9C-%EA%B2%B0%EC%A0%9C-%ED%86%B5%ED%99%94%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%90%98%EB%82%98%EC%9A%94)
+      - [엑심베이 지원 통화 보러가기↗](https://eximbay2.my.site.com/customer/s/article/%EC%A7%80%EC%9B%90-%EA%B0%80%EB%8A%A5%ED%95%9C-%EA%B2%B0%EC%A0%9C-%ED%86%B5%ED%99%94%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%90%98%EB%82%98%EC%9A%94?language=ko)
   - 정산 통화 : KRW / USD
     - 원화정산 : 송금수수료 없음 / 외화정산 : KEB 하나은행외 외화계좌 이체시 건당 4 USD 부과
 
@@ -55,6 +55,8 @@ datetime: 2024-01-25T15:00:00.000Z
   - Unionpay : 3.60%
   - eContext (일본) : 4.50%
   - PayPay(Jp) : 심사 후 결정
+  - Applepay : 5.00% (USD), 4.50% (KRW)
+  - Klarna : 5.50% + USD 0.3
 
 * 가입비 (부가세 별도)
   - 해외결제 : 심사비 + 해외카드 : 20만원

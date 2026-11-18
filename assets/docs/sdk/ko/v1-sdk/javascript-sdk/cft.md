@@ -47,13 +47,13 @@ versionVariants:
 
   </div>
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
   - 고객사에서 생성/관리하는 고유 주문번호
 
-- min\_age?: number
+- min_age?: number
 
   **허용최소 나이**
 
@@ -93,7 +93,7 @@ versionVariants:
   - 본인인증 동작에 영향을 주지는 않지만, [KISA의 ePrivacy Clean 서비스](https://www.eprivacy.go.kr/) 연동을 위해 설정 권장
   - React Native / Ionic 등 앱 내 local html을 통해 본 함수가 호출되는 경우, URL 도메인을 인식할 수 없으므로 설정 권장(미 설정 시: `포트원`)
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **리디렉션 URL**
 

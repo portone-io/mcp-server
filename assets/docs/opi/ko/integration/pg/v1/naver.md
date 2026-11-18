@@ -16,9 +16,9 @@ versionVariants:
 ## 2.결제 요청하기
 
 [JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk-old/readme) `IMP.request_pay(param, callback)`을 호출하여
-네이버페이 결제형 결제창을 호출할 수 있습니다. **결제결과**는 PC의 경우 IMP.request\_pay(param,
+네이버페이 결제형 결제창을 호출할 수 있습니다. **결제결과**는 PC의 경우 IMP.request_pay(param,
 callback) 호출 후 **callback** 으로 수신 되며
-모바일의 경우 **m\_redirect\_url** 로 리디렉션됩니다.
+모바일의 경우 **m\_redirect_url** 로 리디렉션됩니다.
 
 <div class="tabs-container">
 
@@ -108,7 +108,7 @@ IMP.request_pay(
 
   </div>
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
@@ -120,43 +120,43 @@ IMP.request_pay(
 
   **string** 이 아닌점에 유의하세요
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **구매자 연락처**
 
-- buyer\_addr?: string
+- buyer_addr?: string
 
   **구매자 주소**
 
-- buyer\_postcode?: string
+- buyer_postcode?: string
 
   **구매자 우편번호**
 
-- tax\_free?: number
+- tax_free?: number
 
   **면세금액**
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
-- confirm\_url?: string
+- confirm_url?: string
 
   **Confirm process URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
-- customer\_id?: string
+- customer_id?: string
 
   **구매자 고유 ID**
 
@@ -164,7 +164,7 @@ IMP.request_pay(
 
   **이용 완료일** (`yyyyMMdd` 형식의 문자열로 **결제 당일 또는 미래의 일자**여야 함)
 
-  - 상품 유형에 따라 네이버페이-고객사 간 필수값으로 계약되는 경우 입력합니다
+  - 상품 유형에 따라 네이버페이-고객사 간 필수값으로 계약되는 경우 입력해야 하며, 결제일 정산/포인트 적립 대상이 아닌 고객사의 경우 파라미터를 설정하지 않아야 합니다.
 
 - name: string
 
@@ -178,7 +178,7 @@ IMP.request_pay(
 
   `false`인 경우 페이지 리디렉션 방식으로 진행되며 `m_redirect_url`을 설정해야 합니다
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **리다이렉트 URL**
 
@@ -316,14 +316,14 @@ IMP.request_pay(
 
   </div>
 
-- customer\_uid: string
+- customer_uid: string
 
   **빌링키**
 
   - 정기/반복 결제 등록을 위해서 지정해야 합니다. 미 지정 시, 일반결제로 진행됩니다.
   - 등록 후 해당 키를 사용해 반복결제 승인을 요청할 수 있습니다.
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
@@ -337,23 +337,23 @@ IMP.request_pay(
 
   정기/반복 결제 등록과정에서는 결제승인이 이뤄지지 않습니다.
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **구매자 연락처**
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
@@ -380,22 +380,11 @@ IMP.request_pay(
 
   `false`인 경우 페이지 리디렉션 방식으로 진행되며 `m_redirect_url`을 설정해야 합니다
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **리다이렉트 URL**
 
   리디렉션 방식으로 진행(`naverPopupMode`: **false**)할 경우 결제 완료 후 리디렉션 될 URL
-
-- naverActionType?: string
-
-  **신규 등록/수단 변경 여부**
-
-  네이버페이를 통해 발급한 빌링키의 결제 수단을 변경하고자 하는 경우 포트원 빌링키인 `customer_uid`를 동일하게 입력하고, `naverActionType` 파라미터를 `CHANGE`로 입력하여 빌링키를 재발급해야 합니다.
-
-  `naverActionType` 파라미터를 이용하지 않고 동일한 고객의 정보로 추가 빌링키를 발급 시도하면 이전의 결제 수단 정보가 구매자의 네이버페이 계정에 그대로 남아있어 문제가 발생할 수 있습니다.
-
-  - `NEW`(default) : 신규 등록
-  - `CHANGE` 결제 수단 변경
 
 <br />
 
@@ -409,11 +398,11 @@ IMP.request_pay(
 
 REST API [**/subscribe/payments/again**](https://developers.portone.io/api/rest-v1/nonAuthPayment?v=v1#post%20%2Fsubscribe%2Fpayments%2Fagain) 를 호출하여 결제를 요청할 수 있습니다.
 
-- customer\_uid: string
+- customer_uid: string
 
   정기/반복결제 등록 시 사용된 해당 고객의 `customer_uid`
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **고객사 주문번호**
 
@@ -421,7 +410,7 @@ REST API [**/subscribe/payments/again**](https://developers.portone.io/api/rest-
 
   **결제승인 요청금액** (결제고객 등록 시 지정된 금액과 달라도 무방함)
 
-- tax\_free: number
+- tax_free: number
 
   **`amount` 중 면세공급가액** (기본값: 0)
 
@@ -455,7 +444,7 @@ customer_uid={고객사의 결제 고객을 특정하는 Unique Key}&merchant_ui
 
 REST API [**/subscribe/payments/schedule**](https://developers.portone.io/api/rest-v1/nonAuthPayment.subscribe?v=v1#post%20%2Fsubscribe%2Fpayments%2Fschedule)를 호출하여 결제예약을 할 수 있습니다.
 
-- customer\_uid: string
+- customer_uid: string
 
   정기/반복결제 등록 시 사용된 해당 고객의 `customer_uid`
 
@@ -465,11 +454,11 @@ REST API [**/subscribe/payments/schedule**](https://developers.portone.io/api/re
 
   1개 이상 설정 가능합니다.
 
-  - merchant\_uid: string
+  - merchant_uid: string
 
     **고객사 주문번호**
 
-  - schedule\_at: string
+  - schedule_at: string
 
     **결제요청 예약시각**
 
@@ -517,12 +506,12 @@ customer_uid={고객사의 결제 고객을 특정하는 Unique Key}&schedules[0
 
 ### 에러 메세지를 가공하지 않은 상태로 노출해야합니다.
 
-결제창 호출(IMP.request\_pay 함수)후 결제창 하단의 "취소" 버튼 클릭 등으로 결제 프로세스가 중단되거나
+결제창 호출(IMP.request_pay 함수)후 결제창 하단의 "취소" 버튼 클릭 등으로 결제 프로세스가 중단되거나
 잔액 부족, 한도 초과, 10원 미만 결제 등의 사유로 결제에 실패하면
-콜백 함수(popup 방식)/m\_redirect\_url(리디렉션 방식)로 전달되는 결제 결과(response 객체/쿼리 파라미터)에 실패 사유(error\_msg)가 전달됩니다.
+콜백 함수(popup 방식)/m_redirect_url(리디렉션 방식)로 전달되는 결제 결과(response 객체/쿼리 파라미터)에 실패 사유(error_msg)가 전달됩니다.
 이 에러 메시지는 사용자에게 가공 없이 그대로 노출되어야 합니다. 해당 내용을 준수하지 않는 경우 네이버페이 검수 진행시 수정 요청이 있을 수 있습니다.
 
-예) error\_msg가 "잔액 부족"이라고 가정할때, "결제에 실패하였습니다. 실패 사유:" + "잔액 부족"과 같은 형태로 가공되면 안됨
+예) error_msg가 "잔액 부족"이라고 가정할때, "결제에 실패하였습니다. 실패 사유:" + "잔액 부족"과 같은 형태로 가공되면 안됨
 
 ### 최소 결제 금액에 대해 예외 처리해야 합니다.
 

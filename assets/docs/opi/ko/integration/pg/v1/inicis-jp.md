@@ -31,7 +31,7 @@ targetVersions:
 
 [JavaScript SDK (신규)](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/readme)의 `IMP.request_pay(param, callback)`을 호출하여
 이니시스 일본결제 결제창을 호출할 수 있습니다. **결제결과**는 PC의 경우 `IMP.request_pay(param, callback)` 호출 후
-**callback**으로 수신되고 모바일의 경우 **m\_redirect\_url**로 리디렉션됩니다.
+**callback**으로 수신되고 모바일의 경우 **m\_redirect_url**로 리디렉션됩니다.
 
 <div class="hint" data-style="info">
 
@@ -129,7 +129,7 @@ IMP.request_pay(
 
 포트원 콘솔 내 \[결제 연동] - \[연동 정보] - \[채널 관리] 에서 확인 가능합니다.
 
-- pay\_method: string
+- pay_method: string
 
   **결제수단 구분코드**
 
@@ -142,7 +142,7 @@ IMP.request_pay(
   - `aupay` (au PAY)
   - `dbarai` (dBarai)
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
@@ -176,21 +176,21 @@ IMP.request_pay(
 
   이니시스 일본결제는 PC환경에서는 팝업 결제창만 지원합니다. (iframe 미지원)
 
-- buyer\_name: string
+- buyer_name: string
 
   **주문자 명**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **주문자 이메일**
 
   편의점 결제 시 해당 메일로 입금 요청 메일이 발송됩니다.
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **주문자 연락처**
 
-- buyer\_first\_name\_kana?: string
+- buyer_first_name_kana?: string
 
   **주문자의 이름 (후리가나)**
 
@@ -198,7 +198,7 @@ IMP.request_pay(
 
   가타카나만 허용합니다.
 
-- buyer\_last\_name\_kana?: string
+- buyer_last_name_kana?: string
 
   **주문자의 성 (후리가나)**
 
@@ -262,7 +262,7 @@ IMP.request_pay(
 
 - display?: object
 
-  - card\_quota?: number\[]
+  - card_quota?: number\[]
 
     **카드 할부 개월수 리스트**
 
@@ -276,39 +276,39 @@ IMP.request_pay(
 
   **편의점 결제 시 파라미터**
 
-  - payment\_deadline?: object
+  - payment_deadline?: object
 
     **지불 기한**
 
     편의점 결제 이용 시 아래 `valid_hours`, `due_date` 두 파라미터 중 하나는 필수입니다.
 
-    - valid\_hours?: integer
+    - valid_hours?: integer
 
       **유효 시간 (시간 단위)**
 
       편의점 결제의 지불기한을 시간 단위로 지정합니다. 현재 시간 기준으로 계산되며 최소 1일\~최대 30일 범위의 일수로 변환됩니다.
 
-    - due\_date?: string
+    - due_date?: string
 
       **만료 시점**
 
       시간은 ISO8601 형식으로 입력해야 합니다.
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 결제 후 리디렉션 될 URL**
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
 - bypass?: object
 
-  - inicis\_jp?: object
+  - inicis_jp?: object
 
     - paymentUI?: object
 
@@ -389,14 +389,14 @@ IMP.request_pay(
 
 포트원 콘솔 내 \[결제 연동] - \[연동 정보] - \[채널 관리] 에서 확인 가능합니다.
 
-- pay\_method: string
+- pay_method: string
 
   **결제수단 구분코드**
 
   - `card` (카드)
   - `paypay` (PayPay)
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
@@ -430,19 +430,19 @@ IMP.request_pay(
 
   이니시스 일본결제는 PC환경에서는 팝업 결제창만 지원합니다. (iframe 미지원)
 
-- buyer\_name: string
+- buyer_name: string
 
   **주문자 명**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **주문자 이메일**
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **주문자 연락처**
 
-- customer\_id: string
+- customer_id: string
 
   **구매자 ID**
 
@@ -450,7 +450,7 @@ IMP.request_pay(
 
 - display?: object
 
-  - card\_quota?: number\[]
+  - card_quota?: number\[]
 
     **카드 할부 개월수 리스트**
 
@@ -460,21 +460,21 @@ IMP.request_pay(
     - `[3, 5, 6]`: 할부개월 수로 3, 5, 6개월 노출
     - `[0, 3, 5, 6]`: 할부개월 수로 일시불 및 3, 5, 6개월 노출
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 결제 후 리디렉션 될 URL**
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
 - bypass?: object
 
-  - inicis\_jp?: object
+  - inicis_jp?: object
 
     - paymentUI?: object
 

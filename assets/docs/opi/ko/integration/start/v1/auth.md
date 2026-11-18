@@ -198,29 +198,24 @@ SDK의 반환값 대신 URL의 [쿼리 문자열](http://en.wikipedia.org/wiki/Q
 **`request_pay()`** 함수의 두 번째 인자인 **callback** 함수를 통해 결제 결과를 확인할 수 있습니다.
 
 ```ts
-IMP.request_pay(
-  {
-    /* 파라미터 생략 */
-  },
-  async (response) => {
-    if (response.error_code != null) {
-      return alert(`결제에 실패하였습니다. 에러 내용: ${response.error_msg}`);
-    }
+IMP.request_pay({/* 파라미터 생략 */}, async (response) => {
+  if (response.error_code != null) {
+    return alert(`결제에 실패하였습니다. 에러 내용: ${response.error_msg}`);
+  }
 
-    // 고객사 서버에서 /payment/complete 엔드포인트를 구현해야 합니다.
-    // (다음 목차에서 설명합니다)
-    const notified = await fetch(`${SERVER_BASE_URL}/payment/complete`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      // imp_uid와 merchant_uid, 주문 정보를 서버에 전달합니다
-      body: JSON.stringify({
-        imp_uid: response.imp_uid,
-        merchant_uid: response.merchant_uid,
-        // 주문 정보...
-      }),
-    });
-  },
-);
+  // 고객사 서버에서 /payment/complete 엔드포인트를 구현해야 합니다.
+  // (다음 목차에서 설명합니다)
+  const notified = await fetch(`${SERVER_BASE_URL}/payment/complete`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    // imp_uid와 merchant_uid, 주문 정보를 서버에 전달합니다
+    body: JSON.stringify({
+      imp_uid: response.imp_uid,
+      merchant_uid: response.merchant_uid,
+      // 주문 정보...
+    }),
+  });
+});
 ```
 
 결제가 완료되면 반환되는 응답 객체([response](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk-old/readme))의
@@ -250,9 +245,7 @@ IMP.request_pay(
 
 ```ts
 async function requestPayment() {
-  const response = await PortOne.requestPayment({
-    /* 파라미터 생략 */
-  });
+  const response = await PortOne.requestPayment({/* 파라미터 생략 */});
 
   if (response.code !== undefined) {
     // 오류 발생
@@ -434,7 +427,7 @@ app.post("/payment/complete", async (req, res) => {
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
 
-[PORTONE\_API\_SECRET](https://developers.portone.io/opi/ko/integration/ready/readme?v=v2#4-2-v2-api-secret-%EB%B0%9C%EA%B8%89%ED%95%98%EA%B8%B0)
+[PORTONE_API_SECRET](https://developers.portone.io/opi/ko/integration/ready/readme?v=v2#4-2-v2-api-secret-%EB%B0%9C%EA%B8%89%ED%95%98%EA%B8%B0)
 은 V2 전용 시크릿으로, 포트원 콘솔 내 결제연동 탭에서 발급받을 수 있습니다.
 
 ```ts title="Express"

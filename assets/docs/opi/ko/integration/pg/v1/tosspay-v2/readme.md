@@ -9,7 +9,7 @@ versionVariants:
 
 <div class="hint" data-style="info">
 
-토스페이(tosspay\_v2)에서는 일반결제 및 정기결제 모두 지원하고 있습니다.
+토스페이(tosspay_v2)에서는 일반결제 및 정기결제 모두 지원하고 있습니다.
 신규 연동하시는 고객사께서는 해당 가이드를 참고하여 진행해주세요.
 
 </div>
@@ -41,7 +41,7 @@ versionVariants:
 [JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/readme) `IMP.request_pay(param, callback)`을 호출하여
 결제창을 호출할 수 있습니다. **결제결과**는 PC의 경우 `IMP.request_pay(param, callback)` 호출 후
 **callback**으로 수신되고
-모바일의 경우 **m\_redirect\_url** 로 리디렉션됩니다.
+모바일의 경우 **m\_redirect_url** 로 리디렉션됩니다.
 
 <div class="tabs-container">
 
@@ -107,7 +107,7 @@ IMP.request_pay(
 
   </div>
 
-- pay\_method: string
+- pay_method: string
 
   **결제수단 구분코드**
 
@@ -115,7 +115,7 @@ IMP.request_pay(
   - `tosspay_card` : 카드결제만 허용합니다.
   - `tosspay` : 모든 결제수단을 허용합니다.
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
@@ -131,35 +131,35 @@ IMP.request_pay(
 
   string 이 아닌점에 유의하세요
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **구매자 연락처**
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 결제 후 리디렉션 될 URL**
 
-- app\_scheme?: string
+- app_scheme?: string
 
   **모바일 앱 URL scheme** (모바일 전용)
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
-- confirm\_url?: string
+- confirm_url?: string
 
   **Confirm process URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
@@ -169,7 +169,7 @@ IMP.request_pay(
 
 - bypass?: object
 
-  - tosspay\_v2?: object
+  - tosspay_v2?: object
 
     **(신) 토스페이 전용 파라미터**
 
@@ -197,7 +197,7 @@ IMP.request_pay(
 
 <div class="tabs-content" data-title="비인증 결제창 요청">
 
-인증결제창 호출 파라미터에서 **customer\_uid**, **customer\_id**값을 추가하면 비인증 결제창을 호출할 수 있습니다.
+인증결제창 호출 파라미터에서 **customer_uid**, **customer_id**값을 추가하면 비인증 결제창을 호출할 수 있습니다.
 비인증 결제창에서 빌링키를 발급받은 후 해당 빌링키로 결제를 요청합니다.
 
 ```ts title="Javascript SDK"
@@ -253,31 +253,31 @@ IMP.request_pay(
 
   </div>
 
-- pay\_method: string
+- pay_method: string
 
   **결제수단 구분코드**
 
   `tosspay` 로 지정하면 됩니다.
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
   매번 고유하게 채번되어야 합니다.
 
-- customer\_uid: string
+- customer_uid: string
 
   **빌링키 발급을 위한 결제 수단을 특정하는 고유 번호**
 
   빌링키 발급시 필수 입력
 
-- customer\_id: string
+- customer_id: string
 
   **구매자 식별자**
 
   주의: (신) 토스페이 빌링키 발급시 필수 입력으로 입력 길이는 **50자**로 제한됩니다.
 
-- m\_redirect\_url: string
+- m_redirect_url: string
 
   **리다이렉트 URL**
 
@@ -285,7 +285,7 @@ IMP.request_pay(
 
   (신) 토스페이의 경우 모바일 환경에서 **리디렉션 방식으로 빌링키 발급창이 렌더링 되기 때문에 필수입력입니다.**
 
-- notice\_url?: string
+- notice_url?: string
 
   **빌링키 발급 완료 웹훅 전달 URL**
 
@@ -293,7 +293,7 @@ IMP.request_pay(
 
 - bypass?: object
 
-  - tosspay\_v2?: object
+  - tosspay_v2?: object
 
     - encryptedUserCi?: string
 
@@ -339,7 +339,7 @@ await fetch("https://api.iamport.kr/subscribe/payments/again", {
 
 - bypass?: object
 
-  - tosspay\_v2?: object
+  - tosspay_v2?: object
 
     - cashReceipt?: boolean
 

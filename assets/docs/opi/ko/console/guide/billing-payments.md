@@ -60,11 +60,11 @@ targetVersions:
 - **전체** : 모든 결제대행사의 거래를 조회합니다.
 
 - 결제대행사 필터는 하나의 결제대행사에 모든 `pg_provider`가 포함됩니다.
-  - KG이니시스 : inicis, html5\_inicis, inicis\_v2
-  - 나이스정보통신 : nice, nice\_v2
-  - 페이팔 : paypal, paypal\_v2
-  - 스마트로 : smartro, smartro\_v2
-  - 토스페이 : tosspay, tosspay\_v2
+  - KG이니시스 : inicis, html5_inicis, inicis_v2
+  - 나이스정보통신 : nice, nice_v2
+  - 페이팔 : paypal, paypal_v2
+  - 스마트로 : smartro, smartro_v2
+  - 토스페이 : tosspay, tosspay_v2
   - 토스페이먼츠 : uplus, tosspayments
 
 ### 내역검색
@@ -117,7 +117,14 @@ targetVersions:
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
 
-빌링키 결제 API 및 결제 예약 API를 이용한 결제 건 중 결제 실패 상태인 거래 건에 한하여 리커버리 기능을 사용할 수 있습니다.
+<div class="hint" data-style="warning">
+
+리커버리 기능은 종료 예정으로, 사용을 권장하지 않습니다.
+결제 실패 건에 대한 재시도가 필요한 경우
+[결제 예약 API](https://developers.portone.io/api/rest-v2/payment.paymentSchedule?v=v2#post%20%2Fpayments%2F%7BpaymentId%7D%2Fschedule)를
+통해 자체적으로 구현해 주시기 바랍니다.
+
+</div>
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
 

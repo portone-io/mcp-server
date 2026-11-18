@@ -14,7 +14,7 @@ targetVersions:
 [JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk-old/readme) `IMP.request_pay(param, callback)`을 호출하여
 블루월넛 결제창을 호출할 수 있습니다. **결제결과**는 PC의 경우 `IMP.request_pay(param, callback)`
 호출 후 **callback** 으로 수신되어
-모바일의 경우 **m\_redirect\_url** 로 리디렉션됩니다.
+모바일의 경우 **m\_redirect_url** 로 리디렉션됩니다.
 
 <div class="tabs-container">
 
@@ -67,7 +67,7 @@ IMP.request_pay(
 
   </div>
 
-- pay\_method: string
+- pay_method: string
 
   **결제수단 구분코드**
 
@@ -76,7 +76,7 @@ IMP.request_pay(
   - vbank(가상계좌)
   - phone (휴대폰소액결제)
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **고객사 채번 주문 고유번호**
 
@@ -92,35 +92,35 @@ IMP.request_pay(
 
   지정하지 않은 경우 0원입니다.
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **구매자 연락처**
 
-- buyer\_addr?: string
+- buyer_addr?: string
 
   **구매자 주소**
 
-- buyer\_postcode?: string
+- buyer_postcode?: string
 
   **구매자 우편번호**
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
-- confirm\_url?: string
+- confirm_url?: string
 
   **Confirm process URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 

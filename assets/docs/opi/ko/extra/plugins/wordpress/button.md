@@ -71,7 +71,7 @@ targetVersions:
 
 <div class="hint" data-style="info">
 
-iamport\_payment\_button 속성
+iamport_payment_button 속성
 
 - `title`: 결제창의 제목.
 
@@ -114,7 +114,7 @@ iamport\_payment\_button 속성
 
 ### 2. 숏코드 속성 추가하기
 
-다음과 같이 iamport\_payment\_button\_field 숏코드에 속성을 추가하여 설문조사 항목들을 설정할 수 있습니다.
+다음과 같이 iamport_payment_button_field 숏코드에 속성을 추가하여 설문조사 항목들을 설정할 수 있습니다.
 
 ```php
 [iamport_payment_button]참가비 결제하기[iamport_payment_button_field type="text"]소속[/iamport_payment_button_field][iamport_payment_button_field type="radio" options="상, 중, 하"]에스페란토 수준[/iamport_payment_button_field][iamport_payment_button_field type="select" options="참석, 불참"]뒷풀이 참석 여부[/iamport_payment_button_field][iamport_payment_button_field type="check" options="지인의 소개,페이스북,홈페이지"]행사를 알게된 경로[/iamport_payment_button_field][/iamport_payment_button]
@@ -122,7 +122,7 @@ iamport\_payment\_button 속성
 
 <div class="hint" data-style="info">
 
-iamport\_payment\_button\_field 속성
+iamport_payment_button_field 속성
 
 - `type`: 입력란의 종류.
   - text(텍스트 입력란), radio(라디오 버튼), select(선택 드롭다운), check(체크박스), address(주소검색 및 입력)

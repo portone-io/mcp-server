@@ -5,11 +5,29 @@ targetVersions:
   - v1
 ---
 
+<div class="hint" data-style="warning">
+
+**이지페이(KICC) 구모듈 연동 가이드입니다.**
+
+신규 국내결제 연동 시에는 포트원 V2의 이지페이 신모듈 사용을 권장합니다.
+[이지페이(KICC) V2 국내결제 연동 가이드](https://developers.portone.io/opi/ko/integration/pg/v2/kicc-v2-domestic?v=v2)를 참고해 주세요.
+
+</div>
+
 ## 1. 이지페이(KICC) 채널 설정하기
 
 [결제대행사 채널 설정하기](https://developers.portone.io/opi/ko/integration/ready/readme#3-결제대행사-채널-설정하기) 페이지의 내용을 참고하여 채널 설정을 진행합니다.
 
 (관련 이미지 첨부)
+
+### 노티 URL 수정하기
+
+이지페이(KICC) MID를 처음 발급받으면 노티 URL이 포트원 V2 주소로 기본 설정됩니다.
+포트원 V1으로 연동하는 경우 이지페이(KICC) 가맹점관리자에서 노티 URL을 직접 수정해야 합니다.
+
+1. [이지페이(KICC) 가맹점관리자](https://office.easypay.co.kr/)에 접속합니다.
+2. **거래관리 > 노티 > 노티설정** 메뉴로 이동합니다.
+3. **\[수정]노티URL**에서 노티 URL을 `https://service.iamport.kr/kicc_payments/notice_vbank`로 수정합니다.
 
 ## 2. 결제 요청하기
 
@@ -19,7 +37,7 @@ targetVersions:
 
 [JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk-old/readme) `IMP.request_pay(param, callback)`을 호출하여 KICC 결제창을 호출할 수 있습니다.
 **결제결과**는 PC의 경우 `IMP.request_pay(param, callback)` 호출 후 **callback**으로 수신되고
-모바일의 경우 **m\_redirect\_url**로 리디렉션됩니다.
+모바일의 경우 **m\_redirect_url**로 리디렉션됩니다.
 
 ```ts title="Javascript SDK"
 IMP.request_pay(
@@ -69,7 +87,7 @@ IMP.request_pay(
 
   </div>
 
-- pay\_method: string
+- pay_method: string
 
   **결제수단 구분코드**
 
@@ -78,7 +96,7 @@ IMP.request_pay(
   - vbank(가상계좌)
   - phone(휴대폰소액결제)
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
@@ -94,23 +112,23 @@ IMP.request_pay(
 
   **string** 이 아닌점에 유의하세요
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
-- buyer\_tel: string
+- buyer_tel: string
 
   **주문자 연락처**
 
-- buyer\_addr?: string
+- buyer_addr?: string
 
   **구매자 주소**
 
-- buyer\_postcode?: string
+- buyer_postcode?: string
 
   **구매자 우편번호**
 
@@ -120,7 +138,7 @@ IMP.request_pay(
 
   계좌이체, 가상계좌만 지원됩니다.
 
-- tax\_free?: number
+- tax_free?: number
 
   **면세금액**
 
@@ -131,7 +149,7 @@ IMP.request_pay(
   - `true`: 컨텐츠
   - `false`: 실물 상품
 
-- vbank\_due?: string
+- vbank_due?: string
 
   **가상계좌 입금마감일시**
 
@@ -141,33 +159,33 @@ IMP.request_pay(
 
   카드사 다이렉트 호출 시 설정하지 않으면 `iamport`로 표기됩니다.
 
-- auth\_mode?: string
+- auth_mode?: string
 
   **인증 방식**
 
   - `key-in`: 키인결제 모드
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 결제 후 리디렉션 될 URL**
 
-- app\_scheme?: string
+- app_scheme?: string
 
   **모바일 앱 URL scheme** (모바일 전용)
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
-- confirm\_url?: string
+- confirm_url?: string
 
   **Confirm process URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
-- customer\_id?: string
+- customer_id?: string
 
   **구매자 고유 ID**
 
@@ -177,7 +195,7 @@ IMP.request_pay(
 
   - kicc?: object
 
-    - disp\_cash\_yn?: string
+    - disp_cash_yn?: string
 
       **현금영수증 표시 여부**
 
@@ -245,13 +263,13 @@ IMP.request_pay(
 
   </div>
 
-- customer\_uid: string
+- customer_uid: string
 
   **카드 빌링키**
 
   비 인증 결제창에서 고객이 입력한 카드정보와 1:1로 매칭될 빌링키를 지정합니다.
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
@@ -267,27 +285,27 @@ IMP.request_pay(
 
   (실 결제를 발생시키기 위해서는 **`customer_uid`** 로 **REST API 를 이용하여 결제요청**을 해 주셔야 합니다.)
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **구매자 연락처**
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 결제 후 리디렉션 될 URL**
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
@@ -408,7 +426,7 @@ KICC는 **현금성 결제수단** (실시간 계좌이체, 가상계좌)에 한
 
   **카드사 렌더링 정보**
 
-  - card\_code?: string
+  - card_code?: string
 
     **카드사 코드**
 

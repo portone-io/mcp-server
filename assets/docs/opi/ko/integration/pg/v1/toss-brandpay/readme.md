@@ -6,6 +6,8 @@ targetVersions:
   - v1
 ---
 
+브랜드페이의 카드·계좌를 이용한 정기결제는 [브랜드페이 정기결제](https://developers.portone.io/opi/ko/integration/pg/v1/toss-brandpay/billing) 문서를 참고하세요.
+
 ## 1. 토스페이먼츠 브랜드페이 채널 설정하기
 
 [결제대행사 채널 설정하기](https://developers.portone.io/opi/ko/integration/ready/readme#3-결제대행사-채널-설정하기) 페이지의 내용을 참고하여 채널 설정을 진행합니다.
@@ -109,13 +111,13 @@ IMP.request_pay(
 
   </div>
 
-- pay\_method: string
+- pay_method: string
 
   **결제수단 구분코드**
 
   `toss_brandpay` 로 지정하면 됩니다.
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
@@ -131,43 +133,43 @@ IMP.request_pay(
 
   브랜드페이는 원화 결제만 지원합니다. KRW 기준으로 금액을 입력해주세요.
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 email 주소**
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **구매자 연락처**
 
-- buyer\_addr?: string
+- buyer_addr?: string
 
   **구매자 주소**
 
-- buyer\_postcode?: string
+- buyer_postcode?: string
 
   **구매자 우편번호**
 
-- tax\_free?: number
+- tax_free?: number
 
   **면세금액**
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
-- confirm\_url?: string
+- confirm_url?: string
 
   **Confirm process URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
-- customer\_id: string
+- customer_id: string
 
   **구매자 ID**
 
@@ -234,7 +236,7 @@ IMP.request_pay(
 
 - bypass?: object
 
-  - toss\_brandpay?: object
+  - toss_brandpay?: object
 
     - brandpayOptions?: object
 
@@ -351,7 +353,7 @@ IMP.request_pay(
 
   할부결제는 **5만원 이상 결제 요청시**에만 이용 가능합니다.
 
-  - card\_quota: number\[]
+  - card_quota: number\[]
 
     **할부 개월수**
 
@@ -377,7 +379,7 @@ IMP.request_pay(
     - 현금영수증 발급을 위한 식별번호입니다.
     - 현금영수증 종류에 따라 휴대폰번호, 사업자등록번호, 현금영수증 카드번호를 입력할 수 있습니다.
 
-  - toss\_brandpay?: object
+  - toss_brandpay?: object
 
     - discountCode?: string
 

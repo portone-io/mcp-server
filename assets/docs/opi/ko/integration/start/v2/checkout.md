@@ -193,9 +193,7 @@ PortOne.requestPayment({
 
 ```ts
 async function requestPayment() {
-  const response = await PortOne.requestPayment({
-    /* 파라미터 생략 */
-  });
+  const response = await PortOne.requestPayment({/* 파라미터 생략 */});
 
   if (response.code !== undefined) {
     // 오류 발생
@@ -241,7 +239,7 @@ async function requestPayment() {
 
 예시로, 위에서 사용했던 `/payment/complete` 엔드포인트를 다음과 같이 구현할 수 있습니다.
 
-[PORTONE\_API\_SECRET](https://developers.portone.io/opi/ko/integration/ready/readme?v=v2#4-2-v2-api-secret-%EB%B0%9C%EA%B8%89%ED%95%98%EA%B8%B0)
+[PORTONE_API_SECRET](https://developers.portone.io/opi/ko/integration/ready/readme?v=v2#4-2-v2-api-secret-%EB%B0%9C%EA%B8%89%ED%95%98%EA%B8%B0)
 은 V2 전용 시크릿으로, 포트원 콘솔 내 결제연동 탭에서 발급받을 수 있습니다.
 
 ```ts title="Express"

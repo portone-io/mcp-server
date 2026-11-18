@@ -128,7 +128,7 @@ targetVersions:
 
 - **결제 실패** : **결제 실패** (status : FAILED) 상태인 거래 건만 표시됩니다.
 
-- **결제 취소** : **전체 취소** (status : CANCELLED) 및 **부분 취소** (PARTIAL\_CANCELLED) 상태인 거래 건만 표시됩니다.
+- **결제 취소** : **전체 취소** (status : CANCELLED) 및 **부분 취소** (PARTIAL_CANCELLED) 상태인 거래 건만 표시됩니다.
 
 - **승인 대기** : **승인 대기** (status : PENDING) 상태인 거래 건만 표시됩니다.
   - 승인 대기 상태는 페이팔(SPB/RT) 거래 건에서만 발생하며, 결제 및 환불 요청 완료 후 실제 승인되기까지 결제상태를 의미합니다.

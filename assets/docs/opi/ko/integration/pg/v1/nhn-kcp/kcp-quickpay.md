@@ -407,9 +407,50 @@ IMP.request_pay(
 
 </div>
 
+<div class="tabs-container">
+
+<div class="tabs-content" data-title="선불머니 현장결제 상세내역 조회 요청">
+
+선불머니 현장결제 상세내역 조회 페이지를 호출합니다.
+
+<div class="hint" data-style="warning">
+
+- 선불머니 현장결제 상세내역 조회 요청은 포트원 거래내역이 생성되지 않습니다.
+- 조회 요청이 성공하는 경우 거래상세내역 페이지로 이동하며, 실패하는 경우 callback이 호출됩니다.
+
+</div>
+
+```ts
+IMP.request_pay(
+  {
+    channelKey: "channel-key-test", // 선불머니 현장거래가 발생한 채널키
+    bypass: {
+      kcpQuick: {
+        actionType: "PrepaidOfflinePaymentInfo",
+        memberID: "use_your_unique_id", // 선불머니 현장거래 결제 유저 ID
+        prepaidOfflinePaymentInfoRequest: {
+          tradeId: "20260414000006584",
+          tradeNo: "202604140000006583",
+          point: 9000,
+          useDt: "20260414093305",
+          btid: "TEST1234567890123",
+        },
+      },
+    },
+  },
+  function (rsp) {
+    // 조회 요청이 실패하는 경우에만 callback이 호출됩니다.
+  },
+);
+```
+
+</div>
+
+</div>
+
 <div class="hint" data-style="info">
 
-퀵페이의 경우 m\_redirect\_url시 다음과 같이 4개의 파라미터가 Query String으로 전달됩니다.
+퀵페이의 경우 m_redirect_url시 다음과 같이 4개의 파라미터가 Query String으로 전달됩니다.
 
 - `imp_uid`
 - `merchant_uid`
@@ -447,7 +488,7 @@ IMP.request_pay(
 
   </div>
 
-- pay\_method?: string
+- pay_method?: string
 
   **결제수단 구분코드**
 
@@ -457,7 +498,7 @@ IMP.request_pay(
   - card (카드)
   - trans (즉시출금)
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **고객사 주문 고유 번호**
 
@@ -469,7 +510,7 @@ IMP.request_pay(
 
   결제 요청 시 필수 입력입니다.
 
-- customer\_uid?: string
+- customer_uid?: string
 
   **결제 수단에 대한 고유 식별값**
 
@@ -492,6 +533,7 @@ IMP.request_pay(
 
       - Register : 결제 수단 등록
       - UserRegister : 결제 수단 등록 없이 간편결제 서비스 유저 등록
+      - RegisterAutoPay: 자동결제 Key 발급
       - Deregister : 결제 수단 삭제
       - Pay : 결제
       - PinChange : PIN 변경
@@ -506,6 +548,9 @@ IMP.request_pay(
       - PrepaidRefund: 선불머니 환급 요청 (사전 협의 필요)
       - PrepaidLimitRaise: 선불머니 보유한도 상향 요청 (사전 협의 필요)
       - PrepaidKYC: 선불머니 고객 확인 재이행 (사전 협의 필요)
+      - PrepaidAuth: 선불머니 결제 인증 (사전 협의 필요)
+      - PrepaidOfflineUse: 선불머니 현장결제 요청 (바코드 결제 요청)
+      - PrepaidOfflinePaymentInfo: 선불머니 현장결제 상세내역 조회
 
     - encryptedCI: string
 
@@ -560,6 +605,52 @@ IMP.request_pay(
 
       - true : 카드사 포인트 사용
       - false : 카드사 포인트 미사용
+
+    - registerAutoPay?: boolean
+
+      **자동결제 Key 발급 여부**
+
+      결제수단 등록(actionType:`Register` 호출) 시 자동결제 Key 발급 여부를 결정합니다.
+
+      - true : 자동결제 Key 발급
+      - false : 자동결제 Key 미발급 (default)
+
+    - sdkVersion?: string
+
+      **퀵페이 SDK 버전 식별자**
+
+      로드할 KCP 퀵페이 SDK의 버전을 지정합니다. KCP와 사전 협의하여 전달받은 버전 토큰(예: `v2`)만 입력합니다.
+
+      - 입력하지 않으면 기본 SDK가 로드됩니다.
+      - 버전 토큰만 입력하며, 앞에 `_` 등 구분자나 파일명을 붙이지 않습니다.
+      - 영문자, 숫자, `_`, `-` 조합만 허용되며, 그 외 형식의 값을 입력하면 요청이 실패합니다.
+
+    - prepaidOfflinePaymentInfoRequest?: object
+
+      **선불머니 현장결제 내역 상세 조회 요청**
+
+      - tradeId: string
+
+        **선불머니 거래내역조회 응답의 tradeId**
+
+      - tradeNo: string
+
+        **KCP 거래 고유번호**
+
+      - point: number
+
+        **결제 금액 (사용된 선불머니 금액)**
+
+      - useDt: string
+
+        **선불머니 거래일시**
+
+      - btid: string
+
+        **고객사 생성 거래 등록번호**
+
+        거래 상세 조회 요청 시 고객사에서 `btid` 값을 생성하여 전달해 주시기 바랍니다.
+        전달해 주신 `btid` 값으로 KCP에서 고객사 서버를 호출하여 유효성 검증이 진행됩니다.
 
 #### 유의사항
 
@@ -662,10 +753,12 @@ PIN 초기화 이후 [빌링키 삭제 API](https://developers.portone.io/api/re
 **제한 기능 목록:**
 
 - `SignUp`: 간편결제+선불머니 서비스 유저 등록
-- `Leave`: 간편결제+선불머니 서비스 해지 (선불머니 환급 완료 후 진행 가능)
+- `Leave`: 간편결제+선불머니 서비스 해지
 - `PrepaidRefundAccount`: 선불머니 환급계좌 등록 및 변경
 - `PrepaidRefund`: 선불머니 환급 요청
 - `PrepaidLimitRaise`: 선불머니 보유한도 상향 요청
+- `PrepaidKYC`: 선불머니 고객 확인 재이행
+- `PrepaidAuth`: 선불머니 결제 인증
 
 </details>
 
@@ -684,8 +777,43 @@ PIN 초기화 이후 [빌링키 삭제 API](https://developers.portone.io/api/re
 - `PrepaidRefund`: 선불머니 환급 요청
 - `PrepaidLimitRaise`: 선불머니 보유한도 상향 요청
 - `PrepaidKYC`: 선불머니 고객 확인 재이행
+- `PrepaidAuth`: 선불머니 결제 인증
 
 거래사전 등록 API를 호출하지 않은 상태에서 선불머니 기능을 요청하는 경우 에러가 발생할 수 있으니 유의하시기 바랍니다.
+
+</details>
+
+<details>
+
+<summary>생체인증(FIDO) 및 SDK 버전 지정 안내</summary>
+
+생체인증(FIDO) 등록(actionType:`RegisterFido`)을 비롯한 일부 기능은 특정 버전의 퀵페이 SDK에서만 동작합니다.
+이 경우 KCP와 사전 협의 후 전달받은 버전 토큰(예: `v2`)을 `bypass.kcpQuick.sdkVersion`에 입력하여 해당 버전의 SDK를 로드할 수 있습니다.
+
+```ts
+IMP.request_pay(
+  {
+    channelKey: "{콘솔 내 연동 정보의 채널키}",
+    merchant_uid: "order_no_0001",
+    name: "생체인증 등록",
+    bypass: {
+      kcpQuick: {
+        actionType: "RegisterFido",
+        encryptedCI: "encrypted_ci",
+        memberID: "use_your_unique_id",
+        sdkVersion: "v2", // KCP와 협의하여 전달받은 버전 토큰
+      },
+    },
+    m_redirect_url: "https://redirection.url",
+  },
+  function (rsp) {
+    // callback 로직
+  },
+);
+```
+
+`sdkVersion`을 입력하지 않으면 기본 SDK가 로드됩니다. 버전 토큰만 입력하며, 앞에 `_` 등 구분자를 붙이지 않습니다.
+허용되지 않는 형식(영문자, 숫자, `_`, `-` 외)의 값을 입력하면 요청이 실패하니 유의하시기 바랍니다.
 
 </details>
 

@@ -72,7 +72,7 @@ IMP.request_pay(
 
   </div>
 
-- pay\_method?: string
+- pay_method?: string
 
   **결제수단 구분코드**
 
@@ -80,7 +80,7 @@ IMP.request_pay(
 
   (호출 시 선택된 값은 무시되며 카카오페이 앱에서 신용카드와 카카오머니 중 선택한 옵션으로 설정됩니다.)
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
@@ -96,53 +96,53 @@ IMP.request_pay(
 
   **string** 이 아닌점에 유의하세요
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **구매자 연락처**
 
-- buyer\_addr?: string
+- buyer_addr?: string
 
   **구매자 주소**
 
-- buyer\_postcode?: string
+- buyer_postcode?: string
 
   **구매자 우편번호**
 
-- tax\_free?: number
+- tax_free?: number
 
   **면세금액**
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 결제 후 리디렉션 될 URL**
 
-- app\_scheme?: string
+- app_scheme?: string
 
   **모바일 앱 URL scheme** (모바일 전용, iOS만 지원)
 
   카카오페이 정책에 따라 iOS에서만 사용 가능합니다.
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
-- confirm\_url?: string
+- confirm_url?: string
 
   **Confirm process URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
-- customer\_id?: string
+- customer_id?: string
 
   **구매자 고유 ID**
 
@@ -150,7 +150,7 @@ IMP.request_pay(
 
   **카드 할부 설정**
 
-  - card\_quota?: number\[]
+  - card_quota?: number\[]
 
     **할부 개월수**
 
@@ -164,7 +164,7 @@ IMP.request_pay(
 
     **사용 가능한 카드사 목록**
 
-    - card\_code?: string
+    - card_code?: string
 
       **카드사 코드**
 
@@ -186,7 +186,7 @@ IMP.request_pay(
 
     **카카오페이 전용 파라미터**
 
-    - payment\_method\_type?: string
+    - payment_method_type?: string
 
       **사용 허용할 결제수단 지정**
 
@@ -195,7 +195,7 @@ IMP.request_pay(
 
       미입력 시 사용 가능한 전체 결제수단 허용
 
-    - custom\_message?: string
+    - custom_message?: string
 
       **카카오페이 결제 UI에 표시되는 커스텀 메시지**
 
@@ -203,7 +203,7 @@ IMP.request_pay(
 
 <div class="tabs-content" data-title="정기결제창 요청">
 
-인증결제창 호출 파라미터에서 **customer\_uid** 값을 추가하면 정기결제창을 호출할 수 있습니다.
+인증결제창 호출 파라미터에서 **customer_uid** 값을 추가하면 정기결제창을 호출할 수 있습니다.
 
 <div class="hint" data-style="warning">
 
@@ -221,7 +221,7 @@ IMP.request_pay(
     channelKey: "{콘솔 내 연동 정보의 채널키}",
     merchant_uid: "order_monthly_0001", // 상점에서 관리하는 주문 번호
     name: "최초인증결제",
-    amount: 0, // 결제창에 표시될 금액. 실제 승인이 이뤄지지는 않습니다.
+    amount: 0, // 빌링키 발급과 동시에 첫결제를 원할경우 금액을 0원이상으로 설정
     customer_uid: "your-customer-unique-id", // 필수 입력.
     buyer_email: "test@portone.io",
     buyer_name: "포트원",
@@ -264,13 +264,13 @@ IMP.request_pay(
 
   </div>
 
-- customer\_uid?: string
+- customer_uid?: string
 
   **카드 빌링키**
 
   비 인증 결제창에서 고객이 입력한 카드정보와 1:1로 매칭될 빌링키를 지정합니다.
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
@@ -286,37 +286,37 @@ IMP.request_pay(
 
   (실 결제를 원하지 않은 경우 amount 금액을 0원으로 설정합니다.)
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **구매자 연락처**
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 결제 후 리디렉션 될 URL**
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
-- customer\_id?: string
+- customer_id?: string
 
   **구매자 고유 ID**
 
-**빌링키(customer\_uid)로 결제 요청하기**
+**빌링키(customer_uid)로 결제 요청하기**
 
-빌링키 발급이 성공하면 실 빌링키는 customer\_uid 와 1:1 매칭되어 **포트원 서버에 저장**됩니다. customer\_uid를 고객사 내부서버에 저장하시고 [**비 인증 결제요청 REST API**](https://developers.portone.io/api/rest-v1/nonAuthPayment?v=v1#post%20%2Fsubscribe%2Fpayments%2Fagain)를 호출하시면 결제를 발생시킬 수 있습니다.
+빌링키 발급이 성공하면 실 빌링키는 customer_uid 와 1:1 매칭되어 **포트원 서버에 저장**됩니다. customer_uid를 고객사 내부서버에 저장하시고 [**비 인증 결제요청 REST API**](https://developers.portone.io/api/rest-v1/nonAuthPayment?v=v1#post%20%2Fsubscribe%2Fpayments%2Fagain)를 호출하시면 결제를 발생시킬 수 있습니다.
 
 ```sh title="server-side"
 curl -H "Content-Type: application/json" \
@@ -350,7 +350,7 @@ curl -H "Content-Type: application/json" \
 
 (관련 이미지 첨부)
 
-- app\_scheme 파라미터는 카카오페이 정책에 따라 iOS에서만 사용 가능합니다.
+- app_scheme 파라미터는 카카오페이 정책에 따라 iOS에서만 사용 가능합니다.
 
 </div>
 

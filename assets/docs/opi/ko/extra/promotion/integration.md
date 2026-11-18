@@ -207,7 +207,7 @@ PortOne.requestPayment({
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
 
-- promotion\_id?: string
+- promotion_id?: string
 
   **프로모션 ID**
 
@@ -400,7 +400,7 @@ if (!paymentResponse.ok)
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
 
-- promotion\_id: string
+- promotion_id: string
 
   **프로모션 ID**
 
@@ -621,7 +621,7 @@ if (!issueResponse.ok)
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
 
-- promotion\_id: string
+- promotion_id: string
 
   **프로모션 ID**
 

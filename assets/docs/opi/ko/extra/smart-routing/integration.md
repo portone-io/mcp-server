@@ -108,7 +108,7 @@ PortOne.requestPayment({
 
 각 파라미터에 대한 상세한 설명은 [결제요청 파라미터](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/payrq) 문서를 참고하시기 바랍니다.
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **고객사 주문번호**
 
@@ -120,11 +120,11 @@ PortOne.requestPayment({
 
   **결제금액**
 
-- pay\_method: string
+- pay_method: string
 
   **결제수단 구분코드**
 
-- custom\_data: object
+- custom_data: object
 
   **사용자 정의 데이터**
 
@@ -134,19 +134,19 @@ PortOne.requestPayment({
 
   주문 건에 대해 부가정보를 저장할 공간이 필요할 때 사용합니다
 
-- tax\_free: number
+- tax_free: number
 
   **면세금액**
 
   결제금액 중 면세금액에 해당하는 금액을 입력합니다.
 
-- vat\_amount: number
+- vat_amount: number
 
   **부가세**
 
   결제금액 중 부가세에 해당하는 금액을 입력합니다. (기본값: null)
 
-- vbank\_due: string
+- vbank_due: string
 
   **가상계좌 입금기한**
 
@@ -162,13 +162,13 @@ PortOne.requestPayment({
 
   `YYYYMMDDHHmmss`
 
-- buyer\_tel: string
+- buyer_tel: string
 
   **주문자 연락처**
 
   일부 PG사에서 해당 필드 누락시 오류 발생
 
-- buyer\_email: string
+- buyer_email: string
 
   **주문자 이메일**
 
@@ -462,7 +462,7 @@ if (!paymentResponse.ok)
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **고객사 거래 고유번호**
 
@@ -470,7 +470,7 @@ if (!paymentResponse.ok)
 
   **주문 금액**
 
-- card\_number: string
+- card_number: string
 
   **카드번호**
 
@@ -964,11 +964,11 @@ if (!issueResponse.ok)
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
 
-- customer\_uid: string
+- customer_uid: string
 
   **구매자의 결제 수단 식별 고유번호**
 
-- card\_number: string
+- card_number: string
 
   **카드번호**
 
@@ -1054,11 +1054,11 @@ if (!issueResponse.ok)
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
 
-- customer\_uid: string
+- customer_uid: string
 
   **구매자의 결제 수단 식별 고유번호**
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **고객사 주문번호**
 
@@ -1146,17 +1146,17 @@ if (!issueResponse.ok)
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
 
-- customer\_uid: string
+- customer_uid: string
 
   **구매자의 결제 수단 식별 고유번호**
 
-- schedules.merchant\_uid: string
+- schedules.merchant_uid: string
 
   **고객사의 주문번호**
 
   동일한 주문 번호로 중복 결제가 불가하며, 스마트로 신모듈의 경우 특수문자 포함이 불가능합니다.
 
-- schedules.schedule\_at: integer
+- schedules.schedule_at: integer
 
   **예약시각**
 

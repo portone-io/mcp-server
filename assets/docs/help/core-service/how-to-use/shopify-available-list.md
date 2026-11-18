@@ -15,10 +15,9 @@ datetime: 2025-02-28T01:25:51.798Z
 ---
 
 <Callout content=" &quot;Shopify(쇼피파이)&quot;에서 PortOne을 통해 다양한 결제수단을 지원하는 플러그인의 사용법을 안내드립니다.
-쇼피파이 플러그인을 통하여 국내PG사와 해외PSP 이용이 가능합니다.
+쇼피파이 플러그인을 통하여 국내PG사 이용이 가능합니다.
 
-- **해외PSP만 이용하신 다면 글로벌 플랫폼만 이용하시면 되며,**
-- **국내PG사까지 연동하시려면 PortOne 한국 플랫폼과 PortOne 글로벌 플랫폼을 모두 사용해야 합니다.** 
+- 국내PG사까지 연동하시려면 PortOne 한국 플랫폼과 PortOne 글로벌 플랫폼을 모두 사용해야 합니다.
 
 본 서비스는 서비스 이용 계약서 작성 후 이용이 가능하오니 쇼피파이 이용 안내 가이드를 참고 부탁드리며 
 플러그인 연동은 쇼피파이 연동 가이드를 참고해 주세요." />
@@ -33,6 +32,7 @@ datetime: 2025-02-28T01:25:51.798Z
 - [300씨비티↗](https://300cbt.com/)
 - [브레스커뮤니케이션즈↗](https://b-works.link/)
 - [어바닉랩스↗](https://urbaniclabsinc.com/)
+- [브릿지세븐↗](https://bridge7.co.kr/)
 
 ## 국내PG사와 결제 수단
 
@@ -53,24 +53,12 @@ datetime: 2025-02-28T01:25:51.798Z
 5. NHN KCP \
    \- 이용가능지역 : Korea\
    \- 결제수단 : 카드결제, NAVERPAY(제휴), KAKAOPAY(제휴)
-6. TOSS PAYMENTS\
-   \- 이용가능지역 : Korea\
-   \- 결제수단 : 카드결제, NAVERPAY(제휴), KAKAOPAY(제휴), 계좌이체
-7. NICE PAYMENTS\
+6. NICE PAYMENTS\
    \- 이용가능지역 : Korea\
    \- 결제수단 : 카드결제, NAVERPAY(제휴), KAKAOPAY(제휴),
-8. PAYMENTWALL\
+7. PAYMENTWALL\
    \- 이용가능지역 : Global\
    \- 결제수단 : 카드결제, 간편결제
-9. PAYLETTER\
+8. PAYLETTER\
    \- 이용가능지역 : Global\
    \- 결제수단 : 카드결제
-
-## **글로벌 포트원에서 지원하는 해외PSP**
-
-- 글로벌 포트원에서 지원하는 해외PSP 목록은 아래 링크에서 문서 목록을 참고해 주세요.
-
-<Callout title="해외PSP 목록 보러가기 ↗" />
-
-- [쇼피파이(Shopify) 이용가이드 보러가기 ↗](https://help.portone.io/content/shopify-guide)
-- [쇼피파이(Shopify) 연동가이드 보러가기 ↗](https://developers.portone.io/opi/ko/extra/plugins/shopify/shopify/shopify-4?v=v1)

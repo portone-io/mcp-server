@@ -6,56 +6,14 @@ targetVersions:
   - v2
 ---
 
-## <span id="registration">1. 포트원 회원가입 하기</span>
-
-포트원 관리자 콘솔은 **별도 계약 없이 무료로** 회원가입이 가능합니다.
-
-- 포트원 콘솔 화면에서 \[가입하기]를 클릭해 주세요. [→ 포트원 콘솔 바로 가기](https://admin.portone.io)
-
-(이미지 첨부: 로그인 화면 예시)
-
-- 포트원에서 사용할 이메일 주소 및 비밀번호를 입력한 후 \[가입]을 눌러주세요.
-
-(이미지 첨부: 회원가입 화면 예시)
-
-- 가입 완료 후 입력하신 이메일로 인증 메일이 발송됩니다. 메일 인증 전까지 로그인이 불가능하오니 꼭 인증 후 로그인을 시도해 주세요.
-
-(이미지 첨부: 인증 메일 내용 예시)
-
-<div class="hint" data-style="info">메일을 받지 못하신 경우 스팸메일함을 확인해주세요.</div>
-
-<br />
-
-## 2. 전자결제 신청하기
-
-비지니스 정보(사업자 정보) 등록 후 이용할 결제대행사 및 결제수단 신청합니다.
-
-- 로그인 후 \[홈]화면에서 왼쪽 상단에 \[전자결제 신청]을 클릭해 주세요.
-- 약관 동의 후 \[시작하기!]를 클릭해 주세요.
-
-(이미지 첨부: 약관동의 화면 예시)
-
-- \[비지니스 인증] 정보를 단계에 따라 입력합니다.
-- \[전자결제 신청] 정보를 단계에 따라 선택합니다.
-
-**아직 전자결제 신청 전이라면 상세 가이드를 참고하여 전자결제를 신청해보세요!** [→ 전자결제 신청 상세 가이드 바로가기](http://help.portone.io/category/procedure/pg-application)
-
-<div class="hint" data-style="info">
+## <span id="registration">1. 포트원 회원가입 하기</span>포트원 관리자 콘솔은 **별도 계약 없이 무료로** 회원가입이 가능합니다.* 포트원 콘솔 화면에서 \[가입하기]를 클릭해 주세요. [→ 포트원 콘솔 바로 가기](https://admin.portone.io)(이미지 첨부: 로그인 화면 예시)* 포트원에서 사용할 이메일 주소 및 비밀번호를 입력한 후 \[가입]을 눌러주세요.(이미지 첨부: 회원가입 화면 예시)* 가입 완료 후 입력하신 이메일로 인증 메일이 발송됩니다. 메일 인증 전까지 로그인이 불가능하오니 꼭 인증 후 로그인을 시도해 주세요.(이미지 첨부: 인증 메일 내용 예시)<div class="hint" data-style="info">메일을 받지 못하신 경우 스팸메일함을 확인해주세요.</div><br />## 2. 전자결제 신청하기비지니스 정보(사업자 정보) 등록 후 이용할 결제대행사 및 결제수단 신청합니다.* 로그인 후 \[홈]화면에서 왼쪽 상단에 \[전자결제 신청]을 클릭해 주세요.
+* 약관 동의 후 \[시작하기!]를 클릭해 주세요.(이미지 첨부: 약관동의 화면 예시)* \[비지니스 인증] 정보를 단계에 따라 입력합니다.
+* \[전자결제 신청] 정보를 단계에 따라 선택합니다.**아직 전자결제 신청 전이라면 상세 가이드를 참고하여 전자결제를 신청해보세요!** [→ 전자결제 신청 상세 가이드 바로가기](http://help.portone.io/category/procedure/pg-application)<div class="hint" data-style="info">
 
 전자결제 신청 전 테스트를 하고싶으신 분은 아래 결제대행사 채널 설정하기를
 참고하신 후 테스트 환경으로 채널 추가하여 테스트를 진행하실 수 있습니다.
 
-</div>
-
-## <span id="channel-config">3. 결제대행사 채널 설정하기</span>
-
-결제 연동 시 사용할 결제대행사 채널을 추가합니다.
-
-- 관리자 콘솔 화면에서 \[결제 연동] → \[연동 관리] → \[채널 관리] 메뉴에서 연동하고자 하는 결제대행사 및 결제 모듈을 선택하여 채널을 추가합니다.
-
-### 3-1. 연동 방법
-
-<div class="tabs-container">
+</div>## <span id="channel-config">3. 결제대행사 채널 설정하기</span>결제 연동 시 사용할 결제대행사 채널을 추가합니다.* 관리자 콘솔 화면에서 \[결제 연동] → \[연동 관리] → \[채널 관리] 메뉴에서 연동하고자 하는 결제대행사 및 결제 모듈을 선택하여 채널을 추가합니다.### 3-1. 연동 방법<div class="tabs-container">
 
 <div class="tabs-content" data-title="테스트 연동">
 
@@ -124,13 +82,7 @@ targetVersions:
 
 </div>
 
-</div>
-
-### <span id="integration-info">3-2. 결제대행사별 연동 정보 확인하기</span>
-
-#### 결제대행사
-
-<details>
+</div>### <span id="integration-info">3-2. 결제대행사별 연동 정보 확인하기</span>#### 결제대행사<details>
 
 <summary>갤럭시아머니트리</summary>
 
@@ -143,9 +95,7 @@ targetVersions:
 
 5. 포트원 콘솔에서 채널 추가 시 \[MID], \[KEY], \[IV]를 입력한 후 `저장`을 클릭합니다.
 
-</details>
-
-<details>
+</details><details>
 
 <summary>나이스정보통신</summary>
 
@@ -168,9 +118,7 @@ targetVersions:
 
 6. 포트원 콘솔에서 채널 추가 시 \[MID], \[Key], \[결제취소 비밀번호]를 입력한 후 `저장`을 클릭합니다.
 
-</details>
-
-<details>
+</details><details>
 
 <summary>다날</summary>
 
@@ -219,27 +167,23 @@ targetVersions:
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
 
-</details>
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+</details><!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
 
 <details>
 
 <summary>KG파이낸셜</summary>
 
-포트원 콘솔에서 채널 추가 시 계약 완료 후 KG파이낸셜로부터 전달받은 \[서비스ID]를 입력한 후 `저장`을 클릭합니다.
+1. [모빌페이 가맹점관리자](https://cp.mcash.co.kr/mcht/login.jsp) 접속 후 로그인을 합니다.
+2. \[가맹점정보관리]→\[계약정보]→\[연동간소화모듈 연동키]를 클릭합니다.
+3. 서비스ID 및 연동키(발급키) 값을 확인할 수 있습니다.
 
-<div class="hint" data-style="info">
+(이미지 첨부: 모빌페이 가맹점관리자 내 서비스ID, 연동키 조회 화면)
 
-정기결제를 이용하는 경우 **정기결제용 서비스ID**를 필수로 입력해야 합니다.
-
-</div>
+4. 포트원 콘솔에서 채널 추가 시 확인한 서비스ID를 PG 상점아이디에 입력하고, 발급키(연동키)를 연동키 항목에 입력한 후 `저장`을 클릭합니다.
 
 </details>
 
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
-
-<details>
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END --><details>
 
 <summary>스마트로</summary>
 
@@ -279,9 +223,7 @@ targetVersions:
 
 </div>
 
-</details>
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+</details><!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
 
 <details>
 
@@ -305,7 +247,14 @@ targetVersions:
 
 <details>
 
-<summary>이지페이(KICC)</summary>
+<summary>이지페이(KICC) (구모듈)</summary>
+
+<div class="hint" data-style="warning">
+
+신규 국내결제 연동 시에는 포트원 V2의 이지페이 신모듈 사용을 권장합니다.
+[이지페이(KICC) V2 국내결제 연동 가이드](https://developers.portone.io/opi/ko/integration/pg/v2/kicc-v2-domestic?v=v2)를 참고해 주세요.
+
+</div>
 
 포트원 콘솔에서 채널 추가 시 계약 완료 후 이지페이(KICC)로부터 전달받은 \[가맹점ID]를 입력한 후 `저장`을 클릭합니다.
 
@@ -342,9 +291,18 @@ targetVersions:
 
 </details>
 
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END --><!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
 
 <details>
+
+<summary>이지페이(KICC) 국내결제</summary>
+
+1. KICC 계약 완료 이후, KICC로부터 전달 받은 MID, 가맹점 암호키 값을 포트원 콘솔에서 채널 추가 시
+   `[가맹점 ID]`, `[암복호화 키]` 항목에 입력한 후 저장을 클릭합니다.
+
+</details>
+
+<!-- VERSION-SPECIFIC: V2 ONLY CONTENT END --><details>
 
 <summary>토스페이먼츠</summary>
 
@@ -394,9 +352,7 @@ targetVersions:
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
 
-</details>
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+</details><!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
 
 <details>
 
@@ -412,9 +368,7 @@ targetVersions:
 
 </details>
 
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
-
-<details>
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END --><details>
 
 <summary>KG이니시스</summary>
 
@@ -465,13 +419,13 @@ targetVersions:
 
 </div>
 
-포트원 콘솔에서 채널 추가 시 계약 완료 후 KG이니시스로부터 전달받은 \[SEEDKEY],\[SEEDIV], \[DI\_CODE]를 입력한 후 `저장`을 클릭합니다.
+포트원 콘솔에서 채널 추가 시 계약 완료 후 KG이니시스로부터 전달받은 \[SEEDKEY],\[SEEDIV], \[DI_CODE]를 입력한 후 `저장`을 클릭합니다.
 
 <div class="hint" data-style="info">
 
-DI\_CODE는 12자리로 고객사에서 자체적으로 사이트(서비스)를 관리하는 코드입니다. 고객사 사이트(서비스)마다 DI\_CODE를 부여하여 관리하고 있는 경우에는 KG이니시스 카드본인인증 계약 진행시 계약서상에 고객사가 직접 기입한 값을 입력하시면 됩니다.
+DI_CODE는 12자리로 고객사에서 자체적으로 사이트(서비스)를 관리하는 코드입니다. 고객사 사이트(서비스)마다 DI_CODE를 부여하여 관리하고 있는 경우에는 KG이니시스 카드본인인증 계약 진행시 계약서상에 고객사가 직접 기입한 값을 입력하시면 됩니다.
 
-계약시 **DI\_CODE를 기입하지 않은 경우** 빈칸으로 저장해야 합니다.
+계약시 **DI_CODE를 기입하지 않은 경우** 빈칸으로 저장해야 합니다.
 
 </div>
 
@@ -512,25 +466,19 @@ DI\_CODE는 12자리로 고객사에서 자체적으로 사이트(서비스)를 
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
 
-</details>
-
-<details>
+</details><details>
 
 <summary>KSNET</summary>
 
 포트원 콘솔에서 채널 추가 시 계약 완료 후 KSNET으로부터 전달받은 \[상점아이디(MID)] 및 \[API Key]를 입력한 후 `저장`을 클릭합니다.
 
-</details>
-
-<details>
+</details><details>
 
 <summary>한국결제네트웍스(KPN)</summary>
 
 포트원 콘솔에서 채널 추가 시 계약 완료 후 한국결제네트웍스(KPN)로부터 전달받은 \[상점아이디(MID)] 및 \[Secret OTP]를 입력한 후 `저장`을 클릭합니다.
 
-</details>
-
-<details>
+</details><details>
 
 <summary>NHN KCP</summary>
 
@@ -604,7 +552,7 @@ DI\_CODE는 12자리로 고객사에서 자체적으로 사이트(서비스)를 
 
 <div class="hint" data-style="danger">
 
-포트원 V2에서 제공하는 KCP의 경우 **KCP의 PG-API방식**만 지원합니다. 따라서 아래와 같이 인증서 발급 후
+포트원 V2에서는 KCP 결제 연동시 **KCP의 PG-API방식**만 지원합니다. 따라서 아래와 같이 인증서 발급 후
 사용할 수 있습니다.
 
 해당 인증서의 경우 유효기간은 **5년**이며, 유효기간 만료 30일전부터 갱신이 가능합니다.
@@ -612,6 +560,16 @@ DI\_CODE는 12자리로 고객사에서 자체적으로 사이트(서비스)를 
 **서비스 인증서의 유효기간이 만료되거나 폐기된 경우** 즉시 결제 승인/취소 등 관련
 **서비스 이용이 불가능**하오니
 서비스 사용을 위해서 인증서를 재발급이 필요한 후 **포트원에 저장된 채널 정보를 업데이트** 해야 합니다.
+
+</div>
+
+<div class="hint" data-style="info">
+
+**본인인증 연동**에는 **가맹점 인증키**(본인인증 인증키)만 필요하며, PG-API 인증서, PG-API 개인 키, 개인 키 비밀번호는 발급 및 입력하지 않으셔도 됩니다.
+
+**가맹점 인증키 발급 방법**: [KCP 파트너관리자](http://partner.kcp.co.kr/) - \[기술관리센터] - \[인증센터] - \[가맹점 인증키관리] 메뉴에서 가맹점 인증키를 발급하여 포트원 콘솔의 채널 설정에 입력해 주시기 바랍니다.
+
+기존에 PG-API(구 연동방식)로 연동하신 고객사의 경우 **\[KCP 파트너관리자] - \[부가서비스] - \[휴대폰본인확인] - \[연동방식 설정]** 에서 신규 연동방식을 사용하도록 설정이 필요합니다. 전환 완료일은 충분히 여유롭게 지정하시는 것을 권장합니다. 이후 가맹점 인증키를 발급하여 포트원 콘솔에 입력하시면 신규 연동방식이 사용됩니다.
 
 </div>
 
@@ -661,19 +619,13 @@ DI\_CODE는 12자리로 고객사에서 자체적으로 사이트(서비스)를 
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
 
-</details>
-
-#### 간편결제 직연동
-
-<details>
+</details>#### 간편결제 직연동<details>
 
 <summary>네이버페이 결제형</summary>
 
 포트원 콘솔에서 채널 추가 시 네이버페이 1차 승인 시 발송된 안내 메일을 참고하여 \[파트너ID(페이센터아이디)], \[ClientID], \[Client Secret], \[ChainID]를 입력한 후 `저장`을 클릭합니다.
 
-</details>
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+</details><!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
 
 <details>
 
@@ -683,17 +635,13 @@ DI\_CODE는 12자리로 고객사에서 자체적으로 사이트(서비스)를 
 
 </details>
 
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
-
-<details>
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END --><details>
 
 <summary>카카오페이</summary>
 
 포트원 콘솔에서 채널 추가 시 계약 완료 후 카카오페이로부터 전달받은 \[CID]를 입력한 후 `저장`을 클릭합니다.
 
-</details>
-
-<details>
+</details><details>
 
 <summary>토스페이</summary>
 
@@ -714,9 +662,7 @@ DI\_CODE는 12자리로 고객사에서 자체적으로 사이트(서비스)를 
 
 3. 포트원 콘솔에서 채널 추가 시 \[상점아이디(MID)], \[API Key]를 입력한 후 `저장`을 클릭합니다.
 
-</details>
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
+</details><!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
 
 <details>
 
@@ -726,11 +672,7 @@ DI\_CODE는 12자리로 고객사에서 자체적으로 사이트(서비스)를 
 
 </details>
 
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
-
-#### 해외 결제대행사
-
-<details>
+<!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->#### 해외 결제대행사<details>
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
 
@@ -750,9 +692,7 @@ PG 거래대사 메뉴를 사용하시는 경우 \[대사 시크릿 키] 항목�
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
 
-</details>
-
-<details>
+</details><details>
 
 <!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->
 
@@ -816,9 +756,7 @@ PG 거래대사 메뉴를 사용하시는 경우 \[대사 시크릿 키] 항목�
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
 
-</details>
-
-<details>
+</details><details>
 
 <summary>페이팔</summary>
 
@@ -917,18 +855,21 @@ PG 거래대사 메뉴를 사용하시는 경우 \[대사 시크릿 키] 항목�
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
 
-</details>
-
-<details>
+</details><details>
 
 <summary>페이레터 해외결제</summary>
 
 1. 페이레터 계약 완료 이후, 페이레터로부터 전달 받은 StoreID, API Key값을 포트원 콘솔에서 채널 추가 시\
    `[StoreID]`, `[API Key]` 항목에 입력한 후 저장을 클릭합니다.
 
-</details>
+</details><details>
 
-<details>
+<summary>페이레터</summary>
+
+1. 페이레터 계약 완료 이후, 페이레터로부터 전달 받은 StoreID, API Key값을 포트원 콘솔에서 채널 추가 시\
+   `[StoreID]`, `[API Key]` 항목에 입력한 후 저장을 클릭합니다.
+
+</details><details>
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->
 
@@ -947,22 +888,24 @@ PG 거래대사 메뉴를 사용하시는 경우 \[대사 시크릿 키] 항목�
 
 <!-- VERSION-SPECIFIC: V2 ONLY CONTENT END -->
 
-</details>
+</details><details>
 
-<details>
-
-<summary>이지페이(KICC)</summary>
+<summary>이지페이(KICC) 해외결제</summary>
 
 1. KICC 계약 완료 이후, KICC로부터 전달 받은 MID, 가맹점 암호키 값을 포트원 콘솔에서 채널 추가 시
    `[가맹점 ID]`, `[암복호화 키]` 항목에 입력한 후 저장을 클릭합니다.
 
-</details>
-
-## <span id="integration-identifiers">4. 포트원 연동정보 확인하기</span>
-
-포트원을 이용한 결제 연동 시 필요한 연동정보를 확인합니다.
-
-<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->* 관리자 콘솔 화면에서 \[결제 연동] → \[연동 관리] → \[식별코드·API Keys] 메뉴에서 \[V1 API]를 선택하여 고객사 식별코드, REST API Key, REST API Secret을 확인할 수 있습니다." "(관련 이미지 첨부)<div class="hint" data-style="info">
+</details>/\* 헥토파이낸셜 해외결제는 당분간 노출하지 않습니다.
+\<Details id="channel-config-hecto-global">
+\<VersionGate v="v2">
+&#x20;   \<Details.Summary>헥토파이낸셜 해외결제\</Details.Summary>&#xA;&#xA;&#x20;   \<Details.Content>
+&#x20;     1\. \[헥토파이낸셜 가맹점관리자]\(http\://nspay.settlebank.co.kr/cpnInfo.do) 접속 후 로그인을 합니다.
+&#x20;     2\. \\\[가맹점정보]→\\\[기본정보]→\\\[라이센스&암호화키 정보]를 클릭합니다.
+&#x20;     3\. \\\[상점아이디], \\\[라이센스키(전문 해쉬 키)], \\\[암호화 키] 값을 확인할 수 있습니다.&#xA;&#xA;&#x20;     \<Figure src={image14} caption="헥토파이낸셜 가맹점관리자 내 라이센스&암호화키 정보 화면" />&#xA;&#xA;&#x20;     4\. 포트원 콘솔에서 채널 추가 시 \\\[상점아이디], \\\[라이센스키(전문 해쉬 키)], \\\[암호화 키]를 입력한 후 \`저장\`을 클릭합니다.
+&#x20;   \</Details.Content>
+\</VersionGate>
+\</Details>
+\*/## <span id="integration-identifiers">4. 포트원 연동정보 확인하기</span>포트원을 이용한 결제 연동 시 필요한 연동정보를 확인합니다.<!-- VERSION-SPECIFIC: V1 ONLY CONTENT START -->* 관리자 콘솔 화면에서 \[결제 연동] → \[연동 관리] → \[식별코드·API Keys] 메뉴에서 \[V1 API]를 선택하여 고객사 식별코드, REST API Key, REST API Secret을 확인할 수 있습니다." "(관련 이미지 첨부)<div class="hint" data-style="info">
 
 **고객사 식별코드란?**
 
@@ -981,9 +924,7 @@ PG 거래대사 메뉴를 사용하시는 경우 \[대사 시크릿 키] 항목�
 
 REST API Key, REST API Secret **결제 거래 건을 컨트롤할 수 있는 민감 정보**로 외부로 유출되지 않도록 주의가 필요합니다.
 
-</div><!-- VERSION-SPECIFIC: V1 ONLY CONTENT END -->
-
-<!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->### 4-1. 상점 아이디(Store ID) 복사하기포트원을 이용한 결제 연동 시 필요한 상점 아이디(Store ID)를 복사할 수 있습니다." "(관련 이미지 첨부)* 관리자 콘솔 화면에서 \[결제 연동] → \[연동 관리] 화면에서 상점 아이디를 복사할 수 있습니다.
+</div><!-- VERSION-SPECIFIC: V1 ONLY CONTENT END --><!-- VERSION-SPECIFIC: V2 ONLY CONTENT START -->### 4-1. 상점 아이디(Store ID) 복사하기포트원을 이용한 결제 연동 시 필요한 상점 아이디(Store ID)를 복사할 수 있습니다." "(관련 이미지 첨부)* 관리자 콘솔 화면에서 \[결제 연동] → \[연동 관리] 화면에서 상점 아이디를 복사할 수 있습니다.
 
   <div class="hint" data-style="info">
 

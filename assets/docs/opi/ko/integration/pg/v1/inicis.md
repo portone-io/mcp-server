@@ -19,7 +19,7 @@ versionVariants:
 KG이니시스 결제창을 호출할 수 있습니다.
 **결제결과**는 PC의 경우 `IMP.request_pay(param, callback)` 호출 후
 **callback** 으로 수신 되며
-모바일의 경우 **m\_redirect\_url** 로 리디렉션됩니다.
+모바일의 경우 **m\_redirect_url** 로 리디렉션됩니다.
 
 <div class="tabs-container">
 
@@ -90,7 +90,7 @@ IMP.request_pay(
 
   </div>
 
-- pay\_method: string
+- pay_method: string
 
   **결제수단 구분코드**
 
@@ -117,7 +117,7 @@ IMP.request_pay(
 
   </details>
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
@@ -133,25 +133,25 @@ IMP.request_pay(
 
   **string** 이 아닌점에 유의하세요
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
-- buyer\_tel: string
+- buyer_tel: string
 
   **주문자연락처**
 
   필수 파라미터 입니다.
 
-- buyer\_addr?: string
+- buyer_addr?: string
 
   **구매자 주소**
 
-- buyer\_postcode?: string
+- buyer_postcode?: string
 
   **구매자 우편번호**
 
@@ -159,41 +159,41 @@ IMP.request_pay(
 
   **에스크로 결제 여부**
 
-- tax\_free?: number
+- tax_free?: number
 
   **면세금액**
 
-- vbank\_due?: string
+- vbank_due?: string
 
   가상계좌 입금마감일시를 지정할수 있습니다.(미 지정시 Default 30일)
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 결제 후 리디렉션 될 URL**
 
-- app\_scheme?: string
+- app_scheme?: string
 
   **모바일 앱 URL scheme** (모바일 전용)
 
   모바일 앱에서 결제 시 ISP/앱카드 등에서 결제 완료 후 가맹점 앱으로 돌아올 때 사용됩니다.
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
   포트원 관리자 콘솔에 설정한 웹훅 URL 대신 사용할 URL을 지정합니다.
 
-- confirm\_url?: string
+- confirm_url?: string
 
   **Confirm process URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
   결제 정보와 함께 저장할 커스텀 데이터입니다. 결제 조회 시 반환됩니다.
 
-- customer\_id?: string
+- customer_id?: string
 
   **구매자 고유 ID**
 
@@ -243,7 +243,7 @@ IMP.request_pay(
 
     예시: `"acceptmethod": "noeasypay:CARDPOINT:SKIN(BLUE)"`
 
-  - P\_RESERVED?: string
+  - P_RESERVED?: string
 
     **모바일 전용 옵션** (`&` 구분자로 여러 값 연결)
 
@@ -260,14 +260,14 @@ IMP.request_pay(
 
     예시: `"P_RESERVED": "noeasypay=Y&twotrs_bank=Y&apprun_check=Y"`
 
-  - ini\_PAYSHOT\_KEY?: string
+  - ini_PAYSHOT_KEY?: string
 
     **현대카드 Payshot 고객 Key** (PC 전용)
 
     현대카드 Payshot 사용 시 필수 입력합니다.
     형식: `{가맹점구분}{YYYYMMDDHHMMSSmsec}{고객id}`
 
-  - P\_PAYSHOT\_KEY?: string
+  - P_PAYSHOT_KEY?: string
 
     **현대카드 Payshot 고객 Key** (모바일 전용)
 
@@ -280,7 +280,7 @@ IMP.request_pay(
 
 **PG사 결제창으로 카드정보를 입력받고 빌링키를 발급할수 있습니다.**
 
-- 인증결제창 호출 파라미터에서 **customer\_uid** 값을 추가하면 비 인증 결제창을 호출할 수 있습니다.
+- 인증결제창 호출 파라미터에서 **customer_uid** 값을 추가하면 비 인증 결제창을 호출할 수 있습니다.
 - 비 인증 결제창에서 빌링키를 발급받은 후 해당 빌링키로 결제를 요청합니다.
 - amount 파라미터에 금액을 설정하여도 실제 승인은 이루어지지 않습니다.
 
@@ -326,7 +326,7 @@ IMP.request_pay(
 
   `html5_inicis` 로 설정
 
-  - KG이니시스에서 발급받은 상점아이디가 여러개(각각 일반 및 정기)인 경우에는 html5\_inicis.{상점아이디} 또는 inicis.{상점아이디}(for ActiveX)로 지정합니다.
+  - KG이니시스에서 발급받은 상점아이디가 여러개(각각 일반 및 정기)인 경우에는 html5_inicis.{상점아이디} 또는 inicis.{상점아이디}(for ActiveX)로 지정합니다.
 
   <div class="hint" data-style="warning">
 
@@ -336,13 +336,13 @@ IMP.request_pay(
 
   </div>
 
-- customer\_uid: string
+- customer_uid: string
 
   **카드 빌링키**
 
   비 인증 결제창에서 고객이 입력한 카드정보와 1:1로 매칭될 빌링키를 지정합니다.
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
@@ -354,37 +354,37 @@ IMP.request_pay(
 
   **결제금액**
 
-  결제창에 표시될 금액으로 실제 승인은 이루어지지 않습니다.(실 결제를 발생시키기 위해서는 **customer\_uid** 로 **REST API 를 이용하여 결제요청**을 해주셔야 합니다.)
+  결제창에 표시될 금액으로 실제 승인은 이루어지지 않습니다.(실 결제를 발생시키기 위해서는 **customer_uid** 로 **REST API 를 이용하여 결제요청**을 해주셔야 합니다.)
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **구매자 연락처**
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 결제 후 리디렉션 될 URL**
 
-- app\_scheme?: string
+- app_scheme?: string
 
   **모바일 앱 URL scheme** (모바일 전용)
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
-- customer\_id?: string
+- customer_id?: string
 
   **구매자 고유 ID**
 
@@ -401,9 +401,9 @@ IMP.request_pay(
       - `01`: 카드번호, 유효기간, 생일 입력 부분만 표시
       - 미전달: 카드번호, 유효기간, 주민번호, 비밀번호 입력 부분 표시
 
-**빌링키(customer\_uid)로 결제 요청하기**
+**빌링키(customer_uid)로 결제 요청하기**
 
-빌링키 발급이 성공하면 실 빌링키는 customer\_uid 와 1:1 매칭되어 **포트원 서버에 저장**됩니다. customer\_uid를 고객사 내부서버에 저장하시고 [**비 인증 결제요청 REST API**](https://developers.portone.io/api/rest-v1/nonAuthPayment?v=v1#post%20%2Fsubscribe%2Fpayments%2Fagain)를 호출하시면 결제를 발생시킬 수 있습니다.
+빌링키 발급이 성공하면 실 빌링키는 customer_uid 와 1:1 매칭되어 **포트원 서버에 저장**됩니다. customer_uid를 고객사 내부서버에 저장하시고 [**비 인증 결제요청 REST API**](https://developers.portone.io/api/rest-v1/nonAuthPayment?v=v1#post%20%2Fsubscribe%2Fpayments%2Fagain)를 호출하시면 결제를 발생시킬 수 있습니다.
 
 ```sh title="server-side"
 curl -H "Content-Type: application/json" \
@@ -429,7 +429,7 @@ curl -H "Content-Type: application/json" \
 
 **빌링키 발급 요청하기**
 
-REST [**API POST /subscribe/customers/{customer\_uid}**](https://developers.portone.io/api/rest-v1/billingkey?v=v1#post%20%2Fsubscribe%2Fcustomers%2F%7Bcustomer_uid%7D)를 호출하여 빌링키 발급을 요청합니다.
+REST [**API POST /subscribe/customers/{customer_uid}**](https://developers.portone.io/api/rest-v1/billingkey?v=v1#post%20%2Fsubscribe%2Fcustomers%2F%7Bcustomer_uid%7D)를 호출하여 빌링키 발급을 요청합니다.
 
 ```sh
 curl -H "Content-Type: application/json" \
@@ -488,7 +488,7 @@ curl -H "Content-Type: application/json" \
 
   **결제창에 렌더링될 카드 할부 개월수 리스트 설정값**
 
-  - card\_quota: number\[]
+  - card_quota: number\[]
 
     **할부 개월수**
 
@@ -558,7 +558,7 @@ curl -H "Content-Type: application/json" \
 
   **카드사 렌더링 정보**
 
-  - card\_code?: string
+  - card_code?: string
 
     **카드사 코드**
 
@@ -583,7 +583,7 @@ curl -H "Content-Type: application/json" \
 
 **파라미터 설명**
 
-- vat\_amount?: number
+- vat_amount?: number
 
   상점아이디(MID)에 영세율 설정된 경우 부가세(`vat_amount`) 및 면세금액(`tax_free`)를 0원으로 지정하여 영세율 결제 가능
 

@@ -34,7 +34,7 @@ versionVariants:
 [JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/readme) `IMP.request_pay(param, callback)`을 호출하여
 스마트로 결제창을 호출할 수 있습니다. **결제결과**는 PC의 경우 `IMP.request_pay(param, callback)`
 호출 후 **callback**으로 수신되고
-모바일의 경우 **m\_redirect\_url** 로 리디렉션됩니다.
+모바일의 경우 **m\_redirect_url** 로 리디렉션됩니다.
 
 <div class="tabs-container">
 
@@ -98,7 +98,7 @@ IMP.request_pay(
 
   </div>
 
-- pay\_method: string
+- pay_method: string
 
   **결제수단 구분코드**
 
@@ -112,7 +112,7 @@ IMP.request_pay(
   - payco (페이코)
   - pinpay (핀페이)
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
@@ -127,33 +127,33 @@ IMP.request_pay(
 
   소수점 두번째 자리까지 허용합니다.
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
-- buyer\_tel: string
+- buyer_tel: string
 
   **구매자 전화번호**
 
   주의: 스마트로 일반 결제시 필수 입력
 
-- buyer\_addr?: string
+- buyer_addr?: string
 
   **구매자 주소**
 
-- buyer\_postcode?: string
+- buyer_postcode?: string
 
   **구매자 우편번호**
 
-- tax\_free?: number
+- tax_free?: number
 
   **면세금액**
 
-- vbank\_due: string
+- vbank_due: string
 
   **가상계좌 입금기한 (YYYY-MM-DD)**
 
@@ -183,23 +183,23 @@ IMP.request_pay(
 
     **YYYYMMDD**
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 결제 후 리디렉션 될 URL**
 
-- app\_scheme?: string
+- app_scheme?: string
 
   **모바일 앱 URL scheme** (모바일 전용)
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
-- confirm\_url?: string
+- confirm_url?: string
 
   **Confirm process URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
@@ -219,7 +219,7 @@ IMP.request_pay(
 
     휴대폰번호, 사업자등록번호, 현금영수증 카드번호를 입력할 수 있습니다.
 
-  - smartro\_v2?: object
+  - smartro_v2?: object
 
     **스마트로 전용 파라미터**
 
@@ -266,7 +266,7 @@ IMP.request_pay(
 
 <div class="tabs-content" data-title="비인증 결제창 요청">
 
-인증결제창 호출 파라미터에서 **customer\_uid**, **customer\_id**값을 추가하면 비 인증 결제창을 호출할 수 있습니다.
+인증결제창 호출 파라미터에서 **customer_uid**, **customer_id**값을 추가하면 비 인증 결제창을 호출할 수 있습니다.
 비 인증 결제창에서 빌링키를 발급받은 후 해당 빌링키로 결제를 요청합니다.
 
 ```ts title="Javascript SDK"
@@ -322,13 +322,13 @@ IMP.request_pay(
 
   </div>
 
-- pay\_method: string
+- pay_method: string
 
   **결제수단 구분코드**
 
   - card (신용카드)
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
@@ -340,31 +340,31 @@ IMP.request_pay(
 
   **주문명**
 
-- customer\_uid: string
+- customer_uid: string
 
   **빌링키 발급을 위한 결제 수단을 특정하는 고유 번호**
 
   빌링키 발급시 필수 입력
 
-- customer\_id: string
+- customer_id: string
 
   **구매자 식별자**
 
   주의: 스마트로 빌링키 발급시 필수 입력으로 입력 길이는 **20자**로 제한됩니다.
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **구매자 연락처**
 
-- m\_redirect\_url: string
+- m_redirect_url: string
 
   **리다이렉트 URL**
 
@@ -372,17 +372,17 @@ IMP.request_pay(
 
   스마트로의 경우 모바일 환경에서 **리디렉션 방식으로 빌링키 발급창이 렌더링 되기 때문에 필수입력입니다.**
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
 - bypass?: object
 
-  - smartro\_v2?: object
+  - smartro_v2?: object
 
     **스마트로 빌링키 발급 전용 파라미터**
 

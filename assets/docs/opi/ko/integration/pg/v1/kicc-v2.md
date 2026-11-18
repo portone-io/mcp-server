@@ -13,7 +13,7 @@ targetVersions:
 
 - **결제창 일반 결제**
 
-  KICC 해외결제를 통해 위챗페이와 알리페이 플러스를 이용할 수 있습니다.
+  KICC 해외결제를 통해 위챗페이, 알리페이 플러스, 라인페이를 이용할 수 있습니다.
   이용하고자 하는 결제사 별 파라미터는 아래를 참고해주세요.
 
 ## SDK 결제 요청하기
@@ -59,28 +59,29 @@ IMP.request_pay(
 
 포트원 콘솔 내 \[결제 연동] - \[연동 정보] - \[채널 관리] 에서 확인 가능합니다.
 
-- pay\_method: string
+- pay_method: string
 
   **결제수단 구분코드**
 
   - wechat (위챗페이)
-  - alipay\_plus (알리페이 플러스)
+  - alipay_plus (알리페이 플러스)
+  - linepay (라인페이)
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
   고객사에서 매번 고유하게 채번되어야 합니다.
 
-- buyer\_name: string
+- buyer_name: string
 
   **주문자 이름**
 
-- buyer\_email: string
+- buyer_email: string
 
   **주문자 이메일**
 
-- buyer\_tel: string
+- buyer_tel: string
 
   **주문자 연락처**
 
@@ -147,32 +148,33 @@ IMP.request_pay(
 
   포트원 콘솔 내 \[결제 연동] - \[연동 정보] - \[채널 관리] 에서 확인 가능합니다.
 
-- pay\_method: string
+- pay_method: string
 
   **결제수단 구분코드**
 
   - wechat (위챗페이)
-  - alipay\_plus (알리페이 플러스)
+  - alipay_plus (알리페이 플러스)
+  - linepay (라인페이)
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
   고객사에서 매번 고유하게 채번되어야 합니다.
 
-- buyer\_name: string
+- buyer_name: string
 
   **주문자 이름**
 
-- buyer\_email: string
+- buyer_email: string
 
   **주문자 이메일**
 
-- buyer\_tel: string
+- buyer_tel: string
 
   **주문자 연락처**
 
-- order\_description: string
+- order_description: string
 
   **주문 상세 정보**
 
@@ -205,7 +207,7 @@ IMP.request_pay(
   - `en`: 영어
   - `zh`: 중국어 (중국본토)
 
-- alipay\_plus: object
+- alipay_plus: object
 
   **알리페이 플러스 정보**
 
@@ -228,6 +230,85 @@ IMP.request_pay(
     - `tinaba`: Tinaba (티나바)
     - `mpay`: MPay (엠페이)
     - `kredivo`: Kredivo (크레디보)
+
+</div>
+
+<div class="tabs-content" data-title="라인페이">
+
+```javascript
+IMP.request_pay(
+  {
+    channelKey: "{콘솔 내 연동 정보의 채널키}",
+    pay_method: "linepay",
+    merchant_uid: "order_no_0001",
+    name: "주문명:결제테스트",
+    amount: 1004,
+    buyer_email: "test@portone.io",
+    buyer_name: "구매자이름",
+    buyer_tel: "010-1234-5678",
+    m_redirect_url: "{모바일에서 결제 완료 후 리디렉션 될 URL}",
+  },
+  function (rsp) {
+    // callback 로직
+    //* ...중략... *//
+  },
+);
+```
+
+**주요 파라미터 설명**
+
+- channelKey: string
+
+  **채널키**
+
+  결제를 진행할 채널을 지정합니다.
+
+  포트원 콘솔 내 \[결제 연동] - \[연동 정보] - \[채널 관리] 에서 확인 가능합니다.
+
+- pay_method: string
+
+  **결제수단 구분코드**
+
+  - wechat (위챗페이)
+  - alipay_plus (알리페이 플러스)
+  - linepay (라인페이)
+
+- merchant_uid: string
+
+  **주문번호**
+
+  고객사에서 매번 고유하게 채번되어야 합니다.
+
+- name: string
+
+  **주문명**
+
+- buyer_name: string
+
+  **주문자 이름**
+
+- buyer_email: string
+
+  **주문자 이메일**
+
+- buyer_tel: string
+
+  **주문자 연락처**
+
+- amount: number
+
+  **결제금액**
+
+- currency: string
+
+  **결제 통화 코드**
+
+  [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) 통화 코드
+
+  - `KRW`: 한국 원
+  - `USD`: 미국 달러
+
+  미입력하거나 올바르지 않은 값을 입력한 경우 원화(KRW)결제로 동작합니다.
 
 </div>
 
@@ -258,6 +339,11 @@ IMP.request_pay(
 
 등록되어있지 않은 도메인에 대해서는 모바일 결제 시도 시 오류 페이지로 연결되므로 유의 바랍니다.
 
+### 테스트 환경 제약
+
+위챗페이 테스트 환경 MID는 PC 결제 테스트만 지원하며 모바일 결제 테스트는 지원하지 않습니다.
+모바일 결제 테스트가 필요한 경우 운영 환경 MID로 진행해야 합니다.
+
 </div>
 
 <div class="tabs-content" data-title="알리페이 플러스">
@@ -265,6 +351,18 @@ IMP.request_pay(
 ### 결제 승인
 
 알리페이 플러스의 경우 일부 결제 수단은 앱으로 QR코드를 스캔하여 결제를 진행하는 방식으로 결제창이 닫힌 이후에도 구매자가 QR코드를 이미
+스캔해둔 상태라면 언제든지 결제 승인이 발생할 수 있습니다.
+
+따라서 PC에서 callback / Mobile에서 redirect 된 이후 결제내역 조회를 통해 확인된 상태값을 100% 신뢰하지 않도록
+해야하며 웹훅 연동은 필수로 진행해야합니다.
+
+</div>
+
+<div class="tabs-content" data-title="라인페이">
+
+### 결제 승인
+
+라인페이의 경우 라인 앱을 이용해 QR코드를 스캔하여 결제를 진행하는 방식으로 결제창이 닫힌 이후에도 구매자가 QR코드를 이미
 스캔해둔 상태라면 언제든지 결제 승인이 발생할 수 있습니다.
 
 따라서 PC에서 callback / Mobile에서 redirect 된 이후 결제내역 조회를 통해 확인된 상태값을 100% 신뢰하지 않도록

@@ -169,6 +169,13 @@ app.post("/payments/cancel", async (req, res, next) => {
 
 </div>
 
+> **취소 통보 웹훅 전송 여부**(`enable_webhook`)
+>
+> 취소 성공 시 고객사로 취소 통보 웹훅(status: `cancelled`)을 전송할지 여부입니다. (default: `false`)
+> 본 API를 통한 취소는 기본적으로 고객사로 웹훅을 전송하지 않습니다.
+> `true`로 설정한 경우에 한해 고객사 웹훅 설정에 저장된 웹훅 경로로 취소 통보 웹훅을 전송합니다.
+> **단, 결제 시 웹훅을 사용한 결제건에 한합니다.**
+
 아래는 환불 요청을 하는 예제입니다.
 
 ```ts title="Node.js"
@@ -281,9 +288,7 @@ REST API[**(POST https://api.iamport.kr/payments/cancel)**](https://developers.p
 <script>
   function cancelPay() {
     jQuery
-      .ajax({
-        /* ... 중략 ... */
-      })
+      .ajax({/* ... 중략 ... */})
       .done(function (result) {
         // 환불 성공시 로직
         alert("환불 성공");

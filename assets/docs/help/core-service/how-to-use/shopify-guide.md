@@ -37,6 +37,7 @@ Shopify(쇼피파이) 온라인 커머스 플랫폼 서비스로 포트원에서
 - [300씨비티↗](https://300cbt.com/)
 - [브레스커뮤니케이션즈↗](https://b-works.link/)
 - [어바닉랩스↗](https://urbaniclabsinc.com/)
+- [브릿지세븐↗](https://bridge7.co.kr/)
 
 ### **포트원 비용 안내**
 

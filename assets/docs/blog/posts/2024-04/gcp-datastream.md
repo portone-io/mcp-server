@@ -102,7 +102,7 @@ being ingested via Datastream and want to add a partition.
 
 - Pause the Datastream that ingests the _**transaction**_ table.
 
-- Create a new _**transaction\_v2**_ table using the same Data Definition Language (DDL)
+- Create a new _**transaction_v2**_ table using the same Data Definition Language (DDL)
   as the original _**transaction**_ table but by appending the partition clause.
 
   Find the DDL for the existing _**transaction**_ table.
@@ -129,20 +129,20 @@ being ingested via Datastream and want to add a partition.
   CLUSTER BY id;
   ```
 
-- Insert data from the _**transaction**_ into _**transaction\_v2**_.
+- Insert data from the _**transaction**_ into _**transaction_v2**_.
 
 - Drop the _**transaction**_ table.
 
-- Create a new _**transaction**_ table using the DDL of _**transaction\_v2**_,
+- Create a new _**transaction**_ table using the DDL of _**transaction_v2**_,
   which has the partition clause.
 
-- Insert data from _**transaction\_v2**_ into the new _**transaction**_ table.
+- Insert data from _**transaction_v2**_ into the new _**transaction**_ table.
 
-- Drop the _**transaction\_v2**_ table.
+- Drop the _**transaction_v2**_ table.
 
 - Resume the Datastream.
 
-Using **updated\_at** as a partition column in the raw tables
+Using **updated_at** as a partition column in the raw tables
 allows us to retrieve any new changes from the raw table
 without scanning the entire table for mart table updates.
 

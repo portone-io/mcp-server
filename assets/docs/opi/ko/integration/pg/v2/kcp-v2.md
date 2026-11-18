@@ -177,31 +177,31 @@ function requestPayment() {
 
   **PG사 결제창 호출 시 PG사로 그대로 bypass할 파라미터들의 모음**
 
-  - kcp\_v2?: object
+  - kcp_v2?: object
 
     **KCP에서 제공하는 파라미터 모음**
 
-    - site\_logo?: string
+    - site_logo?: string
 
       **결제창에 삽입할 메인 로고 url**
 
       - 결제창 왼쪽 상단에 표시됩니다.
       - 이미지 사이즈는 150\*50 미만으로 설정해야 하며, GIF, JPG 파일만 지원됩니다.
 
-    - skin\_indx?: integer
+    - skin_indx?: integer
 
       **결제창 색상**
 
       - PC로 결제창 호출 시 결제창 색상을 변경합니다.
       - 1\~12까지 설정 가능합니다.
 
-    - kcp\_pay\_title?: string
+    - kcp_pay_title?: string
 
       **결제창 상단 문구**
 
       - 결제창의 상단 문구를 변경합니다.
 
-    - shop\_user\_id?: string
+    - shop_user_id?: string
 
       **리스크 관리 조치를 위한 고객사 회원 ID**
 
@@ -209,14 +209,14 @@ function requestPayment() {
       - 고객사에서 관리하는 구매자의 회원 ID를 입력합니다.
       - 상품권, 휴대폰 결제 시 필수로 입력해야 합니다.
 
-    - site\_name?: string
+    - site_name?: string
 
       **카드사 다이렉트 호출 시 결제창에 표기될 상호명**
 
       - PC의 경우 신한, 현대, 삼성, 농협, 하나, 외환, 롯데, 씨티, 우리카드사에 대해 다이렉트 호출 시 필수로 입력해야 합니다.
       - 모바일의 경우 필수로 입력해야 합니다.
 
-    - disp\_tax\_yn?: string
+    - disp_tax_yn?: string
 
       **결제창 현금영수증 노출 여부**
 
@@ -226,7 +226,7 @@ function requestPayment() {
       - `R`: 소득공제로 노출
       - `E`: 지출증빙으로 노출
 
-    - deli\_term?: string
+    - deli_term?: string
 
       **에스크로 결제 예상 배송 소요일**
 
@@ -559,7 +559,6 @@ function requestIssueBillingKey() {
   **빌링키 발급 건 고유 ID**
 
   - 고객사에서 채번하여 사용해야 합니다.
-  - KCP의 경우 필수 입력해야 합니다. // 추후 수정 필요, 포트원 내부 채번으로 수정할 예정
 
 - issueName: string
 
@@ -599,11 +598,11 @@ function requestIssueBillingKey() {
 
   **PG사 결제창 호출 시 PG사로 그대로 bypass할 파라미터들의 모음**
 
-  - kcp\_v2?: object
+  - kcp_v2?: object
 
     **KCP에서 제공하는 파라미터 모음**
 
-    - batch\_soc\_choice?: 'percard' | 'cocard'
+    - batch_soc_choice?: 'percard' | 'cocard'
 
       **결제창에서 주민번호/사업자 번호 고정여부 설정**
 
@@ -629,6 +628,35 @@ KCP 경우 카드사 다이렉트 호출을 통한 빌링키 발급을 지원하
 `card.cardCompany` 필드에 값을 채워도 빌링키 발급 동작에 아무런 영향을 미치지 않습니다.
 
 </details>
+
+## SDK 구독 등록 요청하기
+
+[구독 결제](https://developers.portone.io/opi/ko/extra/subscription/intro)를 사용하는 경우 `requestSubscriptionRegistration` 함수로 결제수단 등록과 첫 회차 결제를 한 번에 처리할 수 있습니다.
+NHN KCP 채널은 결제창에서 빌링키를 발급한 뒤 포트원이 그 빌링키로 첫 회차를 결제합니다.
+금액, 주문명, 구매자 정보는 사전 등록한 구독에서 가져오므로 전달하지 않습니다.
+
+<div class="tabs-container">
+
+<div class="tabs-content" data-title="SDK 구독 등록 요청">
+
+```ts
+import * as PortOne from "@portone/browser-sdk/v2";
+function requestSubscriptionRegistration() {
+  PortOne.requestSubscriptionRegistration({
+    storeId: "store-00000000-0000-0000-0000-000000000000", // 고객사 storeId로 변경해주세요.
+    channelKey: "channel-key-00000000-0000-0000-0000-000000000000", // 콘솔 결제 연동 화면에서 채널 연동 시 생성된 채널 키를 입력해주세요.
+    subscriptionId: "subscription-0193c1a2", // 구독 사전 등록 API로 만든 구독 아이디를 입력해주세요.
+    registrationSecret: "rsec_...", // 구독 사전 등록 API 응답의 registrationSecret을 입력해주세요.
+    billingKeyMethod: "CARD",
+  });
+}
+```
+
+</div>
+
+</div>
+
+구독 사전 등록, 결과 확인, 파라미터 설명은 [구독 결제 연동하기](https://developers.portone.io/opi/ko/extra/subscription/integration)를 참고해주세요.
 
 ## API 수기(키인)결제 요청하기
 

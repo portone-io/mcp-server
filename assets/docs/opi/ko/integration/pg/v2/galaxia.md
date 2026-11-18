@@ -64,11 +64,6 @@ function requestPayment() {
       phoneNumber: "010-0000-1234",
       email: "test@portone.io",
     },
-    bypass: {
-      galaxia: {
-        ITEM_CODE: "상품코드", // 필수, 최대 10바이트
-      },
-    },
   });
 }
 ```
@@ -284,20 +279,6 @@ function requestPayment() {
     - 페이코: `PAYCO`
     - 머니트리: `MONEYTREE`
 
-- bypass: object
-
-  **PG사 결제창 호출 시 PG사로 그대로 bypass할 파라미터들의 모음**
-
-  - galaxia: object
-
-    **갤럭시아머니트리 전용 파라미터**
-
-    - ITEM\_CODE: string
-
-      **구매 상품코드**
-
-      갤럭시아머니트리에서 발급받은 상품 코드를 입력합니다. (최대 10자, **필수**)
-
 ### 유의사항
 
 <details>
@@ -308,17 +289,17 @@ function requestPayment() {
 
 - TRANSFER (실시간 계좌이체) + 에스크로
 
-- VIRTUAL\_ACCOUNT (가상계좌) + 에스크로
+- VIRTUAL_ACCOUNT (가상계좌) + 에스크로
 
 - MOBILE (휴대폰소액결제)
 
-- GIFT\_CERTIFICATE (상품권)
+- GIFT_CERTIFICATE (상품권)
   - CULTURELAND (컬쳐랜드)
-  - SMART\_MUNSANG (스마트문상)
+  - SMART_MUNSANG (스마트문상)
   - BOOKNLIFE (도서문화상품권)
   - HAPPYMONEY (해피머니)
 
-- EASY\_PAY (간편결제)
+- EASY_PAY (간편결제)
   - KAKAOPAY (카카오페이)
   - NAVERPAY (네이버페이)
   - TOSSPAY (토스페이)
@@ -365,11 +346,6 @@ function requestIssueBillingKey() {
       fullName: "포트원",
       phoneNumber: "010-0000-1234",
       email: "test@portone.io",
-    },
-    bypass: {
-      galaxia: {
-        ITEM_CODE: "상품코드", // 필수, 최대 10바이트
-      },
     },
   });
 }
@@ -459,20 +435,6 @@ function requestIssueBillingKey() {
 
   갤럭시아머니트리의 경우 **모바일 환경에서 필수 입력**입니다.
 
-- bypass: object
-
-  **PG사 결제창 호출 시 PG사로 그대로 bypass할 파라미터들의 모음**
-
-  - galaxia: object
-
-    **갤럭시아머니트리 전용 파라미터**
-
-    - ITEM\_CODE: string
-
-      **구매 상품코드**
-
-      고객사에서 내부적으로 관리하는 상품 코드를 입력합니다. (최대 10자, **필수**)
-
 <details>
 
 <summary>갤럭시아머니트리 지원 빌링키 발급 수단</summary>
@@ -480,6 +442,35 @@ function requestIssueBillingKey() {
 - CARD (카드)
 
 </details>
+
+## SDK 구독 등록 요청하기
+
+[구독 결제](https://developers.portone.io/opi/ko/extra/subscription/intro)를 사용하는 경우 `requestSubscriptionRegistration` 함수로 결제수단 등록과 첫 회차 결제를 한 번에 처리할 수 있습니다.
+갤럭시아머니트리 채널은 결제창에서 빌링키를 발급한 뒤 포트원이 그 빌링키로 첫 회차를 결제합니다.
+금액, 주문명, 구매자 정보는 사전 등록한 구독에서 가져오므로 전달하지 않습니다.
+
+<div class="tabs-container">
+
+<div class="tabs-content" data-title="SDK 구독 등록 요청">
+
+```ts
+import * as PortOne from "@portone/browser-sdk/v2";
+function requestSubscriptionRegistration() {
+  PortOne.requestSubscriptionRegistration({
+    storeId: "store-00000000-0000-0000-0000-000000000000", // 고객사 storeId로 변경해주세요.
+    channelKey: "channel-key-00000000-0000-0000-0000-000000000000", // 콘솔 결제 연동 화면에서 채널 연동 시 생성된 채널 키를 입력해주세요.
+    subscriptionId: "subscription-0193c1a2", // 구독 사전 등록 API로 만든 구독 아이디를 입력해주세요.
+    registrationSecret: "rsec_...", // 구독 사전 등록 API 응답의 registrationSecret을 입력해주세요.
+    billingKeyMethod: "CARD",
+  });
+}
+```
+
+</div>
+
+</div>
+
+구독 사전 등록, 결과 확인, 파라미터 설명은 [구독 결제 연동하기](https://developers.portone.io/opi/ko/extra/subscription/integration)를 참고해주세요.
 
 ## SDK 빌링키 발급 및 결제 요청하기
 
@@ -508,11 +499,6 @@ function requestIssueBillingKeyAndPay() {
       fullName: "포트원",
       phoneNumber: "010-0000-1234",
       email: "test@portone.io",
-    },
-    bypass: {
-      galaxia: {
-        ITEM_CODE: "상품코드", // 필수, 최대 10바이트
-      },
     },
   });
 }
@@ -612,20 +598,6 @@ function requestIssueBillingKeyAndPay() {
 
     `SKT`, `KT`, `LGU`, `HELLO`, `KCT`, `SK7`
 
-- bypass: object
-
-  **PG사 결제창 호출 시 PG사로 그대로 bypass할 파라미터들의 모음**
-
-  - galaxia: object
-
-    **갤럭시아머니트리 전용 파라미터**
-
-    - ITEM\_CODE: string
-
-      **구매 상품코드**
-
-      갤럭시아머니트리에서 발급받은 상품 코드를 입력합니다. (최대 10자, **필수**)
-
 <details>
 
 <summary>갤럭시아머니트리 지원 빌링키 발급과 동시에 결제 수단</summary>
@@ -640,7 +612,6 @@ function requestIssueBillingKeyAndPay() {
 
 갤럭시아머니트리 연동 시 아래 파라미터는 필수로 입력해야 합니다.
 
-- `bypass.galaxia.ITEM_CODE`: 고객사에서 내부적으로 관리하는 상품 코드 (최대 10자)
 - `customer.customerId`: 고객사가 구매자에게 부여한 고유 ID (최대 20자)
 - `orderName`: 주문명
 

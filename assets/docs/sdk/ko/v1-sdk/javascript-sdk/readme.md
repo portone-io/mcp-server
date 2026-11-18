@@ -30,14 +30,14 @@ versionVariants:
 더 이상 포트원 SDK를 사용하기 위해 jQuery를 추가하실 필요가 없습니다.\
 고객사 페이지에서 **jQuery를 추가로 사용하지 않으시는 경우 jQuery 의존성을 삭제해주세요.**
 
-### **2. request\_pay 응답 객체에 \`success\`가 포함되지 않습니다.**
+### **2. request_pay 응답 객체에 \`success\`가 포함되지 않습니다.**
 
 기존에 제공되는 `success` 또는 `imp_success` 프로퍼티는 결제 성공 여부가 아닌 내부 트랜잭션 정상
 종료 여부를 나타냈기에 의미가 모호하여 응답에 포함되지 않도록 수정되었습니다.
 
 <div class="hint" data-style="danger">
 
-**success**나 **error\_code**는 **결제 성공 여부를 나타내지 않습니다.**
+**success**나 **error_code**는 **결제 성공 여부를 나타내지 않습니다.**
 
 포트원 REST API로 [결제 상세 내역을 조회](https://developers.portone.io/api/rest-v1/payment?v=v1#get%20%2Fpayments%2F%7Bimp_uid%7D)해야 결제 성공 여부를 받을 수 있습니다.
 

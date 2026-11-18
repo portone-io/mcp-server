@@ -69,7 +69,7 @@ IMP.request_pay(
 
   </div>
 
-- pay\_method: string
+- pay_method: string
 
   **결제수단 구분코드**
 
@@ -81,8 +81,9 @@ IMP.request_pay(
   - 일본 편의점결제(eContext): `econtext`
   - 위챗페이: `wechat`
   - 몰페이: `molpay`
+  - 애플페이: `applepay`
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **고객사 고유주문번호**
 
@@ -92,25 +93,25 @@ IMP.request_pay(
 
   **주문명**
 
-- buyer\_name: string
+- buyer_name: string
 
   **구매자명**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
-- buyer\_tel: string
+- buyer_tel: string
 
   **구매자 연락처**
 
-- buyer\_addr?: string
+- buyer_addr?: string
 
   **구매자 주소**
 
   `bypass.shipTo_street1`의 기본값으로 사용됩니다.
 
-- buyer\_postcode?: string
+- buyer_postcode?: string
 
   **구매자 우편번호**
 
@@ -141,15 +142,15 @@ IMP.request_pay(
 
   **팝업창 활성화 여부**
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 결제 후 리디렉션 될 URL**
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
@@ -163,59 +164,59 @@ IMP.request_pay(
 
       **국내 결제창 호출 시 `KR`로 설정**
 
-    - shipTo\_city?: string
+    - shipTo_city?: string
 
       **배송지 도시**
 
-    - shipTo\_country?: string
+    - shipTo_country?: string
 
       **배송지 국가코드**
 
-    - shipTo\_firstName?: string
+    - shipTo_firstName?: string
 
       **수취인 이름**
 
-    - shipTo\_lastName?: string
+    - shipTo_lastName?: string
 
       **수취인 성**
 
-    - shipTo\_phoneNumber?: string
+    - shipTo_phoneNumber?: string
 
       **수취인 연락처**
 
-    - shipTo\_state?: string
+    - shipTo_state?: string
 
       **배송지 주/도**
 
-    - billTo\_city?: string
+    - billTo_city?: string
 
       **청구지 도시**
 
-    - billTo\_country?: string
+    - billTo_country?: string
 
       **청구지 국가코드**
 
-    - billTo\_firstName?: string
+    - billTo_firstName?: string
 
       **청구인 이름**
 
-    - billTo\_lastName?: string
+    - billTo_lastName?: string
 
       **청구인 성**
 
-    - billTo\_phoneNumber?: string
+    - billTo_phoneNumber?: string
 
       **청구인 연락처**
 
-    - billTo\_postalCode?: string
+    - billTo_postalCode?: string
 
       **청구지 우편번호**
 
-    - billTo\_state?: string
+    - billTo_state?: string
 
       **청구지 주/도**
 
-    - billTo\_street1?: string
+    - billTo_street1?: string
 
       **청구지 주소**
 

@@ -194,7 +194,7 @@ Pay Later로 결제가 가능한 국가와 통화는 매우 제한적이며 그 
 
 즉, 예를 들어 고객사가 독일, 스페인, 이탈리아 이렇게 3개 나라에 대해 서비스를 제공하고 각 나라별 Pay Later 기능도 함께 제공한다고 가정합니다. 이 경우 고객사는 독일, 스페인, 이탈리아용 **페이팔 머천트 계정을 각각 따로 만들어야** 합니다.
 
-가입 후 부여 받은 페이팔 Account ID(IMP.loadUI 함수 호출시 pg 파라미터로 전달)가 각각 D, E, I라고 한다면, **고객사는 구매자가 접속한 국가에 따라 올바른 Account ID를 전달해야** 합니다. 즉, 구매자가 독일에서 접속 한 경우엔 pg: "paypal\_v2.D", 스페인에서 접속 한 경우에는 pg: "paypal\_v2.E" 마지막으로 이탈리아에서 접속 한 경우에는 pg: "paypal\_v2.I"로 입력해줘야합니다.
+가입 후 부여 받은 페이팔 Account ID(IMP.loadUI 함수 호출시 pg 파라미터로 전달)가 각각 D, E, I라고 한다면, **고객사는 구매자가 접속한 국가에 따라 올바른 Account ID를 전달해야** 합니다. 즉, 구매자가 독일에서 접속 한 경우엔 pg: "paypal_v2.D", 스페인에서 접속 한 경우에는 pg: "paypal_v2.E" 마지막으로 이탈리아에서 접속 한 경우에는 pg: "paypal_v2.I"로 입력해줘야합니다.
 
 </details>
 
@@ -234,11 +234,11 @@ IMP.loadUI 함수를 호출해 페이팔 결제 버튼을 렌더링하면 구매
 
 <summary>배송지 국가가 해당 Alternative Method 지원 국가와 일치해야 함</summary>
 
-페이팔은 기본적으로 구매자가 페이팔에 가입할때 입력 한 배송 주소를 결제 창에 자동으로 입력해줍니다. 만약 이 배송 주소를 override하고 싶다면 purchase\_units\[].shipping.address 파라미터에 override할 주소를 입력하면 됩니다.
+페이팔은 기본적으로 구매자가 페이팔에 가입할때 입력 한 배송 주소를 결제 창에 자동으로 입력해줍니다. 만약 이 배송 주소를 override하고 싶다면 purchase_units\[].shipping.address 파라미터에 override할 주소를 입력하면 됩니다.
 
-이때 국가 코드(purchase\_units\[].shipping.address.country\_code)는 필수 입력인데 **Alternative Method로 결제시에는 이 country\_code가 해당 Alternative Method 결제가 불가능한 나라인 경우엔 결제가 불가능**하기 때문에 주의가 요구됩니다.
+이때 국가 코드(purchase_units\[].shipping.address.country_code)는 필수 입력인데 **Alternative Method로 결제시에는 이 country_code가 해당 Alternative Method 결제가 불가능한 나라인 경우엔 결제가 불가능**하기 때문에 주의가 요구됩니다.
 
-예를 들어 벨기에(국가코드 BE)에서만 사용 가능한 BanContact로 결제시, purchase\_units\[].shipping.address.country\_code를 BE가 아닌 다른 값으로 입력하고 BanContact 버튼을 누르면 아래와 같은 일반 카드 결제 화면이 렌더링 됩니다.
+예를 들어 벨기에(국가코드 BE)에서만 사용 가능한 BanContact로 결제시, purchase_units\[].shipping.address.country_code를 BE가 아닌 다른 값으로 입력하고 BanContact 버튼을 누르면 아래와 같은 일반 카드 결제 화면이 렌더링 됩니다.
 
 (관련 이미지 첨부)
 
@@ -262,13 +262,13 @@ IMP.loadUI 함수를 호출해 페이팔 결제 버튼을 렌더링하면 구매
 
   (관련 이미지 첨부)
 
-- pay\_method: 'paypal'
+- pay_method: 'paypal'
 
   `paypal`만 입력 가능하며 다른 값을 입력하면 “페이팔에서 제공하지 않는 결제 수단입니다.”라는 에러 메시지와 함께 결제창이 호출되지 않습니다.
 
-  또한 pay\_method를 `paypal`로 입력 후 카드, 계좌 등 어떤 결제 수단으로 결제를 해도 결제 수단은 무조건 `paypal`로 저장됩니다. 이는 페이팔이 실제 결제 된 수단을 구분해 알려주지 않고 모두 `paypal`로 일괄 응답해주기 때문입니다.
+  또한 pay_method를 `paypal`로 입력 후 카드, 계좌 등 어떤 결제 수단으로 결제를 해도 결제 수단은 무조건 `paypal`로 저장됩니다. 이는 페이팔이 실제 결제 된 수단을 구분해 알려주지 않고 모두 `paypal`로 일괄 응답해주기 때문입니다.
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   구매자의 휴대폰 번호를 의미하며 [E164 형식](http://www.itu.int/rec/T-REC-E.164-201011-I/en)으로 입력해주셔야 합니다. 예를 들어 01012345678이라는 휴대폰 번호를 갖는 한국 사용자는 국가 번호 82와 앞에 0을 제외한 10123456778을 입력하셔야 합니다. 입력 된 휴대폰 번호는 페이팔 비회원으로 결제시 연락처 정보에 자동 입력됩니다.
 
@@ -329,19 +329,19 @@ IMP.loadUI 함수를 호출해 페이팔 결제 버튼을 렌더링하면 구매
 
   (관련 이미지 첨부)
 
-- buyer\_first\_name?: string
+- buyer_first_name?: string
 
-- buyer\_last\_name?: string
+- buyer_last_name?: string
 
-  `buyer_first_name`과 `buyer_last_name`은 페이팔 **비회원으로 결제시** 결제창 내 자동 입력 될 청구 인(payer)의 이름 정보입니다. 회원으로 결제시에는 **회원 가입시 입력 한 이름 정보가 자동으로 입력**되기 때문에 buyer\_first\_name과 buyer\_last\_name으로 override 되지 않습니다.
+  `buyer_first_name`과 `buyer_last_name`은 페이팔 **비회원으로 결제시** 결제창 내 자동 입력 될 청구 인(payer)의 이름 정보입니다. 회원으로 결제시에는 **회원 가입시 입력 한 이름 정보가 자동으로 입력**되기 때문에 buyer_first_name과 buyer_last_name으로 override 되지 않습니다.
 
-  페이팔은 해외 결제이기 때문에 이름 전체를 의미하는 기존 buyer\_name 파라미터 대신 buyer\_fist\_name(이름)과 buyer\_last\_name(성)을 구분해 입력해 주셔야 결제창 내 정상적으로 자동 입력됩니다.
+  페이팔은 해외 결제이기 때문에 이름 전체를 의미하는 기존 buyer_name 파라미터 대신 buyer_fist_name(이름)과 buyer_last_name(성)을 구분해 입력해 주셔야 결제창 내 정상적으로 자동 입력됩니다.
 
   (관련 이미지 첨부)
 
 - bypass?: object
 
-  - paypal\_v2?: object
+  - paypal_v2?: object
 
     - style?: object
 
@@ -396,17 +396,17 @@ IMP.loadUI 함수를 호출해 페이팔 결제 버튼을 렌더링하면 구매
 
       (이미지 첨부: 접속 국가: 이탈리아 enable-funding: “paylater” disable-funding: “mybank”)
 
-    - purchase\_units: object\[]
+    - purchase_units: object\[]
 
       페이팔 주문 상세 정보를 의미하는 배열로 각각의 element에 배송 정보를 담을 수 있습니다.
 
-      💡 포트원을 통해 페이팔을 연동하는 고객사는 **purchase\_units의 길이가 항상 0 또는 1이어야** 합니다.
+      💡 포트원을 통해 페이팔을 연동하는 고객사는 **purchase_units의 길이가 항상 0 또는 1이어야** 합니다.
 
-      페이팔은 구매자가 페이팔에 가입할때 입력 한 배송주소를 결제창에 기본적으로 렌더링하지만, 이를 override하고 싶을때 purchase\_units\[].shipping.address에 override할 주소를 입력할 수 있습니다. 단, **주소가 유효하지 않거나 address\_line\_1을 입력하지 않은 경우엔 override가 되지 않**습니다.
+      페이팔은 구매자가 페이팔에 가입할때 입력 한 배송주소를 결제창에 기본적으로 렌더링하지만, 이를 override하고 싶을때 purchase_units\[].shipping.address에 override할 주소를 입력할 수 있습니다. 단, **주소가 유효하지 않거나 address_line_1을 입력하지 않은 경우엔 override가 되지 않**습니다.
 
       💡 배송 정보 중 `admin_area_2`와 `country_code`는 필수 입력입니다.
 
-      purchase\_units\[]에 입력 된 배송 정보는 기본적으로 결제창에 자동 완성되지만, 페이팔 회원으로 결제할 때와 비회원으로 결제할 때 각각 다른 정책이 적용됩니다.
+      purchase_units\[]에 입력 된 배송 정보는 기본적으로 결제창에 자동 완성되지만, 페이팔 회원으로 결제할 때와 비회원으로 결제할 때 각각 다른 정책이 적용됩니다.
 
       - **페이팔 회원으로 결제시**
 
@@ -450,7 +450,7 @@ IMP.loadUI 함수를 호출해 페이팔 결제 버튼을 렌더링하면 구매
 
         - **payer.address 정보 미입력 && shipping.address 정보 입력**
 
-          구매자의 청구 주소(bypass.paypal\_v2.payer.address)를 입력하지 않고 배송 주소(bypass.paypal\_v2.shipping.address)만 입력 한 경우엔, 청구 주소란에 배송 주소가 자동 완성됩니다.
+          구매자의 청구 주소(bypass.paypal_v2.payer.address)를 입력하지 않고 배송 주소(bypass.paypal_v2.shipping.address)만 입력 한 경우엔, 청구 주소란에 배송 주소가 자동 완성됩니다.
 
           ```json
           {
@@ -486,7 +486,7 @@ IMP.loadUI 함수를 호출해 페이팔 결제 버튼을 렌더링하면 구매
 
       - **payer.address 정보 입력 && shipping.address 정보 입력**
 
-        구매자의 청구 주소(bypass.paypal\_v2.payer.address)와 배송 주소(bypass.paypal\_v2.shipping.address)를 모두 입력한 경우엔, “청구 주소와 동일한 배송주소” 체크박스를 해제했을때 하단에 렌더링 되는 배송 정보란에 배송 주소가 자동 완성됩니다.
+        구매자의 청구 주소(bypass.paypal_v2.payer.address)와 배송 주소(bypass.paypal_v2.shipping.address)를 모두 입력한 경우엔, “청구 주소와 동일한 배송주소” 체크박스를 해제했을때 하단에 렌더링 되는 배송 정보란에 배송 주소가 자동 완성됩니다.
 
         ```json
         {
@@ -538,7 +538,7 @@ IMP.loadUI 함수를 호출해 페이팔 결제 버튼을 렌더링하면 구매
 
     - payer?: object
 
-      - tax\_info?: object
+      - tax_info?: object
 
         구매자의 세금 정보로 브라질(에서 접속한 또는 브라질 계정으로 로그인 한) 구매자에 한 해 필수 입력입니다.
 
@@ -624,7 +624,7 @@ IMP.loadUI 함수를 호출해 페이팔 결제 버튼을 렌더링하면 구매
 
 **`tax_free`**
 
-페이팔은 면세/복합과세를 지원하지 않기 때문에 tax\_free를 입력한 경우 “taxFreeAmount must be 0 in Paypal!”이라는 에러 메시지가 리턴되면서 결제창이 호출되지 않습니다.
+페이팔은 면세/복합과세를 지원하지 않기 때문에 tax_free를 입력한 경우 “taxFreeAmount must be 0 in Paypal!”이라는 에러 메시지가 리턴되면서 결제창이 호출되지 않습니다.
 
 **`country`**
 
@@ -636,7 +636,7 @@ IMP.loadUI 함수를 호출해 페이팔 결제 버튼을 렌더링하면 구매
 
 페이팔 결제창 내 표기되는 주소는 결제 금액 청구지(billing information address)와 상품 배송지(shipping address) 이렇게 2가지가 있습니다. 여기서 결제 금액 청구지의 경우 페이팔 회원으로 결제할때는 회원가입시 기입한 정보가 자동 입력되기 때문에 결제창에 노출되지 않으며, 비회원으로 결제할때만 전달 된 파라미터를 기준으로 결제창에 자동 입력됩니다.
 
-단, 이때의 주소는 총 5개의 영역으로 나누어진 상세 주소로 기존에 포트원이 제공하던 buyer\_addr 파라미터로는 커버가 불가능하므로 페이팔 전용 파라미터(`bypass.paypal_v2.payer.address`)를사용하셔야 합니다.
+단, 이때의 주소는 총 5개의 영역으로 나누어진 상세 주소로 기존에 포트원이 제공하던 buyer_addr 파라미터로는 커버가 불가능하므로 페이팔 전용 파라미터(`bypass.paypal_v2.payer.address`)를사용하셔야 합니다.
 
 ```json
 {
@@ -668,7 +668,7 @@ IMP.loadUI 함수를 호출해 페이팔 결제 버튼을 렌더링하면 구매
 
 **`m_redirect_url`**
 
-페이팔의 경우 PC와 모바일 모두 팝업으로 결제창이 렌더링되기 때문에 결제 프로세스 종료시 모두 콜백 함수가 호촐됩니다. 따라서 m\_redirect\_url 파라미터는 무시됩니다.
+페이팔의 경우 PC와 모바일 모두 팝업으로 결제창이 렌더링되기 때문에 결제 프로세스 종료시 모두 콜백 함수가 호촐됩니다. 따라서 m_redirect_url 파라미터는 무시됩니다.
 
 **`app_scheme`**
 
@@ -704,7 +704,7 @@ IMP.loadUI 함수를 호출해 페이팔 결제 버튼을 렌더링하면 구매
 
 **`display`**
 
-페이팔의 경우 Pay Later Button으로 할부 결제가 가능하지만, 국가 그리고 결제 금액별로 가능한 할부 개월수가 정해져있기 때문에 결제창에 표시 될 카드 할부 개월수를 의미하는 display: { card\_quota } 파라미터는 무시됩니다.
+페이팔의 경우 Pay Later Button으로 할부 결제가 가능하지만, 국가 그리고 결제 금액별로 가능한 할부 개월수가 정해져있기 때문에 결제창에 표시 될 카드 할부 개월수를 의미하는 display: { card_quota } 파라미터는 무시됩니다.
 
 **`vbank_due`**
 

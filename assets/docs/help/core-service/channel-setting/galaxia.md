@@ -91,3 +91,5 @@ datetime: 2025-12-18T00:00:00.000Z
 - 과세설정 : [포트원 결제사정산 서비스↗ ](https://admin.portone.io/reconciliation/summary) 이용시 단순 과세계산을 위해 사용되는 항목으로 미 이용시 설정하지 않으셔도 무방합니다. 거래의 과세/면세 결 여부와는 관계없습니다.
 
 <Callout title="V1 갤럭시아머니트리 개발가이드 보러가기↗" />
+
+<Callout title="V2 갤럭시아머니트리 개발가이드 보러가기↗" />

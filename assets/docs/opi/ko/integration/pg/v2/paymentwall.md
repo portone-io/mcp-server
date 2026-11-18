@@ -157,7 +157,7 @@ function requestPayment() {
 
       페이먼트월 결제수단 코드는 포트원 코드와 상이하므로, [PAYMENTWALL Docs](https://docs.paymentwall.com/reference/payment-system-shortcodes)에서 `Payment System short code`를 확인 후 입력해야 합니다.
 
-    - country\_code?: string
+    - country_code?: string
 
       **국가 코드**
 

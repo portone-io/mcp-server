@@ -13,19 +13,19 @@ versionVariants:
 
   **본인인증 성공여부**
 
-- error\_code: string
+- error_code: string
 
   **실패코드**
 
-- error\_msg: string
+- error_msg: string
 
   **실패사유 문구**
 
-- imp\_uid: string
+- imp_uid: string
 
   **고유 본인인증 번호**
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 

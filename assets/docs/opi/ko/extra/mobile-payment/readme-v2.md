@@ -432,7 +432,7 @@ WebView에서 발생하는 URL 네비게이션을 프로토콜별로 분기 처�
 <div class="tabs-content" data-title="Flutter (Dart)">
 
 `InAppWebView`의 `shouldOverrideUrlLoading` 콜백에서 URL scheme별로 분기합니다.<br />
-전체 동작하는 예시는 [portone\_flutter SDK의 portone\_webview.dart](https://github.com/portone-io/portone_flutter/blob/233b101/lib/v2/widget/portone_webview.dart#L114-L151)를 참고하세요.
+전체 동작하는 예시는 [portone_flutter SDK의 portone_webview.dart](https://github.com/portone-io/portone_flutter/blob/233b101/lib/v2/widget/portone_webview.dart#L114-L151)를 참고하세요.
 
 ```dart
 InAppWebView(

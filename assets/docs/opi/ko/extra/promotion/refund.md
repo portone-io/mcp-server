@@ -58,14 +58,14 @@ const onetimeResponse = await fetch("https://api.iamport.kr/payments/cancel", {
 
 ### 주요 파라미터
 
-- imp\_uid: string
+- imp_uid: string
 
   **포트원 고유 주문번호**
 
   - 취소할 결제건의 포트원 고유 주문번호를 전달합니다.
   - `imp_uid`와 `merchant_uid` 둘 중 하나는 필수입니다.
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **고객사 주문번호**
 
@@ -109,7 +109,7 @@ const onetimeResponse = await fetch("https://api.iamport.kr/payments/cancel", {
 
   **취소 사유**
 
-- retain\_promotion?: boolean
+- retain_promotion?: boolean
 
   **프로모션 혜택 유지 여부**
 

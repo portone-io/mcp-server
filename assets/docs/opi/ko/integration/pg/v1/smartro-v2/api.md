@@ -95,7 +95,7 @@ targetVersions:
   - `smartro_v2`는 **`merchant_uid`** 파라미터에 특수문자 포함이 불가능합니다.
 
   - 계좌 발급 받거나 환불금액을 입금받을 수 있는 은행 목록과 코드는
-    [https://api.iamport.kr/#vbank\_codes](http://api.iamport.kr/#vbank_codes)에서 확인 가능합니다.
+    [https://api.iamport.kr/#vbank_codes](http://api.iamport.kr/#vbank_codes)에서 확인 가능합니다.
 
 ### 에스크로 배송 정보 등록
 

@@ -61,7 +61,7 @@ versionVariants:
 
 ## 컨펌 프로세스 이용방법
 
-컨펌 프로세스 이용시 고객사는 Javascript request\_pay() 함수 호출시 **confirm\_url** 파라미터를
+컨펌 프로세스 이용시 고객사는 Javascript request_pay() 함수 호출시 **confirm_url** 파라미터를
 정의하고 해당 파라미터의 고객사 EndPoint URL을 설정합니다.
 
 ```json title="JavaScript SDK"
@@ -93,4 +93,4 @@ versionVariants:
 ```
 
 전달주신 `reason` 값이 `고객사 요청에 의해 결제를 중단합니다. (상세사유 : %s)`의 상세사유에 추가되어
-결제 실패 사유(fail\_reason)으로 기록됩니다. (기본값 : `알 수 없음`)
+결제 실패 사유(fail_reason)으로 기록됩니다. (기본값 : `알 수 없음`)
