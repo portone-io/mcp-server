@@ -78,7 +78,7 @@ versionVariants:
 [JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/readme) `IMP.request_pay(param, callback)`을 호출하여
 (신) 나이스정보통신 결제창을 호출할 수 있습니다. **결제 결과**는 PC의 경우 `IMP.request_pay(param,
 callback)` 호출 후 **callback**으로 수신되고 모바일의 경우
-**m\_redirect\_url** 로 리디렉션됩니다.
+**m\_redirect_url** 로 리디렉션됩니다.
 
 <div class="tabs-container">
 
@@ -137,7 +137,7 @@ IMP.request_pay(
 
   </div>
 
-- pay\_method: string
+- pay_method: string
 
   **결제수단 구분코드**
 
@@ -146,21 +146,21 @@ IMP.request_pay(
   - vbank (가상계좌)
   - phone (휴대폰소액결제)
   - cultureland (컬쳐랜드)
-  - naverpay\_card (네이버페이 - 카드)
-  - naverpay\_point (네이버페이 - 포인트)
+  - naverpay_card (네이버페이 - 카드)
+  - naverpay_point (네이버페이 - 포인트)
   - kakaopay (카카오페이)
   - payco (페이코)
   - samsungpay (삼성페이)
   - skpay (11Pay (구.SKPay))
   - ssgpay (SSGPAY)
-  - ssgpay\_bank (SSGPAY 은행계좌)
+  - ssgpay_bank (SSGPAY 은행계좌)
   - lpay (LPAY)
   - applepay (애플페이)
-  - tosspay\_card (토스페이 - 카드)
-  - tosspay\_money (토스페이 - 머니)
+  - tosspay_card (토스페이 - 카드)
+  - tosspay_money (토스페이 - 머니)
   - alipay (알리페이)
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
@@ -184,35 +184,35 @@ IMP.request_pay(
 
   소수점 두번째 자리까지 허용합니다.
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
-- buyer\_tel: string
+- buyer_tel: string
 
   **구매자 전화번호**
 
-- buyer\_addr?: string
+- buyer_addr?: string
 
   **구매자 주소**
 
-- buyer\_postcode?: string
+- buyer_postcode?: string
 
   **구매자 우편번호**
 
-- tax\_free?: number
+- tax_free?: number
 
   **면세금액**
 
-- vat\_amount?: number
+- vat_amount?: number
 
   **부가세**
 
-- vbank\_due: string
+- vbank_due: string
 
   **가상계좌 입금기한**
 
@@ -243,25 +243,25 @@ IMP.request_pay(
   - KRW (한국 원)
   - USD (미국 달러)
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 결제 후 리디렉션 될 URL**
 
-- app\_scheme?: string
+- app_scheme?: string
 
   **모바일 앱 URL scheme** (모바일 전용)
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
   포트원 관리자 콘솔에 설정한 웹훅 URL 대신 사용할 URL을 지정합니다.
 
-- confirm\_url?: string
+- confirm_url?: string
 
   **Confirm process URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
@@ -285,7 +285,7 @@ IMP.request_pay(
 
   **나이스정보통신(신모듈) 전용 파라미터**
 
-  - nice\_v2?: object
+  - nice_v2?: object
 
     - LogoImage?: string
 
@@ -372,18 +372,18 @@ IMP.request_pay(
 - trans + 에스크로, 다이렉트(은행 지정 X)
 - phone + 다이렉트(통신사 지정 X)
 - cultureland
-- naverpay\_card
-- naverpay\_point
+- naverpay_card
+- naverpay_point
 - kakaopay
 - payco
 - samsungpay
 - skpay
 - ssgpay
-- ssgpay\_bank
+- ssgpay_bank
 - lpay
 - applepay
-- tosspay\_card
-- tosspay\_money
+- tosspay_card
+- tosspay_money
 - alipay
 
 </details>
@@ -449,15 +449,15 @@ JS SDK를 가장 최신 버전으로 업그레이드 후 `channelKey` 파라미�
 
 </div>
 
-- pay\_method: string
+- pay_method: string
 
   **빌링키 발급 수단 구분코드**
 
-  - naverpay\_card (네이버페이 - 카드)
-  - naverpay\_point (네이버페이 - 포인트)
+  - naverpay_card (네이버페이 - 카드)
+  - naverpay_point (네이버페이 - 포인트)
   - kakaopay (카카오페이)
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
@@ -475,49 +475,49 @@ JS SDK를 가장 최신 버전으로 업그레이드 후 `channelKey` 파라미�
   - 사용 불가 : **% & | $ - + = \[ ]**
   - 사용 가능하나 권장하지 않음 : **( )**
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
-- buyer\_tel: string
+- buyer_tel: string
 
   **구매자 전화번호**
 
-- buyer\_addr?: string
+- buyer_addr?: string
 
   **구매자 주소**
 
-- buyer\_postcode?: string
+- buyer_postcode?: string
 
   **구매자 우편번호**
 
-- customer\_uid: string
+- customer_uid: string
 
   **빌링키 발급을 위한 결제 수단을 특정하는 고유 번호**
 
   빌링키 발급시 필수 입력
 
-- customer\_id: string
+- customer_id: string
 
   **구매자 식별자**
 
   (신)나이스 빌링키 발급 시 필수 입력
 
-- m\_redirect\_url: string
+- m_redirect_url: string
 
   **리다이렉트 URL**
 
   리다이렉트 방식으로 진행할 경우, 트랜잭션 종료 이후 302 리디렉션 될 고객사 URL
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 

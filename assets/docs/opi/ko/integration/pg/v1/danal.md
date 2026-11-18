@@ -18,7 +18,7 @@ targetVersions:
 <div class="tabs-content" data-title="인증결제창 호출">
 
 [JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk-old/readme) `IMP.request_pay(param, callback)`을 호출하여 다날 Tpay 결제창을 호출할 수 있습니다.
-**결제결과**는 PC/모바일 환경 모두 경우 IMP.request\_pay(param, callback) 호출 후 **callback** 으로 수신됩니다.
+**결제결과**는 PC/모바일 환경 모두 경우 IMP.request_pay(param, callback) 호출 후 **callback** 으로 수신됩니다.
 
 ```ts title="Javascript SDK" showLineNumbers
 IMP.request_pay(
@@ -68,7 +68,7 @@ IMP.request_pay(
 
   </div>
 
-- pay\_method: string
+- pay_method: string
 
   **결제수단 구분코드**
 
@@ -79,7 +79,7 @@ IMP.request_pay(
   - cultureland (컬쳐랜드 문화상품권)
   - happymoney (해피머니 문화상품권)
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **고객사 채번 주문 고유번호**
 
@@ -89,25 +89,25 @@ IMP.request_pay(
 
   **주문명**
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
-- buyer\_tel: string
+- buyer_tel: string
 
   **주문자 연락처**
 
   미 설정 시 다날 결제창에서 오류 발생 가능
 
-- buyer\_addr?: string
+- buyer_addr?: string
 
   **구매자 주소**
 
-- buyer\_postcode?: string
+- buyer_postcode?: string
 
   **구매자 우편번호**
 
@@ -117,17 +117,17 @@ IMP.request_pay(
 
   지정하지 않은 경우 0원입니다.
 
-- tax\_free?: number
+- tax_free?: number
 
   **면세금액** (휴대폰 결제 외)
 
-- biz\_num?: string
+- biz_num?: string
 
   **사업자등록번호**
 
   가상계좌 결제창 호출 시 `사업자등록번호 10자리` 필수 입력 (미설정 시 다날 결제창에서 오류 발생 가능)
 
-- vbank\_due?: string
+- vbank_due?: string
 
   **가상계좌 입금마감일시**
 
@@ -139,33 +139,33 @@ IMP.request_pay(
 
   **앱카드 전용 모드** (휴대폰 결제 외)
 
-- auth\_mode?: string
+- auth_mode?: string
 
   **인증 방식** (휴대폰 결제 외)
 
   - `key-in`: 키인 결제 모드로 결제창을 호출합니다.
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 결제 후 리디렉션 될 URL**
 
-- app\_scheme?: string
+- app_scheme?: string
 
   **모바일 앱 URL scheme** (모바일 전용, 휴대폰 결제 외)
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
-- confirm\_url?: string
+- confirm_url?: string
 
   **Confirm process URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
-- customer\_id?: string
+- customer_id?: string
 
   **구매자 고유 ID**
 
@@ -189,7 +189,7 @@ IMP.request_pay(
 
 <div class="tabs-content" data-title="비인증 결제(결제창 방식)">
 
-인증결제창 호출 파라미터에서 **customer\_uid** 값을 추가하면 비 인증 결제창을 호출할 수 있습니다.
+인증결제창 호출 파라미터에서 **customer_uid** 값을 추가하면 비 인증 결제창을 호출할 수 있습니다.
 
 <div class="hint" data-style="danger">
 
@@ -256,13 +256,13 @@ IMP.request_pay(
 
   </div>
 
-- customer\_uid: string
+- customer_uid: string
 
   **카드 빌링키**
 
   비 인증 결제창에서 고객이 입력한 카드정보와 1:1로 매칭될 빌링키를 지정합니다.
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **고객사 채번 주문 고유번호**
 
@@ -276,23 +276,23 @@ IMP.request_pay(
 
   0원으로 설정시 빌링키만 발급되며 **0원 이상 설정시 실결제와 빌링키 발급이 동시**에 이루어 집니다.
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **구매자 연락처**
 
-- buyer\_addr?: string
+- buyer_addr?: string
 
   **구매자 주소**
 
-- buyer\_postcode?: string
+- buyer_postcode?: string
 
   **구매자 우편번호**
 
@@ -312,29 +312,29 @@ IMP.request_pay(
 
     **결제창 표기용 제공기간 문구** (휴대폰 빌링키 발급 시 사용)
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 결제 후 리디렉션 될 URL**
 
-- app\_scheme?: string
+- app_scheme?: string
 
   **모바일 앱 URL scheme** (모바일 전용, 휴대폰 결제 외)
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
-- customer\_id?: string
+- customer_id?: string
 
   **구매자 고유 ID**
 
-### 빌링키(customer\_uid)로 결제 요청하기
+### 빌링키(customer_uid)로 결제 요청하기
 
-빌링키 발급이 성공하면 실 빌링키는 customer\_uid 와 1:1 매칭되어 **포트원 서버에 저장**됩니다. customer\_uid를 고객사 내부서버에 저장하시고 [**비 인증 결제요청 REST API**](https://developers.portone.io/api/rest-v1/nonAuthPayment?v=v1#post%20%2Fsubscribe%2Fpayments%2Fagain)를 호출하시면 결제를 발생시킬 수 있습니다.
+빌링키 발급이 성공하면 실 빌링키는 customer_uid 와 1:1 매칭되어 **포트원 서버에 저장**됩니다. customer_uid를 고객사 내부서버에 저장하시고 [**비 인증 결제요청 REST API**](https://developers.portone.io/api/rest-v1/nonAuthPayment?v=v1#post%20%2Fsubscribe%2Fpayments%2Fagain)를 호출하시면 결제를 발생시킬 수 있습니다.
 
 ```sh title="server-side"
 curl -H "Content-Type: application/json" \
@@ -450,7 +450,7 @@ curl -H "Content-Type: application/json" \
 
   **결제창에 렌더링될 카드 할부 개월수 리스트 설정값**
 
-  - card\_quota: number\[]
+  - card_quota: number\[]
 
     **할부 개월수**
 
@@ -529,7 +529,7 @@ curl -H "Content-Type: application/json" \
 
   **카드사 렌더링 정보**
 
-  - card\_code?: string
+  - card_code?: string
 
     **카드사 코드**
 

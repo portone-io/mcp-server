@@ -78,13 +78,13 @@ IMP.request_pay(
 
   </div>
 
-- pay\_method: string
+- pay_method: string
 
   **결제수단 구분코드**
 
   - card (신용카드)
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **`고객사 주문번호`**
 
@@ -100,23 +100,23 @@ IMP.request_pay(
 
   **string** 이 아닌점에 유의하세요
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **구매자 연락처**
 
-- buyer\_addr?: string
+- buyer_addr?: string
 
   **구매자 주소**
 
-- buyer\_postcode?: string
+- buyer_postcode?: string
 
   **구매자 우편번호**
 
@@ -126,21 +126,21 @@ IMP.request_pay(
 
   지원 가능한 모든 통화는 [페이팔 공식 문서](http://developer.paypal.com/docs/api/reference/currency-codes/#paypal-account-payments)를 참고해주세요
 
-- m\_redirect\_url: string
+- m_redirect_url: string
 
   **결제결과 수신 URL**
 
   PC환경 모바일 환경 모두 해당 값을 필수로 설정해야 결과를 받아볼수 있습니다.
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
-- confirm\_url?: string
+- confirm_url?: string
 
   **Confirm process URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 

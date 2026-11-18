@@ -71,7 +71,7 @@ IMP.request_pay(
 
   </div>
 
-- pay\_method: string
+- pay_method: string
 
   **결제수단 구분코드**
 
@@ -80,13 +80,13 @@ IMP.request_pay(
   - vbank(가상계좌)
   - phone (휴대폰소액결제)
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **고객사 고유주문번호**
 
   매번 고유하게 채번되어야 합니다.
 
-- buyer\_tel: string
+- buyer_tel: string
 
   **구매자 연락처**
 
@@ -110,47 +110,47 @@ IMP.request_pay(
 
   **휴대폰, 가상계좌** 결제 요청인 경우 필수 파라미터
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
-- buyer\_addr?: string
+- buyer_addr?: string
 
   **구매자 주소**
 
-- buyer\_postcode?: string
+- buyer_postcode?: string
 
   **구매자 우편번호**
 
-- company\_en?: string
+- company_en?: string
 
   **회사명(영문)**
 
   **휴대폰** 결제 요청인 경우 필수 파라미터
 
-- vbank\_due?: string
+- vbank_due?: string
 
   **가상계좌 입금마감일시**
 
   `YYYYMMDD` 형식으로 지정합니다.
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 결제 후 리디렉션 될 URL**
 
-- app\_scheme?: string
+- app_scheme?: string
 
   **모바일 앱 URL scheme** (모바일 전용)
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
@@ -190,7 +190,7 @@ curl -H "Content-Type: application/json" \
 
 **빌링키 발급 요청하기**
 
-REST [**API POST /subscribe/customers/{customer\_uid}**](https://developers.portone.io/api/rest-v1/billingkey?v=v1#post%20%2Fsubscribe%2Fcustomers%2F%7Bcustomer_uid%7D)를 호출하여 빌링키 발급을 요청합니다.
+REST [**API POST /subscribe/customers/{customer_uid}**](https://developers.portone.io/api/rest-v1/billingkey?v=v1#post%20%2Fsubscribe%2Fcustomers%2F%7Bcustomer_uid%7D)를 호출하여 빌링키 발급을 요청합니다.
 
 ```sh
 curl -H "Content-Type: application/json" \
@@ -240,7 +240,7 @@ curl -H "Content-Type: application/json" \
 
 ### 입금통보 설정
 
-헥토파이낸셜 MID 발급 후 `settle_pgdev@settlebank.co.kr`에 아래 입금통보 주소로 설정 요청해야합니다.
+헥토파이낸셜 MID 발급 후 `pgsupport@hecto.co.kr`에 아래 입금통보 주소로 설정 요청해야합니다.
 
 요청 입금통보 주소: <https://service.iamport.kr/settle_payments/notice_vbank>
 

@@ -16,7 +16,7 @@ targetVersions:
 [JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/readme) `IMP.request_pay(param, callback)`을 호출하여
 KG파이낸셜 결제창을 호출할 수 있습니다.
 **결제 결과**는 PC의 경우 `IMP.request_pay(param, callback)` 호출 후 **callback** 으로 수신되고
-모바일의 경우 **m\_redirect\_url**로 리디렉션됩니다.
+모바일의 경우 **m\_redirect_url**로 리디렉션됩니다.
 
 ### 지원 결제수단
 
@@ -80,7 +80,7 @@ IMP.request_pay(
 
   포트원 콘솔 내 \[결제 연동] - \[연동 정보] - \[채널 관리] 에서 확인 가능합니다.
 
-- pay\_method?: string
+- pay_method?: string
 
   **결제수단 구분 코드**
 
@@ -102,7 +102,7 @@ IMP.request_pay(
 
   기본값: `card`
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
@@ -120,11 +120,11 @@ IMP.request_pay(
 
   **string** 이 아닌점에 유의하세요.
 
-- tax\_free?: number
+- tax_free?: number
 
   **면세금액**
 
-- vat\_amount?: number
+- vat_amount?: number
 
   **부가세**
 
@@ -138,13 +138,13 @@ IMP.request_pay(
 
   기본값: `false`
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
   계좌이체 에스크로 사용 시 필수
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **구매자 연락처**
 
@@ -152,13 +152,13 @@ IMP.request_pay(
 
   `bypass.mobilians_v2.pay_options.ra_direct`가 `"Y"`이고 `escrow`가 `true`인 경우 필수
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
   `bypass.mobilians_v2.pay_options.ra_direct`가 `"Y"`이고 `escrow`가 `true`인 경우 필수
 
-- customer\_id?: string
+- customer_id?: string
 
   **구매자 고유 ID**
 
@@ -166,7 +166,7 @@ IMP.request_pay(
 
   상품권 결제 시 필수 입력
 
-- vbank\_due?: string
+- vbank_due?: string
 
   **가상계좌 입금 기한**
 
@@ -210,7 +210,7 @@ IMP.request_pay(
 
     **결제창에 노출할 카드사 리스트**
 
-    - card\_code?: string
+    - card_code?: string
 
       **카드사 코드**
 
@@ -222,7 +222,7 @@ IMP.request_pay(
 
   **결제창 표시 관련 설정**
 
-  - card\_quota?: number\[]
+  - card_quota?: number\[]
 
     **신용카드 할부개월**
 
@@ -263,11 +263,11 @@ IMP.request_pay(
 
     휴대폰번호 또는 사업자번호
 
-  - mobilians\_v2?: object
+  - mobilians_v2?: object
 
     **KG파이낸셜 전용 파라미터**
 
-    - cp\_logo?: string
+    - cp_logo?: string
 
       **가맹점 로고 표기**
 
@@ -284,7 +284,7 @@ IMP.request_pay(
 
       </div>
 
-    - css\_type?: string
+    - css_type?: string
 
       **결제창 색상 설정**
 
@@ -296,11 +296,11 @@ IMP.request_pay(
 
       </div>
 
-    - pay\_options?: object
+    - pay_options?: object
 
       **결제 옵션**
 
-      - cn\_pay\_app\_use\_yn?: string
+      - cn_pay_app_use_yn?: string
 
         **WON 카드/뱅킹 결제만 제공 여부** (신용카드)
 
@@ -309,7 +309,7 @@ IMP.request_pay(
 
         기본값: `N`
 
-      - cn\_pay\_app\_use\_cd?: string
+      - cn_pay_app_use_cd?: string
 
         **WON 카드/뱅킹 단독 결제 코드** (신용카드)
 
@@ -318,7 +318,7 @@ IMP.request_pay(
         - `01`: WON 카드
         - `02`: WON 뱅킹
 
-      - ep\_pay\_type?: string
+      - ep_pay_type?: string
 
         **간편결제 결제수단**
 
@@ -332,23 +332,23 @@ IMP.request_pay(
 
         </div>
 
-      - mc\_fix\_no?: string
+      - mc_fix_no?: string
 
         **휴대폰 번호 고정**
 
         - `Y`: 고정 (`buyer_tel` 필수)
 
-      - mc\_safe\_call?: string
+      - mc_safe_call?: string
 
         **휴대폰결제 ARS 인증**
 
-      - ra\_escrow\_password?: string
+      - ra_escrow_password?: string
 
         **계좌이체 에스크로 구매 비밀번호**
 
         `ra_direct`가 `Y`이고 `escrow`가 `true`인 경우 필수
 
-      - ra\_direct?: string
+      - ra_direct?: string
 
         **계좌이체 뱅크페이 다이렉트 호출 여부**
 
@@ -357,7 +357,7 @@ IMP.request_pay(
 
         기본값: `N`
 
-      - va\_cash\_receipt?: string
+      - va_cash_receipt?: string
 
         **가상계좌 현금영수증 노출 여부**
 
@@ -366,7 +366,7 @@ IMP.request_pay(
 
         기본값: `Y`
 
-      - va\_email?: string
+      - va_email?: string
 
         **가상계좌 이메일 입력 필수 여부**
 
@@ -375,11 +375,11 @@ IMP.request_pay(
 
         기본값: `Y`
 
-    - hidden\_options?: object
+    - hidden_options?: object
 
       **결제창 영역 노출 설정**
 
-      - footer\_area?: string
+      - footer_area?: string
 
         **footer 영역 미노출 여부**
 
@@ -394,7 +394,7 @@ IMP.request_pay(
 
         </div>
 
-      - product\_area?: string
+      - product_area?: string
 
         **상품 정보 영역 미노출 여부**
 
@@ -409,7 +409,7 @@ IMP.request_pay(
 
         </div>
 
-      - email\_area?: string
+      - email_area?: string
 
         **이메일 입력 영역 미노출 여부**
 
@@ -418,7 +418,7 @@ IMP.request_pay(
 
         기본값: `N`
 
-    - LOGO\_YN?: string
+    - LOGO_YN?: string
 
       **상품권 결제창 고객사 로고 표시 여부**
 
@@ -429,7 +429,7 @@ IMP.request_pay(
 
       사전에 KG파이낸셜 측과 협의된 로고가 등록되어있는 경우 사용 가능합니다.
 
-    - EMAIL\_HIDDEN?: string
+    - EMAIL_HIDDEN?: string
 
       **상품권 결제창 이메일입력영역 숨김여부**
 
@@ -494,19 +494,19 @@ IMP.request_pay(
 
   포트원 콘솔 내 \[결제 연동] - \[연동 정보] - \[채널 관리] 에서 확인 가능합니다.
 
-- pay\_method: string
+- pay_method: string
 
   **결제수단 구분 코드**
 
   `card` 또는 `phone`만 허용
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
   매번 고유하게 채번되어야 합니다.
 
-- customer\_uid: string
+- customer_uid: string
 
   **빌링키**
 
@@ -522,15 +522,15 @@ IMP.request_pay(
 
   결제창에 표시될 금액으로 실제 승인이 발생됩니다.
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **구매자 연락처**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
@@ -548,11 +548,11 @@ IMP.request_pay(
 
   **PG사 전용 파라미터**
 
-  - mobilians\_v2?: object
+  - mobilians_v2?: object
 
     **KG파이낸셜 전용 파라미터**
 
-    - cp\_logo?: string
+    - cp_logo?: string
 
       **가맹점 로고 표기**
 
@@ -562,31 +562,31 @@ IMP.request_pay(
       기본값: `N`
       사전에 KG파이낸셜 측과 협의된 로고가 등록되어있는 경우 사용 가능합니다.
 
-    - css\_type?: string
+    - css_type?: string
 
       **결제창 색상 설정**
 
       HTML 색상코드
 
-    - pay\_options?: object
+    - pay_options?: object
 
       **결제 옵션**
 
-      - mc\_fix\_no?: string
+      - mc_fix_no?: string
 
         **휴대폰 번호 고정**
 
         - `Y`: 고정 (`buyer_tel` 필수)
 
-      - mc\_safe\_call?: string
+      - mc_safe_call?: string
 
         **휴대폰결제 ARS 인증**
 
-    - hidden\_options?: object
+    - hidden_options?: object
 
       **결제창 영역 노출 설정**
 
-      - footer\_area?: string
+      - footer_area?: string
 
         **footer 영역 미노출 여부**
 
@@ -601,7 +601,7 @@ IMP.request_pay(
 
         </div>
 
-      - product\_area?: string
+      - product_area?: string
 
         **상품 정보 영역 미노출 여부**
 
@@ -616,7 +616,7 @@ IMP.request_pay(
 
         </div>
 
-      - email\_area?: string
+      - email_area?: string
 
         **이메일 입력 영역 미노출 여부**
 
@@ -685,25 +685,25 @@ IMP.request_pay(
 
   포트원 콘솔 내 \[결제 연동] - \[연동 정보] - \[채널 관리] 에서 확인 가능합니다.
 
-- pay\_method: string
+- pay_method: string
 
   **결제수단 구분 코드**
 
   `card`만 허용
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
   매번 고유하게 채번되어야 합니다.
 
-- customer\_uid: string
+- customer_uid: string
 
   **빌링키**
 
   비 인증 결제창에서 고객이 입력한 카드정보와 1:1로 매칭될 빌링키를 지정합니다.
 
-- customer\_id: string
+- customer_id: string
 
   **구매자 고유 ID**
 
@@ -717,15 +717,15 @@ IMP.request_pay(
 
   빌링키 발급만 진행할 경우 `0`으로 설정
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **구매자 연락처**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
@@ -733,11 +733,11 @@ IMP.request_pay(
 
   **PG사 전용 파라미터**
 
-  - mobilians\_v2?: object
+  - mobilians_v2?: object
 
     **KG파이낸셜 전용 파라미터**
 
-    - cp\_logo?: string
+    - cp_logo?: string
 
       **가맹점 로고 표기**
 
@@ -747,17 +747,17 @@ IMP.request_pay(
       기본값: `N`
       사전에 KG파이낸셜 측과 협의된 로고가 등록되어있는 경우 사용 가능합니다.
 
-    - css\_type?: string
+    - css_type?: string
 
       **결제창 색상 설정**
 
       HTML 색상코드
 
-    - hidden\_options?: object
+    - hidden_options?: object
 
       **결제창 영역 노출 설정**
 
-      - email\_area?: string
+      - email_area?: string
 
         **이메일 입력 영역 미노출 여부**
 

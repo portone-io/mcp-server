@@ -53,9 +53,7 @@ PortOne.requestIdentityVerification({
 
 ### `directAgency` 사용 시 유의사항
 
-인증 업체 코드를 입력해야 합니다.
-
-`SMS`의 경우, KG이니시스와 계약하지 않으면 `알 수 없는 오류가 발생했습니다.` 메시지와 함께 인증 진행이 불가능합니다.
+인증 업체 코드를 필수로 입력해야 합니다.
 
 <details>
 
@@ -73,7 +71,7 @@ PortOne.requestIdentityVerification({
 - WOORI(우리은행)
 - NH(농협은행)
 - KAKAOBANK(카카오뱅크)
-- SMS(휴대폰 인증, 별도 계약 필요)
+- SMS는 포트원을 통해 이용 불가능합니다.
 
 </details>
 

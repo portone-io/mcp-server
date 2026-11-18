@@ -30,7 +30,7 @@ targetVersions:
 [JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/readme) `IMP.request_pay(param, callback)`을 호출하여
 갤럭시아머니트리 결제/빌링키 발급/빌링키 발급과 동시에 결제창을 호출할 수 있습니다. **트랜잭션 결과**는
 PC의 경우 **callback** 함수로 전달되고
-모바일의 경우 **m\_redirect\_url**로 302 리디렉션됩니다.
+모바일의 경우 **m\_redirect_url**로 302 리디렉션됩니다.
 
 <div class="tabs-container">
 
@@ -46,11 +46,6 @@ IMP.request_pay(
     amount: 1000,
     customer_id: "matthew", // 고객사가 회원에게 부여한 고유 ID입니다. (필수)
     m_redirect_url: "{모바일에서 결제 완료 후 리디렉션 될 URL}",
-    bypass: {
-      galaxia: {
-        ITEM_CODE: "상품코드", // 필수, 최대 10바이트
-      },
-    },
   },
   function (rsp) {
     // callback 로직
@@ -85,7 +80,7 @@ IMP.request_pay(
 
   </div>
 
-- pay\_method?: string
+- pay_method?: string
 
   **결제수단 구분코드**
 
@@ -110,13 +105,13 @@ IMP.request_pay(
 
   </details>
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문 번호**
 
   매번 고유하게 채번되어야 합니다. (최대 64자)
 
-- customer\_id: string
+- customer_id: string
 
   **구매자 고유 ID**
 
@@ -136,55 +131,55 @@ IMP.request_pay(
 
   **string** 이 아닌 점에 유의하세요.
 
-- tax\_free?: number
+- tax_free?: number
 
   **면세 금액** (기본값: 0)
 
-- vat\_amount?: number
+- vat_amount?: number
 
   **부가세 금액**
 
   미 입력시 과세 금액의 1/11로 자동 계산됩니다.
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
   계좌이체 결제시 구매자 이름은 필수 입력입니다.
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **구매자 연락처**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일 주소**
 
-- buyer\_addr?: string
+- buyer_addr?: string
 
   **구매자 주소**
 
-- buyer\_postcode?: string
+- buyer_postcode?: string
 
   **구매자 우편번호**
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 환경에서 트랜잭션 종료 후 302 리디렉션 될 URL**
 
   주의: 갤럭시아머니트리의 경우 **모바일 환경에서 필수 입력**입니다.
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
-- notice\_url?: string 또는 **string\[]**
+- notice_url?: string 또는 **string\[]**
 
   **트랜잭션 종료 후 웹훅이 발송 될 고객사 서버 URL**
 
-  주의: notice\_url 파라미터 설정시, 콘솔에 설정 된 웹훅 URL은 override 되며 notice\_url에 전달 한 주소로만 웹훅이 발송됩니다.
+  주의: notice_url 파라미터 설정시, 콘솔에 설정 된 웹훅 URL은 override 되며 notice_url에 전달 한 주소로만 웹훅이 발송됩니다.
 
-- app\_scheme?: string
+- app_scheme?: string
 
   **IOS 앱에서 결제시 카드/은행 앱에서 인증 후 복귀 될 고객사 커스텀 앱 URL Scheme**
 
@@ -203,7 +198,7 @@ IMP.request_pay(
 
   갤럭시아머니트리의 경우, 계좌이체/가상계좌 결제시 에스크로 결제가 허용됩니다.
 
-- vbank\_due: string
+- vbank_due: string
 
   **가상계좌 입금기한**
 
@@ -216,7 +211,7 @@ IMP.request_pay(
 
   **결제창에 렌더링될 카드 할부 개월수 리스트 설정값**
 
-  - card\_quota?: number\[]
+  - card_quota?: number\[]
 
     **할부 개월수**
 
@@ -256,16 +251,6 @@ IMP.request_pay(
 
     `SKT`, `KTF`, `LGT`, `CJH`, `KCT`, `SKL`
 
-- bypass: object
-
-  - galaxia: object
-
-    - ITEM\_CODE: string
-
-      **구매 상품코드**
-
-      갤럭시아머니트리에서 발급받은 상품 코드를 입력합니다. (최대 10자, 필수)
-
 <details>
 
 <summary>
@@ -296,7 +281,7 @@ IMP.request_pay(
 
 <div class="tabs-content" data-title="빌링키 발급 창 요청">
 
-일반 결제 창 호출 파라미터에서 **customer\_uid** 값을 추가하면 빌링키 발급 창을 호출할 수 있습니다.
+일반 결제 창 호출 파라미터에서 **customer_uid** 값을 추가하면 빌링키 발급 창을 호출할 수 있습니다.
 빌링키 발급 창에서 빌링키를 발급 받은 후, 빌링 결제 API를 호출해 해당 빌링키로 결제를 할 수 있습니다.
 
 ```ts title="Javascript SDK"
@@ -310,11 +295,6 @@ IMP.request_pay(
     customer_id: "matthew", // 고객사가 회원에게 부여한 고유 ID입니다. (필수)
     customer_uid: "your-customer-unique-id", // 고객사가 구매자의 결제 수단을 특정하기 위해 채번한 고유 ID로 빌링키 발급시 필수 입력입니다.
     m_redirect_url: "{모바일에서 빌링키 발급 완료 후 리디렉션 될 URL}",
-    bypass: {
-      galaxia: {
-        ITEM_CODE: "상품코드", // 필수, 최대 10바이트
-      },
-    },
   },
   function (rsp) {
     // callback 로직
@@ -349,25 +329,25 @@ IMP.request_pay(
 
   </div>
 
-- pay\_method: 'card'
+- pay_method: 'card'
 
   **빌링키 발급 수단**
 
   갤럭시아머니트리의 경우, 빌링키 발급 수단은 `card`만 허용되며 **반드시 `card`를 필수로 입력해주셔야** 합니다.
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문 번호**
 
   매번 고유하게 채번되어야 합니다.
 
-- customer\_id: string
+- customer_id: string
 
   **구매자 고유 ID**
 
   고객사가 구매자를 특정하기 위해 채번한 고유 번호입니다.
 
-- customer\_uid: string
+- customer_uid: string
 
   **빌링키 발급 수단 고유 ID**
 
@@ -387,39 +367,29 @@ IMP.request_pay(
 
   빌링키 발급시 amount가 0이거나 미입력시 1000원으로 노출됩니다. (결제 발생하지 않음)
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **구매자 연락처**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일 주소**
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 환경에서 트랜잭션 종료 후 302 리디렉션 될 URL**
 
   주의: 갤럭시아머니트리의 경우 **모바일 환경에서 필수 입력**입니다.
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **트랜잭션 종료 후 웹훅이 발송 될 고객사 서버 URL**
 
-  주의: notice\_url 파라미터 설정시, 콘솔에 설정 된 웹훅 URL은 override 되며 notice\_url에 전달 한 주소로만 웹훅이 발송됩니다.
-
-- bypass: object
-
-  - galaxia: object
-
-    - ITEM\_CODE: string
-
-      **구매 상품코드**
-
-      갤럭시아머니트리에서 발급받은 상품 코드를 입력합니다. (최대 10자, 필수)
+  주의: notice_url 파라미터 설정시, 콘솔에 설정 된 웹훅 URL은 override 되며 notice_url에 전달 한 주소로만 웹훅이 발송됩니다.
 
 <details>
 
@@ -448,11 +418,6 @@ IMP.request_pay(
     customer_id: "matthew", // 고객사가 회원에게 부여한 고유 ID입니다. (필수)
     customer_uid: "your-customer-unique-id", // 고객사가 구매자의 결제 수단을 특정하기 위해 채번한 고유 ID로 빌링키 발급시 필수 입력입니다.
     m_redirect_url: "{모바일에서 결제 완료 후 리디렉션 될 URL}",
-    bypass: {
-      galaxia: {
-        ITEM_CODE: "상품코드", // 필수, 최대 10바이트
-      },
-    },
   },
   function (rsp) {
     // callback 로직
@@ -487,25 +452,25 @@ IMP.request_pay(
 
   </div>
 
-- pay\_method: 'phone'
+- pay_method: 'phone'
 
   **빌링키 발급 및 결제 수단**
 
   갤럭시아머니트리의 경우, 빌링키 발급과 동시에 결제 수단은 `phone`만 허용되며 **반드시 `phone`을 필수로 입력해주셔야** 합니다.
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문 번호**
 
   매번 고유하게 채번되어야 합니다.
 
-- customer\_id: string
+- customer_id: string
 
   **구매자 고유 ID**
 
   고객사가 구매자를 특정하기 위해 채번한 고유 번호입니다. (최대 20자)
 
-- customer\_uid: string
+- customer_uid: string
 
   **빌링키 발급 수단 고유 ID**
 
@@ -523,19 +488,19 @@ IMP.request_pay(
 
   **string** 이 아닌 점에 유의하세요.
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **구매자 연락처**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일 주소**
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 환경에서 트랜잭션 종료 후 302 리디렉션 될 URL**
 
@@ -550,16 +515,6 @@ IMP.request_pay(
     **휴대폰 통신사 코드**
 
     `SKT`, `KTF`, `LGT`, `CJH`, `KCT`, `SKL`
-
-- bypass: object
-
-  - galaxia: object
-
-    - ITEM\_CODE: string
-
-      **구매 상품코드**
-
-      갤럭시아머니트리에서 발급받은 상품 코드를 입력합니다. (최대 10자, 필수)
 
 <details>
 

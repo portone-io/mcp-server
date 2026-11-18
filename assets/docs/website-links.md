@@ -4,7 +4,7 @@ description: PortOne 개발자센터 웹사이트 내 존재하는 문서들의 
 targetVersions:
   - v1
   - v2
-date: 2026-04-27
+date: 2026-11-18
 author: PortOne
 ---
 
@@ -79,25 +79,34 @@ author: PortOne
 
 - [스마트 라우팅](https://developers.portone.io/opi/ko/console/guide/smartrouting): 포트원 스마트 라우팅을 사용하기 위한 그룹 설정을 관리할 수 있습니다. 관리자콘솔 내 스마트 라우팅 그룹 설정 방법을 안내합니다.
 - [컨펌 프로세스](https://developers.portone.io/opi/ko/extra/confirm-process/readme-v2): 결제 승인 직전에 고객사 측에 결제 의사를 최종적으로 확인하는 기능입니다.
+- [체크아웃](https://developers.portone.io/opi/ko/extra/hosted-checkout/readme-v2): 포트원이 호스팅하는 체크아웃 페이지를 생성하고 결제 결과를 처리합니다.
 - [본인인증 연동하기](https://developers.portone.io/opi/ko/extra/identity-verification/readme-v2): 포트원을 이용하여 간편하게 본인인증을 연동하는 방법을 확인합니다.
 - [수동 승인](https://developers.portone.io/opi/ko/extra/manual-confirm/readme-v2): 고객사 서버에서 API를 호출하여 결제를 승인하는 연동 방식입니다.
 - [모바일 앱에서 결제 연동하기](https://developers.portone.io/opi/ko/extra/mobile-payment/readme-v2): 모바일 앱(Android, iOS, Flutter, React Native)에서 포트원 결제를 연동하는 방법을 안내합니다.
+- [빌링키로 구독 등록하기](https://developers.portone.io/opi/ko/extra/subscription/billing-key): 이미 발급받은 빌링키로 고객과 구독을 직접 등록하는 방법을 안내합니다. 기존 빌링키 정기결제를 구독 결제로 옮기거나 청구 시작일을 미래로 정할 때 사용합니다.
+- [구독 결제 연동하기](https://developers.portone.io/opi/ko/extra/subscription/integration): 구독 등록 SDK로 결제수단 등록과 첫 회차 결제를 한 번에 처리하고, 웹훅과 조회 API로 결과를 확인하는 방법을 안내합니다.
+- [구독 결제](https://developers.portone.io/opi/ko/extra/subscription/intro): 상품·할인·고객·구독을 등록해 두면 정해진 주기마다 포트원이 청구와 결제를 대신 처리하는 서비스입니다.
+- [구독 운영하기](https://developers.portone.io/opi/ko/extra/subscription/management): 구독을 시작한 뒤 변경, 일시중지, 결제수단 교체, 결제 실패를 처리하는 방법을 안내합니다.
+- [구독 결제 웹훅](https://developers.portone.io/opi/ko/extra/subscription/webhook): 구독 결제에서 발송하는 웹훅의 종류와 처리 방법을 안내합니다.
 - [결제취소(환불) 연동하기](https://developers.portone.io/opi/ko/integration/cancel/v2/readme): 포트원 V2 결제취소 API를 이용한 결제취소 방법을 안내합니다.
 - [다날 본인인증](https://developers.portone.io/opi/ko/integration/pg/v2/danal-identity-verification): 다날 본인인증 연동 방법을 안내합니다.
 - [엑심베이](https://developers.portone.io/opi/ko/integration/pg/v2/eximbay-v2): 엑심베이 결제 연동 방법을 안내합니다.
 - [갤럭시아머니트리](https://developers.portone.io/opi/ko/integration/pg/v2/galaxia): 갤럭시아머니트리 결제 연동 방법을 안내합니다.
+- [헥토파이낸셜 해외결제](https://developers.portone.io/opi/ko/integration/pg/v2/hecto-global): 헥토파이낸셜 해외결제 결제 연동 방법을 안내합니다.
 - [KG이니시스 일본결제](https://developers.portone.io/opi/ko/integration/pg/v2/inicis-jp): KG이니시스 일본결제 연동 방법을 안내합니다.
 - [KG이니시스 통합인증](https://developers.portone.io/opi/ko/integration/pg/v2/inicis-unified-identity-verification): KG이니시스 통합인증 연동 방법을 안내합니다.
 - [KG이니시스](https://developers.portone.io/opi/ko/integration/pg/v2/inicis-v2): KG이니시스 결제 연동 방법을 안내합니다.
 - [카카오페이](https://developers.portone.io/opi/ko/integration/pg/v2/kakaopay): 카카오페이 간편결제 연동 방법을 안내합니다.
 - [KCP 본인인증](https://developers.portone.io/opi/ko/integration/pg/v2/kcp-v2-identity-verification): KCP 본인인증 연동 방법을 안내합니다.
 - [NHN KCP](https://developers.portone.io/opi/ko/integration/pg/v2/kcp-v2): NHN KCP 연동 방법을 안내합니다.
-- [이지페이(KICC) 해외결제](https://developers.portone.io/opi/ko/integration/pg/v2/kicc-v2): 이지페이(KICC) 해외결제 연동 방법을 안내합니다.
+- [이지페이(KICC) 국내결제](https://developers.portone.io/opi/ko/integration/pg/v2/kicc-v2-domestic): 이지페이(KICC) 국내결제 연동 방법을 안내합니다.
+- [이지페이(KICC) 해외결제](https://developers.portone.io/opi/ko/integration/pg/v2/kicc-v2-global): 이지페이(KICC) 해외결제 연동 방법을 안내합니다.
 - [한국결제네트웍스(KPN)](https://developers.portone.io/opi/ko/integration/pg/v2/kpn): 한국결제네트웍스(KPN) 결제 연동 방법을 안내합니다.
 - [KSNET](https://developers.portone.io/opi/ko/integration/pg/v2/ksnet): KSNET 결제 연동 방법을 안내합니다.
 - [네이버페이 (결제형)](https://developers.portone.io/opi/ko/integration/pg/v2/naverpay): 네이버페이 간편결제 연동 방법을 안내합니다.
 - [나이스정보통신](https://developers.portone.io/opi/ko/integration/pg/v2/nice-v2): 나이스정보통신 결제 연동 방법을 안내합니다.
 - [페이레터 해외결제](https://developers.portone.io/opi/ko/integration/pg/v2/payletter-global): 페이레터 해외결제 연동 방법을 안내합니다.
+- [페이레터](https://developers.portone.io/opi/ko/integration/pg/v2/payletter): 페이레터 국내결제 연동 방법을 안내합니다.
 - [페이먼트월](https://developers.portone.io/opi/ko/integration/pg/v2/paymentwall): 페이먼트월 결제 연동 방법을 안내합니다.
 - [페이팔](https://developers.portone.io/opi/ko/integration/pg/v2/paypal-v2): 페이팔 결제 연동 방법을 안내합니다.
 - [결제대행사 선택하여 연동하기](https://developers.portone.io/opi/ko/integration/pg/v2/readme): 각 PG사별 결제 연동 방법을 확인할 수 있습니다.
@@ -180,9 +189,7 @@ author: PortOne
 - [KG이니시스 일본결제](https://developers.portone.io/opi/ko/integration/pg/v1/inicis-jp): KG이니시스 일본결제 연동 방법을 안내합니다.
 - [KG이니시스](https://developers.portone.io/opi/ko/integration/pg/v1/inicis): KG이니시스 결제창 연동 가이드입니다.
 - [카카오페이](https://developers.portone.io/opi/ko/integration/pg/v1/kakaopay): 카카오페이 연동 방법을 안내합니다.
-- [NHN KCP(신모듈) 본인인증 연동하기](https://developers.portone.io/opi/ko/integration/pg/v1/kcp-v2-identity-verification): NHN KCP(신모듈) 본인인증 연동 방법을 안내합니다.
 - [KG파이낸셜 (신모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/kg-mobilians-v2): KG파이낸셜 (신모듈) 결제 연동 방법을 안내합니다.
-- [KG파이낸셜 (구모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/kg): KG파이낸셜 (구모듈) 결제 연동 방법을 안내합니다.
 - [이지페이(KICC) 해외결제](https://developers.portone.io/opi/ko/integration/pg/v1/kicc-v2): 이지페이(KICC) 해외결제 결제 연동 방법을 안내합니다.
 - [이지페이(KICC) (구모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/kicc): 이지페이(KICC) (구모듈) 결제창 연동 방법을 안내합니다.
 - [KSNET](https://developers.portone.io/opi/ko/integration/pg/v1/ksnet/readme): KSNET 결제창 연동 가이드입니다.
@@ -198,6 +205,7 @@ author: PortOne
 - [나이스정보통신 (구모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/nice): 나이스정보통신 (구모듈) 결제창 연동 가이드를 안내합니다.
 - [페이코](https://developers.portone.io/opi/ko/integration/pg/v1/payco): 페이코 결제 연동방법을 안내합니다.
 - [페이레터 해외결제](https://developers.portone.io/opi/ko/integration/pg/v1/payletter-global): 페이레터 해외결제 연동 방법을 안내합니다.
+- [페이레터](https://developers.portone.io/opi/ko/integration/pg/v1/payletter): 페이레터 국내결제 연동 방법을 안내합니다.
 - [페이먼트월](https://developers.portone.io/opi/ko/integration/pg/v1/paymentwall): 페이먼트월 결제창 연동가이드를 확인 합니다.
 - [페이팔(Express Checkout)](https://developers.portone.io/opi/ko/integration/pg/v1/paypal): 페이팔(Express Checkout) 결제연동 방법을 안내합니다.
 - [결제대행사 선택하여 연동하기](https://developers.portone.io/opi/ko/integration/pg/v1/readme): 각 결제대행사(PG)사별 결제 연동 방법 및 유의사항을 확인할 수 있습니다.
@@ -213,6 +221,7 @@ author: PortOne
 - [페이팔(Smart Payment Buttons) 일반결제](https://developers.portone.io/opi/ko/integration/pg/v1/spb/readme): 페이팔(Smart Payment Buttons) 일반결제 연동 방법을 안내합니다.
 - [고위험 거래 상세 정보](https://developers.portone.io/opi/ko/integration/pg/v1/spb/stc): (신)페이팔 일반결제(SPB) 이용시 특이사항을 확인할수 있습니다.
 - [연동 유의사항](https://developers.portone.io/opi/ko/integration/pg/v1/spb/warning): (신)페이팔 일반결제(SPB) 이용시 특이사항을 확인할수 있습니다.
+- [브랜드페이 정기결제](https://developers.portone.io/opi/ko/integration/pg/v1/toss-brandpay/billing): 토스페이먼츠 브랜드페이의 카드·계좌로 빌링키를 발급하고 정기결제를 연동하는 방법을 안내합니다.
 - [모듈 로딩 연동](https://developers.portone.io/opi/ko/integration/pg/v1/toss-brandpay/module): 토스페이먼츠 브랜드페이의 모듈 로딩에 연동 방법을 안내합니다.
 - [토스페이먼츠 브랜드페이](https://developers.portone.io/opi/ko/integration/pg/v1/toss-brandpay/readme): 토스페이먼츠 브랜드페이 연동 방법을 안내합니다.
 - [연동 유의사항](https://developers.portone.io/opi/ko/integration/pg/v1/toss-brandpay/warning): 토스페이먼츠 브랜드페이 연동 유의사항을 소개합니다.
@@ -338,6 +347,7 @@ author: PortOne
 - [파트너 정산 자동화 2025-10-02](https://developers.portone.io/release-notes/platform/2025-10-02)
 - [파트너 정산 자동화 2026-02-19](https://developers.portone.io/release-notes/platform/2026-02-19)
 - [파트너 정산 자동화 2026-03-06](https://developers.portone.io/release-notes/platform/2026-03-06)
+- [ 2026-08-11](https://developers.portone.io/release-notes/split/2026-08-11)
 
 ## 블로그
 

@@ -179,19 +179,19 @@ function requestPayment() {
 
 - bypass?: oneof object
 
-  - eximbay\_v2?: object
+  - eximbay_v2?: object
 
     **엑심베이 특수 파라미터**
 
     - payment?: object
 
-      - payment\_method?: string
+      - payment_method?: string
 
         **결제수단 단독 노출**
 
         엑심베이의 결제수단 코드는 포트원 코드와 상이하므로, [EXIMBAY Docs](https://developer.eximbay.com/eximbay/api_sdk/code-organization.html#paymentCode)에서 확인 후 입력해야 합니다.
 
-      - multi\_payment\_method?: string\[]
+      - multi_payment_method?: string\[]
 
         **결제수단 노출 목록**
 
@@ -203,13 +203,13 @@ function requestPayment() {
 
         **상점명**
 
-      - partner\_code?: string
+      - partner_code?: string
 
         **파트너 코드**
 
     - tax?: object
 
-      - receipt\_status?: string
+      - receipt_status?: string
 
         **현금영수증 발급 여부**
 
@@ -230,11 +230,19 @@ function requestPayment() {
 
         **수량**
 
-      - unit\_price?: string
+      - unit_price?: string
 
         **단가 (음수 가능)**
 
-    - ship\_to?: object
+    - ship_to?: object
+
+      **배송지 정보**
+
+      <div class="hint" data-style="warning">
+
+      PayPal 실물 상품 결제, 혹은 디지털/실물 상품 혼합 결제 시 필수입니다.
+
+      </div>
 
       - city?: string
 
@@ -244,19 +252,19 @@ function requestPayment() {
 
         **배송지 국가 (ISO 3166 두 자리 국가 코드)**
 
-      - first\_name?: string
+      - first_name?: string
 
         **수신인의 성을 제외한 이름**
 
-      - last\_name?: string
+      - last_name?: string
 
         **수신인의 성**
 
-      - phone\_number?: string
+      - phone_number?: string
 
         **수신인 전화번호**
 
-      - postal\_code?: string
+      - postal_code?: string
 
         **배송지 우편번호**
 
@@ -268,7 +276,11 @@ function requestPayment() {
 
         **배송지 상세 주소**
 
-    - bill\_to?: object
+    - bill_to?: object
+
+      **청구지 정보**
+
+      Klarna 결제 시 구매자의 정확한 주소 정보를 필수로 전달해야 합니다.
 
       - city?: string
 
@@ -278,19 +290,19 @@ function requestPayment() {
 
         **청구지 국가 (ISO 3166 두 자리 국가 코드)**
 
-      - first\_name?: string
+      - first_name?: string
 
         **청구 카드 명의자의 성을 제외한 이름**
 
-      - last\_name?: string
+      - last_name?: string
 
         **청구 카드 명의자의 성**
 
-      - phone\_number?: string
+      - phone_number?: string
 
         **청구 카드 명의자의 전화번호**
 
-      - postal\_code?: string
+      - postal_code?: string
 
         **청구지 우편번호**
 
@@ -302,20 +314,65 @@ function requestPayment() {
 
         **청구지 상세 주소**
 
+    - paypal?: object
+
+      **페이팔 정보**
+
+      - ispp?: object
+
+        **PayPal ISPP 정보**
+
+        ISPP 서비스를 신청하여 엑심베이 및 PayPal의 심사를 통과한 경우 사용합니다.
+        기본적으로 모든 하위 값이 필수이며, 전송이 불가능한 값이 있는 경우 엑심베이에 사전 문의해야 합니다.
+
+        - sender_account_id?: string
+
+          **고객사의 구매자 고유 ID**
+
+        - sender_first_name?: string
+
+          **구매자 이름**
+
+        - sender_last_name?: string
+
+          **구매자 성**
+
+        - sender_email?: string
+
+          **구매자 이메일**
+
+        - sender_phone?: string
+
+          **구매자 전화번호**
+
+          [E.123 international format](https://www.itu.int/rec/t-rec-e.123/en) 형식입니다.
+
+        - sender_country_code?: string
+
+          **구매자 국가 코드**
+
+          [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) 코드입니다.
+
+        - sender_create_date?: string
+
+          **구매자 계정 생성 일자**
+
+          `YYYY-MM-DD HH:mm:ss` 형식으로 입력합니다.
+
     - settings?: object
 
-      - call\_from\_app?: string
+      - call_from_app?: string
 
         **모바일 앱 내에서 결제를 연동할 경우 설정**
 
         - `Y`: 모바일 앱 환경인 경우
         - `N`: 모바일 앱 환경이 아닌 경우
 
-      - issuer\_country?: string
+      - issuer_country?: string
 
         **해외 결제 가맹점에서 국내 결제를 사용할 경우 `KR`**
 
-      - virtualaccount\_expiry\_date?: string
+      - virtualaccount_expiry_date?: string
 
         **입금 만료 일자 (yyyyMMddHH)**
 
@@ -474,19 +531,19 @@ function issueBillingKeyAndPay() {
 
 - bypass?: oneof object
 
-  - eximbay\_v2?: object
+  - eximbay_v2?: object
 
     **엑심베이 특수 파라미터**
 
     - payment?: object
 
-      - payment\_method?: string
+      - payment_method?: string
 
         **결제수단 단독 노출**
 
         엑심베이의 결제수단 코드는 포트원 코드와 상이하므로, [EXIMBAY Docs](https://developer.eximbay.com/eximbay/api_sdk/code-organization.html#paymentCode)에서 확인 후 입력해야 합니다.
 
-      - multi\_payment\_method?: string\[]
+      - multi_payment_method?: string\[]
 
         **결제수단 노출 목록**
 
@@ -510,11 +567,11 @@ function issueBillingKeyAndPay() {
 
         **수량**
 
-      - unit\_price?: string
+      - unit_price?: string
 
         **단가 (음수 가능)**
 
-    - ship\_to?: object
+    - ship_to?: object
 
       - city?: string
 
@@ -524,19 +581,19 @@ function issueBillingKeyAndPay() {
 
         **배송지 국가 (ISO 3166 두 자리 국가 코드)**
 
-      - first\_name?: string
+      - first_name?: string
 
         **수신인의 성을 제외한 이름**
 
-      - last\_name?: string
+      - last_name?: string
 
         **수신인의 성**
 
-      - phone\_number?: string
+      - phone_number?: string
 
         **수신인 전화번호**
 
-      - postal\_code?: string
+      - postal_code?: string
 
         **배송지 우편번호**
 
@@ -548,7 +605,7 @@ function issueBillingKeyAndPay() {
 
         **배송지 상세 주소**
 
-    - bill\_to?: object
+    - bill_to?: object
 
       - city?: string
 
@@ -558,19 +615,19 @@ function issueBillingKeyAndPay() {
 
         **청구지 국가 (ISO 3166 두 자리 국가 코드)**
 
-      - first\_name?: string
+      - first_name?: string
 
         **청구 카드 명의자의 성을 제외한 이름**
 
-      - last\_name?: string
+      - last_name?: string
 
         **청구 카드 명의자의 성**
 
-      - phone\_number?: string
+      - phone_number?: string
 
         **청구 카드 명의자의 전화번호**
 
-      - postal\_code?: string
+      - postal_code?: string
 
         **청구지 우편번호**
 
@@ -581,6 +638,38 @@ function issueBillingKeyAndPay() {
       - street1?: string
 
         **청구지 상세 주소**
+
+## SDK 구독 등록 요청하기
+
+[구독 결제](https://developers.portone.io/opi/ko/extra/subscription/intro)를 사용하는 경우 `requestSubscriptionRegistration` 함수로 결제수단 등록과 첫 회차 결제를 한 번에 처리할 수 있습니다.
+엑심베이 채널은 결제창 한 번으로 빌링키 발급과 첫 회차 결제를 함께 처리합니다.
+금액, 주문명, 구매자 정보는 사전 등록한 구독에서 가져오므로 전달하지 않습니다.
+
+- 첫 회차 금액이 0원인 구독은 이 채널로 등록할 수 없습니다.
+- 구독 결제 옵션의 언어(`paymentOptions.locale`)가 필수입니다. 사전 등록 때 넣지 않았다면 구독 등록 전에 구독 수정 API로 넣어 주세요.
+
+<div class="tabs-container">
+
+<div class="tabs-content" data-title="SDK 구독 등록 요청">
+
+```ts
+import * as PortOne from "@portone/browser-sdk/v2";
+function requestSubscriptionRegistration() {
+  PortOne.requestSubscriptionRegistration({
+    storeId: "store-00000000-0000-0000-0000-000000000000", // 고객사 storeId로 변경해주세요.
+    channelKey: "channel-key-00000000-0000-0000-0000-000000000000", // 콘솔 결제 연동 화면에서 채널 연동 시 생성된 채널 키를 입력해주세요.
+    subscriptionId: "subscription-0193c1a2", // 구독 사전 등록 API로 만든 구독 아이디를 입력해주세요.
+    registrationSecret: "rsec_...", // 구독 사전 등록 API 응답의 registrationSecret을 입력해주세요.
+    billingKeyMethod: "CARD",
+  });
+}
+```
+
+</div>
+
+</div>
+
+구독 사전 등록, 결과 확인, 파라미터 설명은 [구독 결제 연동하기](https://developers.portone.io/opi/ko/extra/subscription/integration)를 참고해주세요.
 
 ## API 빌링키 단건 결제 요청하기
 
@@ -1075,7 +1164,8 @@ const response = await axios({
 
 - 아래 결제수단의 경우 사용이 제한되므로 결제 연동 시 유의해 주시기 바랍니다.
   - 가상계좌(`P305`) : 호환성 이슈로 추후 지원 예정
-  - Klarna(`P197`) : 엑심베이 정책에 따라 신규 결제 사용 불가
+
+- Klarna 결제 시 `bypass.eximbay_v2.bill_to` 항목에 구매자의 정확한 주소를 전송해야 합니다.
 
 - 모바일 앱 내에서 결제를 연동할 경우 `appScheme` 파라미터를 설정하고 `bypass.eximbay_v2.settings.call_from_app` 파라미터를 "Y"로 설정해야 합니다.
 

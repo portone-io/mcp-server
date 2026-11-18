@@ -33,6 +33,7 @@ targetVersions:
     - Rabbit LINE Pay (알리페이+) : `AlipayPlusRabbitLinePay`
     - Touch 'n Go (알리페이+) : `AlipayPlusTNG`
     - TrueMoney (알리페이+) : `AlipayPlusTrueMoney`
+    - 애플페이 : `PLApplePay`
 
 ## SDK 결제 요청하기
 
@@ -60,6 +61,37 @@ targetVersions:
 
 빌링키 발급 및 결제 요청 시에는 [requestIssueBillingKeyAndPay](https://developers.portone.io/sdk/ko/v2-sdk/billing-key-and-pay-request?v=v2) 함수를 호출해야 합니다.
 `channelKey` 파라미터에 결제 채널 연동 후 생성된 채널 키값을 지정하여 페이레터 해외결제 채널 사용을 명시해주세요.
+
+## SDK 구독 등록 요청하기
+
+[구독 결제](https://developers.portone.io/opi/ko/extra/subscription/intro)를 사용하는 경우 `requestSubscriptionRegistration` 함수로 결제수단 등록과 첫 회차 결제를 한 번에 처리할 수 있습니다.
+페이레터 해외결제 채널은 결제창 한 번으로 빌링키 발급과 첫 회차 결제를 함께 처리합니다.
+금액, 주문명, 구매자 정보는 사전 등록한 구독에서 가져오므로 전달하지 않습니다.
+
+- 첫 회차 금액이 0원인 구독은 이 채널로 등록할 수 없습니다.
+
+<div class="tabs-container">
+
+<div class="tabs-content" data-title="SDK 구독 등록 요청">
+
+```ts
+import * as PortOne from "@portone/browser-sdk/v2";
+function requestSubscriptionRegistration() {
+  PortOne.requestSubscriptionRegistration({
+    storeId: "store-00000000-0000-0000-0000-000000000000", // 고객사 storeId로 변경해주세요.
+    channelKey: "channel-key-00000000-0000-0000-0000-000000000000", // 콘솔 결제 연동 화면에서 채널 연동 시 생성된 채널 키를 입력해주세요.
+    subscriptionId: "subscription-0193c1a2", // 구독 사전 등록 API로 만든 구독 아이디를 입력해주세요.
+    registrationSecret: "rsec_...", // 구독 사전 등록 API 응답의 registrationSecret을 입력해주세요.
+    billingKeyMethod: "CARD",
+  });
+}
+```
+
+</div>
+
+</div>
+
+구독 사전 등록, 결과 확인, 파라미터 설명은 [구독 결제 연동하기](https://developers.portone.io/opi/ko/extra/subscription/integration)를 참고해주세요.
 
 ## 결제수단별 승인 가능 통화
 

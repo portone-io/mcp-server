@@ -37,6 +37,8 @@ flags:
     description: Triple-A
   paymentwall:
     description: 페이먼트월
+  hecto_global:
+    description: 헥토파이낸셜 해외결제
 resources:
   entity:
     Address:
@@ -1448,6 +1450,11 @@ resources:
             - 나이스페이먼츠
             - KG이니시스
             - NHN KCP
+            - 헥토파이낸셜 해외결제
+        GOOGLE_PAY:
+          description: |
+            구글페이
+            - 헥토파이낸셜 해외결제
         LGPAY:
           description: |
             LG페이
@@ -1472,6 +1479,7 @@ resources:
           description: |
             PayPay
             - KG이니시스 JPPG/SBPS 일본결제
+            - 헥토파이낸셜 해외결제
         AMAZONPAY:
           description: |
             아마존페이
@@ -1480,6 +1488,7 @@ resources:
           description: |
             라쿠텐페이
             - KG이니시스 JPPG 일본결제
+            - 헥토파이낸셜 해외결제
         DBARAI:
           description: |
             dBarai
@@ -1488,10 +1497,12 @@ resources:
           description: |
             auPAY
             - KG이니시스 JPPG 일본결제
+            - 헥토파이낸셜 해외결제
         MERPAY:
           description: |
             Merpay
             - KG이니시스 JPPG 일본결제
+            - 헥토파이낸셜 해외결제
         ALIPAY:
           description: |
             Alipay
@@ -2040,10 +2051,6 @@ resources:
           type: string
           description: |
             **상품 ID**
-
-            <PgSection pgName={(name) => ['triple_a'].includes(name)}>
-            Triple-A에 전달됩니다.
-            </PgSection>
         name:
           type: string
           description: |
@@ -2060,6 +2067,10 @@ resources:
 
             <PgSection pgName={(name) => name === 'tosspayments'}>
             토스페이먼츠의 경우 필수입니다.
+            </PgSection>
+
+            <PgSection pgName={(name) => name === 'triple_a'}>
+            Triple-A의 경우 필수입니다.
             </PgSection>
         amount:
           type: integer
@@ -2171,6 +2182,10 @@ resources:
 
             <PgSection pgName={(name) => ['hyphen'].includes(name)}>
             하이픈에 상점 이름으로 전달됩니다. 지정하지 않으면 기본값으로 포트원 콘솔의 상점 이름이 사용됩니다.
+            </PgSection>
+
+            <PgSection pgName={(name) => ['hecto_global'].includes(name)}>
+            헥토파이낸셜 해외결제에서 상점 이름으로 전달됩니다.
             </PgSection>
         businessRegistrationNumber:
           type: string
@@ -2528,8 +2543,6 @@ resources:
               description: 농협은행
             KAKAOBANK:
               description: 카카오뱅크
-            SMS:
-              description: 휴대폰 인증, 별도 계약 필요
         InicisUnifiedFlgFixedUser:
           type: enum
           description: |
@@ -6056,6 +6069,11 @@ resources:
             **프로모션 아이디**
 
             포트원의 프로모션 기능 이용시 지정합니다.
+        merpayCategoryId:
+          optional: true
+          type: string
+          description: |
+            **Merpay 상품 카테고리 ID**
         popup:
           optional: true
           type: resourceRef

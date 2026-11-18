@@ -284,7 +284,7 @@ function requestPayment() {
 
   **PG사 결제창 호출 시 PG사로 그대로 bypass할 파라미터들의 모음**
 
-  - inicis\_jp?: InicisJp
+  - inicis_jp?: InicisJp
 
     [definition link](https://developers.portone.io/schema/browser-sdk.yml#/resources/entity/bypass/payment/InicisJp)
 

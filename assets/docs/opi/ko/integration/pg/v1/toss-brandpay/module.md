@@ -56,7 +56,7 @@ await IMP.loadModule(
 
   `IMP` 로 시작하는 포트원 고객사 식별코드입니다.
 
-- tier\_code?: string
+- tier_code?: string
 
   **하위상점(Tier)의 고유코드**
 

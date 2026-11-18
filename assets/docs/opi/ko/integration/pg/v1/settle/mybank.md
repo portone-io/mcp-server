@@ -14,9 +14,9 @@ targetVersions:
 ## 2.결제 요청하기
 
 [JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk-old/readme) `IMP.request_pay(param, callback)`을
-호출하여 내통장 결제 결제창을 호출할 수 있습니다. **결제결과**는 PC의 경우 IMP.request\_pay(param,
+호출하여 내통장 결제 결제창을 호출할 수 있습니다. **결제결과**는 PC의 경우 IMP.request_pay(param,
 callback) 호출 후 **callback** 으로 수신되며,
-모바일의 경우 **m\_redirect\_url** 로 리디렉션됩니다.
+모바일의 경우 **m\_redirect_url** 로 리디렉션됩니다.
 
 <div class="tabs-container">
 
@@ -77,37 +77,37 @@ IMP.request_pay(
 
   </div>
 
-- pay\_method: string
+- pay_method: string
 
   **결제수단 구분코드**
 
   `trans`만 사용 가능합니다.
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **고객사 고유주문번호**
 
   매번 고유하게 채번되어야 합니다.
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
-- buyer\_tel: string
+- buyer_tel: string
 
   **구매자 연락처**
 
   필수 파라미터 입니다.
 
-- buyer\_addr?: string
+- buyer_addr?: string
 
   **구매자 주소**
 
-- buyer\_postcode?: string
+- buyer_postcode?: string
 
   **구매자 우편번호**
 
@@ -115,27 +115,27 @@ IMP.request_pay(
 
   **결제금액**
 
-- tax\_free?: number
+- tax_free?: number
 
   **면세금액**
 
-- vat\_amount?: number
+- vat_amount?: number
 
   **부가세**
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 결제 후 리디렉션 될 URL**
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
-- confirm\_url?: string
+- confirm_url?: string
 
   **Confirm process URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
@@ -204,7 +204,7 @@ IMP.request_pay(
 
 <div class="tabs-content" data-title="정기 결제 요청">
 
-인증결제창 호출 파라미터에서 **customer\_uid** 값을 추가하면 빌링키 발급 결제창을 호출할 수 있습니다.
+인증결제창 호출 파라미터에서 **customer_uid** 값을 추가하면 빌링키 발급 결제창을 호출할 수 있습니다.
 결제창에서 빌링키를 발급받은 후 해당 빌링키로 결제를 요청합니다.
 
 ```ts title="Javascript SDK"
@@ -272,13 +272,13 @@ IMP.request_pay(
 
   </div>
 
-- customer\_uid?: string
+- customer_uid?: string
 
   **빌링키**
 
   등록 계좌정보와 1:1로 매칭될 빌링키를 지정합니다.
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
@@ -292,27 +292,27 @@ IMP.request_pay(
 
   0원으로 입력시 빌링키만 발급됩니다. 금액 설정시 결제와 동시에 빌링키가 발급됩니다.
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **구매자 연락처**
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 결제 후 리디렉션 될 URL**
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
@@ -369,10 +369,10 @@ IMP.request_pay(
 
       **결제 한도 코드**
 
-#### 빌링키(customer\_uid)로 결제 요청하기
+#### 빌링키(customer_uid)로 결제 요청하기
 
-빌링키 발급이 성공하면 실 빌링키는 customer\_uid 와 1:1 매칭되어 **포트원 서버에 저장**됩니다.
-customer\_uid를 고객사 내부서버에 저장하시고 [**비 인증 결제요청 REST API**](https://developers.portone.io/api/rest-v1/nonAuthPayment#post%20%2Fsubscribe%2Fpayments%2Fagain)
+빌링키 발급이 성공하면 실 빌링키는 customer_uid 와 1:1 매칭되어 **포트원 서버에 저장**됩니다.
+customer_uid를 고객사 내부서버에 저장하시고 [**비 인증 결제요청 REST API**](https://developers.portone.io/api/rest-v1/nonAuthPayment#post%20%2Fsubscribe%2Fpayments%2Fagain)
 호출 시 해당 값을 지정하신 후 호출해야 합니다.
 
 ```sh title="server-side"

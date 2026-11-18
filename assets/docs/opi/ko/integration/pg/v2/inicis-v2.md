@@ -43,12 +43,14 @@ versionVariants:
   - 간편결제 : `EASY_PAY`
 
 - **결제창 빌링키 발급**
-  카드 결제는 `requestIssueBillingKey` 함수, 휴대폰 결제는 `requestIssueBillingKeyAndPay` 함수를 이용합니다. `requestIssueBillingKeyAndPay` 함수를 이용할 때에는 빌링키 발급과 동시에 결제가 일어납니다.
+
+  카드와 간편결제(카카오페이)는 `requestIssueBillingKey` 함수, 휴대폰 결제는 `requestIssueBillingKeyAndPay` 함수를 이용합니다. `requestIssueBillingKeyAndPay` 함수를 이용할 때에는 빌링키 발급과 동시에 결제가 일어납니다.
 
   `billingKeyMethod` 파라미터를 결제 수단에 따라 아래와 같이 설정해야 합니다.
 
   - 카드: `CARD`
   - 휴대폰: `MOBILE`
+  - 간편결제(카카오페이): `EASY_PAY`
 
 - **API 수기(키인) 결제**
 
@@ -191,7 +193,7 @@ function requestPayment() {
 
   **PG사 결제창 호출 시 PG사로 그대로 bypass할 파라미터들의 모음**
 
-  - inicis\_v2?: InicisV2BypassOnPc & InicisV2BypassOnMobile
+  - inicis_v2?: InicisV2BypassOnPc & InicisV2BypassOnMobile
 
     **이니시스 bypass 파라미터**
 
@@ -220,14 +222,14 @@ function requestPayment() {
 
       **PC용 파라미터**
 
-      - logo\_url?: string
+      - logo_url?: string
 
         결제창에 삽입할 메인 로고 url
 
         결제창 중앙 상단에 표시됩니다.
         이미지 권장 사이즈는 89\*18 입니다.
 
-      - logo\_2nd?: string
+      - logo_2nd?: string
 
         결제창에 삽입할 서브 로고 url
 
@@ -241,7 +243,7 @@ function requestPayment() {
         14세 미만 고객의 경우 필수 입력입니다.
         "@", "." 외의 특수문자는 입력 불가합니다.
 
-      - Ini\_SSGPAY\_MDN?: string
+      - Ini_SSGPAY_MDN?: string
 
         SSGPAY 결제요청 시 PUSH 전송 휴대폰번호
 
@@ -299,18 +301,18 @@ function requestPayment() {
 
       **모바일용 파라미터**
 
-      - P\_CARD\_OPTION?: string
+      - P_CARD_OPTION?: string
 
         신용카드 우선선택 옵션
 
         설정한 카드코드에 해당하는 카드가 선택된 채로 Display 됩니다.
         `selcode=카드코드` 형식으로 입력합니다. (ex. `selcode=14`)
 
-      - P\_MNAME?: string
+      - P_MNAME?: string
 
         가맹점 이름
 
-      - P\_RESERVED?: string\[]
+      - P_RESERVED?: string\[]
 
         추가 옵션
 
@@ -324,11 +326,11 @@ function requestPayment() {
 
           (카드결제 시) 간편결제 미노출 옵션
 
-        - global\_visa3d=Y?: string
+        - global_visa3d=Y?: string
 
           해외카드 노출 옵션
 
-        - apprun\_check=Y?: string
+        - apprun_check=Y?: string
 
           (android의 경우) custom url scheme 대신 intent schema(intent://) 호출
 
@@ -567,6 +569,8 @@ function requestIssueBillingKey() {
     billingKeyMethod: "CARD",
     issueId: "test-issueId",
     issueName: "test-issueName",
+    displayAmount: 1000,
+    currency: "KRW",
     customer: {
       fullName: "포트원",
       phoneNumber: "010-0000-1234",
@@ -600,7 +604,7 @@ function requestIssueBillingKey() {
 
   **빌링키 발급수단**
 
-  KG이니시스는 빌링키 발급 수단으로 카드만을 지원하므로 해당 파라미터는 `CARD`로 고정해야 합니다.
+  카드 빌링키 발급 시에는 `CARD`로 설정해야 합니다.
 
 - issueId: string
 
@@ -614,6 +618,19 @@ function requestIssueBillingKey() {
   **빌링키 발급 시 결제창에 표시되는 제목**
 
   - KG이니시스의 경우 필수 입력해야 합니다.
+
+- displayAmount?: number
+
+  **빌링키 발급 시 결제창에 표시되는 금액**
+
+  - 화면 표시용 금액이며, 빌링키 발급 시 실제 결제는 일어나지 않습니다.
+  - PC에서 공동인증서를 이용하지 않는 신규 결제창을 사용하려면 `currency`와 함께 입력해야 합니다.
+
+- currency?: string
+
+  **displayAmount의 통화**
+
+  - PC에서 공동인증서를 이용하지 않는 신규 결제창을 사용하려면 `displayAmount`와 함께 입력해야 합니다.
 
 - customer?: object
 
@@ -659,7 +676,7 @@ function requestIssueBillingKey() {
 
   **PG사 결제창 호출 시 PG사로 그대로 bypass할 파라미터들의 모음**
 
-  - inicis\_v2?: object
+  - inicis_v2?: object
 
     **이니시스에서 제공하는 파라미터 모음**
 
@@ -726,9 +743,11 @@ PC 빌링키 발급의 경우 `KO_KR`, `EN_US`, `ZH_CN`을 지원하며, 모바�
 
 <details>
 
-<summary>지원되는 결제 통화</summary>
+<summary>신규 결제창 사용 조건 및 지원되는 결제 통화</summary>
 
-SDK를 통한 빌링키 발급 요청 파라미터에는 displayAmount에 대한 통화를 지정할 수 있는 `currency` 파라미터가 존재합니다.
+카드 빌링키 발급 시 PC에서 공동인증서를 이용하지 않는 신규 결제창을 사용하려면 `displayAmount`와 `currency` 필드를 모두 지정해야 합니다.
+
+SDK를 통한 빌링키 발급 요청 파라미터에는 `displayAmount`에 대한 통화를 지정할 수 있는 `currency` 파라미터가 존재합니다.
 PC 빌링키 발급의 경우 `KRW`와 `USD`를 지원하며, 모바일 빌링키 발급의 경우 `KRW`만 지원합니다.
 
 </details>
@@ -741,6 +760,155 @@ KG이니시스 경우 카드사 다이렉트 호출을 통한 빌링키 발급�
 `card.cardCompany` 필드에 값을 채워도 빌링키 발급 동작에 아무런 영향을 미치지 않습니다.
 
 </details>
+
+## SDK 카카오페이 빌링키 발급 요청하기
+
+카카오페이 빌링키 발급 요청 시에는 `requestIssueBillingKey` 함수를 호출해야 합니다.
+`channelKey` 파라미터에 결제 채널 연동 후 생성된 채널 키값을 지정하여 KG이니시스 채널 사용을 명시해주세요.
+
+KG이니시스 기준으로 작성한 예시 코드는 아래와 같습니다.
+
+<div class="tabs-container">
+
+<div class="tabs-content" data-title="SDK 빌링키 발급 요청">
+
+```javascript
+import * as PortOne from "@portone/browser-sdk/v2";
+function requestIssueBillingKey() {
+  PortOne.requestIssueBillingKey({
+    storeId: "store-4ff4af41-85e3-4559-8eb8-0d08a2c6ceec", // 고객사 storeId로 변경해주세요.
+    channelKey: "channel-key-3b37819a-1c72-4deb-a245-8c810af5403d", // 콘솔 결제 연동 화면에서 채널 연동 시 생성된 채널 키를 입력해주세요.
+    billingKeyMethod: "EASY_PAY",
+    issueId: "test-issueId",
+    issueName: "test-issueName",
+    displayAmount: 1000,
+    currency: "KRW",
+    customer: {
+      fullName: "포트원",
+      phoneNumber: "010-0000-1234",
+      email: "test@portone.io",
+    },
+    easyPay: {
+      easyPayProvider: "KAKAOPAY",
+    },
+  });
+}
+```
+
+</div>
+
+</div>
+
+### 주요 파라미터
+
+<br />
+
+- storeId: string
+
+  **상점 아이디**
+
+  포트원 계정에 생성된 상점을 식별하는 고유한 값으로 관리자 콘솔에서 확인할 수 있습니다.
+
+- channelKey: string
+
+  **채널 키**
+
+  포트원 콘솔 내 \[결제연동] > \[채널관리] 화면에서 채널 추가 시 생성되는 값입니다. 결제 호출 시 채널을 지정할 때 사용됩니다.
+
+- billingKeyMethod: string
+
+  **빌링키 발급수단**
+
+  카카오페이 빌링키 발급 시에는 `EASY_PAY`로 설정해야 합니다.
+
+- issueId: string
+
+  **빌링키 발급 건 고유 ID**
+
+  - 고객사에서 채번하여 사용해야 합니다.
+
+- issueName: string
+
+  **빌링키 발급 시 결제창에 표시되는 제목**
+
+- displayAmount: number
+
+  **빌링키 발급 시 결제창에 표시되는 금액**
+
+  - 화면 표시용 금액이며, 빌링키 발급 시 실제 결제는 일어나지 않습니다.
+
+- currency: string
+
+  **displayAmount의 통화**
+
+  - `KRW`로 입력해야 합니다.
+
+- customer: object
+
+  **고객 정보**
+
+  - fullName?: string
+
+    **구매자 전체 이름**
+
+    - fullName 혹은 (firstName + lastName)을 필수로 입력해야 합니다.
+
+  - firstName?: string
+
+    **구매자 이름**
+
+    - fullName 혹은 (firstName + lastName)을 필수로 입력해야 합니다.
+
+  - lastName?: string
+
+    **구매자 성**
+
+    - fullName 혹은 (firstName + lastName)을 필수로 입력해야 합니다.
+
+  - phoneNumber: string
+
+    **구매자 연락처**
+
+  - email: string
+
+    **구매자 이메일**
+
+- easyPay: object
+
+  - easyPayProvider: string
+
+    **간편 결제 수단**
+
+    - 카카오페이: `KAKAOPAY`
+
+## SDK 구독 등록 요청하기
+
+[구독 결제](https://developers.portone.io/opi/ko/extra/subscription/intro)를 사용하는 경우 `requestSubscriptionRegistration` 함수로 결제수단 등록과 첫 회차 결제를 한 번에 처리할 수 있습니다.
+KG이니시스 채널은 결제창에서 빌링키를 발급한 뒤 포트원이 그 빌링키로 첫 회차를 결제합니다.
+금액, 주문명, 구매자 정보는 사전 등록한 구독에서 가져오므로 전달하지 않습니다.
+
+<div class="tabs-container">
+
+<div class="tabs-content" data-title="SDK 구독 등록 요청">
+
+```ts
+import * as PortOne from "@portone/browser-sdk/v2";
+function requestSubscriptionRegistration() {
+  PortOne.requestSubscriptionRegistration({
+    storeId: "store-00000000-0000-0000-0000-000000000000", // 고객사 storeId로 변경해주세요.
+    channelKey: "channel-key-00000000-0000-0000-0000-000000000000", // 콘솔 결제 연동 화면에서 채널 연동 시 생성된 채널 키를 입력해주세요.
+    subscriptionId: "subscription-0193c1a2", // 구독 사전 등록 API로 만든 구독 아이디를 입력해주세요.
+    registrationSecret: "rsec_...", // 구독 사전 등록 API 응답의 registrationSecret을 입력해주세요.
+    billingKeyMethod: "CARD",
+  });
+}
+```
+
+</div>
+
+</div>
+
+구독 사전 등록, 결과 확인, 파라미터 설명은 [구독 결제 연동하기](https://developers.portone.io/opi/ko/extra/subscription/integration)를 참고해주세요.
 
 ## SDK 휴대폰 빌링키 발급 및 결제 요청하기
 

@@ -7,8 +7,8 @@ targetVersions:
 
 <div class="hint" data-style="info">
 
-토스페이(tosspay)는 일반결제만 지원됩니다. 일반결제 및 정기결제 모두 사용하시는 고객사께서는 [토스페이(tosspay\_v2) 연동 가이드](https://developers.portone.io/opi/ko/integration/pg/v1/tosspay-v2/readme)를 참고하여 진행해주세요.
-신규 고객사의 경우 가급적 토스페이(tosspay\_v2)로 연동하는 것을 권장드립니다.
+토스페이(tosspay)는 일반결제만 지원됩니다. 일반결제 및 정기결제 모두 사용하시는 고객사께서는 [토스페이(tosspay_v2) 연동 가이드](https://developers.portone.io/opi/ko/integration/pg/v1/tosspay-v2/readme)를 참고하여 진행해주세요.
+신규 고객사의 경우 가급적 토스페이(tosspay_v2)로 연동하는 것을 권장드립니다.
 
 </div>
 
@@ -23,7 +23,7 @@ targetVersions:
 [JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk-old/readme) `IMP.request_pay(param, callback)`을 호출하여
 토스간편결제 결제창을 호출할 수 있습니다.
 **결제결과**는 PC 환경은 **callback**,
-모바일 환경은 **m\_redirect\_url** 로 리디렉션됩니다.
+모바일 환경은 **m\_redirect_url** 로 리디렉션됩니다.
 
 <div class="tabs-container">
 
@@ -77,7 +77,7 @@ IMP.request_pay(
 
   </div>
 
-- pay\_method?: string
+- pay_method?: string
 
   **결제수단 구분코드**
 
@@ -87,7 +87,7 @@ IMP.request_pay(
 
   **제품명**
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
@@ -99,43 +99,43 @@ IMP.request_pay(
 
   **string** 이 아닌점에 유의하세요
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **구매자 연락처**
 
-- buyer\_addr?: string
+- buyer_addr?: string
 
   **구매자 주소**
 
-- buyer\_postcode?: string
+- buyer_postcode?: string
 
   **구매자 우편번호**
 
-- tax\_free?: number
+- tax_free?: number
 
   **면세금액**
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 결제 후 리디렉션 될 URL**
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
-- confirm\_url?: string
+- confirm_url?: string
 
   **Confirm process URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 

@@ -30,23 +30,23 @@ V1을 완전히 버리고 V2로 넘어가는 것이 아니기 때문에 하나�
 
 - 카카오페이 결제 파라미터
 
-|       Name       |   타입   |필수여부|                                                         설명                                                         |
-|:----------------:|:--------:|:------:|:--------------------------------------------------------------------------------------------------------------------:|
-|        cid       |  String  |    O   |                                                   가맹점 코드, 10자                                                  |
-|    cid\_secret   |  String  |    X   |                                   가맹점 코드 인증키, 24자, 숫자와 영문 소문자 조합                                  |
-|partner\_order\_id|  String  |    O   |                                              가맹점 주문번호, 최대 100자                                             |
-| partner\_user\_id|  String  |    O   |                                              가맹점 회원 id, 최대 100자                                              |
-|    item\_name    |  String  |    O   |                                                  상품명, 최대 100자                                                  |
-|    item\_code    |  String  |    X   |                                                 상품코드, 최대 100자                                                 |
-|     quantity     |  Integer |    O   |                                                       상품 수량                                                      |
-|   total\_amount  |  Integer |    O   |                                                       상품 총액                                                      |
-| tax\_free\_amount|  Integer |    O   |                                                   상품 비과세 금액                                                   |
-|    vat\_amount   |  Integer |    X   |상품 부가세 금액 값을 보내지 않을 경우 다음과 같이 VAT 자동 계산 (상품총액 - 상품 비과세 금액)/11 : 소숫점 이하 반올림|
-|  green\_deposit  |  Integer |    X   |                                                       컵 보증금                                                      |
-|   approval\_url  |  String  |    O   |                                         결제 성공 시 redirect url, 최대 255자                                        |
-|    cancel\_url   |  String  |    O   |                                         결제 취소 시 redirect url, 최대 255자                                        |
-|     fail\_url    |  String  |    O   |                                         결제 실패 시 redirect url, 최대 255자                                        |
-| available\_cards |JSON Array|    X   |                             결제 수단으로써 사용 허가할 카드사를 지정해야 하는 경우 사용                             |
+|      Name      |   타입   |필수여부|                                                         설명                                                         |
+|:--------------:|:--------:|:------:|:--------------------------------------------------------------------------------------------------------------------:|
+|       cid      |  String  |    O   |                                                   가맹점 코드, 10자                                                  |
+|   cid_secret   |  String  |    X   |                                   가맹점 코드 인증키, 24자, 숫자와 영문 소문자 조합                                  |
+|partner_order_id|  String  |    O   |                                              가맹점 주문번호, 최대 100자                                             |
+| partner_user_id|  String  |    O   |                                              가맹점 회원 id, 최대 100자                                              |
+|    item_name   |  String  |    O   |                                                  상품명, 최대 100자                                                  |
+|    item_code   |  String  |    X   |                                                 상품코드, 최대 100자                                                 |
+|    quantity    |  Integer |    O   |                                                       상품 수량                                                      |
+|  total_amount  |  Integer |    O   |                                                       상품 총액                                                      |
+| tax_free_amount|  Integer |    O   |                                                   상품 비과세 금액                                                   |
+|   vat_amount   |  Integer |    X   |상품 부가세 금액 값을 보내지 않을 경우 다음과 같이 VAT 자동 계산 (상품총액 - 상품 비과세 금액)/11 : 소숫점 이하 반올림|
+|  green_deposit |  Integer |    X   |                                                       컵 보증금                                                      |
+|  approval_url  |  String  |    O   |                                         결제 성공 시 redirect url, 최대 255자                                        |
+|   cancel_url   |  String  |    O   |                                         결제 취소 시 redirect url, 최대 255자                                        |
+|    fail_url    |  String  |    O   |                                         결제 실패 시 redirect url, 최대 255자                                        |
+| available_cards|JSON Array|    X   |                             결제 수단으로써 사용 허가할 카드사를 지정해야 하는 경우 사용                             |
 
 - 네이버페이 결제 파라미터
 

@@ -30,8 +30,8 @@ SDK 스크립트의 주소가 `https://cdn.iamport.kr/v1/iamport.js` 인지 확�
 - `imp_uid`
 - `merchant_uid`
 
-해당 SDK를 사용하실때는 IMP.request\_pay로부터 응답된 객체(또는 쿼리 파라미터)에서
-imp\_uid를 가지고 **포트원 REST API(GET /payments/imp\_uid)로 결제 상세 내역(승인 상태, 승인 결과 등등)을 조회**하여
+해당 SDK를 사용하실때는 IMP.request_pay로부터 응답된 객체(또는 쿼리 파라미터)에서
+imp_uid를 가지고 **포트원 REST API(GET /payments/imp_uid)로 결제 상세 내역(승인 상태, 승인 결과 등등)을 조회**하여
 응답 파라미터 중 status(결제 상태)파라미터에 따라 추가 로직을 구현해야 합니다.
 
 </div>
@@ -168,19 +168,19 @@ attribute가 `paypal-rt`인 elemente도 2개 이상인 경우, “동일한 data
 
   **채널키**
 
-  paypal\_v2 채널의 채널 키입니다. 포트원 콘솔 내 \[결제 연동] - \[연동 정보] - \[채널 관리] 에서 확인 가능합니다.
+  paypal_v2 채널의 채널 키입니다. 포트원 콘솔 내 \[결제 연동] - \[연동 정보] - \[채널 관리] 에서 확인 가능합니다.
 
 - pg(deprecated)?: string
 
   ~~`paypal_v2`로 지정합니다.~~
 
-- pay\_method: string
+- pay_method: string
 
   **결제수단 구분코드**
 
   `paypal`로 지정합니다.
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문 번호**
 
@@ -190,25 +190,25 @@ attribute가 `paypal-rt`인 elemente도 2개 이상인 경우, “동일한 data
 
   **제품명**
 
-- customer\_uid: string
+- customer_uid: string
 
   **포트원 빌링키**
 
   고객사에서 빌링키 발급 시 고유하게 채번하여 요청해야 합니다. 빌링키 결제 시 해당 값을 이용하여 결제를 요청해야 하기 때문에 고객사에서 별도로 저장하셔야 합니다.
 
-- customer\_id?: string
+- customer_id?: string
 
   **고객 식별 아이디**
 
   고객사에서 구매자를 특정하기 위해 고유하게 채번하여 사용하는 아이디입니다.
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
   빌링키 발급 완료 후 웹훅이 발송됩니다.
 
-- custom\_data?: object
+- custom_data?: object
 
   **사용자 정의 데이터**
 
@@ -239,8 +239,8 @@ attribute가 `paypal-rt`인 elemente도 2개 이상인 경우, “동일한 data
 ### 결제 처리
 
 페이팔 결제 건은 승인 요청 시 바로 승인 되지 않고 일정 시간 후 처리되는 `승인 대기(pending)` 상태가 존재합니다.
-따라서 고객사는 트랜잭션 종료시 콜백 함수로 전달되는 포트원 거래 번호(imp\_uid)로
-결제 내역을 조회([GET /payments/{imp\_uid}](https://developers.portone.io/api/rest-v1/payment?v=v1#get%20%2Fpayments%2F%7Bimp_uid%7D))한 후 응답 되는 status를 보고
+따라서 고객사는 트랜잭션 종료시 콜백 함수로 전달되는 포트원 거래 번호(imp_uid)로
+결제 내역을 조회([GET /payments/{imp_uid}](https://developers.portone.io/api/rest-v1/payment?v=v1#get%20%2Fpayments%2F%7Bimp_uid%7D))한 후 응답 되는 status를 보고
 각 상황에 맞는 후 처리 로직을 작성해야 합니다.
 
 승인 대기 상태에서는 최종적으로 승인(paid)이 될 수도 있고 승인이 되지 않을 수도(failed) 있기 때문에
@@ -252,8 +252,8 @@ attribute가 `paypal-rt`인 elemente도 2개 이상인 경우, “동일한 data
 페이팔 결제 취소 요청 시 취소 요청이 바로 승인 되지 않고 일정 시간 후 승인처리되는 경우가 존재합니다.
 고객사는 결제 취소 요청 응답 처리 시 취소가 승인되었는지 여부를 확인해야 합니다.
 
-결제 취소 API를 통해 취소 요청을 한 경우 API 응답의 status와 cancel\_history 값을 기준으로 취소 승인 여부를 판단해야 합니다.
-status가 cancelled 이고 cancel\_history에 취소 요청 내역이 있는 경우 취소가 승인된 것이고 그렇지 않은 경우 취소 승인대기 상태입니다.
+결제 취소 API를 통해 취소 요청을 한 경우 API 응답의 status와 cancel_history 값을 기준으로 취소 승인 여부를 판단해야 합니다.
+status가 cancelled 이고 cancel_history에 취소 요청 내역이 있는 경우 취소가 승인된 것이고 그렇지 않은 경우 취소 승인대기 상태입니다.
 
 콘솔을 통한 취소 요청이 승인대기인 경우 결제내역에서 결제상태는 결제취소로 변경되지 않고 진행중인 취소요청 내역이 있음이 표시되며 결제내역 상세 화면에서 취소요청내역이 조회됩니다.
 취소 요청이 승인대기 상태인 경우 최종적으로 승인되거나 승인되지 않을 수 있기 때문에 고객사는 최종 취소 처리 결과를 전달받기 위해 고객사 통보 웹훅 기능을 연동해야 합니다.
@@ -316,8 +316,8 @@ status가 cancelled 이고 cancel\_history에 취소 요청 내역이 있는 경
 |파라미터|의미                                                     |예시                                         |
 |--------|---------------------------------------------------------|---------------------------------------------|
 |fncls   |fnparams-dede7cc5-15fd-4c75-a9f4-36c430ee3a99로 항상 고정|fnparams-dede7cc5-15fd-4c75-a9f4-36c430ee3a99|
-|f       |주문번호(merchant\_uid) 전달                             |mid\_1683690731602                           |
-|s       |string                                                   |7WBB3CKT63FRG\_checkout-page                 |
+|f       |주문번호(merchant_uid) 전달                              |mid_1683690731602                            |
+|s       |string                                                   |7WBB3CKT63FRG_checkout-page                  |
 |sandbox |페이팔 Account ID가 테스트 용인지 운영 용인지 여부       |true                                         |
 
 #### 앱
@@ -326,7 +326,7 @@ status가 cancelled 이고 cancel\_history에 취소 요청 내역이 있는 경
 
 [**Android Integration of Magnes**](http://developer.paypal.com/limited-release/magnes/integrate/android/)
 가이드 문서에 따라 아래와 같이 collectAndSubmit 메소드 호출을 통해 페이팔로 디바이스 정보를 보내야합니다.
-이때 두번째 파라미터(paypalClientMetaDataId)로는 주문번호(merchant\_uid)를 전달해주시면 됩니다.
+이때 두번째 파라미터(paypalClientMetaDataId)로는 주문번호(merchant_uid)를 전달해주시면 됩니다.
 
 ```java
 MagnesResult magnesResult = MagnesSDK.getInstance()
@@ -339,7 +339,7 @@ MagnesResult magnesResult = MagnesSDK.getInstance()
 
 [**iOS Swift SDK Integration**](http://developer.paypal.com/limited-release/magnes/integrate/ios-swift/)
 가이드 문서에 따라 아래와 같이 collectAndSubmit 메소드 호출을 통해 페이팔로 디바이스 정보를 보내야합니다.
-이때 첫번째 파라미터(withPayPalClientMetadataId)로는 주문번호(merchant\_uid)를 전달해주시면 됩니다.
+이때 첫번째 파라미터(withPayPalClientMetadataId)로는 주문번호(merchant_uid)를 전달해주시면 됩니다.
 
 ```swift
 let magnesResult:MagnesResult =
@@ -351,7 +351,7 @@ MagnesSDK.shared().collectAndSubmit(withPayPalClientMetadataId:
 
 [**iOS Objective-C SDK Integration of Magnes**](http://developer.paypal.com/limited-release/magnes/integrate/ios-objective-c/)
 가이드 문서에 따라 아래와 같이 collectAndSubmitWithPayPalClientMetadataId 메소드 호출을 통해 페이팔로 디바이스 정보를 보내야합니다.
-이때 첫번째 파라미터(YOUR-PAYPAL-CLIENT-METADATA-ID)로는 주문번호(merchant\_uid)를 전달해주시면 됩니다.
+이때 첫번째 파라미터(YOUR-PAYPAL-CLIENT-METADATA-ID)로는 주문번호(merchant_uid)를 전달해주시면 됩니다.
 
 ```objective-c
 //PPRMOCMagnesSDK *magnesSDK = [PPRMOCMagnesSDK shared];
@@ -372,7 +372,7 @@ STC 기능을 사용하시기 위해 다음 정보를 확인하셔야 합니다.
 1. 페이팔 Business 계정 가입시 산업 종류(Industry)를 결정하는데, 계정의 산업 종류를 확인해야 합니다.
 
 2. 계정의 산업 종류를 확인하신 뒤, loadUI 호출 해 빌링키를 발급 받을때 그리고 발급 된 빌링키로 결제(again API 호출)할 때
-   모두 bypass.paypal\_v2 객체에 아래와 같은 형식으로 전달해주셔야 합니다.
+   모두 bypass.paypal_v2 객체에 아래와 같은 형식으로 전달해주셔야 합니다.
 
 <details>
 

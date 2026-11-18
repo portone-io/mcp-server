@@ -74,7 +74,7 @@ IMP.request_pay(
 
   **WebView 등 팝업이 차단되는 환경**에서는 `popup : false`로 설정하신 후 호출하시길 권장드립니다.
 
-- pay\_method: string
+- pay_method: string
 
   **결제수단 구분코드**
 
@@ -82,7 +82,7 @@ IMP.request_pay(
   - trans (실시간 계좌이체)
   - vbank(가상계좌)
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **`고객사 주문번호`**
 
@@ -98,33 +98,33 @@ IMP.request_pay(
 
   **string** 이 아닌점에 유의하세요
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
-- buyer\_tel: string
+- buyer_tel: string
 
   **구매자 연락처**
 
   필수 파라미터 입니다.
 
-- buyer\_addr?: string
+- buyer_addr?: string
 
   **구매자 주소**
 
-- buyer\_postcode?: string
+- buyer_postcode?: string
 
   **구매자 우편번호**
 
-- tax\_free?: number
+- tax_free?: number
 
   **면세금액**
 
-- vbank\_due?: string
+- vbank_due?: string
 
   **가상계좌 입금마감일시**
 
@@ -132,27 +132,27 @@ IMP.request_pay(
 
   **결제창 언어**
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 결제 후 리디렉션 될 URL**
 
-- app\_scheme?: string
+- app_scheme?: string
 
   **모바일 앱 URL scheme** (모바일 전용)
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
-- confirm\_url?: string
+- confirm_url?: string
 
   **Confirm process URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
-- customer\_id?: string
+- customer_id?: string
 
   **구매자 고유 ID**
 
@@ -160,7 +160,7 @@ IMP.request_pay(
 
 <div class="tabs-content" data-title="정기 결제창 요청">
 
-인증결제창 호출 파라미터에서 **customer\_uid** 값을 추가하면 비 인증 결제창을 호출할 수 있습니다.
+인증결제창 호출 파라미터에서 **customer_uid** 값을 추가하면 비 인증 결제창을 호출할 수 있습니다.
 
 <div class="hint" data-style="info">
 
@@ -224,13 +224,13 @@ IMP.request_pay(
 
   **WebView 등 팝업이 차단되는 환경**에서는 `popup : false`로 설정하는 것을 권장합니다.
 
-- customer\_uid?: string
+- customer_uid?: string
 
   **카드 빌링키**
 
   비 인증 결제창에서 고객이 입력한 카드정보와 1:1로 매칭될 빌링키를 지정합니다.
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
@@ -244,23 +244,23 @@ IMP.request_pay(
 
   금액이 설정되어도 실 결제는 발생되지 않습니다.
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **구매자 연락처**
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 

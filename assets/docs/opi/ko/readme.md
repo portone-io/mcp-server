@@ -36,6 +36,12 @@ targetVersions:
 
 [인증 결제 연동하기](https://developers.portone.io/opi/ko/integration/start/v2/checkout)
 
+## 체크아웃
+
+포트원이 호스팅하는 체크아웃 페이지로 결제를 연동합니다.
+
+[체크아웃](https://developers.portone.io/opi/ko/extra/hosted-checkout/readme-v2)
+
 ## 수기(키인)결제 연동하기
 
 해당 가이드를 통해 API 결제를 손쉽게 연동할 수 있습니다.

@@ -1,8 +1,7 @@
 ---
 title: 결제대행사 선택하여 연동하기
 description: 각 결제대행사(PG)사별 결제 연동 방법 및 유의사항을 확인할 수 있습니다.
-cover: >-
-  https://images.unsplash.com/photo-1560179707-f14e90ef3623?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxOTcwMjR8MHwxfHNlYXJjaHw2fHxjb21wYW55fGVufDB8fHx8MTY4MTcxNzYyNg&ixlib=rb-4.0.3&q=85
+cover: https://images.unsplash.com/photo-1560179707-f14e90ef3623?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxOTcwMjR8MHwxfHNlYXJjaHw2fHxjb21wYW55fGVufDB8fHx8MTY4MTcxNzYyNg&ixlib=rb-4.0.3&q=85
 coverY: 0
 targetVersions:
   - v1
@@ -34,7 +33,7 @@ versionVariants:
 
 [헥토파이낸셜](https://developers.portone.io/opi/ko/integration/pg/v1/settle/readme)
 
-[KG파이낸셜 (구모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/kg)
+[KG파이낸셜 (신모듈)](https://developers.portone.io/opi/ko/integration/pg/v1/kg-mobilians-v2)
 
 [KSNET](https://developers.portone.io/opi/ko/integration/pg/v1/ksnet/readme)
 
@@ -54,7 +53,7 @@ versionVariants:
 
 [스마일페이](https://developers.portone.io/opi/ko/integration/pg/v1/smilepay)
 
-[토스페이(tosspay\_v2)](https://developers.portone.io/opi/ko/integration/pg/v1/tosspay-v2/readme)
+[토스페이(tosspay_v2)](https://developers.portone.io/opi/ko/integration/pg/v1/tosspay-v2/readme)
 
 [토스페이(tosspay)](https://developers.portone.io/opi/ko/integration/pg/v1/tosspay)
 

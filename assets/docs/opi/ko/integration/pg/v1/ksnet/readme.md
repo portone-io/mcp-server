@@ -18,7 +18,7 @@ versionVariants:
 
 [JavaScript SDK (신규)](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/readme)의 `IMP.request_pay(param, callback)`을 호출하여
 KSNET 결제창을 호출할 수 있습니다. **결제결과**는 PC의 경우 `IMP.request_pay(param, callback)` 호출 후
-**callback**으로 수신되고 모바일의 경우 **m\_redirect\_url**로 리디렉션됩니다.
+**callback**으로 수신되고 모바일의 경우 **m\_redirect_url**로 리디렉션됩니다.
 
 <div class="hint" data-style="info">
 
@@ -118,7 +118,7 @@ IMP.request_pay(
 
   </div>
 
-- pay\_method: string
+- pay_method: string
 
   **결제수단 구분코드**
 
@@ -132,7 +132,7 @@ IMP.request_pay(
   - naverpay (네이버페이)
   - payco (페이코)
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **고객사 채번 주문 고유번호**
 
@@ -144,7 +144,7 @@ IMP.request_pay(
 
   지정하지 않은 경우 0원입니다.
 
-- tax\_free?: number
+- tax_free?: number
 
   **면세금액**
 
@@ -156,23 +156,23 @@ IMP.request_pay(
 
   </div>
 
-- buyer\_name: string
+- buyer_name: string
 
   **구매자명**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **구매자 전화번호**
 
-- buyer\_addr?: string
+- buyer_addr?: string
 
   **구매자 주소**
 
-- buyer\_postcode?: string
+- buyer_postcode?: string
 
   **구매자 우편번호**
 
@@ -206,7 +206,7 @@ IMP.request_pay(
 
   **결제창에 렌더링될 카드 할부 개월수 리스트 설정**
 
-  - card\_quota?: number\[]
+  - card_quota?: number\[]
 
     **할부 개월수 설정**
 
@@ -297,7 +297,7 @@ curl -H "Content-Type: application/json" \
 
 ### 빌링키 발급 요청하기
 
-REST [**API POST /subscribe/customers/{customer\_uid}**](https://developers.portone.io/api/rest-v1/billingkey#post%20%2Fsubscribe%2Fcustomers%2F%7Bcustomer_uid%7D)를 호출하여 빌링키 발급을 요청합니다.
+REST [**API POST /subscribe/customers/{customer_uid}**](https://developers.portone.io/api/rest-v1/billingkey#post%20%2Fsubscribe%2Fcustomers%2F%7Bcustomer_uid%7D)를 호출하여 빌링키 발급을 요청합니다.
 
 ```sh
 curl -H "Content-Type: application/json" \
@@ -332,7 +332,7 @@ REST [**API POST /payments/cancel**](https://developers.portone.io/api/rest-v1/p
 ### 현금영수증 등록
 
 포트원을 통한 거래건이지만 결제창에서 현금영수증 등록을 하지 못한 경우 API를 통해 현금영수증을 등록할 수 있습니다.\
-REST [**API POST /receipts/{imp\_uid}**](https://developers.portone.io/api/rest-v1/receipt#post%20%2Freceipts%2F%7Bimp_uid%7D)를
+REST [**API POST /receipts/{imp_uid}**](https://developers.portone.io/api/rest-v1/receipt#post%20%2Freceipts%2F%7Bimp_uid%7D)를
 호출하여 현금영수증을 요청합니다.
 
 - `product_type`(디지털: `"digital"`, 실물: `"real"`), `buyer_name` 파라미터는 KSNET 필수 입력 대상입니다.
@@ -346,7 +346,7 @@ curl -H "Content-Type: application/json" \
 ### 외부 현금영수증 등록
 
 포트원을 통한 거래건이 아닌 현금성 거래의 경우에도 API를 통해 현금영수증을 등록할 수 있습니다.\
-REST [**API POST /receipts/external/{merchant\_uid}**](https://developers.portone.io/api/rest-v1/receipt#post%20%2Freceipts%2Fexternal%2F%7Bmerchant_uid%7D)를
+REST [**API POST /receipts/external/{merchant_uid}**](https://developers.portone.io/api/rest-v1/receipt#post%20%2Freceipts%2Fexternal%2F%7Bmerchant_uid%7D)를
 호출하여 현금영수증을 요청합니다.
 
 - `product_type`, `pg`, `buyer_name` 파라미터는 KSNET 필수 입력 대상입니다.
@@ -399,7 +399,7 @@ KB 앱카드 결제 시, card.useInstallment 파라미터 true 설정 시에만 
 
   **결제창에 렌더링될 카드 할부 개월수 리스트 설정**
 
-  - card\_quota?: number\[]
+  - card_quota?: number\[]
 
     **할부 개월수 설정**
 
@@ -422,11 +422,11 @@ KB 앱카드 결제 시, card.useInstallment 파라미터 true 설정 시에만 
 
     **카드사 렌더링 정보**
 
-    - card\_code?: string
+    - card_code?: string
 
       **카드사 코드**
 
-    - max\_month?: number
+    - max_month?: number
 
       **상점 부담 무이자 할부 최대 개월수**
 

@@ -11,7 +11,7 @@ targetVersions:
 
 <summary>빌링키 발급 수단 및 정보를 알 수 없음</summary>
 
-페이팔을 통해 다양한 수단으로 빌링키 발급이 가능하지만, 페이팔이 승인 된 빌링키 발급 수단 및 정보를 알려주지 않습니다. 따라서 페이팔 빌링키 발급 건의 결제 수단(pay\_method)은 모두 paypal로 일괄 저장되며 [발급 된 빌링키 정보 조회](https://developers.portone.io/api/rest-v1/billingkey?v=v1#get%20%2Fsubscribe%2Fcustomers%2F%7Bcustomer_uid%7D)시 카드 정보는 모두 null로 내려갑니다.
+페이팔을 통해 다양한 수단으로 빌링키 발급이 가능하지만, 페이팔이 승인 된 빌링키 발급 수단 및 정보를 알려주지 않습니다. 따라서 페이팔 빌링키 발급 건의 결제 수단(pay_method)은 모두 paypal로 일괄 저장되며 [발급 된 빌링키 정보 조회](https://developers.portone.io/api/rest-v1/billingkey?v=v1#get%20%2Fsubscribe%2Fcustomers%2F%7Bcustomer_uid%7D)시 카드 정보는 모두 null로 내려갑니다.
 
 ```http
 GET /subscribe/customers/{customer_uid}
@@ -94,7 +94,7 @@ GET /subscribe/customers/{customer_uid}
 
 [**Android Integration of Magnes**](http://developer.paypal.com/limited-release/magnes/integrate/android/) 가이드 문서에 따라
 아래와 같이 collectAndSubmit 메소드 호출을 통해 페이팔로 디바이스 정보를 보내야 합니다.
-이때 두번째 파라미터(paypalClientMetaDataId)로는 주문번호(merchant\_uid)를 전달해주시면 됩니다.
+이때 두번째 파라미터(paypalClientMetaDataId)로는 주문번호(merchant_uid)를 전달해주시면 됩니다.
 
 ```java
 MagnesResult magnesResult = MagnesSDK.getInstance()
@@ -107,7 +107,7 @@ MagnesResult magnesResult = MagnesSDK.getInstance()
 
 [**iOS Swift SDK Integration**](http://developer.paypal.com/limited-release/magnes/integrate/ios-swift/) 가이드 문서에 따라
 아래와 같이 collectAndSubmit 메소드 호출을 통해 페이팔로 디바이스 정보를 보내야 합니다.
-이때 첫번째 파라미터(withPayPalClientMetadataId)로는 주문번호(merchant\_uid)를 전달해주시면 됩니다.
+이때 첫번째 파라미터(withPayPalClientMetadataId)로는 주문번호(merchant_uid)를 전달해주시면 됩니다.
 
 ```swift
 let magnesResult:MagnesResult =
@@ -119,7 +119,7 @@ MagnesSDK.shared().collectAndSubmit(withPayPalClientMetadataId:
 
 [**iOS Objective-C SDK Integration of Magnes**](http://developer.paypal.com/limited-release/magnes/integrate/ios-objective-c/) 가이드 문서에 따라
 아래와 같이 collectAndSubmitWithPayPalClientMetadataId 메소드 호출을 통해 페이팔로 디바이스 정보를 보내야 합니다.
-이때 첫번째 파라미터(YOUR-PAYPAL-CLIENT-METADATA-ID)로는 주문번호(merchant\_uid)를 전달해주시면 됩니다.
+이때 첫번째 파라미터(YOUR-PAYPAL-CLIENT-METADATA-ID)로는 주문번호(merchant_uid)를 전달해주시면 됩니다.
 
 ```objective-c
 //PPRMOCMagnesSDK *magnesSDK = [PPRMOCMagnesSDK shared];
@@ -149,15 +149,45 @@ withAdditionalData:@{}];
 
 `paypal`만 입력 가능하며 다른 값을 입력하면 “페이팔에서 제공하지 않는 빌링키 발급 수단입니다.”라는 에러 메시지와 함께 빌링키 발급 창이 호출되지 않습니다.
 
-또한 pay\_method를 `paypal`로 입력 후 카드, 계좌 등 어떤 결제 수단으로 빌링키를 발급 받아도 빌링키 발급 수단은 무조건 `paypal`로 저장됩니다. 이는 페이팔이 실제 발급 된 빌링키 종류를 구분해 알려주지 않고 모두 `paypal`로 일괄 응답해주기 때문입니다.
+또한 pay_method를 `paypal`로 입력 후 카드, 계좌 등 어떤 결제 수단으로 빌링키를 발급 받아도 빌링키 발급 수단은 무조건 `paypal`로 저장됩니다. 이는 페이팔이 실제 발급 된 빌링키 종류를 구분해 알려주지 않고 모두 `paypal`로 일괄 응답해주기 때문입니다.
 
 ### `bypass.paypal_v2.style`
 
 페이팔 RT 버튼을 커스터마이징 하기 위한 파라미터입니다. 자세한 내용은 [페이팔에서 제공하는 문서](http://developer.paypal.com/sdk/js/reference/#link-style)를 참고하세요.
 
+### `bypass.paypal_v2.enable-funding`
+
+렌더링할 페이팔 빌링키 발급 버튼을 지정하는 파라미터입니다. [페이팔 문서](https://developer.paypal.com/sdk/js/v5/configuration#enable-funding)에 나열된 결제 버튼 종류를 쉼표로 구분하여 전달합니다.
+
+```json
+{
+  "bypass": {
+    "paypal_v2": {
+      "enable-funding": "paylater"
+    }
+  }
+}
+```
+
+### `bypass.paypal_v2.disable-funding`
+
+렌더링에서 제외할 페이팔 빌링키 발급 버튼을 지정하는 파라미터입니다. [페이팔 문서](https://developer.paypal.com/sdk/js/v5/configuration#disable-funding)에 나열된 결제 버튼 종류를 쉼표로 구분하여 전달합니다.
+
+빌링키 발급에서는 `card` 버튼이 항상 제외됩니다.
+
+```json
+{
+  "bypass": {
+    "paypal_v2": {
+      "disable-funding": "credit,paylater"
+    }
+  }
+}
+```
+
 ### `bypass.paypal_v2.shipping_address`
 
-페이팔은 기본적으로 구매자가 페이팔에 가입할때 입력 한 배송 정보를 빌링키 발급 창에 자동으로 입력해줍니다. 만약 이 배송 정보를 override하고 싶다면 shipping\_address 파라미터에 override할 주소를 입력하고 shipping\_address.recipient\_name에 override할 수령인 이름을 입력하면 됩니다.
+페이팔은 기본적으로 구매자가 페이팔에 가입할때 입력 한 배송 정보를 빌링키 발급 창에 자동으로 입력해줍니다. 만약 이 배송 정보를 override하고 싶다면 shipping_address 파라미터에 override할 주소를 입력하고 shipping_address.recipient_name에 override할 수령인 이름을 입력하면 됩니다.
 
 배송 정보 중 **`line1`, `city` 그리고 `country_code`는 필수 입력**입니다. 전달하지
 않을 경우 에러가 리턴되며 빌링키 발급 창이 호출되지 않습니다.
@@ -182,9 +212,9 @@ withAdditionalData:@{}];
 }
 ```
 
-(이미지 첨부: shipping\_address를 전달하지 않은 경우 가입시 설정된 기본 정보(수령인 이름: John Doe / 배송 주소: 1 Main St, San Jose, CA 95131, UnitedStates)로 설정됩니다.)
+(이미지 첨부: shipping_address를 전달하지 않은 경우 가입시 설정된 기본 정보(수령인 이름: John Doe / 배송 주소: 1 Main St, San Jose, CA 95131, UnitedStates)로 설정됩니다.)
 
-(이미지 첨부: shipping\_address에 수령인 이름과 배송 정보를 전달한 경우 수령인 이름과 배송 정보가 override 됩니다.)
+(이미지 첨부: shipping_address에 수령인 이름과 배송 정보를 전달한 경우 수령인 이름과 배송 정보가 override 됩니다.)
 
 </details>
 
@@ -208,7 +238,7 @@ withAdditionalData:@{}];
 
 페이팔 빌링키 발급 창 내에는 상품 배송지(shipping address)가 표기되는데, 이 상품 배송지는 페이팔 회원가입시 기입한 정보가 자동으로 입력됩니다.
 
-단, 이때의 주소는 총 5개의 영역으로 나누어진 상세 주소로 기존에 포트원이 제공하던 buyer\_addr 파라미터로는 커버가 불가능하므로 페이팔 전용 파라미터(`bypass.paypal_v2.shipping_address`)를 사용하셔야 합니다. 자세한 내용은 하단의 예제 코드를 참고해주세요.
+단, 이때의 주소는 총 5개의 영역으로 나누어진 상세 주소로 기존에 포트원이 제공하던 buyer_addr 파라미터로는 커버가 불가능하므로 페이팔 전용 파라미터(`bypass.paypal_v2.shipping_address`)를 사용하셔야 합니다. 자세한 내용은 하단의 예제 코드를 참고해주세요.
 
 ```json
 {
@@ -236,7 +266,7 @@ withAdditionalData:@{}];
 
 ### `m_redirect_url`
 
-페이팔의 경우 PC와 모바일 모두 팝업으로 빌링키 발급 창이 렌더링되기 때문에 빌링키 발급 프로세스 종료시 모두 콜백 함수가 호촐됩니다. 따라서 m\_redirect\_url 파라미터는 무시됩니다.
+페이팔의 경우 PC와 모바일 모두 팝업으로 빌링키 발급 창이 렌더링되기 때문에 빌링키 발급 프로세스 종료시 모두 콜백 함수가 호촐됩니다. 따라서 m_redirect_url 파라미터는 무시됩니다.
 
 ### `app_scheme`
 
@@ -272,7 +302,7 @@ withAdditionalData:@{}];
 
 ### `display`
 
-카드 할부 개월수를 의미하는 display: { card\_quota } 파라미터는 결제 시에만 적용되므로 빌링키 발급 시에는 무시됩니다.
+카드 할부 개월수를 의미하는 display: { card_quota } 파라미터는 결제 시에만 적용되므로 빌링키 발급 시에는 무시됩니다.
 
 ### `vbank_due`
 

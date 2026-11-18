@@ -815,6 +815,16 @@
         ],
         "parameters": [
           {
+            "name": "channel_key",
+            "in": "formData",
+            "description": "빌링키 발급을 요청할 채널의 채널 키",
+            "required": true,
+            "type": "string",
+            "maxLength": 55,
+            "x-portone-name": "채널 키",
+            "x-portone-description": "빌링키 발급을 요청할 채널의 채널 키"
+          },
+          {
             "name": "customer_uid",
             "in": "path",
             "description": "빌링키와 매핑되며 고객사에서 채번하는 구매자의 결제 수단 식별 고유번호",
@@ -1542,7 +1552,7 @@
           "200": {
             "description": "정상 조회",
             "schema": {
-              "$ref": "#/definitions/EscrowLogisResponse"
+              "$ref": "#/definitions/EscrowLogisGetResponse"
             }
           },
           "400": {
@@ -1683,7 +1693,6 @@
         },
         "x-portone-supported-pgs": [
           "html5_inicis",
-          "kcp",
           "daou",
           "ksnet",
           "smartro_v2",
@@ -1696,7 +1705,7 @@
           "escrow.logis"
         ],
         "summary": "배송정보 단건등록 API",
-        "description": "에스크로 결제 건에 대한 배송정보 등록(2-depth의 json으로 Request Body가 구성되어야 합니다)<br><br>\n     logis는 하위 필드가 모두 필수입니다.<br>sender, receiver의 각 세부 항목은 PG사마다 필수 여부가 모두 다릅니다.<br><br>\n     <h4>지원되는 PG사</h4><ul> <li>KG이니시스</li> <li>NHN KCP</li> <li>키움페이(구 다우, 페이조아)(다우테이타)</li> <li>KSNET</li>  <li>스마트로 - 신모듈(PG사와의 사전 계약이 반드시 필요합니다.)</li><li>(신) 나이스페이</li><li>웰컴페이먼츠</li></ul>",
+        "description": "에스크로 결제 건에 대한 배송정보 등록(2-depth의 json으로 Request Body가 구성되어야 합니다)<br><br>\n     logis는 하위 필드가 모두 필수입니다.<br>sender, receiver의 각 세부 항목은 PG사마다 필수 여부가 모두 다릅니다.<br><br>\n     <h4>지원되는 PG사</h4><ul> <li>KG이니시스</li> <li>NHN KCP (등록만 가능하며, 배송정보 단건수정 API로 수정할 수 없습니다.)</li> <li>키움페이(구 다우, 페이조아)(다우테이타)</li> <li>KSNET</li>  <li>스마트로 - 신모듈(PG사와의 사전 계약이 반드시 필요합니다.)</li><li>(신) 나이스페이 (등록만 가능하며, 배송정보 단건수정 API로 수정할 수 없습니다.)</li><li>웰컴페이먼츠</li></ul>",
         "operationId": "escrow_logis_save",
         "consumes": [
           "application/json",
@@ -1832,7 +1841,7 @@
           "ksnet": {
             "description": "<p>KSNET에서 일반 에스크로, 배송 에스크로 두 가지 유형의 에스크로를 제공합니다. 포트원을 통해 KSNET 에스크로를 사용하려는 경우 반드시 <strong>배송 에스크로</strong> 설정이 되어 있어야 합니다.</p>\n<p>또한 에스크로 거래는 30분 ~ 1시간 뒤 <a href=\"https://ksta.ksnet.co.kr/ui/tsk/ath01/cob/athcob01m0.jsp\" rel=\"noopener noreferrer\">ksta.ksnet.co.kr</a> -&gt; PG 거래내역 -&gt; 배송 에스크로 거래조회에서 확인이 가능합니다. 에스크로 정보 수정의 경우도 등록이 완료된 이후부터 가능합니다.</p>\n"
           },
-          "nice_V2": {
+          "nice_v2": {
             "description": "<p>API로 에스크로 배송 정보 등록은 가능하지만 PUT 배송정보 단건수정 API로 수정은 <span>불가능</span>합니다.</p>\n"
           }
         }
@@ -2071,6 +2080,50 @@
             "maxLength": 200,
             "x-portone-name": "요청자 검증 문자열",
             "x-portone-description": "요청자 검증을 위한 랜덤 문자열(code_verifier). 최대 200자"
+          },
+          {
+            "name": "prepaid_auth_yn",
+            "in": "formData",
+            "description": "선불머니 인증 사용 여부. actionType이 결제(Pay), PIN확인(PinCheck), 선불머니 인증 요청(PrepaidAuth)에서 사용 가능하며, Pay/PinCheck에서는 옵셔널, PrepaidAuth에서는 필수입니다. 'Y'인 경우 prepaid_amount가 필수입니다.",
+            "required": false,
+            "type": "string",
+            "maxLength": 1,
+            "enum": [
+              "Y",
+              "N"
+            ],
+            "x-portone-name": "선불머니 인증 여부",
+            "x-portone-description": "선불머니 인증 사용 여부. actionType이 결제(Pay), PIN확인(PinCheck), 선불머니 인증 요청(PrepaidAuth)에서 사용 가능하며, Pay/PinCheck에서는 옵셔널, PrepaidAuth에서는 필수입니다. 'Y'인 경우 prepaid_amount가 필수입니다."
+          },
+          {
+            "name": "prepaid_amount",
+            "in": "formData",
+            "description": "선불머니 결제 금액(최대 9자리 정수). actionType이 결제(Pay), PIN확인(PinCheck), 선불머니 인증 요청(PrepaidAuth)에서 사용 가능하며, Pay/PinCheck에서는 옵셔널, PrepaidAuth에서는 필수입니다. prepaid_auth_yn이 'Y'인 경우 필수입니다.",
+            "required": false,
+            "type": "integer",
+            "maxLength": 9,
+            "x-portone-name": "선불머니 결제 금액",
+            "x-portone-description": "선불머니 결제 금액(최대 9자리 정수). actionType이 결제(Pay), PIN확인(PinCheck), 선불머니 인증 요청(PrepaidAuth)에서 사용 가능하며, Pay/PinCheck에서는 옵셔널, PrepaidAuth에서는 필수입니다. prepaid_auth_yn이 'Y'인 경우 필수입니다."
+          },
+          {
+            "name": "vender_type",
+            "in": "formData",
+            "description": "바코드 발급사 타입(vender_type). 쿠폰사인 즐거운/쿠프마케팅에 해당하는 바코드 발급사 타입을 전달합니다. (VID2: 즐거운, VID3: 쿠프마케팅) actionType이 선불머니 오프라인 사용(PrepaidOfflineUse)에서 사용됩니다. 최대 20바이트. 예) VID2",
+            "required": false,
+            "type": "string",
+            "maxLength": 20,
+            "x-portone-name": "바코드 발급사",
+            "x-portone-description": "바코드 발급사 타입(vender_type). 쿠폰사인 즐거운/쿠프마케팅에 해당하는 바코드 발급사 타입을 전달합니다. (VID2: 즐거운, VID3: 쿠프마케팅) actionType이 선불머니 오프라인 사용(PrepaidOfflineUse)에서 사용됩니다. 최대 20바이트. 예) VID2"
+          },
+          {
+            "name": "reward_id",
+            "in": "formData",
+            "description": "리워드 ID(reward_id). 결제 시 제공되는 프랜차이즈별 정책을 관리하는 키값 ID입니다. actionType이 선불머니 오프라인 사용(PrepaidOfflineUse)에서 사용됩니다. 최대 20바이트. 예) R0000000784",
+            "required": false,
+            "type": "string",
+            "maxLength": 20,
+            "x-portone-name": "리워드 ID",
+            "x-portone-description": "리워드 ID(reward_id). 결제 시 제공되는 프랜차이즈별 정책을 관리하는 키값 ID입니다. actionType이 선불머니 오프라인 사용(PrepaidOfflineUse)에서 사용됩니다. 최대 20바이트. 예) R0000000784"
           }
         ],
         "responses": {
@@ -2145,6 +2198,50 @@
             "maxLength": 200,
             "x-portone-name": "요청자 검증 문자열",
             "x-portone-description": "요청자 검증을 위한 랜덤 문자열(code_verifier). 최대 200자"
+          },
+          {
+            "name": "prepaid_auth_yn",
+            "in": "formData",
+            "description": "선불머니 인증 사용 여부. actionType이 결제(Pay), PIN확인(PinCheck), 선불머니 인증 요청(PrepaidAuth)에서 사용 가능하며, Pay/PinCheck에서는 옵셔널, PrepaidAuth에서는 필수입니다. 'Y'인 경우 prepaid_amount가 필수입니다.",
+            "required": false,
+            "type": "string",
+            "maxLength": 1,
+            "enum": [
+              "Y",
+              "N"
+            ],
+            "x-portone-name": "선불머니 인증 여부",
+            "x-portone-description": "선불머니 인증 사용 여부. actionType이 결제(Pay), PIN확인(PinCheck), 선불머니 인증 요청(PrepaidAuth)에서 사용 가능하며, Pay/PinCheck에서는 옵셔널, PrepaidAuth에서는 필수입니다. 'Y'인 경우 prepaid_amount가 필수입니다."
+          },
+          {
+            "name": "prepaid_amount",
+            "in": "formData",
+            "description": "선불머니 결제 금액(최대 9자리 정수). actionType이 결제(Pay), PIN확인(PinCheck), 선불머니 인증 요청(PrepaidAuth)에서 사용 가능하며, Pay/PinCheck에서는 옵셔널, PrepaidAuth에서는 필수입니다. prepaid_auth_yn이 'Y'인 경우 필수입니다.",
+            "required": false,
+            "type": "integer",
+            "maxLength": 9,
+            "x-portone-name": "선불머니 결제 금액",
+            "x-portone-description": "선불머니 결제 금액(최대 9자리 정수). actionType이 결제(Pay), PIN확인(PinCheck), 선불머니 인증 요청(PrepaidAuth)에서 사용 가능하며, Pay/PinCheck에서는 옵셔널, PrepaidAuth에서는 필수입니다. prepaid_auth_yn이 'Y'인 경우 필수입니다."
+          },
+          {
+            "name": "vender_type",
+            "in": "formData",
+            "description": "바코드 발급사 타입(vender_type). 쿠폰사인 즐거운/쿠프마케팅에 해당하는 바코드 발급사 타입을 전달합니다. (VID2: 즐거운, VID3: 쿠프마케팅) actionType이 선불머니 오프라인 사용(PrepaidOfflineUse)에서 사용됩니다. 최대 20바이트. 예) VID2",
+            "required": false,
+            "type": "string",
+            "maxLength": 20,
+            "x-portone-name": "바코드 발급사",
+            "x-portone-description": "바코드 발급사 타입(vender_type). 쿠폰사인 즐거운/쿠프마케팅에 해당하는 바코드 발급사 타입을 전달합니다. (VID2: 즐거운, VID3: 쿠프마케팅) actionType이 선불머니 오프라인 사용(PrepaidOfflineUse)에서 사용됩니다. 최대 20바이트. 예) VID2"
+          },
+          {
+            "name": "reward_id",
+            "in": "formData",
+            "description": "리워드 ID(reward_id). 결제 시 제공되는 프랜차이즈별 정책을 관리하는 키값 ID입니다. actionType이 선불머니 오프라인 사용(PrepaidOfflineUse)에서 사용됩니다. 최대 20바이트. 예) R0000000784",
+            "required": false,
+            "type": "string",
+            "maxLength": 20,
+            "x-portone-name": "리워드 ID",
+            "x-portone-description": "리워드 ID(reward_id). 결제 시 제공되는 프랜차이즈별 정책을 관리하는 키값 ID입니다. actionType이 선불머니 오프라인 사용(PrepaidOfflineUse)에서 사용됩니다. 최대 20바이트. 예) R0000000784"
           }
         ],
         "responses": {
@@ -2159,6 +2256,158 @@
           },
           "409": {
             "description": "이미 동일한 merchant_uid로 사전등록된 정보가 존재하는 경우"
+          }
+        },
+        "x-portone-supported-pgs": [
+          "kcp_quick"
+        ],
+        "x-portone-category": "pg.kcpquick"
+      }
+    },
+    "/kcpquick/payment/autopay": {
+      "post": {
+        "tags": [
+          "kcpquick"
+        ],
+        "summary": "KCP 퀵페이 자동결제 API",
+        "description": "KCP 퀵페이에 등록된 자동결제 키를 이용하여 결제를 요청합니다. 자동결제 준비(prepare) → 결제 승인(approve) 2단계로 처리됩니다.",
+        "operationId": "payWithAutoPaymentKey",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "customer_uid",
+            "in": "formData",
+            "description": "자동결제에 사용할 빌링키(customer_uid)",
+            "required": true,
+            "type": "string",
+            "x-portone-name": "빌링키",
+            "x-portone-description": "자동결제에 사용할 빌링키(customer_uid)"
+          },
+          {
+            "name": "merchant_uid",
+            "in": "formData",
+            "description": "결제 요청할 거래의 고객사 주문번호",
+            "required": true,
+            "type": "string",
+            "maxLength": 40,
+            "x-portone-name": "고객사 주문번호",
+            "x-portone-description": "결제 요청할 거래의 고객사 주문번호"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "결제 요청할 거래의 주문명(상품명)",
+            "required": true,
+            "type": "string",
+            "maxLength": 40,
+            "x-portone-name": "주문명",
+            "x-portone-description": "결제 요청할 거래의 주문명(상품명)"
+          },
+          {
+            "name": "buyer_name",
+            "in": "formData",
+            "description": "주문자 이름",
+            "required": true,
+            "type": "string",
+            "maxLength": 20,
+            "x-portone-name": "주문자명",
+            "x-portone-description": "주문자 이름"
+          },
+          {
+            "name": "amount",
+            "in": "formData",
+            "description": "결제 요청할 금액",
+            "required": true,
+            "type": "integer",
+            "x-portone-name": "결제금액",
+            "x-portone-description": "결제 요청할 금액"
+          },
+          {
+            "name": "notice_url",
+            "in": "formData",
+            "description": "결제 승인 성공 후 결과를 수신할 웹훅 URL",
+            "required": false,
+            "type": "string",
+            "x-portone-name": "결제 결과 수신 웹훅 URL",
+            "x-portone-description": "결제 승인 성공 후 결과를 수신할 웹훅 URL"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "응답",
+            "schema": {
+              "$ref": "#/definitions/PaymentResponse"
+            }
+          },
+          "401": {
+            "description": "인증 Token이 전달되지 않았거나 유효하지 않은 경우"
+          }
+        },
+        "x-portone-supported-pgs": [
+          "kcp_quick"
+        ],
+        "x-portone-category": "pg.kcpquick"
+      }
+    },
+    "/kcpquick/autopay/{customer_uid}": {
+      "delete": {
+        "tags": [
+          "kcpquick"
+        ],
+        "summary": "KCP 퀵페이 자동결제 키 삭제 API",
+        "description": "KCP 퀵페이에 등록된 자동결제 키를 삭제합니다.",
+        "operationId": "deleteAutoPayKey",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "customer_uid",
+            "in": "path",
+            "description": "삭제할 자동결제 키에 연결된 빌링키(customer_uid)",
+            "required": true,
+            "type": "string",
+            "x-portone-name": "빌링키",
+            "x-portone-description": "삭제할 자동결제 키에 연결된 빌링키(customer_uid)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "정상 삭제",
+            "schema": {
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "message": {
+                  "type": "string",
+                  "example": "자동결제 키가 정상적으로 삭제되었습니다."
+                },
+                "response": {
+                  "properties": {
+                    "customer_uid": {
+                      "description": "삭제된 자동결제 키의 빌링키",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "인증 Token이 전달되지 않았거나 유효하지 않은 경우"
+          },
+          "404": {
+            "description": "등록된 빌링키 또는 자동결제 키를 찾을 수 없는 경우"
+          },
+          "500": {
+            "description": "자동결제 키 삭제 처리 중 오류가 발생한 경우"
           }
         },
         "x-portone-supported-pgs": [
@@ -2203,10 +2452,11 @@
         ],
         "responses": {
           "200": {
-            "description": "정상 해제",
+            "description": "해제 요청 처리됨. code가 0이면 성공, 0이 아니면 해제 실패이며 error에 KCP 원본 코드/메시지가 전달됩니다.",
             "schema": {
               "properties": {
                 "code": {
+                  "description": "0이면 성공, 0이 아니면 해제 실패",
                   "type": "integer",
                   "example": 0
                 },
@@ -2215,12 +2465,30 @@
                   "example": "생체인증 사용이 정상적으로 해제되었습니다."
                 },
                 "response": {
+                  "description": "성공 시에만 전달",
                   "properties": {
                     "member_id": {
                       "description": "생체인증 해제된 회원 ID",
                       "type": "string"
                     }
-                  }
+                  },
+                  "type": "object"
+                },
+                "error": {
+                  "description": "해제 실패 시에만 전달되는 KCP 원본 응답",
+                  "properties": {
+                    "code": {
+                      "description": "KCP 응답 코드",
+                      "type": "string",
+                      "example": "C210"
+                    },
+                    "message": {
+                      "description": "KCP 응답 메시지",
+                      "type": "string",
+                      "example": "등록된 거래가 없습니다."
+                    }
+                  },
+                  "type": "object"
                 }
               }
             }
@@ -2231,11 +2499,8 @@
           "401": {
             "description": "인증 Token이 전달되지 않았거나 유효하지 않은 경우"
           },
-          "404": {
-            "description": "생체인증 해제 대상 회원을 찾을 수 없는 경우"
-          },
           "500": {
-            "description": "KCP 생체인증 해제 처리 중 오류가 발생한 경우"
+            "description": "KCP 생체인증 해제 통신 중 오류가 발생한 경우"
           }
         },
         "x-portone-supported-pgs": [
@@ -4420,6 +4685,16 @@
             "type": "boolean",
             "x-portone-name": "프로모션 정책 유지 여부",
             "x-portone-description": "프로모션이 적용된 결제일 경우 결제 취소 이후 잔여 금액이 프로모션 정책에 위반되더라도 프로모션을 유지할지에 대한 여부 (default: false)"
+          },
+          {
+            "name": "enable_webhook",
+            "in": "formData",
+            "description": "취소 성공 시 고객사로 취소 통보 웹훅을 전송할지 여부 (default: false)<br>본 API를 통한 취소는 기본적으로 고객사로 웹훅을 전송하지 않고 웹훅 전송 내역만 기록합니다.<br>true로 설정한 경우에 한해 고객사 웹훅 설정에 저장된 웹훅 경로로 취소 통보 웹훅을 전송합니다.<br><h5>단, 결제 시 웹훅을 사용한 결제건에 한합니다.</h5>",
+            "required": false,
+            "type": "boolean",
+            "x-portone-name": "취소 통보 웹훅 전송 여부",
+            "x-portone-summary": "<p>취소 성공 시 고객사로 취소 통보 웹훅을 전송할지 여부 (default: false)</p>\n",
+            "x-portone-description": "본 API를 통한 취소는 기본적으로 고객사로 웹훅을 전송하지 않습니다. (웹훅 전송 내역만 기록됩니다.)<br>true로 설정한 경우에 한해 고객사 웹훅 설정에 저장된 웹훅 경로로 취소 통보 웹훅을 전송합니다. **단, 결제 시 웹훅을 사용한 결제건에 한합니다.**"
           },
           {
             "name": "extra",
@@ -8654,10 +8929,10 @@
           "x-portone-description": "에스크로 결제건의 송장번호"
         },
         "sent_at": {
-          "description": "발송일시 UNIX TIMESTAMP",
-          "type": "integer",
+          "description": "발송일시. YYYY-MM-DD HH:mm:ss 형식(KST)의 문자열 (예: 2026-09-22 14:30:00)<br>\n예외<br>\n- html5_inicis, kcp, daou: 요청 시 전달한 logis.sent_at 값(UNIX timestamp)을 그대로 반환하므로 integer (예: 1790055000)<br>\n- daou에서 logis.sent_at 생략 시: 배송정보 등록 시각을 YYYY-MM-DD HH:mm:ss 형식(KST)의 문자열로 반환",
+          "type": "string",
           "x-portone-name": "발송 시각",
-          "x-portone-description": "에스크로 결제건의 배송 발송 시각 UNIX timestamp"
+          "x-portone-description": "에스크로 결제건의 배송 발송 시각입니다. <code>YYYY-MM-DD HH:mm:ss</code> 형식(KST)의 문자열로 반환됩니다. (예: <code>2026-09-22 14:30:00</code>)<br>\n다음 PG사는 예외입니다.\n<ul>\n<li><code>html5_inicis</code>, <code>kcp</code>, <code>daou</code>: 요청 시 전달한 <code>logis.sent_at</code> 값(UNIX timestamp)을 변환 없이 그대로 반환하므로 integer입니다. (예: <code>1790055000</code>)</li>\n<li><code>daou</code>에서 <code>logis.sent_at</code>을 생략한 경우: 배송정보 등록 시각을 <code>YYYY-MM-DD HH:mm:ss</code> 형식(KST)의 문자열로 반환합니다.</li>\n</ul>"
         },
         "applied_at": {
           "description": "배송정보 등록일시 UNIX TIMESTAMP",
@@ -8677,6 +8952,48 @@
           "properties": {
             "response": {
               "$ref": "#/definitions/EscrowLogisAnnotation"
+            }
+          }
+        }
+      ]
+    },
+    "EscrowLogisGetAnnotation": {
+      "required": [
+        "company",
+        "invoice",
+        "applied_at"
+      ],
+      "properties": {
+        "company": {
+          "description": "택배사코드",
+          "type": "string",
+          "x-portone-name": "택배사코드",
+          "x-portone-description": "에스크로 결제건의 택배사 코드"
+        },
+        "invoice": {
+          "description": "송장번호",
+          "type": "string",
+          "x-portone-name": "송장번호",
+          "x-portone-description": "에스크로 결제건의 송장번호"
+        },
+        "applied_at": {
+          "description": "배송정보 등록일시 (YYYY-MM-DD HH:mm:ss, KST)",
+          "type": "string",
+          "x-portone-name": "등록 시각",
+          "x-portone-description": "에스크로 결제건의 배송 정보 등록 시각 (YYYY-MM-DD HH:mm:ss, KST)"
+        }
+      }
+    },
+    "EscrowLogisGetResponse": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/ResponseAnnotation"
+        },
+        {
+          "description": "등록된 에스크로 배송 정보. 바로 아래 EscrowLogisGet structure를 확인하세요",
+          "properties": {
+            "response": {
+              "$ref": "#/definitions/EscrowLogisGetAnnotation"
             }
           }
         }
@@ -8789,15 +9106,18 @@
     "EscrowLogisReceiverAnnotation": {
       "properties": {
         "name": {
-          "description": "받는 분 성함(필수 : KG이니시스, 스마트로 - 신모듈)",
+          "description": "받는 분 성함(필수 : KG이니시스, 스마트로 - 신모듈, 키움페이(구 다우, 페이조아))",
           "type": "string",
           "x-portone-name": "성함",
-          "x-portone-description": "배송을 받는 수신자의 성함",
+          "x-portone-description": "배송을 받는 수신자의 성함 (필수: <code>html5_inicis</code>, <code>smartro_v2</code>, <code>daou</code>)",
           "x-portone-per-pg": {
             "html5_inicis": {
               "required": true
             },
             "smartro_v2": {
+              "required": true
+            },
+            "daou": {
               "required": true
             }
           }
@@ -8908,7 +9228,7 @@
           "description": "수령일시(필수: 키움페이(구 다우, 페이조아) / 예: YYYYMMDD)",
           "type": "string",
           "x-portone-name": "수령 시각",
-          "x-portone-description": "에스크로 결제건의 배송 수령 시각 UNIX timestamp",
+          "x-portone-description": "에스크로 결제건의 배송 수령일 (<code>YYYYMMDD</code> 형식, 예: <code>20260922</code>)",
           "x-portone-per-pg": {
             "daou": {
               "required": true
@@ -9305,6 +9625,18 @@
           "type": "string",
           "x-portone-name": "개인통관고유부호",
           "x-portone-description": "네이버페이 주문자의 개인통관고유부호"
+        },
+        "one_time_individual_customs_code": {
+          "description": "네이버페이 주문자의 일회용 개인통관부호",
+          "type": "string",
+          "x-portone-name": "일회용 개인통관부호",
+          "x-portone-description": "네이버페이 주문자의 일회용 개인통관부호"
+        },
+        "one_time_certification_no": {
+          "description": "네이버페이 주문자의 일회용 개인통관부호 인증번호",
+          "type": "string",
+          "x-portone-name": "일회용 인증번호",
+          "x-portone-description": "네이버페이 주문자의 일회용 개인통관부호 인증번호"
         }
       }
     },
@@ -9917,6 +10249,17 @@
             }
           }
         },
+        "receipt_url_without_authentication": {
+          "description": "추가 인증 없이 확인할 수 있는 매출전표 URL입니다.",
+          "type": "string",
+          "x-portone-name": "추가 인증 없는 매출전표 URL",
+          "x-portone-description": "추가 인증 없이 확인할 수 있는 매출전표 URL입니다.",
+          "x-portone-per-pg": {
+            "nice_v2": {
+              "description": "<p>나이스정보통신에서 제공합니다. 사용 시 협의가 필요합니다.</p>\n"
+            }
+          }
+        },
         "cancel_history": {
           "description": "취소/부분취소 내역",
           "type": "array",
@@ -10247,6 +10590,17 @@
           "type": "string",
           "x-portone-name": "취소 매출전표 URL",
           "x-portone-description": "PG사 또는 결제 수단에 따라 매출전표가 없을 수 있습니다."
+        },
+        "receipt_url_without_authentication": {
+          "description": "추가 인증 없이 확인할 수 있는 취소 매출전표 URL입니다.",
+          "type": "string",
+          "x-portone-name": "추가 인증 없는 취소 매출전표 URL",
+          "x-portone-description": "추가 인증 없이 확인할 수 있는 취소 매출전표 URL입니다.",
+          "x-portone-per-pg": {
+            "nice_v2": {
+              "description": "<p>나이스정보통신에서 제공합니다. 사용 시 협의가 필요합니다.</p>\n"
+            }
+          }
         }
       }
     },

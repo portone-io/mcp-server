@@ -14,9 +14,9 @@ targetVersions:
 ## 2. 결제 요청하기
 
 [JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk-old/readme) `IMP.request_pay(param, callback)`을 호출하여
-페이먼트월 결제창을 호출할 수 있습니다. **결제결과**는 PC의 경우 IMP.request\_pay(param, callback)
+페이먼트월 결제창을 호출할 수 있습니다. **결제결과**는 PC의 경우 IMP.request_pay(param, callback)
 호출 후 **callback** 으로 수신되며
-모바일의 경우**m\_redirect\_url** 로 리디렉션됩니다.
+모바일의 경우**m\_redirect_url** 로 리디렉션됩니다.
 
 <div class="tabs-container">
 
@@ -79,7 +79,7 @@ IMP.request_pay(
 
   </div>
 
-- pay\_method?: string
+- pay_method?: string
 
   **결제수단 구분코드**
 
@@ -87,7 +87,7 @@ IMP.request_pay(
 
   (별도로 제어하지 않으시면 국가IP에 맞는 결제수단이 기본으로 노출됩니다)
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
@@ -105,13 +105,13 @@ IMP.request_pay(
 
   페이먼트월의 경우 필수로 입력해야 합니다.
 
-- buyer\_name: string
+- buyer_name: string
 
   **구매자 이름**
 
   결제시 사용되는 구매자 이름 입니다. 페이먼트월의 경우 필수로 입력해야 합니다.
 
-- buyer\_email: string
+- buyer_email: string
 
   **구매자 email 주소**
 
@@ -123,7 +123,7 @@ IMP.request_pay(
 
   입력하지 않는 경우 기본적으로 `KRW`로 요청하며, 해외 통화 결제 시 해당 통화 구분 코드를 입력한 후 요청해야 합니다.
 
-- use\_test\_method?: boolean
+- use_test_method?: boolean
 
   **테스트 결제수단 활성화 여부**
 
@@ -140,15 +140,15 @@ IMP.request_pay(
   });
   ```
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **구매자 연락처**
 
-- buyer\_addr?: string
+- buyer_addr?: string
 
   **구매자 주소**
 
-- buyer\_postcode?: string
+- buyer_postcode?: string
 
   **구매자 우편번호**
 
@@ -156,15 +156,15 @@ IMP.request_pay(
 
   **결제창 언어**
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 결제 후 리디렉션 될 URL**
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
@@ -172,7 +172,7 @@ IMP.request_pay(
 
   **페이먼트월 전용 파라미터**
 
-  - widget\_code?: string
+  - widget_code?: string
 
     터미날3 인 경우 `t3_1`로 파라미터를 설정해야 합니다. 미설정시 Default(`pw_1`) 결제창이 활성화됩니다.
 
@@ -180,23 +180,23 @@ IMP.request_pay(
 
     특정 결제수단만 활성화 하는 경우 사용됩니다. 페이먼트월 가이드를 참고하여 해당하는 코드를 입력해야 합니다. [→ 페이먼트월 가이드 바로가기](http://docs.paymentwall.com/reference/payment-system-shortcodes) ex) `kakaopaykr` = 카카오페이
 
-  - country\_code?: string
+  - country_code?: string
 
     지정된 국가에서 지원되는 결제수단이 위젯상에 노출됩니다. 다음 문서를 참고하여 해당하는 국가코드를 입력해야 합니다. [→ 국가코드 바로가기](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
 
-  - logo\_url?: string
+  - logo_url?: string
 
     **결제창 로고 URL**
 
-  - project\_name?: string
+  - project_name?: string
 
     **프로젝트명**
 
-  - product\_price\_without\_tax?: number
+  - product_price_without_tax?: number
 
     **세전 가격** (PaymentWall 대시보드 표시용)
 
-  - sales\_tax?: number
+  - sales_tax?: number
 
     **판매세** (PaymentWall 대시보드 표시용)
 
@@ -258,7 +258,7 @@ IMP.request_pay(
 
   </div>
 
-- customer\_uid: string
+- customer_uid: string
 
   **빌링키**
 
@@ -285,13 +285,13 @@ IMP.request_pay(
 
   페이먼트월의 경우 필수로 입력해야 합니다.
 
-- buyer\_name: string
+- buyer_name: string
 
   **구매자 이름**
 
   결제시 사용되는 구매자 이름 입니다. 페이먼트월의 경우 필수로 입력해야 합니다.
 
-- buyer\_email: string
+- buyer_email: string
 
   **구매자 email 주소**
 

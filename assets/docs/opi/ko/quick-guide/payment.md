@@ -1931,7 +1931,7 @@ ni @portone/browser-sdk
 
   <!-- CONDITIONAL CONTENT pgName=(name) => name === "nice" START -->
 
-  - nice\_v2?: object
+  - nice_v2?: object
 
     - LogoImage?: string
 
@@ -2061,7 +2061,7 @@ ni @portone/browser-sdk
 
   <!-- CONDITIONAL CONTENT pgName=(name) => name === 'smartro' START -->
 
-  - smartro\_v2?: object
+  - smartro_v2?: object
 
     - GoodsCnt?: number
 
@@ -2100,16 +2100,16 @@ ni @portone/browser-sdk
 
   <!-- CONDITIONAL CONTENT pgName=(name) => name === "kcp" START -->
 
-  - kcp\_v2?: object
+  - kcp_v2?: object
 
-  * site\_logo?: string
+  * site_logo?: string
 
     **결제창 로고 URL**
 
     - 결제창 좌측 상단에 표시됩니다.
     - 이미지 사이즈는 가로 150px, 세로 50px 미만으로 설정해야 하며, GIF, JPG 파일만 지원됩니다.
 
-  * skin\_indx?: number
+  * skin_indx?: number
 
     **결제창 색상**
 
@@ -2128,26 +2128,26 @@ ni @portone/browser-sdk
     - 11: 검은색 (#000000)
     - 12: 은색 (#f4f4f4)
 
-  * kcp\_pay\_title?: string
+  * kcp_pay_title?: string
 
     **결제창 상단 문구**
 
     결제창의 상단에 `NHN KCP - 결제의 중심!` 대신 표시될 문구입니다.
 
-  * shop\_user\_id?: string
+  * shop_user_id?: string
 
     **기관에 따라 리스크 관리 조치를 위한 쇼핑몰 관리 ID**
 
     - 상품권, 휴대폰 결제 시 필수로 입력해야 합니다.
 
-  * site\_name?: string
+  * site_name?: string
 
     **카드사 단독 노출 시 결제창에 표기될 상호명**
 
     - PC의 경우 신한, 현대, 삼성, 농협, 하나, 외환, 롯데, 씨티, 우리카드 단독 노출 시 필수로 입력해야 합니다.
     - 모바일의 경우 필수로 입력해야 합니다.
 
-  * disp\_tax\_yn?: string
+  * disp_tax_yn?: string
 
     **현금영수증 노출 여부**
 
@@ -2158,7 +2158,7 @@ ni @portone/browser-sdk
     - `R`: 소득공제로 노출
     - `E`: 지출증빙으로 노출
 
-  * deli\_term?: string
+  * deli_term?: string
 
     **에스크로 결제 예상 배송 소요일**
 
@@ -2167,20 +2167,20 @@ ni @portone/browser-sdk
     - 기본값은 `00`입니다.
     - 항상 두 자리 수로 입력되어야 합니다. 예상 배송 소요기간이 3일인 경우, `03`으로 입력합니다.
 
-  * complex\_pnt\_yn?: string
+  * complex_pnt_yn?: string
 
     **복합 포인트 사용 여부**
 
     - `Y`: 카드 및 포인트 결제
     - `N`: 포인트로만 결제
 
-  * pt\_memcorp\_cd?: string
+  * pt_memcorp_cd?: string
 
     **베네피아 회원소속사코드**
 
     베네피아 복지포인트를 사용하는 경우 필수로 입력합니다.
 
-  * disp\_tax\_yn?: string
+  * disp_tax_yn?: string
 
     **가상계좌 및 계좌이체 현금영수증 노출 여부**
 
@@ -2223,7 +2223,7 @@ ni @portone/browser-sdk
 
   - kakao?: object
 
-    - custom\_message?: string
+    - custom_message?: string
 
       **결제 화면에 보여줄 사용자 정의 문구**
 
@@ -2339,13 +2339,13 @@ ni @portone/browser-sdk
 
       **결제 정보**
 
-      - payment\_method?: string
+      - payment_method?: string
 
         **단독 노출 결제 수단**
 
         가능한 값의 목록은 [공식 매뉴얼](https://developer.eximbay.com/eximbay/api_sdk/code-organization.html)을 참조해 주세요.
 
-      - multi\_payment\_method?: string\[]
+      - multi_payment_method?: string\[]
 
         **노출할 결제 수단 목록**
 
@@ -2359,7 +2359,7 @@ ni @portone/browser-sdk
 
         **상점명**
 
-      - partner\_code?: string
+      - partner_code?: string
 
         **파트너 코드**
 
@@ -2373,7 +2373,7 @@ ni @portone/browser-sdk
 
       </div>
 
-      - receipt\_status?: string
+      - receipt_status?: string
 
         **현금영수증 발급 여부**
 
@@ -2400,11 +2400,11 @@ ni @portone/browser-sdk
 
         **수량**
 
-      - unit\_price?: number
+      - unit_price?: number
 
         **단가 (음수 가능)**
 
-    - ship\_to?: object
+    - ship_to?: object
 
       **배송지 정보**
 
@@ -2418,19 +2418,19 @@ ni @portone/browser-sdk
 
         [ISO 3166-1 alpha-2](https://www.iso.org/iso-3166-country-codes.html)에 의해 표준화된 2글자 국가 코드입니다.
 
-      - first\_name?: string
+      - first_name?: string
 
         **수신인의 성을 제외한 이름**
 
-      - last\_name?: string
+      - last_name?: string
 
         **수신인의 성**
 
-      - phone\_number?: string
+      - phone_number?: string
 
         **수신인 전화번호**
 
-      - postal\_code?: string
+      - postal_code?: string
 
         **배송지 우편번호**
 
@@ -2444,7 +2444,7 @@ ni @portone/browser-sdk
 
         **배송지 상세 주소**
 
-    - bill\_to?: object
+    - bill_to?: object
 
       **청구지 정보**
 
@@ -2458,19 +2458,19 @@ ni @portone/browser-sdk
 
         [ISO 3166-1 alpha-2](https://www.iso.org/iso-3166-country-codes.html)에 의해 표준화된 2글자 국가 코드입니다.
 
-      - first\_name?: string
+      - first_name?: string
 
         **청구 카드 명의자의 성을 제외한 이름**
 
-      - last\_name?: string
+      - last_name?: string
 
         **청구 카드 명의자의 성**
 
-      - phone\_number?: string
+      - phone_number?: string
 
         **청구 카드 명의자의 전화번호**
 
-      - postal\_code?: string
+      - postal_code?: string
 
         **청구지 우편번호**
 
@@ -2488,7 +2488,7 @@ ni @portone/browser-sdk
 
       **결제창 설정**
 
-      - call\_from\_app?: string
+      - call_from_app?: string
 
         **인앱 웹뷰 여부**
 
@@ -2497,11 +2497,11 @@ ni @portone/browser-sdk
 
         기본값은 `N`입니다.
 
-      - issuer\_country?: string
+      - issuer_country?: string
 
         해외 결제 가맹점에서 국내 결제를 사용할 경우 `KR` 값을 입력해야 합니다.
 
-      - virtualaccount\_expiry\_date?: string
+      - virtualaccount_expiry_date?: string
 
         **가상계좌 만료일**
 

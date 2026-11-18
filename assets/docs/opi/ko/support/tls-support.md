@@ -394,9 +394,9 @@ JSSE(Java Secure Socket Extension) 구현체를 설치할 경우, 자바 업그�
 
 
 
-4. 오라클이 배포하는 "[jce\_policy-6.zip][jce_policy-6.zip]" 파일을 다운로드 받습니다.
+4. 오라클이 배포하는 "[jce_policy-6.zip][jce_policy-6.zip]" 파일을 다운로드 받습니다.
 
-5. 압축을 푼 후 "US\_export\_policy.jar", "local\_policy.jar" 두 파일을 \
+5. 압축을 푼 후 "US_export_policy.jar", "local_policy.jar" 두 파일을 \
    `${JAVA_HOME}/jre/lib/security` 디렉토리 내에 덮어씌웁니다.
 
 [Bouncy Castle]: https://www.bouncycastle.org/latest_releases.html

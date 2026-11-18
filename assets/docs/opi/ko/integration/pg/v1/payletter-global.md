@@ -26,6 +26,7 @@ targetVersions:
     - 위챗페이 PC결제: `WeChatPayQRCodePayment`
     - 위챗페이 모바일결제 : `WeChatPayH5Payment`
     - 알리페이 : `ICBAlipay`
+    - 애플페이 : `PLApplePay`
 
 ## SDK 결제 요청하기
 
@@ -41,7 +42,7 @@ targetVersions:
 
   포트원 콘솔 내 \[결제 연동] - \[연동 정보] - \[채널 관리] 에서 확인 가능합니다.
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
@@ -61,33 +62,33 @@ targetVersions:
 
   카드: `KRW`, `USD`, `JPY` / Alipay: `USD`, `CNY` / WeChatPay: `KRW`, `USD`, `CNY`
 
-- buyer\_email: string
+- buyer_email: string
 
   **구매자 이메일** (필수)
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **구매자 연락처**
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 결제 후 리디렉션 될 URL**
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
 - bypass?: object
 
-  - payletter\_global?: object
+  - payletter_global?: object
 
     - pginfo?: string
 
@@ -101,6 +102,7 @@ targetVersions:
       - `WeChatPayQRCodePayment`: 위챗페이 PC결제
       - `WeChatPayH5Payment`: 위챗페이 모바일결제
       - `ICBAlipay`: 알리페이
+      - `PLApplePay`: 애플페이
 
     - servicename?: string
 
@@ -134,7 +136,7 @@ targetVersions:
 
   **채널키**
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
@@ -150,39 +152,39 @@ targetVersions:
 
   **결제 통화**
 
-- customer\_uid: string
+- customer_uid: string
 
   **빌링키**
 
   빌링키 발급 시 필수 입력입니다.
 
-- buyer\_email: string
+- buyer_email: string
 
   **구매자 이메일** (필수)
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **구매자 연락처**
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 결제 후 리디렉션 될 URL**
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
 - bypass?: object
 
-  - payletter\_global?: object
+  - payletter_global?: object
 
     - pginfo?: string
 
@@ -203,8 +205,8 @@ SDK 스크립트의 주소가 `https://cdn.iamport.kr/v1/iamport.js` 인지 확�
 - `imp_uid`
 - `merchant_uid`
 
-해당 SDK를 사용하실때는 IMP.request\_pay로부터 응답된 객체(또는 쿼리 파라미터)에서 imp\_uid를 가지고
-**포트원 REST API(GET /payments/imp\_uid)로 결제 상세 내역(승인 상태, 승인 결과 등등)을 조회**하여
+해당 SDK를 사용하실때는 IMP.request_pay로부터 응답된 객체(또는 쿼리 파라미터)에서 imp_uid를 가지고
+**포트원 REST API(GET /payments/imp_uid)로 결제 상세 내역(승인 상태, 승인 결과 등등)을 조회**하여
 응답 파라미터 중 status(결제 상태) 파라미터에 따라 추가 로직을 구현해야 합니다.
 
 </div>
@@ -213,7 +215,7 @@ SDK 스크립트의 주소가 `https://cdn.iamport.kr/v1/iamport.js` 인지 확�
 
 <div class="hint" data-style="warning">
 
-페이레터 일반결제, 빌링키 발급 및 결제는 승인 요청 시 바로 승인되지 않고 일정 시간 후 처리되는 **승인 대기(pending) 상태**가 존재합니다. 따라서 고객사는 트랜잭션 종료시 콜백 함수로 전달되는 포트원 번호(imp\_uid)로 결제 내역을 조회(GET /payments/{imp\_uid})한 후 응답되는 status를 보고 각 상황에 맞는 후 처리 로직을 작성해야 합니다.
+페이레터 일반결제, 빌링키 발급 및 결제는 승인 요청 시 바로 승인되지 않고 일정 시간 후 처리되는 **승인 대기(pending) 상태**가 존재합니다. 따라서 고객사는 트랜잭션 종료시 콜백 함수로 전달되는 포트원 번호(imp_uid)로 결제 내역을 조회(GET /payments/{imp_uid})한 후 응답되는 status를 보고 각 상황에 맞는 후 처리 로직을 작성해야 합니다.
 
 승인 대기 상태에서는 고객사는 반드시 (가상계좌나 정기결제와 같이 결제가 비동기로 승인되는 경우 포트원 → 고객사로 결제 결과를 통보해주는) 웹훅 기능을 연동해야 합니다.
 

@@ -82,7 +82,7 @@ versionVariants:
 
   </div>
 
-- pay\_method?: string
+- pay_method?: string
 
   **결제수단 구분코드**
 
@@ -169,7 +169,7 @@ versionVariants:
 
     수량
 
-- merchant\_uid?: string
+- merchant_uid?: string
 
   **고객사 주문번호**
 
@@ -189,7 +189,7 @@ versionVariants:
 
   - 문자열이 아닌 숫자 타입으로 지정해야 하는 점에 유의하세요.
 
-- custom\_data?: object
+- custom_data?: object
 
   **사용자 정의 데이터**
 
@@ -197,13 +197,13 @@ versionVariants:
   - JSON notation(string)으로 저장됩니다.
   - 주문 건에 대해 부가정보를 저장할 공간이 필요할 때 사용합니다
 
-- tax\_free?: number
+- tax_free?: number
 
   **면세금액**
 
   - 결제금액 중 면세금액에 해당하는 금액을 입력합니다.
 
-- vat\_amount?: number
+- vat_amount?: number
 
   **부가세**
 
@@ -261,44 +261,44 @@ versionVariants:
 
   </details>
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **주문자명**
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **주문자 연락처**
 
   - 일부 PG사에서 해당 필드 누락시 오류 발생
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **주문자 이메일**
 
   - 일부 PG사에서 해당 필드 누락시 오류 발생(페이먼트월)
 
-- buyer\_addr?: string
+- buyer_addr?: string
 
   **주문자 주소**
 
-- buyer\_postcode?: string
+- buyer_postcode?: string
 
   **주문자 우편번호**
 
-- confirm\_url?: string
+- confirm_url?: string
 
-  [**confirm\_process**](https://developers.portone.io/opi/ko/extra/confirm-process/readme-v1) **에 사용할 고객사 endpoint URL**
+  [**confirm_process**](https://developers.portone.io/opi/ko/extra/confirm-process/readme-v1) **에 사용할 고객사 endpoint URL**
 
   - 사용 시 기술지원 메일로 별도 요청이 필요합니다. (<tech.support@portone.io>)
 
-- notice\_url?: string
+- notice_url?: string
 
   **웹훅(Webhook) 수신 URL**
 
   - 포트원 관리자 콘솔에 설정한 웹훅 URL 대신 사용할 웹훅 URL 을 결제 시마다 설정할 수 있습니다.
   - 해당 값 설정 시 관리자 콘솔에 설정한 URL 에는 웹훅 발송이 되지 않는 점에 유의해주세요.
 
-- customer\_uid?: string
+- customer_uid?: string
 
   **고객사 정의 빌링키**
 
@@ -314,7 +314,7 @@ versionVariants:
   - 결제제품이 실물이 아닌 경우 true 로 설정합니다.
   - 실물/디지털 여부에 따라 수수료율이 상이하게 측정되니 유의하시기 바랍니다.
 
-- vbank\_due?: string
+- vbank_due?: string
 
   **가상계좌 입금기한**
 
@@ -327,7 +327,7 @@ versionVariants:
     - `YYYY-MM-DD HH:mm:ss`
     - `YYYYMMDDHHmmss`
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **결제완료이후 이동될 URL 주소**
 
@@ -335,14 +335,14 @@ versionVariants:
   - 대부분의 모바일 결제환경에서 결제창 호출 시 필수적으로 요구됩니다.
   - 리다이렉트 환경에서 해당 필드 누락 시 결제 결과를 수신받지 못하는 점에 유의하세요.
 
-- app\_scheme?: string
+- app_scheme?: string
 
   **모바일 앱 결제 중 고객사 앱 복귀를 위한 URL scheme**
 
   - WebView 환경 결제시 필수 설정 항목입니다.
   - ISP/앱카드 등에서 결제정보 인증 후 기존 앱으로 복귀할 때 사용합니다.
 
-- biz\_num?: string
+- biz_num?: string
 
   **사업자등록번호**
 
@@ -370,7 +370,7 @@ versionVariants:
 
 - display?: object
 
-  - card\_quota: number\[]
+  - card_quota: number\[]
 
     **카드 할부 개월수 리스트**
 
@@ -452,7 +452,7 @@ const param = {
 
   - detail?: object\[]
 
-    - card\_code?: string
+    - card_code?: string
 
       **카드사 금융결제원 표준 코드**
 
@@ -482,7 +482,7 @@ const param = {
 
   - detail?: object\[]
 
-    - card\_code?: string
+    - card_code?: string
 
       **카드사 금융결제원 표준 코드**
 

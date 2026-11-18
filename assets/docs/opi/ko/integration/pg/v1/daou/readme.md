@@ -13,7 +13,7 @@ targetVersions:
 
 ## 2.결제 요청하기
 
-[JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk-old/readme) `IMP.request_pay(param, callback)`을 호출하여 키움페이 결제창을 호출할 수 있습니다. **결제 결과**는 PC의 경우 `IMP.request_pay(param, callback)` 호출 후 **callback**으로 수신되고 모바일의 경우 **m\_redirect\_url**로 리디렉션됩니다.
+[JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk-old/readme) `IMP.request_pay(param, callback)`을 호출하여 키움페이 결제창을 호출할 수 있습니다. **결제 결과**는 PC의 경우 `IMP.request_pay(param, callback)` 호출 후 **callback**으로 수신되고 모바일의 경우 **m\_redirect_url**로 리디렉션됩니다.
 
 <div class="tabs-container">
 
@@ -75,7 +75,7 @@ IMP.request_pay(
 
   </div>
 
-- pay\_method: string
+- pay_method: string
 
   **결제수단 구분코드**
 
@@ -92,7 +92,7 @@ IMP.request_pay(
   - booknlife (도서문화상품권)
   - phone (휴대폰결제)
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
@@ -108,23 +108,23 @@ IMP.request_pay(
 
   **string** 이 아닌 점에 유의하세요.
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **구매자 연락처**
 
-- buyer\_addr?: string
+- buyer_addr?: string
 
   **구매자 주소**
 
-- buyer\_postcode?: string
+- buyer_postcode?: string
 
   **구매자 우편번호**
 
@@ -134,23 +134,23 @@ IMP.request_pay(
 
   고객사 <-> 키움페이간 계약 상태에 따라 정해진 올바른 값을 넣어야 함. 그렇지 않은 경우 결제 진행 불가
 
-- tax\_free?: number
+- tax_free?: number
 
   **면세금액**
 
-- vbank\_due?: string
+- vbank_due?: string
 
   **가상계좌 입금마감일시**
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 결제 후 리디렉션 될 URL**
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
@@ -180,7 +180,7 @@ IMP.request_pay(
         - `Y`: 허용
         - `N`: 차단
 
-    - DIRECT\_YN?: string
+    - DIRECT_YN?: string
 
       **간편결제 다이렉트 호출 시 키움페이 페이지 노출여부**
 
@@ -229,7 +229,7 @@ IMP.request_pay(
 
   계좌이체,가상계좌만 지원됩니다.
 
-- app\_scheme?: string
+- app_scheme?: string
 
   **모바일 앱 URL Scheme**
 
@@ -253,7 +253,7 @@ curl -H "Content-Type: application/json" \
 
 **빌링키 발급 요청하기**
 
-REST API [**POST /subscribe/customers/{customer\_uid}**](https://developers.portone.io/api/rest-v1/billingkey?v=v1#post%20%2Fsubscribe%2Fcustomers%2F%7Bcustomer_uid%7D)를 호출하여 빌링키 발급을 요청합니다.
+REST API [**POST /subscribe/customers/{customer_uid}**](https://developers.portone.io/api/rest-v1/billingkey?v=v1#post%20%2Fsubscribe%2Fcustomers%2F%7Bcustomer_uid%7D)를 호출하여 빌링키 발급을 요청합니다.
 
 ```sh
 curl -H "Content-Type: application/json" \
@@ -300,7 +300,7 @@ curl -H "Content-Type: application/json" \
 ```json
 {
   "display": {
-    "card_quota": [6] // 할부개월 6개월까지만 활성화
+    "card_quota": [0, 2, 3, 4, 5, 6] // 할부개월 6개월까지만 활성화
   }
 }
 ```
@@ -311,15 +311,15 @@ curl -H "Content-Type: application/json" \
 
   **결제창에 렌더링될 카드 할부 개월수 리스트 설정값**
 
-  - card\_quota: number\[]
+  - card_quota: number\[]
 
     **할부 개월수**
 
     예시
 
-    - `[]`: 일시불만 결제 가능
-    - `2,3,4,5,6`: 일시불을 포함한 2, 3, 4, 5, 6개월까지 할부개월 선택 가능
-    - `3`: 일시불을 포함한 2,3개월까지 할부개월 선택 가능
+    - `[0]`: 일시불만 결제 가능
+    - `[0,2,3,4,5,6]`: 일시불을 포함한 2, 3, 4, 5, 6개월까지 할부개월 선택 가능
+    - `[0,2,3]`: 일시불을 포함한 2,3개월까지 할부개월 선택 가능
 
 <div class="hint" data-style="info">
 

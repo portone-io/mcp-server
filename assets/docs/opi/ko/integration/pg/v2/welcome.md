@@ -203,14 +203,14 @@ function requestPayment() {
 
       **PC용 파라미터**
 
-      - logo\_url?: string
+      - logo_url?: string
 
         결제창에 삽입할 메인 로고 url
 
         결제창 중앙 상단에 표시됩니다.
         이미지 권장 사이즈는 89\*18 입니다.
 
-      - logo\_2nd?: string
+      - logo_2nd?: string
 
         결제창에 삽입할 서브 로고 url
 
@@ -258,14 +258,14 @@ function requestPayment() {
 
       **모바일용 파라미터**
 
-      - P\_CARD\_OPTION?: string
+      - P_CARD_OPTION?: string
 
         신용카드 우선선택 옵션
 
         설정한 카드코드에 해당하는 카드가 선택된 채로 Display 됩니다.
         `selcode=카드코드` 형식으로 입력합니다. (ex. `selcode=14`)
 
-      - P\_RESERVED?: string\[]
+      - P_RESERVED?: string\[]
 
         추가 옵션
 
@@ -279,11 +279,11 @@ function requestPayment() {
 
           (카드결제 시) 간편결제 미노출 옵션
 
-        - global\_visa3d=Y?: string
+        - global_visa3d=Y?: string
 
           해외카드 노출 옵션
 
-        - apprun\_check=Y?: string
+        - apprun_check=Y?: string
 
           (android의 경우) custom url scheme 대신 intent schema(intent://) 호출
 
@@ -670,6 +670,38 @@ SDK를 통한 빌링키 발급 요청 파라미터에는 displayAmount에 대한
 `card.cardCompany` 필드에 값을 채워도 빌링키 발급 동작에 아무런 영향을 미치지 않습니다.
 
 </details>
+
+## SDK 구독 등록 요청하기
+
+[구독 결제](https://developers.portone.io/opi/ko/extra/subscription/intro)를 사용하는 경우 `requestSubscriptionRegistration` 함수로 결제수단 등록과 첫 회차 결제를 한 번에 처리할 수 있습니다.
+웰컴페이먼츠 채널은 결제창에서 빌링키를 발급한 뒤 포트원이 그 빌링키로 첫 회차를 결제합니다.
+금액, 주문명, 구매자 정보는 사전 등록한 구독에서 가져오므로 전달하지 않습니다.
+
+- 웰컴페이먼츠는 `issueId`가 필수입니다.
+
+<div class="tabs-container">
+
+<div class="tabs-content" data-title="SDK 구독 등록 요청">
+
+```ts
+import * as PortOne from "@portone/browser-sdk/v2";
+function requestSubscriptionRegistration() {
+  PortOne.requestSubscriptionRegistration({
+    storeId: "store-00000000-0000-0000-0000-000000000000", // 고객사 storeId로 변경해주세요.
+    channelKey: "channel-key-00000000-0000-0000-0000-000000000000", // 콘솔 결제 연동 화면에서 채널 연동 시 생성된 채널 키를 입력해주세요.
+    subscriptionId: "subscription-0193c1a2", // 구독 사전 등록 API로 만든 구독 아이디를 입력해주세요.
+    registrationSecret: "rsec_...", // 구독 사전 등록 API 응답의 registrationSecret을 입력해주세요.
+    billingKeyMethod: "CARD",
+    issueId: "testIssueId", // 웰컴페이먼츠는 필수입니다.
+  });
+}
+```
+
+</div>
+
+</div>
+
+구독 사전 등록, 결과 확인, 파라미터 설명은 [구독 결제 연동하기](https://developers.portone.io/opi/ko/extra/subscription/integration)를 참고해주세요.
 
 ## SDK 휴대폰 빌링키 발급 및 결제 요청하기
 

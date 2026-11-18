@@ -40,29 +40,29 @@ PG사 또는 결제수단에 따라서 반환되는 속성들이 상이합니다
 
   </div>
 
-- error\_code: string
+- error_code: string
 
   **결제 실패코드**
 
   결제가 실패하는 경우 PG사 원천코드가 내려갑니다.
 
-- error\_msg: string
+- error_msg: string
 
   **결제 실패메세지**
 
   결제가 실패하는 경우 PG사 원천메세지가 내려갑니다.
 
-- imp\_uid: string
+- imp_uid: string
 
   **포트원 고유 결제번호**
 
-  success가 false이고 사전 validation에 실패한 경우, imp\_uid는 null일 수 있음
+  success가 false이고 사전 validation에 실패한 경우, imp_uid는 null일 수 있음
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
-- pay\_method: string
+- pay_method: string
 
   **결제수단 구분코드**
 
@@ -103,7 +103,7 @@ PG사 또는 결제수단에 따라서 반환되는 속성들이 상이합니다
 
   </details>
 
-- paid\_amount: **number**
+- paid_amount: **number**
 
   **결제금액**
 
@@ -119,7 +119,7 @@ PG사 또는 결제수단에 따라서 반환되는 속성들이 상이합니다
 
   **주문명**
 
-- pg\_provider: string
+- pg_provider: string
 
   **PG사 구분코드**
 
@@ -160,7 +160,7 @@ PG사 또는 결제수단에 따라서 반환되는 속성들이 상이합니다
 
   </details>
 
-- emb\_pg\_provider?: string
+- emb_pg_provider?: string
 
   **간편결제 구분코드**
 
@@ -182,41 +182,41 @@ PG사 또는 결제수단에 따라서 반환되는 속성들이 상이합니다
   - pinpay
   - tosspay
   - skpay
-  - toss\_brandpay
+  - toss_brandpay
 
   </details>
 
-- pg\_tid: string
+- pg_tid: string
 
   **PG사 거래번호**
 
   PG사에서 거래당 고유하게 부여하는 거래번호입니다.
 
-- buyer\_name: string
+- buyer_name: string
 
   **주문자명**
 
-- buyer\_email: string
+- buyer_email: string
 
   **주문자 Email**
 
-- buyer\_tel: string
+- buyer_tel: string
 
   **주문자 연락처**
 
-- buyer\_addr: string
+- buyer_addr: string
 
   **주문자 주소**
 
-- buyer\_postcode: string
+- buyer_postcode: string
 
   **주문자 우편번호**
 
-- custom\_data: string
+- custom_data: string
 
   **고객사 임의 지정 데이터**
 
-- paid\_at: string
+- paid_at: string
 
   **결제승인시각 (UNIX timestamp)**
 
@@ -228,19 +228,19 @@ PG사 또는 결제수단에 따라서 반환되는 속성들이 상이합니다
 
   </div>
 
-- receipt\_url?: string
+- receipt_url?: string
 
   **거래 매출전표 URL**
 
 ## 추가속성
 
-- apply\_num?: string
+- apply_num?: string
 
   **신용카드 승인번호**
 
   - 신용카드 결제수단에 한하여 제공
 
-- vbank\_num?: string
+- vbank_num?: string
 
   **가상계좌 입금 계좌번호**
 
@@ -250,11 +250,11 @@ PG사 또는 결제수단에 따라서 반환되는 속성들이 상이합니다
 
   </div>
 
-- vbank\_name?: string
+- vbank_name?: string
 
   **가상계좌 입금은행 명**
 
-- vbank\_holder?: string
+- vbank_holder?: string
 
   **가상계좌 예금주**
 
@@ -264,7 +264,7 @@ PG사 또는 결제수단에 따라서 반환되는 속성들이 상이합니다
 
   </div>
 
-- vbank\_date?: string
+- vbank_date?: string
 
   **가상계좌 입금기한 (UNIX timestamp)**
 

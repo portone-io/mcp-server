@@ -20,7 +20,7 @@ datetime: 2025-08-18T02:41:32.073Z
 
 <Callout content="페이레터를 통한 해외결제 이용방법 안내드립니다." />
 
-### \*\*페이레터 해외카드결제 서비스 이용안내 \*\*
+### **페이레터 해외카드결제 서비스 이용안내**
 
 <Callout content="1. 국내 사업자를 대상으로 제공 합니다.
 2. 2025.07.28부로 유니온페이 정기결제 지원이 종료되었습니다." icon="💡" title="참고사항" />
@@ -32,7 +32,7 @@ datetime: 2025-08-18T02:41:32.073Z
 <Indent level="1">
 
 - VISA/MASTER/JCB/Amex/Unionpay(해외 발행 글로벌 카드)
-- 해외 간편결제 : Alipay , Wechat
+- 해외 간편결제 : Alipay , Alipay+, Wechat
 
 </Indent>
 
@@ -53,6 +53,7 @@ datetime: 2025-08-18T02:41:32.073Z
 - 해외카드 Amex : USD, KRW
 - 해외카드 UnionPay : USD, KRW
 - 간편결제 Alipay  : USD,CNY
+- 간편결제 Alipay+ : USD
 - 간편결제 Wechat(PC) : USD,CNY, KRW
 
 </Indent>
@@ -91,6 +92,8 @@ datetime: 2025-08-18T02:41:32.073Z
 3. 해외카드(UnionPay): 4.10%
 4. 간편결제 Alipay : 3.60%
 5. 간편결제 Wechat : 3.60%
+6. Alipay+ (AlipayHK, Boost, BPI, Gcash, Touch'nGo) : 3.60% + 0.40%(프로세스 fee)
+7. Alipay+ (RabbitLinePay, TrueMoney) : 9.10% + 0.50%(프로세스 fee)
 
 </Indent>
 

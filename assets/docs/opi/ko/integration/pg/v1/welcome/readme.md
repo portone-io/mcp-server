@@ -30,7 +30,7 @@ targetVersions:
 [JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/readme) `IMP.request_pay(param, callback)`을 호출하여
 웰컴페이먼츠 결제/빌링키 발급/빌링키 발급과 동시에 결제창을 호출할 수 있습니다. **트랜잭션 결과**는
 PC의 경우 **callback** 함수로 전달되고
-모바일의 경우 **m\_redirect\_url**로 302 리디렉션됩니다.
+모바일의 경우 **m\_redirect_url**로 302 리디렉션됩니다.
 
 <div class="tabs-container">
 
@@ -88,7 +88,7 @@ IMP.request_pay(
 
   </div>
 
-- pay\_method: string
+- pay_method: string
 
   **결제수단 구분코드**
 
@@ -103,7 +103,7 @@ IMP.request_pay(
   - tosspay (토스페이)
   - naverpay (네이버페이)
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문 번호**
 
@@ -115,11 +115,11 @@ IMP.request_pay(
 
   **string** 이 아닌 점에 유의하세요.
 
-- tax\_free?: number
+- tax_free?: number
 
   **면세 금액**
 
-- vat\_amount?: number
+- vat_amount?: number
 
   **부가세 금액**
 
@@ -127,53 +127,53 @@ IMP.request_pay(
 
   주의: 전체 금액의 10% 이하만 허용 됩니다.
 
-- buyer\_name: string
+- buyer_name: string
 
   **구매자 이름**
 
   주의: 웰컴페이먼츠의 경우 구매자 이름은 필수 입력입니다.
 
-- buyer\_tel: string
+- buyer_tel: string
 
   **구매자 연락처**
 
   주의: 웰컴페이먼츠의 경우 구매자 연락처는 필수 입력입니다.
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일 주소**
 
-- buyer\_addr?: string
+- buyer_addr?: string
 
   **구매자 주소**
 
-- buyer\_postcode?: string
+- buyer_postcode?: string
 
   **구매자 우편번호**
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 환경에서 트랜잭션 종료 후 302 리디렉션 될 URL**
 
   주의: 웰컴페이먼츠의 경우 **모바일 환경에서 필수 입력**입니다.
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
-- notice\_url?: string 또는 **string\[]**
+- notice_url?: string 또는 **string\[]**
 
   **트랜잭션 종료 후 웹훅이 발송 될 고객사 서버 URL**
 
-  주의: notice\_url 파라미터 설정시, 콘솔에 설정 된 웹훅 URL은 override 되며 notice\_url에 전달 한 주소로만 웹훅이 발송됩니다.
+  주의: notice_url 파라미터 설정시, 콘솔에 설정 된 웹훅 URL은 override 되며 notice_url에 전달 한 주소로만 웹훅이 발송됩니다.
 
-- confirm\_url?: string
+- confirm_url?: string
 
   **트랜잭션 승인 직전 최종 승인 여부를 질의 할 고객사 서버 URL**
 
-  트랜잭션 승인 직전, 포트원 서버에서 confirm\_url로 트랜잭션 최종 승인 여부를 질의하게 되며 200 외의 응답을 받은 경우 트랜잭션은 중단됩니다.
+  트랜잭션 승인 직전, 포트원 서버에서 confirm_url로 트랜잭션 최종 승인 여부를 질의하게 되며 200 외의 응답을 받은 경우 트랜잭션은 중단됩니다.
 
-- app\_scheme?: string
+- app_scheme?: string
 
   **IOS 앱에서 결제시 카드/은행 앱에서 인증 후 복귀 될 고객사 커스텀 앱 URL Scheme**
 
@@ -200,7 +200,7 @@ IMP.request_pay(
 
   주의: **휴대폰 소액결제시 필수 입력**입니다.
 
-- vbank\_due: string
+- vbank_due: string
 
   **가상계좌 입금기한**
 
@@ -271,15 +271,15 @@ IMP.request_pay(
 
   - welcome?: object
 
-    - logo\_url?: string
+    - logo_url?: string
 
       결제창에 노출 될 메인 로고 URL(크기: 89x19)로 **PC 전용** 파라미터입니다.
 
-    - logo\_2nd?: string
+    - logo_2nd?: string
 
       결제창에 노출 될 서브 로고 URL(크기: 64x13)로 **PC 전용** 파라미터입니다.
 
-    - P\_CARD\_OPTION?: object
+    - P_CARD_OPTION?: object
 
       **모바일 카드/간편결제 전용** 파라미터입니다.
 
@@ -298,7 +298,7 @@ IMP.request_pay(
          - 안심결제: visa3d
          - ISP: isp
          - 간편결제: easypay 중 선택 적 표시
-         - bypass.P\_ONLY\_EASYPAYCODE?: string
+         - bypass.P_ONLY_EASYPAYCODE?: string
 
       카드 결제창 내 렌더링 될 간편 결제 리스트를 의미하며 **모바일 전용** 파라미터입니다.
 
@@ -348,7 +348,7 @@ IMP.request_pay(
       }
       ```
 
-    - P\_RESERVED: string\[]
+    - P_RESERVED: string\[]
 
       **모바일 - 카드 결제 전용 파라미터**
 
@@ -358,10 +358,10 @@ IMP.request_pay(
 
       **모바일 - 휴대폰 소액 결제 전용 파라미터**
 
-      |형식                          |설명                                                                                                                                                                                                                                                                                                                                                     |
-      |------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-      |hpp\_default\_corp=통신사 코드|휴대폰 소액결제시 기본 선택되어있는 통신사 <br /> - 기본: 기본 선택되어있는 통신사 없음 <br /> 예) KT 기본 선택 → ”hpp\_default\_corp=KT” 전달 <br /> - SKT: `SKT` <br /> - KT: `KTF` <br /> - LG 유플러스: `LGT` <br /> - 알뜰폰 전체: `MVNO` <br /> - 알뜰폰 CJ 헬로 모바일: `CJH` <br /> - 알뜰폰 티플러스: `KCT` <br /> - 알뜰폰 SK 세븐모바일: `SKL`|
-      |hpp\_nofix=Y 또는 N           |휴대폰 소액결제창에 자동 입력되는 buyer\_tel값을 수정할 수 있는지 여부 <br /> - 기본: 수정 가능 <br /> - Y : 수정 불가능 <br /> - N : 수정 가능(기본) <br />                                                                                                                                                                                             |
+      |형식                        |설명                                                                                                                                                                                                                                                                                                                                                   |
+      |----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+      |hpp_default_corp=통신사 코드|휴대폰 소액결제시 기본 선택되어있는 통신사 <br /> - 기본: 기본 선택되어있는 통신사 없음 <br /> 예) KT 기본 선택 → ”hpp_default_corp=KT” 전달 <br /> - SKT: `SKT` <br /> - KT: `KTF` <br /> - LG 유플러스: `LGT` <br /> - 알뜰폰 전체: `MVNO` <br /> - 알뜰폰 CJ 헬로 모바일: `CJH` <br /> - 알뜰폰 티플러스: `KCT` <br /> - 알뜰폰 SK 세븐모바일: `SKL`|
+      |hpp_nofix=Y 또는 N          |휴대폰 소액결제창에 자동 입력되는 buyer_tel값을 수정할 수 있는지 여부 <br /> - 기본: 수정 가능 <br /> - Y : 수정 불가능 <br /> - N : 수정 가능(기본) <br />                                                                                                                                                                                            |
 
       ```json
       {
@@ -405,7 +405,7 @@ IMP.request_pay(
 
 <div class="tabs-content" data-title="빌링키 발급 창 요청">
 
-일반 결제 창 호출 파라미터에서 **customer\_uid**, **customer\_id**값을 추가하면 빌링키 발급 창을 호출할 수 있습니다.
+일반 결제 창 호출 파라미터에서 **customer_uid**, **customer_id**값을 추가하면 빌링키 발급 창을 호출할 수 있습니다.
 빌링키 발급 창에서 빌링키를 발급 받은 후, 빌링 결제 API를 호출해 해당 빌링키로 결제를 할 수 있습니다.
 
 ```ts title="Javascript SDK"
@@ -451,7 +451,7 @@ IMP.request_pay(
 
   </div>
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문 번호**
 
@@ -465,51 +465,51 @@ IMP.request_pay(
 
   전달한 결제 금액 만큼 실제로 승인되지는 않으며, 단순히 빌링키 발급 창에 표기 용도입니다.
 
-- pay\_method: 'card'
+- pay_method: 'card'
 
   **빌링키 발급 수단**
 
   웰컴페이먼츠의 경우, 빌링키 발급 수단은 `card`만 허용되며 **반드시 `card`를 필수로 입력해주셔야** 합니다.
 
-- customer\_uid: string
+- customer_uid: string
 
   **빌링키 발급 수단 고유 ID**
 
   고객사가 구매자의 빌링키 발급 수단을 특정하기 위해 채번한 고유 번호로 빌링키 발급시 필수 입력입니다.
 
-- customer\_id?: string
+- customer_id?: string
 
   **구매자 고유 ID**
 
   고객사가 구매자를 특정하기 위해 채번한 고유 번호입니다.
 
-- buyer\_name: string
+- buyer_name: string
 
   **구매자 이름**
 
   주의: 웰컴페이먼츠의 경우 구매자 이름은 필수 입력입니다.
 
-- buyer\_tel: string
+- buyer_tel: string
 
   **구매자 연락처**
 
   주의: 웰컴페이먼츠의 경우 구매자 연락처는 필수 입력입니다.
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일 주소**
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 환경에서 트랜잭션 종료 후 302 리디렉션 될 URL**
 
   주의: 웰컴페이먼츠의 경우 **모바일 환경에서 필수 입력**입니다.
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **트랜잭션 종료 후 웹훅이 발송 될 고객사 서버 URL**
 
-  주의: notice\_url 파라미터 설정시, 콘솔에 설정 된 웹훅 URL은 override 되며 notice\_url에 전달 한 주소로만 웹훅이 발송됩니다.
+  주의: notice_url 파라미터 설정시, 콘솔에 설정 된 웹훅 URL은 override 되며 notice_url에 전달 한 주소로만 웹훅이 발송됩니다.
 
 - period?: object
 
@@ -551,11 +551,11 @@ IMP.request_pay(
 
     - welcome?: object
 
-      - logo\_url?: string
+      - logo_url?: string
 
         결제창에 노출 될 메인 로고 URL(크기: 89x19)로 **PC 전용** 파라미터입니다.
 
-      - logo\_2nd?: string
+      - logo_2nd?: string
 
         결제창에 노출 될 서브 로고 URL(크기: 64x13)로 **PC 전용** 파라미터입니다.
 
@@ -613,7 +613,7 @@ IMP.request_pay(
 
   **PG사 구분코드**
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문 번호**
 
@@ -625,7 +625,7 @@ IMP.request_pay(
 
   **string** 이 아닌 점에 유의하세요.
 
-- pay\_method: 'phone'
+- pay_method: 'phone'
 
   **빌링키 발급 및 결제 수단**
 
@@ -637,45 +637,45 @@ IMP.request_pay(
 
   고객사가 구매자의 빌링키 발급 수단을 특정하기 위해 채번한 고유 번호로 빌링키 발급시 필수 입력입니다.
 
-- customer\_id?: string
+- customer_id?: string
 
   **구매자 고유 ID**
 
   고객사가 구매자를 특정하기 위해 채번한 고유 번호입니다.
 
-- buyer\_name: string
+- buyer_name: string
 
   **구매자 이름**
 
   주의: 웰컴페이먼츠의 경우 구매자 이름은 필수 입력입니다.
 
-- buyer\_tel: string
+- buyer_tel: string
 
   **구매자 연락처**
 
   주의: 웰컴페이먼츠의 경우 구매자 연락처는 필수 입력입니다.
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일 주소**
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 환경에서 트랜잭션 종료 후 302 리디렉션 될 URL**
 
   주의: 웰컴페이먼츠의 경우 **모바일 환경에서 필수 입력**입니다.
 
-- notice\_url?: string 또는 **string\[]**
+- notice_url?: string 또는 **string\[]**
 
   **트랜잭션 종료 후 웹훅이 발송 될 고객사 서버 URL**
 
-  주의: notice\_url 파라미터 설정시, 콘솔에 설정 된 웹훅 URL은 override 되며 notice\_url에 전달 한 주소로만 웹훅이 발송됩니다.
+  주의: notice_url 파라미터 설정시, 콘솔에 설정 된 웹훅 URL은 override 되며 notice_url에 전달 한 주소로만 웹훅이 발송됩니다.
 
-- confirm\_url?: string
+- confirm_url?: string
 
   **트랜잭션 승인 직전 최종 승인 여부를 질의 할 고객사 서버 URL**
 
-  트랜잭션 승인 직전, 포트원 서버에서 confirm\_url로 트랜잭션 최종 승인 여부를 질의하게 되며 200 외의 응답을 받은 경우 트랜잭션은 중단됩니다.
+  트랜잭션 승인 직전, 포트원 서버에서 confirm_url로 트랜잭션 최종 승인 여부를 질의하게 되며 200 외의 응답을 받은 경우 트랜잭션은 중단됩니다.
 
 - currency?: 'KRW'
 
@@ -754,14 +754,14 @@ IMP.request_pay(
       }
       ```
 
-    - P\_RESERVED?: string\[]
+    - P_RESERVED?: string\[]
 
       **모바일 - 휴대폰 소액 결제 전용 파라미터**
 
-      |형식                          |설명                                                                                                                                                                                                                                                                                                                                                     |
-      |------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-      |hpp\_default\_corp=통신사 코드|휴대폰 소액결제시 기본 선택되어있는 통신사 <br /> - 기본: 기본 선택되어있는 통신사 없음 <br /> 예) KT 기본 선택 → ”hpp\_default\_corp=KT” 전달 <br /> - SKT: `SKT` <br /> - KT: `KTF` <br /> - LG 유플러스: `LGT` <br /> - 알뜰폰 전체: `MVNO` <br /> - 알뜰폰 CJ 헬로 모바일: `CJH` <br /> - 알뜰폰 티플러스: `KCT` <br /> - 알뜰폰 SK 세븐모바일: `SKL`|
-      |hpp\_nofix=Y 또는 N           |휴대폰 소액결제창에 자동 입력되는 buyer\_tel값을 수정할 수 있는지 여부 <br /> - 기본: 수정 가능 <br /> - Y : 수정 불가능 <br /> - N : 수정 가능(기본) <br />                                                                                                                                                                                             |
+      |형식                        |설명                                                                                                                                                                                                                                                                                                                                                   |
+      |----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+      |hpp_default_corp=통신사 코드|휴대폰 소액결제시 기본 선택되어있는 통신사 <br /> - 기본: 기본 선택되어있는 통신사 없음 <br /> 예) KT 기본 선택 → ”hpp_default_corp=KT” 전달 <br /> - SKT: `SKT` <br /> - KT: `KTF` <br /> - LG 유플러스: `LGT` <br /> - 알뜰폰 전체: `MVNO` <br /> - 알뜰폰 CJ 헬로 모바일: `CJH` <br /> - 알뜰폰 티플러스: `KCT` <br /> - 알뜰폰 SK 세븐모바일: `SKL`|
+      |hpp_nofix=Y 또는 N          |휴대폰 소액결제창에 자동 입력되는 buyer_tel값을 수정할 수 있는지 여부 <br /> - 기본: 수정 가능 <br /> - Y : 수정 불가능 <br /> - N : 수정 가능(기본) <br />                                                                                                                                                                                            |
 
       ```json
       {

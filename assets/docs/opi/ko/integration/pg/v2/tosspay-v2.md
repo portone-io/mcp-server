@@ -97,7 +97,7 @@ function requestPayment() {
 
   **PG사 결제창 호출 시 PG사로 그대로 bypass할 파라미터들의 모음**
 
-  - tosspay\_v2?: object
+  - tosspay_v2?: object
 
     **토스페이에서 제공하는 파라미터**
 

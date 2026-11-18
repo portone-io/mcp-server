@@ -1,8 +1,7 @@
 ---
 title: 웹훅 연동하기
 description: 포트원 웹훅을 사용하여 포트원 서버에 저장된 결제 정보를 고객사 서버에 동기화하고 네트워크 불안정성을 보완하는 방법을 설명합니다.
-cover: >-
-  https://images.unsplash.com/photo-1522096823084-2d1aa8411c13?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxOTcwMjR8MHwxfHNlYXJjaHwxfHxzZW5kfGVufDB8fHx8MTY4MTcxNzQ3NQ&ixlib=rb-4.0.3&q=85
+cover: https://images.unsplash.com/photo-1522096823084-2d1aa8411c13?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxOTcwMjR8MHwxfHNlYXJjaHwxfHxzZW5kfGVufDB8fHx8MTY4MTcxNzQ3NQ&ixlib=rb-4.0.3&q=85
 coverY: -136
 targetVersions:
   - v1
@@ -35,10 +34,33 @@ Webhook을 활용하면 커스텀 기능이나 다른 애플리케이션과 연�
 - **가상계좌에 결제 금액이 입금**되었을 때 - (status : `paid`)
 - **예약결제가 시도**되었을 때 - (status : `paid` or `failed`)
 - **관리자 콘솔에서 결제 취소**되었을 때 - (status : `cancelled`)
+- **[결제취소 API](https://developers.portone.io/api/rest-v1/payment?v=v1#post%20%2Fpayments%2Fcancel) 요청 시 `enable_webhook` 파라미터를 `true`로 설정하여 결제 취소**되었을 때 - (status : `cancelled`)
 
 <div class="hint" data-style="danger">
 
 **결제 실패 시에는 웹훅이 호출되지 않아요!**
+
+</div>
+
+<div class="hint" data-style="info">
+
+**결제취소 API를 통한 취소는 기본적으로 웹훅을 전송하지 않아요!**
+
+[결제취소 API](https://developers.portone.io/api/rest-v1/payment?v=v1#post%20%2Fpayments%2Fcancel)를 통한 취소는 기본적으로 고객사로 웹훅을 전송하지 않습니다.
+취소 성공 시 취소 통보 웹훅을 수신하고 싶다면 취소 요청 시 `enable_webhook` 파라미터를 `true`로 설정해 주세요.
+단, 결제 시 웹훅을 사용한 결제건에 한해 전송됩니다.
+
+</div>
+
+<div class="hint" data-style="info">
+
+**실패 처리된 결제가 이후 승인되는 경우**
+
+페이먼트월은 이상거래 탐지를 위해 결제 승인을 검토하는 단계를 거치므로, 승인이 즉시 완료되지 않고 지연될 수 있습니다. 이 경우 먼저 `(PG사 결제 장애) Internal error`와 같은 오류가 반환되어 실패로 처리되지만, 이후 페이먼트월에서 승인이 완료되면 핑백(Pingback)을 통해 최종 승인 결과가 전달됩니다.
+
+이렇게 실패 처리되었던 결제가 정상 승인으로 재처리되면, 고객사로 승인 웹훅(status: `paid`)이 추가로 발송됩니다.
+
+이미 실패로 간주하여 주문을 종결(취소·반려·재결제 등)한 뒤 뒤늦게 승인 웹훅을 수신하셨다면, 고객사 운영 정책에 따라 처리 방법을 판단하신 후 포트원으로 결제 취소를 요청해 주세요.
 
 </div>
 

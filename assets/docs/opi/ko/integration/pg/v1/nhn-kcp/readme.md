@@ -37,9 +37,11 @@ targetVersions:
     - 페이코 : `payco`
     - L페이 : `lpay`
     - 카카오페이 : `kakaopay`
-    - 네이버페이 : `naverpay`
+    - 네이버페이(카드결제 호출) : `naverpay`
+    - 네이버페이(카드, 포인트 선택창 호출) : `naverpay_bridge`
     - 애플페이 : `applepay`
     - 토스페이 : `tosspay`
+    - 로켓페이 : `rocketpay`
 
   - 베네피아 포인트 : `point`
 
@@ -67,7 +69,7 @@ targetVersions:
 [JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/readme) `IMP.request_pay(param, callback)`을 호출하여 NHN
 KCP 결제창을 호출할 수 있습니다. **결제결과**는 PC의 경우 `IMP.request_pay(param, callback)` 호출 후
 **callback** 으로 수신되고
-모바일의 경우 **m\_redirect\_url** 로 리디렉션됩니다.
+모바일의 경우 **m\_redirect_url** 로 리디렉션됩니다.
 
 KCP 기준으로 작성한 예시 코드는 아래와 같습니다.
 
@@ -131,7 +133,7 @@ IMP.request_pay(
 
   </div>
 
-- pay\_method: string
+- pay_method: string
 
   **결제수단 구분코드**
 
@@ -148,14 +150,16 @@ IMP.request_pay(
   - `payco` (페이코)
   - `lpay` (L페이)
   - `kakaopay` (카카오페이)
-  - `naverpay` (네이버페이)
+  - `naverpay` (네이버페이 카드결제)
+  - `naverpay_bridge` (네이버페이 카드/포인트결제)
   - `samsung` (삼성페이)
   - `ssgpay` (SSG페이)
   - `applepay` (애플페이)
   - `tosspay` (토스페이)
+  - `rocketpay` (로켓페이)
   - `point` (베네피아 포인트)
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **고객사 주문 고유 번호**
 
@@ -169,23 +173,23 @@ IMP.request_pay(
 
   **결제금액**
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **구매자 이름**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **구매자 이메일**
 
-- buyer\_tel?: string
+- buyer_tel?: string
 
   **구매자 연락처**
 
-- buyer\_addr?: string
+- buyer_addr?: string
 
   **구매자 주소**
 
-- buyer\_postcode?: string
+- buyer_postcode?: string
 
   **구매자 우편번호**
 
@@ -193,37 +197,37 @@ IMP.request_pay(
 
   **에스크로 결제 여부**
 
-- tax\_free?: number
+- tax_free?: number
 
   **면세금액**
 
-- vbank\_due?: string
+- vbank_due?: string
 
   **가상계좌 입금마감일시**
 
   `YYYYMMDD` 또는 `YYYYMMDDHHmmss` 형식으로 지정합니다. 시간 미지정 시 23:59:59로 설정됩니다.
 
-- m\_redirect\_url?: string
+- m_redirect_url?: string
 
   **모바일 결제 후 리디렉션 될 URL**
 
-- app\_scheme?: string
+- app_scheme?: string
 
   **모바일 앱 URL scheme** (모바일 전용)
 
   모바일 앱에서 결제 시 ISP/앱카드 등에서 결제 완료 후 가맹점 앱으로 돌아올 때 사용됩니다.
 
-- notice\_url?: string | string\[]
+- notice_url?: string | string\[]
 
   **웹훅 수신 URL**
 
   포트원 관리자 콘솔에 설정한 웹훅 URL 대신 사용할 URL을 지정합니다.
 
-- confirm\_url?: string
+- confirm_url?: string
 
   **Confirm process URL**
 
-- custom\_data?: object
+- custom_data?: object
 
   **가맹점 커스텀 데이터**
 
@@ -244,7 +248,7 @@ IMP.request_pay(
 
   **결제창에 렌더링될 카드 할부 개월수 리스트 설정값**
 
-  - card\_quota: number\[]
+  - card_quota: number\[]
 
     **할부 개월수**
 
@@ -282,7 +286,7 @@ IMP.request_pay(
 
     **카드사 렌더링 정보**
 
-    - card\_code?: string
+    - card_code?: string
 
       **카드사 코드**
 
@@ -382,7 +386,7 @@ IMP.request_pay(
 
   결제창 및 카드사 모듈에 표시되는 상호명입니다. 카드사 다이렉트 호출 시 설정하지 않으면 `iamport`로 표기됩니다.
 
-- auth\_mode?: string
+- auth_mode?: string
 
   **인증 방식**
 
@@ -396,13 +400,13 @@ IMP.request_pay(
 
   KCP 결제창에 직접 전달되는 파라미터입니다. PC와 모바일에서 지원되는 항목이 다릅니다.
 
-  - shop\_user\_id?: string
+  - shop_user_id?: string
 
     **고객사 회원 ID**
 
     상품권 결제 및 휴대폰 소액결제 시 필수 입력해야 합니다. (PC, 모바일)
 
-  - coupon\_apply\_yn?: string
+  - coupon_apply_yn?: string
 
     **할인쿠폰 영역 활성/비활성화**
 
@@ -411,17 +415,17 @@ IMP.request_pay(
     - `Y`: 활성
     - `N`: 비활성
 
-  - skin\_indx?: string
+  - skin_indx?: string
 
     **결제창 스킨 유형** (PC 전용)
 
     1\~11 사이의 숫자로 지정 가능합니다.
 
-  - site\_logo?: string
+  - site_logo?: string
 
     **결제창 로고 URL** (PC 전용)
 
-  - complex\_pnt\_yn?: string
+  - complex_pnt_yn?: string
 
     **포인트 복합결제 시 신용카드 결제 여부** (PC 전용)
 
@@ -430,13 +434,13 @@ IMP.request_pay(
     - `Y`: 포인트 + 신용카드 복합결제 허용
     - `N`: 전액 포인트결제
 
-  - pt\_memcorp\_cd?: string
+  - pt_memcorp_cd?: string
 
     **베네피아 회원 코드** (PC, 모바일)
 
     베네피아 포인트 결제 시 필수 입력해야 합니다.
 
-  - app\_flag?: string
+  - app_flag?: string
 
     **KB국민카드 다이렉트 호출 시 앱카드 사용 여부** (PC, 모바일)
 
@@ -597,7 +601,7 @@ IMP.request_pay({
 [JavaScript SDK](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/readme) `IMP.request_pay(param, callback)`을 호출하여 NHN
 KCP 결제창을 호출할 수 있습니다. **결제결과**는 PC의 경우 `IMP.request_pay(param, callback)` 호출 후
 **callback** 으로 수신되고
-모바일의 경우 **m\_redirect\_url** 로 리디렉션됩니다.
+모바일의 경우 **m\_redirect_url** 로 리디렉션됩니다.
 
 빌링키 발급 요청 시에는 `customer_uid` 파라미터를 입력한 후 호출해야 합니다.
 
@@ -662,7 +666,7 @@ IMP.request_pay(
 
   </div>
 
-- customer\_uid: string
+- customer_uid: string
 
   **포트원 빌링키**
 
@@ -678,11 +682,11 @@ IMP.request_pay(
 
   **KCP 빌링키 발급 전용 파라미터**
 
-  - site\_logo?: string
+  - site_logo?: string
 
     **결제창 로고 URL** (PC 전용)
 
-  - batch\_birth\_day\_yn?: string
+  - batch_birth_day_yn?: string
 
     **생년월일 입력 박스 항상 표시 여부** (PC 전용)
 

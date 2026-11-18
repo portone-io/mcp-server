@@ -47,4 +47,4 @@ A. 아니요. 기존 이용 중인 API 또는 SDK 는 도메인 수정 없이 �
 
 •일반문의 <cs@portone.io>
 
-•기술지원 <support@portone.io>
+•기술지원 [tech.support@portone.io](mailto:support@portone.io)

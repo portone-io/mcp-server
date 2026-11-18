@@ -29,7 +29,7 @@ versionVariants:
 
 **API를 이용한 본인인증**
 
-다날 및 KCP의 경우 수기결제처럼 API 호출만으로 진행하는 본인인증도 지원하고 있습니다. REST API 문서의 해당 부분 설명을 참고해 주세요.
+다날의 경우 수기결제처럼 API 호출만으로 진행하는 본인인증도 지원하고 있습니다. REST API 문서의 해당 부분 설명을 참고해 주세요.
 
 </div>
 
@@ -83,9 +83,7 @@ PortOne.requestIdentityVerification({
 본인인증이 성공한 경우 identityVerificationId를 서버에 전달하여 서버측 본인인증 완료 처리를 하도록 합니다.
 
 ```ts
-const response = await PortOne.requestIdentityVerification({
-  /* 객체 생략 */
-});
+const response = await PortOne.requestIdentityVerification({/* 객체 생략 */});
 // 프로세스가 제대로 완료되지 않은 경우 에러 코드가 존재합니다
 if (response.code !== undefined) {
   return alert(response.message);
@@ -161,7 +159,7 @@ app.post("/identity-verifications", async (req, res) => {
 
 - `ci`: 연계 정보(Connecting Information).
   - 사람마다 고유하고 서비스별로 달라지지 않기 때문에, 서비스 간 연계에 사용할 수 있음.
-  - 다날의 경우 항상 제공.
+  - 다날의 경우 계약 시 신청해야 제공.
   - KCP의 경우 가맹점 설정에 따라 제공.
   - KG이니시스의 경우 카카오를 제외한 인증 업체에서 항상 제공. 카카오의 경우 별도 서류 작성이 필요합니다.
 
@@ -186,44 +184,23 @@ app.post("/identity-verifications", async (req, res) => {
 - `birthDate`: 생년월일 (YYYY-MM-DD)
 
 - `operator`: 통신사
-  - 다날의 경우 하기 안내를 따라 추가 계약 후 제공.
+  - 다날의 경우 [헬프센터](https://help.portone.io/content/cellphone-identity-verification) 안내를 따라 추가 계약 후 제공.
   - KCP의 경우 항상 제공.
   - KG이니시스의 경우 미제공.
 
 - `phoneNumber`: 숫자로만 구성된 전화번호
-  - 다날의 경우 하기 안내를 따라 추가 계약 후 제공.
+  - 다날의 경우 [헬프센터](https://help.portone.io/content/cellphone-identity-verification) 안내를 따라 추가 계약 후 제공.
   - KCP의 경우 항상 제공.
   - KG이니시스의 경우 항상 제공.
 
 - `isForeigner`: 외국인 여부.
-  - 다날의 경우 하기 안내를 따라 추가 계약 후 제공.
+  - 다날의 경우 [헬프센터](https://help.portone.io/content/cellphone-identity-verification) 안내를 따라 추가 계약 후 제공.
 
   - KCP의 경우 항상 제공.
 
   - KG이니시스의 경우 카카오톡, 네이버 인증을 제외하고 항상 제공합니다.
     - 카카오톡, 네이버 인증의 경우 인증기관 검증 절차 없이 사용자가 직접 입력한 정보를 제공합니다.
     - `FRGNDInfo` 파라미터를 `N`으로 설정한 경우, 네이버와 카카오톡 인증 시에 외국인 여부를 사용자에게 입력받지 않으며, 인증 결과에 외국인 여부를 제공하지 않습니다. [참고](https://developers.portone.io/opi/ko/integration/pg/v2/inicis-unified-identity-verification#kg이니시스-특수-파라미터-안내)
-
-<div class="hint" data-style="info">
-
-다날의 외국인(**`isForeigner`**) 여부는 **API 방식** 본인인증에 한하여 **개인정보 제공동의 약관을 사이트에 게재**한 후 **<cs@portone.io>로 신청**하여 취득할 수 있습니다. 해당 부분은 당사 계약 이후 다날PG사로 요청 후 승인이 완료되면 이용 가능한 점 참고해 주시기 바랍니다.
-
-**메일 요청 신청 양식**
-
-- 상호명 :
-- 사업자번호 :
-- 본인인증용 다날 상점ID(CPID) :
-- 업종 :
-- 필요사유 :
-- 개인정보취급방침 url : 앱서비스로 URL형태로 전달이 어려우신 경우 '개인정보취급방침' 경로를 캡쳐하여 전달주시기 바랍니다.
-
-**참고 - 포트원 이용 고객사의 개인정보처리방침 적용 예시**
-
-- `(주)마플 : https://marpple.shop/kr/@/privacy`
-- `(주)브레이브모바일 / 숨고 : https://soomgo.com/terms/privacy`
-- `(주)마켓잇 : https://static.marketit.asia/static/privacy-terms.pdf`
-
-</div>
 
 ```ts title="Express"
 // "/identity-verifications"에 대한 POST 요청을 처리하는 controller

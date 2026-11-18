@@ -54,7 +54,7 @@ Content-Type : Application.json;charset=UTF-8
 
   **브릿지 페이지 노출문구**
 
-- user\_code: string
+- user_code: string
 
   **고객사식별코드**
 
@@ -62,7 +62,7 @@ Content-Type : Application.json;charset=UTF-8
 
   **결제금액**
 
-- merchant\_uid: string
+- merchant_uid: string
 
   **주문번호**
 
@@ -70,7 +70,7 @@ Content-Type : Application.json;charset=UTF-8
 
   **제품명**
 
-- tax\_free?: integer
+- tax_free?: integer
 
   **면세금액**
 
@@ -85,46 +85,46 @@ Content-Type : Application.json;charset=UTF-8
   - ko
   - en
 
-- buyer\_name?: string
+- buyer_name?: string
 
   **주문자명**
 
-- buyer\_tel: string
+- buyer_tel: string
 
   **주문자연락처**
 
-- buyer\_addr?: string
+- buyer_addr?: string
 
   **주문자주소**
 
-- buyer\_email?: string
+- buyer_email?: string
 
   **주문자 이메일주**
 
-- buyer\_postcode?: string
+- buyer_postcode?: string
 
   **주문자 우편번호**
 
-- custom\_data?: object
+- custom_data?: object
 
   **에코항목**
 
-- notice\_url?: string
+- notice_url?: string
 
   **결제결과(성공거래)를 수신받을 URL(웹훅)**
 
-- expired\_at: string
+- expired_at: string
 
   **페이지 만료시각**
 
-- display\_language?: string
+- display_language?: string
 
   **브릿지 페이지 표기언어**
 
   - ko : 한국어
   - en : 영어
 
-- pay\_methods: object\[]
+- pay_methods: object\[]
 
   - channelKey?: string
 
@@ -148,11 +148,11 @@ Content-Type : Application.json;charset=UTF-8
 
     </div>
 
-  - pay\_method?: string
+  - pay_method?: string
 
     결제수단 구분코드
 
-    [pay\_method 가이드 바로가기](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/payrq?v=v1#pay_method-string)
+    [pay_method 가이드 바로가기](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/payrq?v=v1#pay_method-string)
 
   - label?: string
 
@@ -182,11 +182,11 @@ Content-Type : Application.json;charset=UTF-8
 
     </div>
 
-  - pay\_method?: string
+  - pay_method?: string
 
     결제수단 구분코드. (하나의 결제수단만 선택 가능합니다.)
 
-    [pay\_method 가이드 바로가기](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/payrq?v=v1#pay_method-string)
+    [pay_method 가이드 바로가기](https://developers.portone.io/sdk/ko/v1-sdk/javascript-sdk/payrq?v=v1#pay_method-string)
 
 ### Responses
 
@@ -228,7 +228,7 @@ Content-Type : Application.json;charset=UTF-8
 
 <div class="tabs-content" data-title=" 만료(브릿지) 화면">
 
-**결제 URL 페이지 만료시각(expire\_at)이 지난 경우 표시되는 화면입니다.**
+**결제 URL 페이지 만료시각(expire_at)이 지난 경우 표시되는 화면입니다.**
 
 (이미지 첨부: 결제 URL만료 화면)
 

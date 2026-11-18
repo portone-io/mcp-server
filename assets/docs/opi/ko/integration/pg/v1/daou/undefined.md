@@ -11,7 +11,7 @@ targetVersions:
 
 <summary>주문명, 주문자명은 EUC-KR에서 표현 가능한 문자가 사용해야함</summary>
 
-키움페이의 경우 EUC-KR 인코딩을 사용합니다. 따라서 주문자명(buyer\_name), 주문명(name) 등의
+키움페이의 경우 EUC-KR 인코딩을 사용합니다. 따라서 주문자명(buyer_name), 주문명(name) 등의
 파라미터에 EUC-KR에서 표현 가능한 문자를 입력해야 합니다.
 
 </details>
@@ -45,7 +45,7 @@ PC 결제의 경우 키움페이 결제창이 iframe 방식으로 호출되기 �
   );
   ```
 
-- \[모바일 결제] 리디렉션 → m\_redirect\_url로 302 리디렉션 → `imp_success` 쿼리 파라미터 전달
+- \[모바일 결제] 리디렉션 → m_redirect_url로 302 리디렉션 → `imp_success` 쿼리 파라미터 전달
 
   ```text
   /**
@@ -69,7 +69,7 @@ PC 결제의 경우 키움페이 결제창이 iframe 방식으로 호출되기 �
 `imp_success` 또는 `success` 파라미터가 `false`일 수** 있습니다.
 
 따라서 포트원 → 고객사 클라이언트로 응답되는 결과 데이터 중 포트원 거래 번호(`imp_uid`)와 고객사 주문 번호(`merchant_uid`)를 이용하여
-포트원 결제내역 조회 API([GET /payments/{imp\_uid}](https://developers.portone.io/api/rest-v1/payment#get%20%2Fpayments%2F%7Bimp_uid%7D))를 호출한 후
+포트원 결제내역 조회 API([GET /payments/{imp_uid}](https://developers.portone.io/api/rest-v1/payment#get%20%2Fpayments%2F%7Bimp_uid%7D))를 호출한 후
 결제 상태(`status`)를 보고 결제 실패(`failed`)/성공(`paid`) 여부를 판단하시길 권장드립니다.
 
 </details>
@@ -118,7 +118,7 @@ PC 결제의 경우 키움페이 결제창이 iframe 방식으로 호출되기 �
 <summary>가상계좌 입금 완료시, 송금자 이름 정보만 저장됨</summary>
 
 키움페이는 (발급된)가상계좌에 입금 완료시, 송금자의 정보(은행명, 계좌번호, 송금인) 중 송금자 이름 정보만 저장됩니다.
-따라서 포트원 결제내역 조회([**GET /payments/{imp\_uid}**](https://developers.portone.io/api/rest-v1/payment#get%20%2Fpayments%2F%7Bimp_uid%7D))시
+따라서 포트원 결제내역 조회([**GET /payments/{imp_uid}**](https://developers.portone.io/api/rest-v1/payment#get%20%2Fpayments%2F%7Bimp_uid%7D))시
 송금자의 은행코드(`bank_code`)과 은행명(`bank_name`)은 모두 NULL로 내려가며,
 송금자 이름을 확인하기 위해서는 아래 예시와 같이 별도의 쿼리 파라미터(`extension`)를 `true`로 설정해주셔야 합니다.
 
@@ -174,7 +174,7 @@ GET http://api.iamport.kr/payments/{포트원 번호}?**extension=true**
 결제창(`IMP.request_pay` 함수) 호출시 총 결제 금액(`amount`)중 면세 금액(`tax_free`)을 설정하여 복합과세 거래로 진행할 수 있습니다.
 단, 키움페이 시스템 상 면세 금액은 카드결제 혹은 간편결제 시에만 가능하고 계좌이체 / 가상계좌 결제 시에는 설정할 수 없어 전액 과세 처리 됩니다.
 
-- 복합과세 거래가 가능한 결제수단 (pay\_method)
+- 복합과세 거래가 가능한 결제수단 (pay_method)
   - card
   - kakaopay
   - naverpay

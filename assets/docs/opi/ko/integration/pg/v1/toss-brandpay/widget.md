@@ -149,4 +149,4 @@ attribute가 `oss-brandpay-widget`인 elemente도 2개 이상인 경우, **동�
 
 ## loadUI 요청 객체
 
-loadUI 호출시 파라미터인 결제요청 데이터의 경우 IMP.request\_pay의 요청데이터와 동일한 객체이므로, [브랜드페이 연동문서](https://developers.portone.io/opi/ko/integration/pg/v1/toss-brandpay/readme)를 참고해주세요.
+loadUI 호출시 파라미터인 결제요청 데이터의 경우 IMP.request_pay의 요청데이터와 동일한 객체이므로, [브랜드페이 연동문서](https://developers.portone.io/opi/ko/integration/pg/v1/toss-brandpay/readme)를 참고해주세요.

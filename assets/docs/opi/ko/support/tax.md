@@ -63,7 +63,7 @@ targetVersions:
 
 </div>
 
-## 상황별 tax\_free 속성 적용하기 <a href="#taxfree" id="taxfree" />
+## 상황별 tax_free 속성 적용하기 <a href="#taxfree" id="taxfree" />
 
 고객이 과세상품과 면세상품을 동시에 구매하는 상황을 가정하여 각각의 시나리오별로 `amount`와 `tax_free`속성을 다음과 같이 설정합니다.
 다음은 한 화훼 사업자(부가세 면세사업자)가 식물 모종과 화병을 판매하는 예제입니다.
