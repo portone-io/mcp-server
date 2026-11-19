@@ -41,8 +41,6 @@ jobs:
       - name: Build
         run: pnpm build
 
-      # The publish command stages on npm and tags the release. The action's
-      # "published" output therefore means staged for approval, not live on npm.
       - name: Create Release Pull Request or Stage to npm
         id: changesets
         uses: changesets/action@a45c4d594aa4e2c509dc14a9f2b3b67ba3780d0d # v1.9.0
@@ -52,7 +50,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # DXT bundles local source, not the unpublished npm package.
       - name: Build DXT file
         if: steps.changesets.outputs.published == 'true'
         run: pnpm build:dxt
