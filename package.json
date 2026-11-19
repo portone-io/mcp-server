@@ -17,7 +17,8 @@
     "lint": "biome check .",
     "format": "biome format --write .",
     "typecheck": "tsc --noEmit",
-    "changeset:version": "changeset version && node scripts/sync-manifest-version.js && biome format --write manifest.json"
+    "changeset:version": "changeset version && node scripts/sync-manifest-version.js && biome format --write manifest.json",
+    "changeset:stage": "pnpm stage publish --recursive --no-git-checks --access public --provenance && changeset tag"
   },
   "keywords": [
     "mcp",
@@ -42,7 +43,7 @@
     "ts-pattern": "^5.9.0",
     "zod": "^3.25.76"
   },
-  "packageManager": "pnpm@11.22.0+sha512.1ff870c4c6133dfd88fb2afc46dd13d47f09c9794b438c6fdb47ca98caf3bc16381ee0be93a091b8e3824cf01f889f46d7d9e20910fb0be1ab0fb5baa80dd621",
+  "packageManager": "pnpm@12.21.0+sha512.66fd8278ee28935ce951792d34367ff3af5c432a2756445823029533835b8da529bbe0be5130afd56ed0713fb8789e47bad82d93bd5ae2fe54b15562d6276ef0",
   "devDependencies": {
     "@biomejs/biome": "2.2.6",
     "@changesets/cli": "^2.31.1",
