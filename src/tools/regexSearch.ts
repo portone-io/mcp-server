@@ -1,8 +1,12 @@
+import { Script } from "node:vm";
 import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
 import z from "zod";
 import type { Documents } from "../types.ts";
 import { calculateBm25Scores } from "./utils/bm25.ts";
 import { formatDocumentMetadata } from "./utils/markdown.ts";
+
+const SEARCH_TIMEOUT_MS = 1000;
+const searchScript = new Script("search()");
 
 interface SearchOccurrence {
   startIndex: number;
@@ -26,6 +30,7 @@ export const config = {
       ),
     query: z
       .string()
+      .max(1000)
       .describe(`Node.js RegExp 형식의 문자열을 입력해야 하며, 영어 알파벳 대소문자는 구분 없이 매칭됩니다.
 절대 query에 공백을 포함시키지 마세요. 여러 키워드를 한 번에 검색하고 싶다면, 공백 대신 | 연산자를 사용하여 구분합니다.
 단어 글자 사이에 공백이 있는 경우도 매칭하고 싶다면, 공백 대신 \\s*를 사용하세요.`),
@@ -66,7 +71,14 @@ function formatOccurrence(occurrence: SearchOccurrence): string {
 export function init(
   documents: Documents,
 ): ToolCallback<typeof config.inputSchema> {
-  return ({ paths, query, contextSize, page, limit, showMetadata }) => {
+  const search: ToolCallback<typeof config.inputSchema> = ({
+    paths,
+    query,
+    contextSize,
+    page,
+    limit,
+    showMetadata,
+  }) => {
     const { markdownDocs } = documents;
     let occurrenceCount = 0;
     let docCount = 0;
@@ -231,6 +243,32 @@ export function init(
         ],
         isError: true,
       };
+    }
+  };
+  return (args, extra) => {
+    try {
+      return searchScript.runInNewContext(
+        { search: () => search(args, extra) },
+        { timeout: SEARCH_TIMEOUT_MS },
+      );
+    } catch (error) {
+      if (
+        typeof error === "object" &&
+        error !== null &&
+        "code" in error &&
+        error.code === "ERR_SCRIPT_EXECUTION_TIMEOUT"
+      ) {
+        return {
+          content: [
+            {
+              type: "text",
+              text: "Regular expression search timed out. Please use a simpler pattern.",
+            },
+          ],
+          isError: true,
+        };
+      }
+      throw error;
     }
   };
 }
